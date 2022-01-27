@@ -1,10 +1,10 @@
 {
-  "title": "REPLACE ME > Developer Studio",
-  "name": "REPLACE ME > DeveloperPortal",
+  "title": "Universal Commerce",
+  "name": "UniversalCommerce",
   "brand": "Fiserv",
   "brandLogoURL": "https://raw.githubusercontent.com/Fiserv/Developer-Portal-Tenant-API/develop/assets/images/Fiserv_Logo.jpg",
-  "solution": "financial-institutions",
-  "brandDescription": "REPLACE ME > Fiserv, Inc. is a global provider of payments and financial services technology solutions. The Company provides account processing and digital banking solutions, card issuer processing and network services, payments, e-commerce, merchant acquiring and processing, and the Clover cloud-based point-of-sale solution. The Company operates through three segments: Merchant Acceptance (Acceptance), Financial Technology (Fintech) and Payments and Network (Payments).",
+  "solution": "merchants",
+  "brandDescription": "Universal Commerce",
   "categories": [
     {
       "name": "businessTypes",
@@ -31,11 +31,11 @@
     "logoURL": "https://raw.githubusercontent.com/Fiserv/Developer-Portal-Tenant-API/develop/assets/images/Portal_Logo.png",
     "description": "To onboard properly into the Developer Studio as a tenant each product must support these APIs so that we can retrieve product specific API specifications and documentation.",
     "longDescription":"To onboard properly into the Developer Studi as a tenant each product must support these APIs so that we can retrieve product specific API specifications and documentation.",
-    "apiSpecification": "/v1/apis",
-    "layout": "/v1/layouts",
-    "documentation": "/v1/docs",
-    "documenttree": "/v1/docs",
-    "documenttreeV2": "/v2/docs",
+    "apiSpecification": "/v1/apis/UniversalCommerce",
+    "layout": "/v1/layouts/UniversalCommerce",
+    "documentation": "/v1/docs/UniversalCommerce",
+    "documenttree": "/v1/docs/UniversalCommerce",
+    "documenttreeV2": "/v2/docs/UniversalCommerce",
     "feature":[
       {
         "name": "sandBox",
@@ -57,19 +57,19 @@
   },
    "supportConfig": [{ 
 		"bug": {
-			"label": "bug,REPLACEME",
+			"label": "bug,universalcommerce",
 			"template": "bug.md",
-			"assignees": "awaneesh.srivastava@fiserv.com,palani.p@fiserv.com"
+			"assignees": "paul.mohl@fiserv.com,mandeep.yadav@fiserv.com"
 		},
 		"feedback": {
-			"label": "feedback,REPLACEME",
+			"label": "feedback,universalcommerce",
 			"template": "feedback.md",
-			"assignees": "awaneesh.srivastava@fiserv.com"
+			"assignees": "paul.mohl@fiserv.com,mandeep.yadav@fiserv.com"
 		},
 		"enhancement": {
-			"label": "enhancement,REPLACEME",
+			"label": "enhancement,universalcommerce",
 			"template": "feature.md",
-			"assignees": "awaneesh.srivastava@fiserv.com"
+			"assignees": "paul.mohl@fiserv.com,mandeep.yadav@fiserv.com"
 		}
 	}]
 }
