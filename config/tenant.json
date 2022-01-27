@@ -36,6 +36,7 @@
     "documentation": "/v1/docs/UniversalCommerce",
     "documenttree": "/v1/docs/UniversalCommerce",
     "documenttreeV2": "/v2/docs/UniversalCommerce",
+    "sandbox": "/v1/sandboxrun/UniversalCommerce",
     "feature":[
       {
         "name": "sandBox",
