@@ -60,17 +60,17 @@
 		"bug": {
 			"label": "bug,universalcommerce",
 			"template": "bug.md",
-			"assignees": "paul.mohl@fiserv.com,mandeep.yadav@fiserv.com"
+			"assignees": "paulmohljr"
 		},
 		"feedback": {
 			"label": "feedback,universalcommerce",
 			"template": "feedback.md",
-			"assignees": "paul.mohl@fiserv.com,mandeep.yadav@fiserv.com"
+			"assignees": "paulmohljr"
 		},
 		"enhancement": {
 			"label": "enhancement,universalcommerce",
 			"template": "feature.md",
-			"assignees": "paul.mohl@fiserv.com,mandeep.yadav@fiserv.com"
+			"assignees": "paulmohljrm"
 		}
 	}]
 }
