@@ -1,4 +1,4 @@
-################################################################################
+o################################################################################
 # Copyrights © 2021-2022 Fiserv, Inc. or its affiliates. 
 # Fiserv is a trademark of Fiserv, Inc., 
 # registered or used in the United States and foreign countries, 
@@ -28,12 +28,12 @@
 # the delivery of this work
 ################################################################################
 header:
-  productName: REPLACEME
+  productName: UniversalCommerce
   productionDescription: REPLACEME
   whoIsItFor: REPLACEME
   image: 
     link: "/assets/images/Fiserv_Logo.jpg"
-    altText: REPLACEME™
+    altText: UniversalCommerce™
 featuredFeatures:
   - title: REPLACE ME
     description:  REPLACE ME
