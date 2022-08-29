@@ -51,6 +51,13 @@
     - title: Preview & Publish
       link: docs/getting-started/preview-and-publish-content/preview-and-publish.md
 - sections:
+    - title: Customer Services
+      link:
+      open: true
+      sections:
+        - title: Create a Customer
+          link: docs/documentation/customerServicesCreateCustomer.md
+- sections:
   - title: Resources
     link:
     open: true
