@@ -51,6 +51,15 @@
     - title: Preview & Publish
       link: docs/getting-started/preview-and-publish-content/preview-and-publish.md
 - sections:
+  - title: CORE
+    link:
+    open: true
+    sections:
+    - title: Customer Services
+      link:
+    - title: Account Services
+      link: 
+- sections:
   - title: Resources
     link:
     open: true
