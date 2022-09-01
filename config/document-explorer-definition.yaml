@@ -57,7 +57,6 @@
     sections:
     - title: Customer Services
       link:
-      open: true
       sections:
       - title: Create a Customer
         link:
