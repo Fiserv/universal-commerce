@@ -57,6 +57,7 @@
     sections:
     - title: Customer Services
       link:  
+      open: true
       sections:
       - title: Create a Customer
         link: docs/documentation/customerServicesCreateCustomer_v1.md
@@ -64,6 +65,7 @@
         link: 
     - title: Account Services
       link: 
+      open: true
       sections:
       - title: Create an Account
         link: 
