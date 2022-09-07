@@ -25,9 +25,10 @@ POST v1/customers
 
 Basic Authentication
 
-# Request Headers
-<details> <summary>Click to expand!</summary>
+<details> 
+<summary>Click to expand!</summary> 
 
+# Request Headers
 | HEADER                  | VALUE                                                      | DESCRIPTION                        |
 |-------------------------|------------------------------------------------------------|------------------------------------|
 | Connection              | keep-alive                                                 | The Keep-Alive general header allows the sender to hint about how the connection may be used to set a timeout and a maximum amount of requests.        |
@@ -43,7 +44,9 @@ Basic Authentication
 </details>
 
 # Request Body
-<details> <summary>Click to expand!</summary> 
+<details> 
+<summary>Click to expand!</summary> 
+
 <!-- The Request body is defined in the YAML API specification file: https://firstdatanp-ucomgateway.apigee.io/apis/ucomcustomerservices/index -->
 <!-- https://escmstash.1dc.com/projects/UC/repos/ucom_swagger/browse/swagger_definitions/uComCustomerServices.yaml -->
 <!-- https://escmstash.1dc.com/projects/UC/repos/ucom_swagger/browse/sample_messages -->
@@ -262,7 +265,8 @@ The name of the body parameter has no effect on the parameter itself and is used
 # Request Cookies
 
 [No cookies] | Cookie Name - Value
-<details> <summary>Click to expand!</summary>
+<details> 
+<summary>Click to expand!</summary>
 
 # Response Headers
 
@@ -284,7 +288,8 @@ The name of the body parameter has no effect on the parameter itself and is used
 </details>
 
 # Response Body
-<details> <summary>Click to expand!</summary> 
+<details> 
+<summary>Click to expand!</summary> 
 
 | Variable        | Type      | Example        | Description                        | 
 |-----------------|-----------|----------------|------------------------------------|
