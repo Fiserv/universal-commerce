@@ -1,7 +1,7 @@
-  ---
-tags: [carat, commerce-hub, enterprise, customer-authorized, merchant-stored, tokens-request, payment-token,
-api-reference, customer service, Create Customer]
-  ---
+<meta charset="UTF-8">
+<meta name="description" content="Create a Customer Profile  for uCom">
+<meta name="keywords" content="uCom, Customer Services, Account Services">
+
 # Create a Customer Profile
 
 ## Description
@@ -22,9 +22,11 @@ POST v1/customers
 <!-- Other documentation discusses boarding a new customer. --> 
 
 # Authentication
+
 Basic Authentication
 
 # Request Headers
+<details> <summary>Click to expand!</summary>
 
 | HEADER                  | VALUE                                                      | DESCRIPTION                        |
 |-------------------------|------------------------------------------------------------|------------------------------------|
@@ -38,6 +40,7 @@ Basic Authentication
 | Host                    | e.g., ucom-customer-services-prd.apps.us-[server name].com |                                |
 | User-Agent              | e.g., Apache-HttpClient/4.5.12 (Java/17.0.2)               |                                |
 | Authorization           | e.g., Basic dWNvbS1hcGlnZWU6dWNvbS1hcGlnZWU=               | HMAC Key generation, Base64 HMAC SHA256 of authentication headers and request body. Authorization header is required to have the HMAC string capitalized and followed by one space followed by the calculated HMAC signature. |
+</details>
 
 # Request Body
 <details> <summary>Click to expand!</summary> 
@@ -255,9 +258,11 @@ The name of the body parameter has no effect on the parameter itself and is used
 }
 ```
 </details>
+
 # Request Cookies
 
 [No cookies] | Cookie Name - Value
+<details> <summary>Click to expand!</summary>
 
 # Response Headers
 
@@ -276,6 +281,7 @@ The name of the body parameter has no effect on the parameter itself and is used
     X-Xss-Protection: 1; mode=block
     Transfer-Encoding: chunked
     Set-Cookie: NSC_VT-PNB1-OQ2-1ED-DPN-443-WJQ=ffffffff09bd36e445525d5f4f58455e445a4a42378b;path=/;secure;httponly                          
+</details>
 
 # Response Body
 <details> <summary>Click to expand!</summary> 
@@ -285,19 +291,16 @@ The name of the body parameter has no effect on the parameter itself and is used
 |   id            | string    | Example: fdCustomerId                     | Unique identifier for a customer profile registered with uCom; and example is fdCustomerId for the Vault.                 |
 |   externalId    | string    | Example: 123abc456def890ghi098jkl765mno   | Unique identifier for a customer profile registered with uCom. If there is no externalID, the first time User is created, one is generated in the request. If an externalID already exists, then the logger creates this error message: "Record exist for the given externalCustomerId: " + createCustomerRequest.getExternalCustomerId()); |
 
-### Subtitle for each json example
-### Repeat as necessary
-Add a collapsible header!
-
 ```json
 
 {"id":"5cab4ea317ec4877ab419ae3844a970a", 
 "externalId":"dwkockyq"}  
 ```
 </details>
-# Response Cookies - future
 
-[No cookies] | Set-Cookie: NSC_VT-PNB1-OQ2-1ED-DPN-443-WJQ=ffffffff09bd36e445525d5f4f58455e445a4a42378b;path=/;secure;httponly
+# Response Cookies
+
+Set-Cookie: NSC_VT-PNB1-OQ2-1ED-DPN-443-WJQ=ffffffff09bd36e445525d5f4f58455e445a4a42378b;path=/;secure;httponly
 
 ## HTTP Status Code and Reason Phrase
 
