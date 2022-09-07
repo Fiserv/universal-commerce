@@ -26,8 +26,9 @@ POST v1/customers
 Basic Authentication
 
 # Request Headers
+
 <details> 
-<summary>Click to expand!</summary> 
+   <summary>Click to expand!</summary> 
 
 | HEADER                  | VALUE                                                      | DESCRIPTION                        |
 |-------------------------|------------------------------------------------------------|------------------------------------|
@@ -41,11 +42,13 @@ Basic Authentication
 | Host                    | e.g., ucom-customer-services-prd.apps.us-[server name].com |                                |
 | User-Agent              | e.g., Apache-HttpClient/4.5.12 (Java/17.0.2)               |                                |
 | Authorization           | e.g., Basic dWNvbS1hcGlnZWU6dWNvbS1hcGlnZWU=               | HMAC Key generation, Base64 HMAC SHA256 of authentication headers and request body. Authorization header is required to have the HMAC string capitalized and followed by one space followed by the calculated HMAC signature. |
+
 </details>
 
 # Request Body
+
 <details> 
-<summary>Click to expand!</summary> 
+   <summary>Click to expand!</summary> 
 
 <!-- The Request body is defined in the YAML API specification file: https://firstdatanp-ucomgateway.apigee.io/apis/ucomcustomerservices/index -->
 <!-- https://escmstash.1dc.com/projects/UC/repos/ucom_swagger/browse/swagger_definitions/uComCustomerServices.yaml -->
@@ -265,10 +268,11 @@ The name of the body parameter has no effect on the parameter itself and is used
 # Request Cookies
 
 [No cookies] | Cookie Name - Value
-<details> 
-<summary>Click to expand!</summary>
 
 # Response Headers
+
+<details> 
+   <summary>Click to expand!</summary>
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache, no-store, max-age=0, must-revalidate
@@ -289,7 +293,7 @@ The name of the body parameter has no effect on the parameter itself and is used
 
 # Response Body
 <details> 
-<summary>Click to expand!</summary> 
+   <summary>Click to expand!</summary> 
 
 | Variable        | Type      | Example        | Description                        | 
 |-----------------|-----------|----------------|------------------------------------|
