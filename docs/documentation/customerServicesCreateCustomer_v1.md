@@ -25,10 +25,10 @@ POST v1/customers
 
 Basic Authentication
 
+# Request Headers
 <details> 
 <summary>Click to expand!</summary> 
 
-# Request Headers
 | HEADER                  | VALUE                                                      | DESCRIPTION                        |
 |-------------------------|------------------------------------------------------------|------------------------------------|
 | Connection              | keep-alive                                                 | The Keep-Alive general header allows the sender to hint about how the connection may be used to set a timeout and a maximum amount of requests.        |
