@@ -1,7 +1,7 @@
   ---
-2    tags: [carat, commerce-hub, enterprise, customer-authorized, merchant-stored, tokens-request, payment-token,
-3    api-reference, customer service, Create Customer]
-
+tags: [carat, commerce-hub, enterprise, customer-authorized, merchant-stored, tokens-request, payment-token,
+api-reference, customer service, Create Customer]
+  ---
 # Create a Customer Profile
 
 ## Description
@@ -38,9 +38,9 @@ Basic Authentication
 | Host                    | e.g., ucom-customer-services-prd.apps.us-[server name].com |                                |
 | User-Agent              | e.g., Apache-HttpClient/4.5.12 (Java/17.0.2)               |                                |
 | Authorization           | e.g., Basic dWNvbS1hcGlnZWU6dWNvbS1hcGlnZWU=               | HMAC Key generation, Base64 HMAC SHA256 of authentication headers and request body. Authorization header is required to have the HMAC string capitalized and followed by one space followed by the calculated HMAC signature. |
-                              
-# Request Body
 
+# Request Body
+<details> <summary>Click to expand!</summary> 
 <!-- The Request body is defined in the YAML API specification file: https://firstdatanp-ucomgateway.apigee.io/apis/ucomcustomerservices/index -->
 <!-- https://escmstash.1dc.com/projects/UC/repos/ucom_swagger/browse/swagger_definitions/uComCustomerServices.yaml -->
 <!-- https://escmstash.1dc.com/projects/UC/repos/ucom_swagger/browse/sample_messages -->
@@ -254,12 +254,12 @@ The name of the body parameter has no effect on the parameter itself and is used
   }
 }
 ```
-
+</details>
 # Request Cookies
 
 [No cookies] | Cookie Name - Value
 
-## Response Headers
+# Response Headers
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache, no-store, max-age=0, must-revalidate
@@ -277,7 +277,8 @@ The name of the body parameter has no effect on the parameter itself and is used
     Transfer-Encoding: chunked
     Set-Cookie: NSC_VT-PNB1-OQ2-1ED-DPN-443-WJQ=ffffffff09bd36e445525d5f4f58455e445a4a42378b;path=/;secure;httponly                          
 
-## Response Body (Mandatory, if used)
+# Response Body
+<details> <summary>Click to expand!</summary> 
 
 | Variable        | Type      | Example        | Description                        | 
 |-----------------|-----------|----------------|------------------------------------|
@@ -293,7 +294,7 @@ Add a collapsible header!
 {"id":"5cab4ea317ec4877ab419ae3844a970a", 
 "externalId":"dwkockyq"}  
 ```
-
+</details>
 # Response Cookies - future
 
 [No cookies] | Set-Cookie: NSC_VT-PNB1-OQ2-1ED-DPN-443-WJQ=ffffffff09bd36e445525d5f4f58455e445a4a42378b;path=/;secure;httponly
