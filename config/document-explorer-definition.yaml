@@ -60,8 +60,15 @@
       sections:
       - title: Create a Customer
         link: docs/documentation/customerServicesCreateCustomer.md
+      - title: Delete a Customer
+        link: 
     - title: Account Services
       link: 
+      sections:
+      - title: Create an Account
+        link: 
+      - title: Delete an Account
+        link: 
 - sections:
   - title: Resources
     link:
