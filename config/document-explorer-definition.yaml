@@ -86,6 +86,7 @@
       link: 
 - sections:
   - title: GooglePay
+    image: https://github.com/Fiserv/universal-commerce/blob/develop/assets/images/Google_Pay_icon.PNG
     link: 
     open: true
     sections:
