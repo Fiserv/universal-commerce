@@ -50,10 +50,6 @@
       link: docs/getting-started/code-a-tenant/code-tenant.md
     - title: Preview & Publish
       link: docs/getting-started/preview-and-publish-content/preview-and-publish.md
-- sections:
-  - title: CORE
-    link:
-    open: true
  - sections:
   - title: Resources
     link:
