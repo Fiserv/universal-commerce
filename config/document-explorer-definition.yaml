@@ -85,10 +85,10 @@
     - title: Delete a Payment
       link: 
 - sections:
-  image: https://github.com/Fiserv/universal-commerce/blob/develop/assets/images/Google_Pay_icon.PNG
+  - title: ApplePay
 - sections:
   - title: GooglePay
-    image: 
+    image: https://github.com/Fiserv/universal-commerce/blob/develop/assets/images/Google_Pay_icon.PNG
     link: 
     open: true
     sections:
