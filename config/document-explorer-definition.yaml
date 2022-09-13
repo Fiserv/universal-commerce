@@ -58,11 +58,11 @@
     - title: Create a Customer
       link:  docs/documentation/customerServicesCreateCustomer_v1.md
     - title: Delete a Customer
-      link:  
+      link:  docs/documentation/customerServicesCreateCustomer_v1.md
     - title: Patch a Customer
-      link:  
+      link:  docs/documentation/customerServicesCreateCustomer_v1.md
     - title: GET a Customer
-      link:  
+      link:  docs/documentation/customerServicesCreateCustomer_v1.md
 - sections:
   - title: Resources
     link:
