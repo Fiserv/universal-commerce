@@ -52,7 +52,7 @@
       link: docs/getting-started/preview-and-publish-content/preview-and-publish.md
 - sections:
   - title: GooglePay
-    link:
+    link: docs/documentation/customerServicesCreateCustomer_v1.md
     open: true
     sections:
     - title: Create a Customer
