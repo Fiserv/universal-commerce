@@ -51,6 +51,36 @@
     - title: Preview & Publish
       link: docs/getting-started/preview-and-publish-content/preview-and-publish.md
 - sections:
+  - title: GooglePay
+    link: 
+    open: true
+    sections:
+    - title: Create a Customer
+      link:  docs/documentation/customerServicesCreateCustomer_v1.md
+    - title: Create an Account
+      link:  
+    - title: Create a Payment 
+    - sections:
+  - title: ApplePay
+    link: 
+    open: true
+    sections:
+    - title: Create a Customer
+      link:  docs/documentation/customerServicesCreateCustomer_v1.md
+    - title: Create an Account
+      link:  
+    - title: Create a Payment 
+ - sections:
+   - title: Venmo
+     link: 
+     open: true
+     sections:
+     - title: Create a Customer
+       link:  docs/documentation/customerServicesCreateCustomer_v1.md
+     - title: Create an Account
+       link:  
+     - title: Create a Payment 
+- sections:
   - title: Customer Services
     link:
     open: true
@@ -84,16 +114,6 @@
       link: 
     - title: Delete a Payment
       link: 
-- sections:
-  - title: GooglePay
-    link: 
-    open: true
-    sections:
-    - title: Create a Customer
-      link:  docs/documentation/customerServicesCreateCustomer_v1.md
-    - title: Create an Account
-      link:  
-    - title: Create a Payment 
 - sections:
   - title: Resources
     link:
