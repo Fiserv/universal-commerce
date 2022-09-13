@@ -51,6 +51,16 @@
     - title: Preview & Publish
       link: docs/getting-started/preview-and-publish-content/preview-and-publish.md
 - sections:
+  - title: GooglePay
+    link:
+    open: 
+    sections:
+    - title: Create a Customer
+      link:  docs/documentation/customerServicesCreateCustomer_v1.md
+    - title: Create an Account
+      link:  
+    - title: Create a Payment 
+- sections:
   - title: Customer Services
     link:
     open: true
