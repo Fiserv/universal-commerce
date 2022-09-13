@@ -86,8 +86,8 @@
       link: 
 - sections:
   - title: GooglePay
-    image: https://github.com/Fiserv/universal-commerce/blob/develop/assets/images/Google_Pay_icon.PNG
-    link: 
+    image: 
+    link: https://github.com/Fiserv/universal-commerce/blob/develop/assets/images/Google_Pay_icon.PNG
     open: true
     sections:
     - title: Create a Customer
