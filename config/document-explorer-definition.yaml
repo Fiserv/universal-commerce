@@ -60,7 +60,7 @@
     - title: Create an Account
       link:  
     - title: Create a Payment 
-    - sections:
+- sections:
   - title: ApplePay
     link: 
     open: true
@@ -70,7 +70,7 @@
     - title: Create an Account
       link:  
     - title: Create a Payment 
- - sections:
+- sections:
    - title: Venmo
      link: 
      open: true
@@ -93,6 +93,7 @@
       link:  
     - title: GET a Customer
       link:  
+- sections:
   - title: Account Services
     link:
     open: true
