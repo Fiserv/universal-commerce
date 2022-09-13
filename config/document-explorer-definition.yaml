@@ -89,7 +89,7 @@
 - sections:
   - title: GooglePay
     header:
-      image: /assets/images/Google_Pay_icon.PNG
+      image: assets/images/Google_Pay_icon.PNG
     link: 
     open: true
     sections:
