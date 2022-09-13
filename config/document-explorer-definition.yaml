@@ -86,6 +86,8 @@
       link: 
 - sections:
   - title: ApplePay
+    link: 
+    open: true
 - sections:
   - title: GooglePay
     link: 
