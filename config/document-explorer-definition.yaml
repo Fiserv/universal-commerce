@@ -76,6 +76,13 @@
     - title: GET an Account
       link:  
 - sections:
+  - title: Payment Services
+    link:
+    - title: Create a Payment
+      link: 
+    - title: Delete a Payment
+      link: 
+- sections:
   - title: GooglePay
     link: 
     open: true
