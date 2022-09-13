@@ -78,6 +78,8 @@
 - sections:
   - title: Payment Services
     link:
+    open: true
+    sections:
     - title: Create a Payment
       link: 
     - title: Delete a Payment
