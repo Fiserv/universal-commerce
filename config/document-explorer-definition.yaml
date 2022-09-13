@@ -36,36 +36,36 @@
         - title: Contact Us
           link: docs/introduction/contact-us.md
 - sections:
-  - title: Getting Started
+    - title: Getting Started
     link: docs/getting-started.md
     open: true
     sections:
-    - title: Setup a Tenant
-      link: docs/getting-started/setup-tenant/setup-tenant.md
-    - title: Deploy Tenant
-      link: docs/getting-started/setup-tenant/deploy-tenant.md
-    - title: Register Tenant
-      link: docs/getting-started/setup-tenant/register-tenant.md
-    - title: Code a Tenant
-      link: docs/getting-started/code-a-tenant/code-tenant.md
-    - title: Preview & Publish
-      link: docs/getting-started/preview-and-publish-content/preview-and-publish.md
+      - title: Setup a Tenant
+        link: docs/getting-started/setup-tenant/setup-tenant.md
+      - title: Deploy Tenant
+        link: docs/getting-started/setup-tenant/deploy-tenant.md
+      - title: Register Tenant
+        link: docs/getting-started/setup-tenant/register-tenant.md
+      - title: Code a Tenant
+        link: docs/getting-started/code-a-tenant/code-tenant.md
+      - title: Preview & Publish
+        link: docs/getting-started/preview-and-publish-content/preview-and-publish.md
  - sections:
-  - title: Resources
-    link:
-    open: true
-    sections:
-    - title: API Guide
-      link: docs/resources/guides/api-guide.md
-    - title: How it works
-      link: docs/resources/guides/how-it-works.md
-    - title: How to use Stoplight
-      link: docs/resources/guides/how-to-use-stoplight.md
-    - title: How to use Docignore
-      link: docs/resources/guides/how-to-use-docignore.md
-    - title: Markdown Support
-      link: docs/resources/markdown-support.md
-    - title: Tutorials
-      link: docs/tutorials/tutorials.md
-    - title: FAQ
-      link: docs/faq/faq.md
+    - title: Resources
+      link:
+      open: true
+      sections:
+      - title: API Guide
+        link: docs/resources/guides/api-guide.md
+      - title: How it works
+        link: docs/resources/guides/how-it-works.md
+      - title: How to use Stoplight
+        link: docs/resources/guides/how-to-use-stoplight.md
+      - title: How to use Docignore
+        link: docs/resources/guides/how-to-use-docignore.md
+      - title: Markdown Support
+        link: docs/resources/markdown-support.md
+      - title: Tutorials
+        link: docs/tutorials/tutorials.md
+      - title: FAQ
+        link: docs/faq/faq.md
