@@ -50,7 +50,32 @@
         link: docs/getting-started/code-a-tenant/code-tenant.md
       - title: Preview & Publish
         link: docs/getting-started/preview-and-publish-content/preview-and-publish.md
- - sections:
+- sections:
+    - title: Customer Services
+      link:
+      open: true
+      sections:
+      - title: Create a Customer
+        link:  docs/documentation/customerServicesCreateCustomer_v1.md
+      - title: Delete a Customer
+        link:  
+      - title: Patch a Customer
+        link:  
+      - title: GET a Customer
+       link:  
+    - title: Account Services
+       link:
+       open: true
+       sections:
+       - title: Create an Account
+         link:  
+       - title: Delete an Account
+         link:  
+       - title: Patch an Account
+         link:  
+       - title: GET an Account
+        link: 
+- sections:
     - title: Resources
       link:
       open: true
