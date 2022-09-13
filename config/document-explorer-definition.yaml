@@ -63,18 +63,6 @@
       link:  
     - title: GET a Customer
       link:  
-   - title: Account Services
-     link:
-     open: true
-     sections:
-     - title: Create an Account
-       link:  
-     - title: Delete an Account
-       link:  
-     - title: Patch an Account
-       link:  
-     - title: GET an Account
-       link:  
 - sections:
   - title: Resources
     link:
