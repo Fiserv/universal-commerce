@@ -88,7 +88,6 @@
   - title: ApplePay
 - sections:
   - title: GooglePay
-    image: assets/images/Google_Pay_icon.PNG
     link: 
     open: true
     sections:
