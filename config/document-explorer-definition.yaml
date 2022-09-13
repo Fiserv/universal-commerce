@@ -87,7 +87,7 @@
 - sections:
   - title: ApplePay
 - header:
-    image: assets/images/Google_Pay_icon.PNG
+    image: https://github.com/Fiserv/universal-commerce/blob/develop/assets/images/Google_Pay_icon.PNG
 - sections:
   - title: GooglePay
    
