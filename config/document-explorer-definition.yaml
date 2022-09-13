@@ -63,6 +63,18 @@
       link:  docs/documentation/customerServicesCreateCustomer_v1.md
     - title: GET a Customer
       link:  docs/documentation/customerServicesCreateCustomer_v1.md
+- title: Account Services
+    link:
+    open: true
+    sections:
+    - title: Create an Account
+      link:  docs/documentation/customerServicesCreateCustomer_v1.md
+    - title: Delete an Account
+      link:  docs/documentation/customerServicesCreateCustomer_v1.md
+    - title: Patch an Account
+      link:  docs/documentation/customerServicesCreateCustomer_v1.md
+    - title: GET an Account
+      link:  docs/documentation/customerServicesCreateCustomer_v1.md      
 - sections:
   - title: Resources
     link:
