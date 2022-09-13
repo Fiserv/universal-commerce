@@ -77,7 +77,7 @@
       link:  
 - sections:
   - title: GooglePay
-    link: docs/documentation/customerServicesCreateCustomer_v1.md
+    link: /assets/images/Google_Pay_icon.png
     open: true
     sections:
     - title: Create a Customer
