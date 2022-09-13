@@ -77,7 +77,7 @@
       link:  
 - sections:
   - title: GooglePay
-    link: /assets/images/Google_Pay_icon.png
+    link: assets/images/Google_Pay_icon.PNG
     open: true
     sections:
     - title: Create a Customer
