@@ -86,10 +86,11 @@
       link: 
 - sections:
   - title: ApplePay
+- header:
+    image: assets/images/Google_Pay_icon.PNG
 - sections:
   - title: GooglePay
-    header:
-      image: assets/images/Google_Pay_icon.PNG
+   
     link: 
     open: true
     sections:
