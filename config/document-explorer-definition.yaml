@@ -63,7 +63,7 @@
       link:  docs/documentation/customerServicesCreateCustomer_v1.md
     - title: GET a Customer
       link:  docs/documentation/customerServicesCreateCustomer_v1.md
-- title: Account Services
+  - title: Account Services
     link:
     open: true
     sections:
