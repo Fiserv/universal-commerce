@@ -33,43 +33,34 @@
       link:
       open: true
       sections:
-        - title: Contact Us
-          link: docs/introduction/contact-us.md
+      - title: Contact Us
+        link: docs/introduction/contact-us.md
 - sections:
     - title: Customer Services
       link:
       open: true
       sections:
-        - title: Create a Customer
-          link:  docs/documentation/customerServicesCreateCustomer_v1.md
-        - title: Delete a Customer
-          link:  
-        - title: Patch a Customer
-          link:  
-        - title: GET a Customer
-          link:  
+      - title: Create a Customer
+        link:  docs/documentation/customerServicesCreateCustomer_v1.md
+      - title: Delete a Customer
+        link:  
+      - title: Patch a Customer
+        link:  
+      - title: GET a Customer
+        link:  
 - sections:
     - title: Account Services
-      link:
-      open: true
-      sections:
-        - title: Create an Account
-          link:  
-        - title: Delete an Account
-          link:  
-        - title: Patch an Account
-          link:  
-        - title: GET an Account
-          link:  
-- sections:
-    - title: Payment Services
-      link:
-      open: true
-      sections:
-        - title: Create a Payment
-          link: 
-        - title: Delete a Payment
-          link: 
+    link:
+    open: true
+    sections:
+    - title: Create an Account
+      link:  
+    - title: Delete an Account
+      link:  
+    - title: Patch an Account
+      link:  
+    - title: GET an Account
+      link:  
 - sections:
     - title: Resources
     link:
