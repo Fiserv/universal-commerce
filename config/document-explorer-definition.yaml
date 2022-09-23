@@ -59,11 +59,11 @@
     link: 
     open: true
     sections:
-    - title: Create a Customer
+    - title: Merchant Services
       link:  docs/documentation/customerServicesCreateCustomer_v1.md
-    - title: Create an Account
+    - title: Payment Services
       link:  
-    - title: Create a Payment 
+    - title: Create an ApplePay transaction 
 - sections:
    - title: Venmo
      link: 
