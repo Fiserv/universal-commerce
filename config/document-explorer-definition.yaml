@@ -35,6 +35,16 @@
         - title: Contact Us
           link: docs/introduction/contact-us.md
 - sections:
+  - title: Walmart
+    link: 
+    open: true
+    sections:
+    - title: Visa
+      link:  docs/documentation/customerServicesCreateCustomer_v1.md
+    - title: MasterCard
+      link:  docs/documentation/customerServicesCreateCustomer_v1.md 
+    - title: GooglePay 
+- sections:
   - title: GooglePay
     link: 
     open: true
