@@ -101,13 +101,13 @@
     - title: GET an Account
       link:  
 - sections:
-  - title: Payment Services
+  - title: Payments Services
     link:
     open: true
     sections:
-    - title: Create a Payment
+    - title: Authorization
       link: 
-    - title: Delete a Payment
+    - title: Capture
       link: 
 - sections:
   - title: Prepaid Services
