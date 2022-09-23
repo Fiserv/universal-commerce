@@ -27,7 +27,6 @@
 # are granted or extended by this work or 
 # the delivery of this work
 ################################################################################
-
 - sections:
     - title: Introduction
       link:
@@ -41,9 +40,9 @@
     open: true
     sections:
     - title: Merchant Services
-      link:  
+      link:  docs/documentation/customerServicesCreateCustomer_v1.md
     - title: Payment Services
-      link:  
+      link:  docs/documentation/customerServicesCreateCustomer_v1.md 
     - title: Create a GooglePay transaction 
 - sections:
   - title: ApplePay
