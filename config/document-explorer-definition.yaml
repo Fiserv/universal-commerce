@@ -114,10 +114,10 @@
     link:
     open: true
     sections:
-    - title: Task#1
+    - title: Task
       link:  docs/documentation/customerServicesCreateCustomer_v1.md
-    - title: Task#2
-      link:       
+    - title: Task
+      link:  docs/documentation/customerServicesCreateCustomer_v1.md     
 - sections:
   - title: Resources
     link:
