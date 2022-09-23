@@ -39,11 +39,11 @@
     link: 
     open: true
     sections:
-    - title: Visa
+    - title: Prepaid Service
       link:  docs/documentation/customerServicesCreateCustomer_v1.md
-    - title: MasterCard
+    - title: Account Service
       link:  docs/documentation/customerServicesCreateCustomer_v1.md 
-    - title: GooglePay 
+    - title: Global Account Balance 
 - sections:
   - title: GooglePay
     link: 
