@@ -36,7 +36,7 @@
         - title: Contact Us
           link: docs/introduction/contact-us.md
 - sections:
-  - title: GooglePay
+    - title: GooglePay
     link: 
     open: true
     sections:
@@ -45,7 +45,7 @@
     - title: Payment Services
       link:  
 - sections:
-  - title: ApplePay
+    - title: ApplePay
     link: 
     open: true
     sections:
@@ -54,7 +54,7 @@
     - title: Payment Services
       link:  
 - sections:
-   - title: Venmo
+     - title: Venmo
      link: 
      open: true
      sections:
@@ -63,7 +63,7 @@
      - title: Payment Services
        link:   
 - sections:
-  - title: Customer Services
+    - title: Customer Services
     link:
     open: true
     sections:
@@ -76,7 +76,7 @@
     - title: GET a Customer
       link:  
 - sections:
-  - title: Account Services
+    - title: Account Services
     link:
     open: true
     sections:
@@ -89,7 +89,7 @@
     - title: GET an Account
       link:  
 - sections:
-  - title: Payment Services
+    - title: Payment Services
     link:
     open: true
     sections:
@@ -98,7 +98,7 @@
     - title: Delete a Payment
       link: 
 - sections:
-  - title: Resources
+    - title: Resources
     link:
     open: true
     sections:
