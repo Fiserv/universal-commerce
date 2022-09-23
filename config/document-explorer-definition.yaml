@@ -40,31 +40,31 @@
     link: 
     open: true
     sections:
-    - title: Create a Customer
-      link:  docs/documentation/customerServicesCreateCustomer_v1.md
-    - title: Create an Account
+    - title: Merchant Services
       link:  
-    - title: Create a Payment 
+    - title: Payment Services
+      link:  
+    - title: [TBD] 
 - sections:
   - title: ApplePay
     link: 
     open: true
     sections:
-    - title: Create a Customer
-      link:  docs/documentation/customerServicesCreateCustomer_v1.md
-    - title: Create an Account
+    - title: Merchant Services
       link:  
-    - title: Create a Payment 
+    - title: Payment Services
+      link:  
+    - title: [TBD]t 
 - sections:
    - title: Venmo
      link: 
      open: true
      sections:
-     - title: Create a Customer
-       link:  docs/documentation/customerServicesCreateCustomer_v1.md
-     - title: Create an Account
+     - title: Merchant Services
        link:  
-     - title: Create a Payment 
+     - title: Payment Services
+       link:  
+     - title: [TBD] 
 - sections:
   - title: Customer Services
     link:
