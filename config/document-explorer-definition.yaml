@@ -124,7 +124,7 @@
     open: true
     sections:
     - title: Customer Registration
-      link: docs/documentation/customerServicesCreateCustomer_v1.md
+      link: docs/documentation/Step by step guide to vault a credit card & gift card.md
 - sections:
   - title: Resources
     link:
