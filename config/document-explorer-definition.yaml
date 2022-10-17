@@ -119,6 +119,13 @@
     - title: Task
       link:  docs/documentation/customerServicesCreateCustomer_v1.md     
 - sections:
+  - title: Interactive Guides
+    link:
+    open: true
+    sections:
+    - title: Customer Registration
+      link: docs/documentation/customerServicesCreateCustomer_v1.md
+- sections:
   - title: Resources
     link:
     open: true
