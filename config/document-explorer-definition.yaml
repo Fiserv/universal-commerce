@@ -107,6 +107,8 @@
     sections:
     - title: Authorization
       link: 
+    - title: Sales
+      link:  docs/documentation/paymentServicesSales_v1.md
     - title: Capture
       link: 
 - sections:
