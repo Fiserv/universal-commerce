@@ -63,39 +63,6 @@
     - title: Payment Service - Sales Transaction
       link:  docs/documentation/paymentServicesSales_v1.md
 - sections:
-  - title: Account Services
-    link:
-    open: true
-    sections:
-    - title: Create an Account
-      link:  
-    - title: Delete an Account
-      link:  
-    - title: Patch an Account
-      link:  
-    - title: GET an Account
-      link:  
-- sections:
-  - title: Payments Services
-    link:
-    open: true
-    sections:
-    - title: Authorization
-      link: 
-    - title: Sales
-      link:  docs/documentation/paymentServicesSales_v1.md
-    - title: Capture
-      link: 
-- sections:
-  - title: Prepaid Services
-    link:
-    open: true
-    sections:
-    - title: Task
-      link:  docs/documentation/customerServicesCreateCustomer_v1.md
-    - title: Task
-      link:  docs/documentation/customerServicesCreateCustomer_v1.md     
-- sections:
   - title: Interactive Guides
     link:
     open: true
