@@ -62,9 +62,8 @@
      sections:
      - title: Payment Service - Sales Transaction
      link:  docs/documentation/paymentServicesSales_v1.md
-- Sections: CORE
-  - sections:
-    - title: Customer Services
+- sections: CORE
+  - title: Customer Services
       link:
       open: true
       sections:
