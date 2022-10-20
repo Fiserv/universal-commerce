@@ -78,7 +78,7 @@
   - title: CORE
     link:
     open: true
-- sections:
+  sections:
   - title: Account Services
     link:
     open: 
@@ -91,47 +91,3 @@
       link:  
     - title: GET an Account
       link:  
-- sections:
-  - title: Payments Services
-    link:
-    open: 
-    sections:
-    - title: Authorization
-      link: 
-    - title: Capture
-      link: 
-- sections:
-  - title: Prepaid Services
-    link:
-    open: 
-    sections:
-    - title: Task
-      link:  docs/documentation/customerServicesCreateCustomer_v1.md
-    - title: Task
-      link:  docs/documentation/customerServicesCreateCustomer_v1.md     
-- sections:
-  - title: Interactive Guides
-    link:
-    open: 
-    sections:
-    - title: Customer Registration
-      link: docs/documentation/Step by step guide to vault a credit card & gift card.md
-- sections:
-  - title: Resources
-    link:
-    open: 
-    sections:
-    - title: API Guide
-      link: docs/resources/guides/api-guide.md
-    - title: How it works
-      link: docs/resources/guides/how-it-works.md
-    - title: How to use Stoplight
-      link: docs/resources/guides/how-to-use-stoplight.md
-    - title: How to use Docignore
-      link: docs/resources/guides/how-to-use-docignore.md
-    - title: Markdown Support
-      link: docs/resources/markdown-support.md
-    - title: Tutorials
-      link: docs/tutorials/tutorials.md
-    - title: FAQ
-      link: docs/faq/faq.md
