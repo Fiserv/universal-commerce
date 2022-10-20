@@ -65,7 +65,7 @@
 - sections: 
   - title: CORE 
     link:
-    open: true
+    open: 
     sections: 
     - title: Create a Customer
       link:  docs/documentation/customerServicesCreateCustomer_v1.md
