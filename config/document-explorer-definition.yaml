@@ -61,10 +61,4 @@
     open: 
     sections:
     - title: Payment Service - Sales Transaction
-      link:  docs/documentation/paymentServicesSales_v1.md
-- sections: 
-  - title: CORE 
-    link:
-    open: 
-
-   
+      link:  docs/documentation/paymentServicesSales_v1.md 
