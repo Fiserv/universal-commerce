@@ -62,76 +62,63 @@
     sections:
     - title: Payment Service - Sales Transaction
       link:  docs/documentation/paymentServicesSales_v1.md
-- sections: 
-  - title: CORE 
+- sections:
+  - title: Account Services
     link:
     open: true
-    sections: Customer Services
-    - title: Create a Customer
+    sections:
+    - title: Create an Account
+      link:  
+    - title: Delete an Account
+      link:  
+    - title: Patch an Account
+      link:  
+    - title: GET an Account
+      link:  
+- sections:
+  - title: Payments Services
+    link:
+    open: true
+    sections:
+    - title: Authorization
+      link: 
+    - title: Sales
+      link:  docs/documentation/paymentServicesSales_v1.md
+    - title: Capture
+      link: 
+- sections:
+  - title: Prepaid Services
+    link:
+    open: true
+    sections:
+    - title: Task
       link:  docs/documentation/customerServicesCreateCustomer_v1.md
-    - title: Delete a Customer
-      link:  
-    - title: Patch a Customer
-      link:  
-    - title: GET a Customer
-      link:  
-  - sections:
-    - title: Account Services
-      link:
-      open: true
-      sections:
-      - title: Create an Account
-        link:  
-      - title: Delete an Account
-        link:  
-      - title: Patch an Account
-        link:  
-      - title: GET an Account
-        link:  
-  - sections:
-    - title: Payments Services
-      link:
-      open: true
-      sections:
-      - title: Authorization
-        link: 
-      - title: Sales
-        link:  docs/documentation/paymentServicesSales_v1.md
-      - title: Capture
-        link: 
-  - sections:
-    - title: Prepaid Services
-      link:
-      open: true
-      sections:
-      - title: Task
-        link:  docs/documentation/customerServicesCreateCustomer_v1.md
-      - title: Task
-        link:  docs/documentation/customerServicesCreateCustomer_v1.md     
-  - sections:
-    - title: Interactive Guides
-      link:
-      open: true
-      sections:
-      - title: Customer Registration
-        link: docs/documentation/Step by step guide to vault a credit card & gift card.md
-  - sections:
-    - title: Resources
-      link:
-      open: true
-      sections:
-      - title: API Guide
-        link: docs/resources/guides/api-guide.md
-      - title: How it works
-        link: docs/resources/guides/how-it-works.md
-      - title: How to use Stoplight
-        link: docs/resources/guides/how-to-use-stoplight.md
-      - title: How to use Docignore
-        link: docs/resources/guides/how-to-use-docignore.md
-      - title: Markdown Support
-        link: docs/resources/markdown-support.md
-      - title: Tutorials
-        link: docs/tutorials/tutorials.md
-      - title: FAQ
-        link: docs/faq/faq.md
+    - title: Task
+      link:  docs/documentation/customerServicesCreateCustomer_v1.md     
+- sections:
+  - title: Interactive Guides
+    link:
+    open: true
+    sections:
+    - title: Customer Registration
+      link: docs/documentation/Step by step guide to vault a credit card & gift card.md
+- sections:
+  - title: Resources
+    link:
+    open: true
+    sections:
+    - title: API Guide
+      link: docs/resources/guides/api-guide.md
+    - title: How it works
+      link: docs/resources/guides/how-it-works.md
+    - title: How to use Stoplight
+      link: docs/resources/guides/how-to-use-stoplight.md
+    - title: How to use Docignore
+      link: docs/resources/guides/how-to-use-docignore.md
+    - title: Markdown Support
+      link: docs/resources/markdown-support.md
+    - title: Tutorials
+      link: docs/tutorials/tutorials.md
+    - title: FAQ
+      link: docs/faq/faq.md
 
