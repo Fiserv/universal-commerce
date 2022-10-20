@@ -78,16 +78,16 @@
   - title: CORE
     link:
     open: true
-  sections:
-  - title: Account Services
-    link:
-    open: 
     sections:
-    - title: Create an Account
-      link:  
-    - title: Delete an Account
-      link:  
-    - title: Patch an Account
-      link:  
-    - title: GET an Account
-      link:  
+    - title: Account Services
+      link:
+      open: 
+      sections:
+      - title: Create an Account
+        link:  
+      - title: Delete an Account
+        link:  
+      - title: Patch an Account
+        link:  
+      - title: GET an Account
+        link:  
