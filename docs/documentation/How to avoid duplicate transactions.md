@@ -1,5 +1,3 @@
-| How to avoid duplicate transactions? |
-| --- |
 
 # How to avoid duplicate transactions?
 
