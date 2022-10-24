@@ -1,5 +1,3 @@
-![Image](./images/img_1.png)
-
 | uCommerce Services Step by Step Guide to Vault Credit Cards & Gift Cards
 |:----------
 
