@@ -1,5 +1,3 @@
-| uCommerce Services Step by Step Guide to Vault Credit Cards & Gift Cards
-|:----------
 
 # Step 1: Create a customer profile using POST /v1/customers
 
