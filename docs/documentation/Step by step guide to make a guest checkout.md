@@ -1,7 +1,3 @@
-> 
-
- | Fiserv uCommerce Services Step by Step Guide to Make a Guest CheckoutDocument Version - 1.0 
-|:----------
 
 # How to make a guest checkout? 
 
