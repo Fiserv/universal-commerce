@@ -1,0 +1,17 @@
+
+
+---
+version: 1.0.0
+recipes:
+- link: recipes/Recipe-1.md
+  title: Payment with JS
+  type: recipe
+- link: recipes/Recipe-2.md
+  title: Payment with Py
+  type: recipe
+- link: recipes/Recipe-3.md
+  title: Payment with Rust
+  type: recipe
+- link: recipes/Recipe-4.md
+  title: Payment with Java
+  type: recipe
