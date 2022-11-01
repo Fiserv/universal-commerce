@@ -35,46 +35,6 @@
         - title: Contact Us
           link: docs/introduction/contact-us.md
 - sections:
-  - title: Buypass
-    link: 
-    open: 
-    sections:
-    - title: Prepaid Service
-      link:  docs/documentation/customerServicesCreateCustomer_v1.md
-    - title: Account Service
-      link:  docs/documentation/customerServicesCreateCustomer_v1.md 
-    - title: Global Account Balance 
-- sections:
-  - title: GooglePay
-    link: 
-    open: 
-    sections:
-    - title: Merchant Services
-      link:  docs/documentation/customerServicesCreateCustomer_v1.md
-    - title: Payment Services
-      link:  docs/documentation/customerServicesCreateCustomer_v1.md 
-    - title: Create a GooglePay transaction 
-- sections:
-  - title: ApplePay
-    link: 
-    open: 
-    sections:
-    - title: Merchant Services
-      link:  docs/documentation/customerServicesCreateCustomer_v1.md
-    - title: Payment Services
-      link:  
-    - title: Create an ApplePay transaction 
-- sections:
-   - title: Venmo
-     link: 
-     open: 
-     sections:
-     - title: Create a Customer
-       link:  docs/documentation/customerServicesCreateCustomer_v1.md
-     - title: Create an Account
-       link:  
-     - title: Create a Payment 
-- sections:
   - title: CORE
     link:
     open: true
@@ -83,11 +43,31 @@
       link:
       open: 
       sections:
-      - title: Create an Account
+      - title: Retrieve Token and Encryption Key
         link:  
-      - title: Delete an Account
+      - title: Tokenize an Account
         link:  
-      - title: Patch an Account
+      - title: Verify an Account
         link:  
-      - title: GET an Account
+      - title: Nonce Tokenization
+        link:  
+      - title: Vault an Account
+        link:  
+      - title: Update one or more Accounts
+        link:  
+      - title: Get a List of Accounts
+        link:  
+      - title: Get Account Details
+        link:  
+      - title: Update a Vaulted Account
+        link:  
+      - title: Delete a Vaulted Account
+        link:  
+      - title: Retrieve an Account with a Nonce Token
+        link:  
+- title: Customer Services
+      link:
+      open: 
+      sections:
+      - title: Create a Customer Profile
         link:  
