@@ -9,7 +9,7 @@ recipes:
 - link: recipes/vault_credit_card_gift_card.md
   title: How to Vault a Credtit Card or Gift Card
   type: recipe
-  - link: recipes/duplicate_transactions.md
+- link: recipes/duplicate_transactions.md
   title: How to Avoid a Duplicate Transaction 
   type: recipe
 - link: recipes/Recipe-2.md
