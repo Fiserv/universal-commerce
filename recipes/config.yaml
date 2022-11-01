@@ -6,6 +6,12 @@ recipes:
 - link: recipes/guest_checkout.md
   title: How to Make a Guest Checkout
   type: recipe
+  - link: recipes/vault_credit_card_gift_card.md
+  title: How to Make a Guest Checkout
+  type: recipe
+  - link: recipes/duplicate_transactions.md
+  title: How to Make a Guest Checkout
+  type: recipe
 - link: recipes/Recipe-2.md
   title: Payment with Py
   type: recipe
@@ -15,3 +21,4 @@ recipes:
 - link: recipes/Recipe-4.md
   title: Payment with Java
   type: recipe
+
