@@ -12,9 +12,9 @@ In order to perform a guest checkout or sale using the ucom/v1/payments/sales AP
 ### Sample Value 
 
 | Sample Request -Create Recipient-Consumer
-|:----------
+```json
 | "orderId": "34548sdfdsfer769" 
-
+```
 ## Step 2: Pass through Merchant ID or Store ID
 
 ### Description
