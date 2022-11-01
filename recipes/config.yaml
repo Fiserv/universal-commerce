@@ -6,7 +6,7 @@ recipes:
 - link: recipes/guest_checkout.md
   title: How to Make a Guest Checkout
   type: recipe
-  - link: recipes/vault_credit_card_gift_card.md
+- link: recipes/vault_credit_card_gift_card.md
   title: How to Vault a Credtit Card or Gift Card
   type: recipe
   - link: recipes/duplicate_transactions.md
