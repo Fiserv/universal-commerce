@@ -1,8 +1,6 @@
 
 |
-# uCommerce Services
-Customer Service APIDocument Version – v1 |
-| --- |
+# uCommerce Services - Customer Service API
 
 ## Step 1: Customer Registration
 
@@ -47,41 +45,33 @@ Prod: [https://prod.api.firstdata.com/ucom/v1/customers](https://prod.api.firstd
 \*This is always true for API flow.
 
 ### Headers
-
 Content-Type:application/json
-
 Client-Request-Id:{{$guid}}
-
 Api-Key:{{clientKey}}
-
 Authorization:HMAC {{signature}}
-
 Timestamp:{{time}}
 
 ### Sample Request (Min Info)
 
-| Sample Request –Customer Registration Request |
 ```json
 {"customer": {"externalId": "5876","name": {"givenName": "Donald5876","familyName": "Smith"},"emails": [{"value": "Smith5876@gmail.com"}],"addresses": [{"streetAddress": "A27 Pacific Street","locality": "Atlanta","region": "GA","postalCode": "00000"}]}} 
 ```
 
 ### Sample Request (Extra Info)
 
-| Sample Request –Customer Registration Request |
+
 ```json
 {"customer": {"externalId": "5876","name": {"givenName": "Donald5876","familyName": "Smith","middleName": "Gold","honorificPrefix": "Mr","honorificSuffix": "LL.D"},"emails": [{"value": "Smith5876@gmail.com"}],"phoneNumbers": [{"value": "1234567892","type": "mobile"}],"addresses": [{"streetAddress": "A27 Pacific Street","locality": "Atlanta","region": "GA","postalCode": "00000"}]},"deviceInfo": {"id": "537edec8-d33e-4ee8-93a7-b9f61876950c","kind": "mobile","details": [{"provider": "RAVELIN","dataCapture": {"dataEventId": "537edec8-d33e-4ee8-93a7-b9f61876950c"}}]}}
 ```
 
 ### Sample Response (201 – Created)
 
-| Sample Response – Customer Registration |
 ```json
 { "id": "96328bee7fc64adc91e20064ca230e43", "externalId": "5876"}
 ```
 
 ### Sample Response (400 – Bad Request)
 
-| Sample Error Response |
 ```json
 {    "code": "270101",    "message": "Customer already registered.",    "category": "customer",    "developerInfo": {        "developerMessage": "Customer already registered."    }}
 ```
@@ -107,25 +97,20 @@ Prod: [https://prod.api.firstdata.com/ucom/v1/customers](https://prod.api.firstd
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | fdCustomerID | String | Customer Id provided by the partner system. |
-| --- | --- | --- |
+|  | |  |
 
 \*This is always true for API flow.
 
 ### Headers
 
 Content-Type:application/json
-
 Client-Request-Id:{{$guid}}
-
 Api-Key:{{clientKey}}
-
 Authorization:HMAC {{signature}}
-
 Timestamp:{{time}}
 
 ### Sample Request (Minimal Info)
 
-| Sample Request –Update Consumer Profile |
 ```json
 {"customer": {"externalId": "5876","emails": [{"value": "bjensen@example.com","type": "work","primary": true}]}} 
 ```
@@ -138,12 +123,10 @@ The request succeeded but there's really nothing to show.
 
 ### Sample Response (400 – Bad Request)
 
-| Sample Error Response – Customer Profile not found |
 ```json
 {"code": "279904","message": "Customer profile not found.","category": "customer","developerInfo": {"developerMessage": "Customer profile not found."}}
 ```
 
-| Sample Error Response – Customer Profile update failed |
 ```json
 {"code": "270201","message": "Customer profile details update failed","category": "customer","developerInfo": {"developerMessage": "Customer profile details update failed"}} 
 ```
@@ -167,13 +150,9 @@ Prod: [https://prod.api.firstdata.com/ucom/v1/customers/{fdCustomerId}](https://
 ### Headers
 
 Content-Type:application/json
-
 Client-Request-Id:{{$guid}}
-
 Api-Key:{{clientKey}}
-
 Authorization:HMAC {{signature}}
-
 Timestamp:{{time}}
 
 ### Sample Request
@@ -182,14 +161,12 @@ This request is empty since it's a GET call
 
 ### Sample Response (200 – Created)
 
-| Sample Response – Get Consumer Profile |
 ```json
 {"id": "96328bee7fc64adc91e20064ca230e43","externalId": "5876","name": {"familyName": "Smith","givenName": "Donald5876","middleName": "Gold","honorificPrefix": "Mr","honorificSuffix": "LL.D"},"emails": [{"value": "Smith5876@gmail.com"}],"addresses": [{"streetAddress": "A27 Pacific Street","locality": "Atlanta","region": "GA","postalCode": "00000"}],"phoneNumbers": [{"value": "1234567892","type": "Mobile"}]}
 ```
 
 ### Sample Response (400 – Bad Request)
 
-| Sample Error Response |
 ```json
 {"code": "279904","message": "Customer profile not found.","category": "customer","developerInfo": {"developerMessage": "Customer profile not found."}} |
 ```
@@ -213,13 +190,9 @@ Prod: [https://prod.api.firstdata.com/ucom/v1/customers/{fdCustomerId}](https://
 ### Headers
 
 Content-Type:application/json
-
 Client-Request-Id:{{$guid}}
-
 Api-Key:{{clientKey}}
-
 Authorization:HMAC {{signature}}
-
 Timestamp:{{time}}
 
 ### Sample Request
@@ -232,17 +205,14 @@ The request succeeded but there's really nothing to show.
 
 ### Sample Response (400 – Bad Request)
 
-| Sample Error Response – Customer Profile not found |
 ```json
 {"code": "279904","message": "Customer profile not found.","category": "customer","developerInfo": {"developerMessage": "Customer profile not found."}}
 ```
 
-| Sample Error Response – Customer Profile update failed |
 ```json
 {"code": "270201","message": "Customer profile details update failed","category": "customer","developerInfo": {"developerMessage": "Customer profile details update failed"}} 
 ```
 
-| Sample Response – Get Account Info |
 ```json
 {"accounts": [{"source": "DEBIT","card": {"cardNumber": "400023\*\*\*\*\*\*0013","nameOnCard": "Test Card","alias": "0013","billingAddress": {},"expiryDate": {"month": "12","year": "24"},"token": {"tokenId": "9bb19dda-6bba-4911-b86e-ebe0b5473833","tokenProvider": "ENROLMENT\_VAULT"},"default": false}}]} 
 ```
@@ -280,24 +250,18 @@ For a reference on how to generate the HMAC in java as well as more information 
 | Header Name | Required | Description |
 | --- | --- | --- |
 | Api-Key | Yes | Merchant API key |
-| --- | --- | --- |
-| Timestamp | Yes | Request initiation UTC timestamp, formatted as Epoch time. The value is in milliseconds.
-Sample value format is 1499961987232 |
-| Authorization | Yes | Authorization header is required to have the "HMAC" string capitalized and followed by one space followed by the calculated hmac signature.
-When using the /account-tokens API: **Authorization** : - Bearer \<tokenId\>\*Utilizes the tokenId returned from the /tokens api |
+| Timestamp | Yes | Request initiation UTC timestamp, formatted as Epoch time. The value is in milliseconds. Sample value format is 1499961987232 |
+| Authorization | Yes | Authorization header is required to have the "HMAC" string capitalized and followed by one space followed by the calculated hmac signature. When using the /account-tokens API: **Authorization** : - Bearer \<tokenId\>\*Utilizes the tokenId returned from the /tokens api |
 | Client-Request-Id | Yes | Contains a unique ID generated by the client that is used for enforcing idempotency on POST actions.  |
 | Content-Type | Yes | application/json |
 | access\_token | Conditionally | Required when vaulting payment information. Utilizes the tokenId returned from the /tokens api. |
 
 #### Sample Header
 
-| Sample Format and Values |
-| --- |
-| Content-Type:application/json
+Content-Type:application/json
  Api-Key:{{key}}Timestamp:{{time}}
  Client-Request-Id: {{$guid}}Authorization:HMAC {{signature}}access\_token: {{tokenId}}
 Content-Type: application/json
  Api-Key: pnQgbD4jjfp5Gu2eqA1i4VnzZtT9mW5I
  Timestamp: 1501621439636
- Client-Request-Id: abded-12345-ddcce-4r45tAuthorization:HMAC W5X9NAlPgSNsfQX55fXbXrk3arzL6KxcCTA6SrnxL+U=access\_token: SPaAADBdzaMbmR7RU7QdftIFLGIa |
-| --- |
+ Client-Request-Id: abded-12345-ddcce-4r45tAuthorization:HMAC W5X9NAlPgSNsfQX55fXbXrk3arzL6KxcCTA6SrnxL+U=access\_token: SPaAADBdzaMbmR7RU7QdftIFLGIa 
