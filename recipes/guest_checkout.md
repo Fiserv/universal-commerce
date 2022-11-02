@@ -107,8 +107,10 @@ Timestamp:{{time}}
 ### Sample Request (with storeid)
 
 | Sample Request - anonymous CC transaction using Nonce with storeId
-|:----------
-| {    "sale":{        "orderId":"Order00122","storeId":"KNOWN_STORE_ID",        "requestedAmount":1,        "currencyCode":{            "number":840        },        "fundingSource":{     "saveToVault": false,            "token":{                "tokenId":"bab8a932-f9f1-483b-9cf9-bb9a899e1a55",                "tokenProvider": "UCOM",                "tokenType": "CLAIM_CHECK_NONCE"        }    }}
+
+```json
+{    "sale":{        "orderId":"Order00122","storeId":"KNOWN_STORE_ID",        "requestedAmount":1,        "currencyCode":{            "number":840        },        "fundingSource":{     "saveToVault": false,            "token":{                "tokenId":"bab8a932-f9f1-483b-9cf9-bb9a899e1a55",                "tokenProvider": "UCOM",                "tokenType": "CLAIM_CHECK_NONCE"        }    }}
+```
 
 ### Sample Request (with merchantid)
 
