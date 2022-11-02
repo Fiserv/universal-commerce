@@ -69,14 +69,14 @@ Timestamp:{{time}}
 
 | Sample Request –Customer Registration Request |
 ```json
- {"customer": {"externalId": "5876","name": {"givenName": "Donald5876","familyName": "Smith","middleName": "Gold","honorificPrefix": "Mr","honorificSuffix": "LL.D"},"emails": [{"value": "Smith5876@gmail.com"}],"phoneNumbers": [{"value": "1234567892","type": "mobile"}],"addresses": [{"streetAddress": "A27 Pacific Street","locality": "Atlanta","region": "GA","postalCode": "00000"}]},"deviceInfo": {"id": "537edec8-d33e-4ee8-93a7-b9f61876950c","kind": "mobile","details": [{"provider": "RAVELIN","dataCapture": {"dataEventId": "537edec8-d33e-4ee8-93a7-b9f61876950c"}}]}}
+{"customer": {"externalId": "5876","name": {"givenName": "Donald5876","familyName": "Smith","middleName": "Gold","honorificPrefix": "Mr","honorificSuffix": "LL.D"},"emails": [{"value": "Smith5876@gmail.com"}],"phoneNumbers": [{"value": "1234567892","type": "mobile"}],"addresses": [{"streetAddress": "A27 Pacific Street","locality": "Atlanta","region": "GA","postalCode": "00000"}]},"deviceInfo": {"id": "537edec8-d33e-4ee8-93a7-b9f61876950c","kind": "mobile","details": [{"provider": "RAVELIN","dataCapture": {"dataEventId": "537edec8-d33e-4ee8-93a7-b9f61876950c"}}]}}
 ```
 
 ### Sample Response (201 – Created)
 
 | Sample Response – Customer Registration |
 ```json
- { "id": "96328bee7fc64adc91e20064ca230e43", "externalId": "5876"}
+{ "id": "96328bee7fc64adc91e20064ca230e43", "externalId": "5876"}
 ```
 
 ### Sample Response (400 – Bad Request)
@@ -127,7 +127,7 @@ Timestamp:{{time}}
 
 | Sample Request –Update Consumer Profile |
 ```json
- {"customer": {"externalId": "5876","emails": [{"value": "bjensen@example.com","type": "work","primary": true}]}} 
+{"customer": {"externalId": "5876","emails": [{"value": "bjensen@example.com","type": "work","primary": true}]}} 
 ```
 
 The minimal request can be any single entity that requires updating, any of the objects or entities in the parameters will work here.
@@ -257,12 +257,21 @@ This sample code generates the signature for the header based upon the current t
 
 | Pre-Request Script |
 | --- |
-| var key = postman.getEnvironmentVariable('clientKey');var secret = postman.getEnvironmentVariable('clientSecret');
+|
+```java
+var key = postman.getEnvironmentVariable('clientKey');var secret = postman.getEnvironmentVariable('clientSecret');
 var time = new Date().getTime();var method = request.method;
 var rawSignature = key + ":" + time;var requestBody = request.data;
-if (method != 'GET' && method != 'DELETE') {var payload\_digest = CryptoJS.SHA256(requestBody);var b64BodyContent = CryptoJS.enc.Base64.stringify(payload\_digest);rawSignature = rawSignature + ":" + b64BodyContent;}
-var signature = CryptoJS.HmacSHA256(rawSignature, secret);postman.setEnvironmentVariable('time', time);postman.setEnvironmentVariable('signature', CryptoJS.enc.Base64.stringify(signature)); |
-| --- |
+if (method != 'GET' && method != 'DELETE') 
+{
+var payload\_digest = CryptoJS.SHA256(requestBody);
+var b64BodyContent = CryptoJS.enc.Base64.stringify(payload\_digest);
+rawSignature = rawSignature + ":" + b64BodyContent;
+}
+var signature = CryptoJS.HmacSHA256(rawSignature, secret);
+postman.setEnvironmentVariable('time', time);
+postman.setEnvironmentVariable('signature', CryptoJS.enc.Base64.stringify(signature));
+```
 
 For a reference on how to generate the HMAC in java as well as more information on its use please visit [https://firstdatanp-ucomgateway.apigee.io/get-started/api-security](https://firstdatanp-ucomgateway.apigee.io/get-started/api-security)
 
