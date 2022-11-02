@@ -3,7 +3,7 @@
 ---
 version: 1.0.0
 recipes:
-- link: recipes/customerRegistration.md
+- link: recipes/customerRegistrations.md
   title: Customer Service API
   type: recipe
 - link: recipes/guest_checkout.md
