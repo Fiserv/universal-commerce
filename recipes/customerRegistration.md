@@ -1,5 +1,4 @@
 
-|
 # uCommerce Services - Customer Service API
 
 ## Step 1: Customer Registration
@@ -54,7 +53,28 @@ Timestamp:{{time}}
 ### Sample Request (Min Info)
 
 ```json
-{"customer": {"externalId": "5876","name": {"givenName": "Donald5876","familyName": "Smith"},"emails": [{"value": "Smith5876@gmail.com"}],"addresses": [{"streetAddress": "A27 Pacific Street","locality": "Atlanta","region": "GA","postalCode": "00000"}]}} 
+{
+    "customer": {
+        "externalId": "5876",
+        "name": {
+            "givenName": "Donald5876",
+            "familyName": "Smith"
+        },
+        "emails": [
+            {
+                "value": "Smith5876@gmail.com"
+            }
+        ],
+        "addresses": [
+            {
+                "streetAddress": "A27 Pacific Street",
+                "locality": "Atlanta",
+                "region": "GA",
+                "postalCode": "00000"
+            }
+        ]
+    }
+}
 ```
 
 ### Sample Request (Extra Info)
