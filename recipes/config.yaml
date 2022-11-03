@@ -1,6 +1,3 @@
-
-
----
 version: 1.0.0
 recipes:
 - link: recipes/customerRegistration.md
