@@ -81,19 +81,71 @@ Timestamp:{{time}}
 
 
 ```json
-{"customer": {"externalId": "5876","name": {"givenName": "Donald5876","familyName": "Smith","middleName": "Gold","honorificPrefix": "Mr","honorificSuffix": "LL.D"},"emails": [{"value": "Smith5876@gmail.com"}],"phoneNumbers": [{"value": "1234567892","type": "mobile"}],"addresses": [{"streetAddress": "A27 Pacific Street","locality": "Atlanta","region": "GA","postalCode": "00000"}]},"deviceInfo": {"id": "537edec8-d33e-4ee8-93a7-b9f61876950c","kind": "mobile","details": [{"provider": "RAVELIN","dataCapture": {"dataEventId": "537edec8-d33e-4ee8-93a7-b9f61876950c"}}]}}
+{
+    "customer": {
+        "externalId": "5876",
+        "name": {
+            "givenName": "Donald5876",
+            "familyName": "Smith",
+            "middleName": "Gold",
+            "honorificPrefix": "Mr",
+            "honorificSuffix": "LL.D"
+        },
+        "emails": [
+            {
+                "value": "Smith5876@gmail.com"
+            }
+        ],
+        "phoneNumbers": [
+            {
+                "value": "1234567892",
+                "type": "mobile"
+            }
+        ],
+        "addresses": [
+            {
+                "streetAddress": "A27 Pacific Street",
+                "locality": "Atlanta",
+                "region": "GA",
+                "postalCode": "00000"
+            }
+        ]
+    },
+    "deviceInfo": {
+        "id": "537edec8-d33e-4ee8-93a7-b9f61876950c",
+        "kind": "mobile",
+        "details": [
+            {
+                "provider": "RAVELIN",
+                "dataCapture": {
+                    "dataEventId": "537edec8-d33e-4ee8-93a7-b9f61876950c"
+                }
+            }
+        ]
+    }
+}
 ```
 
 ### Sample Response (201 – Created)
 
 ```json
-{ "id": "96328bee7fc64adc91e20064ca230e43", "externalId": "5876"}
+{
+    "id": "96328bee7fc64adc91e20064ca230e43",
+    "externalId": "5876"
+}
 ```
 
 ### Sample Response (400 – Bad Request)
 
 ```json
-{    "code": "270101",    "message": "Customer already registered.",    "category": "customer",    "developerInfo": {        "developerMessage": "Customer already registered."    }}
+{
+    "code": "270101",
+    "message": "Customer already registered.",
+    "category": "customer",
+    "developerInfo": {
+        "developerMessage": "Customer already registered."
+    }
+}
 ```
 
 ## Step 2: Customer Profile Updation
