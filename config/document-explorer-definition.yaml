@@ -35,29 +35,29 @@
         - title: Contact Us
           link: docs/introduction/contact-us.md
 - sections:
-  - title: CORE
-    link:
-    open: true
-    sections:
-    - title: Account Services
+    - title: CORE
       link:
-      open: 
-      sections:
-      - title: Retrieve Token & Encryption Key
-        link:  
-	 - title: Tokenize an Account
-        link: 
-     - title: Verify an Account
-        link:
-     - title: Vault an Account
-        link: 
-     - title: Update one or more account(s)
-        link: 
-     - title: Get a list of accounts
-        link: 
-     - title: Get account details
-        link: 
-     - title: Delete a vaulted account
-        link: 
-     - title: Retrieve account with a Nonce Token
-        link: 
+      open: true
+      sections: 
+        - title: Account Services
+          link:
+          open: 
+          sections:
+            - title: Retrieve Token & Encryption Key
+              link:  
+	    - title: Tokenize an Account
+              link: 
+            - title: Verify an Account
+              link:
+            - title: Vault an Account
+              link: 
+            - title: Update one or more account(s)
+              link: 
+            - title: Get a list of accounts
+              link: 
+            - title: Get account details
+              link: 
+            - title: Delete a vaulted account
+              link: 
+            - title: Retrieve account with a Nonce Token
+              link: 
