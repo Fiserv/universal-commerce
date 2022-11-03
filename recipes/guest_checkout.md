@@ -68,6 +68,7 @@ This is sample sales API payload that combines all of the previous steps.
 HTTP Method: POST
 
 Non-prod: https://int.api.firstdata.com/ucom/v1/payments/sales
+
 Prod: https://prod.api.firstdata.com/ucom/v1/payments/sales
 
 ### Parameters
