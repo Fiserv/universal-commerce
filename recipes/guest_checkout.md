@@ -24,7 +24,7 @@ The sales API call requires either a merchant ID (MID) or store ID in the body t
 ### Sample Value
 
 ```json
-"merchantId": "1120542230"
+"merchantId":"1120542230"
 ```
 
 The minimal request can be any single entity that requires updating, any of the objects or entities in the parameters will work here. 
