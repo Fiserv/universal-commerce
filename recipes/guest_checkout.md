@@ -13,7 +13,7 @@ In order to perform a guest checkout or sale using the ucom/v1/payments/sales AP
 
 | Sample Request -Create Recipient-Consumer
 ```json
-"orderId": "34548sdfdsfer769" 
+"orderId":"34548sdfdsfer769" 
 ```
 ## Step 2: Pass through Merchant ID or Store ID
 
@@ -23,14 +23,13 @@ The sales API call requires either a merchant ID (MID) or store ID in the body t
 
 ### Sample Value
 
-| Sample Request -Update Recipient-Consumer
-`
+```json
 "merchantId": "1120542230"
-`
+```
 
 The minimal request can be any single entity that requires updating, any of the objects or entities in the parameters will work here. 
 
-## Step 3: Provide Requested Amount 
+## Step 3: Provide the Requested Amount 
 
 ### Description
 
@@ -38,21 +37,20 @@ An amount is needed to process a guest checkout transaction. This value must be 
 
 ### Sample Value
 
-| Sample Response - Get Recipient-Consumer
-|:----------
-| "requestedAmount":1, "currencyCode":{ "number":840
+```json
+"requestedAmount":1, "currencyCode":{ "number":840
+```
 
-## Step 4: Provide Funding Source
+## Step 4: Provide a Funding Source
 
 ### Description
 
 This portion of the API call/payload will require a funding source or payment method to process the transaction. Since all credit card details need to encrypted, a nonce token is needed to mask the credit card details. A nonce could be obtained through the POST \- /v1/account\-tokens API call. There are several ways one could obtain a nonce, please refer to the implementation guide for the full process. 
 
-### Sample Value
-
-| Sample Nonce 
-|:----------
-|             "token": {                "tokenProvider": "UCOM",                "tokenType": "CLAIM_CHECK_NONCE",                "tokenId": "26d0487a-126d-4640-a128-e9ee2c3efc2e"            }
+### Sample Value (Nonce) 
+```json
+"token": {                "tokenProvider": "UCOM",                "tokenType": "CLAIM_CHECK_NONCE",                "tokenId": "26d0487a-126d-4640-a128-e9ee2c3efc2e"            }
+```
 
 ## Full Payload Sample
 
@@ -64,9 +62,8 @@ This is sample sales API payload that combines all of the previous steps.
 
 HTTP Method: POST
 
-Non\-prod: [https://urldefense.com/v3/__https://int.api.firstdata.com/ucom/*(https:/*int.api.firstdata.com/ucom/v1/account-tokens)v1/payments/sales__;XS8!!P9vvK-4S!mXgaazU3oSfnJ5edkdSBpgINAuADVWkXcMgJNzsUb7s91iG3IuAH28yvGNK6Qe8i2JsMK296Dvuj7eZm$ 
-
-Prod: [https://urldefense.com/v3/__https://prod.api.firstdata.com/ucom/__;!!P9vvK-4S!mXgaazU3oSfnJ5edkdSBpgINAuADVWkXcMgJNzsUb7s91iG3IuAH28yvGNK6Qe8i2JsMK296Dm8Q7TLx$  v1/payments/sales ](https://urldefense.com/v3/__https://prod.api.firstdata.com/ucom/v1/account-tokens__;!!P9vvK-4S!mXgaazU3oSfnJ5edkdSBpgINAuADVWkXcMgJNzsUb7s91iG3IuAH28yvGNK6Qe8i2JsMK296Dl4KxMjW$ ) 
+Non-prod: https://int.api.firstdata.com/ucom/v1/payments/sales
+Prod: https://prod.api.firstdata.com/ucom/v1/payments/sales
 
 ### Parameters
 
@@ -106,21 +103,102 @@ Timestamp:{{time}}
 
 ### Sample Request (with storeid)
 
-| Sample Request - anonymous CC transaction using Nonce with storeId
+Sample Request - anonymous CC transaction using Nonce with storeId
 
 ```json
-{    "sale":{        "orderId":"Order00122","storeId":"KNOWN_STORE_ID",        "requestedAmount":1,        "currencyCode":{            "number":840        },        "fundingSource":{     "saveToVault": false,            "token":{                "tokenId":"bab8a932-f9f1-483b-9cf9-bb9a899e1a55",                "tokenProvider": "UCOM",                "tokenType": "CLAIM_CHECK_NONCE"        }    }}
+{
+   "sale":{
+      "orderId":"Order00122",
+      "storeId":"KNOWN_STORE_ID",
+      "requestedAmount":1,
+      "currencyCode":{
+         "number":840
+      },
+      "fundingSource":{
+         "saveToVault":false,
+         "token":{
+            "tokenId":"bab8a932-f9f1-483b-9cf9-bb9a899e1a55",
+            "tokenProvider":"UCOM",
+            "tokenType":"CLAIM_CHECK_NONCE"
+         }
+      }
+   }
+}
 ```
 
 ### Sample Request (with merchantid)
 
-| Sample Request - anonymous CC transaction using Nonce with merchantId 
-|:----------
-| {    "sale":{        "orderId":"Order00122","merchantId":"M017311360001",        "requestedAmount":1,        "currencyCode":{            "number":840        },        "fundingSource":{     "saveToVault": false,            "token":{                "tokenId":"bab8a932-f9f1-483b-9cf9-bb9a899e1a55",                "tokenType":"CLAIM_CHECK_NONCE"            }        }    }}
+Sample Request - anonymous CC transaction using Nonce with merchantId 
+
+```json
+{
+   "sale":{
+      "orderId":"Order00122",
+      "merchantId":"M017311360001",
+      "requestedAmount":1,
+      "currencyCode":{
+         "number":840
+      },
+      "fundingSource":{
+         "saveToVault":false,
+         "token":{
+            "tokenId":"bab8a932-f9f1-483b-9cf9-bb9a899e1a55",
+            "tokenType":"CLAIM_CHECK_NONCE"
+         }
+      }
+   }
+}
+
+```
 
 ### Sample Response (201 - Created)
 
-| Sample Response - anonymous card sale transaction
-|:----------
-| {    "fdSaleId": "2651f121f7e64f90871fa25ee5921027",    "status": "APPROVED",    "orderId": "34548sdfdsfer769",    "storeId": "KNOWN_STORE_ID",    "requestedAmount": 1,    "approvedAmount": 1,    "currencyCode": {        "code": "USD",        "number": 840    },    "transactionDateTime": "2020-05-07T18:15:52-0400",    "fundingSource": {        "type": "CREDIT",        "credit": {            "nameOnCard": "John Smith",            "alias": "1111",            "cardType": "VISA",            "billingAddress": {                "streetAddress": "100 Universal City Plaza",                "postalCode": "00000"            },            "expiryDate": {                "month": "04",                "year": "20"            },            "token": {                "tokenId": "8973365013201111",                "tokenProvider": "TRANS_ARMOR"            }        }    },    "hostExtraInfo": [        {            "name": "APPROVAL_NUMBER",            "value": "ET144721"        },        {            "name": "SEQUENCE_NUMBER",            "value": "303417"        }    ]}
+Sample Response - anonymous card sale transaction
+```json
+
+{
+   "fdSaleId":"2651f121f7e64f90871fa25ee5921027",
+   "status":"APPROVED",
+   "orderId":"34548sdfdsfer769",
+   "storeId":"KNOWN_STORE_ID",
+   "requestedAmount":1,
+   "approvedAmount":1,
+   "currencyCode":{
+      "code":"USD",
+      "number":840
+   },
+   "transactionDateTime":"2020-05-07T18:15:52-0400",
+   "fundingSource":{
+      "type":"CREDIT",
+      "credit":{
+         "nameOnCard":"John Smith",
+         "alias":"1111",
+         "cardType":"VISA",
+         "billingAddress":{
+            "streetAddress":"100 Universal City Plaza",
+            "postalCode":"00000"
+         },
+         "expiryDate":{
+            "month":"04",
+            "year":"20"
+         },
+         "token":{
+            "tokenId":"8973365013201111",
+            "tokenProvider":"TRANS_ARMOR"
+         }
+      }
+   },
+   "hostExtraInfo":[
+      {
+         "name":"APPROVAL_NUMBER",
+         "value":"ET144721"
+      },
+      {
+         "name":"SEQUENCE_NUMBER",
+         "value":"303417"
+      }
+   ]
+}
+
+```
 
