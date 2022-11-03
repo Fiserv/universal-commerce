@@ -288,42 +288,19 @@ This request is empty since it's a GET call
     ]
 }
 ```json
-{
-    "id": "96328bee7fc64adc91e20064ca230e43",
-    "externalId": "5876",
-    "name": {
-        "familyName": "Smith",
-        "givenName": "Donald5876",
-        "middleName": "Gold",
-        "honorificPrefix": "Mr",
-        "honorificSuffix": "LL.D"
-    },
-    "emails": [
-        {
-            "value": "Smith5876@gmail.com"
-        }
-    ],
-    "addresses": [
-        {
-            "streetAddress": "A27 Pacific Street",
-            "locality": "Atlanta",
-            "region": "GA",
-            "postalCode": "00000"
-        }
-    ],
-    "phoneNumbers": [
-        {
-            "value": "1234567892",
-            "type": "Mobile"
-        }
-    ]
-}
-```
+
 
 ### Sample Response (400 – Bad Request)
 
 ```json
-{"code": "279904","message": "Customer profile not found.","category": "customer","developerInfo": {"developerMessage": "Customer profile not found."}} |
+{
+    "code": "279904",
+    "message": "Customer profile not found.",
+    "category": "customer",
+    "developerInfo": {
+        "developerMessage": "Customer profile not found."
+    }
+}
 ```
 
 ## Step 4: Customer De-Registration
