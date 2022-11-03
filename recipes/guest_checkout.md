@@ -49,7 +49,12 @@ This portion of the API call/payload will require a funding source or payment me
 
 ### Sample Value (Nonce) 
 ```json
-"token": {                "tokenProvider": "UCOM",                "tokenType": "CLAIM_CHECK_NONCE",                "tokenId": "26d0487a-126d-4640-a128-e9ee2c3efc2e"            }
+            "token": {
+                "tokenProvider": "UCOM",
+                "tokenType": "CLAIM_CHECK_NONCE",
+                "tokenId": "26d0487a-126d-4640-a128-e9ee2c3efc2e"
+            }
+
 ```
 
 ## Full Payload Sample
