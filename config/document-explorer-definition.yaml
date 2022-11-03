@@ -28,6 +28,13 @@
 # the delivery of this work
 ################################################################################
 - sections:
+    - title: Introduction
+      link:
+      open: 
+      sections:
+        - title: Contact Us
+          link: docs/introduction/contact-us.md
+- sections:
   - title: CORE
     link:
     open: true
@@ -58,10 +65,9 @@
         link:  
       - title: Retrieve an Account with a Nonce Token
         link:  
-    sections:
-    - title: Customer Services
+- title: Customer Services
       link:
       open: 
       sections:
       - title: Create a Customer Profile
-        link:      
+        link:  
