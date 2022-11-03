@@ -184,7 +184,18 @@ Timestamp:{{time}}
 ### Sample Request (Minimal Info)
 
 ```json
-{"customer": {"externalId": "5876","emails": [{"value": "bjensen@example.com","type": "work","primary": true}]}} 
+{
+    "customer": {
+        "externalId": "5876",
+        "emails": [
+            {
+                "value": "bjensen@example.com",
+                "type": "work",
+                "primary": true
+            }
+        ]
+    }
+}
 ```
 
 The minimal request can be any single entity that requires updating, any of the objects or entities in the parameters will work here.
@@ -196,11 +207,25 @@ The request succeeded but there's really nothing to show.
 ### Sample Response (400 – Bad Request)
 
 ```json
-{"code": "279904","message": "Customer profile not found.","category": "customer","developerInfo": {"developerMessage": "Customer profile not found."}}
+{
+    "code": "279904",
+    "message": "Customer profile not found.",
+    "category": "customer",
+    "developerInfo": {
+        "developerMessage": "Customer profile not found."
+    }
+}
 ```
 
 ```json
-{"code": "270201","message": "Customer profile details update failed","category": "customer","developerInfo": {"developerMessage": "Customer profile details update failed"}} 
+{
+    "code": "270201",
+    "message": "Customer profile details update failed",
+    "category": "customer",
+    "developerInfo": {
+        "developerMessage": "Customer profile details update failed"
+    }
+}
 ```
 
 ## Step 3: Reading Customer Profile
@@ -232,9 +257,67 @@ Timestamp:{{time}}
 This request is empty since it's a GET call
 
 ### Sample Response (200 – Created)
-
+{
+    "id": "96328bee7fc64adc91e20064ca230e43",
+    "externalId": "5876",
+    "name": {
+        "familyName": "Smith",
+        "givenName": "Donald5876",
+        "middleName": "Gold",
+        "honorificPrefix": "Mr",
+        "honorificSuffix": "LL.D"
+    },
+    "emails": [
+        {
+            "value": "Smith5876@gmail.com"
+        }
+    ],
+    "addresses": [
+        {
+            "streetAddress": "A27 Pacific Street",
+            "locality": "Atlanta",
+            "region": "GA",
+            "postalCode": "00000"
+        }
+    ],
+    "phoneNumbers": [
+        {
+            "value": "1234567892",
+            "type": "Mobile"
+        }
+    ]
+}
 ```json
-{"id": "96328bee7fc64adc91e20064ca230e43","externalId": "5876","name": {"familyName": "Smith","givenName": "Donald5876","middleName": "Gold","honorificPrefix": "Mr","honorificSuffix": "LL.D"},"emails": [{"value": "Smith5876@gmail.com"}],"addresses": [{"streetAddress": "A27 Pacific Street","locality": "Atlanta","region": "GA","postalCode": "00000"}],"phoneNumbers": [{"value": "1234567892","type": "Mobile"}]}
+{
+    "id": "96328bee7fc64adc91e20064ca230e43",
+    "externalId": "5876",
+    "name": {
+        "familyName": "Smith",
+        "givenName": "Donald5876",
+        "middleName": "Gold",
+        "honorificPrefix": "Mr",
+        "honorificSuffix": "LL.D"
+    },
+    "emails": [
+        {
+            "value": "Smith5876@gmail.com"
+        }
+    ],
+    "addresses": [
+        {
+            "streetAddress": "A27 Pacific Street",
+            "locality": "Atlanta",
+            "region": "GA",
+            "postalCode": "00000"
+        }
+    ],
+    "phoneNumbers": [
+        {
+            "value": "1234567892",
+            "type": "Mobile"
+        }
+    ]
+}
 ```
 
 ### Sample Response (400 – Bad Request)
@@ -278,18 +361,66 @@ The request succeeded but there's really nothing to show.
 ### Sample Response (400 – Bad Request)
 
 ```json
-{"code": "279904","message": "Customer profile not found.","category": "customer","developerInfo": {"developerMessage": "Customer profile not found."}}
+{
+    "code": "279904",
+    "message": "Customer profile not found.",
+    "category": "customer",
+    "developerInfo": {
+        "developerMessage": "Customer profile not found."
+    }
+}
 ```
 
 ```json
-{"code": "270201","message": "Customer profile details update failed","category": "customer","developerInfo": {"developerMessage": "Customer profile details update failed"}} 
+{
+    "code": "270201",
+    "message": "Customer profile details update failed",
+    "category": "customer",
+    "developerInfo": {
+        "developerMessage": "Customer profile details update failed"
+    }
+}
 ```
 
 ```json
-{"accounts": [{"source": "DEBIT","card": {"cardNumber": "400023\*\*\*\*\*\*0013","nameOnCard": "Test Card","alias": "0013","billingAddress": {},"expiryDate": {"month": "12","year": "24"},"token": {"tokenId": "9bb19dda-6bba-4911-b86e-ebe0b5473833","tokenProvider": "ENROLMENT\_VAULT"},"default": false}}]} 
+{
+    "accounts": [
+        {
+            "source": "DEBIT",
+            "card": {
+                "cardNumber": "400023******0013",
+                "nameOnCard": "Test Card",
+                "alias": "0013",
+                "billingAddress": {},
+                "expiryDate": {
+                    "month": "12",
+                    "year": "24"
+                },
+                "token": {
+                    "tokenId": "9bb19dda-6bba-4911-b86e-ebe0b5473833",
+                    "tokenProvider": "ENROLMENT VAULT"
+                },
+                "default": false
+            }
+        }
+    ]
+} 
 ```
 ```json
-{"code": "400051","message": "Missing Parameter","category": "common","developerInfo": {"developerMessage": "Missing Parameter","fieldError": [{"field": "MerchantCustomerId","message": "Invalid recipientId or merchant customer Id"}]}}
+{
+    "code": "400051",
+    "message": "Missing Parameter",
+    "category": "common",
+    "developerInfo": {
+        "developerMessage": "Missing Parameter",
+        "fieldError": [
+            {
+                "field": "MerchantCustomerId",
+                "message": "Invalid recipientId or merchant customer Id"
+            }
+        ]
+    }
+}
 ```
 ## Appendix
 
