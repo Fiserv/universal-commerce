@@ -43,31 +43,11 @@
       link:
       open: 
       sections:
-      - title: Retrieve Token and Encryption Key
+      - title: Create an Account
         link:  
-      - title: Tokenize an Account
+      - title: Delete an Account
         link:  
-      - title: Verify an Account
+      - title: Patch an Account
         link:  
-      - title: Nonce Tokenization
-        link:  
-      - title: Vault an Account
-        link:  
-      - title: Update one or more Accounts
-        link:  
-      - title: Get a List of Accounts
-        link:  
-      - title: Get Account Details
-        link:  
-      - title: Update a Vaulted Account
-        link:  
-      - title: Delete a Vaulted Account
-        link:  
-      - title: Retrieve an Account with a Nonce Token
-        link:  
-- title: Customer Services
-      link:
-      open: 
-      sections:
-      - title: Create a Customer Profile
+      - title: GET an Account
         link:  
