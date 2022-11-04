@@ -1,5 +1,5 @@
 
-# uCommerce Services - Customer Service API
+# How customer's profile works in UCOM
 
 ## Step 1: Customer Registration
 
