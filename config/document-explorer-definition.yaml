@@ -28,13 +28,6 @@
 # the delivery of this work
 ################################################################################
 - sections:
-    - title: Introduction
-      link:
-      open:
-      sections:
-        - title: Contact Us
-          link: docs/introduction/contact-us.md
-- sections:
     - title: CORE
       link:
       open: true
