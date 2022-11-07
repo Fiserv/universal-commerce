@@ -23,6 +23,7 @@ Parameters
     “externalId”: “17395001”,
     “id”: “e3aab31243f94be6afda9dc89e48820e”
 }
+
 ```
 
 # Step 2: Retrieve Token & Encryption Key using POST - /v1/ tokens
