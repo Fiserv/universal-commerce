@@ -19,4 +19,4 @@ Api-Key: pAhDVh6ALjje4zja5W24PlhvL3A3mJSA
 Authorization: HMAC yMHQiDA2qHVy1t/WX3AdvQawoIWH5m/o3/dIit40rY=
 Timestamp: 1501621439636
 Client-Request-Id: 123445241
-Client-Token: e3W0jHqpuutK6vwtlOt80GWvwBI0 |
+Client-Token: e3W0jHqpuutK6vwtlOt80GWvwBI0
