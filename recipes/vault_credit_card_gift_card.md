@@ -11,7 +11,11 @@ Parameters
 
 ## Sample Request 
 ```json
- {  "customer": {    "externalId": "17395001"  },  }
+ {
+ 	"customer": {
+ 		"externalId": "17395001"
+ 	}
+ }
 ```
 ## Response (201 - Created)
 ```json
