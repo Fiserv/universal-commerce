@@ -7,7 +7,6 @@ The uCommerce API is equipped with idempotency operations, which could prevent t
 
 ### Sample Header
 
-
 Content-Type:application/json <br>
 Api-Key:{{key}} <br>
 Authorization:HMAC {{signature}} <br>
