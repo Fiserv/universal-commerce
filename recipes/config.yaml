@@ -1,7 +1,7 @@
 version: 1.0.0
 recipes:
 - link: recipes/customerRegistration.md
-  title: How to Create, Update, and Delete a Customer Profile
+  title: How to Create, Read, Update, and Delete a Customer Profile
   type: recipe
 - link: recipes/guest_checkout.md
   title: How to Make a Guest Checkout
