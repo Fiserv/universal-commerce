@@ -20,9 +20,8 @@ Parameters
 ## Response (201 - Created)
 ```json
 {
-   "customer":{
-      "externalId":"17395001"
-   }
+    “externalId”: “17395001”,
+    “id”: “e3aab31243f94be6afda9dc89e48820e”
 }
 ```
 
