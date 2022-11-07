@@ -57,6 +57,7 @@ Parameters
   },
   “publicKeyRequired”: true
 }
+
 ```
 ## Sample Response 
 
