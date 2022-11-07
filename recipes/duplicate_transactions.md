@@ -8,15 +8,15 @@ The uCommerce API is equipped with idempotency operations, which could prevent t
 ### Sample Header
 
 
-Content-Type:application/json
-Api-Key:{{key}}
-Authorization:HMAC {{signature}}
-Timestamp:{{time}}
-Client-Request-Id:{{$guid}}
-Client-Token: {{tokenId}}
-Content-Type: application/json
-Api-Key: pAhDVh6ALjje4zja5W24PlhvL3A3mJSA
-Authorization: HMAC yMHQiDA2qHVy1t/WX3AdvQawoIWH5m/o3/dIit40rY=
-Timestamp: 1501621439636
-Client-Request-Id: 123445241
-Client-Token: e3W0jHqpuutK6vwtlOt80GWvwBI0
+Content-Type:application/json <br>
+Api-Key:{{key}} <br>
+Authorization:HMAC {{signature}} <br>
+Timestamp:{{time}} <br>
+Client-Request-Id:{{$guid}} <br>
+Client-Token: {{tokenId}} <br>
+Content-Type: application/json <br>
+Api-Key: pAhDVh6ALjje4zja5W24PlhvL3A3mJSA <br>
+Authorization: HMAC yMHQiDA2qHVy1t/WX3AdvQawoIWH5m/o3/dIit40rY= <br>
+Timestamp: 1501621439636 <br>
+Client-Request-Id: 123445241 <br>
+Client-Token: e3W0jHqpuutK6vwtlOt80GWvwBI0 <br>
