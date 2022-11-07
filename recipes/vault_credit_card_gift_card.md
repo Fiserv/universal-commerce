@@ -20,10 +20,9 @@ Parameters
 ## Response (201 - Created)
 ```json
 {
-    “externalId”: “17395001”,
-    “id”: “e3aab31243f94be6afda9dc89e48820e”
+    "id": "96328bee7fc64adc91e20064ca230e43",
+    "externalId": "17395001"
 }
-
 ```
 
 # Step 2: Retrieve Token & Encryption Key using POST - /v1/ tokens
