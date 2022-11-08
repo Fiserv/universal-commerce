@@ -177,40 +177,52 @@ Parameters
 
 ## Sample Request (Nonce Enrollment) 
 ```json
- {
-“account”: {
-   “token”: {
-        “tokenId”: “85886d56-6204-4829-9bd9-eb4f83b2d725”,
-        “tokenProvider”: “UCOM”,
-        “tokenType”: “CLAIM_CHECK_NONCE”
-       }
-     }
-}
-  ```
-
-## Sample Request - Physical GiftCard Enrollment
-```json
-{
-“account”:{ 
-      “type”:”PREPAID”,
-      “prepaid”:{ 
-         “cardNumber”: “7777090732176755”,
-         “securityCode”:”54112073”,
-        “expiryDate”: {
-              “month”: “12”,
-              “year”: “20”
-          }
+{  
+   "account":{  
+      "token":{  
+         "tokenId":"64028399-f700-42b3-9ab0-27617c62dff1",
+         "tokenProvider":"UCOM",
+         "tokenType":"CLAIM_CHECK_NONCE"
       }
    }
 }
+
+  ```
+
+## Sample Request (Physical GiftCard Enrollment)
+```json
+{
+  "account": {
+    "type": "PREPAID",
+    "prepaid": {
+      "cardNumber": "7076105006196019",
+      "securityCode": "7772"
+    }
+  },
+  }
+
 ```  
 
-## Response (201 - Created)
+## Sample Response (201 - Created)
+	
+```json
+{
+	"fdAccountId": "8a7faa266838a04d01683d220fd8001b",
+	"type": "CREDIT",
+	"status": "ACTIVE",
+	"credit": {
+		"alias": "0024",
+		"cardType": "VISA",
+		"expiryDate": {
+			"month": "06",
+			"year": "19",
+			"singleValue": "0619"
+		}
+	}
+}
 
-| Sample Response
-|:----------
-| {    "fdAccountId": "8a7faa266838a04d01683d220fd8001b",    "type": "CREDIT",    "status": "ACTIVE",    "credit": {        "alias": "0024",        "cardType": "VISA",        "expiryDate": {            "month": "06",            "year": "19",            "singleValue": "0619"        }    }}
-
+``` 
+	
 # Step 5: Make a payment using POST /v1/payments/sales
 
 ## Sale transaction 
