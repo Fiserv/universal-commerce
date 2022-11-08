@@ -77,7 +77,7 @@ Parameters
 
 1) By Encrypting PAN details using POST \- /v1/account\-tokens API call. 
 
-2)Through Hosted Pages (if applicable). A nonce is generated through hosted pages after a user submits credit card details.
+2) Through Hosted Pages (if applicable). A nonce is generated through hosted pages after a user submits credit card details.
 
 ## 1) Encrypting PAN details using POST - /v1/account-tokens
 
@@ -105,41 +105,35 @@ Client-Request-Id: - <clientRequestId>
 
 ## Sample Request 
 ```json
- {  
-   “account”:{  
-      “type”:”CREDIT”,
-      “credit”:{  
-         “cardNumber”:”av51dbDpLj+k0a81v0G0Hb….tLyUKtOezfEWjQrt3QEctDTKIoemNMpnhwf9fuWdA==”,
-         “nameOnCard”:”John Smith”,
-         “cardType”:”AMEX”,
-         “billingAddress”:{  
-            “type”:”work”,
-            “streetAddress”:”100 Universal City Plaza”,
-            “locality”:”Hollywood”,
-            “region”:”CA”,
-            “postalCode”:”91608”,
-            “country”:”US”,
-            “formatted”:”100 Universal City Plaza\nHollywood, CA 91608 US”,
-            “primary”:true
-         },
-           “billingPhone”:{
-            “value”:”555-555-5555”, 
-            “type”:”billing”,  
-            “extension”:”2145”
-          },
-         “expiryDate”:{  
-            “month”:”LjijU+vw0zMrYRg9nDRzHSc7cP…mMvwMweV2Jfx1qgAqu+k4p9L/pbOg==”,
-            “year”:”jIUaIaBWixHK94kQOen8U4Azx3MdjxtgPngOefGg+… qoZmBqC6596iTlR3f5FIEg==”
-         },
-         “securityCode”:”AW+c3jw7CviCjbdX2u2uFVyD2c…BxbHOh3YgkGpwdvAddKniNVOHxC69ifOg==”
-      }
-   },
-   “referenceToken”:{  
-      
-      “tokenType”:”CLAIM_CHECK_NONCE”
-   },
-   “fdCustomerId”:”bc5b70d996cb4bfebced3973880f8543”
+ {
+  "account": {
+    "type": "CREDIT",
+    "credit": {
+      "cardNumber": "ENC_[av51dbDpLj+k0a81v0G0Hb….tLyUNMpnhwf9fuWdA==]",
+      "nameOnCard": "John Smith",
+      "cardType": "AMEX",
+      "billingAddress": {
+        "type": "work",
+        "streetAddress": "100 Universal City Plaza",
+        "locality": "Hollywood",
+        "region": "CA",
+        "postalCode": "91608",
+        "country": "US",
+        "formatted": "100 Universal City Plaza\nHollywood, CA 91608 US",
+        "primary": true
+      },
+      "expiryDate": {
+        "month": "ENC_[LJijU+vw0zMrYRg9nDRzHSc7cP…1qgAqu+k4p9L/pbOg==]",
+        "year": "ENC_[jIUaIaBWixHK9PngOefGg+… qoZmBqC6596iTlR3f5FIEg==]"
+      },
+      "securityCode": "ENC_[AWFVyD2c…BXbHOh3YgkGpwdvAddKniNVOHxC69ifOg==]"
+    }
+  },
+  "token": {
+    "tokenType": "CLAIM_CHECK_NONCE"
+  }
 }
+
  
 ```
 ## Sample Response 
