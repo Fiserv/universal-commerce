@@ -61,13 +61,13 @@ Parameters
 ## Sample Response 
 
 ```json
-{  
-   “tokenId”:”0OcWjNTKu8rjfVb0AJnAUGTM9dWx”,
-   “status”:”ACTIVE”,
-   “issuedOn”:1501502067595,
-   “expiresInSeconds”:1199,
-  “algorithm”:”RSA/NONE/PKCS1PADDING”,
-   “publicKey”:”MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCqGKukO1De7zhZj6+H0qtjTkVxwTCpvKe4eCZ0Fpqri0cb2JZfXJ/DgYSF6vUpwmJG8wVQZKjeGcjDOL5UlsuusFncCzWBQ7RKNUSesmQRMSGkVb1/3j+skZ6UtW+5u09lHNsj6tQ51s1SprCBkedbNf0Tp0GbMJDyR4e9T04ZZwIDAQAB”
+{
+	"tokenId": "e66kfaIZ2WzeOwlYaSAYSVwDzppO",
+	"issuedOn": 1667932973722,
+	"expiresInSeconds": 1199,
+	"publicKey": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxxH8qqCcFjSFFz/yet93DDoyEniR1+J+befEqdWfGuEIuur+yXQiqITeBAWfRjRsWBsagaaBvskQjp6W0be+ehSJjdpDxm6AHcsmoRE1iEv7FP/jLUVkryUBTB8+cMePQ7JJ2gpmTFzVXwMUMJJluYYzzDmrL5XP2g3dlOyxYWE0POYaVh2+QjzFBA/aRaneB7jSfcda8ZNTBdDHw6JKoessLxFVpddh1j1NJIvtFv9BOi9MG9hC4er1/a6mOo1R4iyq+Pny0ZDcP5HGgDZGwE4zu1de1hEdJUlbjt9Kv5T7H2zSs0Daj2DwXYydPzIED4cwx19EsUg7aJt0SrZSoQIDAQAB",
+	"algorithm": "RSA/NONE/PKCS1Padding",
+	"status": "ACTIVE"
 }
 ```
 
