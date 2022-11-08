@@ -37,27 +37,26 @@ Parameters
 | publicKeyRequired| Boolean| body| yes| 
 
 * Either fdCustomerId or deviceInfo has to be provided
-## Sample Request 
+## Sample Request with fdcustomerID
 ```json
 {
-  “token”: {
-    “fdCustomerId”: “4fc2eabf5f8c4f7cb98ce9f6fd8d3ea1”
-  },
-    “deviceInfo”: {
-    “id”: “537edec8-d33e-4ee8-93a7-b9f61876950cs”,
-    “kind”: “mobile”,
-    “details”: [{
-      “provider”: “InAuth”,
-      “dataCapture”: {
-        “rawData”: “aaaaaXREUVZGRlFY…aMV”,
-        “dataEventId”: “BB8E4E92…Fz1E063113”,
-        “captureTime”: “2016-04-16T16:06:05Z”
-      }
-    }]
-  },
-  “publicKeyRequired”: true
+    "token": {
+        "fdCustomerId": "26f2988101f34d05b226fb697320f4d7"
+    },
+    "deviceInfo": {
+        "data": [
+            {
+                "dataCapture": {
+                    "dataEventId": "10b7f7a0-fb7f-42bd-9d8a-edc82d2e43a8"
+                },
+                "provider": "RAVELIN"
+            }
+        ],
+        "id": "10b7f7a0-fb7f-42bd-9d8a-edc82d2e43a8",
+        "kind": "MOBILE"
+    },
+    "publicKeyRequired": true
 }
-
 ```
 ## Sample Response 
 
