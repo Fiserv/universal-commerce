@@ -139,14 +139,14 @@ Client-Request-Id: - <clientRequestId>
 ## Sample Response 
 
 ```json
-{  
-   “type”:”CREDIT”,
-   “token”:{  
-      “tokenType”:”CLAIM_CHECK_NONCE”,
-      “tokenProvider”:”UCOM”,
-      “tokenId”:”64028399-f700-42b3-9ab0-27617c62dff1”
+{
+   "token": {
+      "tokenId": "a16cd463-88e8-4a9e-b2a6-d0985e3af45e",
+      "tokenProvider": "UCOM",
+      "tokenType": "CLAIM_CHECK_NONCE"
    }
 }
+
   ```
   
 # Step 4: Create an Account using POST /v1/customers/{fdCustomerId}/accounts
