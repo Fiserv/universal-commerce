@@ -36,7 +36,7 @@ Parameters
 | fdCustomerId| string| body| Conditional*| 32
 | publicKeyRequired| Boolean| body| yes| 
 
-* Either fdCustomerId or deviceInfo has to be provided
+Note: Either fdCustomerId or deviceInfo has to be provided
 ## Sample Request with fdcustomerID
 ```json
 {
