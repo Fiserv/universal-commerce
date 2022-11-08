@@ -7,7 +7,7 @@ recipes:
   title: How to Make a Guest Checkout
   type: recipe
 - link: recipes/vault_credit_card_gift_card.md
-  title: How to Vault a Credit Card or Gift Card
+  title: How to Vault a Credit Card or Gift Card 
   type: recipe
 - link: recipes/duplicate_transactions.md
   title: How to Avoid a Duplicate Transaction 
