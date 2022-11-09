@@ -136,7 +136,6 @@ Timestamp:{{time}}
 ```
 
 ### Sample Response (400 – Bad Request)
-
 ```json
 {
     "code": "270101",
