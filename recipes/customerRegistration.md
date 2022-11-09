@@ -5,7 +5,7 @@
 
 ### Description
 
-Create a Customer Profile, a.k.a. 'Customer Registration'.
+Create a Customer Profile (Customer Registration)
 
 Registering a customer in the uCom system results in a unique identifier 'fdCustomerId' that is used in subsequent operations like vaulting a payment account and making mobile payments. This request will create a recipient for card vaulting or payment purposes. This is always the first step that needs to be taken to do any transactions or calls on the system.
 
