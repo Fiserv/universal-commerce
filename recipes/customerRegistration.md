@@ -134,9 +134,7 @@ Timestamp:{{time}}
     "externalId": "5876"
 }
 ```
-
 ### Sample Response (400 – Bad Request)
-
 ```json
 {
     "code": "270101",
@@ -204,8 +202,8 @@ The minimal request can be any single entity that requires updating, any of the 
 
 The request succeeded but there's really nothing to show.
 
-### Sample Response (400 – Bad Request)
 
+### Sample Response (400)
 ```json
 {
     "code": "279904",
