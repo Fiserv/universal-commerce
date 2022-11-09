@@ -287,9 +287,8 @@ This request is empty since it's a GET call
 }
 ```json
 
-
 ### Sample Response (400 – Bad Request)
-
+test
 ```json
 {
     "code": "279904",
