@@ -1,0 +1,983 @@
+#-------------------------------------
+# Document Change Log
+# 0.2.1
+#     - Added Merchant id as header field
+#     - Added Membership object into User object
+# 0.2.0
+#     - Added 'OTHER' CreditCardType
+#     - Added fields in ThreeDSecure object
+# 0.1.9
+#    -  Added support for get Api with external Customer Id
+# 0.1.8
+#     - Added 3ds web support
+# 0.1.7
+#     - Added 3ds challenge transaction expiry date time in ThreeDSecure
+# 0.1.6
+#     - Added Accept-Language header field
+# 0.1.5
+#     - Added date created and modified in the User object.
+#     - Added Link in the Error object.
+#     - acsSignedContent and CardType in threeDSecureInfo object
+# 0.1.4
+#     - No Change
+# 0.1.3
+#     - Adding NVP with valueAsList
+#     - update in DeviceInfo.
+# 0.1.2
+#     - No change.
+# 0.1.1
+#     - No change.
+# 0.1.0
+#     - Added client-token in the header field
+# 0.0.9
+#     - No change.
+# 0.0.8
+#     - No change.MerchantIdParam
+# 0.0.7
+#   - Updated ReferenceToken to have more accurate attribute names, removed use value
+#   - Cleaned up examples in the models
+# 0.0.6
+#     - No change.
+# 0.0.5
+#     - No change.
+# 0.0.4
+#     - No change.
+# 0.0.3
+#     - No change.
+# 0.0.2
+#     - Added 'osVersion' attribute to 'DeviceInfo' object.
+# 0.0.1
+#     - Initial Version
+#-------------------------------------
+swagger: '2.0'
+info:
+  version: 0.2.1
+  title: uCom Customer Services
+  description: Services related to uCom Customer Profile Management
+tags:
+  - name: customers
+    description: Operations and details about customers which are defined as the end-user of the application.
+host: int.api.firstdata.com
+basePath: /ucom
+schemes:
+ - https
+consumes:
+ - application/json
+produces:
+ - application/json
+paths:
+  /v1/customers:
+    post:
+      tags:
+        - customers
+      summary: Create a Customer Profile, a.k.a. 'register a customer'
+      description: Registering a customer in the uCom system results in a unique identifier 'fdCustomerId' that is used in subsequent operations like vaulting a payment account and making mobile payments.
+      parameters:
+        - $ref: '#/parameters/ApiKeyParam'
+        - $ref: '#/parameters/TimestampParam'
+        - $ref: '#/parameters/AuthorizationParam'
+        - $ref: '#/parameters/ClientTokenParam'
+        - $ref: '#/parameters/ClientRequestIdParam'
+        - $ref: '#/parameters/AcceptLanguageParam'
+        - $ref: '#/parameters/SubMerchantIdParam'
+        - name: payload
+          description: Customer profile information
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CustomerRequest'
+      responses:
+        201:
+          $ref: '#/responses/Created'
+        400:
+          $ref: '#/responses/BadRequest'
+        401:
+          $ref: '#/responses/Unauthorized'
+        409:
+          $ref: '#/responses/Conflict'
+        500:
+          $ref: '#/responses/ServerError'
+    get:
+      tags:
+        - customers
+      summary: Read a Customer Profile by external id attribute
+      description: Fetch the details of a customer providing the external Id.
+      parameters:
+        - $ref: '#/parameters/ApiKeyParam'
+        - $ref: '#/parameters/TimestampParam'
+        - $ref: '#/parameters/AuthorizationParam'
+        - $ref: '#/parameters/ClientTokenParam'
+        - $ref: '#/parameters/AcceptLanguageParam'
+        - $ref: '#/parameters/ExternalIdParam'
+        - $ref: '#/parameters/SubMerchantIdParam'
+
+      responses:
+        200:
+          $ref: '#/responses/OK'
+        400:
+          $ref: '#/responses/BadRequest'
+        401:
+          $ref: '#/responses/Unauthorized'
+        404:
+          $ref: '#/responses/NotFound'
+        500:
+          $ref: '#/responses/ServerError'
+
+  /v1/customers/{fdCustomerId}:
+    get:
+      tags:
+        - customers
+      summary: Read a Customer Profile
+      description: Fetch the details of a customer providing the fdCustomerId.
+      parameters:
+        - $ref: '#/parameters/ApiKeyParam'
+        - $ref: '#/parameters/TimestampParam'
+        - $ref: '#/parameters/AuthorizationParam'
+        - $ref: '#/parameters/ClientTokenParam'
+        - $ref: '#/parameters/FdCustomerIdParam'
+        - $ref: '#/parameters/AcceptLanguageParam'
+        - $ref: '#/parameters/SubMerchantIdParam'
+
+      responses:
+        200:
+          $ref: '#/responses/OK'
+        400:
+          $ref: '#/responses/BadRequest'
+        401:
+          $ref: '#/responses/Unauthorized'
+        404:
+          $ref: '#/responses/NotFound'
+        500:
+          $ref: '#/responses/ServerError'
+
+    patch:
+      tags:
+        - customers
+      summary: Update a Customer Profile
+      description: Update the details in a Customer Profile providing the fdCustomerId.
+      parameters:
+        - $ref: '#/parameters/ApiKeyParam'
+        - $ref: '#/parameters/TimestampParam'
+        - $ref: '#/parameters/AuthorizationParam'
+        - $ref: '#/parameters/ClientTokenParam'
+        - $ref: '#/parameters/FdCustomerIdParam'
+        - $ref: '#/parameters/AcceptLanguageParam'
+        - $ref: '#/parameters/SubMerchantIdParam'
+
+        - name: payload
+          description: Customer profile information
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CustomerRequest'
+      responses:
+        204:
+          $ref: '#/responses/NoContent'
+        400:
+          $ref: '#/responses/BadRequest'
+        401:
+          $ref: '#/responses/Unauthorized'
+        404:
+          $ref: '#/responses/NotFound'
+        409:
+          $ref: '#/responses/Conflict'
+        500:
+          $ref: '#/responses/ServerError'
+
+    delete:
+      tags:
+        - customers
+      summary: Delete a Customer Profile
+      description: Delete a customer profile from uCom system by providing the fdCustomerId.
+      parameters:
+        - $ref: '#/parameters/ApiKeyParam'
+        - $ref: '#/parameters/TimestampParam'
+        - $ref: '#/parameters/AuthorizationParam'
+        - $ref: '#/parameters/ClientTokenParam'
+        - $ref: '#/parameters/FdCustomerIdParam'
+        - $ref: '#/parameters/AcceptLanguageParam'
+        - $ref: '#/parameters/SubMerchantIdParam'
+
+      responses:
+        204:
+          $ref: '#/responses/NoContent'
+        400:
+          $ref: '#/responses/BadRequest'
+        401:
+          $ref: '#/responses/Unauthorized'
+        404:
+          $ref: '#/responses/NotFound'
+        500:
+          $ref: '#/responses/ServerError'
+
+definitions:
+#-------------------------------------
+# Operational Models
+#-------------------------------------
+  CustomerRequest:
+    title: Customer Request
+    type: object
+    properties:
+      customer:
+        $ref: '#/definitions/User'
+      deviceInfo:
+        $ref: '#/definitions/DeviceInfo'
+
+#-------------------------------------
+# Resource Models
+#-------------------------------------
+  Address:
+    description: A physical mailing address for this user.
+    type: object
+    properties:
+      type:
+        description: Canonical type values of "work", "home", and "other".
+        type: string
+      streetAddress:
+        description: The full street address component, which may include house number, street name, P.O. box, and multi-line extended street address information.
+        type: string
+      locality:
+        description: The city or locality component.
+        type: string
+      region:
+        description: The state or region component.
+        type: string
+      postalCode:
+        description: The zip code or postal code component.
+        type: string
+      country:
+        description: The country name component.  When specified, the value MUST be in ISO 3166-1 "alpha-2" code format; e.g., the United States and Sweden are "US" and "SE", respectively.
+        type: string
+      formatted:
+        description: The full mailing address, formatted for display or use with a mailing label.
+        type: string
+      primary:
+        description: Indicates if this is the default address for the associated resource. It only has meaning when used in a set or array of addresses.
+        type: boolean
+    example:
+      type: "work"
+      streetAddress: "100 Universal City Plaza"
+      locality: "Hollywood"
+      region: "CA"
+      postalCode: "91608"
+      country: "US"
+      formatted: "100 Universal City Plaza\nHollywood, CA 91608 US"
+      primary: true
+
+  Email:
+    description: Email address for the user.
+    type: object
+    properties:
+      type:
+        description: The "type" sub-attribute is used to provide a classification meaningful to the (human) user.  The user interface should encourage the use of basic values of "work", "home", and "other" and MAY allow additional type values to be used at the discretion of the service client.
+        type: string
+      value:
+        description: The value SHOULD be specified according to RFC5321.
+        type: string
+      primary:
+        description: Defines if this entry is to be used as the primary or default for the user.
+        type: boolean
+        default: false
+    example:
+      value: "bjensen@example.com"
+      type: "work"
+      primary: true
+
+  ExpiryDate:
+    description: Contains account expiration data and needs to either send the values in individual fields OR as a singleValue.
+    type: object
+    properties:
+      month:
+        type: string
+        description: Month format 'MM'
+        pattern: "[0-9]{2,2}"
+        minLength: 2
+        maxLength: 2
+        example: "09"
+      year:
+        type: string
+        description: Year format 'YY'
+        pattern: "[0-9]{2,2}"
+        minLength: 2
+        maxLength: 2
+        example: "20"
+      singleValue:
+        type: string
+        description: Month and year together, 'MMYY' or 'MMYYYY'.  If the latter format, the string will be parsed and validated per the given format.  Any other format will be rejected.
+        minLength: 4
+        maxLength: 6
+
+  Membership:
+    description:  Membership information for the user.
+    type: object
+    properties:
+      membershipType:
+        type: string
+      membershipId:
+        type: string
+      membershipProgramId:
+        type: string
+      membershipStatus:
+        type: string
+      membershipExpiryDate:
+        $ref: '#/definitions/ExpiryDate'
+      accountNumber:
+        type: string
+      securityCode:
+        type: string
+      additionalInfo:
+        type: array
+        minItems: 0
+        items:
+          $ref: '#/definitions/NVP'
+        uniqueItems: true
+
+
+  Group:
+    description: Group
+    type: object
+    properties:
+      value:
+        description: The id of the group.
+        type: string
+      href:
+        description: The URI of the corresponding "Group" resources to which the user belongs.
+        type: string
+      display:
+        description: The common name of the group.
+        type: string
+    example:
+      value: "e9e30dba-f08f-4109-8486-d5c6a331660a"
+      href: "https://example.com/v2/Groups/e9e30dba-f08f-4109-8486"
+      display: "Tour Guides"
+
+  Link:
+    description: Model to communicate linked resources.
+    type: object
+    required:
+      - href
+      - rel
+    properties:
+      href:
+        description: URL to linked resource.
+        type: string
+        format: uri
+      rel:
+        description: Defines the type of link relationship to current resource.
+        type: string
+        enum:
+          - current.page
+          - previous.page
+          - next.page
+          - self
+        example:
+          "self"
+      method:
+        description: Defines the HTTP method for the given href.
+        type: string
+        default: "GET"
+        example:
+          "GET"
+      id:
+        description: Identifier to the resource.
+        type: string
+        example:
+          "415e5cf6bfdb11e8a355529269fb1459"
+
+  IMS:
+    description: Instant messaging address for the user.
+    type: object
+    properties:
+      value:
+        description: A shortened version one of the following values - aim, gtalk, icq, xmpp, msn, skype, qq, yahoo, or other. This will change with popularity of various applicatiions at any time.
+        type: string
+      type:
+        type: string
+      primary:
+        description: Flag to indicate primary account
+        type: boolean
+        default: false
+    example:
+      value: "someaimhandle"
+      type: "aim"
+
+  PersonName:
+    description: The components of the user's name.
+    type: object
+    properties:
+      formatted:
+        description: The full name, including all middle names, titles, and suffixes as appropriate, formatted for display (e.g.,"Ms. Barbara Jane Jensen, III").
+        type: string
+      familyName:
+        description: The family name of the User, or last name in most Western languages (e.g., "Jensen" given the full name "Ms. Barbara Jane Jensen, III").
+        type: string
+      givenName:
+        description: The given name of the User, or first name in most Western languages (e.g., "Barbara" given the full name "Ms. Barbara Jane Jensen, III").
+        type: string
+      middleName:
+        description: The middle name(s) of the User (e.g., "Jane" given the full name "Ms. Barbara Jane Jensen, III").
+        type: string
+      honorificPrefix:
+        description: The honorific prefix(es) of the User, or title in most Western languages (e.g., "Ms." given the full name "Ms. Barbara Jane Jensen, III").
+        type: string
+      honorificSuffix:
+        description: The honorific suffix(es) of the User, or suffix in most Western languages (e.g., "III" given the full name "Ms. Barbara Jane Jensen, III").
+        type: string
+    example:
+      formatted: "Ms. Barbara J Jensen III"
+      familyName: "Jensen"
+      givenName: "Barbara"
+      middleName: "Jane"
+      honorificPrefix: "Ms."
+      honorificSuffix: "III"
+
+  Phone:
+    description: Phone number for the user.
+    type: object
+    properties:
+      value:
+        description: The value SHOULD be specified according to the format defined in RFC3966, e.g., 'tel:+1-201-555-0123'.
+        type: string
+      type:
+        description: Often has typical values of "work", "home", "mobile", "fax", "pager", and "other" and MAY allow more types to be defined by the service client.
+        type: string
+      primary:
+        description: Defines if this entry is to be used as the primary or default for the user.
+        type: boolean
+        default: false
+    example:
+      value: "555-555-5555"
+      type: "work"
+
+  Photo:
+    description: A URI that is a uniform resource locator (as defined in Section 1.1.3 of RFC3986) that points to a resource location representing the user's image. The resource MUST be a file (e.g., a GIF, JPEG, or PNG image file) rather than a web page containing an image.
+    type: object
+    properties:
+      value:
+        description: URI pointing to user's image file.
+        type: string
+      type:
+        description: Defines the following canonical values to represent popular photo sizes - "photo" and "thumbnail".
+        type: string
+    example:
+      value: "https://photos.example.com/profilephoto/72930000000Ccne/F"
+      type: "thumbnail"
+
+  ThreeDSecure:
+    description: Details of ThreeDSecure transaction used to process the challege flow
+    type: object
+    properties:
+      transactionId:
+        description: Transaction id generated on the server
+        type: string
+        example: "292bb6b886fc4446894f878b7e32bd5e"
+      transactionStatus:
+        type: string
+        description: Transactions status of 3DS server
+        example: "C"
+      transactionStatusReason:
+        type: string
+        description: Reason for the transaction status
+      challengeResponse:
+        type: string
+        example: "ewogIC"
+      challengeIndicator:
+        type: string
+        example: "01 = No preference
+                  02 = No challenge requested
+                  03 = Challenge requested: 3DS Requestor Preference
+                  04 = Challenge requested: Mandate"
+      dsTransactionId:
+        type: string
+        example: "292bb6b886fc4446894f878b7e32bd5e"
+      acsTransactionId:
+        type: string
+        example: "292bb6b886fc4446894f878b7e32bd5e"
+      serverTransactionId:
+        type: string
+        example: "292bb6b886fc4446894f878b7e32bd5e"
+      acsReferenceNumber:
+        type: string
+        example: "292bb6b886fc4446894f878b7e32bd5e"
+      acsSignedContent:
+        type: string
+        example: "292bb6b88....6fc4446894f878b7e32bd5e"
+      cardType:
+        $ref: '#/definitions/CreditCardType'
+      challengeRequest:
+        type: string
+        example: "ewogICAiYW.......MjJjMGVjIgp9"
+      acsUrl:
+        type: string
+        example: "https://test.modirum.com/dstests/ACSEmu2"
+      iframeContent:
+        type: string
+        example: "<iframe></iframe>"
+      termUrl:
+        type: string
+        example: "https://mydomain/3dstest?transactionId=292bb6b886fc4446894f878b7e32bd5e"
+      isThreeDSMethodCompleted:
+        type: boolean
+        example: true
+      isAuthenticationCompleted:
+        type: boolean
+        example: true
+      cavv:
+        type: string
+        description: Card authenticaion verificaiton value
+      threeDSVersion:
+        type: string
+      expiryDateTime:
+        description: 3DS challenge transaction expiry date time.
+        type: string
+        readOnly: true
+        format: date-time
+        example: "2020-01-01T16:06:05Z"
+      eci:
+        type: string
+        description: Electronic Commerce Indicator value
+
+  User:
+    description: User resource as defined by the System for Cross-domain Identity Management (SCIM).  For more info see http://www.simplecloud.info
+    type: object
+    required:
+      - externalId
+    properties:
+      id:
+        description: Unique identifier for a customer profile registered with uCom.
+        type: string
+        readOnly: true
+        example: "fdCustomerId"
+      externalId:
+        description: A String that is an identifier for the resource as defined by the provisioning client. While the server does not enforce uniqueness, it is assumed that the value's uniqueness is controlled by the client setting the value.
+        type: string
+        example: "123abc456def890ghi098jkl765mno"
+      userName:
+        description: A service provider's unique identifier for the user, typically used by the user to directly authenticate to the service provider.
+        type: string
+        example: "bjensen@example.com"
+      name:
+        $ref: '#/definitions/PersonName'
+      displayName:
+        description: The name of the user, suitable for display to end-users.
+        type: string
+        example: "Babs Jensen"
+      nickName:
+        description: The casual way to address the user in real life, e.g., "Bob" or "Bobby" instead of "Robert".
+        type: string
+        example: "Babs"
+      profileUrl:
+        description: A URI that is a uniform resource locator (as defined in Section 1.1.3 of [RFC3986]) and that points to a location representing the user's online profile (e.g., a web page)
+        type: string
+        example: "https://login.example.com/bjensen"
+      emails:
+        type: array
+        items:
+          $ref: '#/definitions/Email'
+      addresses:
+        type: array
+        items:
+          $ref: '#/definitions/Address'
+      phoneNumbers:
+        type: array
+        items:
+          $ref: '#/definitions/Phone'
+      ims:
+        type: array
+        items:
+          $ref: '#/definitions/IMS'
+      photos:
+        type: array
+        items:
+          $ref: '#/definitions/Photo'
+      userType:
+        description: Used to identify the relationship between the organization and the user.
+        type: string
+        example: "Employee"
+      title:
+        description: The user's title, such as "Vice President".
+        type: string
+        example: "Tour Guide"
+      preferredLanguage:
+        description: Indicates the user's preferred written or spoken languages and is generally used for selecting a localized user interface.
+        type: string
+        example: "en-US"
+      locale:
+        description: Used to indicate the User's default location for purposes of localizing such items as currency, date time format, or numerical representations.
+        type: string
+        example: "en-US"
+      timezone:
+        description: The User's time zone
+        type: string
+        example: "America/Los_Angeles"
+      active:
+        description: A Boolean value indicating the user's administrative status. The definitive meaning of this attribute is determined by the service provider.
+        type: boolean
+        example: true
+      password:
+        description: This attribute is intended to be used as a means to set, replace, or compare (i.e., filter for equality) a password.
+        type: string
+        example: "some-hashed-value"
+      groups:
+        description: A list of groups to which the user belongs, either through direct membership, through nested groups, or dynamically calculated.
+        type: array
+        items:
+          $ref: '#/definitions/Group'
+      dateCreated:
+        description: Date created time in Internet Date/Time format - yyyy-MM-dd'T'HH:mm:ss'Z'
+        type: string
+        format: date-time
+        example: "2016-04-16T16:06:05Z"
+      dateModified:
+        description: Date modified time in Internet Date/Time format - yyyy-MM-dd'T'HH:mm:ss'Z'
+        type: string
+        format: date-time
+        example: "2016-04-16T16:06:05Z"
+      membership:
+        $ref: '#/definitions/Membership'
+      hostExtraInfo:
+        type: array
+        minItems: 0
+        items:
+          $ref: '#/definitions/NVP'
+        uniqueItems: true
+
+#-------------------------------------
+# Common Models
+#-------------------------------------
+  DeviceInfo:
+    description: Request origin device details
+    type: object
+    required:
+      - id
+      - kind
+    properties:
+      id:
+        description: Unique Id for the device. Value should not contain line feeds, carriage returns, tabs, leading or trailing spaces, or multiple spaces.
+        type: string
+        example: "537edec8-d33e-4ee8-93a7-b9f61876950c"
+      kind:
+        description: Possible values are mobile, wearable, automobile, embedded,desktop, other.
+        type: string
+        example: "mobile"
+      details:
+        title: deviceData
+        description: Device data information from multiple providers.
+        type: array
+        minItems: 0
+        uniqueItems: true
+        items:
+          description: Collection of device data
+          type: object
+          properties:
+            provider:
+              description: Identifies the provider of the data and is often used when decrypting data on the server.
+              type: string
+              example: "InAuth"
+            dataCapture:
+              description: Device data captured as a bundle and transmitted as an encrypted and/or specifically formated string.
+              type: object
+              properties:
+                rawData:
+                  description: Device capture - raw data blob
+                  type: string
+                  example: "aaaaaXREUVZGRlFY...aMV"
+                dataEventId:
+                  description: Event identifier used map state on the server.
+                  type: string
+                  example: "BB8E4E92...Fz1E063113"
+                captureTime:
+                  description: Device data capture time in Internet Date/Time format - yyyy-MM-dd'T'HH:mm:ss'Z'
+                  type: string
+                  format: date-time
+                  example: "2016-04-16T16:06:05Z"
+            dataStatic:
+              description: Device static details
+              type: object
+              properties:
+                os:
+                  description: Device OS name
+                  type: string
+                  example: "Android 5.1.1 Lollipop"
+                osVersion:
+                  description: Device OS version
+                  type: string
+                  example: "5.1.1 Lollipop"
+                model:
+                  description: Device model
+                  type: string
+                  example: "XT1540"
+                type:
+                  description: Device type
+                  type: string
+                  example: "Moto G"
+            dataDynamic:
+              description: Device location details
+              type: object
+              properties:
+                latitude:
+                  description: Device position - latitude at the time of the data event
+                  type: string
+                  example: "13.0827 N"
+                longitude:
+                  description: Device position - longitude at the time of the data event
+                  type: string
+                  example: "80.2707 E"
+                ipAddress:
+                  description: IP address
+                  type: string
+                  example: "172.27.37.221"
+                captureTime:
+                  description: Device data capture time in Internet Date/Time format - yyyy-MM-dd'T'HH:mm:ss'Z'
+                  type: string
+                  format: date-time
+                  example: "2016-04-16T16:06:05Z"
+            dataApplication:
+              description: Mobile application specific data
+              type: object
+              properties:
+                version:
+                  description: Mobile application version.
+                  type: string
+                  format: sting
+                  example: "1.0.0"
+                name:
+                  description: Mobile application name.
+                  type: string
+                  format: sting
+                  example: "aplication-name"
+                country:
+                  description: Mobile application store country.
+                  type: string
+                  format: sting
+                  example: "US"
+      additionalInfo:
+        type: array
+        minItems: 0
+        items:
+          $ref: '#/definitions/NVP'
+        uniqueItems: true
+    example:
+      {
+      id: "537edec8-d33e-4ee8-93a7-b9f61876950c",
+      kind: "mobile",
+      details: [{
+        provider: "InAuth",
+        dataCapture: {
+          rawData: "aaaaaXREUVZGRlFY...aMV",
+          dataEventId: "BB8E4E92...Fz1E063113",
+          captureTime: "2016-04-16T16:06:05Z"
+        },
+        dataStatic: {
+           os: "Android 5.1.1 Lollipop",
+           osVersion: "5.1.1 Lollipop",
+           model: "XYX-1",
+           Type: "Moto G"
+          },
+        dataDynamic: {
+          latitude: "13.0827 N",
+          longitude: "80.2707 E",
+          ipAddress: "172.27.37.221",
+          captureTime: "2016-04-16T16:06:05Z"
+          }
+      }],
+      additionalInfo: [{
+         name: "some-key",
+         value: "some-value"
+      }]
+    }
+
+  NVP:
+    title: Name and Value pair.
+    type: object
+    properties:
+      name:
+        type: string
+      value:
+        type: string
+      valueAsList:
+        type: array
+        minItems: 0
+        items:
+          type: string
+
+  Error:
+    description: Model for error messaging
+    type: object
+    properties:
+      code:
+        type: string
+        description: Uniquely identifies an error condition. Client applications need to read and handle errors based on this.
+      message:
+        type: string
+        description: A generic description of the error condition.
+      category:
+        type: string
+        description: The resource associated with the error condition.
+      developerInfo:
+        type: object
+        description: Information that needs to be understood by the client developers and should not be interpreted for application processing.
+        properties:
+          developerMessage:
+            type: string
+            description: An elaborative description of the error description.
+          moreInfo:
+            type: string
+            description: Link to the error in Developer page.
+          fieldError:
+            description: Detailed information about message format errors.
+            type: array
+            items:
+              properties:
+                field:
+                  description: The property or attribute associated with the error
+                  type: string
+                message:
+                  description: Information specific to a property or attribute.
+                  type: string
+      hostExtraInfo:
+        type: array
+        minItems: 0
+        items:
+          $ref: '#/definitions/NVP'
+        uniqueItems: true
+      threeDSecureInfo:
+        $ref: '#/definitions/ThreeDSecure'
+      _links:
+        type: array
+        items:
+          $ref: '#/definitions/Link'
+
+    example:
+      code: "40000"
+      message: "Example Error"
+      category: "example"
+      developerInfo:
+        developerMessage: "Invalid Message format in request payload"
+        moreInfo: "https://www.example.com/errors/40000"
+        fieldError:
+          - field: "example id"
+            message: "exampleId is mandatory"
+
+#-------------------------------------
+# ENUM Models
+#-------------------------------------
+  CreditCardType:
+    title: Credit Card Type
+    description: Indicates the type of credit account association
+    type: string
+    enum:
+      - AMEX
+      - DISCOVER
+      - MASTERCARD
+      - PLCC
+      - VISA
+      - OTHER
+#-------------------------------------
+# Responses
+#-------------------------------------
+responses:
+  Created:
+    description: Resource created
+    headers:
+      Location:
+        type: string
+        description: Location of newly created resource.
+    schema:
+      $ref: '#/definitions/User'
+
+  OK:
+    description: OK
+    schema:
+      $ref: '#/definitions/User'
+
+  NoContent:
+    description: The request succeeded but there’s really nothing to show.
+
+  BadRequest:
+    description: Bad request
+    schema:
+      $ref: '#/definitions/Error'
+
+  Unauthorized:
+    description: Unauthorized
+
+  NotFound:
+    description: Not Found - The requested resource doesn't exist.
+    schema:
+      $ref: '#/definitions/Error'
+
+  Conflict:
+    description: Conflict - The requested operation conflicts with the current state of the identified resource.
+    schema:
+      $ref: '#/definitions/Error'
+
+  ServerError:
+    description: An unexpected server error occured.
+    schema:
+      $ref: '#/definitions/Error'
+
+#-------------------------------------
+# Parameter Models
+#-------------------------------------
+parameters:
+  AcceptLanguageParam:
+    name: Accept-Language
+    description: The Accept-Language header contains information about the language preference of a user. This HTTP header is useful to multilingual sites for deciding the best language to serve to the client. i.e en-US,fr-CA
+    in: header
+    type: string
+
+  ApiKeyParam:
+    name: Api-Key
+    description: An API key is a string value passed by a client app to the API proxies. The key uniquely identifies the client app.
+    in: header
+    required: true
+    type: string
+
+  AuthorizationParam:
+    name: Authorization
+    description: Authorization information for the request. Format- `HMAC {hmacToken}`
+    in: header
+    required: true
+    type: string
+
+  ClientTokenParam:
+    name: Client-Token
+    description: Used to pass the original client OAuth token information given in a client-credentials flow.  This field is only used when the server is making the request and needs to link the transaction to a specific client.  Format- `Bearer {access_token}`
+    in: header
+    type: string
+
+  ClientRequestIdParam:
+    name: Client-Request-Id
+    description: Contains a unique ID generated by the client that can be used for enforcing idempotency on POST actions. POSTs are inherently non-idempotent and submitting the exact same request multiple times would create duplicate resources.
+      Note:- Omitting this header increases the risk of duplicate transactions, which for payments could cost the client issues like double-billing.
+    in: header
+    required: true
+    type: string
+
+  FdCustomerIdParam:
+    name: fdCustomerId
+    description: Unique identifier for a customer profile registered with uCom.
+    in: path
+    required: true
+    type: string
+
+  SubMerchantIdParam:
+    name: Sub-Merchant-Id
+    description: Sub Merchant Id contains information about the merchant identifier
+    in: header
+    type: string
+
+  TimestampParam:
+    name: Timestamp
+    description: Epoch timestamp in the request initiating syste
+    in: header
+    required: true
+    type: string
+
+  ExternalIdParam:
+    name: externalId
+    description: Used to filter customer based on externalId
+    in: query
+    required: true
+    type: string

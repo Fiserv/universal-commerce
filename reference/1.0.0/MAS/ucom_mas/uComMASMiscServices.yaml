@@ -1,0 +1,740 @@
+#-------------------------------------
+# Document Change Log
+# 1.0.0
+#     - initial version
+#-------------------------------------
+openapi: 3.0.1
+info:
+  version: 1.0.0
+  description: API's related to Segment Management/Push notification/Arm trigger configuration.
+  title: uCom MAS Misc Services
+servers:
+- url: https://api-ucomnp-de.fdmobileservices.com/ucom/mas
+tags:
+- name: segment
+- name: armtrigger
+- name: notification
+paths:
+  /v1/segments:
+    post:
+      tags:
+      - segment
+      summary: Creates new segment
+      parameters:
+        - $ref: '#/components/parameters/ApiKeyParam'
+        - $ref: '#/components/parameters/AppIdParam'
+        - $ref: '#/components/parameters/TimestampParam'
+        - $ref: '#/components/parameters/AuthorizationParam'
+        - $ref: '#/components/parameters/ClientRequestIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SegmentRequest'
+      responses:
+        201:
+          description: OK
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/Segment'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+    get:
+      tags:
+      - segment
+      summary: Retrieve list of created segments
+      parameters:
+        - $ref: '#/components/parameters/ApiKeyParam'
+        - $ref: '#/components/parameters/AppIdParam'
+        - $ref: '#/components/parameters/TimestampParam'
+        - $ref: '#/components/parameters/AuthorizationParam'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  segments:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Segment'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /v1/segments/{segmentId}:
+    get:
+      tags:
+      - segment
+      summary: Get a segment
+      parameters:
+        - $ref: '#/components/parameters/ApiKeyParam'
+        - $ref: '#/components/parameters/AppIdParam'
+        - $ref: '#/components/parameters/TimestampParam'
+        - $ref: '#/components/parameters/AuthorizationParam'
+        - $ref: '#/components/parameters/SegmentIdParam'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/Segment'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+    delete:
+      tags:
+      - segment
+      summary: Delete a segment
+      parameters:
+        - $ref: '#/components/parameters/ApiKeyParam'
+        - $ref: '#/components/parameters/AppIdParam'
+        - $ref: '#/components/parameters/TimestampParam'
+        - $ref: '#/components/parameters/AuthorizationParam'
+        - $ref: '#/components/parameters/SegmentIdParam'
+      responses:
+        204:
+          description: OK
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /v1/segments/{segmentId}/addUser:
+    post:
+      tags:
+      - segment
+      summary: Add an user to a segment
+      parameters:
+        - $ref: '#/components/parameters/ApiKeyParam'
+        - $ref: '#/components/parameters/AppIdParam'
+        - $ref: '#/components/parameters/TimestampParam'
+        - $ref: '#/components/parameters/AuthorizationParam'
+        - $ref: '#/components/parameters/SegmentIdParam'
+        - $ref: '#/components/parameters/ClientRequestIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+      responses:
+        204:
+          description: OK
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /v1/segments/{segmentId}/removeUser:
+    post:
+      tags:
+      - segment
+      summary: Remove an user from a segment
+      parameters:
+        - $ref: '#/components/parameters/ApiKeyParam'
+        - $ref: '#/components/parameters/AppIdParam'
+        - $ref: '#/components/parameters/TimestampParam'
+        - $ref: '#/components/parameters/AuthorizationParam'
+        - $ref: '#/components/parameters/SegmentIdParam'
+        - $ref: '#/components/parameters/ClientRequestIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+      responses:
+        204:
+          description: OK
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /v1/notification/pushMessage:
+    post:
+      tags:
+      - notification
+      summary: Push a message to a segment or an user
+      parameters:
+        - $ref: '#/components/parameters/ApiKeyParam'
+        - $ref: '#/components/parameters/AppIdParam'
+        - $ref: '#/components/parameters/TimestampParam'
+        - $ref: '#/components/parameters/AuthorizationParam'
+        - $ref: '#/components/parameters/ClientRequestIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PushMessageRequest'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/PushMessage'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /v1/armTriggers:
+    post:
+      tags:
+      - armtrigger
+      summary: Creates new arm trigger
+      parameters:
+        - $ref: '#/components/parameters/ApiKeyParam'
+        - $ref: '#/components/parameters/AppIdParam'
+        - $ref: '#/components/parameters/TimestampParam'
+        - $ref: '#/components/parameters/AuthorizationParam'
+        - $ref: '#/components/parameters/ClientRequestIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArmTriggerRequest'
+      responses:
+        201:
+          description: OK
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/ArmTrigger'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        500:
+          $ref: '#/components/responses/ServerError'
+    get:
+      tags:
+      - armtrigger
+      summary: Retrieve list of arm triggers
+      parameters:
+        - $ref: '#/components/parameters/ApiKeyParam'
+        - $ref: '#/components/parameters/AppIdParam'
+        - $ref: '#/components/parameters/TimestampParam'
+        - $ref: '#/components/parameters/AuthorizationParam'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  armTriggers:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ArmTrigger'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /v1/armTriggers/{armTriggerId}:
+    get:
+      tags:
+      - armtrigger
+      summary: Get an arm trigger
+      parameters:
+        - $ref: '#/components/parameters/ApiKeyParam'
+        - $ref: '#/components/parameters/AppIdParam'
+        - $ref: '#/components/parameters/TimestampParam'
+        - $ref: '#/components/parameters/AuthorizationParam'
+        - $ref: '#/components/parameters/ArmTriggerIdParam'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArmTrigger'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        500:
+          $ref: '#/components/responses/ServerError'
+    delete:
+      tags:
+      - armtrigger
+      summary: Delete an arm trigger
+      parameters:
+        - $ref: '#/components/parameters/ApiKeyParam'
+        - $ref: '#/components/parameters/AppIdParam'
+        - $ref: '#/components/parameters/TimestampParam'
+        - $ref: '#/components/parameters/AuthorizationParam'
+        - $ref: '#/components/parameters/ArmTriggerIdParam'
+      responses:
+        204:
+          description: OK
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+components:
+  schemas:
+#-------------------------------------
+# Operational Models
+#-------------------------------------
+    SegmentRequest:
+      type: object
+      properties:
+        segment:
+          $ref: '#/components/schemas/Segment'
+
+    UserRequest:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/User'
+
+    PushMessageRequest:
+      type: object
+      properties:
+        pushMessage:
+          $ref: '#/components/schemas/PushMessage'
+
+    ArmTriggerRequest:
+      type: object
+      properties:
+        armTrigger:
+          $ref: '#/components/schemas/ArmTrigger'
+#-------------------------------------
+# Resource Models
+#-------------------------------------
+    ArmTrigger:
+      type: object
+      properties:
+        armTriggerId:
+          description: Reference UUID of the arm trigger
+          type: string
+          readOnly: true
+          example: 292bb6b886fc4446894f878b7e32bd5e
+        eventType:
+          $ref: '#/components/schemas/EventType'
+        eventName:
+          description: 'If eventType=EVENT then this parameter must be set with the correct event from the list: List of events captured and sent to third parties from MAS If eventType=GEOFENCE then this parameter must be set to "GeoFence"'
+          type: string
+          example: GEOFENCE.
+        eventDescription:
+          description: Event description
+          type: string
+        geoFence:
+          $ref: '#/components/schemas/GeoFence'
+        createdDate:
+          description: Date created time in Internet Date/Time format - yyyy-MM-dd'T'HH:mm:ss'Z'
+          type: string
+          format: date-time
+          example: "2016-04-16T16:06:05Z"
+        modifiedDate:
+          description: Date modified time in Internet Date/Time format - yyyy-MM-dd'T'HH:mm:ss'Z'
+          type: string
+          format: date-time
+          example: "2016-04-16T16:06:05Z"
+        additionalInfo:
+          type: array
+          minItems: 0
+          items:
+            $ref: '#/components/schemas/NVP'
+          uniqueItems: true
+
+    EmailAddress:
+      description: Consumer email address
+      type: object
+      properties:
+        emailAddress:
+          type: string
+          example: do.not@mail.com
+
+    GeoFence:
+      type: object
+      description: GeoFence definition to arm in mobile device
+      properties:
+        longitude:
+          description: The GPS latitude value of the site. To be captured at time of onboarding. Not necessary for daily update at startup.
+          type: number
+        latitude:
+          description: The GPS longitude value of the site. To be captured at time of onboarding. Not necessary for daily update at startup.
+          type: number
+        radis:
+          description: Number with double precision, radius in meters
+          type: number
+        expirationDuration:
+          description: Number, If not specified, assigned by default (-1) never expires.
+          type: number
+        transitionTypes:
+          type: array
+          minItems: 0
+          items:
+            $ref: '#/components/schemas/TransitionType'
+          uniqueItems: true
+
+
+
+    Link:
+      description: Model to communicate linked resources.
+      type: object
+      required:
+        - href
+        - rel
+      properties:
+        href:
+          description: URL to linked resource.
+          type: string
+          format: uri
+        rel:
+          description: Defines the type of link relationship to current resource.
+          type: string
+          enum:
+            - current.page
+            - previous.page
+            - next.page
+            - self
+          example:
+            "self"
+        method:
+          description: Defines the HTTP method for the given href.
+          type: string
+          default: "GET"
+          example:
+            "GET"
+        id:
+          description: Identifier to the resource.
+          type: string
+          example:
+            "415e5cf6bfdb11e8a355529269fb1459"
+
+    NVP:
+      title: Name and Value pair.
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+        valueAsList:
+          type: array
+          minItems: 0
+          items:
+            type: string
+
+    PushMessage:
+      type: object
+      properties:
+        messageId:
+          description: Reference UUID of the message
+          type: string
+          readOnly: true
+          example: 292bb6b886fc4446894f878b7e32bd5e
+        emailAddresses:
+          type: array
+          minItems: 1
+          maxItems: 1000
+          items:
+            $ref: '#/components/schemas/EmailAddress'
+          uniqueItems: true
+        segmentId:
+          description: Segment id
+          type: string
+          example: 292bb6b886fc4446894f878b7e32bd5e
+        title:
+          description: Message title
+          type: string
+        message:
+          description: Message content
+          type: string
+        iconUrl:
+          description: Icon Url
+          type: string
+        imageUrl:
+          description: Image Url
+          type: string
+        messageDate:
+          description: Date created time in Internet Date/Time format - yyyy-MM-dd'T'HH:mm:ss'Z'
+          type: string
+          format: date-time
+          example: "2016-04-16T16:06:05Z"
+        additionalInfo:
+          type: array
+          minItems: 0
+          items:
+            $ref: '#/components/schemas/NVP'
+          uniqueItems: true
+
+    Segment:
+      type: object
+      properties:
+        segmentId:
+          description: Segement id
+          type: string
+          readOnly: true
+          example: 292bb6b886fc4446894f878b7e32bd5e
+        segmentName:
+          description: Segment name
+          type: string
+          example: STANDARD
+        segmentDescription:
+          type: string
+        additionalInfo:
+          type: array
+          minItems: 0
+          items:
+            $ref: '#/components/schemas/NVP'
+          uniqueItems: true
+        createdDate:
+          description: Date created time in Internet Date/Time format - yyyy-MM-dd'T'HH:mm:ss'Z'
+          type: string
+          format: date-time
+          example: "2016-04-16T16:06:05Z"
+        modifiedDate:
+          description: Date modified time in Internet Date/Time format - yyyy-MM-dd'T'HH:mm:ss'Z'
+          type: string
+          format: date-time
+          example: "2016-04-16T16:06:05Z"
+
+    User:
+      type: object
+      properties:
+        emailAddress:
+          description: Consumer email address
+          type: string
+          example: 292bb6b886fc4446894f878b7e32bd5e
+        additionalInfo:
+          type: array
+          minItems: 0
+          items:
+            $ref: '#/components/schemas/NVP'
+          uniqueItems: true
+
+
+
+#-------------------------------------
+# Common Models
+#-------------------------------------
+    Error:
+      description: Model for error messaging
+      type: object
+      properties:
+        code:
+          type: string
+          description: Uniquely identifies an error condition. Client applications need to read and handle errors based on this.
+        message:
+          type: string
+          description: A generic description of the error condition.
+        category:
+          type: string
+          description: The resource associated with the error condition.
+        developerInfo:
+          type: object
+          description: Information that needs to be understood by the client developers and should not be interpreted for application processing.
+          properties:
+            developerMessage:
+              type: string
+              description: An elaborative description of the error description.
+            moreInfo:
+              type: string
+              description: Link to the error in Developer page.
+            fieldError:
+              description: Detailed information about message format errors.
+              type: array
+              items:
+                properties:
+                  field:
+                    description: The property or attribute associated with the error
+                    type: string
+                  message:
+                    description: Information specific to a property or attribute.
+                    type: string
+        additionalInfo:
+          type: array
+          minItems: 0
+          items:
+            $ref: '#/components/schemas/NVP'
+          uniqueItems: true
+        _links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
+
+  #-------------------------------------
+  # ENUM Models
+  #-------------------------------------
+    EventType:
+      description: Describes the type of Event
+      type: string
+      enum:
+        - GEOFENCE
+        - EVENT
+
+    TransitionType:
+      description: Describes the transition type
+      type: string
+      enum:
+        - GEOFENCE_TRANSITION_DWELL
+        - GEOFENCE_TRANSITION_ENTER
+        - GEOFENCE_TRANSITION_EXIT
+
+  #-------------------------------------
+  # Responses
+  #-------------------------------------
+  responses:
+    OK:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Segment'
+
+    NoContent:
+      description: The request succeeded but there’s really nothing to show.
+
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    Unauthorized:
+      description: Unauthorized
+
+    NotFound:
+      description: Not Found - The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    Conflict:
+      description: Conflict - The requested operation conflicts with the current state of the identified resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    ServerError:
+      description: An unexpected server error occured.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+  #-------------------------------------
+  # Parameter Models
+  #-------------------------------------
+  parameters:
+    ApiKeyParam:
+      name: X-Api-Key
+      description: An API key is a string value passed by a client app.
+      in: header
+      required: true
+      schema:
+        type: string
+
+    AppIdParam:
+      name: X-App-Id
+      description: An App id used to identify client app.
+      in: header
+      required: true
+      schema:
+        type: string
+        example: ESSO_BENELUX
+
+    AuthorizationParam:
+      name: Authorization
+      description: Authorization information for the request. Format- `HMAC {hmacToken}`
+      in: header
+      required: true
+      schema:
+        type: string
+
+    ClientTokenParam:
+      name: Client-Token
+      description: Used to pass the original client OAuth token information given in a client-credentials flow.  This field is only used when the server is making the request and needs to link the transaction to a specific client.  Format- `Bearer {access_token}`
+      in: header
+      schema:
+        type: string
+
+    ClientRequestIdParam:
+      name: Client-Request-Id
+      description: Contains a unique ID generated by the client that can be used for enforcing idempotency on POST actions. POSTs are inherently non-idempotent and submitting the exact same request multiple times would create duplicate resources.
+        Note:- Omitting this header increases the risk of duplicate transactions, which for payments could cost the client issues like double-billing.
+      in: header
+      required: true
+      schema:
+        type: string
+
+    SegmentIdParam:
+      name: segmentId
+      description: Unique identifier provided for the segment
+      in: path
+      required: true
+      schema:
+        type: string
+
+    ArmTriggerIdParam:
+      name: armTriggerId
+      description: Unique identifier provided for the armed trigger
+      in: path
+      required: true
+      schema:
+        type: string
+
+    TimestampParam:
+      name: Timestamp
+      description: Epoch timestamp in the request initiating syste
+      in: header
+      required: true
+      schema:
+        type: string
