@@ -58,9 +58,41 @@ Timestamp:{{time}}
 
 ### Sample Request - Paypal Authorization Transaction - Nonce
 
-| Sample Request – Paypal Authorization Transaction - Nonce                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| {  "authorization": {  "orderId": "12345671189128",  "merchantId": "MO45009483002",  "requestedAmount": 5,  "currencyCode": {  "number": 840  },  "fundingSource": {  "paypal": {  "payerId": "LPLWNMTBWMFAY",  "nonce": "23c2c321-9613-079f-5fa8-9d424d4e8030"  }  }  },  "deviceInfo": {  "id": "896e6893-51a0-4d8b-aecc-dfcc9945e0e4",  "kind": "mobile",  "details": [  {  "provider": "PayPal",  "dataCapture": {  "rawData": "aaaaaXREUVZGRlFYaMV",  "dataEventId": "66f021fb-c7f0-4271-ad68-f66944b71dfd",  "captureTime": "2021-05-25T11:49:54.855Z"  },  "dataDynamic": {  "captureTime": "2021-05-25T11:49:54.855Z"  }  }  ]  } } |
+Sample Request – Paypal Authorization Transaction - Nonce                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ```json
+{
+   "authorization":{
+      "orderId":"12345671189128",
+      "merchantId":"MO45009483002",
+      "requestedAmount":5,
+      "currencyCode":{
+         "number":840
+      },
+      "fundingSource":{
+         "paypal":{
+            "payerId":"LPLWNMTBWMFAY",
+            "nonce":"23c2c321-9613-079f-5fa8-9d424d4e8030"
+         }
+      }
+   },
+   "deviceInfo":{
+      "id":"896e6893-51a0-4d8b-aecc-dfcc9945e0e4",
+      "kind":"mobile",
+      "details":[
+         {
+            "provider":"PayPal",
+            "dataCapture":{
+               "rawData":"aaaaaXREUVZGRlFYaMV",
+               "dataEventId":"66f021fb-c7f0-4271-ad68-f66944b71dfd",
+               "captureTime":"2021-05-25T11:49:54.855Z"
+            },
+            "dataDynamic":{
+               "captureTime":"2021-05-25T11:49:54.855Z"
+            }
+         }
+      ]
+   }
+}
+```
 
 ### Sample Response (201 – Created)
 
