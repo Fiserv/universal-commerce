@@ -25,7 +25,26 @@
         "releaseNotesPath": "/release-notes/release-notes-1.0.0.md",
         "apiSpecFileNames": [
           "Account Services/Account Services",
-          "Apply and Buy/Apple and Buy"
+          "Apply and Buy/Apply and Buy",
+          "Authentication Services/Authentication Services",
+          "Customer Services/Customer Services",
+          "Discovery Services/ Discovery Services",
+          "Hosted Pages/ Hosted Pages External",
+          "Issuer Services/ Issuer Services",
+          "Loyalty Transactions/ Loyalty Transactions",
+          "Mobile Application Server/ MAS",
+          "Merchant Services/ Merchant Services",
+          "Order Services/Order Services",
+          "Payment Services/Payment Services",
+          "Prepaid Card Services/Prepaid Card Services",
+          "Provision Services/Provision Services",
+          "Security Services/Security Services",
+          "Site Services/Site Services",
+          "Site Transaction Services/ Site Transaction Services",
+          "Stac Services/Stac Services",
+          "3DS/Three DS Services Internal",
+          "Transaction History Services/ Transaction History Services",
+          "Value Add Services/ Value Add Services" 
         ]
       }
   ],
