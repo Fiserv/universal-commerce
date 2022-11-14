@@ -95,15 +95,91 @@ Timestamp:{{time}}
 
 ### Sample Response (201 – Created)
 
-| Sample Response – Paypal Authorization Transaction - Nonce                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| {  "fdAuthorizationId": "7244e4d2aadd4202b3245d240c6f391b",  "authStatus": "APPROVED",  "orderId": "12345671189128",  "outdoorSale": true,  "requestedAmount": 5,  "approvedAmount": 5,  "currencyCode": {  "code": "USD",  "number": 840  },  "transactionDateTime": "2021-05-10T06:00:54-0400",  "fundingSource": {  "type": "PAYPAL",  "paypal": {  "token": {  "tokenId": "7481631140129424",  "tokenProvider": "TRANS_ARMOR",  "expiryDate": {  "month": "07",  "year": "30"  }  }  }  },  "hostExtraInfo": [  {  "name": "APPROVAL_NUMBER",  "value": "256997"  },  {  "name": "SEQUENCE_NUMBER",  "value": "736308"  },  {  "name": "HOST_RESPONSE_CODE",  "value": "2"  },  {  "name": "HOST_RESPONSE_MESSAGE",  "value": "APPROVED 256997"  },  {  "name": "TRANSACTION_DATETIME",  "value": "2021-05-10T06:00"  },  {  "name": "NETWORK_TRANSACTION_ID",  "value": "123456789012345"  }  ] } |
+Sample Response – Paypal Authorization Transaction - Nonce    
+
+```json
+{
+   "fdAuthorizationId":"7244e4d2aadd4202b3245d240c6f391b",
+   "authStatus":"APPROVED",
+   "orderId":"12345671189128",
+   "outdoorSale":true,
+   "requestedAmount":5,
+   "approvedAmount":5,
+   "currencyCode":{
+      "code":"USD",
+      "number":840
+   },
+   "transactionDateTime":"2021-05-10T06:00:54-0400",
+   "fundingSource":{
+      "type":"PAYPAL",
+      "paypal":{
+         "token":{
+            "tokenId":"7481631140129424",
+            "tokenProvider":"TRANS_ARMOR",
+            "expiryDate":{
+               "month":"07",
+               "year":"30"
+            }
+         }
+      }
+   },
+   "hostExtraInfo":[
+      {
+         "name":"APPROVAL_NUMBER",
+         "value":"256997"
+      },
+      {
+         "name":"SEQUENCE_NUMBER",
+         "value":"736308"
+      },
+      {
+         "name":"HOST_RESPONSE_CODE",
+         "value":"2"
+      },
+      {
+         "name":"HOST_RESPONSE_MESSAGE",
+         "value":"APPROVED 256997"
+      },
+      {
+         "name":"TRANSACTION_DATETIME",
+         "value":"2021-05-10T06:00"
+      },
+      {
+         "name":"NETWORK_TRANSACTION_ID",
+         "value":"123456789012345"
+      }
+   ]
+}
+```
 
 ### Sample Response (400 – Bad Request)
 
-| Sample Error Response                                                                                                                                                                                                                                                                                                                      |
-|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| {  "code": "272731",  "message": "Auth transaction failed",  "category": "payment",  "developerInfo": {  "developerMessage": "Auth transaction failed"  },  "hostExtraInfo": [  {  "name": "HOST_RESPONSE_CODE",  "value": "100"  },  {  "name": "HOST_AVS_CODE",  "value": "AVS-U"  },  {  "name": "HOST_CVV_CODE",  "value": "N"  }  ] } |
+| Sample Error Response   
+
+```json
+{
+   "code":"272731",
+   "message":"Auth transaction failed",
+   "category":"payment",
+   "developerInfo":{
+      "developerMessage":"Auth transaction failed"
+   },
+   "hostExtraInfo":[
+      {
+         "name":"HOST_RESPONSE_CODE",
+         "value":"100"
+      },
+      {
+         "name":"HOST_AVS_CODE",
+         "value":"AVS-U"
+      },
+      {
+         "name":"HOST_CVV_CODE",
+         "value":"N"
+      }
+   ]
+}
+```
 
 ## Option 1b: Capture the transaction
 
@@ -145,21 +221,75 @@ Timestamp:{{time}}
 
 ### Sample Request
 
-| Sample Response – Capture of Authorization                                       |
-|----------------------------------------------------------------------------------|
-| {  "capture": {  "requestedAmount": 5,  "currencyCode": {  "number": 840  }  } } |
+```json
+{
+   "capture":{
+      "requestedAmount":5,
+      "currencyCode":{
+         "number":840
+      }
+   }
+}
+```
 
 ### Sample Response (200 – Created)
 
-| Sample Response – Capture of Authorization                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| {  "fdCaptureId": "662c9b5c27ea4b3c9627dcf1035c4fa8",  "status": "APPROVED",  "requestedAmount": 5,  "approvedAmount": 5,  "currencyCode": {  "code": "USD",  "number": 840  },  "transactionDateTime": "2021-06-30T08:31:05-0400",  "hostExtraInfo": [  {  "name": "APPROVAL_NUMBER",  "value": "338162"  },  {  "name": "SEQUENCE_NUMBER",  "value": "321338"  },  {  "name": "HOST_RESPONSE_CODE",  "value": "0"  },  {  "name": "HOST_RESPONSE_MESSAGE",  "value": "APPROVED 338162"  },  {  "name": "TRANSACTION_DATETIME",  "value": "2021-07-30T07:31"  },  {  "name": "NETWORK_TRANSACTION_ID",  "value": "123456789012345"  }  ] } |
+Sample Response – Capture of Authorization  
+
+```json
+{
+   "fdCaptureId":"662c9b5c27ea4b3c9627dcf1035c4fa8",
+   "status":"APPROVED",
+   "requestedAmount":5,
+   "approvedAmount":5,
+   "currencyCode":{
+      "code":"USD",
+      "number":840
+   },
+   "transactionDateTime":"2021-06-30T08:31:05-0400",
+   "hostExtraInfo":[
+      {
+         "name":"APPROVAL_NUMBER",
+         "value":"338162"
+      },
+      {
+         "name":"SEQUENCE_NUMBER",
+         "value":"321338"
+      },
+      {
+         "name":"HOST_RESPONSE_CODE",
+         "value":"0"
+      },
+      {
+         "name":"HOST_RESPONSE_MESSAGE",
+         "value":"APPROVED 338162"
+      },
+      {
+         "name":"TRANSACTION_DATETIME",
+         "value":"2021-07-30T07:31"
+      },
+      {
+         "name":"NETWORK_TRANSACTION_ID",
+         "value":"123456789012345"
+      }
+   ]
+}
+```
 
 ### Sample Response (400 – Bad Request)
 
-| Sample Error Response                                                                                                                                           |
-|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| {  "code":" 272761",  "message":"Capture transaction failed.",  "category":"common",  "developerInfo":{  "developerMessage":" Capture transaction failed." } }  |
+Sample Error Response   
+
+```json
+{
+   "code":" 272761",
+   "message":"Capture transaction failed.",
+   "category":"common",
+   "developerInfo":{
+      "developerMessage":" Capture transaction failed."
+   }
+}
+```
 
 ## Option 2: Sale with Paypal
 
@@ -213,22 +343,127 @@ Timestamp:{{time}}
 
 ### Sample Request - Paypal Sale Transaction - Nonce
 
-| Sample Request – Paypal Sale Transaction - Nonce                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| {  "sale": {  "orderId": "12345671189128",  "merchantId": "MO45009483002",  "requestedAmount": 5,  "currencyCode": {  "number": 840  },  "fundingSource": {  "paypal": {  "payerId": "LPLWNMTBWMFAY",  "nonce": "23c2c321-9613-079f-5fa8-9d424d4e8030"  }  }  },  "deviceInfo": {  "id": "896e6893-51a0-4d8b-aecc-dfcc9945e0e4",  "kind": "mobile",  "details": [  {  "provider": "PayPal",  "dataCapture": {  "rawData": "aaaaaXREUVZGRlFYaMV",  "dataEventId": "66f021fb-c7f0-4271-ad68-f66944b71dfd",  "captureTime": "2021-05-25T11:49:54.855Z"  },  "dataDynamic": {  "captureTime": "2021-05-25T11:49:54.855Z"  }  }  ]  } } |
+Sample Request – Paypal Sale Transaction - Nonce    
+```json
+{
+   "sale":{
+      "orderId":"12345671189128",
+      "merchantId":"MO45009483002",
+      "requestedAmount":5,
+      "currencyCode":{
+         "number":840
+      },
+      "fundingSource":{
+         "paypal":{
+            "payerId":"LPLWNMTBWMFAY",
+            "nonce":"23c2c321-9613-079f-5fa8-9d424d4e8030"
+         }
+      }
+   },
+   "deviceInfo":{
+      "id":"896e6893-51a0-4d8b-aecc-dfcc9945e0e4",
+      "kind":"mobile",
+      "details":[
+         {
+            "provider":"PayPal",
+            "dataCapture":{
+               "rawData":"aaaaaXREUVZGRlFYaMV",
+               "dataEventId":"66f021fb-c7f0-4271-ad68-f66944b71dfd",
+               "captureTime":"2021-05-25T11:49:54.855Z"
+            },
+            "dataDynamic":{
+               "captureTime":"2021-05-25T11:49:54.855Z"
+            }
+         }
+      ]
+   }
+}
+```
 
 ### Sample Response (201 – Created)
 
-| Sample Response – Paypal Sale Transaction - Nonce                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| {  "fdSaleId": "7244e4d2aadd4202b3245d240c6f391b",  "status": "APPROVED",  "orderId": "12345671189128",  "requestedAmount": 5,  "approvedAmount": 5,  "currencyCode": {  "code": "USD",  "number": 840  },  "partialPaymentAllowed": true,  "transactionDateTime": "2021-05-10T06:00:54-0400",  "fundingSource": {  "type": "PAYPAL",  "paypal": {  "token": {  "tokenId": "7481631140129424",  "tokenProvider": "TRANS_ARMOR",  "expiryDate": {  "month": "07",  "year": "30"  }  }  }  },  "hostExtraInfo": [  {  "name": "APPROVAL_NUMBER",  "value": "256997"  },  {  "name": "SEQUENCE_NUMBER",  "value": "736308"  },  {  "name": "HOST_RESPONSE_CODE",  "value": "2"  },  {  "name": "HOST_RESPONSE_MESSAGE",  "value": "APPROVED 256997"  },  {  "name": "TRANSACTION_DATETIME",  "value": "2021-05-10T06:00"  },  {  "name": "NETWORK_TRANSACTION_ID",  "value": "123456789012345"  }  ] }      |
-
+Sample Response – Paypal Sale Transaction - Nonce
+```json
+{
+   "fdSaleId":"7244e4d2aadd4202b3245d240c6f391b",
+   "status":"APPROVED",
+   "orderId":"12345671189128",
+   "requestedAmount":5,
+   "approvedAmount":5,
+   "currencyCode":{
+      "code":"USD",
+      "number":840
+   },
+   "partialPaymentAllowed":true,
+   "transactionDateTime":"2021-05-10T06:00:54-0400",
+   "fundingSource":{
+      "type":"PAYPAL",
+      "paypal":{
+         "token":{
+            "tokenId":"7481631140129424",
+            "tokenProvider":"TRANS_ARMOR",
+            "expiryDate":{
+               "month":"07",
+               "year":"30"
+            }
+         }
+      }
+   },
+   "hostExtraInfo":[
+      {
+         "name":"APPROVAL_NUMBER",
+         "value":"256997"
+      },
+      {
+         "name":"SEQUENCE_NUMBER",
+         "value":"736308"
+      },
+      {
+         "name":"HOST_RESPONSE_CODE",
+         "value":"2"
+      },
+      {
+         "name":"HOST_RESPONSE_MESSAGE",
+         "value":"APPROVED 256997"
+      },
+      {
+         "name":"TRANSACTION_DATETIME",
+         "value":"2021-05-10T06:00"
+      },
+      {
+         "name":"NETWORK_TRANSACTION_ID",
+         "value":"123456789012345"
+      }
+   ]
+}
+```
 ### Sample Response (400 – Bad Request)
 
-| Sample Error Response                                                                                                                                                                                                                                                                                                                                           |
-|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|  {  "code": "272701",  "message": "Sale transaction failed",  "category": "payment",  "developerInfo": {  "developerMessage": "Sale transaction failed"  },  "hostExtraInfo": [  {  "name": "HOST_RESPONSE_CODE",  "value": "4"  },  {  "name": "HOST_RESPONSE_MESSAGE",  "value": "APPROVED 093096"  },  {  "name": "HOST_AVS_CODE",  "value": "AVS+Y"  }  ] } |
-
+Sample Error Response                                                                                                                          
+```json
+{
+   "code":"272701",
+   "message":"Sale transaction failed",
+   "category":"payment",
+   "developerInfo":{
+      "developerMessage":"Sale transaction failed"
+   },
+   "hostExtraInfo":[
+      {
+         "name":"HOST_RESPONSE_CODE",
+         "value":"4"
+      },
+      {
+         "name":"HOST_RESPONSE_MESSAGE",
+         "value":"APPROVED 093096"
+      },
+      {
+         "name":"HOST_AVS_CODE",
+         "value":"AVS+Y"
+      }
+   ]
+}
+```
 ## Option 3a: Auth with Venmo
 
 ### Description
@@ -283,10 +518,43 @@ Timestamp:{{time}}
 
 ### Sample Request - Venmo Authorization Transaction - Nonce
 
-| Sample Request – Venmo Authorization Transaction - Nonce                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| {  "authorization": {  "orderId": "Ordermar19000012",  "merchantId": "MO45009483002",  "requestedAmount": 10,  "currencyCode": {  "number": 840  },  "fundingSource": {  "saveToVault": false,  "venmo": {  "nonce": "fake-venmo-account-nonce"  }  }  },  "deviceInfo": {  "id": "896e6893-51a0-4d8b-aecc-dfcc9945e0e4",  "kind": "mobile",  "details": [  {  "provider": "Venmo",  "dataCapture": {  "rawData": "aaaaaXREUVZGRlFYaMV",  "dataEventId": "66f021fb-c7f0-4271-ad68-f66944b71dfd",  "captureTime": "2021-05-25T11:49:54.855Z"  },  "dataDynamic": {  "captureTime": "2021-05-25T11:49:54.855Z"  }  }  ]  } } |
+Sample Request – Venmo Authorization Transaction - Nonce                                                                                                                                                                                                                                             
+```json
 
+{
+   "authorization":{
+      "orderId":"Ordermar19000012",
+      "merchantId":"MO45009483002",
+      "requestedAmount":10,
+      "currencyCode":{
+         "number":840
+      },
+      "fundingSource":{
+         "saveToVault":false,
+         "venmo":{
+            "nonce":"fake-venmo-account-nonce"
+         }
+      }
+   },
+   "deviceInfo":{
+      "id":"896e6893-51a0-4d8b-aecc-dfcc9945e0e4",
+      "kind":"mobile",
+      "details":[
+         {
+            "provider":"Venmo",
+            "dataCapture":{
+               "rawData":"aaaaaXREUVZGRlFYaMV",
+               "dataEventId":"66f021fb-c7f0-4271-ad68-f66944b71dfd",
+               "captureTime":"2021-05-25T11:49:54.855Z"
+            },
+            "dataDynamic":{
+               "captureTime":"2021-05-25T11:49:54.855Z"
+            }
+         }
+      ]
+   }
+}
+```
 ### Sample Response (201 – Created)
 
 | Sample Response – Venmo Authorization Transaction - Nonce                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
