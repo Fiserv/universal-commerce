@@ -57,8 +57,7 @@ Authorization:HMAC {{signature}}
 Timestamp:{{time}}
 
 ### Sample Request - Paypal Authorization Transaction - Nonce
-
-Sample Request – Paypal Authorization Transaction - Nonce                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ```json
+```json
 {
    "authorization":{
       "orderId":"12345671189128",
