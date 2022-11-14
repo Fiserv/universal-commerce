@@ -62,7 +62,7 @@
     "feature":[
       {
         "name": "sandBox",
-        "value": false
+        "value": true
       },
       {
         "name": "plugins",

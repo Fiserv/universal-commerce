@@ -29,15 +29,15 @@ o###############################################################################
 ################################################################################
 header:
   productName: UniversalCommerce
-  productionDescription: REPLACEME
+  productionDescription: Universal Commerce is a Payments gateway that allows global commerce
   whoIsItFor: REPLACEME
   image: 
     link: "/assets/images/Fiserv_Logo.jpg"
     altText: UniversalCommerce™
 featuredFeatures:
-  - title: REPLACE ME
-    description:  REPLACE ME
-    tags: ["REPLACEME", "REPLACEME", "REPLACEME"]
+  - title: Account Services
+    description:  For setting up accounts for payments gateways 
+    tags: ["Account", "Ucom", "REPLACEME"]
     bullets: ["REPLACEME", "REPLACEME" ]  
     relatedDocs:
       - relatedDoc: 
