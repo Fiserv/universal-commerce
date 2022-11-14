@@ -95,32 +95,12 @@
 #     - Initial Version
 #-------------------------------------
 
-openapi: 3.0.0
-info:
-  version: 0.0.3
-  title: Universal Commerce Account Services API
-  description: Services related to uCom customer accounts.  Accounts can be credit, debit, loyalty, prepaid, etc.
-
-servers:
-  - url:  https://qa.api.firstdata.com
-    description: This url is for QA testing.
-  - url:  https://int.api.firstdata.com
-    description: This url is for customer testing.
-  - url: https://prod.api.firstdata.com
-    description: This is production url.
-
-paths:
-  /ucom/v1/recipients/{recipientId}/accounts:
-    post:
-      x-group-name: Account Services
-      x-proxy-name: Create Account
-      x-child-product-name: Account Services
 
 swagger: '2.0'
 info:
   version: 0.2.2
   title: uCom Account Services
-  
+  description: Services related to uCom customer accounts.  Accounts can be credit, debit, loyalty, prepaid, etc.
 tags:
   - name: accounts
   description: Operations and details about a vaulted accounts.
