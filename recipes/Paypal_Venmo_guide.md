@@ -557,15 +557,90 @@ Sample Request – Venmo Authorization Transaction - Nonce
 ```
 ### Sample Response (201 – Created)
 
-| Sample Response – Venmo Authorization Transaction - Nonce                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| {  "fdAuthorizationId": "517b57799dd44edeb0c86c15e3cfc377",  "authStatus": "APPROVED",  "orderId": "Ordermar19000012",  "requestedAmount": 10,  "approvedAmount": 10,  "currencyCode": {  "code": "USD",  "number": 840  },  "transactionDateTime": "2021-05-06T10:03:16-0400",  "fundingSource": {  "type": "VENMO",  "venmo": {  "token": {  "tokenId": "7481631140129424",  "tokenProvider": "TRANS_ARMOR",  "expiryDate": {  "month": "11",  "year": "29"  }  }  }  },  "hostExtraInfo": [  {  "name": "APPROVAL_NUMBER",  "value": "252932"  },  {  "name": "SEQUENCE_NUMBER",  "value": "614480"  },  {  "name": "HOST_RESPONSE_CODE",  "value": "2"  },  {  "name": "HOST_RESPONSE_MESSAGE",  "value": "APPROVED 252932"  },  {  "name": "TRANSACTION_DATETIME",  "value": "2021-05-06T10:03"  },  {  "name": "NETWORK_TRANSACTION_ID",  "value": "123456789012345"  }  ] } |
+Sample Response – Venmo Authorization Transaction - Nonce    
+```json
+{
+   "fdAuthorizationId":"517b57799dd44edeb0c86c15e3cfc377",
+   "authStatus":"APPROVED",
+   "orderId":"Ordermar19000012",
+   "requestedAmount":10,
+   "approvedAmount":10,
+   "currencyCode":{
+      "code":"USD",
+      "number":840
+   },
+   "transactionDateTime":"2021-05-06T10:03:16-0400",
+   "fundingSource":{
+      "type":"VENMO",
+      "venmo":{
+         "token":{
+            "tokenId":"7481631140129424",
+            "tokenProvider":"TRANS_ARMOR",
+            "expiryDate":{
+               "month":"11",
+               "year":"29"
+            }
+         }
+      }
+   },
+   "hostExtraInfo":[
+      {
+         "name":"APPROVAL_NUMBER",
+         "value":"252932"
+      },
+      {
+         "name":"SEQUENCE_NUMBER",
+         "value":"614480"
+      },
+      {
+         "name":"HOST_RESPONSE_CODE",
+         "value":"2"
+      },
+      {
+         "name":"HOST_RESPONSE_MESSAGE",
+         "value":"APPROVED 252932"
+      },
+      {
+         "name":"TRANSACTION_DATETIME",
+         "value":"2021-05-06T10:03"
+      },
+      {
+         "name":"NETWORK_TRANSACTION_ID",
+         "value":"123456789012345"
+      }
+   ]
+}
+```
 
 ### Sample Response (400 – Bad Request)
 
-| Sample Error Response                                                                                                                                                                                                                                                                                                                      |
-|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| {  "code": "272731",  "message": "Auth transaction failed",  "category": "payment",  "developerInfo": {  "developerMessage": "Auth transaction failed"  },  "hostExtraInfo": [  {  "name": "HOST_RESPONSE_CODE",  "value": "100"  },  {  "name": "HOST_AVS_CODE",  "value": "AVS-U"  },  {  "name": "HOST_CVV_CODE",  "value": "N"  }  ] } |
+Sample Error Response  
+
+```json
+{
+   "code":"272731",
+   "message":"Auth transaction failed",
+   "category":"payment",
+   "developerInfo":{
+      "developerMessage":"Auth transaction failed"
+   },
+   "hostExtraInfo":[
+      {
+         "name":"HOST_RESPONSE_CODE",
+         "value":"100"
+      },
+      {
+         "name":"HOST_AVS_CODE",
+         "value":"AVS-U"
+      },
+      {
+         "name":"HOST_CVV_CODE",
+         "value":"N"
+      }
+   ]
+}
+
+```
 
 ## Option 3b: Capture the transaction
 
@@ -607,21 +682,76 @@ Timestamp:{{time}}
 
 ### Sample Request
 
-| Sample Response – Capture of Authorization                                        |
-|-----------------------------------------------------------------------------------|
-| {  "capture": {  "requestedAmount": 10,  "currencyCode": {  "number": 840  }  } } |
+Sample Request – Capture of Authorization        
+
+
+```json
+{
+   "capture":{
+      "requestedAmount":10,
+      "currencyCode":{
+         "number":840
+      }
+   }
+}
+```
 
 ### Sample Response (200 – Created)
 
-| Sample Response – Capture of Authorization                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| {  "fdCaptureId": "662c9b5c27ea4b3c9627dcf1035c4fa8",  "status": "APPROVED",  "requestedAmount": 10,  "approvedAmount": 10,  "currencyCode": {  "code": "USD",  "number": 840  },  "transactionDateTime": "2021-06-30T08:31:05-0400",  "hostExtraInfo": [  {  "name": "APPROVAL_NUMBER",  "value": "338162"  },  {  "name": "SEQUENCE_NUMBER",  "value": "321338"  },  {  "name": "HOST_RESPONSE_CODE",  "value": "0"  },  {  "name": "HOST_RESPONSE_MESSAGE",  "value": "APPROVED 338162"  },  {  "name": "TRANSACTION_DATETIME",  "value": "2021-07-30T07:31"  },  {  "name": "NETWORK_TRANSACTION_ID",  "value": "123456789012345"  }  ] } |
+Sample Response – Capture of Authorization    
+```json
 
+{
+   "fdCaptureId":"662c9b5c27ea4b3c9627dcf1035c4fa8",
+   "status":"APPROVED",
+   "requestedAmount":10,
+   "approvedAmount":10,
+   "currencyCode":{
+      "code":"USD",
+      "number":840
+   },
+   "transactionDateTime":"2021-06-30T08:31:05-0400",
+   "hostExtraInfo":[
+      {
+         "name":"APPROVAL_NUMBER",
+         "value":"338162"
+      },
+      {
+         "name":"SEQUENCE_NUMBER",
+         "value":"321338"
+      },
+      {
+         "name":"HOST_RESPONSE_CODE",
+         "value":"0"
+      },
+      {
+         "name":"HOST_RESPONSE_MESSAGE",
+         "value":"APPROVED 338162"
+      },
+      {
+         "name":"TRANSACTION_DATETIME",
+         "value":"2021-07-30T07:31"
+      },
+      {
+         "name":"NETWORK_TRANSACTION_ID",
+         "value":"123456789012345"
+      }
+   ]
+}
+```
 ### Sample Response (400 – Bad Request)
 
-| Sample Error Response                                                                                                                                           |
-|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| {  "code":" 272761",  "message":"Capture transaction failed.",  "category":"common",  "developerInfo":{  "developerMessage":" Capture transaction failed." } }  |
+Sample Error Response                                                                                                                             
+```json
+{
+   "code":" 272761",
+   "message":"Capture transaction failed.",
+   "category":"common",
+   "developerInfo":{
+      "developerMessage":" Capture transaction failed."
+   }
+}
+```
 
 ## Option 4: Sale with Venmo
 
