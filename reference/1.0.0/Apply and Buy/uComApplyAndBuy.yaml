@@ -74,6 +74,8 @@ produces:
 paths:
   /v1/customers/{fdCustomerId}/applybuy:
     post:
+    x-group-name: Recipient Accounts
+    x-proxy-name: Create Account
       tags:
         - applybuy
       description: Customer initiating apply and buy request for unique application status tracking number.
