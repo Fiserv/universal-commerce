@@ -25,7 +25,7 @@
         "releaseNotesPath": "/release-notes/release-notes-1.0.0.md",
         "apiSpecFileNames": [
           "Account Services/AccountServices",
-          "Apply and Buy/applyandbuy"
+          "Apply and Buy/ucomapplyandbuy"
         ]
       }
   ],
@@ -43,7 +43,7 @@
     "feature":[
       {
         "name": "sandBox",
-        "value": false
+        "value": true
       },
       {
         "name": "plugins",
