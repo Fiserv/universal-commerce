@@ -55,19 +55,19 @@
             - title: Retrieve an Account with a Nonce Token
               link:
         - title: Recipes
-          link: recipes/
+          link: /universal-commerce/tree/develop/recipes/
           open: true
           sections:
             - title: Paypal Venmo
-              link: Paypal_Venmo_guide.md
+              link: /universal-commerce/tree/develop/recipes/Paypal_Venmo_guide.md
             - title: Split Tender
-              link: Split_Tender_Payment.md
+              link: /universal-commerce/tree/develop/recipes/Split_Tender_Payment.md
             - title: Recipe 1 <Name>
-              link: Recipe-1.md
+              link: /universal-commerce/tree/develop/recipes/Recipe-1.md
             - title: Recipe 2 <Name>
-              link: Recipe-2.md
+              link: /universal-commerce/tree/develop/recipes/Recipe-2.md
             - title: Recipe 3 <Name>
-              link: Recipe-3.md
+              link: /universal-commerce/tree/develop/recipes/Recipe-3.md
             - title: Recipe 4 <Name>
-              link: Recipe-4.md
+              link: /universal-commerce/tree/develop/recipes/Recipe-4.md
 
