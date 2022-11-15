@@ -24,7 +24,8 @@
         "versionType": "major",
         "releaseNotesPath": "/release-notes/release-notes-1.0.0.md",
         "apiSpecFileNames": [
-          "Account Services/AccountServices"
+          "Account Services/AccountServices",
+          "Apply and Buy/applyandbuy"
         ]
       }
   ],
