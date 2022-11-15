@@ -7,7 +7,7 @@ info:
 servers:
 - url: https://int.api.firstdata.com/ucom
 tags:
-- name: accounts
+- name: a
   description: Operations and details about a vaulted accounts.
 paths:
   /v1/account-tokens:
@@ -515,7 +515,7 @@ paths:
       x-codegen-request-body-name: payload
     patch:
       x-group-name: Account Services
-      x-proxy-name: Update one or more account(s)
+      x-proxy-name: Update account
       x-default-example: FullRequest    
       tags:
       - accounts
@@ -704,6 +704,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     delete:
+      x-group-name: Account Services
+      x-proxy-name: Delete a vaulted account
       tags:
       - accounts
       summary: Delete a vaulted account
@@ -797,6 +799,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     patch:
+      x-group-name: Account Services
+      x-proxy-name: Update a vaulted account
       tags:
       - accounts
       summary: Update a vaulted account
@@ -895,6 +899,8 @@ paths:
       x-codegen-request-body-name: payload
   /v1/account-tokens/{nonceTokenId}:
     get:
+      x-group-name: Account Services
+      x-proxy-name: Retrieve account with nonce token
       tags:
       - accounts
       summary: Retrieve account with nonce token.

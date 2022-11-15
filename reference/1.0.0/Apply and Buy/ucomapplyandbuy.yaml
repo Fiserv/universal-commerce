@@ -15,8 +15,8 @@ tags:
 paths:
   /v1/customers/{fdCustomerId}/applybuy:
     post:
-      x-group-name: applybuy
-      x-proxy-name: Apply and Buy
+      x-group-name: Apply and Buy
+      x-proxy-name: Customer Request
 #      x-default-example: FullRequest  
       tags:
       - applybuy
@@ -121,6 +121,8 @@ paths:
       x-codegen-request-body-name: payload
   /v1/customers/{fdCustomerId}/applybuy/{auid}:
     get:
+      x-group-name: Apply and Buy
+      x-proxy-name: Application Status
       tags:
       - applybuy
       description: API to get the application status.
@@ -205,6 +207,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     delete:
+      x-group-name: Apply and Buy
+      x-proxy-name: Delete application Identifier
       tags:
       - applybuy
       description: API to delete the application identifier.
@@ -286,6 +290,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     patch:
+      x-group-name: Apply and Buy
+      x-proxy-name: Applybuy - Application Status
       tags:
       - applybuy
       description: The Issuer is used to update an application status and vault an
