@@ -95,10 +95,41 @@
 #     - Initial Version
 #-------------------------------------
 
-
-swagger: '2.0'
+openapi: 3.0.0
 info:
-  version: 0.2.2
+  version: 0.0.3
+#  title: Universal Commerce 
+#  description: Add description
+
+servers:
+  - url:  https://qa.api.firstdata.com
+    description: This url is for QA testing.
+  - url:  https://int.api.firstdata.com
+    description: This url is for customer testing.
+  - url: https://prod.api.firstdata.com
+    description: This is production url.
+
+#paths:
+#  /ucom/v1/recipients/{recipientId}/accounts:
+#    post:
+#      x-group-name: Tokenize an Account
+#      x-proxy-name: Tokenize Account
+#      x-child-product-name: Account Tokenization Service
+#      tags:
+#        - UCom Tokenization Service
+#      summary: Tokenization Service
+#      description: Recipient on Digital Disbursement can save their Payment Method(ACH, Debit, Prepaid, Paypal, Venmo, E check) which they can use to receive Payments later. DDP generates a unique token id for each Payment Method Vaulted.
+#      parameters:
+#        - {$ref: '#/components/parameters/ApiKeyHeader'}
+#        - {$ref: '#/components/parameters/TimestampHeader'}
+#        - {$ref: '#/components/parameters/AuthorizationHeader'}
+#        - {$ref: '#/components/parameters/ClientRequestIdHeader'}
+#        - {$ref: '#/components/parameters/AccessTokenHeader'}
+#        - {$ref: '#/components/parameters/RecipientIdPathVariable'
+
+#swagger: '2.0'
+#info:
+#  version: 0.2.2
   title: uCom Account Services
   description: Services related to uCom customer accounts.  Accounts can be credit, debit, loyalty, prepaid, etc.
 tags:
