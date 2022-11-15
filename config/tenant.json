@@ -25,7 +25,9 @@
         "releaseNotesPath": "/release-notes/release-notes-1.0.0.md",
         "apiSpecFileNames": [
           "Account Services/AccountServices",
-          "Apply and Buy/ucomapplyandbuy"
+          "Apply and Buy/ucomapplyandbuy",
+          "Authentication Services/authenticationservices"
+
         ]
       }
   ],
