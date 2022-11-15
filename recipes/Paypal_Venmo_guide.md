@@ -807,33 +807,132 @@ Timestamp:{{time}}
 
 ### Sample Request - Venmo Sale Transaction - Nonce
 
-| Sample Request – Venmo Sale Transaction - Nonce                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| {  "sale": {  "orderId": "1234567890124",  "merchantId": "MO45009483002",  "requestedAmount": 20,  "currencyCode": {  "number": 840  },  "fundingSource": {  "saveToVault": false,  "venmo": {  "nonce": "fake-venmo-account-nonce"  }  }  },  "deviceInfo": {  "id": "896e6893-51a0-4d8b-aecc-dfcc9945e0e4",  "kind": "mobile",  "details": [  {  "provider": "Venmo",  "dataCapture": {  "rawData": "aaaaaXREUVZGRlFYaMV",  "dataEventId": "66f021fb-c7f0-4271-ad68-f66944b71dfd",  "captureTime": "2021-05-25T11:49:54.855Z"  },  "dataDynamic": {  "captureTime": "2021-05-25T11:49:54.855Z"  }  }  ]  } } |
-
+Sample Request – Venmo Sale Transaction - Nonce                                                                                                                     
+```json
+{
+   "sale":{
+      "orderId":"1234567890124",
+      "merchantId":"MO45009483002",
+      "requestedAmount":20,
+      "currencyCode":{
+         "number":840
+      },
+      "fundingSource":{
+         "saveToVault":false,
+         "venmo":{
+            "nonce":"fake-venmo-account-nonce"
+         }
+      }
+   },
+   "deviceInfo":{
+      "id":"896e6893-51a0-4d8b-aecc-dfcc9945e0e4",
+      "kind":"mobile",
+      "details":[
+         {
+            "provider":"Venmo",
+            "dataCapture":{
+               "rawData":"aaaaaXREUVZGRlFYaMV",
+               "dataEventId":"66f021fb-c7f0-4271-ad68-f66944b71dfd",
+               "captureTime":"2021-05-25T11:49:54.855Z"
+            },
+            "dataDynamic":{
+               "captureTime":"2021-05-25T11:49:54.855Z"
+            }
+         }
+      ]
+   }
+}
+```
 ### Sample Response (201 – Created)
 
-| Sample Response –Venmo Sale Transaction - Nonce                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| {  "fdSaleId": "8b16126b29e548c7bb14fe877fff88ac",  "status": "APPROVED",  "orderId": "1234567890124",  "requestedAmount": 20,  "approvedAmount": 20,  "currencyCode": {  "code": "USD",  "number": 840  },  "partialPaymentAllowed": true,  "transactionDateTime": "2021-05-24T08:19:07-0400",  "fundingSource": {  "type": "VAULTED_ACCOUNT",  "vaultedAccount": {  "fdAccountId": "8a7f0d8c798e7cf701799e4c81d10821",  "type": "VENMO"  },  "venmo": {  "token": {  "tokenId": "7481631140129424",  "tokenProvider": "TRANS_ARMOR",  "expiryDate": {  "month": "08",  "year": "30"  }  }  }  },  "hostExtraInfo": [  {  "name": "APPROVAL_NUMBER",  "value": "269482"  },  {  "name": "SEQUENCE_NUMBER",  "value": "264745"  },  {  "name": "HOST_RESPONSE_CODE",  "value": "2"  },  {  "name": "HOST_RESPONSE_MESSAGE",  "value": "APPROVED 269482"  },  {  "name": "TRANSACTION_DATETIME",  "value": "2021-05-24T08:19"  },  {  "name": "NETWORK_TRANSACTION_ID",  "value": "123456789012345"  }  ] } |
+Sample Response –Venmo Sale Transaction - Nonce      
+```json
+{
+   "fdSaleId":"8b16126b29e548c7bb14fe877fff88ac",
+   "status":"APPROVED",
+   "orderId":"1234567890124",
+   "requestedAmount":20,
+   "approvedAmount":20,
+   "currencyCode":{
+      "code":"USD",
+      "number":840
+   },
+   "partialPaymentAllowed":true,
+   "transactionDateTime":"2021-05-24T08:19:07-0400",
+   "fundingSource":{
+      "type":"VAULTED_ACCOUNT",
+      "vaultedAccount":{
+         "fdAccountId":"8a7f0d8c798e7cf701799e4c81d10821",
+         "type":"VENMO"
+      },
+      "venmo":{
+         "token":{
+            "tokenId":"7481631140129424",
+            "tokenProvider":"TRANS_ARMOR",
+            "expiryDate":{
+               "month":"08",
+               "year":"30"
+            }
+         }
+      }
+   },
+   "hostExtraInfo":[
+      {
+         "name":"APPROVAL_NUMBER",
+         "value":"269482"
+      },
+      {
+         "name":"SEQUENCE_NUMBER",
+         "value":"264745"
+      },
+      {
+         "name":"HOST_RESPONSE_CODE",
+         "value":"2"
+      },
+      {
+         "name":"HOST_RESPONSE_MESSAGE",
+         "value":"APPROVED 269482"
+      },
+      {
+         "name":"TRANSACTION_DATETIME",
+         "value":"2021-05-24T08:19"
+      },
+      {
+         "name":"NETWORK_TRANSACTION_ID",
+         "value":"123456789012345"
+      }
+   ]
+}
+
+```
 
 ### Sample Response (400 – Bad Request)
 
-| Sample Error Response                                                                                                                                                                                                                                                                                                                                           |
-|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|  {  "code": "272701",  "message": "Sale transaction failed",  "category": "payment",  "developerInfo": {  "developerMessage": "Sale transaction failed"  },  "hostExtraInfo": [  {  "name": "HOST_RESPONSE_CODE",  "value": "4"  },  {  "name": "HOST_RESPONSE_MESSAGE",  "value": "APPROVED 093096"  },  {  "name": "HOST_AVS_CODE",  "value": "AVS+Y"  }  ] } |
-
-## Appendix
-
-### HMAC Sample
-
-This sample code generates the signature for the header based upon the current time and the payload of the request. This is utilized in programs such as Postman (used in the example) as a “Pre-request script” and something similar should be executed when running any api request.
-
-| Pre-Request Script                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| var key = postman.getEnvironmentVariable('clientKey'); var secret = postman.getEnvironmentVariable('clientSecret');  var time = new Date().getTime(); var method = request.method;  var rawSignature = key + ":" + time; var requestBody = request.data;  if (method != 'GET' && method != 'DELETE') {  var payload_digest = CryptoJS.SHA256(requestBody);  var b64BodyContent = CryptoJS.enc.Base64.stringify(payload_digest);  rawSignature = rawSignature + ":" + b64BodyContent; }  var signature = CryptoJS.HmacSHA256(rawSignature, secret); postman.setEnvironmentVariable('time', time); postman.setEnvironmentVariable('signature', CryptoJS.enc.Base64.stringify(signature)); |
-
-For a reference on how to generate the HMAC in java as well as more information on its use please visit <https://urldefense.com/v3/__https://firstdatanp-ucomgateway.apigee.io/get-started/api-security__;!!P9vvK-4S!klYb7cex2sYjLCsA4GRJUFvExbQZrywC1P5CVgxDKtjOJukTl7F2dCHSrzp_MC63JElpyYHiGG_azhQf$  >
+Sample Error Response   
+```json
+{
+   "code":"272701",
+   "message":"Sale transaction failed",
+   "category":"payment",
+   "developerInfo":{
+      "developerMessage":"Sale transaction failed"
+   },
+   "hostExtraInfo":[
+      {
+         "name":"HOST_RESPONSE_CODE",
+         "value":"4"
+      },
+      {
+         "name":"HOST_RESPONSE_MESSAGE",
+         "value":"APPROVED 093096"
+      },
+      {
+         "name":"HOST_AVS_CODE",
+         "value":"AVS+Y"
+      }
+   ]
+}
+```
 
 ### HTTP Headers
 
@@ -852,21 +951,10 @@ For a reference on how to generate the HMAC in java as well as more information 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Content-Type:application/json Api-Key:{{key}} Timestamp:{{time}} Client-Request-Id: {{\$guid}} Authorization:HMAC {{signature}} access_token: {{tokenId}}  Content-Type: application/json Api-Key: pnQgbD4jjfp5Gu2eqA1i4VnzZtT9mW5I Timestamp: 1501621439636 Client-Request-Id: abded-12345-ddcce-4r45t Authorization:HMAC W5X9NAlPgSNsfQX55fXbXrk3arzL6KxcCTA6SrnxL+U= access_token: SPaAADBdzaMbmR7RU7QdftIFLGIa |
 
-## Upcoming Changes
-
-Business flow
-
-Other payment types added to step 5
-
-Hosted Pages additions?
 
 # How to do Vaulted Payment via Paypal/Venmo
 
-This flow is used if the partner support vaulting. The client generates the nonce from Paypal/Venmo and they does vaulting with Paypal/Venmo nonce, then do the transaction with vaulted account.
-
-**\*\*Business flow TBC\*\***
-
-**Prerequisites: None**
+Please use this flow if vaulting is enabled through uCom. The client generates a nonce from Paypal/Venmo and then does vaulting with Paypal/Venmo nonce, then preform the transaction with vaulted account.
 
 ## Step 1: Create a Customer
 
@@ -916,27 +1004,84 @@ Timestamp:{{time}}
 
 ### Sample Request - Minimum Passed Params
 
-| Sample Request – Minimum Passed Params                                |
-|-----------------------------------------------------------------------|
-| {  "customer": {  "externalId": "123abc456def890ghi098jkl765mno"  } } |
+```json
 
-### Sample Request
+{
+   "customer":{
+      "externalId":"123abc456def890ghi098jkl765mno"
+   }
+}
 
-| Sample Request – Customer profile creation                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| {  "customer": {  "externalId": "123abc456def890ghi098jkl765mno",  "name": {  "familyName": "Jensen",  "givenName": "Barbara",  "middleName": "Jane"  },  "displayName": "Babs Jensen",  "nickName": "Babs",  "emails": [  {  "value": "bjensen@example.com",  "type": "work",  "primary": true  }  ],  "addresses": [  {  "streetAddress": "100 Universal City Plaza",  "locality": "Hollywood",  "region": "CA",  "postalCode": "91608",  "country": "US"  }  ],  "phoneNumbers": [  {  "value": "1876543210",  "type": "mobile",  "primary": true  }  ]  } } |
+```
 
+### Sample Request – Customer profile creation
+
+```json
+{
+   "customer":{
+      "externalId":"123abc456def890ghi098jkl765mno",
+      "name":{
+         "familyName":"Jensen",
+         "givenName":"Barbara",
+         "middleName":"Jane"
+      },
+      "displayName":"Babs Jensen",
+      "nickName":"Babs",
+      "emails":[
+         {
+            "value":"bjensen@example.com",
+            "type":"work",
+            "primary":true
+         }
+      ],
+      "addresses":[
+         {
+            "streetAddress":"100 Universal City Plaza",
+            "locality":"Hollywood",
+            "region":"CA",
+            "postalCode":"91608",
+            "country":"US"
+         }
+      ],
+      "phoneNumbers":[
+         {
+            "value":"1876543210",
+            "type":"mobile",
+            "primary":true
+         }
+      ]
+   }
+}
+```
 ### Sample Response (201 – Created)
+```json
+{
+   "id":"a077e1383a334b4bb032b1358f2288cd",
+   "externalId":"extCustomerId5187841"
+}
 
-| Sample Response – Customer profile creation                                         |
-|-------------------------------------------------------------------------------------|
-| {  "id":"a077e1383a334b4bb032b1358f2288cd",  "externalId": "extCustomerId5187841" } |
+```
 
 ### Sample Response (400 – Bad Request)
 
-| Sample Error Response                                                                                                                                                                                                                                                    |
-|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| {  "code": "269902",  "message": " Invalid request format/data.",  "category": "common",  "developerInfo": {  "developerMessage": " Invalid request format/data.",  "fieldError": [  {  "field": " customer.externalId",  "message": "externalId is required"  }  ]  } } |
+Sample Error Response                                                                                                                                                                                                                                                    |
+```json
+{
+   "code":"269902",
+   "message":" Invalid request format/data.",
+   "category":"common",
+   "developerInfo":{
+      "developerMessage":" Invalid request format/data.",
+      "fieldError":[
+         {
+            "field":" customer.externalId",
+            "message":"externalId is required"
+         }
+      ]
+   }
+}
+
+```
 
 ## Step 2: Vault a Payment Method
 
