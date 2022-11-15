@@ -1,0 +1,454 @@
+openapi: 3.0.1
+info:
+  title: uCom Merchant Services
+  description: Services related to Merchant or Terminal operations
+  version: 0.2.2
+servers:
+- url: https://int.api.firstdata.com/ucom
+tags:
+- name: pos
+  description: Operations that interact with a POS
+paths:
+  /v1/partners/{partnerId}/stores/{storeLocationId}/closures:
+    post:
+      tags:
+      - pos
+      description: Create a close event at a POS system.  The close event triggers
+        subsequent activity on the payment host.
+      parameters:
+      - name: Api-Key
+        in: header
+        description: An API key is a string value passed by a client app to the API
+          proxies. The key uniquely identifies the client app.
+        required: true
+        schema:
+          type: string
+      - name: Timestamp
+        in: header
+        description: Epoch timestamp in the request initiating syste
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Authorization information for the request. Format- `HMAC {hmacToken}`
+        required: true
+        schema:
+          type: string
+      - name: Client-Token
+        in: header
+        description: Used to pass the original client OAuth token information given
+          in a client-credentials flow.  This field is only used when the server is
+          making the request and needs to link the transaction to a specific client.  Format-
+          `Bearer {access_token}`
+        schema:
+          type: string
+      - name: storeLocationId
+        in: path
+        description: Unique identifier provided for the merchant store id.
+        required: true
+        schema:
+          type: string
+      - name: partnerId
+        in: path
+        description: Unique identifier setup for the partner.
+        required: true
+        schema:
+          type: string
+      - name: Accept-Language
+        in: header
+        description: The Accept-Language header contains information about the language
+          preference of a user. This HTTP header is useful to multilingual sites for
+          deciding the best language to serve to the client. i.e en-US,fr-CA
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClosureRequest'
+        required: false
+      responses:
+        201:
+          description: Resource created
+          headers:
+            Location:
+              description: Location of newly created resource.
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClosureResponse'
+        400:
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        401:
+          description: Unauthorized
+          content: {}
+        409:
+          description: Conflict - The requested operation conflicts with the current
+            state of the identified resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: An unexpected server error occured.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-codegen-request-body-name: payload
+  /v1/partners/{partnerId}/stores/{storeLocationId}/batches:
+    get:
+      tags:
+      - pos
+      description: Return the active Batch details.
+      parameters:
+      - name: Api-Key
+        in: header
+        description: An API key is a string value passed by a client app to the API
+          proxies. The key uniquely identifies the client app.
+        required: true
+        schema:
+          type: string
+      - name: Timestamp
+        in: header
+        description: Epoch timestamp in the request initiating syste
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Authorization information for the request. Format- `HMAC {hmacToken}`
+        required: true
+        schema:
+          type: string
+      - name: Client-Token
+        in: header
+        description: Used to pass the original client OAuth token information given
+          in a client-credentials flow.  This field is only used when the server is
+          making the request and needs to link the transaction to a specific client.  Format-
+          `Bearer {access_token}`
+        schema:
+          type: string
+      - name: storeLocationId
+        in: path
+        description: Unique identifier provided for the merchant store id.
+        required: true
+        schema:
+          type: string
+      - name: partnerId
+        in: path
+        description: Unique identifier setup for the partner.
+        required: true
+        schema:
+          type: string
+      - name: Accept-Language
+        in: header
+        description: The Accept-Language header contains information about the language
+          preference of a user. This HTTP header is useful to multilingual sites for
+          deciding the best language to serve to the client. i.e en-US,fr-CA
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClosureResponse'
+        400:
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        401:
+          description: Unauthorized
+          content: {}
+        409:
+          description: Conflict - The requested operation conflicts with the current
+            state of the identified resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: An unexpected server error occured.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    ClosureRequest:
+      type: object
+      properties:
+        terminalId:
+          type: string
+          description: POS Terminal Identifier
+        employeeNumber:
+          type: string
+          description: Store employee number
+        terminalPasscode:
+          type: string
+          description: POS Terminal Passcode
+        batchSequenceNumber:
+          type: string
+          description: POS Batch sequence number
+        softwareVersion:
+          type: string
+          description: POS Software version
+        hardwareVersion:
+          type: string
+          description: POS hardware version
+        firwareVersion:
+          type: string
+          description: POS firware version
+        terminalTotal:
+          type: string
+          description: Net transaction amount for the given terminal
+        requestorTimestamp:
+          type: string
+          description: time stamp provided by POS
+        closureId:
+          type: string
+          description: unique Id generated by merchnat services for closure.
+        netAmount:
+          type: string
+          description: Net amount of transaction for closure.
+        totalsDate:
+          type: string
+          description: Total's date provide by POS.
+        batchNumber:
+          type: string
+          description: Store location's batch number
+        currencyCode:
+          $ref: '#/components/schemas/ISO-4217'
+      description: Transaction information sent to indicate a close event happened
+        at a location.  The close event triggers subsequent events on the payment
+        host.
+    ClosureResponse:
+      type: object
+      properties:
+        terminalTotal:
+          type: string
+          description: Net transaction amount for the given terminal
+        details:
+          type: array
+          items:
+            title: hostTotal
+            type: object
+            properties:
+              type:
+                type: string
+                description: Card Type
+              transactionTotal:
+                type: string
+                description: Net transaction amount for the given card type
+              transactionCount:
+                type: string
+                description: Transaction Count
+      description: Transaction information sent to indicate the host results of a
+        close event happened at a location.
+    BatchResponse:
+      type: object
+      properties:
+        batchNumber:
+          type: string
+          description: Store location's batch number
+          example: "1"
+        storeVendorId:
+          type: string
+          description: Store location's vendor Id
+          example: POS_PARTNER_ID
+        storeLocationId:
+          type: string
+          description: Store location Id
+          example: "9901"
+      description: Batch details
+    ISO-4217:
+      type: object
+      properties:
+        code:
+          type: string
+          example: USD
+          default: USD
+        number:
+          type: number
+          example: 840.0
+        digits:
+          type: number
+          example: 2.0
+        currency:
+          type: string
+          example: US Dollar
+          default: US Dollar
+      description: ISO 4217 currency format in which the balance is represented.
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Unique code representing the error.
+        message:
+          type: string
+          description: A generic description of the error condition.
+        category:
+          type: string
+          description: The resource associated with the error condition.
+        developerInfo:
+          type: object
+          properties:
+            developerMessage:
+              type: string
+              description: An elaborative description of the error description.
+            moreInfo:
+              type: string
+              description: Link to the error in Developer page.
+            fieldError:
+              type: array
+              description: Detailed information about message format errors.
+              items:
+                type: object
+                properties:
+                  field:
+                    type: string
+                    description: The property or attribute associated with the error
+                  message:
+                    type: string
+                    description: Information specific to a property or attribute.
+          description: Information that needs to be understood by the client developers
+            and should not be interpreted for application processing.
+      description: Model for error messaging
+      example:
+        code: "40000"
+        message: Example Error
+        category: example
+        developerInfo:
+          developerMessage: Invalid Message format in request payload
+          moreInfo: https://www.example.com/errors/40000
+          fieldError:
+          - field: example id
+            message: exampleId is mandatory
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BatchCreated:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BatchResponse'
+    Conflict:
+      description: Conflict - The requested operation conflicts with the current state
+        of the identified resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Created:
+      description: Resource created
+      headers:
+        Location:
+          description: Location of newly created resource.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ClosureResponse'
+    NoContent:
+      description: The request succeeded but thereâ€™s really nothing to show.
+      content: {}
+    NotFound:
+      description: Not Found - The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    OK:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ClosureResponse'
+    ServerError:
+      description: An unexpected server error occured.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized
+      content: {}
+  parameters:
+    AcceptLanguageParam:
+      name: Accept-Language
+      in: header
+      description: The Accept-Language header contains information about the language
+        preference of a user. This HTTP header is useful to multilingual sites for
+        deciding the best language to serve to the client. i.e en-US,fr-CA
+      schema:
+        type: string
+    ApiKeyParam:
+      name: Api-Key
+      in: header
+      description: An API key is a string value passed by a client app to the API
+        proxies. The key uniquely identifies the client app.
+      required: true
+      schema:
+        type: string
+    AuthorizationParam:
+      name: Authorization
+      in: header
+      description: Authorization information for the request. Format- `HMAC {hmacToken}`
+      required: true
+      schema:
+        type: string
+    ClientTokenParam:
+      name: Client-Token
+      in: header
+      description: Used to pass the original client OAuth token information given
+        in a client-credentials flow.  This field is only used when the server is
+        making the request and needs to link the transaction to a specific client.  Format-
+        `Bearer {access_token}`
+      schema:
+        type: string
+    MerchantIdParam:
+      name: merchantId
+      in: path
+      description: Unique identifier provided for the merchant profile.
+      required: true
+      schema:
+        type: string
+    PartnerIdParam:
+      name: partnerId
+      in: path
+      description: Unique identifier setup for the partner.
+      required: true
+      schema:
+        type: string
+    StoreLocationIdParam:
+      name: storeLocationId
+      in: path
+      description: Unique identifier provided for the merchant store id.
+      required: true
+      schema:
+        type: string
+    TimestampParam:
+      name: Timestamp
+      in: header
+      description: Epoch timestamp in the request initiating syste
+      required: true
+      schema:
+        type: string
