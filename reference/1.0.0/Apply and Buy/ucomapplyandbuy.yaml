@@ -15,9 +15,9 @@ tags:
 paths:
   /v1/customers/{fdCustomerId}/applybuy:
     post:
-      x-group-name: ucomapplyandbuy
-      x-proxy-name: applybuy
-      x-default-example: FullRequest  
+      x-group-name: applybuy
+      x-proxy-name: Apply and Buy
+#      x-default-example: FullRequest  
       tags:
       - applybuy
       description: Customer initiating apply and buy request for unique application
