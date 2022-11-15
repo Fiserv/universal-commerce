@@ -26,8 +26,8 @@
         "apiSpecFileNames": [
           "Account Services/AccountServices",
           "Apply and Buy/ucomapplyandbuy",
-          "Authentication Services/authenticationservices"
-
+          "Authentication Services/authenticationservices",
+          "Customer Services/customerservices"
         ]
       }
   ],
