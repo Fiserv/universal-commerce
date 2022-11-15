@@ -24,7 +24,7 @@
         "versionType": "major",
         "releaseNotesPath": "/release-notes/release-notes-1.0.0.md",
         "apiSpecFileNames": [
-          "AccountServices/Account Services"
+          "Account Services/AccountServices"
         ]
       }
   ],
