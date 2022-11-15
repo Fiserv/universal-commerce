@@ -7,7 +7,7 @@ info:
 servers:
 - url: https://int.api.firstdata.com/ucom
 tags:
-- name: a
+- name: Account Services
   description: Operations and details about a vaulted accounts.
 paths:
   /v1/account-tokens:
