@@ -68,8 +68,6 @@ produces:
 paths:
   /v1/customers:
     post:
-    x-group-name: Recipient Accounts
-    x-proxy-name: Create Account
       tags:
         - customers
       summary: Create a Customer Profile, a.k.a. 'register a customer'
