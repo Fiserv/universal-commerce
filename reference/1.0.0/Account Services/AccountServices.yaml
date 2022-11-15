@@ -14,7 +14,7 @@ paths:
     post:
       x-group-name: Account Services
       x-proxy-name: Tokenize an account
-      x-default-example: FullRequest
+      #x-default-example: FullRequest
       tags:
       - accounts
       summary: Tokenize an account
