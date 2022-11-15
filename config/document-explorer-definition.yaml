@@ -32,7 +32,7 @@
       link:
       open: true
       sections:
-        - title: Account Services
+        - title: Re-think naming conventions
           link: 
           open:
           sections:
@@ -54,18 +54,20 @@
               link:
             - title: Retrieve an Account with a Nonce Token
               link:
-        - title: Customer Services
-          link:
-          open:
+        - title: Recipes
+          link: recipes/
+          open: true
           sections:
-            - title: Create an Account
-              link:
-            - title: Update an Account
-              link:
-            - title: Delete an Account
-              link:
-            - title: Get all Accounts
-              link:
-            - title: Get Account Details
-              link:
+            - title: Paypal Venmo
+              link: Paypal_Venmo_guide.md
+            - title: Split Tender
+              link: Split_Tender_Payment.md
+            - title: Recipe 1 <Name>
+              link: Recipe-1.md
+            - title: Recipe 2 <Name>
+              link: Recipe-2.md
+            - title: Recipe 3 <Name>
+              link: Recipe-3.md
+            - title: Recipe 4 <Name>
+              link: Recipe-4.md
 
