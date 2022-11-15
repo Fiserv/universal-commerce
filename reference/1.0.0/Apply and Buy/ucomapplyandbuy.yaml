@@ -7,7 +7,7 @@ info:
 servers:
 - url: https://int.api.firstdata.com/ucom
 tags:
-- name: applybuy
+- name: Apply and Buy
   description: Operations related to receive customer and device details for application
     creation. Once the application created at uCom, customer submits kyc details to
     Issuer. The issuer validates the kyc and creates an account for vaulting in uCom
