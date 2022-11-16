@@ -16,6 +16,8 @@ tags:
 paths:
   /v1/txhistory/customers/{fdCustomerId}/transactions:
     get:
+      x-group-name: Transation History Services
+      x-proxy-name: Get sale transations    
       tags:
       - history
       summary: Get sale transaction details
@@ -102,6 +104,8 @@ paths:
                 $ref: '#/components/schemas/Error'
   /v1/txhistory/customers/{fdCustomerId}/transactions/{transactionId}:
     patch:
+      x-group-name: Transation History Services
+      x-proxy-name: Add note to transaction 
       tags:
       - history
       summary: Allows to add a note to the given transaction
@@ -197,8 +201,10 @@ paths:
       x-codegen-request-body-name: payload
   /v1/txhistory/customers/{fdCustomerId}/vouchers:
     get:
+      x-group-name: Transation History Services
+      x-proxy-name: Get redeemable voucher details
       tags:
-      - voucher
+      - Transation History Services
       summary: Get redeemable vouchers details
       description: List all vouchers (e.g. car wash) of a given user.
       parameters:
@@ -300,8 +306,10 @@ paths:
                 $ref: '#/components/schemas/Error'
   /v1/txhistory/customers/{fdCustomerId}/vouchers/{voucherId}:
     patch:
+      x-group-name: Transation History Services
+      x-proxy-name: Update voucher status   
       tags:
-      - voucher
+      - Transation History Services
       summary: Update voucher status
       description: Update voucher status.
       parameters:
@@ -395,8 +403,10 @@ paths:
       x-codegen-request-body-name: payload
   /v1/txhistory/receipts/{transactionId}:
     get:
+      x-group-name: Transation History Services
+      x-proxy-name: Get raw receipt data 
       tags:
-      - receipt
+      - Transation History Services
       summary: Get raw receipt data
       description: Return the actual receipt data formatted by POS
       parameters:
