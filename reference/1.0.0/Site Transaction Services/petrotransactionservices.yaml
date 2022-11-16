@@ -11,6 +11,8 @@ tags:
 paths:
   /v1/petro-transactions:
     post:
+      x-group-name: Petro Transaction Services
+      x-proxy-name: Create petro transaction
       tags:
       - petro-transactions
       summary: Create a petro transaction
@@ -135,6 +137,8 @@ paths:
       x-codegen-request-body-name: payload
   /v1/petro-transactions/{fdTransactionId}:
     get:
+      x-group-name: Petro Transaction Services
+      x-proxy-name: Read petro transaction
       tags:
       - petro-transactions
       summary: Read a petro Transaction
@@ -219,6 +223,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     patch:
+      x-group-name: Petro Transaction Services
+      x-proxy-name: Update petro transaction
       tags:
       - petro-transactions
       summary: Update a petro transaction

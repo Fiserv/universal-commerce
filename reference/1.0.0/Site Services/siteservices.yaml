@@ -13,6 +13,8 @@ tags:
 paths:
   /v1/petro-sites:
     get:
+      x-group-name: Site Services
+      x-proxy-name: Get list of active sites
       tags:
       - petro-sites
       description: This API is to get the list of all active sites. Site summary details
@@ -107,6 +109,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     post:
+      x-group-name: Site Services
+      x-proxy-name: Onboard petroleum sites
       tags:
       - petro-sites
       description: This API will onboard petroleum sites to uCom system.
@@ -212,6 +216,8 @@ paths:
       x-codegen-request-body-name: payload
   /v1/petro-sites/{siteLocationId}:
     get:
+      x-group-name: Site Services
+      x-proxy-name: Get site information
       tags:
       - petro-sites
       description: This API is to get the site information from uCom system.
@@ -304,6 +310,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     put:
+      x-group-name: Site Services
+      x-proxy-name: Update full site replacement
       tags:
       - petro-sites
       description: This API will updates the sites configurations in uCom system with
@@ -403,6 +411,8 @@ paths:
                 $ref: '#/components/schemas/Error'
       x-codegen-request-body-name: payload
     delete:
+      x-group-name: Site Services
+      x-proxy-name: Disable sites
       tags:
       - petro-sites
       description: This API is to make the site disable from uCom system.
@@ -487,6 +497,8 @@ paths:
                 $ref: '#/components/schemas/Error'
   /v1/geolocation/sites:
     get:
+      x-group-name: Site Services
+      x-proxy-name: Get site coordinates
       tags:
       - geolocation
       description: Query for a list of sites based on geolocation coordinates and
@@ -603,6 +615,8 @@ paths:
                 $ref: '#/components/schemas/Error'
   /v1/venues:
     get:
+      x-group-name: Site Services
+      x-proxy-name: Retrieve venue information
       tags:
       - venue
       description: Retrives venue information.
@@ -704,6 +718,8 @@ paths:
                 $ref: '#/components/schemas/Error'
   /v1/venues/{venueId}/sections:
     get:
+      x-group-name: Site Services
+      x-proxy-name: Retrives venue information
       tags:
       - venue
       description: Retrives venue information.
@@ -795,6 +811,8 @@ paths:
                 $ref: '#/components/schemas/Error'
   /v1/venues/{venueId}/suites:
     get:
+      x-group-name: Site Services
+      x-proxy-name: Retrives venue information
       tags:
       - venue
       description: Retrives venue information.
@@ -886,6 +904,8 @@ paths:
                 $ref: '#/components/schemas/Error'
   /v1/venues/{venueId}/tables:
     get:
+      x-group-name: Site Services
+      x-proxy-name: Retrives venue information
       tags:
       - venue
       description: Retrives venue information.

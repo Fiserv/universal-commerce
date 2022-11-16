@@ -54,6 +54,7 @@
 # 0.0.1
 #     - Initial Version
 #-------------------------------------
+
 swagger: '2.0'
 info:
   version: 0.2.2
@@ -826,13 +827,8 @@ parameters:
     in: header
     type: string
 
-<<<<<<< HEAD
   MerchantIdParam:
     name: Merchant-Id
-=======
-  SubMerchantIdParam:
-    name: Sub-Merchant-Id
->>>>>>> fdf6dbba689a529dd2399978f8a72f2cf66737fc
     description: Merchant Id contains information about the merchant identifier
     in: header
     type: string

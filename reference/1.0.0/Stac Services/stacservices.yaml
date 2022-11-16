@@ -11,6 +11,8 @@ tags:
 paths:
   /v1/stac:
     post:
+      x-group-name: Stac Services
+      x-proxy-name: Create QR code
       tags:
       - stac
       summary: Create QR code based on funding source.

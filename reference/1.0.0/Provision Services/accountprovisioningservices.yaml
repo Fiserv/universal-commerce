@@ -12,6 +12,8 @@ tags:
 paths:
   /v1/customers/{fdCustomerId}/provisions:
     post:
+      x-group-name: Account Provisioning Services
+      x-proxy-name: Create new account
       tags:
       - provisions
       description: Provisioning is used to create a new account in a remote system.
@@ -114,6 +116,8 @@ paths:
       x-codegen-request-body-name: payload
   /v1/customers/{fdCustomerId}/provisions/{provisionId}:
     get:
+      x-group-name: Pre Paid Services
+      x-proxy-name: Provision OTP method
       tags:
       - provisions
       description: API to get the provision OTP method.
@@ -204,6 +208,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     delete:
+      x-group-name: Pre Paid Services
+      x-proxy-name: Delete the provisioned account
       tags:
       - provisions
       description: API to deleted the provisioned account.
@@ -285,6 +291,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     patch:
+      x-group-name: Pre Paid Services
+      x-proxy-name: Update account
       tags:
       - provisions
       description: Provisioning is used to update an account in a remote system.
