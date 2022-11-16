@@ -2,9 +2,7 @@
 
 This flow is used to support split payment. If the user wants to do partial payment, this flow guides how to do that.
 
-**\*\*Business flow TBC\*\***
-
-**Prerequisites:  Nonce token generation**
+Prerequisites for this flow:  Nonce token generation
 
 ## Option 1: Auth Flow
 
@@ -18,9 +16,9 @@ This flow will do the pre authorize the transaction.
 
 HTTP Method: POST
 
-Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/auths>
+Non-prod: https://int.api.firstdata.com/ucom/v1/payments/auths
 
-Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
+Prod: https://prod.api.firstdata.com/ucom/v1/payments/auths
 
 #### Parameters
 
