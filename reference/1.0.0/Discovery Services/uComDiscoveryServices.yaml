@@ -32,6 +32,8 @@ tags:
 paths:
   /v1/marketplace:
     get:
+      x-group-name: Discovery Services
+      x-proxy-name: Get partner mapping details
       tags:
       - marketplace
       summary: Retrieves partner details mapping
