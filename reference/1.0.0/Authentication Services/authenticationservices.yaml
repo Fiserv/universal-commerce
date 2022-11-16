@@ -10,7 +10,7 @@ tags:
 paths:
   /v1/threedsecure/authentication:
     post:
-    x-group-name: Authentication Services
+      x-group-name: Authentication Services
       x-proxy-name: Make 3ds authentication
       tags:
       - threedsecure
@@ -42,7 +42,7 @@ paths:
 
   /v1/threedsecure/authentication/{authenticationId}:
     patch:
-    x-group-name: Authentication Services
+      x-group-name: Authentication Services
       x-proxy-name: Update 3ds authentication
       tags:
       - threedsecure
