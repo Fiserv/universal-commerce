@@ -41,7 +41,7 @@
 	  "Site Services/siteservices",
 	  "Site Transaction Services/petrotransactionservices",
 	  "Stac Services/stacservices",
-	  "Transaction History Services/transactionhistoryservices"
+	  "Transaction History Services/transactionhistoryservices",
 	  "Value Add Services/valiueaddservices"
         ]
       }
