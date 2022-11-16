@@ -60,8 +60,7 @@ Timestamp:{{time}}
 Client-Token:{{tokenId}}
 
 #### Sample Request - Authorization Transaction - Nonce
-
-Sample Request – Authorization Transaction - Nonce                                                                                                                                                                                                                                                   
+                                                                                        
 ```json
 
 {
