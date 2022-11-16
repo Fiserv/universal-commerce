@@ -28,6 +28,27 @@
           "Apply and Buy/ucomapplyandbuy",
           "Authentication Services/authenticationservices",
           "Customer Services/customerservices"
+	  "Discovery Services/uComDiscoveryServices"
+	  "Hosted Pages External/hostedpagesexternal"
+	  "Hosted Pages Internal/hostedpagesinternal"
+	  "Issuer Services/issuerservices"
+	  "Loyalty Transactions/loyaltyservices"
+	  "MAS/ucom_mas/uComMASMiscServices"
+	  "Merchant Services Internal/merchantservicesinternal"
+	  "Merchant Services/merchantservices"
+	  "Order Services/uComOrderServices"
+	  "Payment Services/paymentservices"
+	  "Prepaid Card Services/prepaidaccountservices"
+	  "Provision Services/accountprovisioningservices"
+	  
+	  "Site Services/siteservices"
+	  "Site Transaction Services Internal/uComSiteTransactionServices-Internal"
+	  "Site Transaction Services/petrotransactionservices"
+	  "Stac Services Internal/stacservicesinternal"
+	  "Stac Services/stacservices"
+	  "Three DS Services Internal/uComThreeDSServices-Internal"
+	  "Transaction History Services/transactionhistoryservices"
+	    
         ]
       }
   ],
