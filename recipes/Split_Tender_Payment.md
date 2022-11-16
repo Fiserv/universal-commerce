@@ -192,7 +192,7 @@ Sample Error Response
 
 #### Description
 
-This request will complete the transaction which has been pre authorized.
+This request will complete the transaction which has been pre-authorized.
 
 #### Endpoint URL
 
@@ -202,7 +202,7 @@ Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/auths/>{fdAuthorizatio
 
 Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>/{fdAuthorizationId}/captures
 
-\*Replace fdAuthorizationId with Auth transactionId .
+\*Replace fdAuthorizationId with Auth transactionId.
 
 #### Parameters
 
@@ -228,7 +228,7 @@ Timestamp:{{time}}
 
 #### Sample Request
 
-Sample Response – Capture of Authorization                                      
+Sample Request – Capture of Authorization                                      
 
 ```json
 
