@@ -14,6 +14,8 @@ tags:
 paths:
   /v1/loyalty/accounts:
     post:
+      x-group-name: Value Added Services
+      x-proxy-name: Get loyalty account details
       tags:
       - loyalty
       summary: Get loyalty account details
@@ -107,6 +109,9 @@ paths:
       x-codegen-request-body-name: payload
   /v1/loyalty/accounts/{requestId}:
     get:
+
+      x-group-name: Value Added Services
+      x-proxy-name: Get loyalty account details based on Request ID
       tags:
       - loyalty
       summary: Get loyalty account details based on request id
@@ -187,6 +192,8 @@ paths:
                 $ref: '#/components/schemas/Error'
   /v1/loyalty/accounts/send-verification:
     post:
+      x-group-name: Value Added Services
+      x-proxy-name: Initiate action against Request ID
       tags:
       - loyalty
       summary: Initiate some action against a loyalty account
@@ -278,6 +285,8 @@ paths:
       x-codegen-request-body-name: payload
   /v1/loyalty/transactions:
     post:
+      x-group-name: Value Added Services
+      x-proxy-name: Get Account Details
       tags:
       - loyalty
       summary: Get loyalty account details - account information, status
@@ -403,6 +412,8 @@ paths:
       x-codegen-request-body-name: payload
   /v1/value-add/available-offers:
     post:
+      x-group-name: Value Added Services
+      x-proxy-name: Create an Offer
       tags:
       - offers
       summary: Creates an offer event for a client
@@ -504,6 +515,8 @@ paths:
       x-codegen-request-body-name: payload
   /v1/value-add/available-offers/{availOffersTrxnId}:
     delete:
+      x-group-name: Value Added Services
+      x-proxy-name: Delete offer by Transaction ID
       tags:
       - offers
       summary: Deletes available offers by transaction id
@@ -581,6 +594,8 @@ paths:
                 $ref: '#/components/schemas/Error'
   /v1/value-add/select-offer:
     post:
+      x-group-name: Value Added Services
+      x-proxy-name: Obtain an offer
       tags:
       - offers
       summary: Obtains an offer with the loyalty host
@@ -661,6 +676,8 @@ paths:
       x-codegen-request-body-name: payload
   /v1/value-add/opt-ins/acknowledge:
     post:
+      x-group-name: Value Added Services
+      x-proxy-name: Submit opt-in consent
       tags:
       - opt-ins
       summary: Submits opt-in consents with the host
@@ -741,6 +758,8 @@ paths:
       x-codegen-request-body-name: payload
   /v1/value-add/opt-ins:
     post:
+      x-group-name: Value Added Services
+      x-proxy-name: Retrieve Consent information
       tags:
       - opt-ins
       summary: Retrieving the consent information for a given loyalty account from
