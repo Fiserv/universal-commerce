@@ -16,7 +16,7 @@ paths:
   /v1/customers/{fdCustomerId}/applybuy:
     post:
       x-group-name: Apply and Buy
-      x-proxy-name: Customer Request
+      x-proxy-name: Customer initiated request
 #      x-default-example: FullRequest  
       tags:
       - applybuy
