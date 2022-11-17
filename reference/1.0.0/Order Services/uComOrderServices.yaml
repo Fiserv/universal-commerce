@@ -52,6 +52,8 @@ tags:
 paths:
   /v1/orders:
     get:
+      x-group-name: Order Services
+      x-proxy-name: Return all orders
       tags:
         - Orders
       description: Returns all orders, but result set may be limited by server
@@ -90,6 +92,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     post:
+      x-group-name: Order Services
+      x-proxy-name: Return order information
       tags:
         - Orders
       parameters:
@@ -134,6 +138,8 @@ paths:
 
   /v1/orders/{orderId}:
     get:
+      x-group-name: Order Services
+      x-proxy-name: Get order Id
       tags:
         - Orders
       parameters:
@@ -170,6 +176,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     patch:
+      x-group-name: Order Services
+      x-proxy-name: Update existing order
+
       description: update existing order
       tags:
         - Orders
@@ -211,6 +220,8 @@ paths:
 
   /v1/orders/{orderId}/payments:
     post:
+      x-group-name: Order Services
+      x-proxy-name: Post payment information
       tags:
         - Orders
       parameters:
@@ -256,6 +267,8 @@ paths:
 
   /v1/orders/{orderId}/cancel:
     post:
+      x-group-name: Order Services
+      x-proxy-name: Order cancellation
       tags:
         - Orders
       description: Order cancelation request
@@ -302,6 +315,8 @@ paths:
 
   /v1/orders/{orderId}/refund:
     post:
+      x-group-name: Order Services
+      x-proxy-name: Order Refund
       tags:
         - Orders
       description: Order refund callback. This API can be used by merchants only
@@ -348,6 +363,8 @@ paths:
 
   /v1/orders/{orderId}/fulfillment:
     post:
+      x-group-name: Order Services
+      x-proxy-name: Oreder fulfillment
       tags:
         - Orders
       description: Order fulfillment callback. This API can be used by merchants only

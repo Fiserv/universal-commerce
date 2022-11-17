@@ -13,6 +13,8 @@ tags:
 paths:
   /v1/merchants/{merchantId}/closures:
     post:
+      x-group-name: Merchant Services
+      x-proxy-name: Create close event
       tags:
       - POS
       description: Create a close event at a POS system.  The close event triggers
@@ -106,6 +108,8 @@ paths:
       x-codegen-request-body-name: payload
   /v1/merchants:
     get:
+      x-group-name: Merchant Services
+      x-proxy-name: Search for Merchant
       tags:
       - Merchant
       description: Search for a merchant by location, venue, type and etc.
@@ -212,6 +216,8 @@ paths:
                 $ref: '#/components/schemas/Error'
   /v1/merchants/{merchantId}:
     get:
+      x-group-name: Merchant Services
+      x-proxy-name: Retrieve merchant by Id
       tags:
       - Merchant
       description: Retrieve a merchant by id
@@ -292,6 +298,8 @@ paths:
                 $ref: '#/components/schemas/Error'
   /v1/merchants/{merchantId}/ordering-windows:
     get:
+      x-group-name: Merchant Services
+      x-proxy-name: Retrieve merchant details
       tags:
       - Merchant
       description: Retrieve merchant ordering window details by id
@@ -372,6 +380,8 @@ paths:
                 $ref: '#/components/schemas/Error'
   /v1/merchants/{merchantId}/product-groups:
     get:
+      x-group-name: Merchant Services
+      x-proxy-name: Get merchant products by group
       tags:
       - Merchant
       description: Get merchant products organized by product groups
