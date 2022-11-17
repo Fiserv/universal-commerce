@@ -12,6 +12,8 @@ tags:
 paths:
   /v1/loyalty/accounts:
     get:
+      x-group-name: Loyalty Services
+      x-proxy-name: Get loyalty account details
       tags:
       - loyalty
       summary: Get loyalty account details
@@ -94,6 +96,8 @@ paths:
                 $ref: '#/components/schemas/Error'
   /v1/loyalty/accounts/actions:
     post:
+      x-group-name: Loyalty Services
+      x-proxy-name: Initiate action on account
       tags:
       - loyalty
       summary: Initiate some action against a loyalty account
@@ -188,6 +192,8 @@ paths:
       x-codegen-request-body-name: payload
   /v1/loyalty/transactions:
     get:
+      x-group-name: Loyalty Services
+      x-proxy-name: Get loyalty account details
       tags:
       - loyalty
       summary: Get loyalty account details - account information, status
@@ -304,6 +310,8 @@ paths:
                 $ref: '#/components/schemas/Error'
   /v1/customers/{fdCustomerId}/loyalties/{fdAccountId}/rewards:
     post:
+      x-group-name: Loyalty Services
+      x-proxy-name: Retrun loyalty offers
       tags:
       - loyalty
       summary: Returns loyalty offer(s) and puts corresponding loyalty units on hold.
@@ -411,6 +419,8 @@ paths:
       x-codegen-request-body-name: payload
   /v1/customers/{fdCustomerId}/loyalties/{fdAccountId}/rewards/{rewardsId}:
     delete:
+      x-group-name: Loyalty Services
+      x-proxy-name: Cancel loyalty rewards
       tags:
       - loyalty
       summary: Cancel Loyalty Rewards. (Internal)
@@ -494,6 +504,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     patch:
+      x-group-name: Loyalty Services
+      x-proxy-name: Finalize loyalty rewards
       tags:
       - loyalty
       summary: Finalize Loyalty Rewards. (Internal)

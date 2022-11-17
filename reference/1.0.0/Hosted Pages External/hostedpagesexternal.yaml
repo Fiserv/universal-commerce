@@ -12,6 +12,8 @@ tags:
 paths:
   /v1/hosted-pages/pages:
     get:
+      x-group-name: Hosted Pages
+      x-proxy-name: Get hosted pages
       tags:
       - hosted-pages
       description: This is the first url for any client application to consume to
@@ -83,6 +85,8 @@ paths:
                 $ref: '#/components/schemas/Error'
   /v1/hosted-pages/pages/{configId}:
     get:
+      x-group-name: Hosted Pages
+      x-proxy-name: Render hosted pages
       tags:
       - hosted-pages
       description: This is preformatted url from response of the first call '/v1/hosted-pages/pages'.
@@ -168,6 +172,8 @@ paths:
                 $ref: '#/components/schemas/Error'
   /v1/hosted-pages/pages/{configId}/contents:
     get:
+      x-group-name: Hosted Pages
+      x-proxy-name: Get page content
       tags:
       - hosted-pages
       description: This is preformatted url from response of the first call '/v1/hosted-pages/pages'.

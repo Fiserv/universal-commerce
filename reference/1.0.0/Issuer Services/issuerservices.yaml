@@ -12,6 +12,8 @@ tags:
 paths:
   /v1/customers/{fdCustomerId}/actions:
     post:
+      x-group-name: Issuer Services
+      x-proxy-name: Vault an account
       tags:
       - issuer-actions
       summary: Vault an account in uCom directly from the Issuer.

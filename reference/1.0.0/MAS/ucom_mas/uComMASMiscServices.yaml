@@ -17,6 +17,8 @@ tags:
 paths:
   /v1/segments:
     post:
+      x-group-name: MAS Services
+      x-proxy-name: Create new segment
       tags:
       - segment
       summary: Creates new segment
@@ -48,6 +50,8 @@ paths:
         500:
           $ref: '#/components/responses/ServerError'
     get:
+      x-group-name: MAS Services
+      x-proxy-name: Retrieve list of segments
       tags:
       - segment
       summary: Retrieve list of created segments
@@ -77,6 +81,8 @@ paths:
 
   /v1/segments/{segmentId}:
     get:
+      x-group-name: MAS Services
+      x-proxy-name: Get a segment
       tags:
       - segment
       summary: Get a segment
@@ -102,6 +108,8 @@ paths:
         500:
           $ref: '#/components/responses/ServerError'
     delete:
+      x-group-name: MAS Services
+      x-proxy-name: Delete a segment
       tags:
       - segment
       summary: Delete a segment
@@ -125,6 +133,8 @@ paths:
 
   /v1/segments/{segmentId}/addUser:
     post:
+      x-group-name: MAS Services
+      x-proxy-name: Add a user to a segment
       tags:
       - segment
       summary: Add an user to a segment
@@ -155,6 +165,8 @@ paths:
 
   /v1/segments/{segmentId}/removeUser:
     post:
+      x-group-name: MAS Services
+      x-proxy-name: Remove user
       tags:
       - segment
       summary: Remove an user from a segment
@@ -185,6 +197,8 @@ paths:
 
   /v1/notification/pushMessage:
     post:
+      x-group-name: MAS Services
+      x-proxy-name: Push a message to a segment
       tags:
       - notification
       summary: Push a message to a segment or an user
@@ -218,6 +232,8 @@ paths:
 
   /v1/armTriggers:
     post:
+      x-group-name: MAS Services
+      x-proxy-name: Create new arm trigger
       tags:
       - armtrigger
       summary: Creates new arm trigger
@@ -247,6 +263,8 @@ paths:
         500:
           $ref: '#/components/responses/ServerError'
     get:
+      x-group-name: MAS Services
+      x-proxy-name: Retrieve list of arm triggers
       tags:
       - armtrigger
       summary: Retrieve list of arm triggers
@@ -276,6 +294,8 @@ paths:
 
   /v1/armTriggers/{armTriggerId}:
     get:
+      x-group-name: MAS Services
+      x-proxy-name: Get an arm trigger
       tags:
       - armtrigger
       summary: Get an arm trigger
@@ -301,6 +321,8 @@ paths:
         500:
           $ref: '#/components/responses/ServerError'
     delete:
+      x-group-name: MAS Services
+      x-proxy-name: Delete an arm trigger
       tags:
       - armtrigger
       summary: Delete an arm trigger
