@@ -39,7 +39,7 @@
       link: docs/introduction/contact-us.md
     - title: Frequently Asked Questions
       link: docs/faq/faq.md
-#      open: true 
+      open: true 
 #- recipes:
 #    - title: How to Create, Read, Update, and Delete a Customer Profile
 #      link: recipes/customerRegistration.md
