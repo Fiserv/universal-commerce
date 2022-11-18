@@ -35,9 +35,9 @@ header:
     link: "/assets/images/Fiserv_Logo.jpg"
     altText: uCom
 featuredFeatures:
-  - title: REPLACEME
-    description:  REPLACEME
-    tags: ["REPLACEME", "REPLACEME", "REPLACEME"]
+  - title: Payments
+    description:  Making a payment is the most important item we can do in a payments gateway
+    tags: ["Payments", "uCom", "REPLACEME"]
     bullets: ["REPLACEME", "REPLACEME" ]  
     relatedDocs:
       - relatedDoc: 
