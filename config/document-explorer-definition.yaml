@@ -29,7 +29,7 @@
 ################################################################################
 - sections:
     - title: Introduction
-      link: docs/introduction/introduction.md
+      link: docs/introduction/contact-us.md
     - title: Create Customer
       link: docs/documentation/customerServicesCreateCustomer_v1.md
     - title: Payment Services Sales
@@ -38,8 +38,25 @@
       link: docs/introduction/contact-us.md
     - title: Frequently Asked Questions
       link: docs/faq/faq.md
-    - title: Recipes
-      link: recipes/
+      recipes:
+    - link: recipes/customerRegistration.md
+      title: How to Create, Read, Update, and Delete a Customer Profile
+      type: recipe
+    - link: recipes/guest_checkout.md
+      title: How to Make a Guest Checkout
+      type: recipe
+    - link: recipes/vault_credit_card_gift_card.md
+      title: How to Vault a Credit Card or Gift Card 
+      type: recipe
+    - link: recipes/duplicate_transactions.md
+      title: How to Avoid a Duplicate Transaction 
+      type: recipe
+    - link: recipes/Paypal_Venmo_guide.md
+      title: How to Make a Payment with Paypal or Venmo
+      type: recipe
+    - link: recipes/Split_Tender_Payment.md
+      title: How to Make a split Payment 
+      type: recipe
       open: true
       sections:
 #        - title: Create a Customer
