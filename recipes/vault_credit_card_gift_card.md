@@ -1,6 +1,6 @@
 # How to Vault a Credit Card or Gift Card 
 
-# Step 1: Create a customer profile using POST /v1/customers
+## Step 1: Create a customer profile using POST /v1/customers
 
 ## POST /v1/customers
 
@@ -26,7 +26,7 @@ Parameters
 }
 ```
 
-# Step 2: Retrieve Token & Encryption Key using POST - /v1/ tokens
+## Step 2: Retrieve Token & Encryption Key using POST - /v1/ tokens
 
 ## Retrieve Token & Encryption Key
 
@@ -72,7 +72,7 @@ Note: Either fdCustomerId or deviceInfo has to be provided
 }
 ```
 
-# Step 3: Obtain a Nonce 
+## Step 3: Obtain a Nonce 
 
 **Here you will have 2 options to obtain a nonce:** 
 
@@ -150,7 +150,7 @@ Client-Request-Id: - <clientRequestId>
 
   ```
   
-# Step 4: Create an Account using POST /v1/customers/{fdCustomerId}/accounts
+## Step 4: Create an Account using POST /v1/customers/{fdCustomerId}/accounts
 
 ## POST /v1/customers/{fdCustomerId}/accounts 
 
