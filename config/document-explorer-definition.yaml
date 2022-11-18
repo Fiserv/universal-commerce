@@ -28,32 +28,39 @@
 # the delivery of this work
 ################################################################################
 - sections:
-    - title: Will restructure this
-      link:
+    - title: Introduction
+      link: docs/introduction/introduction.md
+    - title: Create Customer
+      link: docs/documentation/customerServicesCreateCustomer_v1.md
+    - title: Payment Services Sales
+      link: docs/documentation/paymentServicesSales_v1.md
+    - title: The Matrix
+      link: docs/introduction/contact-us.md
+    - title: Frequently Asked Questions
+      link: docs/faq/faq.md
+    - title: Recipes
+      link: recipes/
       open: true
       sections:
-        - title: Re-think naming conventions
-          link: 
-          open:
-          sections:
-            - title: Retrieve Token & Encryption Key
-              link:
-            - title: Tokenize an Account
-              link:
-            - title: Tokenize an Account with Nonce
-              link:
-            - title: Vault an Account
-              link:
-            - title: Get a List of Accounts
-              link:
-            - title: Get Account Details
-              link:
-            - title: Update a Vaulted Account
-              link:
-            - title: Delete a Vaulted Account
-              link:
-            - title: Retrieve an Account with a Nonce Token
-              link:
+#        - title: Create a Customer
+#          link: /docs/documentation/customerServicescrearecustomer_v1.md
+#            - title: Retrieve Token & Encryption Key
+#              link:
+#            - title: Tokenize an Account
+#              link:
+#            - title: Tokenize an Account with Nonce
+#              link:
+#            - title: Vault an Account
+#              link:
+#            - title: Get a List of Accounts
+#              link:
+#            - title: Get Account Details
+#              link:
+#            - title: Update a Vaulted Account
+#            - title: Delete a Vaulted Account
+#              link:
+#            - title: Retrieve an Account with a Nonce Token
+#              link:
  #       - title: Recipes
  #         link: /universal-commerce/tree/develop/recipes/
  #         open: true
