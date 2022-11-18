@@ -27,7 +27,7 @@
 # are granted or extended by this work or
 # the delivery of this work
 ################################################################################
-- sections: 
+  - sections: 
     - title: Introduction
       link: docs/introduction/contact-us.md
     - title: Create Customer
