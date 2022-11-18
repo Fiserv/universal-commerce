@@ -38,8 +38,7 @@
       link: docs/introduction/contact-us.md
     - title: Frequently Asked Questions
       link: docs/faq/faq.md
-      open: true 
-
+#      open: true 
 - recipes:
     - title: How to Create, Read, Update, and Delete a Customer Profile
       link: recipes/customerRegistration.md
@@ -53,7 +52,7 @@
       link: recipes/Paypal_Venmo_guide.md
     - title: How to Make a split Payment 
       link: recipes/Split_Tender_Payment.md
-      open: false
+      open: true
 #      sections:
 #        - title: Create a Customer
 #          link: /docs/documentation/customerServicescrearecustomer_v1.md
