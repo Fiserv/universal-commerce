@@ -1,4 +1,4 @@
-# Dev Studio - Sample Template repo
+# Connected Commerce
 
 This repo contains the content for tenants of Developer Studio.
 
