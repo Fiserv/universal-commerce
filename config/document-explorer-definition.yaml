@@ -38,7 +38,7 @@
       link: docs/introduction/contact-us.md
     - title: Frequently Asked Questions
       link: docs/faq/faq.md
-      recipes:
+- recipes:
     - link: recipes/customerRegistration.md
       title: How to Create, Read, Update, and Delete a Customer Profile
       type: recipe
@@ -58,7 +58,7 @@
       title: How to Make a split Payment 
       type: recipe
       open: true
-      sections:
+#      sections:
 #        - title: Create a Customer
 #          link: /docs/documentation/customerServicescrearecustomer_v1.md
 #            - title: Retrieve Token & Encryption Key
