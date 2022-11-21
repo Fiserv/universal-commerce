@@ -1,4 +1,4 @@
-# Connected Commerce
+# Connected Commerce (Universal Commerce)
 
 This repo contains the content for tenants of Developer Studio.
 
