@@ -2,7 +2,7 @@
 
 ## Here are few common questions that may help you.
 
- Q: How can I set up new Tenant ?
+ Q: How can I set up new Tenant testing?
     
 A: Please refer to our documentation section for setting up new tenant. [Setup Tenant]
 
