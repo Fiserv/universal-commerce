@@ -4,7 +4,7 @@
 
  Q: How can I set up new Tenant?
     
-A: Please refer to our documentation section for setting up new tenant. [Setup Tenant]
+A: Please refer to our documentation section for setting up new Tenant. [Setup Tenant]
 
 Q: How can I register new Tenant?
 
