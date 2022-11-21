@@ -953,8 +953,7 @@ components:
       properties:
         code:
           type: string
-          description: Indicates offer status code, NOT_ACTIVATED | ACTIVATED | REDEEMED
-            | DECLINED | CANCELLED | FAILED
+          description: Indicates offer status code, NOT_ACTIVATED | ACTIVATED | REDEEMED | DECLINED | CANCELLED | FAILED
         statusInfo:
           minItems: 0
           uniqueItems: true
