@@ -1,7 +1,7 @@
 
 # How to make a guest checkout? 
 
-Making a guest checkout, or an anonymous checkout, as its often referred to, is a fairly simple process. A few bits of a data are needed to successfully process an anonymous checkout/order. However. For starters, an orderId, merchantId, or storeId (depending on the configuration), and requested amount are needed to initiate a guest checkout. 
+Making a guest checkout, or an anonymous checkout, as its often referred to, is a fairly simple process in uCom. A few bits of data are needed to successfully process an anonymous checkout or order, however. For starters, an orderId, merchantId, or storeId (depending on the configuration), and the requested amount are needed to complete a guest checkout. Below, we will break down what each field means and what kind of information is needed to successfully perform an anonymous transaction. 
 
 ## Step 1: Generate an order ID 
 
@@ -11,15 +11,14 @@ In order to perform a guest checkout or sale using the ucom/v1/payments/sales AP
 
 ### Sample Value 
 
-| Sample Request -Create Recipient-Consumer
 ```json
 "orderId":"34548sdfdsfer769" 
 ```
-## Step 2: Pass through Merchant ID or Store ID
+## Step 2: Pass Through the Merchant ID or Store ID 
 
 ### Description
 
-The sales API call requires either a merchant ID (MID) or store ID in the body to identify the merchant or store making the transaction. The MID or store ID need to be configured and provided by Fiserv. 
+The sales API call requires either a merchant ID (MID) or store ID in the body to identify the merchant or store making the transaction. The MID or store ID need to be configured and to be provided by Fiserv. 
 
 ### Sample Value
 
@@ -27,25 +26,25 @@ The sales API call requires either a merchant ID (MID) or store ID in the body t
 "merchantId":"1120542230"
 ```
 
-The minimal request can be any single entity that requires updating, any of the objects or entities in the parameters will work here. 
-
 ## Step 3: Provide the Requested Amount 
 
 ### Description
 
-An amount is needed to process a guest checkout transaction. This value must be the final price that the customer is required to pay for the goods or services received. Along with the requested amount field, a currency code is required based on the country and currency where the transaction is taking place. For example, to processor a payment using USD, simply use the code "840" as demonstrated below. 
+An amount is needed to process a guest checkout transaction. This value must be the final price that the customer is required to pay for the goods or services received. Along with the requested amount field, an ISO currency code is required based on the country and currency where the transaction is taking place. For example, to processor a payment using USD, simply use the code "840" as demonstrated below. 
 
 ### Sample Value
 
 ```json
-"requestedAmount":1, "currencyCode":{ "number":840
+"requestedAmount":1,
+ "currencyCode":{
+ "number":840
 ```
 
 ## Step 4: Provide a Funding Source
 
 ### Description
 
-This portion of the API call/payload will require a funding source or payment method to process the transaction. Since all credit card details need to encrypted, a nonce token is needed to mask the credit card details. A nonce could be obtained through the POST \- /v1/account\-tokens API call. There are several ways one could obtain a nonce, please refer to the implementation guide for the full process. 
+This portion of the API call/payload will require a funding source or payment method to process the transaction. Since all credit card details need to encrypted, a nonce token or TA Token are needed to mask the credit card details. A nonce could be obtained through the POST \- /v1/account\-tokens API call. There are several ways one could obtain a nonce, please refer to the implementation guide for the full process. 
 
 ### Sample Value (Nonce) 
 ```json
@@ -61,7 +60,7 @@ This portion of the API call/payload will require a funding source or payment me
 
 ### Description
 
-This is sample sales API payload that combines all of the previous steps. 
+This is a sample sales API payload that combines all of the previous steps. 
 
 ### Endpoint URL 
 
