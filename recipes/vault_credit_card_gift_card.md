@@ -79,7 +79,7 @@ Note: Either fdCustomerId or deviceInfo has to be provided
 
 ## 1) Encrypting PAN details using POST - /v1/account-tokens
 
-### HTTP Header parameters for this API
+## HTTP Header parameters for this API
 
 Authorization: - Bearer <Oauth Token ID> <br>
 Api-Key:-  <apiKey> <br>
@@ -147,9 +147,7 @@ Client-Request-Id: - <clientRequestId> <br>
 
   ```
   
-## Step 4: Create an Account using POST /v1/customers/{fdCustomerId}/accounts
-
-## POST /v1/customers/{fdCustomerId}/accounts 
+## Step 4: Create an Account using POST /v1/customers/{fdCustomerId}/accounts API call
 
 ## HTTP Header parameter for this API
 
