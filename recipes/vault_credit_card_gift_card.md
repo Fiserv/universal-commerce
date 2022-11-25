@@ -2,8 +2,6 @@
 
 ## Step 1: Create a customer profile using POST /v1/customers
 
-## POST /v1/customers
-
 Parameters
 
 | Name| Data Type| Parameter Type| Required| Max Length
@@ -28,8 +26,6 @@ Parameters
 
 ## Step 2: Retrieve Token & Encryption Key using POST - /v1/ tokens
 
-## Retrieve Token & Encryption Key
-
 ## Parameters
 
 | Name| Data Type| Parameter Type| Required| Max Length
@@ -39,6 +35,7 @@ Parameters
 
 Note: Either fdCustomerId or deviceInfo has to be provided
 ## Sample Request with fdcustomerID
+
 ```json
 {
     "token": {
@@ -84,10 +81,10 @@ Note: Either fdCustomerId or deviceInfo has to be provided
 
 ## HTTP Header parameters for this API
 
-Authorization: - Bearer <Oauth Token ID>
-Api-Key:-  <apiKey>
-Timestamp:- <timestamp>
-Client-Request-Id: - <clientRequestId>
+Authorization: - Bearer <Oauth Token ID> <br>
+Api-Key:-  <apiKey> <br>
+Timestamp:- <timestamp> <br>
+Client-Request-Id: - <clientRequestId> <br>
 
 ## Encrypted PAN details for Generating Nonce.
 
@@ -150,9 +147,7 @@ Client-Request-Id: - <clientRequestId>
 
   ```
   
-## Step 4: Create an Account using POST /v1/customers/{fdCustomerId}/accounts
-
-## POST /v1/customers/{fdCustomerId}/accounts 
+## Step 4: Create an Account using POST /v1/customers/{fdCustomerId}/accounts API call
 
 ## HTTP Header parameter for this API
 
