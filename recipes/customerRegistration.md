@@ -7,7 +7,7 @@
 
 Create a Customer Profile (Customer Registration)
 
-Registering a customer in the uCom system results in a unique identifier 'fdCustomerId' that is used in subsequent operations like vaulting a payment account and making mobile payments. This request will create a recipient for card vaulting or payment purposes. This is always the first step that needs to be taken to do any transactions or calls on the system.
+Registering a customer in the uCom system results in a unique identifier 'fdCustomerId' that is used in subsequent operations like vaulting a payment account and making mobile payments. 
 
 ### Endpoint URL
 
@@ -160,7 +160,6 @@ Non-prod: [https://int.api.firstdata.com/ucom/v1/customers](https://int.api.firs
 
 Prod: [https://prod.api.firstdata.com/ucom/v1/customers](https://prod.api.firstdata.com/ucom/v1/customers)/{fdCustomerId}
 
-\*Replace _96328bee7fc64adc91e20064ca230e43_with fdCustomerId of recipient being modified.
 
 ### Parameters
 
@@ -239,8 +238,6 @@ HTTP Method: GET
 Non-prod: [https://int.api.firstdata.com/ucom/v1/customers/{fdCustomerId}](https://int.api.firstdata.com/ucom/v1/customers/%7BfdCustomerId%7D)
 
 Prod: [https://prod.api.firstdata.com/ucom/v1/customers/{fdCustomerId}](https://prod.api.firstdata.com/ucom/v1/customers/%7BfdCustomerId%7D)
-
-\*Replace _96328bee7fc64adc91e20064ca230e43_with fdCustomerId of recipient being retrieved.
 
 ### Headers
 
