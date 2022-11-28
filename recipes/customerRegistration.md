@@ -255,6 +255,8 @@ Timestamp:{{time}}
 This request is empty since it's a GET call
 
 ### Sample Response (200 – Created)
+
+```json
 {
     "id": "96328bee7fc64adc91e20064ca230e43",
     "externalId": "5876",
@@ -285,10 +287,11 @@ This request is empty since it's a GET call
         }
     ]
 }
-```json
+
+```
 
 ### Sample Response (400 – Bad Request)
-test
+
 ```json
 {
     "code": "279904",
@@ -304,7 +307,7 @@ test
 
 ### Description
 
-Delete a Customer Profile. Delete a customer profile from uCom system by providing the fdCustomerId
+Delete a customer profile from uCom system by providing the fdCustomerId
 
 ### Endpoint URL
 
@@ -330,7 +333,7 @@ This request is empty since it's a GET call
 
 ### Sample Response (204 – No Content)
 
-The request succeeded but there's really nothing to show.
+The request succeeded but there's nothing to show.
 
 ### Sample Response (400 – Bad Request)
 
@@ -358,30 +361,6 @@ The request succeeded but there's really nothing to show.
 
 ```json
 {
-    "accounts": [
-        {
-            "source": "DEBIT",
-            "card": {
-                "cardNumber": "400023******0013",
-                "nameOnCard": "Test Card",
-                "alias": "0013",
-                "billingAddress": {},
-                "expiryDate": {
-                    "month": "12",
-                    "year": "24"
-                },
-                "token": {
-                    "tokenId": "9bb19dda-6bba-4911-b86e-ebe0b5473833",
-                    "tokenProvider": "ENROLMENT VAULT"
-                },
-                "default": false
-            }
-        }
-    ]
-} 
-```
-```json
-{
     "code": "400051",
     "message": "Missing Parameter",
     "category": "common",
@@ -396,31 +375,6 @@ The request succeeded but there's really nothing to show.
     }
 }
 ```
-## Appendix
-
-### HMAC Sample
-
-This sample code generates the signature for the header based upon the current time and the payload of the request. This is utilized in programs such as Postman (used in the example) as a "Pre-request script" and something similar should be executed when running any api request.
-
-| Pre-Request Script |
-| --- |
-|
-```java
-var key = postman.getEnvironmentVariable('clientKey');var secret = postman.getEnvironmentVariable('clientSecret');
-var time = new Date().getTime();var method = request.method;
-var rawSignature = key + ":" + time;var requestBody = request.data;
-if (method != 'GET' && method != 'DELETE') 
-{
-var payload\_digest = CryptoJS.SHA256(requestBody);
-var b64BodyContent = CryptoJS.enc.Base64.stringify(payload\_digest);
-rawSignature = rawSignature + ":" + b64BodyContent;
-}
-var signature = CryptoJS.HmacSHA256(rawSignature, secret);
-postman.setEnvironmentVariable('time', time);
-postman.setEnvironmentVariable('signature', CryptoJS.enc.Base64.stringify(signature));
-```
-
-For a reference on how to generate the HMAC in java as well as more information on its use please visit [https://firstdatanp-ucomgateway.apigee.io/get-started/api-security](https://firstdatanp-ucomgateway.apigee.io/get-started/api-security)
 
 ### HTTP Headers
 
