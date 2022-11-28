@@ -1,5 +1,5 @@
 
-# How customer's profile works in UCOM
+# How to Create, Read, Update and Delete Customer Profiles
 
 ## Step 1: Customer Registration
 
