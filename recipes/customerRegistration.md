@@ -1,7 +1,7 @@
 
 # How to Create, Read, Update and Delete Customer Profiles
 
-## Step 1: Customer Registration
+## Create a Customer Profile
 
 ### Description
 
@@ -146,7 +146,7 @@ Timestamp:{{time}}
 }
 ```
 
-## Step 2: Customer Profile Updation
+## Update an Existing Customer Profile 
 
 ### Description
 
@@ -226,7 +226,7 @@ The request succeeded but there's really nothing to show.
 }
 ```
 
-## Step 3: Reading Customer Profile
+## Read/Get Customer Profile
 
 ### Description
 
@@ -303,7 +303,7 @@ This request is empty since it's a GET call
 }
 ```
 
-## Step 4: Customer De-Registration
+## Delete a Customer Profile
 
 ### Description
 
