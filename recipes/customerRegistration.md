@@ -21,7 +21,7 @@ Prod: [https://prod.api.firstdata.com/ucom/v1/customers](https://prod.api.firstd
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| externalId | String | Customer Id provided by the partner system. |
+| externalId | String | Customer ID provided by the partner system. |
 | familyName | String | Family name of the customer. |
 | givenName | String | Given name of the customer. |
 | middleName | String | Middle name of the customer. |
@@ -44,7 +44,7 @@ Api-Key:{{clientKey}} <br>
 Authorization:HMAC {{signature}} <br>
 Timestamp:{{time}} <br>
 
-### Sample Request (Min Info)
+### Sample Request (Minimal information)
 
 ```json
 {
@@ -71,7 +71,7 @@ Timestamp:{{time}} <br>
 }
 ```
 
-### Sample Request (Extra Info)
+### Sample Request (Additional Information)
 
 
 ```json
@@ -139,7 +139,6 @@ Timestamp:{{time}} <br>
     }
 }
 ```
-
 ## Update an Existing Customer Profile 
 
 ### Description
@@ -159,20 +158,19 @@ Prod: [https://prod.api.firstdata.com/ucom/v1/customers](https://prod.api.firstd
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| fdCustomerID | String | Customer Id provided by the partner system. |
-|  | |  |
+| fdCustomerID | String | Customer ID provided by the partner system. |
 
 \*This is always true for API flow.
 
 ### Headers
 
-Content-Type:application/json
-Client-Request-Id:{{$guid}}
-Api-Key:{{clientKey}}
-Authorization:HMAC {{signature}}
-Timestamp:{{time}}
+Content-Type:application/json <br>
+Client-Request-Id:{{$guid}} <br>
+Api-Key:{{clientKey}} <br>
+Authorization:HMAC {{signature}} <br>
+Timestamp:{{time}} <br>
 
-### Sample Request (Minimal Info)
+### Sample Request 
 
 ```json
 {
@@ -188,15 +186,13 @@ Timestamp:{{time}}
     }
 }
 ```
-
-The minimal request can be any single entity that requires updating, any of the objects or entities in the parameters will work here.
+This  request can update any entity that requires updating. Any of the objects or entities in the parameters (above) will work here.
 
 ### Sample Response (204 – No Content)
 
 The request succeeded but there's really nothing to show.
 
-
-### Sample Response (400)
+### Sample Response (400 – Bad Request)
 ```json
 {
     "code": "279904",
@@ -204,17 +200,6 @@ The request succeeded but there's really nothing to show.
     "category": "customer",
     "developerInfo": {
         "developerMessage": "Customer profile not found."
-    }
-}
-```
-
-```json
-{
-    "code": "270201",
-    "message": "Customer profile details update failed",
-    "category": "customer",
-    "developerInfo": {
-        "developerMessage": "Customer profile details update failed"
     }
 }
 ```
@@ -235,11 +220,11 @@ Prod: [https://prod.api.firstdata.com/ucom/v1/customers/{fdCustomerId}](https://
 
 ### Headers
 
-Content-Type:application/json
-Client-Request-Id:{{$guid}}
-Api-Key:{{clientKey}}
-Authorization:HMAC {{signature}}
-Timestamp:{{time}}
+Content-Type:application/json <br>
+Client-Request-Id:{{$guid}} <br>
+Api-Key:{{clientKey}} <br>
+Authorization:HMAC {{signature}} <br>
+Timestamp:{{time}} <br>
 
 ### Sample Request
 
@@ -298,7 +283,7 @@ This request is empty since it's a GET call
 
 ### Description
 
-Delete a customer profile from uCom system by providing the fdCustomerId
+Delete a customer profile from uCom system by providing the fdCustomerId.
 
 ### Endpoint URL
 
@@ -308,19 +293,15 @@ Non-prod: [https://int.api.firstdata.com/ucom/v1/customers/{fdCustomerId}](https
 
 Prod: [https://prod.api.firstdata.com/ucom/v1/customers/{fdCustomerId}](https://prod.api.firstdata.com/ucom/v1/customers/%7BfdCustomerId%7D)
 
-\*Replace _96328bee7fc64adc91e20064ca230e43_with fdCustomerId of recipient being deleted from uCom sytem.
-
 ### Headers
 
-Content-Type:application/json
-Client-Request-Id:{{$guid}}
-Api-Key:{{clientKey}}
-Authorization:HMAC {{signature}}
-Timestamp:{{time}}
+Content-Type:application/json <br>
+Client-Request-Id:{{$guid}} <br>
+Api-Key:{{clientKey}} <br>
+Authorization:HMAC {{signature}} <br>
+Timestamp:{{time}} <br>
 
 ### Sample Request
-
-This request is empty since it's a GET call
 
 ### Sample Response (204 – No Content)
 
