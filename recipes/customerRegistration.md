@@ -22,31 +22,27 @@ Prod: [https://prod.api.firstdata.com/ucom/v1/customers](https://prod.api.firstd
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | externalId | String | Customer Id provided by the partner system. |
-| familyName | String | Family Name of the Customer. |
-| givenName | String | Given Name of the Customer. |
-| middleName | String | Middle Name of the Customer. |
-| honorificPrefix | String | honorificPrefix of the Customer. |
+| familyName | String | Family name of the customer. |
+| givenName | String | Given name of the customer. |
+| middleName | String | Middle name of the customer. |
 | emails.value | String | Email address - No Pattern validation |
 | emails.primary | Boolean | boolean |
-| password | String | password |
-|  addresses.streetAddress |  String | addresses.streetAddress |
-|  addresses.localty |  String | addresses.localty (eg; Hollywood) |
-| addresses.region |  String | addresses.region (eg; CA, NY, IL, NE) |
-| addresses.postalCode |  String |  addresses.postalCode (eg: 68137) |
-| addresses.country | String |  addresses.postalCode (eg: ISO-3166-1 "apha-2" code US, IN, CA, UK) |
+|  addresses.streetAddress |  String | Street Address |
+|  addresses.localty |  String | Address localty (eg; Hollywood) |
+| addresses.region |  String | Address region or state (eg; CA, NY, IL, NE) |
+| addresses.postalCode |  String |  Address postalCode (eg: 68137) |
+| addresses.country | String |  Address Country (eg: ISO-3166-1 "apha-2" code US, IN, CA, UK)|
 | phoneNumbers,value | String |  e.g., 'tel:+1-201-555-0123' |
 | phoneNumbers,type | String |  home, mobile |
 | phoneNumbers,primary | Boolean |  primary = True/False |
-| DeviceInfo | Object | Supported for Fraud requirements;Vaulting as part of Paypal Requirement vaulting below entitydeviceInfo.details[0].dataDynamic.ipAddress;deviceInfo.details[0].dataApplication.country; |
-
-\*This is always true for API flow.
+| DeviceInfo | Object | Required for Fraud detect |
 
 ### Headers
-Content-Type:application/json
-Client-Request-Id:{{$guid}}
-Api-Key:{{clientKey}}
-Authorization:HMAC {{signature}}
-Timestamp:{{time}}
+Content-Type:application/json <br>
+Client-Request-Id:{{$guid}} <br>
+Api-Key:{{clientKey}} <br>
+Authorization:HMAC {{signature}} <br>
+Timestamp:{{time}} <br>
 
 ### Sample Request (Min Info)
 
