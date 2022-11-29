@@ -22,13 +22,11 @@ Prod: [https://prod.api.firstdata.com/ucom/v1/customers](https://prod.api.firstd
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | externalId | String | Customer Id provided by the partner system. |
-| --- | --- | --- |
-| familyName | String | FamilyName of the Customer. |
-| givenName | String | GivenName of the Customer. |
-| middleName | String | MiddleName of the Customer. |
+| familyName | String | Family Name of the Customer. |
+| givenName | String | Given Name of the Customer. |
+| middleName | String | Middle Name of the Customer. |
 | honorificPrefix | String | honorificPrefix of the Customer. |
-| honorificSuffix | String | honorificSuffix of the Customer |
-| emails.value | String | Email address - No Pattern validation; |
+| emails.value | String | Email address - No Pattern validation |
 | emails.primary | Boolean | boolean |
 | password | String | password |
 |  addresses.streetAddress |  String | addresses.streetAddress |
