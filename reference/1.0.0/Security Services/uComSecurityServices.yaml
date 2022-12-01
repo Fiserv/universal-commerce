@@ -74,6 +74,7 @@ produces:
 paths:
   /v1/signature-keys/{keyId}:
     get:
+    x-group-name: 
       tags:
         - security
       summary: Get uCom Gateway public signature key
