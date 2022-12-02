@@ -290,6 +290,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+    /v1/customers/{fdCustomerId}/provisions/{provisionId}:
     patch:
       x-group-name: Account Provisioning Services
       x-proxy-name: Update account
