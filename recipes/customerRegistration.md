@@ -1,5 +1,5 @@
 
-# How to Create, Read, Update and Delete Customer Profiles
+# How to Create, Read, Update and Delete Customer Profiles @icn-camera
 
 ## Create a Customer Profile
 
