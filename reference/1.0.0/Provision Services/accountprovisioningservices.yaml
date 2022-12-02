@@ -207,6 +207,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+    /v1/customers/{fdCustomerId}/provisions/{provisionId}:
     delete:
       x-group-name: Account Provisioning Services
       x-proxy-name: Delete the provisioned account
