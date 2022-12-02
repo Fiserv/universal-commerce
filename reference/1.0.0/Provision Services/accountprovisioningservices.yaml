@@ -114,7 +114,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       x-codegen-request-body-name: payload
-  /v1/customers/{fdCustomerId}/provisions/{provisionId}:
+    /v1/customers/{fdCustomerId}/provisions/{provisionId}:
     get:
       x-group-name: Account Provisioning Services
       x-proxy-name: Provision OTP method
@@ -207,7 +207,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-    /v1/customers/{fdCustomerId}/provisions/{provisionId}:
     delete:
       x-group-name: Account Provisioning Services
       x-proxy-name: Delete the provisioned account
@@ -291,7 +290,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-    /v1/customers/{fdCustomerId}/provisions/{provisionId}:
     patch:
       x-group-name: Account Provisioning Services
       x-proxy-name: Update account
