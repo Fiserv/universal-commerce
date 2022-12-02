@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.0.1Services
 info:
   title: uCom Prepaid Account Services
   description: Services related to prepaid cards such as creating a new prepaid card,

@@ -74,7 +74,8 @@ produces:
 paths:
   /v1/signature-keys/{keyId}:
     get:
-    x-group-name: 
+      x-group-name: Security Services
+      x-proxy-name: Get public signature key
       tags:
         - security
       summary: Get uCom Gateway public signature key
@@ -104,6 +105,8 @@ paths:
 
   /v1/encryption-keys/{keyId}:
     get:
+      x-group-name: Security Services
+      x-proxy-name: Get encryption key
       tags:
         - security
       summary: Get uCom Gateway encryption key
@@ -133,6 +136,8 @@ paths:
 
   /v1/tokens:
     post:
+      x-group-name: Security Services
+      x-proxy-name: Create security access token
       tags:
         - security
       summary: Create a security access token
@@ -176,6 +181,8 @@ paths:
 
   /v1/third-party-tokens:
     post:
+      x-group-name: Security Services
+      x-proxy-name: Create third party security access token
       tags:
         - security
       summary: Create a security access token
