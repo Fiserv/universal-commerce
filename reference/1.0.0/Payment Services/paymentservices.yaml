@@ -1602,9 +1602,9 @@ paths:
       x-codegen-request-body-name: payload
   /v1/payments/sales/{fdSaleId}/refunds:
     post:
-      x-group-name: Payment Services
-      x-proxy-name: Refunds
-      x-child-product-name: Refund a sale transaction
+      x-group-name: Refunds
+      x-proxy-name: Refund a Sale Transaction
+      x-child-product-name: Payment Services
       tags:
       - sale
       summary: Execute a refund on a payment capture.
