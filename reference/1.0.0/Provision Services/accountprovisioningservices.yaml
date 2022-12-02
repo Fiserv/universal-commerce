@@ -116,7 +116,7 @@ paths:
       x-codegen-request-body-name: payload
   /v1/customers/{fdCustomerId}/provisions/{provisionId}:
     get:
-      x-group-name: Pre Paid Services
+      x-group-name: Account Provisioning Services
       x-proxy-name: Provision OTP method
       tags:
       - provisions
@@ -208,7 +208,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     delete:
-      x-group-name: Pre Paid Services
+      x-group-name: Account Provisioning Services
       x-proxy-name: Delete the provisioned account
       tags:
       - provisions
@@ -291,7 +291,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     patch:
-      x-group-name: Pre Paid Services
+      x-group-name: Account Provisioning Services
       x-proxy-name: Update account
       tags:
       - provisions
