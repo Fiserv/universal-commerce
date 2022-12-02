@@ -1,6 +1,8 @@
 
 # How to Create, Read, Update and Delete Customer Profiles @icn-camera
 
+<img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/solid/crown.svg" width="50" height="50">
+
 ## Create a Customer Profile
 
 ### Description
