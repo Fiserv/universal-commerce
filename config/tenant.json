@@ -38,7 +38,7 @@
         "Merchant Services/merchantservices",
         "Order Services/uComOrderServices",
         "Payment Services/paymentservices",
-        "Prepaid Services/prepaidaccountservices",
+        "Prepaid Card Services/prepaidaccountservices",
         "Provision Services/accountprovisioningservices",
         "Security Services/uComSecurityServices",
         "Site Services/siteservices",
