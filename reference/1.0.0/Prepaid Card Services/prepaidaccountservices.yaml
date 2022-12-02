@@ -22,7 +22,7 @@ tags:
 paths:
   /v1/prepaids/balances:
     post:
-      x-group-name: Pre Paid Services
+      x-group-name: Prepaid Services
       x-proxy-name: Retrieve pre-paid balance
       tags:
       - balance
@@ -110,7 +110,7 @@ paths:
       x-codegen-request-body-name: payload
   /v1/prepaids/aggregate-balances:
     post:
-      x-group-name: Pre Paid Services
+      x-group-name: Prepaid Services
       x-proxy-name: Retrieve balance of anonymous card
       tags:
       - balance
@@ -198,7 +198,7 @@ paths:
       x-codegen-request-body-name: payload
   /v1/prepaids/balances/{requestId}:
     get:
-      x-group-name: Pre Paid Services
+      x-group-name: Prepaid Services
       x-proxy-name: Retrieve balance by identifier
       tags:
       - balance
@@ -289,7 +289,7 @@ paths:
                 $ref: '#/components/schemas/Error'
   /v1/prepaids/purchases:
     post:
-      x-group-name: Pre Paid Services
+      x-group-name: Prepaid Services
       x-proxy-name: create pre paid card
       tags:
       - purchase
@@ -388,7 +388,7 @@ paths:
       x-codegen-request-body-name: payload
   /v2/prepaids/purchases:
     get:
-      x-group-name: Pre Paid Services
+      x-group-name: Prepaid Services
       x-proxy-name: create pre paid card
       tags:
       - purchase
@@ -469,7 +469,7 @@ paths:
                 $ref: '#/components/schemas/Error'
   /v2/prepaids/multi-purchases:
     post:
-      x-group-name: Pre Paid Services
+      x-group-name: Prepaid Services
       x-proxy-name: create new prepaid cards
       tags:
       - purchase
@@ -574,7 +574,7 @@ paths:
       x-codegen-request-body-name: payload
   /v1/prepaids/void:
     post:
-      x-group-name: Pre Paid Services
+      x-group-name: Prepaid Services
       x-proxy-name: deduct/cashout pre paid balance
       tags:
       - void
@@ -667,7 +667,7 @@ paths:
       x-codegen-request-body-name: payload
   /v2/prepaids/void:
     get:
-      x-group-name: Pre Paid Services
+      x-group-name: Prepaid Services
       x-proxy-name: Service to deduct/cashout prepaid account
       tags:
       - void
@@ -748,7 +748,7 @@ paths:
                 $ref: '#/components/schemas/Error'
   /v2/prepaids/multi-void:
     post:
-      x-group-name: Pre Paid Services
+      x-group-name: Prepaid Services
       x-proxy-name: Service to deduct/cashout prepaid account
       tags:
       - void
@@ -858,7 +858,7 @@ paths:
       x-codegen-request-body-name: payload
   /v1/prepaids/purchases/{fdTransactionId}:
     patch:
-      x-group-name: Pre Paid Services
+      x-group-name: Prepaid Services
       x-proxy-name: Patch prepaid account
       tags:
       - purchase
@@ -952,7 +952,7 @@ paths:
       x-codegen-request-body-name: payload
   /v1/prepaids/purchases/{fdTransactionId}/void:
     post:
-      x-group-name: Pre Paid Services
+      x-group-name: Prepaid Services
       x-proxy-name: Void of a purchase transaction.
       tags:
       - purchase
@@ -1041,7 +1041,7 @@ paths:
       x-codegen-request-body-name: payload
   /v2/prepaids/purchases/{fdTransactionId}/void:
     post:
-      x-group-name: Pre Paid Services
+      x-group-name: Prepaid Services
       x-proxy-name: Void of a purchase transaction.
       tags:
       - purchase
@@ -1130,7 +1130,7 @@ paths:
       x-codegen-request-body-name: payload
   /v2/prepaids/purchases/{fdParentTransactionId}/multi-void:
     post:
-      x-group-name: Pre Paid Services
+      x-group-name: Prepaid Services
       x-proxy-name: Void of a purchase transaction.
       tags:
       - purchase
@@ -1225,7 +1225,7 @@ paths:
       x-codegen-request-body-name: payload
   /v1/prepaids/reloads:
     post:
-      x-group-name: Pre Paid Services
+      x-group-name: Prepaid Services
       x-proxy-name: Re-Load prepaid card
       tags:
       - reload
@@ -1324,7 +1324,7 @@ paths:
       x-codegen-request-body-name: payload
   /v2/prepaids/reloads:
     get:
-      x-group-name: Pre Paid Services
+      x-group-name: Prepaid Services
       x-proxy-name: Load funds in a vaulted prepaid card
       tags:
       - reload
@@ -1405,7 +1405,7 @@ paths:
                 $ref: '#/components/schemas/Error'
   /v2/prepaids/multi-reloads:
     post:
-      x-group-name: Pre Paid Services
+      x-group-name: Prepaid Services
       x-proxy-name: Load fundsto as vaulted prepaid card
       tags:
       - reload
@@ -1510,7 +1510,7 @@ paths:
       x-codegen-request-body-name: payload
   /v1/prepaids/reloads/{fdTransactionId}:
     patch:
-      x-group-name: Pre Paid Services
+      x-group-name: Prepaid Services
       x-proxy-name: Load funds into a vaulted prepaid card
       tags:
       - reload
@@ -1604,7 +1604,7 @@ paths:
       x-codegen-request-body-name: payload
   /v1/prepaids/reloads/{fdTransactionId}/void:
     post:
-      x-group-name: Pre Paid Services
+      x-group-name: Prepaid Services
       x-proxy-name: Void of a reoaded prepaid card
       tags:
       - reload
@@ -1693,7 +1693,7 @@ paths:
       x-codegen-request-body-name: payload
   /v2/prepaids/reloads/{fdTransactionId}/void:
     post:
-      x-group-name: Pre Paid Services
+      x-group-name: Prepaid Services
       x-proxy-name: Void a reload transaction on prepaid card
       tags:
       - reload
@@ -1782,7 +1782,7 @@ paths:
       x-codegen-request-body-name: payload
   /v2/prepaids/reloads/{fdParentTransactionId}/multi-void:
     post:
-      x-group-name: Pre Paid Services
+      x-group-name: Prepaid Services
       x-proxy-name: Void of a reloaded transaction
       tags:
       - reload
@@ -1883,7 +1883,7 @@ paths:
       x-codegen-request-body-name: payload
   /v1/prepaids/merges:
     post:
-      x-group-name: Pre Paid Services
+      x-group-name: Prepaid Services
       x-proxy-name: Merge balance from one vaulted prepaid card to another
       tags:
       - merge
@@ -1977,7 +1977,7 @@ paths:
       x-codegen-request-body-name: payload
   /v2/prepaids/merges:
     get:
-      x-group-name: Pre Paid Services
+      x-group-name: Prepaid Services
       x-proxy-name: Merge balance from one vaulted prepaid card to another
       tags:
       - merge
@@ -2059,7 +2059,7 @@ paths:
                 $ref: '#/components/schemas/Error'
   /v1/prepaids/merges/{fdTransactionId}/void:
     post:
-      x-group-name: Pre Paid Services
+      x-group-name: Prepaid Services
       x-proxy-name: Void of a merge transaction
       tags:
       - merge
@@ -2148,7 +2148,7 @@ paths:
       x-codegen-request-body-name: payload
   /v2/prepaids/merges/{fdTransactionId}/void:
     post:
-      x-group-name: Pre Paid Services
+      x-group-name: Prepaid Services
       x-proxy-name: Void of a merge transaction
       tags:
       - merge
@@ -2237,7 +2237,7 @@ paths:
       x-codegen-request-body-name: payload
   /v1/prepaids/transactions:
     post:
-      x-group-name: Pre Paid Services
+      x-group-name: Prepaid Services
       x-proxy-name: Retrieve transactions on a vaulted Prepaid Card
       tags:
       - transaction
@@ -2334,7 +2334,7 @@ paths:
       x-codegen-request-body-name: payload
   /v1/prepaids/txn-history:
     post:
-      x-group-name: Pre Paid Services
+      x-group-name: Prepaid Services
       x-proxy-name: Retrieve transactions on a vaulted Prepaid Card
       tags:
       - transaction
