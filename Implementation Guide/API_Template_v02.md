@@ -7,7 +7,7 @@
 .s1 { color: #080808;}
 .s2 { color: #080808;}
 .s3 { color: #0033b3;}
-.ln { color: #adadad; font-weight: normal; font-style: normal; }
+.ln { color: #adadad; font-weight: Bold; font-style: normal; }
 </style>
 </head>
 <body bgcolor="#ffffff">
@@ -21,7 +21,7 @@ Implementation Guide - Sample Spec Document</font>
 <a name="l3"><span class="ln">3    </span></a><span class="s2">api-reference, customer service, </span><span class="s1">[</span><span class="s2">Endpoint</span><span class="s1">]])]</span>
 <a name="l4"><span class="ln">4    </span></a><span class="s0">---</span>
 <a name="l5"><span class="ln">5    </span></a><span class="s3"># </span><span class="s2">First Data Universal Commerce Services - Client Name </span>
-<a name="l5"><span class="ln">5    </span></a><span class="s3"># </span><span class="s2">API Version - Version # </span>
+<a name="l5"><span class="ln">5    </span></a><span class="s3"># </span><span class="s2">REST API Specification</span>
 <a name="l5"><span class="ln">5    </span></a><span class="s3"># </span><span class="s2">Document Version #  </span>
 <a name="l5"><span class="ln">5    </span></a><span class="s3"># </span><span class="s2">Date</span>
 <a name="l21"><span class="ln">21   </span></a>
