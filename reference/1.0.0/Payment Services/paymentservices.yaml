@@ -1603,7 +1603,7 @@ paths:
   /v1/payments/sales/{fdSaleId}/refunds:
     post:
       x-group-name: Refunds
-      x-proxy-name: Refund a Sale Transaction
+      x-proxy-name: Refund a sale Transaction
       x-child-product-name: Payment Services
       tags:
       - sale
