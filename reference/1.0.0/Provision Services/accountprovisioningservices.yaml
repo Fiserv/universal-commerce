@@ -114,7 +114,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       x-codegen-request-body-name: payload
-    /v1/customers/{fdCustomerId}/provisions/{provisionId}:
     get:
       x-group-name: Account Provisioning Services
       x-proxy-name: Provision OTP method
