@@ -78,31 +78,51 @@ paths:
       x-group-name: Security Services
       x-proxy-name: Get public signature key
       tags:
-        - security
+      - security
       summary: Get uCom Gateway public signature key
-      description: Get uCom Gateway public key for validating message signatures.
       parameters:
         - in: path
           name: keyId
           type: string
           required: true
-          description: identifier of the public key used for signature verification.
+          content:
+            application/json:
+              schema:
+
+          description: identifier of the public key used for signature verification 
+
         - $ref: '#/parameters/ApiKeyParam'
         - $ref: '#/parameters/TimestampParam'
         - $ref: '#/parameters/AuthorizationParam'
         - $ref: '#/parameters/AcceptLanguageParam'
         - $ref: '#/parameters/SubMerchantIdParam'
+
       responses:
         200:
-          description: "OK"
-          schema:
-            $ref: '#/definitions/SignatureKey'
+           description: OK
+           content: 
+              application/json: 
+                schema:
+                  $ref: '#/definitions/SignatureKey'
         400:
-          $ref: '#/responses/BadRequest'
+            description: Bad Request
+            content:
+              application/json:
+                schema:
+                  $ref: '#/responses/BadRequest'
         404:
-          $ref: '#/responses/NotFound'
+            description: Not Found - The requested resource doesn't exist.
+            content:
+              application/json:
+                  schema:
+                    $ref: '#/responses/NotFound'
+            
         500:
-          $ref: '#/responses/ServerError'
+            description: An unexpected server error occurred
+            content:
+              application/json:
+                  schema:
+                    $ref: '#/responses/ServerError'
 
   /v1/encryption-keys/{keyId}:
     get:
@@ -115,7 +135,8 @@ paths:
       parameters:
         - in: path
           name: keyId
-          type: string
+          schema:
+            type: string
           required: true
           description: identifier of the public key used for field-level encryption.
         - $ref: '#/parameters/ApiKeyParam'
@@ -125,15 +146,30 @@ paths:
         - $ref: '#/parameters/SubMerchantIdParam'
       responses:
         200:
-          description: "OK"
-          schema:
-            $ref: '#/definitions/EncryptionKey'
+           description: OK
+           content: 
+              application/json: 
+                schema:
+                  $ref: '#/definitions/SignatureKey'
         400:
-          $ref: '#/responses/BadRequest'
+            description: Bad Request
+            content:
+              application/json:
+                schema:
+                  $ref: '#/responses/BadRequest'
         404:
-          $ref: '#/responses/NotFound'
+            description: Not Found - The requested resource doesn't exist.
+            content:
+              application/json:
+                  schema:
+                    $ref: '#/responses/NotFound'
+            
         500:
-          $ref: '#/responses/ServerError'
+            description: An unexpected server error occurred
+            content:
+              application/json:
+                  schema:
+                    $ref: '#/responses/ServerError'
 
   /v1/tokens:
     post:
@@ -148,7 +184,7 @@ paths:
         - $ref: '#/parameters/AcceptLanguageParam'
         - $ref: '#/parameters/SubMerchantIdParam'
         - name: payload
-          in: body
+        - in: body
           required: true
           schema:
             properties:
@@ -169,16 +205,31 @@ paths:
                 fdCustomerId: "bc5b70d996cb4bfebced3973880f8543"
               publicKeyRequired: true
       responses:
-        201:
-          $ref: '#/responses/TokenCreated'
+        200:
+           description: OK
+           content: 
+              application/json: 
+                schema:
+                  $ref: '#/definitions/SignatureKey'
         400:
-          $ref: '#/responses/BadRequest'
-        401:
-          $ref: '#/responses/Unauthorized'
-        409:
-          $ref: '#/responses/Conflict'
+            description: Bad Request
+            content:
+              application/json:
+                schema:
+                  $ref: '#/responses/BadRequest'
+        404:
+            description: Not Found - The requested resource doesn't exist.
+            content:
+              application/json:
+                  schema:
+                    $ref: '#/responses/NotFound'
+            
         500:
-          $ref: '#/responses/ServerError'
+            description: An unexpected server error occurred
+            content:
+              application/json:
+                  schema:
+                    $ref: '#/responses/ServerError'
 
   /v1/third-party-tokens:
     post:
@@ -202,18 +253,35 @@ paths:
               deviceInfo:
                 $ref: '#/definitions/DeviceInfo'
       responses:
-        201:
-          $ref: '#/responses/ThirdPartyTokenCreated'
+        200:
+           description: OK
+           content: 
+              application/json: 
+                schema:
+                  $ref: '#/definitions/SignatureKey'
         400:
-          $ref: '#/responses/BadRequest'
-        401:
-          $ref: '#/responses/Unauthorized'
-        409:
-          $ref: '#/responses/Conflict'
+            description: Bad Request
+            content:
+              application/json:
+                schema:
+                  $ref: '#/responses/BadRequest'
+        404:
+            description: Not Found - The requested resource doesn't exist.
+            content:
+              application/json:
+                  schema:
+                    $ref: '#/responses/NotFound'
+            
         500:
-          $ref: '#/responses/ServerError'
+            description: An unexpected server error occurred
+            content:
+              application/json:
+                  schema:
+                    $ref: '#/responses/ServerError'
 
 definitions:
+
+
 #-------------------------------------
 # Resource Models
 #-------------------------------------
@@ -759,7 +827,7 @@ definitions:
 #-------------------------------------
 # Responses
 #-------------------------------------
-responses:
+  responses:
 
   TokenCreated:
     description: Resource created
@@ -847,21 +915,21 @@ responses:
            required: false
            schema:
             type: string
-          description: Merchant Id contains information about the merchant identifier
+           description: Merchant Id contains information about the merchant identifier
 
     GrantTypeParam:
-          - in: header
-            name: GrantType 
-            required: true
-            schema:
-             type: string
-            description: Only supported value `client_credentials`.
+        - in: header
+          name: GrantType 
+          required: true
+          schema:
+            type: string
+          description: Only supported value `client_credentials`.
 
     TimestampParam:
-          - in: header
-            name: Timestamp
-            required: true
-            schema:
-              type: string
-            description: Epoch timestamp in the request initiating system
+        - in: header
+          name: Timestamp
+          required: true
+          schema:
+            type: string
+          description: Epoch timestamp in the request initiating system
     
