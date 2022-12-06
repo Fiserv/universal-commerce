@@ -33,8 +33,6 @@
         "Discovery Services/uComDiscoveryServices",
         "Hosted Pages External/hostedpagesexternal",
         "Issuer Services/issuerservices",
-        "Loyalty Transactions/loyaltyservices",
-        "MAS/ucom_mas/uComMASMiscServices",
         "Merchant Services/merchantservices",
         "Order Services/uComOrderServices",
         "Payment Services/paymentservices",
