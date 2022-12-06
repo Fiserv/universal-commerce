@@ -36,7 +36,7 @@
     - title: Payment Services Sales
       link: docs/documentation/paymentServicesSales_v1.md
     - title: Implementation Guide
-      link: Implementation Guide/API_Template_v02.md
+      link: docs/documentation/API_Template_v02.md
     - title: Frequently Asked Questions
       link: docs/faq/faq.md
       open: true 
