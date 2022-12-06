@@ -54,23 +54,24 @@
 # 0.0.1
 #     - Initial Version
 #-------------------------------------
-
-swagger: '2.0'
-info:
-  version: 0.2.2
-  title: uCom Security Services
-  description: Services related to managing security like access tokens and validation.
+openapi: 3.0.1
+info: 
+    version: 0.2.2
+    description: Services related to managing security like access tokens and validation
+    title: uCom Security Services
+servers: 
+- url: https://int.api.firstdata.com/ucom
 tags:
   - name: security
     description: Operations and details for API security services.
-host: int.api.firstdata.com
-basePath: /ucom
-schemes:
-  - https
-consumes:
-  - application/json
-produces:
-  - application/json
+#host: int.api.firstdata.com
+#basePath: /ucom
+#schemes:
+#  - https
+#consumes:
+#  - application/json
+#produces:
+#  - application/json
 paths:
   /v1/signature-keys/{keyId}:
     get:
@@ -808,49 +809,59 @@ responses:
 #-------------------------------------
 # Parameter Models
 #-------------------------------------
-parameters:
-  AcceptLanguageParam:
-    name: Accept-Language
-    description: The Accept-Language header contains information about the language preference of a user. This HTTP header is useful to multilingual sites for deciding the best language to serve to the client. i.e en-US,fr-CA
-    in: header
-    type: string
+    AcceptLanguageParam:
+      - in: header
+        name: Accept-Language
+        required: false
+        schema:
+          type: string
+        description: The Accept-Language header contains information about the language preference of a user. This HTTP header is useful to multilingual sites for deciding the best language to serve to the client. i.e en-US,fr-CA
 
-  ApiKeyParam:
-    name: Api-Key
-    description: An API key is a string value passed by a client app to the API proxies. The key uniquely identifies the client app.
-    in: header
-    required: true
-    type: string
+    ApiKeyParam:
+      - in: header
+        name: Api-Key
+        required: true
+        schema:
+          type: string
+        description: An API key is a string value passed by a client app to the API proxies. The key uniquely identifies the client app.
 
-  AuthorizationParam:
-    name: Authorization
-    description: 'Authorization information for the request. Format- `HMAC {hmacToken}`'
-    in: header
-    required: true
-    type: string
+    AuthorizationParam:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+          description: 'Authorization information for the request. Format- `HMAC {hmacToken}`'
 
-  ClientTokenParam:
-    name: Client-Token
-    description: Used to pass the original client OAuth token information given in a client-credentials flow.  This field is only used when the server is making the request and needs to link the transaction to a specific client.  Format- `Bearer {access_token}`
-    in: header
-    type: string
+    ClientTokenParam:
+        - in: header
+          name: Client-Token
+          required: false
+          schema:
+            type: string  
+          description: Used to pass the original client OAuth token information given in a client-credentials flow.  This field is only used when the server is making the request and needs to link the transaction to a specific client.  Format- `Bearer {access_token}`  
 
-  MerchantIdParam:
-    name: Merchant-Id
-    description: Merchant Id contains information about the merchant identifier
-    in: header
-    type: string
+    MerchantIdParam:
+         - in: header
+           name: Merchant-Id
+           required: false
+           schema:
+            type: string
+          description: Merchant Id contains information about the merchant identifier
 
-  GrantTypeParam:
-    name: GrantType
-    in: header
-    required: true
-    type: string
-    description: Only supported value `client_credentials`.
+    GrantTypeParam:
+          - in: header
+            name: GrantType 
+            required: true
+            schema:
+             type: string
+            description: Only supported value `client_credentials`.
 
-  TimestampParam:
-    name: Timestamp
-    description: Epoch timestamp in the request initiating system
-    in: header
-    required: true
-    type: string
+    TimestampParam:
+          - in: header
+            name: Timestamp
+            required: true
+            schema:
+              type: string
+            description: Epoch timestamp in the request initiating system
+    
