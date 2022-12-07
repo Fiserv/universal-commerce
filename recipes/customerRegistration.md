@@ -1,13 +1,15 @@
 
 # How to Create, Read, Update and Delete Customer Profiles 
 
+This guide will walk through all CRUD opertions for customer profiles in the uCom API. 
+
 ## Create a Customer Profile
 
 ### Description
 
 Create a Customer Profile (Customer Registration)
 
-Registering a customer in the uCom system results in a unique identifier 'fdCustomerId' that is used in subsequent operations like vaulting a payment account and making mobile payments. 
+Registering a customer in the uCom system results in a unique identifier, 'fdCustomerId' that is used in subsequent operations like vaulting a payment account or making mobile payments. 
 
 ### Endpoint URL
 
