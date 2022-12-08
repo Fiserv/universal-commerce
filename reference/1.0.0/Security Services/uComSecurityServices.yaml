@@ -85,10 +85,6 @@ paths:
           name: keyId
           type: string
           required: true
-          content:
-            application/json:
-              schema:
-
           description: identifier of the public key used for signature verification 
 
         - $ref: '#/parameters/ApiKeyParam'
