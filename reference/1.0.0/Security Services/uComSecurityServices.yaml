@@ -279,9 +279,7 @@ paths:
                   schema:
                     $ref: '#/responses/ServerError'
 
-definitions:
-
-
+  definitions:
 #-------------------------------------
 # Resource Models
 #-------------------------------------
