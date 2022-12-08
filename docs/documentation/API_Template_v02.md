@@ -17,7 +17,6 @@
 Implementation Guide - Sample Spec Document</font>
 </center></td></tr></table>
 
-
 <!-->
 <pre><a name="l1"><span class="ln">1    </span></a><span class="s0">---</span>
 <a name="l2"><span class="ln">2    </span></a><span class="s2">tags</span><span class="s1">: [</span><span class="s2">Universal Commerce, Carat, Enterprise, customer-authorized, merchant-stored, tokens-request, payment-token,</span>
@@ -216,16 +215,16 @@ pres.forEach(function(pre){
 }
 ```
 
-### Do Something Else
+## Do Something Else
 
-### Sample Format and Values (No nonce in payload)
+## Sample Format and Values (No nonce in payload)
 ```json
 Content-Type: application/json
 Api-Key: pAhDVh6ALjje4zja5W24PlhvL3A3mJSA
 Authorization: HMAC yMHQiDA2qHVy1t/WX3AdvQawoIWH5m/o3/dIit40rY= Timestamp: 1501621439636
 Client-Request-Id: 123445241
 ```
-### Sample Format and Values Sample Format and Values (Nonce in payload)
+## Sample Format and Values Sample Format and Values (Nonce in payload)
 ```json
 Content-Type:application/json Api-Key:{{key}} Authorization:HMAC {{signature}} Timestamp:{{time}} Client-Request-Id:{{$guid}} Client-Token: {{tokenId}}
 Content-Type: application/json
@@ -234,8 +233,8 @@ Authorization: HMAC yMHQiDA2qHVy1t/WX3AdvQawoIWH5m/o3/dIit40rY= Timestamp: 15016
 Client-Request-Id: 123445241
 Client-Token: e3W0jHqpuutK6vwtlOt80GWvwBI0
 ```
-##### Security
-##### API Security
+### Security
+### API Security
 <a name="l33"><span class="ln"></span></a><span class="s1"></span><span class="s2">Please see the reference document for current implementation. Please note that it is subject to change and the below link shall be updated with relevant details. </span>
 
 
