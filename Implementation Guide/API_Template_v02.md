@@ -224,6 +224,28 @@ Also note that the idempotent ID will only last for 24 hours regardless, so any 
 ```
 <a name="Customer Profile"><span class="ln"></span></a><span class="s1"></span><span class="s2">Customer Creation Full AVS(Optional)</span>
 ```json
+var copy = function(target) {
+    var textArea = document.createElement('textarea')
+    textArea.setAttribute('style','width:1px;border:0;opacity:0;')
+    document.body.appendChild(textArea)
+    textArea.value = target.innerHTML
+    textArea.select()
+    document.execCommand('copy')
+    document.body.removeChild(textArea)
+}
+
+var pres = document.querySelectorAll(".comment-body > pre")
+pres.forEach(function(pre){
+  var button = document.createElement("button")
+  button.className = "btn btn-sm"
+  button.innerHTML = "copy"
+  pre.parentNode.insertBefore(button, pre)
+  button.addEventListener('click', function(e){
+    e.preventDefault()
+    copy(pre.childNodes[0])
+  })
+})
+
 {
     "customer": {
       "externalId": "123abc456def890ghi098jkl765mno", 
