@@ -91,7 +91,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/Prepaid'
         204:
-          $ref: '#/parameters/LocationParam'
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/parameters/LocationParam'
         400:
           description: Bad request
           content:
