@@ -218,14 +218,14 @@ pres.forEach(function(pre){
 
 ### Do Something Else
 
-#### Sample Format and Values (No nonce in payload)
+### Sample Format and Values (No nonce in payload)
 ```json
 Content-Type: application/json
 Api-Key: pAhDVh6ALjje4zja5W24PlhvL3A3mJSA
 Authorization: HMAC yMHQiDA2qHVy1t/WX3AdvQawoIWH5m/o3/dIit40rY= Timestamp: 1501621439636
 Client-Request-Id: 123445241
 ```
-#### Sample Format and Values Sample Format and Values (Nonce in payload)
+### Sample Format and Values Sample Format and Values (Nonce in payload)
 ```json
 Content-Type:application/json Api-Key:{{key}} Authorization:HMAC {{signature}} Timestamp:{{time}} Client-Request-Id:{{$guid}} Client-Token: {{tokenId}}
 Content-Type: application/json
@@ -267,7 +267,7 @@ Unless explicitly decided otherwise, confidential information such as account nu
 Ex) "cardNumber" : "ENC_[fwU...g==]</p>
 </span>
 
-###### Idempotency
+#### Idempotency
 <a name="Idempotency1"><span class="ln"></span></a><span class="s1"></span><span class="s2">
 
 <a name="Idempotency2"><span class="ln"></span></a><span class="s1"></span><span class="s2"> The way idempotency is enforced in uCom is strictly as follows:</span>
