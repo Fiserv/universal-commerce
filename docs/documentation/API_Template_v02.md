@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>API_Template_v02.md</title>
+<title>Implementation Guide</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 .s0 { color: #8c8c8c; font-style: italic;}
@@ -16,6 +16,9 @@
 <font face="Arial, Helvetica" color="#000000">
 Implementation Guide - Sample Spec Document</font>
 </center></td></tr></table>
+
+
+<!-->
 <pre><a name="l1"><span class="ln">1    </span></a><span class="s0">---</span>
 <a name="l2"><span class="ln">2    </span></a><span class="s2">tags</span><span class="s1">: [</span><span class="s2">Universal Commerce, Carat, Enterprise, customer-authorized, merchant-stored, tokens-request, payment-token,</span>
 <a name="l3"><span class="ln">3    </span></a><span class="s2">api-reference, customer service, </span><span class="s1">[</span><span class="s2">Endpoint</span><span class="s1">]])]</span>
@@ -134,16 +137,95 @@ Implementation Guide - Sample Spec Document</font>
 <a name="l312"><span class="ln">312  </span></a><span class="s3">- </span><span class="s1">[</span><span class="s2">API Explorer</span><span class="s1">](</span><span class="s2">../api/?type=post&amp;path=/payments-vas/v1/tokens</span><span class="s1">)</span>
 <a name="l313"><span class="ln">313  </span></a><span class="s3">- </span><span class="s1">[</span><span class="s2">Charge Request</span><span class="s1">](</span><span class="s2">?path=docs/Resources/API-Documents/Payments/Charges.md</span><span class="s1">)</span>
 <a name="l314"><span class="ln">314  </span></a><span class="s3">- </span><span class="s1">[</span><span class="s2">Payment Source</span><span class="s1">](</span><span class="s2">?path=docs/Resources/Guides/Payment-Sources/Source-Type.md</span><span class="s1">)</span></pre>
+-->
+
+# Customer Setup
+## Create a Customer Profile
+<a name="Customer Profile1"><span class="ln"></span></a><span class="s1"></span><span class="s2">Parameters</span>
 
 
-## Sample Format and Values (No nonce in payload)
+| Name     | Data Type | Parameter Type| Required  | Max Length |
+|:----------|:---------:|:----------:|:-----:| ----:|
+|externalID |string     |body        | yes   | 50   |
+
+<a name="Customer Profile2"><span class="ln"></span></a><span class="s1"></span><span class="s2">Request</span>
+```json
+  {
+    "customer": {
+      "externalId": "513306228"
+    }
+}
+```
+<a name="Customer Profile3"><span class="ln"></span></a><span class="s1"></span><span class="s2">Customer Creation Full AVS(Optional)</span>
+<!--
+var copy = function(target) {
+    var textArea = document.createElement('textarea')
+    textArea.setAttribute('style','width:1px;border:0;opacity:0;')
+    document.body.appendChild(textArea)
+    textArea.value = target.innerHTML
+    textArea.select()
+    document.execCommand('copy')
+    document.body.removeChild(textArea)
+}
+
+var pres = document.querySelectorAll(".comment-body > pre")
+pres.forEach(function(pre){
+  var button = document.createElement("button")
+  button.className = "btn btn-sm"
+  button.innerHTML = "copy"
+  pre.parentNode.insertBefore(button, pre)
+  button.addEventListener('click', function(e){
+    e.preventDefault()
+    copy(pre.childNodes[0])
+  })
+})
+-->
+```json
+{
+    "customer": {
+      "externalId": "123abc456def890ghi098jkl765mno", 
+      "name": {
+       "familyName": "Jensen",
+       "givenName": "Barbara",
+       "middleName": "Jane"
+      },
+      "displayName": "Babs Jensen", 
+      "nickName": "Babs", 
+      "emails": [
+       {
+          "value": "bjensen@example.com",
+          "primary": true
+          }
+      ],
+      "addresses": [
+    {
+      "streetAddress": "100 Universal City Plaza", 
+      "locality": "Hollywood",
+      "region": "CA",
+      "postalCode": "91608",
+      "country": "US"
+        }
+      ],
+      "phoneNumbers": [
+        {
+          "value": "555-555-5555",
+          "type": "work"
+         } 
+      ]
+   }
+}
+```
+
+### Do Something Else
+
+#### Sample Format and Values (No nonce in payload)
 ```json
 Content-Type: application/json
 Api-Key: pAhDVh6ALjje4zja5W24PlhvL3A3mJSA
 Authorization: HMAC yMHQiDA2qHVy1t/WX3AdvQawoIWH5m/o3/dIit40rY= Timestamp: 1501621439636
 Client-Request-Id: 123445241
 ```
-## Sample Format and Values Sample Format and Values (Nonce in payload)
+#### Sample Format and Values Sample Format and Values (Nonce in payload)
 ```json
 Content-Type:application/json Api-Key:{{key}} Authorization:HMAC {{signature}} Timestamp:{{time}} Client-Request-Id:{{$guid}} Client-Token: {{tokenId}}
 Content-Type: application/json
@@ -152,20 +234,20 @@ Authorization: HMAC yMHQiDA2qHVy1t/WX3AdvQawoIWH5m/o3/dIit40rY= Timestamp: 15016
 Client-Request-Id: 123445241
 Client-Token: e3W0jHqpuutK6vwtlOt80GWvwBI0
 ```
-## API Security
+##### Security
+##### API Security
 <a name="l33"><span class="ln"></span></a><span class="s1"></span><span class="s2">Please see the reference document for current implementation. Please note that it is subject to change and the below link shall be updated with relevant details. </span>
 
 
-<a name="Reference Link"><span class="ln"></span></a><span class="s1"></span><span class="s2"> Document Link: https://firstdatanp-ucomgateway.apigee.io/get-started/api-security</span>
+<a name="Reference Link"><span class="ln"></span></a><span class="s1"></span><span class="s2"> [API Security Link](https://firstdatanp-ucomgateway.apigee.io/get-started/api-security) </span>
 <a name="blank line"><span class="ln"></span></a>
 
 <a name="blank line"><span class="ln"></span></a>
-[a relative link](other_file.md)
+
 
 <a name="blank line"><span class="ln"></span></a>
 ## Security for Wallet Notification
-<a name="Reference Link"><span class="ln"></span></a><span class="s1"></span><span class="s2"> Document Link: https://firstdatanp-ucomgateway.apigee.io/get-started/webhooks</span>
-
+<a name="Wallet Security"><span class="ln"></span></a><span class="s1"></span><span class="s2"> [Security for Wallet Link](https://firstdatanp-ucomgateway.apigee.io/get-started/webhooks)</span>
 
 <a name="Reference Link"><span class="ln"></span></a><span class="s1"></span><span class="s2"> 
 Field Encryption/Decryption Algorithm
@@ -185,44 +267,27 @@ Unless explicitly decided otherwise, confidential information such as account nu
 Ex) "cardNumber" : "ENC_[fwU...g==]</p>
 </span>
 
-## Idempotency
-<a name="l33"><span class="ln"></span></a><span class="s1"></span><span class="s2">
+###### Idempotency
+<a name="Idempotency1"><span class="ln"></span></a><span class="s1"></span><span class="s2">
 
-The way idempotency is enforced in uCom is strictly as follows:
-A transaction can be sent with the same idempotent ID (Client-Request-Id) at any time to receive the same response as the original transaction, however if no response from uCom was received during the initial transaction then the subsequent time the ID is sent will be treated as a new request.
-A response includes timeouts, errors, or anything else that is being returned from uCom as a response to the request. This response constitutes a completed transaction as per idempotency rules.
-If a transaction is still in flight and the same idempotent ID is used, a 503 error will be returned to signify that the transaction is still in progress. This can be continually retried until a different response (non-503 error) is received to signify whether the transaction has completed or not.
+<a name="Idempotency2"><span class="ln"></span></a><span class="s1"></span><span class="s2"> The way idempotency is enforced in uCom is strictly as follows:</span>
+<p></p>
+<a name="Idempotency3"><span class="ln"></span></a><span class="s1"></span><span class="s2"> 
+A transaction can be sent with the same idempotent ID (Client-Request-Id) at any time to receive the same response as the original transaction, however if no response from uCom was received during the initial transaction then the subsequent time the ID is sent will be treated as a new request.</span>
+<p></p>
+<a name="Idempotency4"><span class="ln"></span></a><span class="s1"></span><span class="s2"> 
+A response includes timeouts, errors, or anything else that is being returned from uCom as a response to the request. This response constitutes a completed transaction as per idempotency rules.</span>
+<p></p>
+<a name="Idempotency5"><span class="ln"></span></a><span class="s1"></span><span class="s2"> 
+If a transaction is still in flight and the same idempotent ID is used, a 503 error will be returned to signify that the transaction is still in progress. This can be continually retried until a different response (non-503 error) is received to signify whether the transaction has completed or not.</span>
+<p></p>
+<a name="Idempotency6"><span class="ln"></span></a><span class="s1"></span><span class="s2"> 
 Any other 500 error received constitutes a completed transaction and would need to have a new idempotent ID generated to retry that transaction. In this case the original transaction will be rolled back and no duplicate payments will be made.
-An example of a scenario when you should resend the idempotent ID would be if the network timed out on client side and no response was received from the uCom application.
-Also note that the idempotent ID will only last for 24 hours regardless, so any retries with the same ID would need to be made within the 24-hour window after generation.
-```json
-
-{
-
-
-  },
-  "paymentSource": {
-    "sourceType": "PaymentCard",
-    "card": {
-      "cardData": "4005550000000019",
-      "expirationMonth": "02",
-      "expirationYear": "2035",
-      "securityCode": "123"
-    }
-  },
-  "transactionDetails": {
-    "captureFlag": true
-  },
-  "merchantDetails":{
-      "merchantId": "123456789789567",
-      "terminalId": "123456"
-    }
-}
-
-
-
-
-
+An example of a scenario when you should resend the idempotent ID would be if the network timed out on client side and no response was received from the uCom application.</span>
+<p></p>
+<a name="Idempotency7"><span class="ln"></span></a><span class="s1"></span><span class="s2"> 
+Also note that the idempotent ID will only last for 24 hours regardless, so any retries with the same ID would need to be made within the 24-hour window after generation.</span>
+<p></p>
 
 
 </body>
