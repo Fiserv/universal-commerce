@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>API_Template_v02.md</title>
+<title>Implementation Guide</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 .s0 { color: #8c8c8c; font-style: italic;}
