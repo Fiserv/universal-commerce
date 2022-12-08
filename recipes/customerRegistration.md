@@ -1,5 +1,5 @@
 
-# How to Create, Read, Update and Delete Customer Profiles 
+<img title="customer profile" alt="Alt text" src="/assets/images/contacts-svgrepo-com.svg"> # How to Create, Read, Update and Delete Customer Profiles 
 
 <img title="customer profile" alt="Alt text" src="/assets/images/contacts-svgrepo-com.svg">
 
