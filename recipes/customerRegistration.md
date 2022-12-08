@@ -1,8 +1,6 @@
 
 # <img title="customer profile" alt="Alt text" src="/assets/images/contacts-svgrepo-com.svg"> How to Create, Read, Update and Delete Customer Profiles 
 
-<img title="customer profile" alt="Alt text" src="/assets/images/contacts-svgrepo-com.svg">
-
 This guide will walk through all CRUD opertions for customer profiles in the uCom API. 
 
 ## Create a Customer Profile
