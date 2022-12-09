@@ -165,34 +165,7 @@ Implementation Guide - Sample Spec Document</font>
 
 <a name="Customer Profile3"><span class="ln"></span></a><span class="s1"></span><span class="s2">Customer Creation Full AVS(Optional)</span>
 
-
-window.onload = function() {
-
-  var copy = function(target) {
-    var textArea = document.createElement('textarea')
-    textArea.setAttribute('style','width:1px;border:0;opacity:0;')
-    document.body.appendChild(textArea)
-    textArea.value = target.innerHTML
-    textArea.select()
-    document.execCommand('copy')
-    document.body.removeChild(textArea)
-}
-
-var pres = document.querySelectorAll(".comment-body > pre")
-pres.forEach(function(pre){
-  var button = document.createElement("button")
-  button.className = "btn btn-sm"
-  button.innerHTML = "copy"
-  pre.parentNode.insertBefore(button, pre)
-  button.addEventListener('click', function(e){
-    e.preventDefault()
-    copy(pre.childNodes[0])
-  })
-})
-
-}
 ```json
-
 {
     "customer": {
       "externalId": "123abc456def890ghi098jkl765mno", 
@@ -301,6 +274,32 @@ An example of a scenario when you should resend the idempotent ID would be if th
 Also note that the idempotent ID will only last for 24 hours regardless, so any retries with the same ID would need to be made within the 24-hour window after generation.</span>
 <p></p>
 
+
+window.onload = function() {
+
+  var copy = function(target) {
+    var textArea = document.createElement('textarea')
+    textArea.setAttribute('style','width:1px;border:0;opacity:0;')
+    document.body.appendChild(textArea)
+    textArea.value = target.innerHTML
+    textArea.select()
+    document.execCommand('copy')
+    document.body.removeChild(textArea)
+}
+
+var pres = document.querySelectorAll(".comment-body > pre")
+pres.forEach(function(pre){
+  var button = document.createElement("button")
+  button.className = "btn btn-sm"
+  button.innerHTML = "copy"
+  pre.parentNode.insertBefore(button, pre)
+  button.addEventListener('click', function(e){
+    e.preventDefault()
+    copy(pre.childNodes[0])
+  })
+})
+
+}
 
 </body>
 </html>
