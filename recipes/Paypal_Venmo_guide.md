@@ -1,8 +1,9 @@
 # How to do Guest Payment via Paypal/Venmo
 
-This flow is used if the partner does not have vaulting support. The client generates the nonce from Paypal/Venmo and doing transaction with the nonce.
+<img title="Paypal" alt="Alt text" src="/assets/images/paypal-svgrepo-com.svg">
+<img title="Venmo" alt="Alt text" src="/assets/images/venmo-svgrepo-com.svg">
 
-**\*\*Business flow TBC\*\***
+This flow is used if the partner does not have vaulting support. The client generates the nonce from Paypal/Venmo and doing transaction with the nonce.
 
 **Prerequisites:  Paypal/Venmo Nonce to be created**
 
