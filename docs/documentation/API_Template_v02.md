@@ -17,7 +17,7 @@
 Implementation Guide - Sample Spec Document</font>
 </center></td></tr></table>
 
-<!-->
+<!--
 <pre><a name="l1"><span class="ln">1    </span></a><span class="s0">---</span>
 <a name="l2"><span class="ln">2    </span></a><span class="s2">tags</span><span class="s1">: [</span><span class="s2">Universal Commerce, Carat, Enterprise, customer-authorized, merchant-stored, tokens-request, payment-token,</span>
 <a name="l3"><span class="ln">3    </span></a><span class="s2">api-reference, customer service, </span><span class="s1">[</span><span class="s2">Endpoint</span><span class="s1">]])]</span>
