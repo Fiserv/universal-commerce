@@ -163,10 +163,14 @@ Implementation Guide - Sample Spec Document</font>
 ### Step 3: Something
 
 
-
 <a name="Customer Profile3"><span class="ln"></span></a><span class="s1"></span><span class="s2">Customer Creation Full AVS(Optional)</span>
 
-var copy = function(target) {
+
+
+```json
+window.onload = function() {
+
+  var copy = function(target) {
     var textArea = document.createElement('textarea')
     textArea.setAttribute('style','width:1px;border:0;opacity:0;')
     document.body.appendChild(textArea)
@@ -188,8 +192,9 @@ pres.forEach(function(pre){
   })
 })
 
+}
 
-```json
+
 {
     "customer": {
       "externalId": "123abc456def890ghi098jkl765mno", 
