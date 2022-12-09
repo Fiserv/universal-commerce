@@ -138,8 +138,11 @@ Implementation Guide - Sample Spec Document</font>
 <a name="l314"><span class="ln">314  </span></a><span class="s3">- </span><span class="s1">[</span><span class="s2">Payment Source</span><span class="s1">](</span><span class="s2">?path=docs/Resources/Guides/Payment-Sources/Source-Type.md</span><span class="s1">)</span></pre>
 -->
 
-# Customer Setup
-## Create a Customer Profile
+# Implementation Guide
+## Customer Setup
+
+### Step 1: Create a Customer Profile
+
 <a name="Customer Profile1"><span class="ln"></span></a><span class="s1"></span><span class="s2">Parameters</span>
 
 
@@ -155,8 +158,14 @@ Implementation Guide - Sample Spec Document</font>
     }
 }
 ```
+
+### Step 2: Something
+### Step 3: Something
+
+
+
 <a name="Customer Profile3"><span class="ln"></span></a><span class="s1"></span><span class="s2">Customer Creation Full AVS(Optional)</span>
-<!--
+
 var copy = function(target) {
     var textArea = document.createElement('textarea')
     textArea.setAttribute('style','width:1px;border:0;opacity:0;')
@@ -178,7 +187,8 @@ pres.forEach(function(pre){
     copy(pre.childNodes[0])
   })
 })
--->
+
+
 ```json
 {
     "customer": {
@@ -215,16 +225,16 @@ pres.forEach(function(pre){
 }
 ```
 
-## Do Something Else
+## Sample Formats
 
-## Sample Format and Values (No nonce in payload)
+### Sample Format and Values (No nonce in payload)
 ```json
 Content-Type: application/json
 Api-Key: pAhDVh6ALjje4zja5W24PlhvL3A3mJSA
 Authorization: HMAC yMHQiDA2qHVy1t/WX3AdvQawoIWH5m/o3/dIit40rY= Timestamp: 1501621439636
 Client-Request-Id: 123445241
 ```
-## Sample Format and Values Sample Format and Values (Nonce in payload)
+### Sample Format and Values Sample Format and Values (Nonce in payload)
 ```json
 Content-Type:application/json Api-Key:{{key}} Authorization:HMAC {{signature}} Timestamp:{{time}} Client-Request-Id:{{$guid}} Client-Token: {{tokenId}}
 Content-Type: application/json
@@ -233,7 +243,7 @@ Authorization: HMAC yMHQiDA2qHVy1t/WX3AdvQawoIWH5m/o3/dIit40rY= Timestamp: 15016
 Client-Request-Id: 123445241
 Client-Token: e3W0jHqpuutK6vwtlOt80GWvwBI0
 ```
-### Security
+## Security
 ### API Security
 <a name="l33"><span class="ln"></span></a><span class="s1"></span><span class="s2">Please see the reference document for current implementation. Please note that it is subject to change and the below link shall be updated with relevant details. </span>
 
@@ -266,7 +276,7 @@ Unless explicitly decided otherwise, confidential information such as account nu
 Ex) "cardNumber" : "ENC_[fwU...g==]</p>
 </span>
 
-#### Idempotency
+## Idempotency
 <a name="Idempotency1"><span class="ln"></span></a><span class="s1"></span><span class="s2">
 
 <a name="Idempotency2"><span class="ln"></span></a><span class="s1"></span><span class="s2"> The way idempotency is enforced in uCom is strictly as follows:</span>
