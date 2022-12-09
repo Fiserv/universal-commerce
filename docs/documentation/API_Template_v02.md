@@ -166,8 +166,6 @@ Implementation Guide - Sample Spec Document</font>
 <a name="Customer Profile3"><span class="ln"></span></a><span class="s1"></span><span class="s2">Customer Creation Full AVS(Optional)</span>
 
 
-
-```json
 window.onload = function() {
 
   var copy = function(target) {
@@ -193,7 +191,7 @@ pres.forEach(function(pre){
 })
 
 }
-
+```json
 
 {
     "customer": {
