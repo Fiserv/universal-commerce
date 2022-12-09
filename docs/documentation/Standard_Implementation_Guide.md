@@ -17,6 +17,33 @@
 Implementation Guide - Sample Spec Document</font>
 </center></td></tr></table>
 
+
+window.onload = function() {
+
+  var copy = function(target) {
+    var textArea = document.createElement('textarea')
+    textArea.setAttribute('style','width:1px;border:0;opacity:0;')
+    document.body.appendChild(textArea)
+    textArea.value = target.innerHTML
+    textArea.select()
+    document.execCommand('copy')
+    document.body.removeChild(textArea)
+}
+
+var pres = document.querySelectorAll(".comment-body > pre")
+pres.forEach(function(pre){
+  var button = document.createElement("button")
+  button.className = "btn btn-sm"
+  button.innerHTML = "copy"
+  pre.parentNode.insertBefore(button, pre)
+  button.addEventListener('click', function(e){
+    e.preventDefault()
+    copy(pre.childNodes[0])
+  })
+})
+
+}
+
 <!--
 <pre><a name="l1"><span class="ln">1    </span></a><span class="s0">---</span>
 <a name="l2"><span class="ln">2    </span></a><span class="s2">tags</span><span class="s1">: [</span><span class="s2">Universal Commerce, Carat, Enterprise, customer-authorized, merchant-stored, tokens-request, payment-token,</span>
@@ -138,10 +165,15 @@ Implementation Guide - Sample Spec Document</font>
 <a name="l314"><span class="ln">314  </span></a><span class="s3">- </span><span class="s1">[</span><span class="s2">Payment Source</span><span class="s1">](</span><span class="s2">?path=docs/Resources/Guides/Payment-Sources/Source-Type.md</span><span class="s1">)</span></pre>
 -->
 
-# Implementation Guide
-## Customer Setup
+# **Sandbox Implementation Guide**
+<a name=headinsttuction><span class="ln"> 
+Here is how to utilize this guide. All your necessary steps are on your right and will guide you through the necessary steps to create a customer and start processing payments in universal commerce</span>
+
+## **Customer Setup**
+[API Security Link](/reference/1.0.0/Customer%20Services/customerservices.yaml)
 
 ### Step 1: Create a Customer Profile
+to-do - is this really step one or is this something 
 
 <a name="Customer Profile1"><span class="ln"></span></a><span class="s1"></span><span class="s2">Parameters</span>
 
@@ -158,6 +190,7 @@ Implementation Guide - Sample Spec Document</font>
     }
 }
 ```
+
 
 ### Step 2: Something
 ### Step 3: Something
@@ -275,31 +308,6 @@ Also note that the idempotent ID will only last for 24 hours regardless, so any 
 <p></p>
 
 
-window.onload = function() {
-
-  var copy = function(target) {
-    var textArea = document.createElement('textarea')
-    textArea.setAttribute('style','width:1px;border:0;opacity:0;')
-    document.body.appendChild(textArea)
-    textArea.value = target.innerHTML
-    textArea.select()
-    document.execCommand('copy')
-    document.body.removeChild(textArea)
-}
-
-var pres = document.querySelectorAll(".comment-body > pre")
-pres.forEach(function(pre){
-  var button = document.createElement("button")
-  button.className = "btn btn-sm"
-  button.innerHTML = "copy"
-  pre.parentNode.insertBefore(button, pre)
-  button.addEventListener('click', function(e){
-    e.preventDefault()
-    copy(pre.childNodes[0])
-  })
-})
-
-}
 
 </body>
 </html>
