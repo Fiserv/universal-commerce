@@ -1,5 +1,7 @@
 # How to Vault a Credit Card or Gift Card 
 
+<img title="icon" alt="Alt text" src="/assets/images/vault-svgrepo-com.svg" width="30" height="30">
+
 ## Step 1: Create a customer profile using POST /v1/customers
 
 Parameters
