@@ -1,7 +1,7 @@
 # How to do Guest Payment via Paypal/Venmo
 
-<img title="Paypal" alt="Alt text" src="/assets/images/paypal-svgrepo-com.svg" width="200">
-<img title="Venmo" alt="Alt text" src="/assets/images/venmo-svgrepo-com.svg" width="200">
+<img title="Paypal" alt="Alt text" src="/assets/images/paypal-svgrepo-com.svg" width="30" height="30">
+<img title="Venmo" alt="Alt text" src="/assets/images/venmo-svgrepo-com.svg" width="30" height="30">
 
 This flow is used if the partner does not have vaulting support. The client generates the nonce from Paypal/Venmo and doing transaction with the nonce.
 
