@@ -170,7 +170,7 @@ pres.forEach(function(pre){
 Here is how to utilize this guide. All your necessary steps are on your right and will guide you through the necessary steps to create a customer and start processing payments in universal commerce</span>
 
 ## **Customer Setup**
-[API Security Link](/reference/1.0.0/Customer%20Services/customerservices.yaml)
+[Customer services steps](?path=/reference/1.0.0/Customer%20Services/customerservices.yaml)
 
 ### Step 1: Create a Customer Profile
 to-do - is this really step one or is this something 
