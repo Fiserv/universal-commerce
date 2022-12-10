@@ -201,8 +201,6 @@ paths:
       x-codegen-request-body-name: payload
   /v1/account-tokens/{nonceTokenId}/tokenization:
     post:
-      x-group-name: Account Services
-      x-proxy-name: TA Token generate
       x-default-example: FullRequest    
       tags:
       - accounts
