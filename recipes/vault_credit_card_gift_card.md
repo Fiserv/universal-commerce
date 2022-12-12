@@ -75,11 +75,11 @@ Note: Either fdCustomerId or deviceInfo has to be provided
 
 **Here you will have 2 options to obtain a nonce:** 
 
-1) By Encrypting PAN details using POST \- /v1/account\-tokens API call. 
+A) By Encrypting PAN details using POST \- /v1/account\-tokens API call. 
 
-2) Through Hosted Pages (if applicable). A nonce is generated through hosted pages after a user submits credit card details.
+B) Through Hosted Pages (if applicable). A nonce is generated through hosted pages after a user submits credit card details.
 
-## 1) Encrypt PAN details using POST /v1/account-tokens
+## 3A) Encrypt PAN details using POST /v1/account-tokens
 
 <ins> HTTP Header parameters for this API <ins>
 
