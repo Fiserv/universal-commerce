@@ -28,7 +28,7 @@ Parameters
 
 ## Step 2: Retrieve Token & Encryption Key using POST - /v1/ tokens
 
-## Parameters
+<ins> Parameters </ins>
 
 | Name| Data Type| Parameter Type| Required| Max Length
 |:----------|:----------|:----------|:----------|:----------
