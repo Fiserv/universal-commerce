@@ -26,7 +26,7 @@ Parameters
 }
 ```
 
-## Step 2: Retrieve Token & Encryption Key using POST - /v1/ tokens
+## Step 2: Retrieve Token & Encryption Key using POST /v1/tokens
 
 <ins> Parameters </ins>
 
@@ -79,7 +79,7 @@ Note: Either fdCustomerId or deviceInfo has to be provided
 
 2) Through Hosted Pages (if applicable). A nonce is generated through hosted pages after a user submits credit card details.
 
-## 1) Encrypt PAN details using POST - /v1/account-tokens
+## 1) Encrypt PAN details using POST /v1/account-tokens
 
 <ins> HTTP Header parameters for this API <ins>
 
@@ -149,7 +149,7 @@ Encrypted PAN details for Generating Nonce.
 
   ```
   
-## Step 4: Create an Account using POST /v1/customers/{fdCustomerId}/accounts API call
+## Step 4: Create an Account using POST /v1/customers/{fdCustomerId}/accounts
 
 <ins> HTTP Header parameter for this API </ins>
 
