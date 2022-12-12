@@ -10,7 +10,7 @@ Parameters
 |:----------|:----------|:----------|:----------|:----------
 | externalId| string| body| yes| 50
 
-### Sample Request 
+#### Sample Request 
 ```json
  {
  	"customer": {
