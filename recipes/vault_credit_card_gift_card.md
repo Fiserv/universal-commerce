@@ -10,7 +10,7 @@ Parameters
 |:----------|:----------|:----------|:----------|:----------
 | externalId| string| body| yes| 50
 
-Sample Request 
+<ins> Sample Request </ins>
 ```json
  {
  	"customer": {
@@ -18,7 +18,7 @@ Sample Request
  	}
  }
 ```
-## Response (201 - Created)
+Response (201 - Created)
 ```json
 {
     "id": "96328bee7fc64adc91e20064ca230e43",
