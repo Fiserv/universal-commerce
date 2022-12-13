@@ -18,5 +18,8 @@ recipes:
 - link: recipes/Split_Tender_Payment.md
   title: How to Make a split Payment 
   type: recipe
+- link: recipes/InApp_Payments.md
+  title: How to Make a InApp Payments 
+  type: recipe
 
 
