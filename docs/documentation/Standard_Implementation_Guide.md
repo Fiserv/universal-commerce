@@ -11,6 +11,7 @@
 </style>
 </head>
 <body bgcolor="#ffffff">
+<script src="/docs/documentation/copybutton.js"</script>
 <table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
 <tr><td><center>
 <font face="Arial, Helvetica" color="#000000">
@@ -43,15 +44,14 @@ to-do - is this really step one or is this something
 }
 ```
 
-
 ### Step 2: Something
+
 ### Step 3: Something
 
 
 <a name="Customer Profile3"><span class="ln"></span></a><span class="s1"></span><span class="s2">Customer Creation Full AVS(Optional)</span>
 
-<div id="copy_button"></div>
-<script src="/docs/documentation/copybutton.js"</script>
+
 ```json
 {
     "customer": {
@@ -87,7 +87,6 @@ to-do - is this really step one or is this something
    }
 }
 ```
-
 ## Sample Formats
 
 ### Sample Format and Values (No nonce in payload)
@@ -182,7 +181,7 @@ Also note that the idempotent ID will only last for 24 hours regardless, so any 
     transform: scale(1.1);
     opacity: 0.9;
 }
-
+<div id="copy_button"></div>
 </body>
 </html>
 
