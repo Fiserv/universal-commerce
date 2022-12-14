@@ -44,6 +44,7 @@ paths:
           in a client-credentials flow.  This field is only used when the server is
           making the request and needs to link the transaction to a specific client.  Format-
           `Bearer {access_token}`
+        required: false  
         schema:
           type: string
       - name: Accept-Language
