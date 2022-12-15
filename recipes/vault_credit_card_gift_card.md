@@ -1,6 +1,6 @@
 # How to Vault a Credit Card or Gift Card
 
-<img title="icon" alt="Alt text" src="[/assets/images/vault-svgrepo-com.svg](https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/vault-svgrepo-com.svg)" width="30" height="30">
+<img title="icon" alt="Alt text" src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/vault-svgrepo-com.svg" width="30" height="30">
 
 ## Step 1: Create a customer profile using POST /v1/customers
 
