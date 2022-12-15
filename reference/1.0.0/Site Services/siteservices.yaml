@@ -619,7 +619,7 @@ paths:
       x-proxy-name: Retrieve venue information
       tags:
       - venue
-      description: Retrives venue information.
+      description: Retrieves venue information.
       parameters:
       - name: Api-Key
         in: header
@@ -719,10 +719,10 @@ paths:
   /v1/venues/{venueId}/sections:
     get:
       x-group-name: Site Services
-      x-proxy-name: Retrives venue information
+      x-proxy-name: Retrieves venue information
       tags:
       - venue
-      description: Retrives venue information.
+      description: Retrieves venue information.
       parameters:
       - name: Api-Key
         in: header
@@ -812,10 +812,10 @@ paths:
   /v1/venues/{venueId}/suites:
     get:
       x-group-name: Site Services
-      x-proxy-name: Retrives venue information
+      x-proxy-name: Retrieves venue information
       tags:
       - venue
-      description: Retrives venue information.
+      description: Retrieves venue information.
       parameters:
       - name: Api-Key
         in: header
@@ -905,10 +905,10 @@ paths:
   /v1/venues/{venueId}/tables:
     get:
       x-group-name: Site Services
-      x-proxy-name: Retrives venue information
+      x-proxy-name: Retrieves venue information
       tags:
       - venue
-      description: Retrives venue information.
+      description: Retrieves venue information.
       parameters:
       - name: Api-Key
         in: header

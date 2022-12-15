@@ -364,7 +364,7 @@ paths:
   /v1/orders/{orderId}/fulfillment:
     post:
       x-group-name: Order Services
-      x-proxy-name: Oreder fulfillment
+      x-proxy-name: Order fulfillment
       tags:
         - Orders
       description: Order fulfillment callback. This API can be used by merchants only

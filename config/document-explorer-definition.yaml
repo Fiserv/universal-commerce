@@ -35,8 +35,8 @@
       link: docs/documentation/customerServicesCreateCustomer_v1.md
     - title: Payment Services Sales
       link: docs/documentation/paymentServicesSales_v1.md
-    - title: The Matrix
-      link: docs/introduction/contact-us.md
+    - title: Implementation Guide
+      link: docs/documentation/Standard_Implementation_Guide.md
     - title: Frequently Asked Questions
       link: docs/faq/faq.md
       open: true 

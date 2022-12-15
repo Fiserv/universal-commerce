@@ -1,5 +1,7 @@
 # How to Perform a split tender payment
 
+<img title="icon" alt="Alt text" src="/assets/images/payment-method-svgrepo-com.svg" width="30" height="30">
+
 This flow is used to support split payment. If the user wants to do partial payment, this flow guides how to do that.
 
 Prerequisites for this flow:  Nonce token generation

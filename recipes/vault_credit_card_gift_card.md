@@ -1,5 +1,7 @@
 # How to Vault a Credit Card or Gift Card
 
+<img title="icon" alt="Alt text" src="/assets/images/vault-svgrepo-com.svg" width="30" height="30">
+
 ## Step 1: Create a customer profile using POST /v1/customers
 
 Parameters
@@ -8,7 +10,7 @@ Parameters
 |:----------|:----------|:----------|:----------|:----------
 | externalId| string| body| yes| 50
 
-## Sample Request 
+<ins> Sample Request </ins>
 ```json
  {
  	"customer": {
@@ -16,7 +18,7 @@ Parameters
  	}
  }
 ```
-## Response (201 - Created)
+<ins> Response (201 - Created) </ins>
 ```json
 {
     "id": "96328bee7fc64adc91e20064ca230e43",
@@ -24,9 +26,9 @@ Parameters
 }
 ```
 
-## Step 2: Retrieve Token & Encryption Key using POST - /v1/ tokens
+## Step 2: Retrieve Token & Encryption Key using POST /v1/tokens
 
-## Parameters
+<ins> Parameters </ins>
 
 | Name| Data Type| Parameter Type| Required| Max Length
 |:----------|:----------|:----------|:----------|:----------
@@ -34,7 +36,7 @@ Parameters
 | publicKeyRequired| Boolean| body| yes| 
 
 Note: Either fdCustomerId or deviceInfo has to be provided
-## Sample Request with fdcustomerID
+<ins> Sample Request with fdcustomerID </ins>
 
 ```json
 {
@@ -56,7 +58,7 @@ Note: Either fdCustomerId or deviceInfo has to be provided
     "publicKeyRequired": true
 }
 ```
-## Sample Response 
+<ins> Sample Response </ins>
 
 ```json
 {
@@ -73,22 +75,22 @@ Note: Either fdCustomerId or deviceInfo has to be provided
 
 **Here you will have 2 options to obtain a nonce:** 
 
-1) By Encrypting PAN details using POST \- /v1/account\-tokens API call. 
+A) By Encrypting PAN details using POST \- /v1/account\-tokens API call. 
 
-2) Through Hosted Pages (if applicable). A nonce is generated through hosted pages after a user submits credit card details.
+B) Through Hosted Pages (if applicable). A nonce is generated through hosted pages after a user submits credit card details.
 
-## 1) Encrypting PAN details using POST - /v1/account-tokens
+## 3A) Encrypt PAN details using POST /v1/account-tokens
 
-## HTTP Header parameters for this API
+<ins> HTTP Header parameters for this API <ins>
 
 Authorization: - Bearer <Oauth Token ID> <br>
 Api-Key:-  <apiKey> <br>
 Timestamp:- <timestamp> <br>
 Client-Request-Id: - <clientRequestId> <br>
 
-## Encrypted PAN details for Generating Nonce.
+Encrypted PAN details for Generating Nonce.
 
-## Parameters
+<ins> Parameters <ins>
 
 | Name| Data Type| Parameter Type| Required| Max Length
 |:----------|:----------|:----------|:----------|:----------
@@ -101,7 +103,7 @@ Client-Request-Id: - <clientRequestId> <br>
 | fdCustomerId| string| body| Yes| 32
 | billingPhone| String| Body| Optional (Mandatory only if Fraud is enabled)| -
 
-## Sample Request 
+<ins> Sample Request </ins> 
 ```json
  {
   "account": {
@@ -134,7 +136,7 @@ Client-Request-Id: - <clientRequestId> <br>
 
  
 ```
-## Sample Response 
+<ins> Sample Response </ins>
 
 ```json
 {
@@ -147,9 +149,9 @@ Client-Request-Id: - <clientRequestId> <br>
 
   ```
   
-## Step 4: Create an Account using POST /v1/customers/{fdCustomerId}/accounts API call
+## Step 4: Create an Account using POST /v1/customers/{fdCustomerId}/accounts
 
-## HTTP Header parameter for this API
+<ins> HTTP Header parameter for this API </ins>
 
 Api-Key: <key>
 Authorization: HMAC <signature>
@@ -158,7 +160,7 @@ Timestamp: <time>
 Client-Request-Id: <$guid>
 Client-Token: <accessToken>
 
-Parameters
+<ins> Parameters </ins>
 
 | Name| Data Type| Parameter Type| Required| Max Length
 |:----------|:----------|:----------|:----------|:----------
@@ -171,7 +173,7 @@ Parameters
 | securityCode| String| Body| Yes| 8
 | expiryDate| String| Body| Yes| -
 
-## Sample Request (Nonce Enrollment) 
+<ins> Sample Request (Nonce Enrollment) </ins>
 ```json
 {  
    "account":{  
@@ -185,7 +187,7 @@ Parameters
 
   ```
 
-## Sample Request (Physical GiftCard Enrollment)
+<ins> Sample Request (Physical GiftCard Enrollment) </ins>
 ```json
 {
   "account": {
@@ -199,7 +201,7 @@ Parameters
 
 ```  
 
-## Sample Response (201 - Created)
+<ins> Sample Response (201 - Created) </ins>
 	
 ```json
 {

@@ -3,7 +3,10 @@
   "name": "UniversalCommerce",
   "brand": "Fiserv",
   "brandLogoURL": "https://raw.githubusercontent.com/Fiserv/Developer-Portal-Tenant-API/develop/assets/images/Fiserv_Logo.jpg",
-  "solution": ["merchants","carat"],
+  "solution": [
+    "merchants",
+    "carat"
+  ],
   "brandDescription": "Universal Commerce",
   "categories": [
     {
@@ -17,47 +20,41 @@
       ]
     }
   ],
-  
   "apiVersions": [
-      {
-        "version": "1.0.0",
-        "versionType": "major",
-        "releaseNotesPath": "/release-notes/release-notes-1.0.0.md",
-        "apiSpecFileNames": [
-          "Account Services/AccountServices",
-          "Apply and Buy/ucomapplyandbuy",
-          "Authentication Services/authenticationservices",
-          "Customer Services/customerservices",
-	  "Discovery Services/uComDiscoveryServices",
-	  "Hosted Pages External/hostedpagesexternal",
-	  "Issuer Services/issuerservices",
-	  "Loyalty Transactions/loyaltyservices",
-	  "MAS/ucom_mas/uComMASMiscServices",
-	  "Merchant Services/merchantservices",
-	  "Order Services/uComOrderServices",
-	  "Payment Services/paymentservices",
-	  "Prepaid Card Services/prepaidaccountservices",
-	  "Provision Services/accountprovisioningservices",
-	  "Site Services/siteservices",
-	  "Site Transaction Services/petrotransactionservices",
-	  "Stac Services/stacservices",
-	  "Transaction History Services/transactionhistoryservices",
-	  "Value Add Services/valiueaddservices"
-        ]
-      }
+    {
+      "version": "1.0.0",
+      "versionType": "major",
+      "releaseNotesPath": "/release-notes/release-notes-1.0.0.md",
+      "apiSpecFileNames": [
+        "Account Services/AccountServices",
+        "Apply and Buy/ucomapplyandbuy",
+        "Authentication Services/authenticationservices",
+        "Customer Services/customerservices",
+        "Discovery Services/uComDiscoveryServices",
+        "Hosted Pages External/hostedpagesexternal",
+        "Issuer Services/issuerservices",
+        "Merchant Services/merchantservices",
+        "Order Services/uComOrderServices",
+        "Payment Services/paymentservices",
+        "Site Services/siteservices",
+        "Site Transaction Services/petrotransactionservices",
+        "Stac Services/stacservices",
+        "Transaction History Services/transactionhistoryservices"
+      ]
+    }
   ],
   "product": {
     "featured": true,
     "logoURL": "https://raw.githubusercontent.com/Fiserv/Developer-Portal-Tenant-API/develop/assets/images/Portal_Logo.png",
     "description": "To onboard properly into the Developer Studio as a tenant each product must support these APIs so that we can retrieve product specific API specifications and documentation.",
-    "longDescription":"To onboard properly into the Developer Studio as a tenant each product must support these APIs so that we can retrieve product specific API specifications and documentation.",
+    "longDescription": "To onboard properly into the Developer Studio as a tenant each product must support these APIs so that we can retrieve product specific API specifications and documentation.",
     "apiSpecification": "/v1/apis/UniversalCommerce",
     "layout": "/v1/layouts/UniversalCommerce",
     "documentation": "/v1/docs/UniversalCommerce",
     "documenttree": "/v1/docs/UniversalCommerce",
     "documenttreeV2": "/v2/docs/UniversalCommerce",
     "sandbox": "/v1/sandboxrun/UniversalCommerce",
-    "feature":[
+    "feature": [
       {
         "name": "sandBox",
         "value": true
@@ -74,23 +71,25 @@
         "name": "editParameterAPIExplorer",
         "value": true
       }
-  ]
+    ]
   },
-   "supportConfig": [{ 
-		"bug": {
-			"label": "bug,universalcommerce",
-			"template": "bug.md",
-			"assignees": "paulmohljr"
-		},
-		"feedback": {
-			"label": "feedback,universalcommerce",
-			"template": "feedback.md",
-			"assignees": "paulmohljr"
-		},
-		"enhancement": {
-			"label": "enhancement,universalcommerce",
-			"template": "feature.md",
-			"assignees": "paulmohljrm"
-		}
-	}]
+  "supportConfig": [
+    {
+      "bug": {
+        "label": "bug,universalcommerce",
+        "template": "bug.md",
+        "assignees": "paulmohljr"
+      },
+      "feedback": {
+        "label": "feedback,universalcommerce",
+        "template": "feedback.md",
+        "assignees": "paulmohljr"
+      },
+      "enhancement": {
+        "label": "enhancement,universalcommerce",
+        "template": "feature.md",
+        "assignees": "paulmohljrm"
+      }
+    }
+  ]
 }

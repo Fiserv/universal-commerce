@@ -54,55 +54,76 @@
 # 0.0.1
 #     - Initial Version
 #-------------------------------------
-
-swagger: '2.0'
-info:
-  version: 0.2.2
-  title: uCom Security Services
-  description: Services related to managing security like access tokens and validation.
+openapi: 3.0.1
+info: 
+    version: 0.2.2
+    description: Services related to managing security like access tokens and validation
+    title: uCom Security Services
+servers: 
+- url: https://int.api.firstdata.com/ucom
 tags:
   - name: security
     description: Operations and details for API security services.
-host: int.api.firstdata.com
-basePath: /ucom
-schemes:
-  - https
-consumes:
-  - application/json
-produces:
-  - application/json
+#host: int.api.firstdata.com
+#basePath: /ucom
+#schemes:
+#  - https
+#consumes:
+#  - application/json
+#produces:
+#  - application/json
 paths:
   /v1/signature-keys/{keyId}:
     get:
+      x-group-name: Security Services
+      x-proxy-name: Get public signature key
       tags:
-        - security
+      - security
       summary: Get uCom Gateway public signature key
-      description: Get uCom Gateway public key for validating message signatures.
       parameters:
         - in: path
           name: keyId
           type: string
           required: true
-          description: identifier of the public key used for signature verification.
+          description: identifier of the public key used for signature verification 
+
         - $ref: '#/parameters/ApiKeyParam'
         - $ref: '#/parameters/TimestampParam'
         - $ref: '#/parameters/AuthorizationParam'
         - $ref: '#/parameters/AcceptLanguageParam'
         - $ref: '#/parameters/SubMerchantIdParam'
+
       responses:
         200:
-          description: "OK"
-          schema:
-            $ref: '#/definitions/SignatureKey'
+           description: OK
+           content: 
+              application/json: 
+                schema:
+                  $ref: '#/definitions/SignatureKey'
         400:
-          $ref: '#/responses/BadRequest'
+            description: Bad Request
+            content:
+              application/json:
+                schema:
+                  $ref: '#/responses/BadRequest'
         404:
-          $ref: '#/responses/NotFound'
+            description: Not Found - The requested resource doesn't exist.
+            content:
+              application/json:
+                  schema:
+                    $ref: '#/responses/NotFound'
+            
         500:
-          $ref: '#/responses/ServerError'
+            description: An unexpected server error occurred
+            content:
+              application/json:
+                  schema:
+                    $ref: '#/responses/ServerError'
 
   /v1/encryption-keys/{keyId}:
     get:
+      x-group-name: Security Services
+      x-proxy-name: Get encryption key
       tags:
         - security
       summary: Get uCom Gateway encryption key
@@ -110,7 +131,8 @@ paths:
       parameters:
         - in: path
           name: keyId
-          type: string
+          schema:
+            type: string
           required: true
           description: identifier of the public key used for field-level encryption.
         - $ref: '#/parameters/ApiKeyParam'
@@ -120,18 +142,35 @@ paths:
         - $ref: '#/parameters/SubMerchantIdParam'
       responses:
         200:
-          description: "OK"
-          schema:
-            $ref: '#/definitions/EncryptionKey'
+           description: OK
+           content: 
+              application/json: 
+                schema:
+                  $ref: '#/definitions/SignatureKey'
         400:
-          $ref: '#/responses/BadRequest'
+            description: Bad Request
+            content:
+              application/json:
+                schema:
+                  $ref: '#/responses/BadRequest'
         404:
-          $ref: '#/responses/NotFound'
+            description: Not Found - The requested resource doesn't exist.
+            content:
+              application/json:
+                  schema:
+                    $ref: '#/responses/NotFound'
+            
         500:
-          $ref: '#/responses/ServerError'
+            description: An unexpected server error occurred
+            content:
+              application/json:
+                  schema:
+                    $ref: '#/responses/ServerError'
 
   /v1/tokens:
     post:
+      x-group-name: Security Services
+      x-proxy-name: Create security access token
       tags:
         - security
       summary: Create a security access token
@@ -141,7 +180,7 @@ paths:
         - $ref: '#/parameters/AcceptLanguageParam'
         - $ref: '#/parameters/SubMerchantIdParam'
         - name: payload
-          in: body
+        - in: body
           required: true
           schema:
             properties:
@@ -162,19 +201,36 @@ paths:
                 fdCustomerId: "bc5b70d996cb4bfebced3973880f8543"
               publicKeyRequired: true
       responses:
-        201:
-          $ref: '#/responses/TokenCreated'
+        200:
+           description: OK
+           content: 
+              application/json: 
+                schema:
+                  $ref: '#/definitions/SignatureKey'
         400:
-          $ref: '#/responses/BadRequest'
-        401:
-          $ref: '#/responses/Unauthorized'
-        409:
-          $ref: '#/responses/Conflict'
+            description: Bad Request
+            content:
+              application/json:
+                schema:
+                  $ref: '#/responses/BadRequest'
+        404:
+            description: Not Found - The requested resource doesn't exist.
+            content:
+              application/json:
+                  schema:
+                    $ref: '#/responses/NotFound'
+            
         500:
-          $ref: '#/responses/ServerError'
+            description: An unexpected server error occurred
+            content:
+              application/json:
+                  schema:
+                    $ref: '#/responses/ServerError'
 
   /v1/third-party-tokens:
     post:
+      x-group-name: Security Services
+      x-proxy-name: Create third party security access token
       tags:
         - security
       summary: Create a security access token
@@ -193,18 +249,33 @@ paths:
               deviceInfo:
                 $ref: '#/definitions/DeviceInfo'
       responses:
-        201:
-          $ref: '#/responses/ThirdPartyTokenCreated'
+        200:
+           description: OK
+           content: 
+              application/json: 
+                schema:
+                  $ref: '#/definitions/SignatureKey'
         400:
-          $ref: '#/responses/BadRequest'
-        401:
-          $ref: '#/responses/Unauthorized'
-        409:
-          $ref: '#/responses/Conflict'
+            description: Bad Request
+            content:
+              application/json:
+                schema:
+                  $ref: '#/responses/BadRequest'
+        404:
+            description: Not Found - The requested resource doesn't exist.
+            content:
+              application/json:
+                  schema:
+                    $ref: '#/responses/NotFound'
+            
         500:
-          $ref: '#/responses/ServerError'
+            description: An unexpected server error occurred
+            content:
+              application/json:
+                  schema:
+                    $ref: '#/responses/ServerError'
 
-definitions:
+  definitions:
 #-------------------------------------
 # Resource Models
 #-------------------------------------
@@ -750,7 +821,7 @@ definitions:
 #-------------------------------------
 # Responses
 #-------------------------------------
-responses:
+  responses:
 
   TokenCreated:
     description: Resource created
@@ -800,49 +871,59 @@ responses:
 #-------------------------------------
 # Parameter Models
 #-------------------------------------
-parameters:
-  AcceptLanguageParam:
-    name: Accept-Language
-    description: The Accept-Language header contains information about the language preference of a user. This HTTP header is useful to multilingual sites for deciding the best language to serve to the client. i.e en-US,fr-CA
-    in: header
-    type: string
+    AcceptLanguageParam:
+      - in: header
+        name: Accept-Language
+        required: false
+        schema:
+          type: string
+        description: The Accept-Language header contains information about the language preference of a user. This HTTP header is useful to multilingual sites for deciding the best language to serve to the client. i.e en-US,fr-CA
 
-  ApiKeyParam:
-    name: Api-Key
-    description: An API key is a string value passed by a client app to the API proxies. The key uniquely identifies the client app.
-    in: header
-    required: true
-    type: string
+    ApiKeyParam:
+      - in: header
+        name: Api-Key
+        required: true
+        schema:
+          type: string
+        description: An API key is a string value passed by a client app to the API proxies. The key uniquely identifies the client app.
 
-  AuthorizationParam:
-    name: Authorization
-    description: 'Authorization information for the request. Format- `HMAC {hmacToken}`'
-    in: header
-    required: true
-    type: string
+    AuthorizationParam:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+          description: 'Authorization information for the request. Format- `HMAC {hmacToken}`'
 
-  ClientTokenParam:
-    name: Client-Token
-    description: Used to pass the original client OAuth token information given in a client-credentials flow.  This field is only used when the server is making the request and needs to link the transaction to a specific client.  Format- `Bearer {access_token}`
-    in: header
-    type: string
+    ClientTokenParam:
+        - in: header
+          name: Client-Token
+          required: false
+          schema:
+            type: string  
+          description: Used to pass the original client OAuth token information given in a client-credentials flow.  This field is only used when the server is making the request and needs to link the transaction to a specific client.  Format- `Bearer {access_token}`  
 
-  MerchantIdParam:
-    name: Merchant-Id
-    description: Merchant Id contains information about the merchant identifier
-    in: header
-    type: string
+    MerchantIdParam:
+         - in: header
+           name: Merchant-Id
+           required: false
+           schema:
+            type: string
+           description: Merchant Id contains information about the merchant identifier
 
-  GrantTypeParam:
-    name: GrantType
-    in: header
-    required: true
-    type: string
-    description: Only supported value `client_credentials`.
+    GrantTypeParam:
+        - in: header
+          name: GrantType 
+          required: true
+          schema:
+            type: string
+          description: Only supported value `client_credentials`.
 
-  TimestampParam:
-    name: Timestamp
-    description: Epoch timestamp in the request initiating system
-    in: header
-    required: true
-    type: string
+    TimestampParam:
+        - in: header
+          name: Timestamp
+          required: true
+          schema:
+            type: string
+          description: Epoch timestamp in the request initiating system
+    
