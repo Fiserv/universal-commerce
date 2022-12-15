@@ -1,7 +1,7 @@
 
 # How to Create, Read, Update and Delete Customer Profiles 
 
-<img title="customer profile" alt="Alt text" src="/assets/images/contacts-svgrepo-com.svg">
+<img title="customer profile" alt="Alt text" src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/contacts-svgrepo-com.svg">
 
 This guide will walk through all CRUD opertions for customer profiles in the uCom API. 
 
