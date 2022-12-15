@@ -14,7 +14,7 @@ paths:
     post:
       x-group-name: Account Services
       x-proxy-name: Tokenize an account
-      #x-default-example: FullRequest
+      x-default-example: FullRequest
       tags:
       - accounts
       summary: Tokenize an account
@@ -614,7 +614,7 @@ paths:
     get:
       x-group-name: Account Services
       x-proxy-name: Get an account details
-      x-default-example: FullRequest 
+      x-default-example: FullRequest
       tags:
       - accounts
       summary: Get an account details
@@ -900,6 +900,10 @@ paths:
       x-codegen-request-body-name: payload
   /v1/account-tokens/{nonceTokenId}:
     get:
+      x-group-name: Account Services
+      x-proxy-name: Retrieve Account with Nonce
+      x-default-example: PARTIAL
+      deprecated: True
       tags:
       - accounts
       summary: Retrieve account with nonce token.
