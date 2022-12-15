@@ -12,7 +12,7 @@ Prerequisites for this flow:  Nonce token generation
 
 This flow will do the pre authorize the transaction.
 
-#### Endpoint URL
+### Endpoint URL
 
 HTTP Method: POST
 

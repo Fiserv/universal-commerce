@@ -1,4 +1,4 @@
-# How to Vault a Credit Card or Gift Card 
+# How to Vault a Credit Card or Gift Card
 
 ## Step 1: Create a customer profile using POST /v1/customers
 
