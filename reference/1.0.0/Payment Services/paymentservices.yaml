@@ -18,6 +18,7 @@ paths:
     get:
       x-group-name: Payment Services
       x-proxy-name: Get payment authorization
+      x-default-example: PARTIAL
       tags:
       - authorization
       summary: Get a specific payment authorization
