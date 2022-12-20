@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Implementation Guide</title>
+<title>Implementation Guide ex</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 .s0 { color: #8c8c8c; font-style: italic;}
@@ -26,7 +26,7 @@ Here is how to utilize this guide. All your necessary steps are on your right an
 [Customer services steps](?path=/reference/1.0.0/Customer%20Services/customerservices.yaml)
 
 ### Step 1: Create a Customer Profile
-to-do - is this really step one or is this something 
+to-do - is this really step one or is this something
 
 <a name="Customer Profile1"><span class="ln"></span></a><span class="s1"></span><span class="s2">Parameters</span>
 
