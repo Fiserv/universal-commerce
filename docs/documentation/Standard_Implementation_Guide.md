@@ -4,13 +4,13 @@
 </head>
 <body bgcolor="#ffffff">
 
-## <div align="center">Fiserv Universal Commerce REST API Specification
+## Fiserv Universal Commerce REST API Specification
 
 Here is how to utilize this guide. All your necessary steps are on your right and will guide you through the necessary steps to create a customer and start processing payments in universal commerce
 
-## **General**
+## General
 
->### **Connectivity**
+>### Connectivity
 
 The uCommerce Gateway services are accessed through the public Internet. uCommerce Gateway accepts communication only via the HTTPS channel. Custom HTTP headers are also used to carry additional information in each request.
 
@@ -22,7 +22,7 @@ Concatenate the above URL and each endpoint name from the specification to get f
 
 [https://int.api.firstdata.com/ucom/v1/customers/](https://int.api.firstdata.com/ucom/v1/customers/)
 
->### **Authentication**
+>### Authentication
 
 **API-KEYS**
     
@@ -30,14 +30,14 @@ Please see the reference document for current implementation.
 
 [https://firstdatanp-ucomgateway.apigee.io/get-started/api-security](https://firstdatanp-ucomgateway.apigee.io/get-started/api-security)
 
-   >### **Headers**
+   >### Headers
    >> API HTTP headers
    
  <br>
  <br>
  <br>
    
-   >### **Securities and Privacy**
+   >### Securities and Privacy
     >>Field Encryption/Decryption Algorithm
 
 Unless explicitly decided otherwise, confidential information such as account number, card number, passwords etc. should be encrypted prior to exchanging with UCG. The wallet app server has to encrypt the messages using the public key (that will be shared by UCG) and sent to UCG. The required steps for encrypting the sensitive information are;
@@ -49,7 +49,7 @@ Unless explicitly decided otherwise, confidential information such as account nu
  - The final encoded string value  replaces the sensitive data 
  - The encoded string is used by UCG to retrieve the sensitive data
 
-  >### **Idempotency**
+  >### Idempotency
       
    The way idempotency is enforced in uCom is strictly as follows:
 
@@ -65,7 +65,7 @@ Also note that the idempotent ID will only last for 24 hours regardless, so any 
 
 # APIs
 
-  >### **Customer Services**
+  >### Customer Services
 
 	This service is related to the uCom Customer Profile Management
 	
