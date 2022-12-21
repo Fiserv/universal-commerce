@@ -1,22 +1,8 @@
 <html>
 <head>
-<title>Standard Implementation Guide</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<style type="text/css">
-.s0 { color: #8c8c8c; font-style: italic;}
-.s1 { color: #080808;}
-.s2 { color: #080808;}
-.s3 { color: #0033b3;}
-.ln { color: #adadad; font-weight: Bold; font-style: normal; }
-</style>
 </head>
 <body bgcolor="#ffffff">
-<script src="/docs/documentation/copybutton.js"</script>
-<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
-<tr><td><center>
-<font face="Arial, Helvetica" color="#000000">
-Implementation Guide - Sample Spec Document</font>
-</center></td></tr></table>
 
 ## <div align="center">Fiserv Universal Commerce REST API Specification
 
