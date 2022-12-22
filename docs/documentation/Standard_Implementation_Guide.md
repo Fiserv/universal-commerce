@@ -92,8 +92,11 @@ Any other 500 error received constitutes a completed transaction and would need 
 Also note that the idempotent ID will only last for 24 hours regardless, so any retries with the same ID would need to be made within the 24-hour window after generation.
 
 >### FEP Host Information
+
 **Host extra info**
+
 WIP..
+
 # APIs
 
   >### Customer Services
