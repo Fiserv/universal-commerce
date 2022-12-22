@@ -19,6 +19,7 @@ Q: Do I need to have a GitHub account?
 A: Yes. To set up your Tenant server, your application code will be linked with GitHub repository. Here is an example for [Sample tenant repo]
 
 Q: Sample Question
+A: Sample Answer. 
 
 [//]: # (These are reference links used in markdown file)
 
