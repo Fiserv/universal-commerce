@@ -2,24 +2,64 @@
 
 ## Here are few common questions that may help you.
 
- Q: How can I set up new tenant?
-    
-A: Please refer to our documentation section for setting up new tenant. [Setup Tenant]
+<details>
+<summary>How many credit cards can we vault to a wallet?</summary>
 
-Q: How can I register new Tenant?
+The number of cards allowed to be vaulted per wallet is adjustable based on the client’s preferences. 
 
-A: Please refer to our Documentation section for registering new tenant. [Register Tenant]
+</details>
 
-Q: How can I deploy new Tenant server?
 
-A: Please refer to our Documentation section for registering new tenant. [Deploy Tenant]
+<details>
+<summary>How can we remove all credit cards or accounts vaulted to a wallet within uCom?</summary>
 
-Q: Do I need to have a GitHub account?
+uCom does not offer the ability to remove all accounts tied to a specific wallet. uCom, does, however offer the ability to remove one account at a time using the API call below: </br>
+DELETE /v1/customers/{fdCustomerId}/accounts/{fdAccountId} </br>
+Also, please note that if you delete a customer profile, by default all vaulted/saved cards will be deleted automatically along with the customer profile. 
 
-A: Yes. To set up your Tenant server, your application code will be linked with GitHub repository. Here is an example for [Sample tenant repo]
+</details> 
 
-Q: Sample Question
-A: Sample Answer. 
+<details>
+<summary>Can we send an auth or sale payload with the "Name on Card" field blank?</summary>
+
+Yes, uCom does not require name on card to be sent as part of the auth or sale transaction. 
+</details>
+
+<details>
+<summary>Is there a recommendation on how to use data returned in hostExtraInfo portion of the response payloads? Do we need to log this data for history or troubleshooting purposes?</summary>
+
+Yes, we recommend making use of the data returned in the “hostExtraInfo” field to troubleshoot issues with transactions as that provides the exact reason why a transaction was declined. 
+
+</details>
+
+<details>
+<summary>On the auth endpoint, fdCustomerId is marked “Required (unless specifically configured not to be)”. What does this mean exactly?  Do we need a customer id for anonymous payments?</summary>
+
+An fdCustomerId is required to perform payments using a vaulted account only, but it is not mandatory for anonymous payments. 
+
+</details>
+
+<details>
+<summary>Can we pull a customer profile using just the external customer ID?</summary>
+
+Yes, this operation is possible using the query strong “externalId’ as demonstrated below: </br>
+GET /v1/customers/?externalId=customerid
+
+</details>
+
+<details>
+<summary>Does the platform support partial reversal of authorized funds after a portion of the held amount has been captured?</summary>
+
+Yes, uCom does support partial reversal.  For example, let’s assume we have a auth for $50 and we only captured $20, the remaining amount will be released automatically. 
+</details>
+
+<details>
+<summary>Can we use multiple algorithms when interacting with the uCom API?</summary>
+
+No, uCom does not support multiple algorithms for the same partner.
+
+</details>
+
 
 [//]: # (These are reference links used in markdown file)
 
