@@ -167,9 +167,9 @@ paths:
                   type: string
         required: false
       responses:
-        204:
-          description: The request succeeded but there’s really nothing to show.
-          content: {}
+ #       204:
+ #         description: The request succeeded but there’s really nothing to show.
+ #         content: {}
         400:
           description: Bad request
           content:
@@ -369,9 +369,9 @@ paths:
                   type: string
         required: false
       responses:
-        204:
-          description: The request succeeded but there’s really nothing to show.
-          content: {}
+ #       204:
+ #         description: The request succeeded but there’s really nothing to show.
+ #         content: {}
         400:
           description: Bad request
           content:
