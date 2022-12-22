@@ -99,11 +99,13 @@ WIP.
 
 WIP.
 
-# APIs
+# Service-wise layout
 
-  >### Customer Services
+WIP.
 
-	This service is related to the uCom Customer Profile Management
+>### Customer Services
+
+	This service is related to the uCom Customer Profile Management.  
 	
 <div id="copy_button"></div>
 </body>
