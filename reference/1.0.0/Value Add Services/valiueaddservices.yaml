@@ -89,8 +89,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Loyalty'
-        204:
-          $ref: '#/parameters/LocationParam'
+ #       204:
+ #         $ref: '#/parameters/LocationParam'
         400:
           description: Bad request
           content:
