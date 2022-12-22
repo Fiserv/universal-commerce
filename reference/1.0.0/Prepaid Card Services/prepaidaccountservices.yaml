@@ -90,12 +90,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Prepaid'
-        204:
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/parameters/LocationParam'
+ #       204:
+ #         description: OK
+ #         content:
+ #           application/json:
+ #             schema:
+ #               $ref: '#/parameters/LocationParam'
         400:
           description: Bad request
           content:
@@ -182,12 +182,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AggregateBalanceTransactionInfo'
-        204:
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/parameters/LocationParam'
+ #       204:
+ #         description: OK
+ #         content:
+ #           application/json:
+ #             schema:
+ #               $ref: '#/parameters/LocationParam'
         400:
           description: Bad request
           content:
@@ -4659,7 +4659,7 @@ components:
         type: string
         format: date-time
     LocationParam:
-      name: Location
+      name: LocationParam
       in: header
       description: Indicates the target of a redirection i.e /v1/prepaid/balances/{requestId}
       schema:
