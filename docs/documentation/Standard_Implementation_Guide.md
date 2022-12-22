@@ -4,7 +4,7 @@
 </head>
 <body bgcolor="#ffffff">
 
-## Fiserv Universal Commercee REST API Specification
+## Fiserv Universal Commerce REST API Specification
 
 Here is how to utilize this guide. All your necessary steps are on your right and will guide you through the necessary steps to create a customer and start processing payments in universal commerce
 
@@ -51,7 +51,21 @@ Unless explicitly decided otherwise, confidential information such as account nu
 
  >### Notifications
 
+ **Webhooks**
+  WIP..
+ **Wallet notification securities**
+ WIP..
+
+
 >### Currencies and Locale
+
+**Supported Currency Codes**
+WIP..
+**Supported Country Codes**
+WIP..
+**Decimal Handling Of Amount**
+WIP..
+
 
   >### Idempotency
       
@@ -67,10 +81,9 @@ Any other 500 error received constitutes a completed transaction and would need 
 
 Also note that the idempotent ID will only last for 24 hours regardless, so any retries with the same ID would need to be made within the 24-hour window after generation.
 
-
-
-
-
+>### FEP Host Information
+**Host extra info**
+WIP..
 # APIs
 
   >### Customer Services
