@@ -50,21 +50,31 @@ Unless explicitly decided otherwise, confidential information such as account nu
  - The encoded string is used by UCG to retrieve the sensitive data
 
  >### Notifications
+
  WIP.
+
  **Webhooks**
+
   WIP.
+
  **Wallet notification securities**
+
  WIP.
 
 
 >### Currencies and Locale
 
 **Supported Currency Codes**
-WIP..
+
+WIP.
+
 **Supported Country Codes**
-WIP..
+
+WIP.
+
 **Decimal Handling Of Amount**
-WIP..
+
+WIP.
 
 
   >### Idempotency
