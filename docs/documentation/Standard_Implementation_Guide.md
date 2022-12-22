@@ -93,11 +93,11 @@ Also note that the idempotent ID will only last for 24 hours regardless, so any 
 
 >### FEP Host Information
 
-WIP..
+WIP.
 
 **Host extra info**
 
-WIP..
+WIP.
 
 # APIs
 
