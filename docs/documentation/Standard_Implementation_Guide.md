@@ -49,6 +49,10 @@ Unless explicitly decided otherwise, confidential information such as account nu
  - The final encoded string value  replaces the sensitive data 
  - The encoded string is used by UCG to retrieve the sensitive data
 
+ >### Notifications
+
+>### Currencies and Locale
+
   >### Idempotency
       
    The way idempotency is enforced in uCom is strictly as follows:
@@ -62,6 +66,10 @@ If a transaction is still in flight and the same idempotent ID is used, a 503 er
 Any other 500 error received constitutes a completed transaction and would need to have a new idempotent ID generated to retry that transaction. In this case the original transaction will be rolled back and no duplicate payments will be made. An example of a scenario when you should resend the idempotent ID would be if the network timed out on client side and no response was received from the uCom application.
 
 Also note that the idempotent ID will only last for 24 hours regardless, so any retries with the same ID would need to be made within the 24-hour window after generation.
+
+
+
+
 
 # APIs
 
