@@ -3,7 +3,7 @@
 ## Here are few common questions that may help you.
 
 <details>
-<summary> **How many credit cards can we vault to a wallet?**</summary>
+**<summary>How many credit cards can we vault to a wallet?</summary>**
 
 The number of cards allowed to be vaulted per wallet is adjustable based on the client’s preferences. 
 
