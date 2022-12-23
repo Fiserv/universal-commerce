@@ -63,7 +63,7 @@ No, uCom does not support multiple algorithms for the same partner.
 <details>
 <summary><b>How can we send customer's email address for Fraud scoring in Guest Checkout scenario?</b></summary>
 
-To pass through the customer’s email address for fraud scoring, you have to add the “purchaseInfo” field to your API call as demonstrated below. 
+To pass through the customer’s email address for fraud scoring, you have to add the “purchaseInfo” field to your API call as demonstrated below. </br>
 {
    "authorization":{
       "orderId":"Order8341003",
@@ -119,7 +119,7 @@ Each environment (CAT and prod) will have its own key. if you would like to repl
 <details>
 <summary><b>Is there a way to flag an account (payment method) as the default/primary/preferred for a customer?</b></summary>
 
- No, however, hosted pages does allow you to pass a "preferred" card in JSON that will preselect an account ID as demonstrated below: 
+ No, however, hosted pages does allow you to pass a "preferred" card in JSON that will preselect an account ID as demonstrated below: </br>
  "preferredCard": { "fdAccountId": "8a7f7fb770427dbf01704518eee40019"
 
 </details>
