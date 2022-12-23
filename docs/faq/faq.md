@@ -13,7 +13,7 @@ The number of cards allowed to be vaulted per wallet is adjustable based on the 
 <details>
 <summary><b>How can we remove all credit cards or accounts vaulted to a wallet within uCom?</b></summary>
 
-uCom does not offer the ability to remove all accounts tied to a specific wallet. uCom, does, however offer the ability to remove one account at a time using the API call below: </br>
+uCom does not offer the ability to remove all accounts tied to a specific wallet. uCom, does, however offer the ability to remove one account at a time using the API call below: <br>
 DELETE /v1/customers/{fdCustomerId}/accounts/{fdAccountId} </br>
 Also, please note that if you delete a customer profile, by default all vaulted/saved cards will be deleted automatically along with the customer profile. 
 
@@ -63,7 +63,7 @@ No, uCom does not support multiple algorithms for the same partner.
 <details>
 <summary><b>How can we send customer's email address for Fraud scoring in Guest Checkout scenario?</b></summary>
 
-To pass through the customer’s email address for fraud scoring, you have to add the “purchaseInfo” field to your API call as demonstrated below. </br>
+To pass through the customer’s email address for fraud scoring, you have to add the “purchaseInfo” field to your API call as demonstrated below. <br>
 {
    "authorization":{
       "orderId":"Order8341003",
@@ -119,7 +119,7 @@ Each environment (CAT and prod) will have its own key. if you would like to repl
 <details>
 <summary><b>Is there a way to flag an account (payment method) as the default/primary/preferred for a customer?</b></summary>
 
- No, however, hosted pages does allow you to pass a "preferred" card in JSON that will preselect an account ID as demonstrated below: </br>
+ No, however, hosted pages does allow you to pass a "preferred" card in JSON that will preselect an account ID as demonstrated below: <br>
  "preferredCard": { "fdAccountId": "8a7f7fb770427dbf01704518eee40019"
 
 </details>
