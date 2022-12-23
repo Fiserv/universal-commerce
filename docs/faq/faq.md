@@ -60,6 +60,85 @@ No, uCom does not support multiple algorithms for the same partner.
 
 </details>
 
+<details>
+<summary><b>How can we send customer's email address for Fraud scoring in Guest Checkout scenario?</b></summary>
+
+To pass through the customer’s email address for fraud scoring, you have to add the “purchaseInfo” field to your API call as demonstrated below. 
+{
+   "authorization":{
+      "orderId":"Order8341003",
+      "storeId":"703904",
+      "requestedAmount":349.5,
+      "currencyCode":{
+         "number":840
+      },
+      "fundingSource":{
+         "token":{
+            "tokenId":"2a6078ab-c9d7-4113-8dee-bad68417a1c7",
+            "tokenProvider":"CLAIM_CHECK_NONCE"
+         }
+      },
+      "purchaseInfo":[
+         {
+            "order":{
+               "emails":[
+                  {
+                     "value":"sample01@sample01.com",
+                     "type":"home"
+                  }
+               ]
+            }
+         }
+      ]
+   }
+}
+
+</details>
+
+<details>
+<summary><b>If we send Expiry month and year with an expired date, will uCom throw an error?</b></summary>
+
+UCom does not have any validation against the Expiry month and year, but our downstream payment system does the validation and throws error, which then gets passed to uCom. 
+
+</details>
+
+<details>
+<summary><b>If we signed up to use a multi-use public key, what is the expiration period of a static key pair?</b></summary>
+
+We will generate a multi-use key on your behalf once and disable the option to generate a key again. The public key we provide does not expire unless requested. 
+
+</details>
+
+<details>
+<summary><b>If we need to renew or replace a key, will the previous key remain valid until the new key can be deployed to our prod server?</b></summary>
+
+Each environment (CAT and prod) will have its own key. if you would like to replace or renew a key we need to do a deployment, once you generate new key the old key will not work. 
+
+</details>
+
+<details>
+<summary><b>Is there a way to flag an account (payment method) as the default/primary/preferred for a customer?</b></summary>
+
+ No, however, hosted pages does allow you to pass a "preferred" card in JSON that will preselect an account ID as demonstrated below: 
+ "preferredCard": { "fdAccountId": "8a7f7fb770427dbf01704518eee40019"
+
+</details>
+
+<details>
+<summary><b>How long does a claim check nonce tokenized account last?</b></summary>
+
+There is no time expiration, but they expire after they are used once.
+
+</details>
+
+
+<details>
+<summary><b>How are Debit cards handled in uCom?</b></summary>
+
+Debit cards are treated the same way as credit cards in uCom requests. 
+
+</details>
+
 
 [//]: # (These are reference links used in markdown file)
 
