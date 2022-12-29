@@ -37,7 +37,7 @@ Parameters
 | fdCustomerId| string| body| Conditional*| 32
 | publicKeyRequired| Boolean| body| yes| 
 
-> Note: Either fdCustomerId or deviceInfo has to be provided
+> Note: Either an fdCustomerId or deviceInfo have to be provided. 
 
 
 <ins> Sample Request with fdcustomerID </ins>
