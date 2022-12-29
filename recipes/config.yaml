@@ -21,5 +21,8 @@ recipes:
 - link: recipes/InApp_Payments.md
   title: How to Make a InApp Payments 
   type: recipe
+- link: recipes/refunds.md
+  title: How to Issue a Refund
+  type: recipe
 
 
