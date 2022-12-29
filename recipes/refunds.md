@@ -1,4 +1,4 @@
-# How to issue a Refund
+# How to Issue a Refund
 
 Just like with other platforms, refunds in uCom are possible for transactions that have settled already. Since uCom provides multiple ways of making a payment, there are multiple ways to perform a refund depending on the transaction type. For starters, for a sale transaction type, a sale ID is required to process a refund.
 
