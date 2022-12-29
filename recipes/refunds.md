@@ -4,7 +4,7 @@ Just like with other platforms, refunds in uCom are possible for transactions th
 
 ## Refund of a sale:
 
-# POST /v1/payments/sales/{fdSaleId}/refunds
+### POST /v1/payments/sales/{fdSaleId}/refunds
 
 | **Name** | **Type** | **Parameter Type** | **Required** | **Max Length** |
 | --- | --- | --- |
@@ -25,7 +25,7 @@ Just like with other platforms, refunds in uCom are possible for transactions th
 
 ```
 
-<ins> Sample Response (201 - Created) </ins>
+<ins>Sample Response (201 - Created)</ins>
 
 ```json
 {   
