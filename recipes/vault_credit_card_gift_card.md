@@ -20,7 +20,7 @@ Parameters
  	}
  }
 ```
-<ins> Response (201 - Created) </ins>
+<ins>Response (201 - Created)</ins>
 ```json
 {
     "id": "96328bee7fc64adc91e20064ca230e43",
