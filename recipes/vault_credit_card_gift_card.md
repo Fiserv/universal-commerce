@@ -20,7 +20,7 @@ Parameters
  	}
  }
 ```
-<ins> Response (201 - Created) </ins>
+<ins>Response (201 - Created)</ins>
 ```json
 {
     "id": "96328bee7fc64adc91e20064ca230e43",
@@ -37,7 +37,9 @@ Parameters
 | fdCustomerId| string| body| Conditional*| 32
 | publicKeyRequired| Boolean| body| yes| 
 
-Note: Either fdCustomerId or deviceInfo has to be provided </br>
+> Note: Either an fdCustomerId or deviceInfo have to be provided. 
+
+
 <ins> Sample Request with fdcustomerID </ins>
 
 ```json
