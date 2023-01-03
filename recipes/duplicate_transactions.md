@@ -18,5 +18,5 @@ Content-Type: application/json <br>
 Api-Key: pAhDVh6ALjje4zja5W24PlhvL3A3mJSA <br>
 Authorization: HMAC yMHQiDA2qHVy1t/WX3AdvQawoIWH5m/o3/dIit40rY= <br>
 Timestamp: 1501621439636 <br>
-==Client-Request-Id: 123445241== <br>
+<mark style="background-color: #FFFF00">Client-Request-Id: 123445241</mark> <br>
 Client-Token: e3W0jHqpuutK6vwtlOt80GWvwBI0 <br>
