@@ -1,6 +1,6 @@
 # How to Issue a Refund
 
-<img title="icon" alt="Alt text" src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/refund-svgrepo-com.svg" width="30" height="30"> 
+<img title="icon" alt="Alt text" src="https://raw.githubusercontent.com/Fiserv/universal-commerce/99299089c899f788417426ac355c83d06f9b8870/assets/images/refund-svgrepo-com.svg" width="30" height="30"> 
 In uCom, refunds are possible for transactions that have settled already, which usually happens after 24 hours of a transaction being completed. Since uCom provides multiple ways of making a payment, there are multiple ways to perform a refund depending on the transaction type. For starters, for a sale transaction type, a sale ID is required to process a refund. Similarly, an auth/capture type of transcation will require a Capture ID.
 
 ## 1) Refund of a sale:
