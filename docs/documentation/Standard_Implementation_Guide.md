@@ -14,7 +14,7 @@ Here is how to utilize this guide. All your necessary steps are on your right an
 
 The uCommerce Gateway services are accessed through the public Internet. uCommerce Gateway accepts communication only via the HTTPS channel. Custom HTTP headers are also used to carry additional information in each request.
 
-**Fully-Qualified URL**
+**Fully Qualified URL**
 
 Concatenate the above URL and each endpoint name from the specification to get fully-qualified URL for each environment.
 
@@ -33,9 +33,18 @@ Please see the reference document for current implementation.
    >### Headers
    >> API HTTP headers
    
- <br>
- <br>
- <br>
+ 
+ | Header            | Value                  | Always Required | Description                                                                                                                             |
+|-------------------|------------------------|-----------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| Api-Key           | <apiKey>               | YES             | Merchant API key, Refer Apigee portal for more details                                                                                  |
+| Timestamp         | <timestamp>            | YES             | Request initiation timestamp, expecting Epoch time. The value must generate out of UTC timestamp. Sample value format is 1499961987232
+| Authorization     | HMAC <signature>       | YES             | HMAC Key generation, please refer Apigee portal for more details                                                                        |
+| Authorization     | Bearer {{accessToken}} | YES             | Used on /v1/account-tokens                                                                                                              |
+| Content-Type      | application/json       | YES             | application/json                                                                                                                        |
+| Client-Request-Id | <$guid>                |                 | This is mandatory and unique for post request to avoid duplicate entry                                                                  |
+| Client-Token      | <accessToken>          |                 | Used on POST /v1/payments/sales for anonymous transactions and /v1/customers/{fdCustomerId}/accounts for account transactions           |
+| Content-Signature | HMAC <signature>       |                 | Used on /v1/account-tokens                                                                                                              |
+   
    
    >### Securities and Privacy
     >>Field Encryption/Decryption Algorithm
