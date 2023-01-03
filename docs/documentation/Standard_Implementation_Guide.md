@@ -113,11 +113,97 @@ Also note that the idempotent ID will only last for 24 hours regardless, so any 
 
 >### FEP Host Information
 
-WIP.
+FEP (Front End Processor) messages will be sent back to the merchant. 
 
-**Host extra info**
+##### Possible Returns - Success cases (Applicable for all payment related operation responses)
 
-WIP.
+```json
+{
+  "hostExtraInfo": [
+    {
+      "name": "APPROVAL_NUMBER",
+      "value": "995224"
+    },
+    {
+      "name": "MERCHANT_ID",
+      "value": "99022879997"
+    },
+    {
+      "name": "AVAILABLE_BALANCE",
+      "value": "80.00"
+    },
+    {
+      "name": "SEQUENCE_NUMBER",
+      "value": "786514"
+    },
+    {
+      "name": "TRANSACTION_DATETIME",
+      "value": "2019-11-22T07:06:00"
+    },
+    {
+      "name": "HOST_RESPONSE_MESSAGE",
+      "value": "APPROVED  995224"
+    },
+    {
+      "name": "HOST_RESPONSE_CODE",
+      "value": "995224"
+    },
+    {
+      "name": "NETWORK_TRANSACTION_ID",
+      "value": "381032340917110"
+    }
+    {
+      "name": "PREPAID_HOST_RESPONSE_CODE",
+      "value": "995224"
+    }
+    {
+      "name": "PREPAID_HOST_RESPONSE_MESSAGE",
+      "value": "APPROVED 995224"
+    }
+    {
+      "name": "PREPAID_APPROVAL_NUMBER",
+      "value": "995224"
+    }
+    {
+      "name": "PREPAID_SEQUENCE_NUMBER",
+      "value": "786514"
+    }
+  ]
+}
+```
+
+##### Possible Returns - Failure cases
+
+```json
+{
+  "hostExtraInfo": [
+    {
+      "name": "SEQUENCE_NUMBER",
+      "value": "786514"
+    },
+    {
+      "name": "MERCHANT_ID",
+      "value": "99022879997"
+    },
+    {
+      "name": "AVAILABLE_BALANCE",
+      "value": "80.00"
+    },
+    {
+      "name": "TRANSACTION_DATETIME",
+      "value": "2019-11-22T07:06:00"
+    },
+    {
+      "name": "HOST_RESPONSE_MESSAGE",
+      "value": "Declined 995224"
+    },
+    {
+      "name": "HOST_RESPONSE_CODE",
+      "value": "995224"
+    }
+  ]
+}
+```
 
 # Service-wise layout
 
