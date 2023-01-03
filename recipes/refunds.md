@@ -41,7 +41,33 @@ In uCom, refunds are possible for transactions that have settled already, which 
 }
 
 ```
+<ins>Sample Response (400 - Bad Request)</ins>
 
+```json
+{
+    "code": "272781",
+    "message": "Capture refund transaction failed",
+    "category": "common",
+    "developerInfo": {
+        "developerMessage": "Capture refund transaction failed"
+    }
+}
+
+
+```
+
+<ins>Sample Response (400 - Bad Request)</ins>
+
+```json
+{
+    "code": " 272782",
+    "message": "Capture refund transaction already done",
+    "category": "common",
+    "developerInfo": {
+        "developerMessage": "Capture refund transaction already done"
+    }
+}
+```
 ## Option 2) Refund of a Capture:
 
 ### POST /payments/captures/{fdCaptureId}/refunds
