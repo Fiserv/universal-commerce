@@ -1,8 +1,8 @@
 # How to Issue a Refund
 
-much like other platforms, refunds in uCom are possible for transactions that have settled already. Since uCom provides multiple ways of making a payment, there are multiple ways to perform a refund depending on the transaction type. For starters, for a sale transaction type, a sale ID is required to process a refund. Similarly, an auth/capture type of transcation will require a Capture ID.
+In uCom, refunds are possible for transactions that have settled already, which usually happens after 24 hours of a transaction being completed. Since uCom provides multiple ways of making a payment, there are multiple ways to perform a refund depending on the transaction type. For starters, for a sale transaction type, a sale ID is required to process a refund. Similarly, an auth/capture type of transcation will require a Capture ID.
 
-## Refund of a sale:
+## 1) Refund of a sale:
 
 ### POST /v1/payments/sales/{fdSaleId}/refunds
 
@@ -41,7 +41,7 @@ much like other platforms, refunds in uCom are possible for transactions that ha
 
 ```
 
-## Refund of a Capture:
+## 2) Refund of a Capture:
 
 ### POST /payments/captures/{fdCaptureId}/refunds
 
