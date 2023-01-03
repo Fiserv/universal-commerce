@@ -45,7 +45,7 @@ Please see the reference document for current implementation.
 | Client-Token      | <accessToken>          |                 | Used on POST /v1/payments/sales for anonymous transactions and /v1/customers/{fdCustomerId}/accounts for account transactions           |
 | Content-Signature | HMAC <signature>       |                 | Used on /v1/account-tokens                                                                                                              |
    
-   
+
    >### Securities and Privacy
     >>Field Encryption/Decryption Algorithm
 
@@ -71,19 +71,30 @@ Unless explicitly decided otherwise, confidential information such as account nu
  WIP.
 
 
->### Currencies and Locale
+>### Currencies
 
-**Supported Currency Codes**
+We support the following currencies:
 
-WIP.
+| Name                   | Currency Code | Currency Number |
+|------------------------|---------------|-----------------|
+| US Dollar              | USD           | 840             |
+| Canadian Dollar        | CAD           | 124             |
+| European Currency Unit | EUR           | 978             |
+| Pound Sterling         | GBP           | 826             |
+| Norwegian Krone        | NOK           | 578             |
+| Mexican Peso           | MXN           | 484             |
+| Argentine Peso         | ARS           | 32              |
+| Columbia Peso          | COP           | 170             |
+| Swedish Krona          | SEK           | 752             |
+| Danish Krone           | DKK           | 208             |
+| South African Rand     | ZAR           | 710             |
+| Swiss Franc            | CHF           | 756             |
 
-**Supported Country Codes**
-
-WIP.
+The code is the alphabetic 3 letter code as defined by ISO 4217.
 
 **Decimal Handling Of Amount**
 
-WIP.
+These currencies require the same correct amount format with a maximum of 2 decimals as reflected by the exponents, including trailing zeroes, e.g. 10, 10.1, 10.10 or 10.01. Any amount value with more than 2 decimals will cause an input_error.
 
 
   >### Idempotency
