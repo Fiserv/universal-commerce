@@ -3,6 +3,14 @@
 <img title="icon" alt="Alt text" src="https://raw.githubusercontent.com/Fiserv/universal-commerce/b2ec46f041e39ffa4dd4e986a39ed12c68777b04/assets/images/shopping-cart-svgrepo-com.svg" width="30" height="30"> 
 Making a guest checkout, or an anonymous checkout, as its often referred to, is a fairly simple process in uCom. A few bits of data are needed to successfully process an anonymous checkout or order, however. For starters, an orderId, merchantId, or storeId (depending on the configuration), and the requested amount are needed to complete a guest checkout. Below, we will break down what each field means and what kind of information is needed to successfully perform an anonymous transaction. 
 
+### Endpoint URL 
+
+HTTP Method: POST
+
+Non-prod: https://int.api.firstdata.com/ucom/v1/payments/sales
+
+Prod: https://prod.api.firstdata.com/ucom/v1/payments/sales
+
 ## Step 1: Generate an order ID 
 
 ### Description
@@ -61,14 +69,6 @@ This portion of the API call/payload will require a funding source or payment me
 ### Description
 
 This is a sample sales API payload that combines all of the previous steps. 
-
-### Endpoint URL 
-
-HTTP Method: POST
-
-Non-prod: https://int.api.firstdata.com/ucom/v1/payments/sales
-
-Prod: https://prod.api.firstdata.com/ucom/v1/payments/sales
 
 ### Parameters
 
