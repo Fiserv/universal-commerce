@@ -13,7 +13,7 @@ In uCom, refunds are possible for transactions that have settled already, which 
 | --- | --- | --- |
 | fdSaleId | String | path |yes|32|
 
-<ins> Sample Request (Partial refund)</ins>
+**<ins> Sample Request (Partial refund)</ins>**
 
 ```json
 
