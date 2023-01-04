@@ -11,7 +11,9 @@ In uCom, refunds are possible for transactions that have settled already, which 
 | --- | --- | --- |
 | fdSaleId | String | path |yes|32|
 
-<ins> Sample Request </ins>
+For a full refund, simply provide the fdSaleId in the path. 
+
+<ins> Sample Request (Partial refund)</ins>
 
 ```json
 
