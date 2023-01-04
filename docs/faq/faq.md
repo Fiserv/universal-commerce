@@ -63,7 +63,7 @@ No, uCom does not support multiple algorithms for the same partner.
 <details>
 <summary><b>How can we send customer's email address for Fraud scoring in Guest Checkout scenario?</b></summary>
 
-To pass through the customer’s email address for fraud scoring, you have to add the “purchaseInfo” field to your API call as demonstrated below. <br>
+To pass through the customer’s email address for fraud scoring, you have to add the “purchaseInfo” field to your API call as demonstrated below: <br>
 ```json
 {
    "authorization":{
