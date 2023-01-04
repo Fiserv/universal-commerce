@@ -28,7 +28,7 @@ In uCom, refunds are possible for transactions that have settled already, which 
 
 ```
 
-<ins>Sample Response (201 - Created)</ins>
+**<ins>Sample Response (201 - Created)</ins>**
 
 ```json
 {   
@@ -43,7 +43,7 @@ In uCom, refunds are possible for transactions that have settled already, which 
 }
 
 ```
-<ins>Sample Response (400 - Bad Request)</ins>
+**<ins>Sample Response (400 - Bad Request)</ins>**
 
 ```json
 {
@@ -58,7 +58,7 @@ In uCom, refunds are possible for transactions that have settled already, which 
 
 ```
 
-<ins>Sample Response (400 - Bad Request)</ins>
+**<ins>Sample Response (400 - Bad Request)</ins>**
 
 ```json
 {
@@ -78,7 +78,7 @@ In uCom, refunds are possible for transactions that have settled already, which 
 | --- | --- | --- |
 | fdCaptureId | String | path |yes|32|
 
-<ins> Sample Request </ins>
+**<ins> Sample Request </ins>**
 
 ```json
 
@@ -94,7 +94,7 @@ In uCom, refunds are possible for transactions that have settled already, which 
 
 ```
 
-<ins>Sample Response (201 - Created)</ins>
+**<ins>Sample Response (201 - Created)</ins>**
 
 ```json
 {
