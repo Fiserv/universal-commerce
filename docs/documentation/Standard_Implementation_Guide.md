@@ -163,7 +163,7 @@ Also note that the idempotent ID will only last for 24 hours regardless, so any 
 
 >### FEP Host Information
 
-FEP (Front End Processor) messages will be sent back to the merchant. 
+This is used to send the FEP (Front End Processor) messages back to the merchant. 
 
 ##### Possible Returns - Success cases (Applicable for all payment related operation responses)
 
@@ -262,6 +262,8 @@ WIP.
 >### Customer Services
 
 	This service is related to the uCom Customer Profile Management.
+
+  Explore more about the service [Here](universal-commerce/reference/1.0.0/Customer Services/customerservices.yaml)
 
 >### Security Services
 
