@@ -272,7 +272,7 @@ WIP.
 	
 Explore more about the service [Here]([reference/1.0.0/Account Services/AccountServices.yaml])
 	
-Try this [CustmerService Yaml](f3dca9b630baed5d06c5b39f114d20a4d4ba3ade/reference/1.0.0/Account%20Services/AccountServices.yaml) 
+Try this [CustmerService Yaml](reference/1.0.0/Account%20Services/AccountServices.yaml) 
 	
 Link: /v1/customers/{fdCustomerId}/applybuy/{auid}&branch=develop&version=1.0.0
 
