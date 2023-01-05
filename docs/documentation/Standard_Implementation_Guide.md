@@ -263,7 +263,10 @@ WIP.
 
 	This service is related to the uCom Customer Profile Management.
 
-  Explore more about the service [Here](universal-commerce/reference/1.0.0/Customer Services/customerservices.yaml)
+  Explore more about the service [Here](?path=universal-commerce/reference/1.0.0/Customer Services/customerservices.yaml)
+  Explore more about the service [Here](?path=/universal-commerce/reference/1.0.0/Customer Services/customerservices.yaml)
+  Explore more about the service [Here](/universal-commerce/reference/1.0.0/Customer Services/customerservices.yaml)
+  Explore more about the service [Here](/reference/1.0.0/Customer Services/customerservices.yaml)
 
 >### Security Services
 
