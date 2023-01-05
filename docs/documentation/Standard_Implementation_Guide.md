@@ -64,7 +64,28 @@ Unless explicitly decided otherwise, confidential information such as account nu
 
  **Webhooks**
 
-  WIP.
+  A webhook is a callback mechanism to inform you of changes occurring to your transaction in our system. We accomplish this by making an HTTP call to an endpoint in your system when these changes occur.
+The Merchant sends a webhook notification URL in authorization request where the App expects a fueling notifications.
+
+Json Object:
+
+```json
+"webhookUrl": {
+      "href": "string",
+      "rel": "self",
+      "method": "GET",
+      "id": "415e5cf6bfdb11e8a355529269fb1459"
+}
+```
+
+1. UCOM applies a standard URL pattern validation on the webhook endpoint URL if webhookUrl.href is present in the request
+2. UCOM configures a list of allowable domain names for a given partner and validates a requested domain name with the configured list
+3. if above point #1 or #2 failed then UCOM send an error to the merchant as invalid message request
+4. If validation is success, we persist the webhookUrl endpoint in uCom system
+5. Whenever the fueling, completion or receipt request comes from POS, UCOM system look up the webhook endpoint from transaction level.
+6. If endpoint available at transaction level, we use it for posting the notifications
+7. If endpoint is not available in transaction, then we publish notifications to the merchant level endpoint via normal notificaiton route
+
 
  **Wallet notification securities**
 
