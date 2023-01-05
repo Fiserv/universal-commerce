@@ -267,6 +267,8 @@ WIP.
   Explore more about the service [Here](?path=/universal-commerce/reference/1.0.0/Customer Services/customerservices.yaml)
   Explore more about the service [Here](/universal-commerce/reference/1.0.0/Customer Services/customerservices.yaml)
   Explore more about the service [Here](/reference/1.0.0/Customer Services/customerservices.yaml)
+	
+Link: ./reference/1.0.0/Customer Services/customerservices.yaml
 
 >### Security Services
 
