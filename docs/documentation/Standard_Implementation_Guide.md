@@ -273,9 +273,7 @@ WIP.
 Explore more about the service [Here]([reference/1.0.0/Account Services/AccountServices.yaml])
 	
 
-Try this [CustmerService Yaml]([xxxx]
-	
-(https://github.com/Fiserv/universal-commerce/blob/f3dca9b630baed5d06c5b39f114d20a4d4ba3ade/reference/1.0.0/Account%20Services/AccountServices.yaml))
+Try this [CustmerService Yaml]([xxxx](https://github.com/Fiserv/universal-commerce/blob/f3dca9b630baed5d06c5b39f114d20a4d4ba3ade/reference/1.0.0/Account%20Services/AccountServices.yaml))
 	
 	https://dev-developerstudio.fiserv.com/product/UniversalCommerce/api/?type=post&path=/v1/customers&branch=develop&version=1.0.0
 	
