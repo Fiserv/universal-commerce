@@ -272,6 +272,9 @@ WIP.
 	
 Explore more about the service [Here]([https://github.com/Fiserv/universal-commerce/blob/develop/reference/1.0.0/Account%20Services/AccountServices.yaml](https://github.com/Fiserv/universal-commerce/tree/develop/reference/1.0.1)
 	
+
+Try this [CustmerService Yaml](https://github.com/Fiserv/universal-commerce/tree/develop/reference/1.0.1/customerServices.yaml)
+	
 	
 	
 Link: /v1/customers/{fdCustomerId}/applybuy/{auid}&branch=develop&version=1.0.0
