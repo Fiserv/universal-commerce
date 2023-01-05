@@ -255,7 +255,7 @@ This is used to send the FEP (Front End Processor) messages back to the merchant
 }
 ```
 
-# Service-wise layout
+## Service-wise layout
 
 WIP.
 
@@ -283,7 +283,21 @@ WIP.
   >### Authentication Services
 
    Authentication Services
+
+## Usecases 
+
+The APIs can be used in different scenarios. We will describe the most common ones to give you an idea about the possibilities. Please see our receipes section to know more.   
 	
+## Testing
+
+Before start the testing, please make sure to know about the FEP assigned to the merchant and use the cards assigned to the FEP.
+The most common FEPs used are BUYPASS, Rapid Connect and IPG.
+
+
+
+
+Still having queries???. Please try our FAQs section for help.
+
 <div id="copy_button"></div>
 </body>
 </html>
