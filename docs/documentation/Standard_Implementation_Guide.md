@@ -278,7 +278,7 @@ Link: /v1/customers/{fdCustomerId}/applybuy/{auid}&branch=develop&version=1.0.0
 
 Link: [![An old rock in the desert](/assets/images/shiprock.jpg "Shiprock, New Mexico by Beau Rogers")](https://www.google.com)
 	
-Construct an [API request](?path=/universal-commerce/reference/1.0.0/Customer Services/customerservices.yaml) to use the Reporting APIs.
+Construct an [API request](?path=/reference/1.0.0/Customer Services/customerservices.yaml) to use the Reporting APIs.
 
 
 >### Security Services
