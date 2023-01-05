@@ -60,7 +60,36 @@ Unless explicitly decided otherwise, confidential information such as account nu
 
  >### Notifications
 
- WIP.
+ A Notification is a callback mechanism to inform you of events occurring in our system related to a transaction. This is accomplished by making an HTTP call to an endpoint in your system at the moment these events take place.
+ 
+**Event Types**
+
+| Event Type                   | Description |
+|------------------------|---------------|
+|PETROTRANSACTION_COMPLETED| Used to notify when the fueling is completed or cancelled |
+|PETROTRANSACTION_FUEL_STARTED| Used to notify when the user started the fueling |
+|PETROTRANSACTION_RECEIPT_READY| Used to notify the user when the receipt is ready |
+
+**Headers**
+
+| Header Name      | Required | Description                                                          |
+|------------------|----------|----------------------------------------------------------------------|
+| Api-Key          | Yes      | Api Key that identifies the client and used as part of the Signature |
+| Digest-Algorithm | Yes      | Algorithm used for Message Digest on the payload                     |
+| Sig-Algorithm    | Yes      | Algorithm used to generate the signature                             |
+| Sig-Timestamp    | Yes      | Not the event timestamp, the one used in Signature                   |
+| Signature        | Yes      | The signed string as described above in Signature Generation section |
+
+**Sample Header**
+
+```Json
+Content-Type: application/json
+Api-Key: BkRQT4GldvCf5hAyJ1Q3gSJiI1M3ldts
+Signature: 9a9cd131d804476e6698eb12d52e80e74b2a74ece247c111735f2cf05e315269536e0303be17d5754eaeb4d042551c62df3946140748c8bd156a0a3b31041cc2ab0af3d39c2a380adc1227d6dba859c75da6fcc698302ccf2b0a242f5a7545812451c974e41700d7b11cf321e18889d709d55d5f89bf4e4c3f7fd718f48a690788bf59b576b442cbba4a29e26cea3448340eaf4a43aa7a8027be3459d18c907bf5d17acd0e42135f841aa64849ea8a91d80ae33100c8b3dd407c02cc9ac620280df9156a1cfb46716ac37f519bb343e5c5af6e623f9ad027d627be04232cbf4eb7d37e04f0678d07876ba1d34fe8db711748920463cb14e3d37998e49eb9f125
+Sig-Timestamp: 1501621439636
+Sig-Algorithm: SHA256withRSA
+Digest-Algorithm: SHA-256
+```
 
  **Webhooks**
 
@@ -89,7 +118,7 @@ Json Object:
 
  **Wallet notification securities**
 
- WIP.
+ UCOM will share a public certificate to the merchant to receive the wallet notifications from uCom
 
 
 >### Currencies
