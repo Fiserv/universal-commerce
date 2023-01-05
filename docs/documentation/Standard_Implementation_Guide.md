@@ -116,7 +116,7 @@ Json Object:
 7. If endpoint is not available in transaction, then we publish notifications to the merchant level endpoint via normal notificaiton route
 
 
- **Wallet notification securities**
+**Wallet notification securities**
 
  UCOM will share a public certificate to the merchant to receive the wallet notifications from uCom
 
@@ -144,7 +144,7 @@ The code is the alphabetic 3 letter code as defined by ISO 4217.
 
 **Decimal Handling Of Amount**
 
-These currencies require the same correct amount format with a maximum of 2 decimals as reflected by the exponents, including trailing zeroes, e.g. 10, 10.1, 10.10 or 10.01. Any amount value with more than 2 decimals will cause an input_error.
+These currencies require the same correct amount format with a maximum of 2 decimals as reflected by the exponents, including trailing zeroes, e.g. 10, 10.1, 10.10 or 10.01. Any amount value with more than 2 decimals will cause an error.
 
 
   >### Idempotency

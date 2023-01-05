@@ -24,5 +24,8 @@ recipes:
 - link: recipes/refunds.md
   title: How to Issue a Refund
   type: recipe
+- link: recipes/Recipe-1.md
+  title: Sample Recipe
+  type: recipe
 
 
