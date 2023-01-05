@@ -270,7 +270,7 @@ WIP.
 	
 	
 	
-Explore more about the service [Here]([https://github.com/Fiserv/universal-commerce/blob/develop/reference/1.0.0/Account%20Services/AccountServices.yaml](https://github.com/Fiserv/universal-commerce/tree/develop/reference/1.0.1)
+Explore more about the service [Here]([https://github.com/Fiserv/universal-commerce/blob/develop/reference/1.0.0/Account%20Services/AccountServices.yaml])
 	
 
 Try this [CustmerService Yaml]([https://github.com/Fiserv/universal-commerce/tree/develop/reference/1.0.1/customerServices.yaml](https://github.com/Fiserv/universal-commerce/blob/f3dca9b630baed5d06c5b39f114d20a4d4ba3ade/reference/1.0.0/Account%20Services/AccountServices.yaml))
