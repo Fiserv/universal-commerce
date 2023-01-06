@@ -131,10 +131,16 @@ Each environment (CAT and prod) will have its own key. if you would like to repl
 <details>
 <summary><b>How long does a claim check nonce tokenized account last?</b></summary>
 
-There is no time expiration, but they expire after they are used once.
+There is no time expiration, but a nonce expires once it is used.
 
 </details>
 
+<details>
+<summary><b>How long does the payment nonce last?</b></summary>
+
+23 hours and 20 minutes
+  
+</details>
 
 <details>
 <summary><b>How are Debit cards handled in uCom?</b></summary>
@@ -146,19 +152,14 @@ Debit cards are treated the same way as credit cards in uCom requests.
 <details>
 <summary><b>What is the difference between a refund and a void?</b></summary>
 
-Void is gerneally used for cancellation of previous operation, such as a capture, sale, or auth. 
-Refund, on the other hand, is used when a transaction is fully complete. Either money has been moved, bookkeeping is completed, or settlement is done.
+Void is generally used for cancelling a previous operation, such as a capture, sale, or auth. 
+Refund, on the other hand, is used when a transaction is fully completed. Either the money has  moved or settlement is done.
  
-For QSR, void is the most likely use case, as the change would likely occur very quickly after sale (you're not refunding food 3 days later). That said, refunds probably have to be done at the POS, while an order cancellation for QSR is likely done through the mobile app or before food is received, so Void is more likely in that case. 
+For QSR, void is the most likely use case as the change would likely occur very quickly after a sale (you're not refunding food 3 days later). That said, refunds probably have to be done at the POS, while an order cancellation for QSR is likely done through the mobile app or before food is received, so Void is more likely in that case. 
 
 </details>
 
-<details>
-<summary><b>How long does the payment nonce last?</b></summary>
 
-23 hours and 20 minutes
-  
-</details>
 
 [//]: # (These are reference links used in markdown file)
 
