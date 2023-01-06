@@ -1,6 +1,18 @@
 # How we can help you
 
-## Here are few common questions that may help you.
+## Here are few common questions that may help you while you are navigating our API.
+
+### General FAQs: 
+
+### Customer Services FAQs: 
+
+### Account Services FAQs: 
+
+### Security FAQs: 
+
+### Payment Services FAQs: 
+
+### Petro Services FAQs: 
 
 <details>
   <summary><b>How many credit cards can we vault to a wallet?</b></summary>
