@@ -78,28 +78,6 @@ Also, please note that if you delete a customer profile, by default all vaulted/
 
 </details> 
 
-### Security FAQs
-
-<details>
-<summary><b>Can we use multiple algorithms when interacting with the uCom API?</b></summary>
-
-No, uCom does not support multiple algorithms for the same partner.
-
-</details>
-
-<details>
-<summary><b>If we signed up to use a multi-use public key, what is the expiration period of a static key pair?</b></summary>
-
-We will generate a multi-use key on your behalf once and disable the option to generate a key again. The public key we provide does not expire unless requested. 
-
-</details>
-
-<details>
-<summary><b>If we need to renew or replace a key, will the previous key remain valid until the new key can be deployed to our prod server?</b></summary>
-
-Each environment (CAT and prod) will have its own key. if you would like to replace or renew a key we need to do a deployment, once you generate new key the old key will not work. 
-
-</details>
 
 ### Payment Services FAQs 
 
@@ -176,6 +154,29 @@ For QSR, void is the most likely use case as the change would likely occur very 
 
 ### Petro Services FAQs
 
+
+### Security FAQs
+
+<details>
+<summary><b>Can we use multiple algorithms when interacting with the uCom API?</b></summary>
+
+No, uCom does not support multiple algorithms for the same partner.
+
+</details>
+
+<details>
+<summary><b>If we signed up to use a multi-use public key, what is the expiration period of a static key pair?</b></summary>
+
+We will generate a multi-use key on your behalf once and disable the option to generate a key again. The public key we provide does not expire unless requested. 
+
+</details>
+
+<details>
+<summary><b>If we need to renew or replace a key, will the previous key remain valid until the new key can be deployed to our prod server?</b></summary>
+
+Each environment (CAT and prod) will have its own key. if you would like to replace or renew a key we need to do a deployment, once you generate new key the old key will not work. 
+
+</details>
 
 
 
