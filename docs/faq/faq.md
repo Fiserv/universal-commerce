@@ -4,6 +4,13 @@
 
 ### General FAQs
 
+<details>
+<summary><b>How are Debit cards handled in uCom?</b></summary>
+
+Debit cards are treated the same way as credit cards in uCom requests. 
+
+</details>
+
 ### Customer Services FAQs
 
 <details>
@@ -80,6 +87,20 @@ No, uCom does not support multiple algorithms for the same partner.
 
 </details>
 
+<details>
+<summary><b>If we signed up to use a multi-use public key, what is the expiration period of a static key pair?</b></summary>
+
+We will generate a multi-use key on your behalf once and disable the option to generate a key again. The public key we provide does not expire unless requested. 
+
+</details>
+
+<details>
+<summary><b>If we need to renew or replace a key, will the previous key remain valid until the new key can be deployed to our prod server?</b></summary>
+
+Each environment (CAT and prod) will have its own key. if you would like to replace or renew a key we need to do a deployment, once you generate new key the old key will not work. 
+
+</details>
+
 ### Payment Services FAQs 
 
 
@@ -117,23 +138,6 @@ An fdCustomerId is required to perform payments using a vaulted account only, bu
 
 </details>
 
-### Petro Services FAQs
-
-
-<details>
-<summary><b>If we signed up to use a multi-use public key, what is the expiration period of a static key pair?</b></summary>
-
-We will generate a multi-use key on your behalf once and disable the option to generate a key again. The public key we provide does not expire unless requested. 
-
-</details>
-
-<details>
-<summary><b>If we need to renew or replace a key, will the previous key remain valid until the new key can be deployed to our prod server?</b></summary>
-
-Each environment (CAT and prod) will have its own key. if you would like to replace or renew a key we need to do a deployment, once you generate new key the old key will not work. 
-
-</details>
-
 <details>
 <summary><b>Is there a way to flag an account (payment method) as the default/primary/preferred for a customer?</b></summary>
 
@@ -158,12 +162,6 @@ There is no time expiration, but a nonce expires once it is used.
   
 </details>
 
-<details>
-<summary><b>How are Debit cards handled in uCom?</b></summary>
-
-Debit cards are treated the same way as credit cards in uCom requests. 
-
-</details>
 
 <details>
 <summary><b>What is the difference between a refund and a void?</b></summary>
@@ -174,6 +172,13 @@ Refund, on the other hand, is used when a transaction is fully completed. Either
 For QSR, void is the most likely use case as the change would likely occur very quickly after a sale (you're not refunding food 3 days later). That said, refunds probably have to be done at the POS, while an order cancellation for QSR is likely done through the mobile app or before food is received, so Void is more likely in that case. 
 
 </details>
+
+
+### Petro Services FAQs
+
+
+
+
 
 
 
