@@ -152,7 +152,7 @@ Debit cards are treated the same way as credit cards in uCom requests.
 <details>
 <summary><b>What is the difference between a refund and a void?</b></summary>
 
-Void is generally used for cancelling a previous operation, such as a capture, sale, or auth. 
+Void is generally used for cancelling a previous operation, such as a capture, sale, or auth. </br>
 Refund, on the other hand, is used when a transaction is fully completed. Either the money has  moved or settlement is done.
  
 For QSR, void is the most likely use case as the change would likely occur very quickly after a sale (you're not refunding food 3 days later). That said, refunds probably have to be done at the POS, while an order cancellation for QSR is likely done through the mobile app or before food is received, so Void is more likely in that case. 
