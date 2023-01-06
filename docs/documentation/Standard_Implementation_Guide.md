@@ -274,7 +274,7 @@ Explore more about the service [Here]([reference/1.0.0/Account Services/AccountS
 	
 Try this [CustmerService Yaml](reference/1.0.0/Account%20Services/AccountServices.yaml) 
 	
-Try Me [CustmerService Yaml](https://dev-developerstudio.fiserv.com/product/UniversalCommerce/api/?type=get&path=/v1/customers/{fdCustomerId}/accounts/{fdAccountId}&branch=develop&version=1.0.0) 
+Try Me [CustmerService Yaml](./?type=get&path=/v1/customers/{fdCustomerId}/accounts/{fdAccountId}&branch=develop&version=1.0.0) 
 	
 Link: /v1/customers/{fdCustomerId}/applybuy/{auid}&branch=develop&version=1.0.0
 
