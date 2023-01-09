@@ -1,8 +1,11 @@
-# How to Issue a Refund
+# How to Issue a Refund 
 
-Just like with other platforms, refunds in uCom are possible for transactions that have settled already. Since uCom provides multiple ways of making a payment, there are multiple ways to perform a refund depending on the transaction type. For starters, for a sale transaction type, a sale ID is required to process a refund. Similarly, an auth/capture type of transcation will require a Capture ID.
+<img title="icon" alt="Alt text" src="https://raw.githubusercontent.com/Fiserv/universal-commerce/99299089c899f788417426ac355c83d06f9b8870/assets/images/refund-svgrepo-com.svg" width="30" height="30"> 
+In uCom, refunds are possible for transactions that have settled already, which usually happens after 24 hours of a transaction being completed. Since uCom provides multiple ways of making a payment, there are multiple ways to perform a refund depending on the transaction type. For starters, for a sale transaction type, a sale ID is required to process a refund. Similarly, an auth/capture type of transcation will require a Capture ID.
 
-## Refund of a sale:
+**To process a full refund, simply provide the fdSaleId in the path with no payload.**
+
+## Option 1: Refund of a sale
 
 ### POST /v1/payments/sales/{fdSaleId}/refunds
 
@@ -10,7 +13,7 @@ Just like with other platforms, refunds in uCom are possible for transactions th
 | --- | --- | --- |
 | fdSaleId | String | path |yes|32|
 
-<ins> Sample Request </ins>
+**<ins> Sample Request (Partial refund)</ins>**
 
 ```json
 
@@ -25,7 +28,7 @@ Just like with other platforms, refunds in uCom are possible for transactions th
 
 ```
 
-<ins>Sample Response (201 - Created)</ins>
+**<ins>Sample Response (201 - Created)</ins>**
 
 ```json
 {   
@@ -40,8 +43,36 @@ Just like with other platforms, refunds in uCom are possible for transactions th
 }
 
 ```
+**<ins>Sample Response (400 - Bad Request)</ins>**
 
-## Refund of a Capture:
+```json
+{
+    "code": "272781",
+    "message": "Capture refund transaction failed",
+    "category": "common",
+    "developerInfo": {
+        "developerMessage": "Capture refund transaction failed"
+    }
+}
+
+
+```
+
+**<ins>Sample Response (400 - Bad Request)</ins>**
+
+```json
+{
+    "code": " 272782",
+    "message": "Capture refund transaction already done",
+    "category": "common",
+    "developerInfo": {
+        "developerMessage": "Capture refund transaction already done"
+    }
+}
+```
+## Option 2: Refund of a Capture
+
+**To process a full refund, simply provide the fdCaptureId in the path with no payload.**
 
 ### POST /payments/captures/{fdCaptureId}/refunds
 
@@ -49,7 +80,7 @@ Just like with other platforms, refunds in uCom are possible for transactions th
 | --- | --- | --- |
 | fdCaptureId | String | path |yes|32|
 
-<ins> Sample Request </ins>
+**<ins> Sample Request </ins>**
 
 ```json
 
@@ -65,7 +96,7 @@ Just like with other platforms, refunds in uCom are possible for transactions th
 
 ```
 
-<ins>Sample Response (201 - Created)</ins>
+**<ins>Sample Response (201 - Created)</ins>**
 
 ```json
 {
@@ -107,3 +138,32 @@ Just like with other platforms, refunds in uCom are possible for transactions th
 } 
 
 ```
+
+**<ins>Sample Response (400 - Bad Request)</ins>**
+
+```json
+{
+    "code": "272781",
+    "message": "Capture refund transaction failed",
+    "category": "common",
+    "developerInfo": {
+        "developerMessage": "Capture refund transaction failed"
+    }
+}
+
+
+```
+
+**<ins>Sample Response (400 - Bad Request)</ins>**
+
+```json
+
+{
+    "code": " 272782",
+    "message": "Capture refund transaction already done",
+    "category": "common",
+    "developerInfo": {
+        "developerMessage": "Capture refund transaction already done"
+    }
+}
+

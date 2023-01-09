@@ -14,7 +14,7 @@ Here is how to utilize this guide. All your necessary steps are on your right an
 
 The uCommerce Gateway services are accessed through the public Internet. uCommerce Gateway accepts communication only via the HTTPS channel. Custom HTTP headers are also used to carry additional information in each request.
 
-**Fully-Qualified URL**
+**Fully Qualified URL**
 
 Concatenate the above URL and each endpoint name from the specification to get fully-qualified URL for each environment.
 
@@ -33,10 +33,19 @@ Please see the reference document for current implementation.
    >### Headers
    >> API HTTP headers
    
- <br>
- <br>
- <br>
+ 
+ | Header            | Value                  | Always Required | Description                                                                                                                             |
+|-------------------|------------------------|-----------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| Api-Key           | <apiKey>               | YES             | Merchant API key, Refer Apigee portal for more details                                                                                  |
+| Timestamp         | <timestamp>            | YES             | Request initiation timestamp, expecting Epoch time. The value must generate out of UTC timestamp. Sample value format is 1499961987232
+| Authorization     | HMAC <signature>       | YES             | HMAC Key generation, please refer Apigee portal for more details                                                                        |
+| Authorization     | Bearer {{accessToken}} | YES             | Used on /v1/account-tokens                                                                                                              |
+| Content-Type      | application/json       | YES             | application/json                                                                                                                        |
+| Client-Request-Id | <$guid>                |                 | This is mandatory and unique for post request to avoid duplicate entry                                                                  |
+| Client-Token      | <accessToken>          |                 | Used on POST /v1/payments/sales for anonymous transactions and /v1/customers/{fdCustomerId}/accounts for account transactions           |
+| Content-Signature | HMAC <signature>       |                 | Used on /v1/account-tokens                                                                                                              |
    
+
    >### Securities and Privacy
     >>Field Encryption/Decryption Algorithm
 
@@ -51,30 +60,91 @@ Unless explicitly decided otherwise, confidential information such as account nu
 
  >### Notifications
 
- WIP.
+ A Notification is a callback mechanism to inform you of events occurring in our system related to a transaction. This is accomplished by making an HTTP call to an endpoint in your system at the moment these events take place.
+ 
+**Event Types**
+
+| Event Type                   | Description |
+|------------------------|---------------|
+|PETROTRANSACTION_COMPLETED| Used to notify when the fueling is completed or cancelled |
+|PETROTRANSACTION_FUEL_STARTED| Used to notify when the user started the fueling |
+|PETROTRANSACTION_RECEIPT_READY| Used to notify the user when the receipt is ready |
+
+**Headers**
+
+| Header Name      | Required | Description                                                          |
+|------------------|----------|----------------------------------------------------------------------|
+| Api-Key          | Yes      | Api Key that identifies the client and used as part of the Signature |
+| Digest-Algorithm | Yes      | Algorithm used for Message Digest on the payload                     |
+| Sig-Algorithm    | Yes      | Algorithm used to generate the signature                             |
+| Sig-Timestamp    | Yes      | Not the event timestamp, the one used in Signature                   |
+| Signature        | Yes      | The signed string as described above in Signature Generation section |
+
+**Sample Header**
+
+```Json
+Content-Type: application/json
+Api-Key: BkRQT4GldvCf5hAyJ1Q3gSJiI1M3ldts
+Signature: 9a9cd131d804476e6698eb12d52e80e74b2a74ece247c111735f2cf05e315269536e0303be17d5754eaeb4d042551c62df3946140748c8bd156a0a3b31041cc2ab0af3d39c2a380adc1227d6dba859c75da6fcc698302ccf2b0a242f5a7545812451c974e41700d7b11cf321e18889d709d55d5f89bf4e4c3f7fd718f48a690788bf59b576b442cbba4a29e26cea3448340eaf4a43aa7a8027be3459d18c907bf5d17acd0e42135f841aa64849ea8a91d80ae33100c8b3dd407c02cc9ac620280df9156a1cfb46716ac37f519bb343e5c5af6e623f9ad027d627be04232cbf4eb7d37e04f0678d07876ba1d34fe8db711748920463cb14e3d37998e49eb9f125
+Sig-Timestamp: 1501621439636
+Sig-Algorithm: SHA256withRSA
+Digest-Algorithm: SHA-256
+```
 
  **Webhooks**
 
-  WIP.
+  A webhook is a callback mechanism to inform you of changes occurring to your transaction in our system. We accomplish this by making an HTTP call to an endpoint in your system when these changes occur.
+The Merchant sends a webhook notification URL in authorization request where the App expects a fueling notifications.
 
- **Wallet notification securities**
+Json Object:
 
- WIP.
+```json
+"webhookUrl": {
+      "href": "string",
+      "rel": "self",
+      "method": "GET",
+      "id": "415e5cf6bfdb11e8a355529269fb1459"
+}
+```
+
+1. UCOM applies a standard URL pattern validation on the webhook endpoint URL if webhookUrl.href is present in the request
+2. UCOM configures a list of allowable domain names for a given partner and validates a requested domain name with the configured list
+3. if above point #1 or #2 failed then UCOM send an error to the merchant as invalid message request
+4. If validation is success, we persist the webhookUrl endpoint in uCom system
+5. Whenever the fueling, completion or receipt request comes from POS, UCOM system look up the webhook endpoint from transaction level.
+6. If endpoint available at transaction level, we use it for posting the notifications
+7. If endpoint is not available in transaction, then we publish notifications to the merchant level endpoint via normal notificaiton route
 
 
->### Currencies and Locale
+**Wallet notification securities**
 
-**Supported Currency Codes**
+ UCOM will share a public certificate to the merchant to receive the wallet notifications from uCom
 
-WIP.
 
-**Supported Country Codes**
+>### Currencies
 
-WIP.
+We support the following currencies:
+
+| Name                   | Currency Code | Currency Number |
+|------------------------|---------------|-----------------|
+| US Dollar              | USD           | 840             |
+| Canadian Dollar        | CAD           | 124             |
+| European Currency Unit | EUR           | 978             |
+| Pound Sterling         | GBP           | 826             |
+| Norwegian Krone        | NOK           | 578             |
+| Mexican Peso           | MXN           | 484             |
+| Argentine Peso         | ARS           | 32              |
+| Columbia Peso          | COP           | 170             |
+| Swedish Krona          | SEK           | 752             |
+| Danish Krone           | DKK           | 208             |
+| South African Rand     | ZAR           | 710             |
+| Swiss Franc            | CHF           | 756             |
+
+The code is the alphabetic 3 letter code as defined by ISO 4217.
 
 **Decimal Handling Of Amount**
 
-WIP.
+These currencies require the same correct amount format with a maximum of 2 decimals as reflected by the exponents, including trailing zeroes, e.g. 10, 10.1, 10.10 or 10.01. Any amount value with more than 2 decimals will cause an error.
 
 
   >### Idempotency
@@ -93,19 +163,125 @@ Also note that the idempotent ID will only last for 24 hours regardless, so any 
 
 >### FEP Host Information
 
-WIP.
+This is used to send the FEP (Front End Processor) messages back to the merchant. 
 
-**Host extra info**
+##### Possible Returns - Success cases (Applicable for all payment related operation responses)
 
-WIP.
+```json
+{
+  "hostExtraInfo": [
+    {
+      "name": "APPROVAL_NUMBER",
+      "value": "995224"
+    },
+    {
+      "name": "MERCHANT_ID",
+      "value": "99022879997"
+    },
+    {
+      "name": "AVAILABLE_BALANCE",
+      "value": "80.00"
+    },
+    {
+      "name": "SEQUENCE_NUMBER",
+      "value": "786514"
+    },
+    {
+      "name": "TRANSACTION_DATETIME",
+      "value": "2019-11-22T07:06:00"
+    },
+    {
+      "name": "HOST_RESPONSE_MESSAGE",
+      "value": "APPROVED  995224"
+    },
+    {
+      "name": "HOST_RESPONSE_CODE",
+      "value": "995224"
+    },
+    {
+      "name": "NETWORK_TRANSACTION_ID",
+      "value": "381032340917110"
+    }
+    {
+      "name": "PREPAID_HOST_RESPONSE_CODE",
+      "value": "995224"
+    }
+    {
+      "name": "PREPAID_HOST_RESPONSE_MESSAGE",
+      "value": "APPROVED 995224"
+    }
+    {
+      "name": "PREPAID_APPROVAL_NUMBER",
+      "value": "995224"
+    }
+    {
+      "name": "PREPAID_SEQUENCE_NUMBER",
+      "value": "786514"
+    }
+  ]
+}
+```
 
-# Service-wise layout
+##### Possible Returns - Failure cases
+
+```json
+{
+  "hostExtraInfo": [
+    {
+      "name": "SEQUENCE_NUMBER",
+      "value": "786514"
+    },
+    {
+      "name": "MERCHANT_ID",
+      "value": "99022879997"
+    },
+    {
+      "name": "AVAILABLE_BALANCE",
+      "value": "80.00"
+    },
+    {
+      "name": "TRANSACTION_DATETIME",
+      "value": "2019-11-22T07:06:00"
+    },
+    {
+      "name": "HOST_RESPONSE_MESSAGE",
+      "value": "Declined 995224"
+    },
+    {
+      "name": "HOST_RESPONSE_CODE",
+      "value": "995224"
+    }
+  ]
+}
+```
+
+## Service-wise layout
 
 WIP.
 
 >### Customer Services
 
 	This service is related to the uCom Customer Profile Management.
+
+  Explore more about the service [Here](?path=universal-commerce/reference/1.0.0/Customer Services/customerservices.yaml)
+  Explore more about the service [Here](?path=/universal-commerce/reference/1.0.0/Customer Services/customerservices.yaml)
+  Explore more about the service [Here](/universal-commerce/reference/1.0.0/Customer Services/customerservices.yaml)
+  Explore more about the service [Here](/reference/1.0.0/Customer Services/customerservices.yaml)
+	
+	
+	
+Explore more about the service [Here]([reference/1.0.0/Account Services/AccountServices.yaml])
+	
+Try this [CustmerService Yaml](reference/1.0.0/Account%20Services/AccountServices.yaml) 
+	
+Try Me [CustmerService Yaml](./?type=get&path=/v1/customers/{fdCustomerId}/accounts/{fdAccountId}&branch=develop&version=1.0.0) 
+	
+Link: /v1/customers/{fdCustomerId}/applybuy/{auid}&branch=develop&version=1.0.0
+
+Link: [![An old rock in the desert](/assets/images/shiprock.jpg "Shiprock, New Mexico by Beau Rogers")](https://www.google.com)
+	
+Construct an [API request](?path=/reference/1.0.0/Customer Services/customerservices.yaml) to use the Reporting APIs.
+
 
 >### Security Services
 
@@ -122,7 +298,21 @@ WIP.
   >### Authentication Services
 
    Authentication Services
+
+## Usecases 
+
+The APIs can be used in different scenarios. We will describe the most common ones to give you an idea about the possibilities. Please see our receipes section to know more.   
 	
+## Testing
+
+Before start the testing, please make sure to know about the FEP assigned to the merchant and use the cards assigned to the FEP.
+The most common FEPs used are BUYPASS, Rapid Connect and IPG.
+
+
+
+
+Still having queries???. Please try our FAQs section for help.
+
 <div id="copy_button"></div>
 </body>
 </html>
