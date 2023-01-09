@@ -261,26 +261,12 @@ WIP.
 
 >### Customer Services
 
-	This service is related to the uCom Customer Profile Management.
+This service is related to the uCom Customer Profile Management.
 
-  Explore more about the service [Here](?path=universal-commerce/reference/1.0.0/Customer Services/customerservices.yaml)
-  Explore more about the service [Here](?path=/universal-commerce/reference/1.0.0/Customer Services/customerservices.yaml)
-  Explore more about the service [Here](/universal-commerce/reference/1.0.0/Customer Services/customerservices.yaml)
-  Explore more about the service [Here](/reference/1.0.0/Customer Services/customerservices.yaml)
+
 	
-	
-	
-Explore more about the service [Here]([reference/1.0.0/Account Services/AccountServices.yaml])
-	
-Try thissss [CustmerService Yaml](/product/UniversalCommerce/api/?type=get&path=/v1/customers/{fdCustomerId}/accounts/{fdAccountId}&branch=develop&version=1.0.0) 
-	
-Try this After [CustmerService Yaml](./api/?type=get&path=/v1/customers/{fdCustomerId}/accounts/{fdAccountId}&branch=develop&version=1.0.0) 
-	
-Try Me [CustmerService Yaml](./?type=get&path=/v1/customers/{fdCustomerId}/accounts/{fdAccountId}&branch=develop&version=1.0.0) 
-	
-Link: /v1/customers/{fdCustomerId}/applybuy/{auid}&branch=develop&version=1.0.0
-	
-Construct an [API request](?path=/reference/1.0.0/Customer Services/customerservices.yaml) to use the Reporting APIs.
+ [Try the Custmer Service API](/product/UniversalCommerce/api/?type=get&path=/v1/customers/{fdCustomerId}/accounts/{fdAccountId}&branch=develop&version=1.0.0) 
+
 
 
 >### Security Services
