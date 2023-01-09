@@ -6,13 +6,13 @@ This guide will walk through all CRUD opertions for customer profiles in the uCo
 
 ## Create a Customer Profile
 
-### Description
+**<ins> Description
 
 Create a Customer Profile (Customer Registration)
 
 Registering a customer in the uCom system results in a unique identifier, 'fdCustomerId' that is used in subsequent operations like vaulting a payment account or making mobile payments. 
 
-### Endpoint URL
+**<ins> Endpoint URL
 
 HTTP Method: POST
 
@@ -20,7 +20,7 @@ Non-prod: [https://int.api.firstdata.com/ucom/v1/customers](https://int.api.firs
 
 Prod: [https://prod.api.firstdata.com/ucom/v1/customers](https://prod.api.firstdata.com/ucom/v1/customers)
 
-### Parameters
+**<ins> Parameters
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
@@ -40,7 +40,7 @@ Prod: [https://prod.api.firstdata.com/ucom/v1/customers](https://prod.api.firstd
 | phoneNumbers,primary | Boolean |  primary = True/False |
 | DeviceInfo | Object | Required for Fraud detect |
 
-### HTTP Headers
+**<ins> HTTP Headers
 
 | Header Name | Required | Description |
 | --- | --- | --- |
@@ -51,14 +51,14 @@ Prod: [https://prod.api.firstdata.com/ucom/v1/customers](https://prod.api.firstd
 | Content-Type | Yes | application/json |
 | access\_token | Conditionally | Required when vaulting payment information. Utilizes the tokenId returned from the /tokens api. |
 
-### Sample Headers
+**<ins> Sample Headers
 Content-Type:application/json <br>
 Client-Request-Id:{{$guid}} <br>
 Api-Key:{{clientKey}} <br>
 Authorization:HMAC {{signature}} <br>
 Timestamp:{{time}} <br>
 
-### Sample Request (Minimal information)
+**<ins> Sample Request (Minimal information)
 
 ```json
 {
@@ -85,7 +85,7 @@ Timestamp:{{time}} <br>
 }
 ```
 
-### Sample Request (Additional Information)
+**<ins> Sample Request (Additional Information)
 
 
 ```json
@@ -134,7 +134,7 @@ Timestamp:{{time}} <br>
 }
 ```
 
-### Sample Response (201 – Created)
+**<ins> Sample Response (201 – Created)
 
 ```json
 {
@@ -142,7 +142,7 @@ Timestamp:{{time}} <br>
     "externalId": "5876"
 }
 ```
-### Sample Response (400 – Bad Request)
+**<ins> Sample Response (400 – Bad Request)
 ```json
 {
     "code": "270101",
@@ -155,11 +155,11 @@ Timestamp:{{time}} <br>
 ```
 ## Update an Existing Customer Profile 
 
-### Description
+**<ins> Description
 
 This request will update the Customer profile in uCom by providing the fdCustomerId.
 
-### Endpoint URL
+**<ins> Endpoint URL
 
 HTTP Method: PATCH
 
@@ -168,7 +168,7 @@ Non-prod: [https://int.api.firstdata.com/ucom/v1/customers](https://int.api.firs
 Prod: [https://prod.api.firstdata.com/ucom/v1/customers](https://prod.api.firstdata.com/ucom/v1/customers)/{fdCustomerId}
 
 
-### Parameters
+**<ins> Parameters
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
@@ -176,7 +176,7 @@ Prod: [https://prod.api.firstdata.com/ucom/v1/customers](https://prod.api.firstd
 
 \*This is always true for API flow.
 
-### Headers
+**<ins> Headers
 
 Content-Type:application/json <br>
 Client-Request-Id:{{$guid}} <br>
@@ -184,7 +184,7 @@ Api-Key:{{clientKey}} <br>
 Authorization:HMAC {{signature}} <br>
 Timestamp:{{time}} <br>
 
-### Sample Request 
+**<ins> Sample Request 
 
 ```json
 {
@@ -202,11 +202,11 @@ Timestamp:{{time}} <br>
 ```
 This  request can update any entity that requires updating. Any of the objects or entities in the parameters (above) will work here.
 
-### Sample Response (204 – No Content)
+**<ins> Sample Response (204 – No Content)
 
 The request succeeded but there's really nothing to show.
 
-### Sample Response (400 – Bad Request)
+**<ins> Sample Response (400 – Bad Request)
 ```json
 {
     "code": "279904",
@@ -220,11 +220,11 @@ The request succeeded but there's really nothing to show.
 
 ## Read/Get Customer Profile
 
-### Description
+**<ins> Description
 
 Read a Customer Profile. Fetch the details of a customer providing the fdCustomerId.
 
-### Endpoint URL
+**<ins> Endpoint URL
 
 HTTP Method: GET
 
@@ -232,7 +232,7 @@ Non-prod: [https://int.api.firstdata.com/ucom/v1/customers/{fdCustomerId}](https
 
 Prod: [https://prod.api.firstdata.com/ucom/v1/customers/{fdCustomerId}](https://prod.api.firstdata.com/ucom/v1/customers/%7BfdCustomerId%7D)
 
-### Headers
+**<ins> Headers
 
 Content-Type:application/json <br>
 Client-Request-Id:{{$guid}} <br>
@@ -240,11 +240,11 @@ Api-Key:{{clientKey}} <br>
 Authorization:HMAC {{signature}} <br>
 Timestamp:{{time}} <br>
 
-### Sample Request
+**<ins> Sample Request
 
 This request is empty since it's a GET call
 
-### Sample Response (200 – Created)
+**<ins> Sample Response (200 – Created)
 
 ```json
 {
@@ -280,7 +280,7 @@ This request is empty since it's a GET call
 
 ```
 
-### Sample Response (400 – Bad Request)
+**<ins> Sample Response (400 – Bad Request)
 
 ```json
 {
@@ -295,11 +295,11 @@ This request is empty since it's a GET call
 
 ## Delete a Customer Profile
 
-### Description
+**<ins> Description
 
 Delete a customer profile from uCom system by providing the fdCustomerId.
 
-### Endpoint URL
+**<ins> Endpoint URL
 
 HTTP Method: DELETE
 
@@ -307,7 +307,7 @@ Non-prod: [https://int.api.firstdata.com/ucom/v1/customers/{fdCustomerId}](https
 
 Prod: [https://prod.api.firstdata.com/ucom/v1/customers/{fdCustomerId}](https://prod.api.firstdata.com/ucom/v1/customers/%7BfdCustomerId%7D)
 
-### Headers
+**<ins> Headers
 
 Content-Type:application/json <br>
 Client-Request-Id:{{$guid}} <br>
@@ -315,13 +315,13 @@ Api-Key:{{clientKey}} <br>
 Authorization:HMAC {{signature}} <br>
 Timestamp:{{time}} <br>
 
-### Sample Request
+**<ins> Sample Request
 
-### Sample Response (204 – No Content)
+**<ins> Sample Response (204 – No Content)
 
 The request succeeded but there's nothing to show.
 
-### Sample Response (400 – Bad Request)
+**<ins> Sample Response (400 – Bad Request)
 
 ```json
 {
