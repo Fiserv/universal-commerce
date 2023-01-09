@@ -272,7 +272,7 @@ WIP.
 	
 Explore more about the service [Here]([reference/1.0.0/Account Services/AccountServices.yaml])
 	
-Try this [CustmerService Yaml](reference/1.0.0/Account%20Services/AccountServices.yaml) 
+Try thissss [CustmerService Yaml](/api/?type=get&path=/v1/customers/{fdCustomerId}/accounts/{fdAccountId}&branch=develop&version=1.0.0) 
 	
 Try Me [CustmerService Yaml](./?type=get&path=/v1/customers/{fdCustomerId}/accounts/{fdAccountId}&branch=develop&version=1.0.0) 
 	
