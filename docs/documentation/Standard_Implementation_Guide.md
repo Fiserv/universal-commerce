@@ -279,8 +279,6 @@ Try this After [CustmerService Yaml](./api/?type=get&path=/v1/customers/{fdCusto
 Try Me [CustmerService Yaml](./?type=get&path=/v1/customers/{fdCustomerId}/accounts/{fdAccountId}&branch=develop&version=1.0.0) 
 	
 Link: /v1/customers/{fdCustomerId}/applybuy/{auid}&branch=develop&version=1.0.0
-
-Link: [![An old rock in the desert](/assets/images/shiprock.jpg "Shiprock, New Mexico by Beau Rogers")](https://www.google.com)
 	
 Construct an [API request](?path=/reference/1.0.0/Customer Services/customerservices.yaml) to use the Reporting APIs.
 
