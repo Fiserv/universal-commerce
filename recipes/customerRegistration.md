@@ -51,7 +51,7 @@ Prod: [https://prod.api.firstdata.com/ucom/v1/customers](https://prod.api.firstd
 | Content-Type | Yes | application/json |
 | access\_token | Conditionally | Required when vaulting payment information. Utilizes the tokenId returned from the /tokens api. |
 
-**<ins> Sample Headers </ins>**
+**<ins> Sample Headers </ins>** </br>
 Content-Type:application/json <br>
 Client-Request-Id:{{$guid}} <br>
 Api-Key:{{clientKey}} <br>
