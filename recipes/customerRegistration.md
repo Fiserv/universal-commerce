@@ -6,13 +6,13 @@ This guide will cover all CRUD opertions for customer profiles in the uCom API.
 
 ## Create a Customer Profile
 
-**<ins> Description
+**<ins> Description </ins>**
 
 Create a Customer Profile (Customer Registration)
 
 Registering a customer in the uCom system results in a unique identifier, 'fdCustomerId' that is used in subsequent operations like vaulting a payment account or making mobile payments. 
 
-**<ins> Endpoint URL
+**<ins> Endpoint URL </ins>**
 
 HTTP Method: POST
 
@@ -20,7 +20,7 @@ Non-prod: [https://int.api.firstdata.com/ucom/v1/customers](https://int.api.firs
 
 Prod: [https://prod.api.firstdata.com/ucom/v1/customers](https://prod.api.firstdata.com/ucom/v1/customers)
 
-**<ins> Parameters
+**<ins> Parameters </ins>**
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
@@ -40,7 +40,7 @@ Prod: [https://prod.api.firstdata.com/ucom/v1/customers](https://prod.api.firstd
 | phoneNumbers,primary | Boolean |  primary = True/False |
 | DeviceInfo | Object | Required for Fraud detect |
 
-**<ins> HTTP Headers
+**<ins> HTTP Headers </ins>**
 
 | Header Name | Required | Description |
 | --- | --- | --- |
@@ -51,14 +51,14 @@ Prod: [https://prod.api.firstdata.com/ucom/v1/customers](https://prod.api.firstd
 | Content-Type | Yes | application/json |
 | access\_token | Conditionally | Required when vaulting payment information. Utilizes the tokenId returned from the /tokens api. |
 
-**<ins> Sample Headers
+**<ins> Sample Headers </ins>**
 Content-Type:application/json <br>
 Client-Request-Id:{{$guid}} <br>
 Api-Key:{{clientKey}} <br>
 Authorization:HMAC {{signature}} <br>
 Timestamp:{{time}} <br>
 
-**<ins> Sample Request (Minimal information)
+**<ins> Sample Request (Minimal information) </ins>**
 
 ```json
 {
@@ -85,7 +85,7 @@ Timestamp:{{time}} <br>
 }
 ```
 
-**<ins> Sample Request (Additional Information)
+**<ins> Sample Request (Additional Information) </ins>**
 
 
 ```json
@@ -134,7 +134,7 @@ Timestamp:{{time}} <br>
 }
 ```
 
-**<ins> Sample Response (201 – Created)
+**<ins> Sample Response (201 – Created) </ins>**
 
 ```json
 {
@@ -155,11 +155,11 @@ Timestamp:{{time}} <br>
 ```
 ## Update an Existing Customer Profile 
 
-**<ins> Description
+**<ins> Description </ins>**
 
 This request will update the Customer profile in uCom by providing the fdCustomerId.
 
-**<ins> Endpoint URL
+**<ins> Endpoint URL </ins>**
 
 HTTP Method: PATCH
 
@@ -168,7 +168,7 @@ Non-prod: [https://int.api.firstdata.com/ucom/v1/customers](https://int.api.firs
 Prod: [https://prod.api.firstdata.com/ucom/v1/customers](https://prod.api.firstdata.com/ucom/v1/customers)/{fdCustomerId}
 
 
-**<ins> Parameters
+**<ins> Parameters </ins>**
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
@@ -176,7 +176,7 @@ Prod: [https://prod.api.firstdata.com/ucom/v1/customers](https://prod.api.firstd
 
 \*This is always true for API flow.
 
-**<ins> Headers
+**<ins> Headers </ins>**
 
 Content-Type:application/json <br>
 Client-Request-Id:{{$guid}} <br>
@@ -184,7 +184,7 @@ Api-Key:{{clientKey}} <br>
 Authorization:HMAC {{signature}} <br>
 Timestamp:{{time}} <br>
 
-**<ins> Sample Request 
+**<ins> Sample Request </ins>**
 
 ```json
 {
@@ -220,11 +220,11 @@ The request succeeded but there's really nothing to show.
 
 ## Read/Get Customer Profile
 
-**<ins> Description
+**<ins> Description </ins>**
 
 Read a Customer Profile. Fetch the details of a customer providing the fdCustomerId.
 
-**<ins> Endpoint URL
+**<ins> Endpoint URL </ins>**
 
 HTTP Method: GET
 
@@ -232,7 +232,7 @@ Non-prod: [https://int.api.firstdata.com/ucom/v1/customers/{fdCustomerId}](https
 
 Prod: [https://prod.api.firstdata.com/ucom/v1/customers/{fdCustomerId}](https://prod.api.firstdata.com/ucom/v1/customers/%7BfdCustomerId%7D)
 
-**<ins> Headers
+**<ins> Headers </ins>**
 
 Content-Type:application/json <br>
 Client-Request-Id:{{$guid}} <br>
@@ -240,11 +240,11 @@ Api-Key:{{clientKey}} <br>
 Authorization:HMAC {{signature}} <br>
 Timestamp:{{time}} <br>
 
-**<ins> Sample Request
+**<ins> Sample Request </ins>**
 
 This request is empty since it's a GET call
 
-**<ins> Sample Response (200 – Created)
+**<ins> Sample Response (200 – Created) </ins>**
 
 ```json
 {
@@ -280,7 +280,7 @@ This request is empty since it's a GET call
 
 ```
 
-**<ins> Sample Response (400 – Bad Request)
+**<ins> Sample Response (400 – Bad Request) </ins>**
 
 ```json
 {
@@ -295,11 +295,11 @@ This request is empty since it's a GET call
 
 ## Delete a Customer Profile
 
-**<ins> Description
+**<ins> Description </ins>**
 
 Delete a customer profile from uCom system by providing the fdCustomerId.
 
-**<ins> Endpoint URL
+**<ins> Endpoint URL </ins>**
 
 HTTP Method: DELETE
 
@@ -307,21 +307,21 @@ Non-prod: [https://int.api.firstdata.com/ucom/v1/customers/{fdCustomerId}](https
 
 Prod: [https://prod.api.firstdata.com/ucom/v1/customers/{fdCustomerId}](https://prod.api.firstdata.com/ucom/v1/customers/%7BfdCustomerId%7D)
 
-**<ins> Headers
+**<ins> Headers </ins>**
 
 Content-Type:application/json <br>
 Client-Request-Id:{{$guid}} <br>
 Api-Key:{{clientKey}} <br>
 Authorization:HMAC {{signature}} <br>
 Timestamp:{{time}} <br>
+ 
+**<ins> Sample Request </ins>**
 
-**<ins> Sample Request
-
-**<ins> Sample Response (204 – No Content)
+**<ins> Sample Response (204 – No Content) </ins>**
 
 The request succeeded but there's nothing to show.
 
-**<ins> Sample Response (400 – Bad Request)
+**<ins> Sample Response (400 – Bad Request) </ins>**
 
 ```json
 {
