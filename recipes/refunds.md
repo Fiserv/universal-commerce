@@ -72,6 +72,8 @@ In uCom, refunds are possible for transactions that have settled already, which 
 ```
 ## Option 2: Refund of a Capture
 
+**To process a full refund, simply provide the fdCaptureId in the path with no payload.**
+
 ### POST /payments/captures/{fdCaptureId}/refunds
 
 | **Name** | **Type** | **Parameter Type** | **Required** | **Max Length** |
@@ -136,3 +138,32 @@ In uCom, refunds are possible for transactions that have settled already, which 
 } 
 
 ```
+
+**<ins>Sample Response (400 - Bad Request)</ins>**
+
+```json
+{
+    "code": "272781",
+    "message": "Capture refund transaction failed",
+    "category": "common",
+    "developerInfo": {
+        "developerMessage": "Capture refund transaction failed"
+    }
+}
+
+
+```
+
+**<ins>Sample Response (400 - Bad Request)</ins>**
+
+```json
+
+{
+    "code": " 272782",
+    "message": "Capture refund transaction already done",
+    "category": "common",
+    "developerInfo": {
+        "developerMessage": "Capture refund transaction already done"
+    }
+}
+
