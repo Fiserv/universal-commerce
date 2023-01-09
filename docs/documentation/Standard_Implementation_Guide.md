@@ -1,9 +1,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">   
+
 </head>
 <body bgcolor="#ffffff">
-
+<base target="_blank">
 ## Fiserv Universal Commerce REST API Specification
 
 Here is how to utilize this guide. All your necessary steps are on your right and will guide you through the necessary steps to create a customer and start processing payments in universal commerce
