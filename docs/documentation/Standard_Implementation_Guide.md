@@ -271,6 +271,8 @@ This service is related to the uCom Customer Profile Management.
  [Try the Custmer Service API](/product/UniversalCommerce/api/?type=get&path=/v1/customers/{fdCustomerId}/accounts/{fdAccountId}&branch=develop&version=1.0.0) 
 
 <a href="/product/UniversalCommerce/api/?type=get&path=/v1/customers/{fdCustomerId}/accounts/{fdAccountId}&branch=develop&version=1.0.0" target="_blank">Try this for a new tab</a>
+	
+<a href="/product/UniversalCommerce/api/?type=get&path=/v1/customers/{fdCustomerId}/accounts/{fdAccountId}&branch=develop&version=1.0.0">New way to open the URL</a>
 
 >### Security Services
 
