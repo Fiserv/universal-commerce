@@ -8,11 +8,11 @@ This flow is used if the partner does not have vaulting support. The client gene
 
 ## Option 1a: Auth with Paypal
 
-### Description
+**<ins> Description
 
 This flow will do the pre auth transaction with paypal nonce.
 
-### Endpoint URL
+**<ins> Endpoint URL
 
 HTTP Method: POST
 
@@ -20,7 +20,7 @@ Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/auths>
 
 Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
 
-### Parameters
+**<ins> Parameters </ins>**
 
 | Entity Name     | Parent Entity Name | Data Type | Parameter Type | Required |
 |-----------------|--------------------|-----------|----------------|----------|
@@ -44,7 +44,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
 | dataEventId     | dataCapture        | String    | Value          | Yes      |
 | captureTime     | dataCapture        | String    | Value          | No       |
 
-### Headers
+**<ins> Headers </ins>**
 
 Content-Type:application/json
 
@@ -56,7 +56,7 @@ Authorization:HMAC {{signature}}
 
 Timestamp:{{time}}
 
-### Sample Request - Paypal Authorization Transaction - Nonce
+**<ins> Sample Request - Paypal Authorization Transaction - Nonce </ins>**
 ```json
 {
    "authorization":{
@@ -93,7 +93,7 @@ Timestamp:{{time}}
 }
 ```
 
-### Sample Response (201 – Created)
+**<ins> Sample Response (201 – Created) </ins>**
 
 Sample Response – Paypal Authorization Transaction - Nonce    
 
@@ -152,7 +152,7 @@ Sample Response – Paypal Authorization Transaction - Nonce
 }
 ```
 
-### Sample Response (400 – Bad Request)
+**<ins> Sample Response (400 – Bad Request)
 
 | Sample Error Response   
 
@@ -183,11 +183,11 @@ Sample Response – Paypal Authorization Transaction - Nonce
 
 ## Option 1b: Capture the transaction
 
-### Description
+**<ins> Description </ins>**
 
 This request will complete the transaction which has been pre authorized.
 
-### Endpoint URL
+**<ins> Endpoint URL
 
 HTTP Method: POST
 
@@ -197,7 +197,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>/{fdAuthorizationId
 
 \*Replace fdAuthorizationId with Auth transactionId .
 
-### Parameters
+**<ins> Parameters
 
 | Entity Name       | Parent Entity Name | Data Type | Parameter Type | Required |
 |-------------------|--------------------|-----------|----------------|----------|
@@ -207,7 +207,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>/{fdAuthorizationId
 | requestedAmount   | currencyCode       | String    | body           | No       |
 | fdAuthorizationId | N/A                | String    | path           | Yes      |
 
-### Headers
+**<ins> Headers </ins>**
 
 Content-Type:application/json
 
@@ -219,7 +219,7 @@ Authorization:HMAC {{signature}}
 
 Timestamp:{{time}}
 
-### Sample Request
+**<ins> Sample Request
 
 ```json
 {
@@ -232,7 +232,7 @@ Timestamp:{{time}}
 }
 ```
 
-### Sample Response (200 – Created)
+**<ins> Sample Response (200 – Created) </ins>**
 
 Sample Response – Capture of Authorization  
 
@@ -276,7 +276,7 @@ Sample Response – Capture of Authorization
 }
 ```
 
-### Sample Response (400 – Bad Request)
+**<ins> Sample Response (400 – Bad Request) </ins>**
 
 Sample Error Response   
 
@@ -293,11 +293,11 @@ Sample Error Response
 
 ## Option 2: Sale with Paypal
 
-### Description
+**<ins> Description
 
 This flow will do the sale transaction with paypal nonce.
 
-### Endpoint URL
+**<ins> Endpoint URL </ins>**
 
 HTTP Method: POST
 
@@ -305,7 +305,7 @@ Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/sales>
 
 Prod: <https://prod.api.firstdata.com/ucom/v1/payments/s>ales
 
-### Parameters
+**<ins> Parameters </ins>**
 
 | Entity Name     | Parent Entity Name | Data Type | Parameter Type | Required |
 |-----------------|--------------------|-----------|----------------|----------|
@@ -329,7 +329,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/s>ales
 | dataEventId     | dataCapture        | String    | Value          | Yes      |
 | captureTime     | dataCapture        | String    | Value          | No       |
 
-### Headers
+**<ins> Headers </ins>**
 
 Content-Type:application/json
 
@@ -341,7 +341,7 @@ Authorization:HMAC {{signature}}
 
 Timestamp:{{time}}
 
-### Sample Request - Paypal Sale Transaction - Nonce
+**<ins> Sample Request - Paypal Sale Transaction - Nonce </ins>**
 
 Sample Request – Paypal Sale Transaction - Nonce    
 ```json
@@ -380,7 +380,7 @@ Sample Request – Paypal Sale Transaction - Nonce
 }
 ```
 
-### Sample Response (201 – Created)
+**<ins> Sample Response (201 – Created) </ins>**
 
 Sample Response – Paypal Sale Transaction - Nonce
 ```json
@@ -437,7 +437,7 @@ Sample Response – Paypal Sale Transaction - Nonce
    ]
 }
 ```
-### Sample Response (400 – Bad Request)
+**<ins> Sample Response (400 – Bad Request) </ins>**
 
 Sample Error Response                                                                                                                          
 ```json
@@ -466,11 +466,11 @@ Sample Error Response
 ```
 ## Option 3a: Auth with Venmo
 
-### Description
+**<ins> Description </ins>**
 
 This flow will do the pre auth transaction with Venmo nonce.
 
-### Endpoint URL
+**<ins> Endpoint URL </ins>**
 
 HTTP Method: POST
 
@@ -478,7 +478,7 @@ Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/auths>
 
 Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
 
-### Parameters
+**<ins> Parameters </ins>**
 
 | Entity Name     | Parent Entity Name | Data Type | Parameter Type | Required           |
 |-----------------|--------------------|-----------|----------------|--------------------|
@@ -504,7 +504,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
 | dataEventId     | dataCapture        | String    | Value          | Yes                |
 | captureTime     | dataCapture        | String    | Value          | No                 |
 
-### Headers
+**<ins> Headers </ins>**
 
 Content-Type:application/json
 
@@ -516,7 +516,7 @@ Authorization:HMAC {{signature}}
 
 Timestamp:{{time}}
 
-### Sample Request - Venmo Authorization Transaction - Nonce
+**<ins> Sample Request - Venmo Authorization Transaction - Nonce </ins>**
 
 Sample Request – Venmo Authorization Transaction - Nonce                                                                                                                                                                                                                                             
 ```json
@@ -555,7 +555,7 @@ Sample Request – Venmo Authorization Transaction - Nonce
    }
 }
 ```
-### Sample Response (201 – Created)
+**<ins> Sample Response (201 – Created)</ins>**
 
 Sample Response – Venmo Authorization Transaction - Nonce    
 ```json
@@ -612,7 +612,7 @@ Sample Response – Venmo Authorization Transaction - Nonce
 }
 ```
 
-### Sample Response (400 – Bad Request)
+**<ins> Sample Response (400 – Bad Request) </ins>**
 
 Sample Error Response  
 
@@ -644,11 +644,11 @@ Sample Error Response
 
 ## Option 3b: Capture the transaction
 
-### Description
+**<ins> Description </ins>**
 
 This request will complete the transaction which has been pre authorized.
 
-### Endpoint URL
+**<ins> Endpoint URL
 
 HTTP Method: POST
 
@@ -658,7 +658,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>/{fdAuthorizationId
 
 \*Replace fdAuthorizationId with Auth transactionId .
 
-### Parameters
+**<ins> Parameters </ins>**
 
 | Entity Name       | Parent Entity Name | Data Type | Parameter Type | Required |
 |-------------------|--------------------|-----------|----------------|----------|
@@ -668,7 +668,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>/{fdAuthorizationId
 | requestedAmount   | currencyCode       | String    | body           | No       |
 | fdAuthorizationId | N/A                | String    | path           | Yes      |
 
-### Headers
+**<ins> Headers </ins>**
 
 Content-Type:application/json
 
@@ -680,7 +680,7 @@ Authorization:HMAC {{signature}}
 
 Timestamp:{{time}}
 
-### Sample Request
+**<ins> Sample Request
 
 Sample Request – Capture of Authorization        
 
@@ -696,7 +696,7 @@ Sample Request – Capture of Authorization
 }
 ```
 
-### Sample Response (200 – Created)
+**<ins> Sample Response (200 – Created) </ins>**
 
 Sample Response – Capture of Authorization    
 ```json
@@ -739,7 +739,7 @@ Sample Response – Capture of Authorization
    ]
 }
 ```
-### Sample Response (400 – Bad Request)
+**<ins> Sample Response (400 – Bad Request) </ins>**
 
 Sample Error Response                                                                                                                             
 ```json
@@ -755,11 +755,11 @@ Sample Error Response
 
 ## Option 4: Sale with Venmo
 
-### Description
+**<ins> Description </ins>**
 
 This flow will do the sale transaction with Venmo nonce.
-
-### Endpoint URL
+ 
+**<ins> Endpoint URL </ins>**
 
 HTTP Method: POST
 
@@ -767,7 +767,7 @@ Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/sales>
 
 Prod: <https://prod.api.firstdata.com/ucom/v1/payments/s>ales
 
-### Parameters
+**<ins> Parameters </ins>**
 
 | Entity Name     | Parent Entity Name | Data Type | Parameter Type | Required           |
 |-----------------|--------------------|-----------|----------------|--------------------|
@@ -793,7 +793,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/s>ales
 | dataEventId     | dataCapture        | String    | Value          | Yes                |
 | captureTime     | dataCapture        | String    | Value          | No                 |
 
-### Headers
+**<ins> Headers </ins>**
 
 Content-Type:application/json
 
@@ -805,7 +805,7 @@ Authorization:HMAC {{signature}}
 
 Timestamp:{{time}}
 
-### Sample Request - Venmo Sale Transaction - Nonce
+**<ins> Sample Request - Venmo Sale Transaction - Nonce </ins>**
 
 Sample Request – Venmo Sale Transaction - Nonce                                                                                                                     
 ```json
@@ -843,7 +843,7 @@ Sample Request – Venmo Sale Transaction - Nonce
    }
 }
 ```
-### Sample Response (201 – Created)
+**<ins> Sample Response (201 – Created) </ins>**
 
 Sample Response –Venmo Sale Transaction - Nonce      
 ```json
@@ -906,7 +906,7 @@ Sample Response –Venmo Sale Transaction - Nonce
 
 ```
 
-### Sample Response (400 – Bad Request)
+**<ins> Sample Response (400 – Bad Request)
 
 Sample Error Response   
 ```json
@@ -934,7 +934,7 @@ Sample Error Response
 }
 ```
 
-### HTTP Headers
+**<ins> HTTP Headers </ins>**
 
 | Header Name       | Required      | Description                                                                                                                                                                                                                                                                   |
 |-------------------|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -945,7 +945,7 @@ Sample Error Response
 | Content-Type      | Yes           | application/json                                                                                                                                                                                                                                                              |
 | access_token      | Conditionally | Required when vaulting payment information. Utilizes the tokenId returned from the /tokens api.                                                                                                                                                                               |
 
-#### Sample Header
+**<ins># Sample Header </ins>**
 
 | Sample Format and Values                                                                                                                                                                                                                                                                                                                                                                                           |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -958,13 +958,13 @@ Please use this flow if vaulting is enabled through uCom. The client generates a
 
 ## Step 1: Create a Customer
 
-### Description
+**<ins> Description </ins>**
 
 This request will create a customer for card vaulting or payment purposes. This is always the first step that needs to be taken to do vaulting an account in the ucom.
 
 The client sends the externalId field (unique identifier) for this customer and ucom generate fdCustomerId and send it in the response to the client.
 
-### Endpoint URL
+**<ins> Endpoint URL </ins>**
 
 HTTP Method: POST
 
@@ -972,7 +972,7 @@ Non-prod: <https://int.api.firstdata.com/ucom/v1/customers>
 
 Prod: <https://prod.api.firstdata.com/ucom/v1/customers>
 
-### Parameters
+**<ins> Parameters
 
 | Entity Name  | Parent Entity Name | Data Type | Parameter Type | Required |
 |--------------|--------------------|-----------|----------------|----------|
@@ -990,7 +990,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/customers>
 | value        | phoneNumbers       | String    | body           | No       |
 | type         | phoneNumbers       | String    | body           | No       |
 
-### Headers
+**<ins> Headers </ins>**
 
 Content-Type:application/json
 
@@ -1002,7 +1002,7 @@ Authorization:HMAC {{signature}}
 
 Timestamp:{{time}}
 
-### Sample Request - Minimum Passed Params
+**<ins> Sample Request - Minimum Passed Params </ins>**
 
 ```json
 
@@ -1014,7 +1014,7 @@ Timestamp:{{time}}
 
 ```
 
-### Sample Request – Customer profile creation
+**<ins> Sample Request – Customer profile creation
 
 ```json
 {
@@ -1053,7 +1053,7 @@ Timestamp:{{time}}
    }
 }
 ```
-### Sample Response (201 – Created)
+**<ins> Sample Response (201 – Created) </ins>**
 ```json
 {
    "id":"a077e1383a334b4bb032b1358f2288cd",
@@ -1062,7 +1062,7 @@ Timestamp:{{time}}
 
 ```
 
-### Sample Response (400 – Bad Request)
+**<ins> Sample Response (400 – Bad Request) </ins>**
 
 Sample Error Response                                                                                                                                                                                                                                                    |
 ```json
@@ -1085,13 +1085,13 @@ Sample Error Response                                                           
 
 ## Step 2: Vault a Payment Method
 
-### Option 1: Account Enrollment - Paypal Nonce
+**<ins> Option 1: Account Enrollment - Paypal Nonce </ins>**
 
-#### Description
+**<ins># Description </ins>**
 
 This request will create a vaulted account in ucom.
 
-#### Endpoint URL
+**<ins># Endpoint URL </ins>**
 
 HTTP Method: POST
 
@@ -1099,7 +1099,7 @@ Non-prod: [https://int.api.firstdata.com/ucom/v1/customers/%7BfdCustomerId%7D/ac
 
 Prod: [https://prod.api.firstdata.com/ucom/v1/customers/%7BfdCustomerId%7D/accounts](https://prod.api.firstdata.com/ucom/v1/customers)
 
-#### Parameters
+**<ins># Parameters </ins>**
 
 | Entity Name  | Parent Entity Name | Data Type | Parameter Type | Required |
 |--------------|--------------------|-----------|----------------|----------|
@@ -1118,7 +1118,7 @@ Prod: [https://prod.api.firstdata.com/ucom/v1/customers/%7BfdCustomerId%7D/accou
 | dataEventId  | dataCapture        | String    | Value          | Yes      |
 | captureTime  | dataCapture        | String    | Value          | No       |
 
-#### Headers
+**<ins># Headers </ins>**
 
 Content-Type:application/json
 
@@ -1130,7 +1130,7 @@ Authorization:HMAC {{signature}}
 
 Timestamp:{{time}}
 
-#### Sample Request – Paypal Nonce
+**<ins># Sample Request – Paypal Nonce </ins>**
 
 ```json
 {
@@ -1160,7 +1160,7 @@ Timestamp:{{time}}
 }
 ```
 
-#### Sample Response (201 – Created)
+**<ins># Sample Response (201 – Created) </ins>**
 
 Sample Response – Paypal Nonce    
 ```json
@@ -1171,7 +1171,7 @@ Sample Response – Paypal Nonce
 }
 
 ```
-#### Sample Response (400 – Bad Request)
+**<ins># Sample Response (400 – Bad Request) </ins>**
 
 Sample Error Response   
 
@@ -1192,13 +1192,13 @@ Sample Error Response
 }
 
 ```
-### Option 2: Account Enrollment - Venmo Nonce
+**<ins> Option 2: Account Enrollment - Venmo Nonce </ins>**
 
-#### Description
+**<ins># Description </ins>**
 
 This request will create a vaulted account in ucom.
 
-#### Endpoint URL
+**<ins># Endpoint URL </ins>**
 
 HTTP Method: POST
 
@@ -1206,7 +1206,7 @@ Non-prod: [https://int.api.firstdata.com/ucom/v1/customers/%7BfdCustomerId%7D/ac
 
 Prod: [https://prod.api.firstdata.com/ucom/v1/customers/%7BfdCustomerId%7D/accounts](https://prod.api.firstdata.com/ucom/v1/customers)
 
-#### Parameters
+**<ins># Parameters
 
 | Entity Name  | Parent Entity Name | Data Type | Parameter Type | Required |
 |--------------|--------------------|-----------|----------------|----------|
@@ -1224,7 +1224,7 @@ Prod: [https://prod.api.firstdata.com/ucom/v1/customers/%7BfdCustomerId%7D/accou
 | dataEventId  | dataCapture        | String    | Value          | Yes      |
 | captureTime  | dataCapture        | String    | Value          | No       |
 
-#### Headers
+**<ins># Headers </ins>**
 
 Content-Type:application/json
 
@@ -1236,7 +1236,7 @@ Authorization:HMAC {{signature}}
 
 Timestamp:{{time}}
 
-#### Sample Request – Venmo Nonce
+**<ins># Sample Request – Venmo Nonce </ins>**
 
 ```json
 {
@@ -1268,7 +1268,7 @@ Timestamp:{{time}}
 
 
 
-#### Sample Response (201 – Created)
+**<ins># Sample Response (201 – Created) </ins>**
 
 Sample Response – Venmo Nonce                                                               
 ```json
@@ -1279,7 +1279,7 @@ Sample Response – Venmo Nonce
 }
 
 ```
-#### Sample Response (400 – Bad Request)
+**<ins># Sample Response (400 – Bad Request) </ins>**
 
 Sample Error Response      
 
@@ -1300,15 +1300,15 @@ Sample Error Response
 }
 
 ```
-## Step 3: Make a Payment with Vaulted Account
+## Step 3: Make a Payment with Vaulted Account 
 
-### Option 1a: Auth with Paypal
-
-#### Description
+**<ins> Option 1a: Auth with Paypal </ins>**
+ 
+**<ins># Description </ins>**
 
 This flow will do the pre auth transaction with a paypal nonce.
 
-#### Endpoint URL
+**<ins># Endpoint URL </ins>**
 
 HTTP Method: POST
 
@@ -1316,7 +1316,7 @@ Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/auths>
 
 Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
 
-#### Parameters
+**<ins># Parameters </ins>**
 
 | Entity Name     | Parent Entity Name | Data Type | Parameter Type | Required |
 |-----------------|--------------------|-----------|----------------|----------|
@@ -1340,7 +1340,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
 | dataEventId     | dataCapture        | String    | Value          | Yes      |
 | captureTime     | dataCapture        | String    | Value          | No       |
 
-#### Headers
+**<ins># Headers </ins>**
 
 Content-Type:application/json
 
@@ -1352,7 +1352,7 @@ Authorization:HMAC {{signature}}
 
 Timestamp:{{time}}
 
-#### Sample Request - Paypal Authorization Transaction - Vaulted
+**<ins># Sample Request - Paypal Authorization Transaction - Vaulted </ins>**
 
 Sample Request – Paypal Authorization Transaction - Vaulted   
 
@@ -1393,7 +1393,7 @@ Sample Request – Paypal Authorization Transaction - Vaulted
 
 ```
 
-#### Sample Response (201 – Created)
+**<ins># Sample Response (201 – Created) </ins>**
 
 Sample Response – Paypal Authorization Transaction - Vaulted 
 ```json
@@ -1457,7 +1457,7 @@ Sample Response – Paypal Authorization Transaction - Vaulted
 ```
 
 
-#### Sample Response (400 – Bad Request)
+**<ins># Sample Response (400 – Bad Request) </ins>**
 
 Sample Error Response                                                                                                                                                                                                                                                                                                                      |
 ```json
@@ -1486,13 +1486,13 @@ Sample Error Response                                                           
 
 ```
 
-### Option 1b: Capture the transaction
+**<ins> Option 1b: Capture the transaction </ins>**
 
-#### Description
+**<ins># Description </ins>**
 
 This request will complete the transaction which has been pre-authorized.
 
-#### Endpoint URL
+**<ins># Endpoint URL </ins>**
 
 HTTP Method: POST
 
@@ -1502,7 +1502,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>/{fdAuthorizationId
 
 \*Replace fdAuthorizationId with Auth transactionId .
 
-#### Parameters
+**<ins># Parameters </ins>**
 
 | Entity Name       | Parent Entity Name | Data Type | Parameter Type | Required |
 |-------------------|--------------------|-----------|----------------|----------|
@@ -1512,7 +1512,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>/{fdAuthorizationId
 | requestedAmount   | currencyCode       | String    | body           | No       |
 | fdAuthorizationId | N/A                | String    | path           | Yes      |
 
-#### Headers
+**<ins># Headers </ins>**
 
 Content-Type:application/json
 
@@ -1524,7 +1524,7 @@ Authorization:HMAC {{signature}}
 
 Timestamp:{{time}}
 
-#### Sample Request
+**<ins># Sample Request </ins>**
 
 Sample Response – Capture of Authorization                                       
 
@@ -1569,7 +1569,7 @@ Sample Response – Capture of Authorization
 
 ```
 
-#### Sample Response (200 – Created)
+**<ins># Sample Response (200 – Created) </ins>**
 
 Sample Response – Capture of Authorization      
 
@@ -1615,7 +1615,7 @@ Sample Response – Capture of Authorization
 ```
 
 
-#### Sample Response (400 – Bad Request)
+**<ins># Sample Response (400 – Bad Request) </ins>**
 
 Sample Error Response     
 
@@ -1631,13 +1631,13 @@ Sample Error Response
 
 ```
 
-### Option 2: Sale with Paypal
+**<ins> Option 2: Sale with Paypal
 
-#### Description
+**<ins># Description
 
 This flow will do the pre auth transaction with paypal nonce.
 
-#### Endpoint URL
+**<ins># Endpoint URL </ins>**
 
 HTTP Method: POST
 
@@ -1645,7 +1645,7 @@ Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/sales>
 
 Prod: <https://prod.api.firstdata.com/ucom/v1/payments/s>ales
 
-#### Parameters
+**<ins># Parameters </ins>**
 
 | Entity Name     | Parent Entity Name | Data Type | Parameter Type | Required |
 |-----------------|--------------------|-----------|----------------|----------|
@@ -1669,7 +1669,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/s>ales
 | dataEventId     | dataCapture        | String    | Value          | Yes      |
 | captureTime     | dataCapture        | String    | Value          | No       |
 
-#### Headers
+**<ins># Headers </ins>**
 
 Content-Type:application/json
 
@@ -1681,7 +1681,7 @@ Authorization:HMAC {{signature}}
 
 Timestamp:{{time}}
 
-#### Sample Request - Paypal Sale Transaction - Vaulted
+**<ins># Sample Request - Paypal Sale Transaction - Vaulted </ins>**
 
 Sample Request – Paypal Sale Transaction - Vaulted
 ```json
@@ -1721,7 +1721,7 @@ Sample Request – Paypal Sale Transaction - Vaulted
 }
 ```
 
-#### Sample Response (201 – Created)
+**<ins># Sample Response (201 – Created) </ins>**
 
 Sample Response – Paypal Sale Transaction - Vaulted    
 
@@ -1785,7 +1785,7 @@ Sample Response – Paypal Sale Transaction - Vaulted
 
 ```
 
-#### Sample Response (400 – Bad Request)
+**<ins># Sample Response (400 – Bad Request) </ins>**
 
 Sample Error Response
 
@@ -1815,13 +1815,13 @@ Sample Error Response
 
 
 ```
-### Option 3a: Auth with Venmo
+**<ins> Option 3a: Auth with Venmo </ins>**
 
-#### Description
+**<ins># Description
 
 This flow will do the pre auth transaction with Venmo nonce.
 
-#### Endpoint URL
+**<ins># Endpoint URL </ins>**
 
 HTTP Method: POST
 
@@ -1829,7 +1829,7 @@ Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/auths>
 
 Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
 
-#### Parameters
+**<ins># Parameters
 
 | Entity Name     | Parent Entity Name | Data Type | Parameter Type | Required |
 |-----------------|--------------------|-----------|----------------|----------|
@@ -1853,7 +1853,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
 | dataEventId     | dataCapture        | String    | Value          | Yes      |
 | captureTime     | dataCapture        | String    | Value          | No       |
 
-#### Headers
+**<ins># Headers </ins>**
 
 Content-Type:application/json
 
@@ -1865,7 +1865,7 @@ Authorization:HMAC {{signature}}
 
 Timestamp:{{time}}
 
-#### Sample Request - Venmo Authorization Transaction - Vaulted
+**<ins># Sample Request - Venmo Authorization Transaction - Vaulted </ins>**
 
 Sample Request – Venmo Authorization Transaction - Vaulted                                                                                                             
 
@@ -1906,7 +1906,7 @@ Sample Request – Venmo Authorization Transaction - Vaulted
 }
 ```
 
-#### Sample Response (201 – Created)
+**<ins># Sample Response (201 – Created) </ins>**
 
 Sample Response – Venmo Authorization Transaction - Vaulted  
 
@@ -1968,7 +1968,7 @@ Sample Response – Venmo Authorization Transaction - Vaulted
 }
 ```
 
-#### Sample Response (400 – Bad Request)
+**<ins># Sample Response (400 – Bad Request) </ins>**
 
 Sample Error Response    
 
@@ -2000,13 +2000,13 @@ Sample Error Response
 
 ```
 
-### Option 3b: Capture the transaction
+**<ins> Option 3b: Capture the transaction </ins>**
 
-#### Description
+**<ins># Description </ins>**
 
 This request will complete the transaction which has been pre authorized.
 
-#### Endpoint URL
+**<ins># Endpoint URL </ins>**
 
 HTTP Method: POST
 
@@ -2016,7 +2016,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>/{fdAuthorizationId
 
 \*Replace fdAuthorizationId with Auth transactionId .
 
-#### Parameters
+**<ins># Parameters </ins>**
 
 | Entity Name       | Parent Entity Name | Data Type | Parameter Type | Required |
 |-------------------|--------------------|-----------|----------------|----------|
@@ -2026,7 +2026,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>/{fdAuthorizationId
 | requestedAmount   | currencyCode       | String    | body           | No       |
 | fdAuthorizationId | N/A                | String    | path           | Yes      |
 
-#### Headers
+**<ins># Headers </ins>**
 
 Content-Type:application/json
 
@@ -2038,7 +2038,7 @@ Authorization:HMAC {{signature}}
 
 Timestamp:{{time}}
 
-#### Sample Request
+**<ins># Sample Request </ins>**
 
 Sample Request – Capture of Authorization                                       
 
@@ -2056,7 +2056,7 @@ Sample Request – Capture of Authorization
 ```
 
 
-#### Sample Response (200 – Created)
+**<ins># Sample Response (200 – Created) </ins>**
 
 Sample Response – Capture of Authorization  
 
@@ -2101,7 +2101,7 @@ Sample Response – Capture of Authorization
 
 ```
 
-#### Sample Response (400 – Bad Request)
+**<ins># Sample Response (400 – Bad Request) </ins>**
 
 Sample Error Response                                                                                                                                           |
 
@@ -2118,13 +2118,13 @@ Sample Error Response                                                           
 
 ```
 
-### Option 4: Sale with Venmo
+**<ins> Option 4: Sale with Venmo </ins>**
 
-#### Description
+**<ins># Description </ins>**
 
 This flow will preform a sale transaction with a Venmo nonce.
 
-#### Endpoint URL
+**<ins># Endpoint URL </ins>**
 
 HTTP Method: POST
 
@@ -2132,7 +2132,7 @@ Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/sales>
 
 Prod: <https://prod.api.firstdata.com/ucom/v1/payments/s>ales
 
-#### Parameters
+**<ins># Parameters </ins>**
 
 | Entity Name     | Parent Entity Name | Data Type | Parameter Type | Required           |
 |-----------------|--------------------|-----------|----------------|--------------------|
@@ -2158,7 +2158,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/s>ales
 | dataEventId     | dataCapture        | String    | Value          | Yes                |
 | captureTime     | dataCapture        | String    | Value          | No                 |
 
-#### Headers
+**<ins># Headers </ins>**
 
 Content-Type:application/json
 
@@ -2170,7 +2170,7 @@ Authorization:HMAC {{signature}}
 
 Timestamp:{{time}}
 
-#### Sample Request - Venmo Sale Transaction - Vaulted
+**<ins># Sample Request - Venmo Sale Transaction - Vaulted </ins>**
 
 Sample Request – Venmo Sale Transaction - Vaulted
 ```json
@@ -2211,7 +2211,7 @@ Sample Request – Venmo Sale Transaction - Vaulted
 
 ```
 
-#### Sample Response (201 – Created)
+**<ins># Sample Response (201 – Created) </ins>**
 
 Sample Response – Venmo Sale Transaction - Vaulted     
 
@@ -2275,7 +2275,7 @@ Sample Response – Venmo Sale Transaction - Vaulted
 }
 
 ```
-#### Sample Response (400 – Bad Request)
+**<ins># Sample Response (400 – Bad Request) </ins>**
 
 Sample Error Response                                                                                                                                                 
 
