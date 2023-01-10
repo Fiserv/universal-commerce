@@ -3,7 +3,7 @@
 <img title="icon" alt="Alt text" src="https://raw.githubusercontent.com/Fiserv/universal-commerce/b2ec46f041e39ffa4dd4e986a39ed12c68777b04/assets/images/shopping-cart-svgrepo-com.svg" width="30" height="30"> 
 Making a guest checkout, or an anonymous checkout, as its often referred to, is a fairly simple process in uCom. A few bits of data are needed to successfully process an anonymous checkout or order, however. For starters, an orderId, merchantId, or storeId (depending on the configuration), and the requested amount are needed to complete a guest checkout. Below, we will break down what each field means and what kind of information is needed to successfully perform an anonymous transaction. 
 
-### Endpoint URL 
+**<ins> Endpoint URL </ins>**
 
 HTTP Method: POST
 
@@ -13,22 +13,22 @@ Prod: https://prod.api.firstdata.com/ucom/v1/payments/sales
 
 ## Step 1: Generate an order ID 
 
-### Description
+**<ins> Description </ins>**
 
 In order to perform a guest checkout or sale using the ucom/v1/payments/sales API call, an order ID is needed to help identify the order or transaction. The order ID could any string of characters with a maximum 36 characters limit.
 
-### Sample Value 
+**<ins> Sample Value </ins>**
 
 ```json
 "orderId":"34548sdfdsfer769" 
 ```
 ## Step 2: Pass Through the Merchant ID or Store ID 
 
-### Description
+**<ins> Description </ins>**
 
 The sales API call requires either a merchant ID (MID) or store ID in the body to identify the merchant or store making the transaction. The MID or store ID need to be configured and to be provided by Fiserv. 
 
-### Sample Value
+**<ins> Sample Value </ins>**
 
 ```json
 "merchantId":"1120542230"
@@ -36,11 +36,11 @@ The sales API call requires either a merchant ID (MID) or store ID in the body t
 
 ## Step 3: Provide the Requested Amount 
 
-### Description
+**<ins> Description</ins>**
 
 An amount is needed to process a guest checkout transaction. This value must be the final price that the customer is required to pay for the goods or services received. Along with the requested amount field, an ISO currency code is required based on the country and currency where the transaction is taking place. For example, to processor a payment using USD, simply use the code "840" as demonstrated below. 
 
-### Sample Value
+**<ins> Sample Value </ins>**
 
 ```json
 "requestedAmount":1,
@@ -50,11 +50,11 @@ An amount is needed to process a guest checkout transaction. This value must be 
 
 ## Step 4: Provide a Funding Source
 
-### Description
+**<ins> Description </ins>**
 
 This portion of the API call/payload will require a funding source or payment method to process the transaction. Since all credit card details need to encrypted, a nonce token or TA Token are needed to mask the credit card details. A nonce could be obtained through the POST \- /v1/account\-tokens API call. There are several ways one could obtain a nonce, please refer to the implementation guide for the full process. 
 
-### Sample Value (Nonce) 
+**<ins> Sample Value (Nonce) </ins>**
 ```json
             "token": {
                 "tokenProvider": "UCOM",
@@ -66,11 +66,11 @@ This portion of the API call/payload will require a funding source or payment me
 
 ## Full Payload Sample
 
-### Description
+**<ins> Description </ins>**
 
 This is a sample sales API payload that combines all of the previous steps. 
 
-### Parameters
+**<ins> Parameters </ins>**
 
 | Attributes| Data Type| Required| Max Length
 |:----------|:----------|:----------|:----------
@@ -94,7 +94,7 @@ This is a sample sales API payload that combines all of the previous steps.
 | Month| String| Required| Month format ‘MM’
 | Year| String| Required| Year format ‘YY’
 
-### Headers 
+**<ins> Headers </ins>**
 
 Content\-Type:application/json
 
@@ -106,7 +106,7 @@ Authorization: Bearer {{tokenId}}
 
 Timestamp:{{time}}
 
-### Sample Request (with storeid)
+**<ins> Sample Request (with storeId) </ins>**
 
 Sample Request - anonymous CC transaction using Nonce with storeId
 
@@ -130,8 +130,8 @@ Sample Request - anonymous CC transaction using Nonce with storeId
    }
 }
 ```
-
-### Sample Request (with merchantid)
+ 
+**<ins> Sample Request (with merchantid) </ins>**
 
 Sample Request - anonymous CC transaction using Nonce with merchantId 
 
@@ -156,7 +156,7 @@ Sample Request - anonymous CC transaction using Nonce with merchantId
 
 ```
 
-### Sample Response (201 - Created)
+**<ins> Sample Response (201 - Created) </ins>**
 
 Sample Response - anonymous card sale transaction
 ```json
@@ -206,4 +206,3 @@ Sample Response - anonymous card sale transaction
 }
 
 ```
-
