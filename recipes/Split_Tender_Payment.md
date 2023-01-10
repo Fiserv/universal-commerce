@@ -9,11 +9,11 @@ Prerequisites for this flow:  Nonce token generation
 
 ### Step 1: Auth Transaction
 
-#### Description
+**<ins> Description </ins>**
 
 This flow will do the pre authorize the transaction.
 
-### Endpoint URL
+**<ins> Endpoint URL </ins>**
 
 HTTP Method: POST
 
@@ -21,7 +21,7 @@ Non-prod: https://int.api.firstdata.com/ucom/v1/payments/auths
 
 Prod: https://prod.api.firstdata.com/ucom/v1/payments/auths
 
-#### Parameters
+**<ins> Parameters </ins>**
 
 | Entity Name     | Parent Entity Name | Data Type | Parameter Type | Required |
 |-----------------|--------------------|-----------|----------------|----------|
@@ -46,7 +46,7 @@ Prod: https://prod.api.firstdata.com/ucom/v1/payments/auths
 | dataEventId     | dataCapture        | String    | Value          | Yes      |
 | captureTime     | dataCapture        | String    | Value          | No       |
 
-#### Headers
+**<ins> Headers </ins>**
 
 Content-Type:application/json
 
@@ -60,7 +60,7 @@ Timestamp:{{time}}
 
 Client-Token:{{tokenId}}
 
-#### Sample Request - Authorization Transaction - Nonce
+**<ins> Sample Request - Authorization Transaction - Nonce </ins>**
                                                                                         
 ```json
 
@@ -85,7 +85,7 @@ Client-Token:{{tokenId}}
 
 ```
 
-#### Sample Response (201 – Created)
+**<ins> Sample Response (201 – Created) </ins>**
 
 Sample Response – Authorization Transaction - Nonce                                                                                                                                                                                                                                                     
 ```json
@@ -158,7 +158,7 @@ Sample Response – Authorization Transaction - Nonce
 
 ```
 
-#### Sample Response (400 – Bad Request)
+**<ins> Sample Response (400 – Bad Request) </ins>**
 
 Sample Error Response       
 
@@ -191,11 +191,11 @@ Sample Error Response
 
 ### Step 2: Capture the transaction
 
-#### Description
+**<ins> Description </ins>**
 
 This request will complete the transaction which has been pre-authorized.
 
-#### Endpoint URL
+**<ins> Endpoint URL </ins>**
 
 HTTP Method: POST
 
@@ -205,7 +205,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>/{fdAuthorizationId
 
 \*Replace fdAuthorizationId with Auth transactionId.
 
-#### Parameters
+**<ins> Parameters </ins>**
 
 | Entity Name       | Parent Entity Name | Data Type | Parameter Type | Required |
 |-------------------|--------------------|-----------|----------------|----------|
@@ -215,7 +215,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>/{fdAuthorizationId
 | requestedAmount   | currencyCode       | String    | body           | No       |
 | fdAuthorizationId | N/A                | String    | path           | Yes      |
 
-#### Headers
+**<ins> Headers </ins>**
 
 Content-Type:application/json
 
@@ -227,7 +227,7 @@ Authorization:HMAC {{signature}}
 
 Timestamp:{{time}}
 
-#### Sample Request
+**<ins> Sample Request </ins>**
 
 Sample Request – Capture of Authorization                                      
 
@@ -244,7 +244,7 @@ Sample Request – Capture of Authorization
 
 ```
 
-#### Sample Response (200 – Created)
+**<ins> Sample Response (200 – Created) </ins>**
 
 Sample Response – Capture of Authorization                                                                                                         
 
@@ -289,7 +289,7 @@ Sample Response – Capture of Authorization
 }
 
 ```
-#### Sample Response (400 – Bad Request)
+**<ins> Sample Response (400 – Bad Request) </ins>**
 
 Sample Error Response                                                                                                                               
 
@@ -307,11 +307,11 @@ Sample Error Response
 
 ### Step 3: Refund the transaction
 
-#### Description
+**<ins> Description </ins>**
 
 This request will refund the transaction which has been completed.
 
-#### Endpoint URL
+**<ins> Endpoint URL </ins>**
 
 HTTP Method: POST
 
@@ -321,7 +321,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/>captures/{fdCaptureId}/r
 
 \*Replace fdCaptureId with Capture transactionId .
 
-#### Parameters
+**<ins> Parameters </ins>**
 
 | Entity Name     | Parent Entity Name | Data Type | Parameter Type | Required |
 |-----------------|--------------------|-----------|----------------|----------|
@@ -331,7 +331,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/>captures/{fdCaptureId}/r
 | requestedAmount | currencyCode       | String    | body           | No       |
 | fdCaptureId     | N/A                | String    | path           | Yes      |
 
-#### Headers
+**<ins> Headers </ins>**
 
 Content-Type:application/json
 
@@ -343,7 +343,7 @@ Authorization:HMAC {{signature}}
 
 Timestamp:{{time}}
 
-#### Sample Request
+**<ins> Sample Request </ins>**
 
 Sample Response – Partial Refund                                              
 
@@ -360,7 +360,7 @@ Sample Response – Partial Refund
 
 ```
 
-#### Sample Response (200 – Created)
+**<ins> Sample Response (200 – Created) </ins>**
 
 Sample Response – Refund of Capture 
 
@@ -407,15 +407,15 @@ Sample Response – Refund of Capture
 
 ```
 
-## Option 2: Sale Flow
+## Option 2: Sale Flow 
 
 ### Step 1: Sale Transaction
 
-#### Description
+**<ins> Description </ins>**
 
 This flow will do the sale transaction.
 
-#### Endpoint URL
+**<ins> Endpoint URL </ins>**
 
 HTTP Method: POST
 
@@ -423,7 +423,7 @@ Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/sales>
 
 Prod: <https://prod.api.firstdata.com/ucom/v1/payments/s>ales
 
-#### Parameters
+**<ins> Parameters </ins>**
 
 | Entity Name     | Parent Entity Name | Data Type | Parameter Type | Required |
 |-----------------|--------------------|-----------|----------------|----------|
@@ -448,7 +448,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/s>ales
 | dataEventId     | dataCapture        | String    | Value          | Yes      |
 | captureTime     | dataCapture        | String    | Value          | No       |
 
-#### Headers
+**<ins> Headers </ins>**
 
 Content-Type:application/json
 
@@ -462,7 +462,7 @@ Timestamp:{{time}}
 
 Client-Token:{{tokenId}}
 
-#### Sample Request - Sale Transaction - Nonce
+**<ins> Sample Request - Sale Transaction - Nonce </ins>**
 
 Sample Request – Sale Transaction - Nonce       
 
@@ -487,7 +487,7 @@ Sample Request – Sale Transaction - Nonce
 }
 
 ```
-#### Sample Response (201 – Created)
+**<ins> Sample Response (201 – Created) </ins>**
 
 Sample Response – Sale Transaction - Nonce  
 ```json
@@ -560,7 +560,7 @@ Sample Response – Sale Transaction - Nonce
 
 ```
 
-#### Sample Response (400 – Bad Request)
+**<ins> Sample Response (400 – Bad Request) </ins>**
 
 Sample Error Response
 
@@ -591,11 +591,11 @@ Sample Error Response
 ```
 ### Step 2: Refund the transaction
 
-#### Description
+**<ins> Description </ins>**
 
 This request will refund of the sale transaction.
 
-#### Endpoint URL
+**<ins> Endpoint URL </ins>**
 
 HTTP Method: POST
 
@@ -605,7 +605,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/>sales/{fdSaleId}/refunds
 
 \*Replace fdSaleId with Sale transactionId .
 
-#### Parameters
+**<ins> Parameters </ins>**
 
 | Entity Name     | Parent Entity Name | Data Type | Parameter Type | Required |
 |-----------------|--------------------|-----------|----------------|----------|
@@ -615,7 +615,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/>sales/{fdSaleId}/refunds
 | requestedAmount | currencyCode       | String    | body           | No       |
 | fdSaleId        | N/A                | String    | path           | Yes      |
 
-#### Headers
+**<ins> Headers </ins>**
 
 Content-Type:application/json
 
@@ -627,7 +627,7 @@ Authorization:HMAC {{signature}}
 
 Timestamp:{{time}}
 
-#### Sample Request
+**<ins> Sample Request </ins>**
 
 Sample Response – Partial Refund    
 
@@ -644,7 +644,7 @@ Sample Response – Partial Refund
 
 ```
 
-#### Sample Response (200 – Created)
+**<ins> Sample Response (200 – Created) </ins>**
 
 Sample Response – Refund of Sale 
 
