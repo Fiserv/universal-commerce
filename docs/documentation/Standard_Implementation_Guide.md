@@ -1,9 +1,12 @@
+<base target="_blank">
+
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">   
+
 </head>
 <body bgcolor="#ffffff">
-
+<base target="_blank">
 ## Fiserv Universal Commerce REST API Specification
 
 Here is how to utilize this guide. All your necessary steps are on your right and will guide you through the necessary steps to create a customer and start processing payments in universal commerce
@@ -109,7 +112,7 @@ Json Object:
 
 1. UCOM applies a standard URL pattern validation on the webhook endpoint URL if webhookUrl.href is present in the request
 2. UCOM configures a list of allowable domain names for a given partner and validates a requested domain name with the configured list
-3. if above point #1 or #2 failed then UCOM send an error to the merchant as invalid message request
+3. If above point #1 or #2 failed then UCOM sends an error to the merchant as invalid message request
 4. If validation is success, we persist the webhookUrl endpoint in uCom system
 5. Whenever the fueling, completion or receipt request comes from POS, UCOM system look up the webhook endpoint from transaction level.
 6. If endpoint available at transaction level, we use it for posting the notifications
@@ -261,27 +264,15 @@ WIP.
 
 >### Customer Services
 
-	This service is related to the uCom Customer Profile Management.
+This service is related to the uCom Customer Profile Management.
 
-  Explore more about the service [Here](?path=universal-commerce/reference/1.0.0/Customer Services/customerservices.yaml)
-  Explore more about the service [Here](?path=/universal-commerce/reference/1.0.0/Customer Services/customerservices.yaml)
-  Explore more about the service [Here](/universal-commerce/reference/1.0.0/Customer Services/customerservices.yaml)
-  Explore more about the service [Here](/reference/1.0.0/Customer Services/customerservices.yaml)
-	
-	
-	
-Explore more about the service [Here]([reference/1.0.0/Account Services/AccountServices.yaml])
-	
-Try this [CustmerService Yaml](reference/1.0.0/Account%20Services/AccountServices.yaml) 
-	
-Try Me [CustmerService Yaml](./?type=get&path=/v1/customers/{fdCustomerId}/accounts/{fdAccountId}&branch=develop&version=1.0.0) 
-	
-Link: /v1/customers/{fdCustomerId}/applybuy/{auid}&branch=develop&version=1.0.0
 
-Link: [![An old rock in the desert](/assets/images/shiprock.jpg "Shiprock, New Mexico by Beau Rogers")](https://www.google.com)
 	
-Construct an [API request](?path=/reference/1.0.0/Customer Services/customerservices.yaml) to use the Reporting APIs.
+ [Try the Customer Service API](/product/UniversalCommerce/api/?type=get&path=/v1/customers/{fdCustomerId}/accounts/{fdAccountId}&branch=develop&version=1.0.0) 
 
+<a href="/product/UniversalCommerce/api/?type=get&path=/v1/customers/{fdCustomerId}/accounts/{fdAccountId}&branch=develop&version=1.0.0" target="_blank">Try this for a new tab</a>
+	
+<a href="/product/UniversalCommerce/api/?type=get&path=/v1/customers/{fdCustomerId}/accounts/{fdAccountId}&branch=develop&version=1.0.0">New way to open the URL</a>
 
 >### Security Services
 
@@ -306,12 +297,12 @@ The APIs can be used in different scenarios. We will describe the most common on
 ## Testing
 
 Before start the testing, please make sure to know about the FEP assigned to the merchant and use the cards assigned to the FEP.
-The most common FEPs used are BUYPASS, Rapid Connect and IPG.
+The most common FEPs used are BUYPASS, Rapid Connect and IPG. <br><br>
+<br>
+<br>
 
 
-
-
-Still having queries???. Please try our FAQs section for help.
+Still having queries???. Please try our <a href="/product/UniversalCommerce/docs/?path=docs/faq/faq.md&branch=develop">FAQs section</a> for help.
 
 <div id="copy_button"></div>
 </body>
