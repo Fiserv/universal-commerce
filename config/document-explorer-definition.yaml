@@ -31,9 +31,9 @@
 - sections: 
     - title: Introduction
       link: docs/introduction/contact-us.md
-    - title: Create Customer
+#    - title: Create Customer
       link: docs/documentation/customerServicesCreateCustomer_v1.md
-    - title: Payment Services Sales
+#    - title: Payment Services Sales
       link: docs/documentation/paymentServicesSales_v1.md
     - title: Implementation Guide
       link: docs/documentation/Standard_Implementation_Guide.md
