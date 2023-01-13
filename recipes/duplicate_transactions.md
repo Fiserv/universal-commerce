@@ -8,12 +8,6 @@
 
 ### Sample Header
 
-Content-Type:application/json <br>
-Api-Key:{{key}} <br>
-Authorization:HMAC {{signature}} <br>
-Timestamp:{{time}} <br>
-Client-Request-Id:{{$guid}} <br>
-Client-Token: {{tokenId}} <br>
 Content-Type: application/json <br>
 Api-Key: pAhDVh6ALjje4zja5W24PlhvL3A3mJSA <br>
 Authorization: HMAC yMHQiDA2qHVy1t/WX3AdvQawoIWH5m/o3/dIit40rY= <br>
