@@ -15,8 +15,6 @@ Non-prod: https://int.api.firstdata.com/ucom//v1/payments/sales/{fdSaleId}/refun
 
 Prod: https://prod.api.firstdata.com/ucom//v1/payments/sales/{fdSaleId}/refunds
 
-### POST /v1/payments/sales/{fdSaleId}/refunds
-
 | **Name** | **Type** | **Parameter Type** | **Required** | **Max Length** |
 | --- | --- | --- |
 | fdSaleId | String | path |yes|32|
