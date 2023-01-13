@@ -98,7 +98,7 @@ A) By Encrypting PAN details using POST \- /v1/account\-tokens API call.
 
 B) Through Hosted Pages (if applicable). A nonce is generated through hosted pages after a user submits credit card details.
 
-## 3A) Encrypt PAN details using
+## 3A) Encrypt PAN details
 
 **<ins> Endpoint URL </ins>**
 
