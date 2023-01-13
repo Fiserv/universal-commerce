@@ -7,6 +7,14 @@ In uCom, refunds are possible for transactions that have settled already, which 
 
 ## Option 1: Refund of a sale
 
+**<ins> Endpoint URL </ins>**
+
+HTTP Method: POST
+
+Non-prod: https://int.api.firstdata.com/ucom//v1/payments/sales/{fdSaleId}/refunds
+
+Prod: https://prod.api.firstdata.com/ucom//v1/payments/sales/{fdSaleId}/refunds
+
 ### POST /v1/payments/sales/{fdSaleId}/refunds
 
 | **Name** | **Type** | **Parameter Type** | **Required** | **Max Length** |
@@ -74,7 +82,14 @@ In uCom, refunds are possible for transactions that have settled already, which 
 
 **To process a full refund, simply provide the fdCaptureId in the path with no payload.**
 
-### POST /payments/captures/{fdCaptureId}/refunds
+**<ins> Endpoint URL </ins>**
+
+HTTP Method: POST
+
+Non-prod: https://int.api.firstdata.com/ucom/v1/payments/captures/{fdCaptureId}/refunds
+
+Prod: https://prod.api.firstdata.com/ucom/v1//payments/captures/{fdCaptureId}/refunds
+
 
 | **Name** | **Type** | **Parameter Type** | **Required** | **Max Length** |
 | --- | --- | --- |
