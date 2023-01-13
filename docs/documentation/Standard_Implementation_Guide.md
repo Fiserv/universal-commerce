@@ -265,15 +265,9 @@ WIP.
 >### Customer Services
 
 This service is related to the uCom Customer Profile Management.
-
-
 	
- [Try the Customer Service API](/product/UniversalCommerce/api/?type=get&path=/v1/customers/{fdCustomerId}/accounts/{fdAccountId}&branch=develop&version=1.0.0) 
-
-<a href="/product/UniversalCommerce/api/?type=get&path=/v1/customers/{fdCustomerId}/accounts/{fdAccountId}&branch=develop&version=1.0.0" target="_blank">Try this for a new tab</a>
+<a href="../api/?type=get&path=/v1/customers/{fdCustomerId}/accounts/{fdAccountId}" target="_blank">Explore the Customer Service API</a>
 	
-<a href="/product/UniversalCommerce/api/?type=get&path=/v1/customers/{fdCustomerId}/accounts/{fdAccountId}&branch=develop&version=1.0.0">New way to open the URL</a>
-
 >### Security Services
 
  Security Services
