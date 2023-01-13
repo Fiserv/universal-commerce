@@ -8,7 +8,7 @@ This flow is used if the partner does not have vaulting support. The client gene
 
 ## Option 1a: Auth with Paypal
 
-**<ins> Description
+**<ins> Description </ins>**
 
 This flow will do the pre auth transaction with paypal nonce.
 
@@ -152,7 +152,7 @@ Sample Response – Paypal Authorization Transaction - Nonce
 }
 ```
 
-**<ins> Sample Response (400 – Bad Request)
+**<ins> Sample Response (400 – Bad Request) </ins>**
 
 | Sample Error Response   
 
@@ -197,7 +197,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>/{fdAuthorizationId
 
 \*Replace fdAuthorizationId with Auth transactionId .
 
-**<ins> Parameters
+**<ins> Parameters </ins>**
 
 | Entity Name       | Parent Entity Name | Data Type | Parameter Type | Required |
 |-------------------|--------------------|-----------|----------------|----------|
@@ -219,7 +219,7 @@ Authorization:HMAC {{signature}}
 
 Timestamp:{{time}}
 
-**<ins> Sample Request
+**<ins> Sample Request </ins>**
 
 ```json
 {
@@ -293,7 +293,7 @@ Sample Error Response
 
 ## Option 2: Sale with Paypal
 
-**<ins> Description
+**<ins> Description </ins>**
 
 This flow will do the sale transaction with paypal nonce.
 
@@ -906,7 +906,7 @@ Sample Response –Venmo Sale Transaction - Nonce
 
 ```
 
-**<ins> Sample Response (400 – Bad Request)
+**<ins> Sample Response (400 – Bad Request) </ins>**
 
 Sample Error Response   
 ```json
@@ -1014,7 +1014,7 @@ Timestamp:{{time}}
 
 ```
 
-**<ins> Sample Request – Customer profile creation
+**<ins> Sample Request – Customer profile creation </ins>**
 
 ```json
 {
@@ -2213,7 +2213,7 @@ Sample Request – Venmo Sale Transaction - Vaulted
 
 **<ins># Sample Response (201 – Created) </ins>**
 
-Sample Response – Venmo Sale Transaction - Vaulted     
+Sample Response – Venmo Sale Transaction - Vaulted
 
 ```json
 
