@@ -3,15 +3,23 @@
 <img title="icon" alt="Alt text" src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/vault-svgrepo-com.svg" width="30" height="30"> 
 This guide will walk you through the process of saving a credit card or gift card in the uCom enrollment vault. Once a customer's credit card is vaulted or saved, an account ID is created, which could be used in subsequent calls to process payments. An FD account ID could be used in ether a sales flow or an anth/capture flow, depending on the use case. 
 
-## Step 1: Create a customer profile using POST /v1/customers
+## Step 1: Create a customer profile 
 
-Parameters
+**<ins> Endpoint URL </ins>**
+
+HTTP Method: POST
+
+Non-prod: https://int.api.firstdata.com/ucom/v1/customers
+
+Prod: https://prod.api.firstdata.com/ucom/v1/customers
+
+****<ins> Parameters </ins>**
 
 | Name| Data Type| Parameter Type| Required| Max Length
 |:----------|:----------|:----------|:----------|:----------
 | externalId| string| body| yes| 50
 
-<ins> Sample Request </ins>
+**<ins> Sample Request </ins>**
 ```json
  {
  	"customer": {
@@ -19,7 +27,7 @@ Parameters
  	}
  }
 ```
-<ins>Response (201 - Created)</ins>
+**<ins>Response (201 - Created)</ins>**
 ```json
 {
     "id": "96328bee7fc64adc91e20064ca230e43",
@@ -27,9 +35,17 @@ Parameters
 }
 ```
 
-## Step 2: Retrieve Token & Encryption Key using POST /v1/tokens
+## Step 2: Retrieve Token & Encryption Key
 
-<ins> Parameters </ins>
+**<ins> Endpoint URL </ins>**
+
+HTTP Method: POST
+
+Non-prod: https://int.api.firstdata.com/ucom/v1/tokens
+
+Prod: https://prod.api.firstdata.com/ucom/v1/tokens
+
+**<ins> Parameters </ins>**
 
 | Name| Data Type| Parameter Type| Required| Max Length
 |:----------|:----------|:----------|:----------|:----------
@@ -39,7 +55,7 @@ Parameters
 > Note: Either an fdCustomerId or deviceInfo have to be provided. 
 
 
-<ins> Sample Request with fdcustomerID </ins>
+**<ins> Sample Request with fdcustomerID </ins>**
 
 ```json
 {
@@ -61,7 +77,7 @@ Parameters
     "publicKeyRequired": true
 }
 ```
-<ins> Sample Response </ins>
+**<ins> Sample Response </ins>**
 
 ```json
 {
@@ -82,9 +98,17 @@ A) By Encrypting PAN details using POST \- /v1/account\-tokens API call.
 
 B) Through Hosted Pages (if applicable). A nonce is generated through hosted pages after a user submits credit card details.
 
-## 3A) Encrypt PAN details using POST /v1/account-tokens
+## 3A) Encrypt PAN details using
 
-<ins> HTTP Header parameters for this API <ins>
+**<ins> Endpoint URL </ins>**
+
+HTTP Method: POST
+
+Non-prod: https://int.api.firstdata.com/ucom/v1/account-tokens
+
+Prod: https://prod.api.firstdata.com/ucom/v1/account-tokens
+
+**<ins> HTTP Header parameters for this API **<ins>
 
 Authorization: - Bearer <Oauth Token ID> <br>
 Api-Key:-  <apiKey> <br>
@@ -93,7 +117,7 @@ Client-Request-Id: - <clientRequestId> <br>
 
 Encrypted PAN details for Generating Nonce.
 
-<ins> Parameters <ins>
+**<ins> Parameters **<ins>
 
 | Name| Data Type| Parameter Type| Required| Max Length
 |:----------|:----------|:----------|:----------|:----------
@@ -106,7 +130,7 @@ Encrypted PAN details for Generating Nonce.
 | fdCustomerId| string| body| Yes| 32
 | billingPhone| String| Body| Optional (Mandatory only if Fraud is enabled)| -
 
-<ins> Sample Request </ins> 
+**<ins> Sample Request </ins>** 
 ```json
  {
   "account": {
@@ -139,7 +163,7 @@ Encrypted PAN details for Generating Nonce.
 
  
 ```
-<ins> Sample Response </ins>
+**<ins> Sample Response </ins>**
 
 ```json
 {
@@ -152,9 +176,17 @@ Encrypted PAN details for Generating Nonce.
 
   ```
   
-## Step 4: Create an Account using POST /v1/customers/{fdCustomerId}/accounts
+## Step 4: Create an Account
 
-<ins> HTTP Header parameter for this API </ins>
+**<ins> Endpoint URL </ins>**
+
+HTTP Method: POST
+
+Non-prod: https://int.api.firstdata.com/ucom/v1/customers/{fdCustomerId}/accounts
+
+Prod: https://prod.api.firstdata.com/ucom/v1/customers/{fdCustomerId}/accounts
+
+**<ins> HTTP Header parameter for this API </ins>**
 
 Api-Key: <key>
 Authorization: HMAC <signature>
@@ -163,7 +195,7 @@ Timestamp: <time>
 Client-Request-Id: <$guid>
 Client-Token: <accessToken>
 
-<ins> Parameters </ins>
+**<ins> Parameters </ins>**
 
 | Name| Data Type| Parameter Type| Required| Max Length
 |:----------|:----------|:----------|:----------|:----------
@@ -176,7 +208,7 @@ Client-Token: <accessToken>
 | securityCode| String| Body| Yes| 8
 | expiryDate| String| Body| Yes| -
 
-<ins> Sample Request (Nonce Enrollment) </ins>
+**<ins> Sample Request (Nonce Enrollment) </ins>**
 ```json
 {  
    "account":{  
@@ -190,7 +222,7 @@ Client-Token: <accessToken>
 
   ```
 
-<ins> Sample Request (Physical GiftCard Enrollment) </ins>
+**<ins> Sample Request (Physical GiftCard Enrollment) </ins>**
 ```json
 {
   "account": {
@@ -204,7 +236,7 @@ Client-Token: <accessToken>
 
 ```  
 
-<ins> Sample Response (201 - Created) </ins>
+**<ins> Sample Response (201 - Created) </ins>**
 	
 ```json
 {
