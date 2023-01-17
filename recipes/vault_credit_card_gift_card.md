@@ -108,7 +108,7 @@ Non-prod: https://int.api.firstdata.com/ucom/v1/account-tokens
 
 Prod: https://prod.api.firstdata.com/ucom/v1/account-tokens
 
-**<ins> HTTP Header parameters for this API **<ins>
+**<ins> HTTP Header parameters for this API </ins>**
 
 Authorization: - Bearer <Oauth Token ID> <br>
 Api-Key:-  <apiKey> <br>
@@ -117,7 +117,7 @@ Client-Request-Id: - <clientRequestId> <br>
 
 Encrypted PAN details for Generating Nonce.
 
-**<ins> Parameters **<ins>
+**<ins> Parameters </ins> **
 
 | Name| Data Type| Parameter Type| Required| Max Length
 |:----------|:----------|:----------|:----------|:----------
