@@ -151,10 +151,6 @@ For QSR, void is the most likely use case as the change would likely occur very 
 
 </details>
 
-
-### Petro Services FAQs
-
-
 ### Security FAQs
 
 <details>
