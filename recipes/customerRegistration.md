@@ -163,9 +163,9 @@ This request will update the Customer profile in uCom by providing the fdCustome
 
 HTTP Method: PATCH
 
-Non-prod: [https://int.api.firstdata.com/ucom/v1/customers](https://int.api.firstdata.com/ucom/v1/customers)/{fdCustomerId}
+Non-prod: [https://int.api.firstdata.com/ucom/v1/customers/{fdCustomerId}]
 
-Prod: [https://prod.api.firstdata.com/ucom/v1/customers](https://prod.api.firstdata.com/ucom/v1/customers)/{fdCustomerId}
+Prod: [https://prod.api.firstdata.com/ucom/v1/customers)/{fdCustomerId}]
 
 
 **<ins> Parameters </ins>**
