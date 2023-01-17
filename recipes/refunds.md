@@ -179,4 +179,4 @@ Prod: https://prod.api.firstdata.com/ucom/v1//payments/captures/{fdCaptureId}/re
         "developerMessage": "Capture refund transaction already done"
     }
 }
-
+```
