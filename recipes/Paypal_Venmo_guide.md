@@ -12,7 +12,7 @@ This flow is used if the partner does not have vaulting support. The client gene
 
 This flow will do the pre auth transaction with paypal nonce.
 
-**<ins> Endpoint URL
+**<ins> Endpoint URL </ins>**
 
 HTTP Method: POST
 
@@ -187,7 +187,7 @@ Sample Response – Paypal Authorization Transaction - Nonce
 
 This request will complete the transaction which has been pre authorized.
 
-**<ins> Endpoint URL
+**<ins> Endpoint URL </ins>**
 
 HTTP Method: POST
 
