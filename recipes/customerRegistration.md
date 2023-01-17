@@ -242,7 +242,7 @@ Timestamp:{{time}} <br>
 
 **<ins> Sample Request </ins>**
 
-This request is empty since it's a GET call
+This request is empty since it's a GET call. All that is needed is the fdCustomerId in the path or URL. 
 
 **<ins> Sample Response (200 – Created) </ins>**
 
