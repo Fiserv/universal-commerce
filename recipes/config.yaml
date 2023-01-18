@@ -1,6 +1,5 @@
 version: 1.0.0
 recipes:
-- title:
   link: recipes/LandingPage.md
   type: recipe
 - link: recipes/customerRegistration.md
