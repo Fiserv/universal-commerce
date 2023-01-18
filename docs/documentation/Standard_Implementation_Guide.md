@@ -270,7 +270,6 @@ This service is related to the uCom Customer Profile Management.
 	
 [![Customer Service API](../../../../assets/images/contacts-svgrepo-com.svg)](../api/?type=post&path=/v1/customers)
 
-[![Account Service API](../../../../assets/images/vault-svgrepo-com.svg)](../api/?type=post&path=/v1/customers/{fdCustomerId}/accounts)
 
 	
 >### Security Services
