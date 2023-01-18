@@ -270,7 +270,7 @@ This service is related to the uCom Customer Profile Management.
 	
 [![Customer Service API](../../../../assets/images/contacts-svgrepo-com.svg)](../api/?type=post&path=/v1/customers)
 
-
+[![Payment Service API](../../../../assets/images/payment-svgrepo-com.svg)](..e/api/?type=post&path=/v1/payments/auths)
 	
 >### Security Services
 
@@ -300,7 +300,7 @@ The most common FEPs used are BUYPASS, Rapid Connect and IPG. <br><br>
 <br>
 
 
-Still having queries???. Please try our <a href="/product/UniversalCommerce/docs/?path=docs/faq/faq.md&branch=develop">FAQs section</a> for help.
+Still having queries?. Check out our <a href="/product/UniversalCommerce/docs/?path=docs/faq/faq.md">FAQs section</a> for help.
 
 <div id="copy_button"></div>
 </body>
