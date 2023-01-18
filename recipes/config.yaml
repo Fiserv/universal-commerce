@@ -1,7 +1,5 @@
 version: 1.0.0
 recipes:
-- title: Recipes
-    link: recipes/LandingPage.md
 - link: recipes/customerRegistration.md
   title: How to Create, Read, Update, and Delete a Customer Profile
   type: recipe
