@@ -268,6 +268,8 @@ This service is related to the uCom Customer Profile Management.
 	
 <a href="../api/?type=get&path=/v1/customers/{fdCustomerId}/accounts/{fdAccountId}" target="_blank">Explore the Customer Service API</a>
 	
+[![Customer Service API](../../../../assets/images/contacts-svgrepo-com.svg)](../api/?type=post&path=/v1/customers)
+	
 >### Security Services
 
  Security Services
