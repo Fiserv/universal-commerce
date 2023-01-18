@@ -2,15 +2,15 @@ version: 1.0.0
 recipes:
 - link: recipes/LandingPage.md
   type: recipe
-- link: recipes/customerRegistration.md
-  title: How to Create, Read, Update, and Delete a Customer Profile
+  - link: recipes/customerRegistration.md
+   title: How to Create, Read, Update, and Delete a Customer Profile
+   type: recipe
+  - link: recipes/guest_checkout.md
+   title: How to Make a Guest Checkout
   type: recipe
-- link: recipes/guest_checkout.md
-  title: How to Make a Guest Checkout
-  type: recipe
-- link: recipes/vault_credit_card_gift_card.md
-  title: How to Vault a Credit Card or Gift Card 
-  type: recipe
+  - link: recipes/vault_credit_card_gift_card.md
+   title: How to Vault a Credit Card or Gift Card 
+   type: recipe
 - link: recipes/duplicate_transactions.md
   title: How to Avoid a Duplicate Transaction 
   type: recipe
