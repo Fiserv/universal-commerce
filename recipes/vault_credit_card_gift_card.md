@@ -13,7 +13,7 @@ Non-prod: https://int.api.firstdata.com/ucom/v1/customers
 
 Prod: https://prod.api.firstdata.com/ucom/v1/customers
 
-****<ins> Parameters </ins>**
+**<ins> Parameters </ins>**
 
 | Name| Data Type| Parameter Type| Required| Max Length
 |:----------|:----------|:----------|:----------|:----------
