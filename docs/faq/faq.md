@@ -60,7 +60,7 @@ To pass through the customer’s email address for fraud scoring, you have to ad
 
 
 
-<ins> ### Account Services FAQs </ins>
+### <ins> Account Services FAQs </ins>
 
 <details>
   <summary><b>How many credit cards can we vault to a wallet?</b></summary>
