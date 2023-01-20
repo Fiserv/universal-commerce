@@ -294,17 +294,16 @@ This service is related to the uCom Customer Profile Management.
 
 ## Usecases 
 
-The APIs can be used in different scenarios. We will describe the most common ones to give you an idea about the possibilities. Please see our receipes section to know more.   
+The APIs can be used in different scenarios. We will describe the most common ones to give you an idea about the possibilities. Please see the <a href="/product/UniversalCommerce/recipes">Receipes sSection</a> receipes section to learn more.   
 	
 ## Testing
-
-Before start the testing, please make sure to know about the FEP assigned to the merchant and use the cards assigned to the FEP.
-The most common FEPs used are BUYPASS, Rapid Connect and IPG. <br><br>
+	
+Before you could start testing the uCom API, we recommend spending some time to learn about the FEP that is assigned to your configuration in uCom. The most common FEPs used are BUYPASS, Rapid Connect and IPG. A specific set of testing cards will be provided to you by the Implementation Team once the configurations are completed. <br><br>
 <br>
 <br>
 
 
-Still having queries?. Check out our <a href="/product/UniversalCommerce/docs/?path=docs/faq/faq.md">FAQs section</a> for help.
+Still having quetions? Check out the <a href="/product/UniversalCommerce/docs/?path=docs/faq/faq.md">FAQs Section</a> for help.
 
 <div id="copy_button"></div>
 </body>
