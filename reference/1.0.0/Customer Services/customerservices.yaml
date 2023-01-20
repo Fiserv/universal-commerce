@@ -1259,4 +1259,9 @@ components:
           customer:
             firstName: 'Test'
             lastName: 'Test 2'
-            
+    FullCustomer:
+      value:
+        customers:
+          customer:
+            firstName: 'Test'
+            lastName: 'Test 2'      
