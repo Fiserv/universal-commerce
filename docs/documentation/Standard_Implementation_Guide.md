@@ -298,10 +298,7 @@ The APIs can be used in different scenarios. We will describe the most common on
 	
 ## Testing
 	
-Before you could start testing the uCom API, we recommend spending some time to learn about the FEP that is assigned to your configuration in uCom. The most common FEPs used are BUYPASS, Rapid Connect and IPG. A specific set of testing cards will be provided to you by the Implementation Team once the configurations are completed. <br><br>
-<br>
-<br>
-
+Before you could start testing the uCom API, we recommend spending some time to learn about the FEP that is assigned to your configuration in uCom. The most common FEPs used are BUYPASS, Rapid Connect and IPG. A specific set of testing cards will be provided to you by the Implementation Team once the configurations are completed. <br>
 
 Still having quetions? Check out the <a href="/product/UniversalCommerce/docs/?path=docs/faq/faq.md">FAQs Section</a> for help.
 
