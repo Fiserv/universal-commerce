@@ -294,7 +294,7 @@ This service is related to the uCom Customer Profile Management.
 
 ## Usecases 
 
-The APIs can be used in different scenarios. We will describe the most common ones to give you an idea about the possibilities. Please see the <a href="/product/UniversalCommerce/recipes/?path=recipes/">Receipes Section</a> receipes section to learn more.   
+The APIs can be used in different scenarios. We will describe the most common ones to give you an idea about the possibilities. Please see the <a href="/product/UniversalCommerce/recipes/?path=recipes/customerRegistration.md">Receipes Section</a> receipes section to learn more.   
 	
 ## Testing
 	
