@@ -154,11 +154,14 @@ paths:
           type: string
       requestBody:
         description: Customer profile information
+        required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/CustomerRequest'
-        required: true
+            examples:
+              Minimal: {summary: Minimal request with required information, $ref: '#/components/examples/MinimalCreateCustomer'}
+              Full:  {summary: Full Request, $ref: '#/components/examples/FullCustomer'}      
       responses:
         201:
           description: Resource created
@@ -1249,3 +1252,11 @@ components:
       required: true
       schema:
         type: string
+  examples:
+    MinimalCreateCustomer:
+      value:
+        customers:
+          customer:
+            firstName: 'Test'
+            lastName: 'Test 2'
+            
