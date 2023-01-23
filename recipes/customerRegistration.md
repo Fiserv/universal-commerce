@@ -142,7 +142,8 @@ Timestamp:{{time}} <br>
     "externalId": "5876"
 }
 ```
-**<ins> Sample Response (400 – Bad Request)
+**<ins> Sample Response (400 – Bad Request)</ins>**
+
 ```json
 {
     "code": "270101",
