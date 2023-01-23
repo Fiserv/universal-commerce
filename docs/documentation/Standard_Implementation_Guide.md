@@ -260,16 +260,10 @@ This is used to send the FEP (Front End Processor) messages back to the merchant
 
 ## Service-wise layout
 
-WIP.
-
 >### Customer Services
 
 This service is related to the uCom Customer Profile Management.
-		
-<a href="../api/?type=post&path=/v1/payments/auths"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/payment-method-svgrepo-com.svg" alt="Payments" style="width:100px;height:100px;"></a>  
-
-**Payment Services API**
-	
+			
 >### Security Services
 
  Security Services
@@ -277,6 +271,12 @@ This service is related to the uCom Customer Profile Management.
  >### Account Services
   
   Account Services
+	
+ >### Payment Services
+  	
+<a href="../api/?type=post&path=/v1/payments/auths"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/payment-method-svgrepo-com.svg" alt="Payments" style="width:100px;height:100px;"></a>  
+
+**Payment Services API**
 
   >### Provisioning Services 
    
@@ -285,6 +285,7 @@ This service is related to the uCom Customer Profile Management.
   >### Authentication Services
 
    Authentication Services
+
 
 ## Usecases 
 
