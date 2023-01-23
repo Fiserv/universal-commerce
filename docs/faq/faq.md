@@ -2,7 +2,7 @@
 
 **Here are few common questions that may help you while you are exploring our API.**
 
-### <ins> General FAQs </ins>
+### <ins>General FAQs</ins>
 
 <details>
 <summary><b>How are Debit cards handled in uCom?</b></summary>
@@ -11,7 +11,7 @@ Debit cards are treated the same way as credit cards in uCom requests.
 
 </details>
 
-### <ins> Customer Services FAQs </ins>
+### <ins>Customer Services FAQs</ins>
 
 <details>
 <summary><b>Can we pull a customer profile using just the external customer ID?</b></summary>
@@ -58,9 +58,7 @@ To pass through the customer’s email address for fraud scoring, you have to ad
 ```
 </details>
 
-
-
-### <ins> Account Services FAQs </ins>
+### <ins>Account Services FAQs</ins>
 
 <details>
   <summary><b>How many credit cards can we vault to a wallet?</b></summary>
@@ -79,7 +77,7 @@ Also, please note that if you delete a customer profile, by default all vaulted/
 </details> 
 
 
-### <ins> Payment Services FAQs </ins>  
+### <ins>Payment Services FAQs</ins>  
 
 
 <details>
@@ -151,7 +149,7 @@ For QSR, void is the most likely use case as the change would likely occur very 
 
 </details>
 
-### <ins> Security FAQs </ins>
+### <ins>Security FAQs</ins>
 
 <details>
 <summary><b>Can we use multiple algorithms when interacting with the uCom API?</b></summary>
