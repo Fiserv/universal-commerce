@@ -268,7 +268,7 @@ This service is related to the uCom Customer Profile Management.
 		
 <a href="../api/?type=post&path=/v1/payments/auths"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/payment-method-svgrepo-com.svg" alt="Payments" style="width:42px;height:42px;"></a>  
 
-Payment Services API
+** Payment Services API **
 	
 >### Security Services
 
