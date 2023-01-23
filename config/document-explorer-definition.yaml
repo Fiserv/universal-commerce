@@ -40,20 +40,20 @@
     - title: Frequently Asked Questions
       link: docs/faq/faq.md
       open: true 
-#- recipes:
-#    - title: How to Create, Read, Update, and Delete a Customer Profile
-#      link: recipes/customerRegistration.md
-#    - title: How to Make a Guest Checkout
-#      link: recipes/guest_checkout.md
-#    - title: How to Vault a Credit Card or Gift Card 
-#      link: recipes/vault_credit_card_gift_card.md
-#    - title: How to Avoid a Duplicate Transaction 
-#      link: recipes/duplicate_transactions.md
-#    - title: How to Make a Payment with Paypal or Venmo
-#      link: recipes/Paypal_Venmo_guide.md
-#    - title: How to Make a split Payment 
-#      link: recipes/Split_Tender_Payment.md
-#     open: true
+- recipes:
+    - title: How to Create, Read, Update, and Delete a Customer Profile
+      link: recipes/customerRegistration.md
+    - title: How to Make a Guest Checkout
+      link: recipes/guest_checkout.md
+    - title: How to Vault a Credit Card or Gift Card 
+      link: recipes/vault_credit_card_gift_card.md
+    - title: How to Avoid a Duplicate Transaction 
+      link: recipes/duplicate_transactions.md
+    - title: How to Make a Payment with Paypal or Venmo
+      link: recipes/Paypal_Venmo_guide.md
+    - title: How to Make a split Payment 
+      link: recipes/Split_Tender_Payment.md
+     open: false
 #      sections:
 #        - title: Create a Customer
 #          link: /docs/documentation/customerServicescrearecustomer_v1.md
