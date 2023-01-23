@@ -53,7 +53,7 @@
       link: recipes/Paypal_Venmo_guide.md
     - title: How to Make a split Payment 
       link: recipes/Split_Tender_Payment.md
-     open: false
+     open: true
 #      sections:
 #        - title: Create a Customer
 #          link: /docs/documentation/customerServicescrearecustomer_v1.md
