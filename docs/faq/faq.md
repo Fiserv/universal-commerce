@@ -2,7 +2,7 @@
 
 **Here are few common questions that may help you while you are exploring our API.**
 
-<ins> ### General FAQs </ins>
+###<ins>General FAQs</ins>
 
 <details>
 <summary><b>How are Debit cards handled in uCom?</b></summary>
