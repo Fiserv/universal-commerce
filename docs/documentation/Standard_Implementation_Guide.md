@@ -272,6 +272,10 @@ This service is related to the uCom Customer Profile Management.
   
   Account Services
 	
+<a href="../api/?type=post&path=/v1/accounts/verification"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/vault-svgrepo-com.svg" alt="Account_services" style="width:100px;height:100px;"></a>  
+
+**Account Services API**
+	
  >### Payment Services
   	
 <a href="../api/?type=post&path=/v1/payments/auths"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/payment-method-svgrepo-com.svg" alt="Payments" style="width:100px;height:100px;"></a>  
