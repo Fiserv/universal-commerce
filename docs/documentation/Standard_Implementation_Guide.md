@@ -262,7 +262,7 @@ This is used to send the FEP (Front End Processor) messages back to the merchant
 
 >### Customer Services
 
-This service is related to the uCom Customer Profile Management.
+This API handles all of the uCom Customer Profile Management operations (create, read, update, and delete).
 	
 <a href="../api/?type=post&path=/v1/customers"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/contacts-svgrepo-com.svg" alt="Customer_services" style="width:100px;height:100px;"></a>  
 
@@ -270,19 +270,27 @@ This service is related to the uCom Customer Profile Management.
 			
 >### Security Services
 
+Services related to managing security like access tokens and validation.
+	
  >### Account Services
+	
+Services related to uCom customer accounts. Accounts can be credit, debit, loyalty, prepaid, etc.
   	
 <a href="../api/?type=post&path=/v1/accounts/verification"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/vault-svgrepo-com.svg" alt="Account_services" style="width:100px;height:100px;"></a>  
 
 **Account Services API**
 	
  >### Payment Services
+	
+This API handles services needed to initiate AUTH/CAPTURE/SALE transactions using a payment account.
   	
 <a href="../api/?type=post&path=/v1/payments/auths"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/payment-method-svgrepo-com.svg" alt="Payments" style="width:100px;height:100px;"></a>  
 
 **Payment Services API**
 
   >### Petrol Services
+
+Services related to purchasing items at a gas station.
 	
 <a href="../api/?type=post&path=/v1/petro-transactions"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/ea123fc9ade6fa84b7655d7a75ffb4c759644f09/assets/images/gas-station.svg" alt="Petrol_Services" style="width:100px;height:100px;"></a>  
 
