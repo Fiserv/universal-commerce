@@ -258,7 +258,7 @@ This is used to send the FEP (Front End Processor) messages back to the merchant
 }
 ```
 
-## Service-wise layout
+## Explore the uCom Services 
 
 >### Customer Services
 
