@@ -288,7 +288,7 @@ This service is related to the uCom Customer Profile Management.
 
   >### Petrol Services
 	
-<a href="../api/?type=post&path=/v1/petro-transactions"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/gas-station.svg" alt="Petrol_Services" style="width:100px;height:100px;"></a>  
+<a href="../api/?type=post&path=/v1/petro-transactions"><img src="https://github.com/Fiserv/universal-commerce/blob/8e9c8bb6d0751932998cdf5cffe8478b81f0bef2/assets/images/gas-station.svg" alt="Petrol_Services" style="width:100px;height:100px;"></a>  
 
 **Petro Services API**
 
