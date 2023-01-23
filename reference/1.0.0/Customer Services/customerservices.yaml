@@ -412,11 +412,16 @@ paths:
           type: string
       requestBody:
         description: Customer profile information
+        required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/CustomerRequest'
-        required: true
+            examples:
+              UpdateEmail: {summary: Update Email, $ref: '#/components/examples/UpdateEmail'}
+              UpdateLastName: {summary: Update Last Name, $ref: '#/components/examples/UpdateLastName'}
+              UpdateGivenName: {summary: Update Given Name, $ref: '#/components/examples/UpdateGivenName'}
+              default: {summary: full request, $ref: '#/components/examples/default'}
       responses:
         204:
           description: The request succeeded but there’s really nothing to show.
@@ -1258,4 +1263,35 @@ components:
         customers:
           customer:
             externalId: 'test'
-  
+    UpdateEmail:
+      value:
+        customers:
+          customer:
+            email: 'uboddu@example.com'
+    UpdateLastName:
+      value:
+        customers:
+          customer:
+            familyName: 'family'
+    default:
+      value:
+        customer:
+          externalId: usha
+          name:
+            familyName: Smith
+            givenName: John
+          emails:
+            - value: john32.smith32@tgmail.com
+              primary: false
+          addresses:
+            - streetAddress: 100 Universal City Plaza
+              locality: Hollywood
+              region: CA
+              postalCode: '91608'
+              country: US
+    UpdateGivenName:
+      value:
+        customers:
+          customer:
+            givenName: 'test'
+      
