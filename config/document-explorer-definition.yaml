@@ -40,7 +40,7 @@
     - title: Frequently Asked Questions
       link: docs/faq/faq.md
       open: true 
-- recipes:
+  - recipes:
     - title: How to Create, Read, Update, and Delete a Customer Profile
       link: recipes/customerRegistration.md
     - title: How to Make a Guest Checkout
