@@ -286,14 +286,11 @@ This service is related to the uCom Customer Profile Management.
 
 **Payment Services API**
 
-  >### Provisioning Services 
-   
-   Provisioning Services
+  >### Petrol Services
+	
+<a href="../api/?type=post&path=/v1/petro-transactions"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/gas-station.svg" alt="Petrol_Services" style="width:100px;height:100px;"></a>  
 
-  >### Authentication Services
-
-   Authentication Services
-
+**Petro Services API**
 
 ## Usecases 
 
