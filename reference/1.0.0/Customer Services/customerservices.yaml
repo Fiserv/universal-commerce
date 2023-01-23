@@ -161,7 +161,6 @@ paths:
               $ref: '#/components/schemas/CustomerRequest'
             examples:
               Minimal: {summary: Request with required parameters, $ref: '#/components/examples/MinimalRequest'}
-              Full:  {summary: Full Request, $ref: '#/components/examples/FullRequest'}
               
       responses:
         201:
@@ -1258,12 +1257,5 @@ components:
       value:
         customers:
           customer:
-            firstName: 'Usha'
-            lastName: 'JohnSmith'
-    FullRequest:
-      value:
-        customers:
-          customer:
-            firstName: 'Usha'
-            lastName: 'JohnSmith'
+            externalId: 'test'
   
