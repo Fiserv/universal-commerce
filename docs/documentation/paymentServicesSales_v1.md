@@ -13,7 +13,7 @@ UCOM acts as a mobile gateway in accepting the request from it front end (MAS, A
 ##Why uCom?
 
 Bring in a seamless customer experience and offer services across Channels - Online, Mobile & In-Store shopping 
-Know your customer - Get a 360 degree view of customer activity across channels and serve their need from Anywhere & Everywhere   
+Know your customer - Get a 360 degree view of customer activity across channels and serve their need from Anywhere & Everywhere. 
 
 	
 ##Regions we operate
