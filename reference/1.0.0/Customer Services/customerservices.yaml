@@ -421,7 +421,7 @@ paths:
               UpdateEmail: {summary: Update Email, $ref: '#/components/examples/UpdateEmail'}
               UpdateLastName: {summary: Update Last Name, $ref: '#/components/examples/UpdateLastName'}
               UpdateGivenName: {summary: Update Given Name, $ref: '#/components/examples/UpdateGivenName'}
-              default: {summary: full request, $ref: '#/components/examples/default'}
+              UpdateAddress: {summary: Update Given Name, $ref: '#/components/examples/UpdateAddress'}
       responses:
         204:
           description: The request succeeded but there’s really nothing to show.
@@ -1273,25 +1273,22 @@ components:
         customers:
           customer:
             familyName: 'family'
-    default:
-      value:
-        customer:
-          externalId: usha
-          name:
-            familyName: Smith
-            givenName: John
-          emails:
-            - value: john32.smith32@tgmail.com
-              primary: false
-          addresses:
-            - streetAddress: 100 Universal City Plaza
-              locality: Hollywood
-              region: CA
-              postalCode: '91608'
-              country: US
     UpdateGivenName:
       value:
         customers:
           customer:
             givenName: 'test'
+    UpdateAddress:
+      value:
+        customer:
+          "addresses": [
+            {
+                "streetAddress": "100 Universal City Plaza",
+                "locality": "Hollywood",
+                "region": "CA",
+                "postalCode": "91608",
+                "country": "US"
+            }
+        ]
+        
       
