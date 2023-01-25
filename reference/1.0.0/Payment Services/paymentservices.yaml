@@ -1276,6 +1276,13 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SaleRequest'
+            examples:
+              VaultedAccount: {summary: Update Email, $ref: '#/components/examples/VaultedAccount'}
+              GooglePay: {summary: Update Last Name, $ref: '#/components/examples/GooglePay'}
+              ApplePay: {summary: Update Given Name, $ref: '#/components/examples/ApplePay'}
+              Paypal: {summary: Update Given Name, $ref: '#/components/examples/Paypal'}
+              Venmo: {summary: Update Given Name, $ref: '#/components/examples/Venmo'}
+              NonceToken: {summary: Update Given Name, $ref: '#/components/examples/NonceToken'} 
         required: true
       responses:
         201:
@@ -5442,3 +5449,107 @@ components:
       required: true
       schema:
         type: string
+  examples:
+    VaultedAccount:
+      value:
+        fdCustomerId: 6feb514fa255433881ecfe7f7d9b508e
+        sale:
+          orderId: Order0022167
+          merchantId: MO17313545001
+          requestedAmount: 8000
+          currencyCode:
+            number: 840
+          fundingSource:
+            vaultedAccount:
+              fdAccountId: 8a7f2a138586bdf70185a196542403db
+        
+    GooglePay:
+      value:
+        sale:
+          orderId: TestPerfdSondic
+          merchantId: MO06313552001
+          requestedAmount: '1'
+          currencyCode:
+            number: 840
+          fundingSource:
+            googlePay:
+              version: ECv1
+              data: '{"encryptedMessage":"16IUlXATsu2uVMrlR1lAuZJw49njxj0Skrfc5VByR04huexFs43RT/FjnOzN9b9VeKG+OPo4io0rNoZ9ppj/FPy8sNIbAAvLKkXKtaxiYCtEeeJh0C1qSATvDt+p3WlryHznQAIjGxcZ/Gw/VbIKfh2JAveZKhUXp6gMuR+6rSyteySCASdYss0ftxe8t+pqsdIa3anl4bof+gmfVEQUJZMKNnkJGhZPqjq4f6+2zhO8fqhPmAo84imDgYzXmd9h+fSPM/jyNPiAMacymyJToDQzhsZGGq7uPV5C1A1whTvI61AuKE4R0jAtfu0xLSlJ9FJb1irPs1TstiJ3ijrxbLVvoEmm5BJFYBBnqoPyG/g4gTf0rCWQyNZGZLNmd4i8OV6kAk8UFsK5n1w2vu0JAN8ohO+34fy19+1MY9NQX1pksVVRQhUmvTVXsQ4JXHeUztEnMuWQQWhGdFTn00f5Fbnf6rsCEhi0FRJcvj+adcQi8HoNzU5d+cVmrEzTeNubEDiTZJ7mKXXa5w6a9yZXpUMnMW2z9y8QEGYS+eTAeZk+Ae9BVVj7pYxPAHJFvWRradEpkipX95BJ","ephemeralPublicKey":"BPAuKlfUONXwaqMDNAB3AVyN4qi/fhIdENvpbykbWbytHU2IOONYAjQlS4qdjRaMNCCEjr+i/SmTVG8AN3XFzoM\u003d","tag":"wX+zIgcX+2bvonJKvI+DwdjeU7xBk27NoDnD5nq5y+Q\u003d"}'
+              signature: MEYCIQCoNNjxmv1/SqgW0DEmh56VbCEJlX1F7L+HWDU9f0eztgIhAPRQoTjE/PlkiP8NS8cynOVyPt8W9iEky7FcaC0DEhXQ
+          
+    ApplePay:
+      value:
+        fdCustomerId: 4e6aceafe75546f0943bbe4775530ee5
+        sale:
+          orderId: Order518e35we2sd3784d
+          merchantId: MO06313553001
+          requestedAmount: 4.55
+          currencyCode:
+            number: 840
+          fundingSource:
+            applePay:
+              version: EC_v1
+              data: Q7XB5Y7fNrruRnS6kNyqy3sH4xvj+Qobxb1gW4vLxfw51Aa2vLk7cNBSBEDtOIK1XroKr4lE/nCcLs2+Zdc5yFaS41Z7s6pJeLjUts4vboYLVGnb3A2jreX2eFWJh2Rf/D/OLxog26fS434uEei3VH6dfa8AlfhKn7MsNnq4JJrv3NsUu+puSFXrP80SbFadvo+2DD/yqfpWk1KLM8ih8I6H+BBjZE/uZCXVYBUuyKBcId2puYXJUoaagxkVl4TJzMDliE4li+F7I0H7VqvaaJS0QBsB2JaWLVrxKfYI3KvBx7JeubyPJHz0GufIjfTPhGOhhRW3lV+UNpDCe5rlus12m9Ac70VrPVqlIqfOYtMW9H6TylDlswKGM3BZHJ7UiQiU8tihUk4u/mz0mO2iWQbE6gpwthjTYijBvaC6ubTMaGVyIFfqHD5DS3h/Ybf13IxLJxSK86eK6OZiZf4Kl3KT0JQtQpvnqnBcSA==
+              signature: MIAGCSqGSIb3DQEHAqCAMIACAQExDTALBglghkgBZQMEAgEwCwYJKoZIhvcNAQcBoIAwggHTMIIBeQIBATAJBgcqhkjOPQQBMHYxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJOSjEUMBIGA1UEBwwLSmVyc2V5IENpdHkxEzARBgNVBAoMCkZpcnN0IERhdGExEjAQBgNVBAsMCUZpcnN0IEFQSTEbMBkGA1UEAwwSZDFkdnRsMTAwMC4xZGMuY29tMB4XDTE5MDcyNTE2Mjc0OVoXDTM5MDcyMDE2Mjc0OVowdjELMAkGA1UEBhMCVVMxCzAJBgNVBAgMAk5KMRQwEgYDVQQHDAtKZXJzZXkgQ2l0eTETMBEGA1UECgwKRmlyc3QgRGF0YTESMBAGA1UECwwJRmlyc3QgQVBJMRswGQYDVQQDDBJkMWR2dGwxMDAwLjFkYy5jb20wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAASuceE8zXwcVs6iYkxSIuI8vuesm5a98/LQaDfGxfebyrShaFOzVBxANNP5NHfKHiwNE+peexNTBy9usI7N1QR5MAkGByqGSM49BAEDSQAwRgIhAJdbaSMDfot2cSpzSodvzYUhhKF0STeGA8bFkN/o99fKAiEA2uumj9JjZiiujMLvdm5AO2wYrc8dN1BmNrkCB0RfLTIAADGCAX0wggF5AgEBMHswdjELMAkGA1UEBhMCVVMxCzAJBgNVBAgMAk5KMRQwEgYDVQQHDAtKZXJzZXkgQ2l0eTETMBEGA1UECgwKRmlyc3QgRGF0YTESMBAGA1UECwwJRmlyc3QgQVBJMRswGQYDVQQDDBJkMWR2dGwxMDAwLjFkYy5jb20CAQEwCwYJYIZIAWUDBAIBoIGTMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTIyMDkxOTE1MDcwM1owKAYJKoZIhvcNAQk0MRswGTALBglghkgBZQMEAgGhCgYIKoZIzj0EAwIwLwYJKoZIhvcNAQkEMSIEIPRbfxpgT+1Gmx88UPCXYuxt8Ohl1LxxIqhYjdSDNFbLMAoGCCqGSM49BAMCBEgwRgIhAP4eb/03lcJunuVjIClTKPbYMJO3N4TwBiNpznQVMzQvAiEAhVhcgC+eFdEngAACEG8HRmC2isq0T1HRgm6p0HrUswkAAAAAAAA=
+              applicationData: VEVTVA==
+              header:
+                ephemeralPublicKey: MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEYGSbxrqyFDZjAz0Y3Dwa4i+brjcKKW0zxfDMcNTg0Ktl9iRDfvdM2BPX1edt3nQdnIVoX/1tOtteZ55T08CZGg==
+                publicKeyHash: cNzwKkT2bIES+DTyQ5zgvzHX/y3W1U+8TjTrAgXIRxk=
+                transactionId: '31323334353637'
+              billingAddress:
+                type: work
+                streetAddress: 200 Universal City Plaza
+                locality: Hollywood
+                region: CA
+                postalCode: '91600'
+                country: US
+                formatted: |-
+                  100 Universal City Plaza
+                  Hollywood, CA 91608 USA
+                primary: true
+        
+        
+    Paypal:
+      value:
+        fdCustomerId: ee652a038a234ce5864295741d83aea6
+        sale:
+          orderId: Order8414424
+          merchantId: MO17313550001
+          requestedAmount: '2.25'
+          currencyCode:
+            number: 840
+          fundingSource:
+            saveToVault: false
+            paypal:
+              payerId: PayerID001
+              nonce: fake-paypal-billing-agreement-nonce
+        
+    Venmo:
+      value:
+        fdCustomerId: cd29da3e272b4ae69d346043fbe8a921
+        sale:
+          orderId: Order8763049
+          merchantId: MO06313552001
+          requestedAmount: '2.25'
+          currencyCode:
+            number: 840
+          fundingSource:
+            saveToVault: false
+            venmo:
+              payerId: PayerID001
+              nonce: fake-venmo-account-nonce
+        
+    NonceToken:
+      value:
+        sale:
+          orderId: Order00122
+          merchantId: MO17313547001
+          requestedAmount: 10
+          currencyCode:
+            number: 840
+          fundingSource:
+            saveToVault: false
+            token:
+              tokenId: 06477a1a-2ebe-4684-a1f3-c199f6875c81
+              tokenType: CLAIM_CHECK_NONCE
+        
