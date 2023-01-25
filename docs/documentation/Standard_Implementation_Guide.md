@@ -260,13 +260,16 @@ This is used to send the FEP (Front End Processor) messages back to the merchant
 
 ## Explore the uCom Services 
 
+Kindly click on the links below to explore each uCom endpoint. 
+
 >### Customer Services
 
 This API handles all of the uCom Customer Profile Management operations (create, read, update, and delete).
 	
 <a href="../api/?type=post&path=/v1/customers"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/contacts-svgrepo-com.svg" alt="Customer_services" style="width:100px;height:100px;"></a>  
 
-**Customer Services API**
+Customer Services API [Customer Services API](../api/?type=post&path=/v1/customers).
+****
 	
  >### Account Services
 	
