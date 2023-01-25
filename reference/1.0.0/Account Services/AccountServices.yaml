@@ -472,6 +472,10 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/AccountRequest'
+            examples:
+              AddCreditCard: {summary: Vault a card with raw credit card, $ref: '#/components/examples/AddCreditCard'}
+              AddPrepaidCard: {summary: Vault a prepaid card, $ref: '#/components/examples/AddPrepaidCard'}
+              AddAcountFromNonce: {summary: vault a card with nonce, $ref: '#/components/examples/AddAcountFromNonce'}
         required: true
       responses:
         201:
@@ -2780,3 +2784,33 @@ components:
       description: Unique identifier for a device
       schema:
         type: string
+  examples:
+    AddCreditCard:
+      value:
+        "account": {
+          "credit": {
+            "cardNumber": "ENC_[XdsDMB8HOnnYbUHX3aYt4sWSNRIJJU/yBrPYl4l6oGuhp9n68NYr+e10kJ2RidgMlCBj1flCikHFsFrmVxpVKpWtpVN/WDwIZKia740hiBw+V6ChLoQYgaSUry14HbSQs7kg+GJXvl92NAmwPYKw8pync3esWb61DJVybweaZoyrKEhgo/KN2eyiw8FezlnHZixHn1oz7xVoRQLf0wcYRzZ1yRsh/TnXOmgL8asjJ1YeGmSqjobY/PseiK0lPClSh9a9FKrXPOxuGXRrTzPG9QTk6YlUrO6EeCwzqrPKJlM24pi7h+1RJDI6ZlET/5N1AsIsdXSNOETsPgCeKgxviQ==]",
+            "cardType": "VISA",
+            "expiryDate": {
+                "month": "ENC_[BOTNQR29YGNwYULMkHzXjjMeB/PmcrpWYnAr/kHFpionT133ZS/fvKCYfWkPSXsla2Oky06Jktoj9xjTmCQChA/YOQ4lTMW8lrsdvh/vLIxDuOaZziwQ7wVXPQvg+Rg9jjGF+cf0zuwe6v7oo8exhe/gfdNlD5jHtV2Ps2ttXd3KWvLk90cQDCJXxzI+rudxE+hAji7oBEfv20e5q1RwtKOVYez+Dg0sDpxLe6GU0S3j/bco/tLaZndJCsjwhnHwzpjV2+x0Nrsyy0zHDb0sCfIALsBfGkWhQzh3jQuQUAZynNV6VhswrH8sQmRxuwqdiVQAX7VVeM8+UVnkoJc5BA==]",
+                "year": "ENC_[At7llwKee+bkGqp0TIxux0w1OwHXnDncPG+ubcrvzL3TfPHgM5jLmUbXPmRu6PHiHX05sA/wu/nPeroGLJrsj3VYIdowZR7MJhdHkDNNv2chGlUPX1libpO55Paq5vS40fVwcghYGz2Qd4HFi+eNV9FdTD3hvHKpY1FR5IDbrfd6Q/2c2Qn988fW52QZgAbaWdM1fwjMdoKNK70r9pAe34cJZsh7QP3vAIdNevgbRa4PpyWTvQ+ku4cRFz2r+/ImYZDONEswDCz9OCHqKs8FB92IQgWoUobu6obfk763ASSz1rDBLrLiZMfjkuyfCPzynlFMn8TjjEX8jc8VBYNkTA==]"
+            },
+            "securityCode": "ENC_[IAZyDFouCSBYNIVRNx3UT7dSRRDuV/Z765e9cKzLXDpsWtKUl/V+q0HDPZnjiYuh/ftcA+43JUqmAljOk8yNWW16ft+ka3Nkfv3RLRB3Xtp8ZJdz9RXf/dvipePJHQGloSoWtp5tiyP6GAySnZhWQIJ/VQF1eI+YHl0zeesqv9Ku7ZtlJUV1YjGLHwz0sYKq+lpApOwH4YAigsB0pPYKQc3f/2zd5pk5VxCjXJb8WgDOmjREJEeUPER7qblCruYlEBIRoDG3pLcCUMS12k/+uyOeaNlcall2j+CxoA9dg3wt7E2Sj+pfuT9o4Y4wc/QSx3l729LPVbagFHtYCC6ATg==]"
+        }
+    }
+    AddPrepaidCard:
+      value:
+        "account": {
+        "prepaid": {
+            "cardNumber": "7777296229216239"
+        }
+    }
+    AddAcountFromNonce:
+      value:
+        "account": {
+        "token": {
+            "tokenId": "fb83fd4d-2d11-429f-8b48-f77a5f8ceca8",
+            "tokenProvider": "UCOM",
+            "tokenType": "CLAIM_CHECK_NONCE"
+        }
+    }
