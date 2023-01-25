@@ -268,7 +268,7 @@ This API handles all of the uCom Customer Profile Management operations (create,
 	
 <a href="../api/?type=post&path=/v1/customers"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/contacts-svgrepo-com.svg" alt="Customer_services" style="width:100px;height:100px;"></a>  
 
-Customer Services API [Customer Services API](../api/?type=post&path=/v1/customers).
+Customer Services API.. [Customer Services API](../api/?type=post&path=/v1/customers)
 ****
 	
  >### Account Services
