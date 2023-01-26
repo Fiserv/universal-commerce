@@ -294,7 +294,7 @@ Services related to purchasing items at a gas station.
 
 [Petro Services API](../api/?type=post&path=/v1/petro-transactions)
 
-## Usecases 
+## Use Cases 
 
 The APIs can be used in different scenarios. We will describe the most common ones to give you an idea about the possibilities. Please see the <a href="/product/UniversalCommerce/recipes/?path=recipes/customerRegistration.md">Recipes Section</a> to learn more.   
 	
