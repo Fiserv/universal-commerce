@@ -14,7 +14,7 @@ PayPal SDK Setup/configured to generate the nonce. </br>
 
 **<ins> Description </ins>**
 
-This flow will do the pre auth transaction with paypal nonce.
+This flow will preform a pre auth transaction with a paypal nonce.
 
 **<ins> Endpoint URL </ins>**
 
@@ -299,7 +299,7 @@ Sample Error Response
 
 **<ins> Description </ins>**
 
-This flow will do the sale transaction with paypal nonce.
+This flow will preform a sale transaction with a paypal nonce.
 
 **<ins> Endpoint URL </ins>**
 
@@ -472,7 +472,7 @@ Sample Error Response
 
 **<ins> Description </ins>**
 
-This flow will do the pre auth transaction with Venmo nonce.
+This flow will preform a pre auth transaction with a Venmo nonce.
 
 **<ins> Endpoint URL </ins>**
 
@@ -761,7 +761,7 @@ Sample Error Response
 
 **<ins> Description </ins>**
 
-This flow will do the sale transaction with Venmo nonce.
+This flow will preform a sale transaction with a Venmo nonce.
  
 **<ins> Endpoint URL </ins>**
 
@@ -1310,7 +1310,7 @@ Sample Error Response
  
 **<ins># Description </ins>**
 
-This flow will do the pre auth transaction with a paypal nonce.
+This flow will preform a pre auth transaction with a paypal nonce.
 
 **<ins># Endpoint URL </ins>**
 
