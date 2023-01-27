@@ -1,12 +1,17 @@
-# How to do Guest Payment via Paypal/Venmo
+# How to do Guest Payment via PayPal/Venmo
 <span>
 <img title="Paypal" alt="Alt text" src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/paypal-svgrepo-com.svg" width="30" height="30">
 <img title="Venmo" alt="Alt text" src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/venmo-svgrepo-com.svg" width="30" height="30">
 This flow is used if the partner does not have vaulting support. The client generates the nonce from Paypal/Venmo and doing transaction with the nonce.
 </span>
-**Prerequisites:  Paypal/Venmo Nonce to be created**
+**Prerequisites: 
+PayPal Account 
+PayPal account details configured in uCom. 
+PayPal SDK Setup to generate the nonce. 
 
-## Option 1a: Auth with Paypal
+Paypal/Venmo Nonce to be created**
+
+## Option 1a: Auth with PayPal
 
 **<ins> Description </ins>**
 
@@ -291,7 +296,7 @@ Sample Error Response
 }
 ```
 
-## Option 2: Sale with Paypal
+## Option 2: Sale with PayPal
 
 **<ins> Description </ins>**
 
