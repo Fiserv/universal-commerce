@@ -1,3 +1,23 @@
+
+![Row of Cards](../assets/images/md/card_syntax.png "Row of cards")
+
+<!-- type: row -->
+
+<!-- type: card
+title: Card One
+description: About...
+link: ?path=docs/about-developer-studio.md
+-->
+
+<!-- type: card
+title: Second Card
+description: About...
+link: ?path=docs/about-developer-studio.md
+-->
+
+<!-- type: row-end -->
+
+
 <base target="_blank">
 
 <html>
