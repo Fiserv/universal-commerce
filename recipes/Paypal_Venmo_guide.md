@@ -4,12 +4,11 @@
 <img title="Venmo" alt="Alt text" src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/venmo-svgrepo-com.svg" width="30" height="30">
 This flow is used if the partner does not have vaulting support. The client generates the nonce from Paypal/Venmo and processes the transaction with the nonce through uCom.
 </span>
+
 **Prerequisites: 
 PayPal Account </br>
 PayPal account details configured in uCom. </br>
-PayPal SDK Setup to generate the nonce. </br>
-
-Paypal/Venmo Nonce to be created**
+PayPal SDK Setup/configured to generate the nonce. </br>
 
 ## Option 1a: Auth with PayPal
 
