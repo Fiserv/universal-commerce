@@ -5,7 +5,7 @@
 This flow is used if the partner does not have vaulting support. The client generates the nonce from Paypal/Venmo and processes the transaction with the nonce through uCom.
 </span>
 
-**Prerequisites: 
+**Prerequisites: </br>
 PayPal Account </br>
 PayPal account details configured in uCom. </br>
 PayPal SDK Setup/configured to generate the nonce. </br>
@@ -1639,7 +1639,7 @@ Sample Error Response
 
 **<ins># Description
 
-This flow will do the pre auth transaction with paypal nonce.
+This flow will preform a pre auth transaction with a paypal nonce.
 
 **<ins># Endpoint URL </ins>**
 
@@ -1823,7 +1823,7 @@ Sample Error Response
 
 **<ins># Description
 
-This flow will do the pre auth transaction with Venmo nonce.
+This flow will preform a pre auth transaction with a Venmo nonce.
 
 **<ins># Endpoint URL </ins>**
 
