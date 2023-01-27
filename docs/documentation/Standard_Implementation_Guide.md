@@ -1,16 +1,16 @@
 
-![Row of Cards](../assets/images/md/card_syntax.png "Row of cards")
+![Please Select yout Type of Business]
 
 <!-- type: row -->
 
 <!-- type: card
-title: Card One
+title: Quick Service Restaurant
 description: About...
 link: ?path=docs/about-developer-studio.md
 -->
 
 <!-- type: card
-title: Second Card
+title: Petroleum Industry
 description: About...
 link: ?path=docs/about-developer-studio.md
 -->
