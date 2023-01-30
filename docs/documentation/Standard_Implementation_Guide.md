@@ -17,9 +17,6 @@ link: ?path=docs/about-developer-studio.md
 
 <!-- type: row-end -->
 
-
-<base target="_blank">
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">   
