@@ -1,4 +1,3 @@
-#-------------------------------------
 # Document Change Log
 # 0.2.3
 #     - No Changes
@@ -12,7 +11,7 @@
 #     - Added asset provider field in the ACH
 # 0.2.0
 #     - Added 'OTHER' CreditCardType
-#     - Added fields in ThreeDSecure object'
+#     - Added fields in ThreeDSecure object
 #     - Added support for digital payments vaulting
 #     - Added PAN type and BIN
 #     - Added Expiry Date to InApp entities
@@ -30,7 +29,6 @@
 #     - Added enrollment status and bank name in the ACH object
 #     - Removed deviceId within Account object
 #     - Added 3ds challenge transaction expiry date time in ThreeDSecure
-
 # 0.1.6
 #     - Added ExpiryDate in Loyalty object
 #     - Added Accept-Language header field
@@ -45,42 +43,60 @@
 #     - Added ThreeDSecure under Account object
 # 0.1.3
 #     - Adding NVP with valueAsList
-#     - update in DeviceInfo.
+#     - No change.
 # 0.1.2
 #     - No change.
 # 0.1.1
 #     - removed transactionId, oldPin, pin, type, token object from ach
 #     - added cardNumber, expiryDate, cardType in ach object
 #     - Introduced MasterPass capabilities
+#     - Added new action type ACCOUNT-GET for account retrieval
 # 0.1.0
-#     - Added client-token in the header field
+#     - Added client-token in the header field.
 # 0.0.9
-#     - Initial Version
+#     - Introduced 'ach', 'accountOwner', 'visaCheckout' elements in Account object
+#     - Added 'cardSubType' attribute inside Credit object
+#     - Added 'nonce' attribute in Paypal object
+# 0.0.8
+#     - Loyalty object updated with additional fields.
+# 0.0.7
+#   - Updated ReferenceToken to have more accurate attribute names, removed use value
+#   - Cleaned up examples in the models
+# 0.0.6
+#     - No change.
+# 0.0.5
+#     - No change.
+# 0.0.4
+#     - No change.
+# 0.0.3
+#     - Added account status ISSUER_TERMINATED and WALLET_TERMINATED.
+# 0.0.2
+#     - No change.
+# 0.0.1
+#     - Initial Version.
 #-------------------------------------
 
 openapi: 3.0.1
 info:
-  title: uCom Apply and Buy Services
-  description: Services related to Apply and Buy. The issuer validates customer data
-    and creates a new account and vault in uCom system.
+  title: uCom Issuer Services
+  description: Services related to uCom issuer accounts.  Accounts can be credit,
+    debit, loyalty, prepaid, etc.
   version: 0.2.3
 servers:
   - url: https://int.api.firstdata.com/ucom
 tags:
-  - name: applybuy
-    description: Operations related to receive customer and device details for application
-      creation. Once the application created at uCom, customer submits kyc details to
-      Issuer. The issuer validates the kyc and creates an account for vaulting in uCom
-      system.
+  - name: issuer-actions
+    description: Operations handled outside standard REST flows
 paths:
-  /v1/customers/{fdCustomerId}/applybuy:
+  /v1/customers/{fdCustomerId}/actions:
     post:
-      x-group-name: Apply and Buy
-      x-proxy-name: Customer initiated request
+     x-group-name: Issuer Services
+     x-proxy-name: Vault an account in uCom directly from the Issuer.
       tags:
-        - applybuy
-      description: Customer initiating apply and buy request for unique application
-        status tracking number.
+        - issuer-actions
+      summary: Vault an account in uCom directly from the Issuer.
+      description: Register a customer account in the uCom vault from the Issuer as
+        the client instead of an omni-channel app.
       parameters:
         - $ref: '#/components/parameters/ApiKeyParam'
         - $ref: '#/components/parameters/TimestampParam'
@@ -91,14 +107,19 @@ paths:
         - $ref: '#/components/parameters/AcceptLanguageParam'
         - $ref: '#/components/parameters/SubMerchantIdParam'
       requestBody:
+        description: Details of the account to be vaulted in uCom
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Applybuy'
+              $ref: '#/components/schemas/Action'
         required: true
       responses:
+        200:
+          $ref: '#/components/responses/OK'
         201:
-          $ref: '#/components/responses/Created'
+          $ref: '#/components/responses/Action-Created'
+        204:
+          $ref: '#/components/responses/NoContent'
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -108,129 +129,22 @@ paths:
         500:
           $ref: '#/components/responses/ServerError'
 
-  /v1/customers/{fdCustomerId}/applybuy/{auid}:
-    get:
-      x-group-name: Apply and Buy
-      x-proxy-name: Application Status
-      tags:
-        - applybuy
-      description: API to get the application status.
-      parameters:
-        - $ref: '#/components/parameters/ApiKeyParam'
-        - $ref: '#/components/parameters/TimestampParam'
-        - $ref: '#/components/parameters/AuthorizationParam'
-        - $ref: '#/components/parameters/ClientTokenParam'
-        - $ref: '#/components/parameters/FdCustomerIdParam'
-        - $ref: '#/components/parameters/ApplicationIdParam'
-        - $ref: '#/components/parameters/AcceptLanguageParam'
-        - $ref: '#/components/parameters/SubMerchantIdParam'
-      responses:
-        200:
-          $ref: '#/components/responses/OK'
-        400:
-          $ref: '#/components/responses/BadRequest'
-        401:
-          $ref: '#/components/responses/Unauthorized'
-        404:
-          $ref: '#/components/responses/NotFound'
-        500:
-          $ref: '#/components/responses/ServerError'
-
-    delete:
-      x-group-name: Apply and Buy
-      x-proxy-name: Delete application Identifier
-      tags:
-        - applybuy
-      description: API to delete the application identifier.
-      parameters:
-        - $ref: '#/components/parameters/ApiKeyParam'
-        - $ref: '#/components/parameters/TimestampParam'
-        - $ref: '#/components/parameters/AuthorizationParam'
-        - $ref: '#/components/parameters/ClientTokenParam'
-        - $ref: '#/components/parameters/FdCustomerIdParam'
-        - $ref: '#/components/parameters/ApplicationIdParam'
-        - $ref: '#/components/parameters/AcceptLanguageParam'
-        - $ref: '#/components/parameters/SubMerchantIdParam'
-      responses:
-        204:
-          $ref: '#/components/responses/NoContent'
-        400:
-          $ref: '#/components/responses/BadRequest'
-        401:
-          $ref: '#/components/responses/Unauthorized'
-        404:
-          $ref: '#/components/responses/NotFound'
-        500:
-          $ref: '#/components/responses/ServerError'
-
-    patch:
-      x-group-name: Apply and Buy
-      x-proxy-name: Applybuy - Application Status
-      tags:
-        - applybuy
-      description: The Issuer is used to update an application status and vault an
-        account in a remote system on successful creation.
-      parameters:
-        - $ref: '#/components/parameters/ApiKeyParam'
-        - $ref: '#/components/parameters/TimestampParam'
-        - $ref: '#/components/parameters/AuthorizationParam'
-        - $ref: '#/components/parameters/ClientTokenParam'
-        - $ref: '#/components/parameters/FdCustomerIdParam'
-        - $ref: '#/components/parameters/ApplicationIdParam'
-        - $ref: '#/components/parameters/AcceptLanguageParam'
-        - $ref: '#/components/parameters/SubMerchantIdParam'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Applybuy'
-        required: true
-      responses:
-        200:
-          $ref: '#/components/responses/OK'
-        202:
-          $ref: '#/components/responses/Accepted'
-        204:
-          $ref: '#/components/responses/NoContent'
-        400:
-          $ref: '#/components/responses/BadRequest'
-        401:
-          $ref: '#/components/responses/Unauthorized'
-        404:
-          $ref: '#/components/responses/NotFound'
-        500:
-          $ref: '#/components/responses/ServerError'
-
 components:
   schemas:
 #-------------------------------------
 # Operational Models
 #-------------------------------------
-    Applybuy:
+    Action:
       type: object
       properties:
-        auid:
-          type: string
-          description: Account creation application status identifier.
-          example: application-reqt-id-123456
-        fdCustomerId:
-          type: string
-          description: uCom customer identifier.
-          example: cust-id-123456
-        process:
-          $ref: '#/components/schemas/ApplyBuyProcess'
+        actionType:
+          $ref: '#/components/schemas/ActionType'
         account:
           $ref: '#/components/schemas/Account'
         deviceInfo:
           $ref: '#/components/schemas/DeviceInfo'
-        _links:
-          minItems: 0
-          uniqueItems: true
-          type: array
-          items:
-            $ref: '#/components/schemas/Link'
-      description: Represents an event to create and vault an account that requires
-        a multi-step and potentially asynchrounous process to complete.
+      description: For some needs, there's not an easy way to follow the clean RESTful
+        resource model for an API. This helps to resolve those limitations.
 
 #-------------------------------------
 # Resource Models
@@ -240,7 +154,8 @@ components:
       properties:
         fdAccountId:
           type: string
-          description: Unique identifier for a customer account vaulted with uCom
+          description: Unique identifier for a customer account vaulted with uCom.  The
+            value is ignored on POST requests.
         type:
           $ref: '#/components/schemas/AccountType'
         status:
@@ -255,16 +170,14 @@ components:
           $ref: '#/components/schemas/Paypal'
         masterpass:
           $ref: '#/components/schemas/MasterPass'
-        token:
-          $ref: '#/components/schemas/ReferenceToken'
         ach:
           $ref: '#/components/schemas/ACH'
         accountOwner:
           $ref: '#/components/schemas/User'
-        visaCheckout:
-          $ref: '#/components/schemas/VisaCheckout'
         venmo:
           $ref: '#/components/schemas/Venmo'
+        visaCheckout:
+          $ref: '#/components/schemas/VisaCheckout'
         fleet:
           $ref: '#/components/schemas/Fleet'
         applePay:
@@ -312,6 +225,30 @@ components:
           example: 2016-04-16T16:06:05Z
       description: Account information - can only be ONE of the account types. Currently
         OpenAPI doesn't support a "oneOf" tag to show this constraint in hte spec.
+      example:
+        type: CREDIT
+        deviceId: 537edec8-d33e-4ee8-93a7-b9f61876950c
+        credit:
+          cardNumber: "4111111111111111"
+          nameOnCard: John Smith
+          alias: "1111"
+          cardType: VISA
+          securityCode: "444"
+          billingAddress:
+            type: work
+            streetAddress: 100 Universal City Plaza
+            locality: Hollywood
+            region: CA
+            postalCode: "91608"
+            country: US
+            formatted: |-
+              100 Universal City Plaza
+              Hollywood, CA 91608 US
+            primary: true
+          expiryDate:
+            month: "09"
+            year: "20"
+            singleValue: MMYY
 
     ACH:
       type: object
@@ -409,31 +346,6 @@ components:
           Hollywood, CA 91608 US
         primary: true
 
-    ApplyBuyProcess:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/ApplybuyStatus'
-        createdTime:
-          type: string
-          description: Apply card request creation date time value.
-          format: date-time
-          readOnly: true
-          example: 2017-03-21T08:15:30-05:00
-        expiryTime:
-          type: string
-          description: Date time application identifier will or has become invalid.
-          format: date-time
-          example: 2017-03-22T08:15:30-05:00
-        lastUpdatedTime:
-          type: string
-          description: Date and time of update application status request to uCom.
-          format: date-time
-          readOnly: true
-          example: 2017-03-21T08:18:30-05:00
-      description: Details about the process of apply buy for create and vault an
-        account.
-
     AssetProvider:
       type: object
       properties:
@@ -501,8 +413,8 @@ components:
       properties:
         cardNumber:
           type: string
-          description: Primary account number, can only be sent when vaulting an account.
-            This field will NOT be present in responses.
+          description: Primary account number, can only be sent when vaulting an account.  This
+            field will NOT be present in responses.
           example: "4111111111111111"
         bin:
           type: string
@@ -556,7 +468,7 @@ components:
           $ref: '#/components/schemas/ExpiryDate'
         bin:
           type: string
-          description: BIN of EBT card
+          description: BIN for EBT card
           readOnly: true
         pin:
           type: string
@@ -798,16 +710,24 @@ components:
           type: string
           description: URL to linked resource.
           format: uri
-          example: https://api.example.com/v1/customers/cust-id-123456/accounts/acct-id-123456
         rel:
           type: string
           description: Defines the type of link relationship to current resource.
-          example: linked.account
+          example: self
+          enum:
+            - current.page
+            - previous.page
+            - next.page
+            - self
         method:
           type: string
           description: Defines the HTTP method for the given href.
           example: GET
           default: GET
+        id:
+          type: string
+          description: Identifier to the resource.
+          example: 415e5cf6bfdb11e8a355529269fb1459
       description: Model to communicate linked resources.
 
     Loyalty:
@@ -894,6 +814,12 @@ components:
           type: number
         currencyCode:
           $ref: '#/components/schemas/ISO-4217'
+      description: Details of balance in the Loyalty account.
+      example:
+        balance: 1100
+        minRedeemUnits: 100
+        maxRedeemUnits: 1100
+        unitType: POINTS
 
     LoyaltyProgram:
       type: object
@@ -928,7 +854,7 @@ components:
         programDesc: Test loyalty program
         programProvider: Test Provider
         loyaltyType: LOCAL
-        status: ENABLED
+        programStatus: ENABLED
 
     MasterPass:
       type: object
@@ -1075,9 +1001,6 @@ components:
           type: string
           description: Security code of prepaid card
           example: "345"
-        promotionCode:
-          type: string
-          description: Promotion code for prepaid account activation.
         alias:
           type: string
           readOnly: true
@@ -1086,8 +1009,6 @@ components:
           $ref: '#/components/schemas/ExpiryDate'
         balance:
           $ref: '#/components/schemas/PrepaidBalance'
-        token:
-          $ref: '#/components/schemas/ReferenceToken'
       description: Prepaid (a.k.a. gift) account information
 
     PrepaidBalance:
@@ -1112,7 +1033,11 @@ components:
       example:
         currentBalance: 1100
         beginBalance: 1000
-        currencyCode: 840
+        currencyCode:
+          code: USD
+          number: 840
+          digits: 2
+          currency: US Dollars
         currencyType: BASE
 
     Question:
@@ -1606,15 +1531,17 @@ components:
               message: exampleId is mandatory
 
 #-------------------------------------
-# ENUM Models
+# Enum Models
 #-------------------------------------
     AccountStatus:
+      title: Account Status
       type: string
       description: Indicates the status of an account.
       enum:
         - ACTIVE
         - INACTIVE
-        - TERMINATED
+        - ISSUER_TERMINATED
+        - WALLET_TERMINATED
 
     AchEnrollmentStatus:
       type: string
@@ -1655,6 +1582,17 @@ components:
         - MONEYNETWORK
         - EBT
 
+    ActionType:
+      title: Action Type
+      type: string
+      description: Type of action to invoke
+      enum:
+        - ACCOUNT-ADD
+        - ACCOUNT-REMOVE
+        - ACCOUNT-UPDATE
+        - VERIFICATION-SEND
+        - ACCOUNT-GET
+
     AchCardType:
       type: string
       description: Indicates the type of ACH card association
@@ -1668,19 +1606,6 @@ components:
         - CHECKING
         - SAVINGS
 
-    ApplybuyStatus:
-      type: string
-      description: Status of the card request application.
-      enum:
-        - APPLIED
-        - APPROVED
-        - DECLINED
-        - REFERRED
-        - PENDING
-        - EXPIRED
-        - ENROLLED
-        - FAILED
-
     BalanceUnitTypes:
       type: string
       description: Indicator to determine how to display balances
@@ -1691,15 +1616,8 @@ components:
         - STARS
         - LITRES
 
-    CurrencyPairType:
-      type: string
-      description: Describes the type of currency where BASE represents the currency
-        from Host and TRANSACTION represents the one requested.
-      enum:
-        - BASE
-        - TRANSACTION
-
     CreditCardType:
+      title: Credit Card Type
       type: string
       description: Indicates the type of credit account association
       enum:
@@ -1709,6 +1627,14 @@ components:
         - PLCC
         - VISA
         - OTHER
+
+    CurrencyPairType:
+      type: string
+      description: Describes the type of currency where BASE represents the currency
+        from Host and TRANSACTION represents the one requested.
+      enum:
+        - BASE
+        - TRANSACTION
 
     FleetCardType:
       type: string
@@ -1729,6 +1655,7 @@ components:
         - BLOCKED
 
     LoyaltyType:
+      title: Loyalty Type
       type: string
       description: Identifier to indicate type of Loyalty program being registered.
       enum:
@@ -1736,6 +1663,7 @@ components:
         - NATIONAL
 
     ProgramStatus:
+      title: Program Status
       type: string
       description: Indicates if the given loyalty program is still active or not.
       enum:
@@ -1758,13 +1686,17 @@ components:
 # Responses
 #-------------------------------------
   responses:
-    Accepted:
-      description: The request has been accepted for processing, but the processing
-        has not been completed.
+    Action-Created:
+      description: Action created
+      headers:
+        Location:
+          description: Location of newly created resource.
+          schema:
+            type: string
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Applybuy'
+            $ref: '#/components/schemas/Action'
 
     BadRequest:
       description: Bad request
@@ -1781,20 +1713,8 @@ components:
           schema:
             $ref: '#/components/schemas/Error'
 
-    Created:
-      description: Resource created
-      headers:
-        Location:
-          description: Location of newly created resource.
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Applybuy'
-
     NoContent:
-      description: The request succeeded but there’s really nothing to show.
+      description: The request succeeded but there�s really nothing to show.
       content: {}
 
     NotFound:
@@ -1809,15 +1729,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Applybuy'
-
-    PartialContent:
-      description: The request succeeded containing requested range of data as described
-        by request.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Applybuy'
+            $ref: '#/components/schemas/Account'
 
     ServerError:
       description: An unexpected server error occured.
@@ -1852,14 +1764,6 @@ components:
       schema:
         type: string
 
-    ApplicationIdParam:
-      name: auid
-      in: path
-      description: Unique identifier provided for the Applybuy object
-      required: true
-      schema:
-        type: string
-
     AuthorizationParam:
       name: Authorization
       in: header
@@ -1890,29 +1794,21 @@ components:
       schema:
         type: string
 
-    FdCustomerIdParam:
-      name: fdCustomerId
-      in: path
-      description: Unique identifier provided for the customer profile
-      required: true
-      schema:
-        type: string
-
-    FdAccountIdParam:
-      name: fdAccountId
-      in: path
-      description: Unique identifier provided for the vaulted account
-      required: true
-      schema:
-        type: string
-
     SubMerchantIdParam:
       name: Sub-Merchant-Id
       in: header
-      description: Sub Merchant Id contains information about the merchant identifier
+      description: Sub-Merchant Id contains information about the merchant identifier
       schema:
         type: string
 
+    FdCustomerIdParam:
+      name: fdCustomerId
+      in: path
+      description: Unique identifier for a customer profile registered with uCom
+      required: true
+      schema:
+        type: string
+        
     TimestampParam:
       name: Timestamp
       in: header

@@ -12,7 +12,7 @@
 #     - Added asset provider field in the ACH
 # 0.2.0
 #     - Added 'OTHER' CreditCardType
-#     - Added fields in ThreeDSecure object'
+#     - Added fields in ThreeDSecure object
 #     - Added support for digital payments vaulting
 #     - Added PAN type and BIN
 #     - Added Expiry Date to InApp entities
@@ -30,21 +30,21 @@
 #     - Added enrollment status and bank name in the ACH object
 #     - Removed deviceId within Account object
 #     - Added 3ds challenge transaction expiry date time in ThreeDSecure
-
 # 0.1.6
 #     - Added ExpiryDate in Loyalty object
 #     - Added Accept-Language header field
 # 0.1.5
 #     - Added 'currencyValue' & 'currencyCode' to LoyaltyBalance
 #     - Added Link in the Error object.
-#     - acsSignedContent and CardType in threeDSecureInfo object
 #     - Adding billingPhone in the Credit object
 # 0.1.4
 #     - Introduced venmo account type under Account object
 #     - Credit is added to MasterPass
 #     - Added ThreeDSecure under Account object
+#     - acsSignedContent and CardType in threeDSecureInfo object
 # 0.1.3
 #     - Adding NVP with valueAsList
+#     - Added securityQuestions and additionalInfo entities
 #     - update in DeviceInfo.
 # 0.1.2
 #     - No change.
@@ -52,35 +52,58 @@
 #     - removed transactionId, oldPin, pin, type, token object from ach
 #     - added cardNumber, expiryDate, cardType in ach object
 #     - Introduced MasterPass capabilities
+#     - Added 'id' attribute to Link
 # 0.1.0
 #     - Added client-token in the header field
 # 0.0.9
+#     - Introduced 'ach', 'token', 'accountOwner', 'visaCheckout' elements in Account object
+#     - Added 'cardSubType' attribute in Credit object
+#     - Added 'nonce' attribute in Paypal object
+# 0.0.8
+#     - No change.
+# 0.0.7
+#   - Updated ReferenceToken to have more accurate attribute names, removed use value
+#   - Cleaned up examples in the models
+# 0.0.6
+#     - No change.
+# 0.0.5
+#     - No change.
+# 0.0.4
+#     - No change.
+# 0.0.3
+#     - No change.
+# 0.0.2
+#     - PATCH operation updated to send 202, 206 for success scenario with 'Provision' object is response body.
+#     - Added 'osVersion' attribute to 'DeviceInfo' object.
+#     - Enhanced 'ProvisionStatus' enum with 'OTP_REQUIRED' and 'PENDING_VERIFICATION' values.
+#     - Updated patch operation to send 200 instead of 206 with response body.
+#     - Updated patch operation to send 204 with no response body.
+#     - Removed 409 from patch.
+#     - OTP channel can be more than one. Made it array.
+#     - Changed ProvisionStatus to REFERRED from DEFERRED.
+# 0.0.1
 #     - Initial Version
 #-------------------------------------
 
 openapi: 3.0.1
 info:
-  title: uCom Apply and Buy Services
-  description: Services related to Apply and Buy. The issuer validates customer data
-    and creates a new account and vault in uCom system.
+  title: uCom Account Provisioning Services
+  description: Services related to provisioning a new account with a remote provider.
   version: 0.2.3
 servers:
   - url: https://int.api.firstdata.com/ucom
 tags:
-  - name: applybuy
-    description: Operations related to receive customer and device details for application
-      creation. Once the application created at uCom, customer submits kyc details to
-      Issuer. The issuer validates the kyc and creates an account for vaulting in uCom
-      system.
+  - name: provisions
+    description: Operations and details about a provisioning a card to the vault using
+      issuer validation.
 paths:
-  /v1/customers/{fdCustomerId}/applybuy:
+  /v1/customers/{fdCustomerId}/provisions:
     post:
-      x-group-name: Apply and Buy
-      x-proxy-name: Customer initiated request
+      x-group-name: Account Provisioning Services
+      x-proxy-name: Create new account
       tags:
-        - applybuy
-      description: Customer initiating apply and buy request for unique application
-        status tracking number.
+        - provisions
+      description: Provisioning is used to create a new account in a remote system.
       parameters:
         - $ref: '#/components/parameters/ApiKeyParam'
         - $ref: '#/components/parameters/TimestampParam'
@@ -94,7 +117,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Applybuy'
+              $ref: '#/components/schemas/Provision'
         required: true
       responses:
         201:
@@ -108,20 +131,21 @@ paths:
         500:
           $ref: '#/components/responses/ServerError'
 
-  /v1/customers/{fdCustomerId}/applybuy/{auid}:
+  /v1/customers/{fdCustomerId}/provisions/{provisionId}:
     get:
-      x-group-name: Apply and Buy
-      x-proxy-name: Application Status
+      x-group-name: Account Provisioning Services
+      x-proxy-name: Provision OTP method
       tags:
-        - applybuy
-      description: API to get the application status.
+        - provisions
+      description: API to get the provision OTP method.
       parameters:
         - $ref: '#/components/parameters/ApiKeyParam'
         - $ref: '#/components/parameters/TimestampParam'
         - $ref: '#/components/parameters/AuthorizationParam'
         - $ref: '#/components/parameters/ClientTokenParam'
         - $ref: '#/components/parameters/FdCustomerIdParam'
-        - $ref: '#/components/parameters/ApplicationIdParam'
+        - $ref: '#/components/parameters/ProvisionIdParam'
+        - $ref: '#/components/parameters/QueryFields'
         - $ref: '#/components/parameters/AcceptLanguageParam'
         - $ref: '#/components/parameters/SubMerchantIdParam'
       responses:
@@ -137,18 +161,18 @@ paths:
           $ref: '#/components/responses/ServerError'
 
     delete:
-      x-group-name: Apply and Buy
-      x-proxy-name: Delete application Identifier
+      x-group-name: Account Provisioning Services
+      x-proxy-name: Delete the provisioned account
       tags:
-        - applybuy
-      description: API to delete the application identifier.
+        - provisions
+      description: API to deleted the provisioned account.
       parameters:
         - $ref: '#/components/parameters/ApiKeyParam'
         - $ref: '#/components/parameters/TimestampParam'
         - $ref: '#/components/parameters/AuthorizationParam'
         - $ref: '#/components/parameters/ClientTokenParam'
         - $ref: '#/components/parameters/FdCustomerIdParam'
-        - $ref: '#/components/parameters/ApplicationIdParam'
+        - $ref: '#/components/parameters/ProvisionIdParam'
         - $ref: '#/components/parameters/AcceptLanguageParam'
         - $ref: '#/components/parameters/SubMerchantIdParam'
       responses:
@@ -164,26 +188,25 @@ paths:
           $ref: '#/components/responses/ServerError'
 
     patch:
-      x-group-name: Apply and Buy
-      x-proxy-name: Applybuy - Application Status
+      x-group-name: Account Provisioning Services
+      x-proxy-name: Update account
       tags:
-        - applybuy
-      description: The Issuer is used to update an application status and vault an
-        account in a remote system on successful creation.
+        - provisions
+      description: Provisioning is used to update an account in a remote system.
       parameters:
         - $ref: '#/components/parameters/ApiKeyParam'
         - $ref: '#/components/parameters/TimestampParam'
         - $ref: '#/components/parameters/AuthorizationParam'
         - $ref: '#/components/parameters/ClientTokenParam'
         - $ref: '#/components/parameters/FdCustomerIdParam'
-        - $ref: '#/components/parameters/ApplicationIdParam'
+        - $ref: '#/components/parameters/ProvisionIdParam'
         - $ref: '#/components/parameters/AcceptLanguageParam'
         - $ref: '#/components/parameters/SubMerchantIdParam'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Applybuy'
+              $ref: '#/components/schemas/Provision'
         required: true
       responses:
         200:
@@ -201,26 +224,37 @@ paths:
         500:
           $ref: '#/components/responses/ServerError'
 
+
 components:
   schemas:
 #-------------------------------------
 # Operational Models
 #-------------------------------------
-    Applybuy:
+    Provision:
       type: object
       properties:
-        auid:
+        provisionId:
           type: string
-          description: Account creation application status identifier.
-          example: application-reqt-id-123456
+          description: Account provision identifier.
+          example: prov-reqt-id-123456
         fdCustomerId:
           type: string
           description: uCom customer identifier.
           example: cust-id-123456
         process:
-          $ref: '#/components/schemas/ApplyBuyProcess'
+          $ref: '#/components/schemas/ProvisionProcess'
         account:
           $ref: '#/components/schemas/Account'
+        otpChannels:
+          type: array
+          items:
+            $ref: '#/components/schemas/OTPChannels'
+        issuerExtraInfo:
+          minItems: 0
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/NVP'
         deviceInfo:
           $ref: '#/components/schemas/DeviceInfo'
         _links:
@@ -229,8 +263,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Link'
-      description: Represents an event to create and vault an account that requires
-        a multi-step and potentially asynchrounous process to complete.
+      description: Represents an event to vault an account that requires a multi-step
+        and potentially asynchrounous process to complete.
 
 #-------------------------------------
 # Resource Models
@@ -253,8 +287,6 @@ components:
           $ref: '#/components/schemas/Loyalty'
         paypal:
           $ref: '#/components/schemas/Paypal'
-        masterpass:
-          $ref: '#/components/schemas/MasterPass'
         token:
           $ref: '#/components/schemas/ReferenceToken'
         ach:
@@ -265,6 +297,8 @@ components:
           $ref: '#/components/schemas/VisaCheckout'
         venmo:
           $ref: '#/components/schemas/Venmo'
+        masterpass:
+          $ref: '#/components/schemas/MasterPass'
         fleet:
           $ref: '#/components/schemas/Fleet'
         applePay:
@@ -346,8 +380,6 @@ components:
           description: Last four values of the cardNumber
           readOnly: true
           example: "1111"
-        expiryDate:
-          $ref: '#/components/schemas/ExpiryDate'
         enrollmentStatus:
           $ref: '#/components/schemas/AchEnrollmentStatus'
         enrollmentSubStatuses:
@@ -359,6 +391,8 @@ components:
         bankName:
           type: string
           description: Name of the bank associated with the ACH account
+        expiryDate:
+          $ref: '#/components/schemas/ExpiryDate'
         assetProvider:
           $ref: '#/components/schemas/AssetProvider'
       description: Information about an ACH account
@@ -408,38 +442,6 @@ components:
           100 Universal City Plaza
           Hollywood, CA 91608 US
         primary: true
-
-    ApplyBuyProcess:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/ApplybuyStatus'
-        createdTime:
-          type: string
-          description: Apply card request creation date time value.
-          format: date-time
-          readOnly: true
-          example: 2017-03-21T08:15:30-05:00
-        expiryTime:
-          type: string
-          description: Date time application identifier will or has become invalid.
-          format: date-time
-          example: 2017-03-22T08:15:30-05:00
-        lastUpdatedTime:
-          type: string
-          description: Date and time of update application status request to uCom.
-          format: date-time
-          readOnly: true
-          example: 2017-03-21T08:18:30-05:00
-      description: Details about the process of apply buy for create and vault an
-        account.
-
-    AssetProvider:
-      type: object
-      properties:
-        providerName:
-          type: string
-          example: coinbase
 
     ApplePay:
       type: object
@@ -496,13 +498,20 @@ components:
         billingPhone:
           $ref: '#/components/schemas/Phone'
 
+    AssetProvider:
+      type: object
+      properties:
+        providerName:
+          type: string
+          example: coinbase
+
     Credit:
       type: object
       properties:
         cardNumber:
           type: string
-          description: Primary account number, can only be sent when vaulting an account.
-            This field will NOT be present in responses.
+          description: Primary account number, can only be sent when vaulting an account.  This
+            field will NOT be present in responses.
           example: "4111111111111111"
         bin:
           type: string
@@ -537,6 +546,29 @@ components:
         token:
           $ref: '#/components/schemas/ReferenceToken'
       description: Information on a credit account
+
+    Email:
+      type: object
+      properties:
+        type:
+          type: string
+          description: The "type" sub-attribute is used to provide a classification
+            meaningful to the (human) user.  The user interface should encourage the
+            use of basic values of "work", "home", and "other" and MAY allow additional
+            type values to be used at the discretion of the service client.
+        value:
+          type: string
+          description: The value SHOULD be specified according to RFC5321.
+        primary:
+          type: boolean
+          description: Defines if this entry is to be used as the primary or default
+            for the user.
+          default: false
+      description: Email address for the user.
+      example:
+        value: bjensen@example.com
+        type: work
+        primary: true
 
     EBT:
       type: object
@@ -590,29 +622,6 @@ components:
           type: number
         snapCurrencyCode:
           $ref: '#/components/schemas/ISO-4217'
-
-    Email:
-      type: object
-      properties:
-        type:
-          type: string
-          description: The "type" sub-attribute is used to provide a classification
-            meaningful to the (human) user.  The user interface should encourage the
-            use of basic values of "work", "home", and "other" and MAY allow additional
-            type values to be used at the discretion of the service client.
-        value:
-          type: string
-          description: The value SHOULD be specified according to RFC5321.
-        primary:
-          type: boolean
-          description: Defines if this entry is to be used as the primary or default
-            for the user.
-          default: false
-      description: Email address for the user.
-      example:
-        value: bjensen@example.com
-        type: work
-        primary: true
 
     ExpiryDate:
       type: object
@@ -788,28 +797,6 @@ components:
           default: US Dollar
       description: ISO 4217 currency format in which the balance is represented.
 
-    Link:
-      required:
-        - href
-        - rel
-      type: object
-      properties:
-        href:
-          type: string
-          description: URL to linked resource.
-          format: uri
-          example: https://api.example.com/v1/customers/cust-id-123456/accounts/acct-id-123456
-        rel:
-          type: string
-          description: Defines the type of link relationship to current resource.
-          example: linked.account
-        method:
-          type: string
-          description: Defines the HTTP method for the given href.
-          example: GET
-          default: GET
-      description: Model to communicate linked resources.
-
     Loyalty:
       type: object
       properties:
@@ -930,6 +917,32 @@ components:
         loyaltyType: LOCAL
         status: ENABLED
 
+    Link:
+      required:
+        - href
+        - rel
+      type: object
+      properties:
+        href:
+          type: string
+          description: URL to linked resource.
+          format: uri
+          example: https://api.example.com/v1/customers/cust-id-123456/accounts/acct-id-123456
+        rel:
+          type: string
+          description: Defines the type of link relationship to current resource.
+          example: linked.account
+        method:
+          type: string
+          description: Defines the HTTP method for the given href.
+          example: GET
+          default: GET
+        id:
+          type: string
+          description: Identifier to the resource.
+          example: 415e5cf6bfdb11e8a355529269fb1459
+      description: Model to communicate linked resources.
+
     MasterPass:
       type: object
       properties:
@@ -941,6 +954,7 @@ components:
         credit:
           $ref: '#/components/schemas/Credit'
       description: Information about a MasterPass account.
+
     MoneyNetwork:
       type: object
       properties:
@@ -967,6 +981,52 @@ components:
           items:
             type: string
 
+    OTPChannels:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          readOnly: true
+        hint:
+          type: string
+          description: phone number or email id hint. Masked mail id or phone number.
+          readOnly: true
+        preferred:
+          type: boolean
+          default: false
+        deliveryModes:
+          type: array
+          items:
+            $ref: '#/components/schemas/OTPDeliveryModes'
+        selectedMode:
+          $ref: '#/components/schemas/OTPDeliveryModes'
+        optCode:
+          type: string
+          description: It contains OTP sent to use via voice, SMS or Email in encrypted
+            format.
+      description: channles to receive OTP - can be SMS, Phone or email. This object
+        will be set only in case of request/reply of OTP methods.
+      example:
+        id: ch02
+        type: Cell
+        hint: xxx-xxx-6789
+        preferred: ??
+        deliveryModes:
+          - VOICE
+          - SMS
+        selected: SMS
+        otpCode: "6789"
+
+    OTPDeliveryModes:
+      type: object
+      description: This is OTP delivery options. It can be SMS, Phone, Email. This
+        will be used in both cases - Receive OTP channel and Send OTP channel.
+      enum:
+        - VOICE
+        - SMS
+        - EMAIL
     Paypal:
       type: object
       properties:
@@ -981,43 +1041,6 @@ components:
         credit:
           $ref: '#/components/schemas/Credit'
       description: Information about a Paypal account.
-
-    PersonName:
-      type: object
-      properties:
-        formatted:
-          type: string
-          description: The full name, including all middle names, titles, and suffixes
-            as appropriate, formatted for display (e.g.,"Ms. Barbara Jane Jensen,
-            III").
-        familyName:
-          type: string
-          description: The family name of the User, or last name in most Western languages
-            (e.g., "Jensen" given the full name "Ms. Barbara Jane Jensen, III").
-        givenName:
-          type: string
-          description: The given name of the User, or first name in most Western languages
-            (e.g., "Barbara" given the full name "Ms. Barbara Jane Jensen, III").
-        middleName:
-          type: string
-          description: The middle name(s) of the User (e.g., "Jane" given the full
-            name "Ms. Barbara Jane Jensen, III").
-        honorificPrefix:
-          type: string
-          description: The honorific prefix(es) of the User, or title in most Western
-            languages (e.g., "Ms." given the full name "Ms. Barbara Jane Jensen, III").
-        honorificSuffix:
-          type: string
-          description: The honorific suffix(es) of the User, or suffix in most Western
-            languages (e.g., "III" given the full name "Ms. Barbara Jane Jensen, III").
-      description: The components of the user's name.
-      example:
-        formatted: Ms. Barbara J Jensen III
-        familyName: Jensen
-        givenName: Barbara
-        middleName: Jane
-        honorificPrefix: Ms.
-        honorificSuffix: III
 
     Phone:
       type: object
@@ -1058,6 +1081,43 @@ components:
       example:
         value: https://photos.example.com/profilephoto/72930000000Ccne/F
         type: thumbnail
+
+    PersonName:
+      type: object
+      properties:
+        formatted:
+          type: string
+          description: The full name, including all middle names, titles, and suffixes
+            as appropriate, formatted for display (e.g.,"Ms. Barbara Jane Jensen,
+            III").
+        familyName:
+          type: string
+          description: The family name of the User, or last name in most Western languages
+            (e.g., "Jensen" given the full name "Ms. Barbara Jane Jensen, III").
+        givenName:
+          type: string
+          description: The given name of the User, or first name in most Western languages
+            (e.g., "Barbara" given the full name "Ms. Barbara Jane Jensen, III").
+        middleName:
+          type: string
+          description: The middle name(s) of the User (e.g., "Jane" given the full
+            name "Ms. Barbara Jane Jensen, III").
+        honorificPrefix:
+          type: string
+          description: The honorific prefix(es) of the User, or title in most Western
+            languages (e.g., "Ms." given the full name "Ms. Barbara Jane Jensen, III").
+        honorificSuffix:
+          type: string
+          description: The honorific suffix(es) of the User, or suffix in most Western
+            languages (e.g., "III" given the full name "Ms. Barbara Jane Jensen, III").
+      description: The components of the user's name.
+      example:
+        formatted: Ms. Barbara J Jensen III
+        familyName: Jensen
+        givenName: Barbara
+        middleName: Jane
+        honorificPrefix: Ms.
+        honorificSuffix: III
 
     Prepaid:
       type: object
@@ -1114,6 +1174,31 @@ components:
         beginBalance: 1000
         currencyCode: 840
         currencyType: BASE
+
+    ProvisionProcess:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/ProvisionStatus'
+        createdTime:
+          type: string
+          description: Provision request creation date time value.
+          format: date-time
+          readOnly: true
+          example: 2017-03-21T08:15:30-05:00
+        expiryTime:
+          type: string
+          description: Date time provision will or has become invalid.
+          format: date-time
+          readOnly: true
+          example: 2017-03-22T08:15:30-05:00
+        lastUpdatedTime:
+          type: string
+          description: Date and time of update proviosn request to uCom.
+          format: date-time
+          readOnly: true
+          example: 2017-03-21T08:18:30-05:00
+      description: Details about the process of provisioning an accont.
 
     Question:
       type: object
@@ -1399,9 +1484,9 @@ components:
           $ref: '#/components/schemas/Credit'
       description: Visa Checkout information
 
-#-------------------------------------
-# Common Models
-#-------------------------------------
+  #-------------------------------------
+  # Common Models
+  #-------------------------------------
     DeviceInfo:
       required:
         - id
@@ -1605,9 +1690,9 @@ components:
             - field: example id
               message: exampleId is mandatory
 
-#-------------------------------------
-# ENUM Models
-#-------------------------------------
+  #-------------------------------------
+  # ENUM Models
+  #-------------------------------------
     AccountStatus:
       type: string
       description: Indicates the status of an account.
@@ -1615,25 +1700,6 @@ components:
         - ACTIVE
         - INACTIVE
         - TERMINATED
-
-    AchEnrollmentStatus:
-      type: string
-      description: Indicates ACH enrollment status
-      enum:
-        - ACTIVE
-        - PENDING
-        - PENDING_LINKED_ACCOUNT
-
-    AchEnrollmentSubStatus:
-      type: string
-      description: Indicates ACH enrollment pending status
-      enum:
-        - PENDING_BANK_VALIDATION
-        - PENDING_PIN_VALIDATION
-        - PENDING_EMAIL_VALIDATION
-        - PENDING_PHONE_VALIDATION
-        - PENDING_SOFT_BLOCK
-        - PENDING_HARD_BLOCK
 
     AccountType:
       type: string
@@ -1655,6 +1721,25 @@ components:
         - MONEYNETWORK
         - EBT
 
+    AchEnrollmentStatus:
+      type: string
+      description: Indicates ACH enrollment status
+      enum:
+        - ACTIVE
+        - PENDING
+        - PENDING_LINKED_ACCOUNT
+
+    AchEnrollmentSubStatus:
+      type: string
+      description: Indicates ACH enrollment pending status
+      enum:
+        - PENDING_BANK_VALIDATION
+        - PENDING_PIN_VALIDATION
+        - PENDING_EMAIL_VALIDATION
+        - PENDING_PHONE_VALIDATION
+        - PENDING_SOFT_BLOCK
+        - PENDING_HARD_BLOCK
+
     AchCardType:
       type: string
       description: Indicates the type of ACH card association
@@ -1668,19 +1753,6 @@ components:
         - CHECKING
         - SAVINGS
 
-    ApplybuyStatus:
-      type: string
-      description: Status of the card request application.
-      enum:
-        - APPLIED
-        - APPROVED
-        - DECLINED
-        - REFERRED
-        - PENDING
-        - EXPIRED
-        - ENROLLED
-        - FAILED
-
     BalanceUnitTypes:
       type: string
       description: Indicator to determine how to display balances
@@ -1690,14 +1762,6 @@ components:
         - POINTS
         - STARS
         - LITRES
-
-    CurrencyPairType:
-      type: string
-      description: Describes the type of currency where BASE represents the currency
-        from Host and TRANSACTION represents the one requested.
-      enum:
-        - BASE
-        - TRANSACTION
 
     CreditCardType:
       type: string
@@ -1709,6 +1773,14 @@ components:
         - PLCC
         - VISA
         - OTHER
+
+    CurrencyPairType:
+      type: string
+      description: Describes the type of currency where BASE represents the currency
+        from Host and TRANSACTION represents the one requested.
+      enum:
+        - BASE
+        - TRANSACTION
 
     FleetCardType:
       type: string
@@ -1743,6 +1815,18 @@ components:
         - DISABLED
         - CONTRACTED_ONLY
 
+    ProvisionStatus:
+      type: string
+      description: Status of the provisioning service transaction.
+      enum:
+        - REQUESTED
+        - APPROVED
+        - COMPLETED
+        - DECLINED
+        - REFERRED
+        - OTP_REQUIRED
+        - PENDING_VERIFICATION
+
     ReferenceTokenType:
       type: string
       description: Indicates if the given loyalty program is still active or not.
@@ -1764,7 +1848,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Applybuy'
+            $ref: '#/components/schemas/Provision'
 
     BadRequest:
       description: Bad request
@@ -1791,7 +1875,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Applybuy'
+            $ref: '#/components/schemas/Provision'
 
     NoContent:
       description: The request succeeded but there’s really nothing to show.
@@ -1809,7 +1893,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Applybuy'
+            $ref: '#/components/schemas/Provision'
 
     PartialContent:
       description: The request succeeded containing requested range of data as described
@@ -1817,7 +1901,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Applybuy'
+            $ref: '#/components/schemas/Provision'
 
     ServerError:
       description: An unexpected server error occured.
@@ -1830,9 +1914,9 @@ components:
       description: Unauthorized
       content: {}
 
-#-------------------------------------
-# Parameter Models
-#-------------------------------------
+  #-------------------------------------
+  # Parameter Models
+  #-------------------------------------
   parameters:
     AcceptLanguageParam:
       name: Accept-Language
@@ -1848,14 +1932,6 @@ components:
       in: header
       description: An API key is a string value passed by a client app to the API
         proxies. The key uniquely identifies the client app.
-      required: true
-      schema:
-        type: string
-
-    ApplicationIdParam:
-      name: auid
-      in: path
-      description: Unique identifier provided for the Applybuy object
       required: true
       schema:
         type: string
@@ -1906,12 +1982,28 @@ components:
       schema:
         type: string
 
+    ProvisionIdParam:
+      name: provisionId
+      in: path
+      description: Unique identifier provided for the provision object
+      required: true
+      schema:
+        type: string
+
     SubMerchantIdParam:
       name: Sub-Merchant-Id
       in: header
       description: Sub Merchant Id contains information about the merchant identifier
       schema:
         type: string
+
+    QueryFields:
+      name: fields
+      in: query
+      description: This can be SMS, e-mail, phone.
+      schema:
+        type: string
+        default: OTP
 
     TimestampParam:
       name: Timestamp
