@@ -50,24 +50,22 @@ To get the Apple Certificate (CSR) you have to register an account with our Paye
 
 -  For questions or issues regarding the Apple developer account and portal, please work with Apple directly.
 
-# Merchant – Create Apple Certificate Sandbox (test)
+## Merchant – Create Apple Certificate Sandbox (test)
 
-## Step 1: Create a Payeezy Developer account
+### Step 1: Create a Payeezy Developer account
+
+*Please consider creating an account using a shared/group mailbox to avoid access issues in the future. 
+*Select “developer as the merchant” option in the “Tell us about your business” section. 
 
 1) Enroll here: [https://developer.payeezy.com/user/register](https://developer.payeezy.com/user/register)
-
-* Please consider creating an account using a shared/group mailbox to avoid access issues in the future. 
-* Select “developer as the merchant” option in the “Tell us about your business” section
-
- 2) Activate your account using the email sent to your mailbox. 
- 3) Enter a secure password using the activation link in the email and click the “LOG IN” button once
+2) Activate your account using the email sent to your mailbox. 
+3) Enter a secure password using the activation link in the email and click the “LOG IN” button once
 completed. 
- 4) Once logged in, click the “Get Certified” button on top to begin the certification process. You will be
+4) Once logged in, click the “Get Certified” button on top to begin the certification process. You will be
 asked to change your password one more time, kindly do so. 
- 5) Once the password is changed, expand the “Personal Information” section, and fill out the form
+5) Once the password is changed, expand the “Personal Information” section, and fill out the form
 completely. 
-* Please select “FIRSTDATA” for the “Who were you referred by?” question and fill out the target market
-accordingly.
+*Please select “FIRSTDATA” for the “Who were you referred by?” question and fill out the target market accordingly.
 *Select “developer as the merchant” option in the “Tell us about your business” section. 
 6) Finally, click on “CERTIFY” and then “SAVE”. 
 7) Click cancel on the “Add A Merchant” screen that will show up as we automatically create a
