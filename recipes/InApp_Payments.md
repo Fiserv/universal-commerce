@@ -44,11 +44,9 @@ There is a need to generate the CSR and share it with a merchant along with the 
 
 To get the Apple Certificate you have to register with our Payeezy Developer portal. This is used for a different gateway (Payeezy), but you are just registering so you can create and save the certificate then add it your Apple developer account.
 
- - The CSR will be generated for you in the Payeezy Developer portal.
+Kindly follow the steps below to create an account, generate an API key, a certificate, and a merchant
+ID: 
 
--  The Merchant Identifier is the “App Label” shown on the “Certs” page in the Payeezy Developer Portal.
-
--  **Please ensure you select an App Label that is unique to you** like YourMerchantNameApplePayTest/Prod to avoid issues when uploading the CSR to your Apple Developer account.
 
 -  This process will need to be done for both Test and Prod; you would select **Sandbox** for Test and **Live** for Prod.
 
