@@ -5,7 +5,7 @@
 This flow is used if the partner does not have vaulting support through uCom. The client generates the nonce from Paypal/Venmo and processes the transaction using the nonce through uCom.
 </span>
 
-**Prerequisites: </br>
+**<ins> Prerequisites: </ins>**
 PayPal Account </br>
 PayPal account details configured in uCom. </br>
 PayPal SDK Setup/configured to generate the nonce. </br>
@@ -191,7 +191,7 @@ Sample Response – Paypal Authorization Transaction - Nonce
 
 This request will complete the transaction which has been pre authorized.
 
-**<ins> Endpoint URL </ins>**
+**<ins>Endpoint URL</ins>**
 
 HTTP Method: POST
 
@@ -199,7 +199,7 @@ Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/auths/>{fdAuthorizatio
 
 Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>/{fdAuthorizationId}/captures
 
-\*Replace fdAuthorizationId with Auth transactionId .
+\*Replace fdAuthorizationId with Auth transactionId.
 
 **<ins> Parameters </ins>**
 
@@ -223,7 +223,7 @@ Authorization:HMAC {{signature}}
 
 Timestamp:{{time}}
 
-**<ins> Sample Request </ins>**
+**<ins>Sample Request</ins>**
 
 ```json
 {
@@ -307,7 +307,7 @@ HTTP Method: POST
 
 Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/sales>
 
-Prod: <https://prod.api.firstdata.com/ucom/v1/payments/s>ales
+Prod: <https://prod.api.firstdata.com/ucom/v1/payments/sales>
 
 **<ins> Parameters </ins>**
 
