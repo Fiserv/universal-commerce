@@ -5,6 +5,7 @@
 This flow is used if the partner does not have vaulting support through uCom. The client generates the nonce from Paypal/Venmo and processes the transaction using the nonce through uCom.
 </span>
 
+
 **<ins> Prerequisites: </ins>**
 PayPal Account </br>
 PayPal account details configured in uCom. </br>
