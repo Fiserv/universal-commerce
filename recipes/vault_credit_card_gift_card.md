@@ -92,11 +92,13 @@ Prod: https://prod.api.firstdata.com/ucom/v1/tokens
 
 ## Step 3: Obtain a Nonce 
 
-**Here you will have 2 options to obtain a nonce:** 
+**Here you will have 3 options to obtain a nonce:** 
 
 A) By Encrypting PAN details using POST \- /v1/account\-tokens API call. 
 
-B) Through Hosted Pages (if applicable). A nonce is generated through hosted pages after a user submits credit card details.
+B) Server to Server nonce generation. A multi-use public key is issued to the merchant, which shall be used to generate a nonce. Follows the same flow as 3A, only exception is that the public key is constant and does not change. 
+
+C) Through Hosted Pages (if applicable). A nonce is generated through hosted pages after a user submits credit card details.
 
 ## 3A) Encrypt PAN details
 
@@ -116,6 +118,8 @@ Timestamp:- <timestamp> <br>
 Client-Request-Id: - <clientRequestId> <br>
 
 Encrypted PAN details for Generating Nonce.
+	
+>Please note that a public 
 
 **<ins> Parameters </ins>**
 
