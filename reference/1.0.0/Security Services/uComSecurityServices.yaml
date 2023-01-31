@@ -63,31 +63,31 @@ info:
   description: Services related to managing security like access tokens and validation.
   version: 0.2.3
 servers:
-  - url: https://int.api.firstdata.com/ucom
+- url: https://int.api.firstdata.com/ucom
 tags:
-  - name: security
-    description: Operations and details for API security services.
+- name: security
+  description: Operations and details for API security services.
 paths:
   /v1/signature-keys/{keyId}:
     get:
       x-group-name: Security Services
       x-proxy-name: Get Public Signature Key
       tags:
-        - security
+      - security
       summary: Get uCom Gateway public signature key
       description: Get uCom Gateway public key for validating message signatures.
       parameters:
-        - name: keyId
-          in: path
-          description: identifier of the public key used for signature verification.
-          required: true
-          schema:
-            type: string
-        - $ref: '#/components/parameters/ApiKeyParam'
-        - $ref: '#/components/parameters/TimestampParam'
-        - $ref: '#/components/parameters/AuthorizationParam'
-        - $ref: '#/components/parameters/AcceptLanguageParam'
-        - $ref: '#/components/parameters/SubMerchantIdParam'
+      - name: keyId
+        in: path
+        description: identifier of the public key used for signature verification.
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
       responses:
         200:
           description: OK
@@ -104,24 +104,24 @@ paths:
 
   /v1/encryption-keys/{keyId}:
     get:
-       x-group-name: Security Services
+      x-group-name: Security Services
       x-proxy-name: Get Encryption Key
       tags:
-        - security
+      - security
       summary: Get uCom Gateway encryption key
       description: Get uCom Gateway partner-specific key for encryption of data elements.
       parameters:
-        - name: keyId
-          in: path
-          description: identifier of the public key used for field-level encryption.
-          required: true
-          schema:
-            type: string
-        - $ref: '#/components/parameters/ApiKeyParam'
-        - $ref: '#/components/parameters/TimestampParam'
-        - $ref: '#/components/parameters/AuthorizationParam'
-        - $ref: '#/components/parameters/AcceptLanguageParam'
-        - $ref: '#/components/parameters/SubMerchantIdParam'
+      - name: keyId
+        in: path
+        description: identifier of the public key used for field-level encryption.
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
       responses:
         200:
           description: OK
@@ -141,14 +141,13 @@ paths:
       x-group-name: Security Services
       x-proxy-name: Create Security Access Token
       tags:
-        - security
+      - security
       summary: Create a security access token
-      description: For service calls directly from a mobile or connected device, the
-        client needs to have an access token which is received by the client's server.
+      description: For service calls directly from a mobile or connected device, the client needs to have an access token which is received by the client's server.
       parameters:
-        - $ref: '#/components/parameters/AuthorizationParam'
-        - $ref: '#/components/parameters/AcceptLanguageParam'
-        - $ref: '#/components/parameters/SubMerchantIdParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
       requestBody:
         content:
           application/json:
@@ -161,13 +160,11 @@ paths:
                   $ref: '#/components/schemas/DeviceInfo'
                 anonymous:
                   type: boolean
-                  description: Flag to indicate that the requested user does not have
-                    a uCom customer profile.
+                  description: Flag to indicate that the requested user does not have a uCom customer profile.
                   default: false
                 publicKeyRequired:
                   type: boolean
-                  description: Flag to indicate if a public key is required for payload
-                    data encryption.
+                  description: Flag to indicate if a public key is required for payload data encryption.
                   default: false
               example:
                 token:
@@ -191,14 +188,13 @@ paths:
       x-group-name: Security Services
       x-proxy-name: DEFECT - Deprecate third-party-tokens!
       tags:
-        - security
+      - security
       summary: Create a security access token
-      description: For service calls directly from a mobile or connected device, the
-        client needs to have an access token which is received by the client's server.
+      description: For service calls directly from a mobile or connected device, the client needs to have an access token which is received by the client's server.
       parameters:
-        - $ref: '#/components/parameters/AuthorizationParam'
-        - $ref: '#/components/parameters/AcceptLanguageParam'
-        - $ref: '#/components/parameters/SubMerchantIdParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
       requestBody:
         content:
           application/json:
@@ -224,9 +220,9 @@ paths:
 
 components:
   schemas:
-#-------------------------------------
-# Resource Models
-#-------------------------------------
+    #-------------------------------------
+    # Resource Models
+    #-------------------------------------
     EncryptionKey:
       type: object
       properties:
@@ -248,8 +244,7 @@ components:
           example: 1501715477
         expires:
           type: string
-          description: Epoch timestamp representing the date-time by which the Key
-            expires.
+          description: Epoch timestamp representing the date-time by which the Key expires.
           example: "1501795478"
       description: Model for attributes of Key pair required for field encryption.
 
@@ -274,11 +269,8 @@ components:
           maxLength: 6
           minLength: 4
           type: string
-          description: Month and year together, 'MMYY' or 'MMYYYY'.  If the latter
-            format, the string will be parsed and validated per the given format.  Any
-            other format will be rejected.
-      description: Contains account expiration data and needs to either send the values
-        in individual fields OR as a singleValue.
+          description: Month and year together, 'MMYY' or 'MMYYYY'.  If the latter format, the string will be parsed and validated per the given format.  Any other format will be rejected.
+      description: Contains account expiration data and needs to either send the values in individual fields OR as a singleValue.
 
     ISO-4217:
       type: object
@@ -301,8 +293,8 @@ components:
 
     Link:
       required:
-        - href
-        - rel
+      - href
+      - rel
       type: object
       properties:
         href:
@@ -314,10 +306,10 @@ components:
           description: Defines the type of link relationship to current resource.
           example: self
           enum:
-            - current.page
-            - previous.page
-            - next.page
-            - self
+          - current.page
+          - previous.page
+          - next.page
+          - self
         method:
           type: string
           description: Defines the HTTP method for the given href.
@@ -358,8 +350,7 @@ components:
           $ref: '#/components/schemas/ExpiryDate'
         tokenType:
           $ref: '#/components/schemas/ReferenceTokenType'
-      description: Surrogate value used to represent a handle to an account without
-        sharing PCI/PII data to look it up.
+      description: Surrogate value used to represent a handle to an account without sharing PCI/PII data to look it up.
 
     SignatureKey:
       type: object
@@ -378,8 +369,7 @@ components:
           example: 1501715477
         expires:
           type: string
-          description: Epoch timestamp representing the date-time by which the Key
-            expires.
+          description: Epoch timestamp representing the date-time by which the Key expires.
           example: "1501795478"
       description: Model for attributes of Key pair required for Signature validation.
 
@@ -476,8 +466,7 @@ components:
           example: ewogIC
         challengeIndicator:
           type: string
-          example: '01 = No preference 02 = No challenge requested 03 = Challenge
-            requested: 3DS Requestor Preference 04 = Challenge requested: Mandate'
+          example: '01 = No preference 02 = No challenge requested 03 = Challenge requested: 3DS Requestor Preference 04 = Challenge requested: Mandate'
         dsTransactionId:
           type: string
           example: 292bb6b886fc4446894f878b7e32bd5e
@@ -527,27 +516,24 @@ components:
         eci:
           type: string
           description: Electronic Commerce Indicator value
-      description: Details of ThreeDSecure transaction used to process the challege
-        flow
+      description: Details of ThreeDSecure transaction used to process the challege flow
 
     #-------------------------------------
     # Common Models
     #-------------------------------------
     DeviceInfo:
       required:
-        - id
-        - kind
+      - id
+      - kind
       type: object
       properties:
         id:
           type: string
-          description: Unique Id for the device. Value should not contain line feeds,
-            carriage returns, tabs, leading or trailing spaces, or multiple spaces.
+          description: Unique Id for the device. Value should not contain line feeds, carriage returns, tabs, leading or trailing spaces, or multiple spaces.
           example: 537edec8-d33e-4ee8-93a7-b9f61876950c
         kind:
           type: string
-          description: Possible values are mobile, wearable, automobile, embedded,desktop,
-            other.
+          description: Possible values are mobile, wearable, automobile, embedded,desktop, other.
           example: mobile
         details:
           title: deviceData
@@ -560,8 +546,7 @@ components:
             properties:
               provider:
                 type: string
-                description: Identifies the provider of the data and is often used
-                  when decrypting data on the server.
+                description: Identifies the provider of the data and is often used when decrypting data on the server.
                 example: InAuth
               dataCapture:
                 type: object
@@ -576,12 +561,10 @@ components:
                     example: BB8E4E92...Fz1E063113
                   captureTime:
                     type: string
-                    description: Device data capture time in Internet Date/Time format
-                      - yyyy-MM-dd'T'HH:mm:ss'Z'
+                    description: Device data capture time in Internet Date/Time format - yyyy-MM-dd'T'HH:mm:ss'Z'
                     format: date-time
                     example: 2016-04-16T16:06:05Z
-                description: Device data captured as a bundle and transmitted as an
-                  encrypted and/or specifically formated string.
+                description: Device data captured as a bundle and transmitted as an encrypted and/or specifically formated string.
               dataStatic:
                 type: object
                 properties:
@@ -607,13 +590,11 @@ components:
                 properties:
                   latitude:
                     type: string
-                    description: Device position - latitude at the time of the data
-                      event
+                    description: Device position - latitude at the time of the data event
                     example: 13.0827 N
                   longitude:
                     type: string
-                    description: Device position - longitude at the time of the data
-                      event
+                    description: Device position - longitude at the time of the data event
                     example: 80.2707 E
                   ipAddress:
                     type: string
@@ -621,8 +602,7 @@ components:
                     example: 172.27.37.221
                   captureTime:
                     type: string
-                    description: Device data capture time in Internet Date/Time format
-                      - yyyy-MM-dd'T'HH:mm:ss'Z'
+                    description: Device data capture time in Internet Date/Time format - yyyy-MM-dd'T'HH:mm:ss'Z'
                     format: date-time
                     example: 2016-04-16T16:06:05Z
                 description: Device location details
@@ -657,32 +637,31 @@ components:
         id: 537edec8-d33e-4ee8-93a7-b9f61876950c
         kind: mobile
         details:
-          - provider: InAuth
-            dataCapture:
-              rawData: aaaaaXREUVZGRlFY...aMV
-              dataEventId: BB8E4E92...Fz1E063113
-              captureTime: 2016-04-16T16:06:05Z
-            dataStatic:
-              os: Android 5.1.1 Lollipop
-              osVersion: 5.1.1 Lollipop
-              model: XYX-1
-              Type: Moto G
-            dataDynamic:
-              latitude: 13.0827 N
-              longitude: 80.2707 E
-              ipAddress: 172.27.37.221
-              captureTime: 2016-04-16T16:06:05Z
+        - provider: InAuth
+          dataCapture:
+            rawData: aaaaaXREUVZGRlFY...aMV
+            dataEventId: BB8E4E92...Fz1E063113
+            captureTime: 2016-04-16T16:06:05Z
+          dataStatic:
+            os: Android 5.1.1 Lollipop
+            osVersion: 5.1.1 Lollipop
+            model: XYX-1
+            Type: Moto G
+          dataDynamic:
+            latitude: 13.0827 N
+            longitude: 80.2707 E
+            ipAddress: 172.27.37.221
+            captureTime: 2016-04-16T16:06:05Z
         additionalInfo:
-          - name: some-key
-            value: some-value
+        - name: some-key
+          value: some-value
 
     Error:
       type: object
       properties:
         code:
           type: string
-          description: Uniquely identifies an error condition. Client applications
-            need to read and handle errors based on this.
+          description: Uniquely identifies an error condition. Client applications need to read and handle errors based on this.
         message:
           type: string
           description: A generic description of the error condition.
@@ -710,8 +689,7 @@ components:
                   message:
                     type: string
                     description: Information specific to a property or attribute.
-          description: Information that needs to be understood by the client developers
-            and should not be interpreted for application processing.
+          description: Information that needs to be understood by the client developers and should not be interpreted for application processing.
         hostExtraInfo:
           minItems: 0
           uniqueItems: true
@@ -733,38 +711,38 @@ components:
           developerMessage: Invalid Message format in request payload
           moreInfo: https://www.example.com/errors/40000
           fieldError:
-            - field: example id
-              message: exampleId is mandatory
+          - field: example id
+            message: exampleId is mandatory
 
-  #-------------------------------------
-  # ENUM Models
-  #-------------------------------------
+    #-------------------------------------
+    # ENUM Models
+    #-------------------------------------
     CreditCardType:
       type: string
       description: Indicates the type of credit account association
       enum:
-        - AMEX
-        - DISCOVER
-        - MASTERCARD
-        - PLCC
-        - VISA
-        - OTHER
+      - AMEX
+      - DISCOVER
+      - MASTERCARD
+      - PLCC
+      - VISA
+      - OTHER
 
     ReferenceTokenType:
       type: string
       description: Indicates the purpose of token.
       enum:
-        - FORMAT_PRESERVING_MULTI_USE
-        - FORMAT_PRESERVING_SINGLE_USE
-        - CLAIM_CHECK_NONCE
-        - RANDOM_MULTI_USE
-        - RANDOM_SINGLE_USE
-        - CLAIM_CHECK_NONCE_WITH_PINCAPTURE
+      - FORMAT_PRESERVING_MULTI_USE
+      - FORMAT_PRESERVING_SINGLE_USE
+      - CLAIM_CHECK_NONCE
+      - RANDOM_MULTI_USE
+      - RANDOM_SINGLE_USE
+      - CLAIM_CHECK_NONCE_WITH_PINCAPTURE
     TokenStatus:
       type: string
       enum:
-        - ACTIVE
-        - EXPIRED
+      - ACTIVE
+      - EXPIRED
 
   #-------------------------------------
   # Responses
@@ -778,8 +756,7 @@ components:
             $ref: '#/components/schemas/Error'
 
     Conflict:
-      description: Conflict - The requested operation conflicts with the current state
-        of the identified resource.
+      description: Conflict - The requested operation conflicts with the current state of the identified resource.
       content:
         application/json:
           schema:
@@ -840,17 +817,14 @@ components:
     AcceptLanguageParam:
       name: Accept-Language
       in: header
-      description: The Accept-Language header contains information about the language
-        preference of a user. This HTTP header is useful to multilingual sites for
-        deciding the best language to serve to the client. i.e en-US,fr-CA
+      description: The Accept-Language header contains information about the language preference of a user. This HTTP header is useful to multilingual sites for deciding the best language to serve to the client. i.e en-US,fr-CA
       schema:
         type: string
 
     ApiKeyParam:
       name: Api-Key
       in: header
-      description: An API key is a string value passed by a client app to the API
-        proxies. The key uniquely identifies the client app.
+      description: An API key is a string value passed by a client app to the API proxies. The key uniquely identifies the client app.
       required: true
       schema:
         type: string
@@ -866,10 +840,7 @@ components:
     ClientTokenParam:
       name: Client-Token
       in: header
-      description: Used to pass the original client OAuth token information given
-        in a client-credentials flow.  This field is only used when the server is
-        making the request and needs to link the transaction to a specific client.  Format-
-        `Bearer {access_token}`
+      description: Used to pass the original client OAuth token information given in a client-credentials flow.  This field is only used when the server is making the request and needs to link the transaction to a specific client.  Format- `Bearer {access_token}`
       schema:
         type: string
 

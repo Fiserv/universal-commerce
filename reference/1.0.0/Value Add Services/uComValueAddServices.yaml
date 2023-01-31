@@ -78,34 +78,31 @@
 openapi: 3.0.1
 info:
   title: uCom Value-Add Services
-  description: Services related to loyalty accounts such as new account creation,
-    card registration, card transaction history, card details etc.
+  description: Services related to loyalty accounts such as new account creation, card registration, card transaction history, card details etc.
   version: 0.2.3
 servers:
-  - url: https://int.api.firstdata.com/ucom
+- url: https://int.api.firstdata.com/ucom
 tags:
-  - name: loyalty
-    description: Operations and details about a loyalty accounts.
-  - name: offers
-    description: Operations and details about offers
+- name: loyalty
+  description: Operations and details about a loyalty accounts.
+- name: offers
+  description: Operations and details about offers
 paths:
   /v1/loyalty/accounts:
     post:
       x-group-name: Value Added Services
       x-proxy-name: Get loyalty account details
       tags:
-        - loyalty
+      - loyalty
       summary: Get loyalty account details
-      description: Get loyalty account details from the issuer systems.  This is a
-        general inquirey and not for information related to being vaulted at First
-        Data.
+      description: Get loyalty account details from the issuer systems.  This is a general inquirey and not for information related to being vaulted at First Data.
       parameters:
-        - $ref: '#/components/parameters/ApiKeyParam'
-        - $ref: '#/components/parameters/TimestampParam'
-        - $ref: '#/components/parameters/AuthorizationParam'
-        - $ref: '#/components/parameters/ClientTokenParam'
-        - $ref: '#/components/parameters/AcceptLanguageParam'
-        - $ref: '#/components/parameters/SubMerchantIdParam'
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
       requestBody:
         description: Details about loyalty account information.
         content:
@@ -129,31 +126,31 @@ paths:
       responses:
         200:
           $ref: '#/components/responses/OK'
+        204:
+          $ref: '#/components/responses/NoContent'
         400:
           $ref: '#/components/responses/BadRequest'
         401:
           $ref: '#/components/responses/Unauthorized'
         500:
           $ref: '#/components/responses/ServerError'
-        204:
-          $ref: '#/components/parameters/LocationParam'
 
   /v1/loyalty/accounts/{requestId}:
     get:
       x-group-name: Value Added Services
       x-proxy-name: Get loyalty account details based on Request ID
       tags:
-        - loyalty
+      - loyalty
       summary: Get loyalty account details based on request id
       description: Get loyalty account details based on request id
       parameters:
-        - $ref: '#/components/parameters/ApiKeyParam'
-        - $ref: '#/components/parameters/TimestampParam'
-        - $ref: '#/components/parameters/AuthorizationParam'
-        - $ref: '#/components/parameters/ClientTokenParam'
-        - $ref: '#/components/parameters/AcceptLanguageParam'
-        - $ref: '#/components/parameters/SubMerchantIdParam'
-        - $ref: '#/components/parameters/RequestIdParam'
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      - $ref: '#/components/parameters/RequestIdParam'
       responses:
         200:
           $ref: '#/components/responses/BalanceResponse'
@@ -171,18 +168,17 @@ paths:
       x-group-name: Value Added Services
       x-proxy-name: Initiate action against Request ID
       tags:
-        - loyalty
+      - loyalty
       summary: Initiate some action against a loyalty account
-      description: Reserved for calls that initiate an action outside of normal CRUD
-        behavior and not easily modeled.
+      description: Reserved for calls that initiate an action outside of normal CRUD behavior and not easily modeled.
       parameters:
-        - $ref: '#/components/parameters/ApiKeyParam'
-        - $ref: '#/components/parameters/TimestampParam'
-        - $ref: '#/components/parameters/AuthorizationParam'
-        - $ref: '#/components/parameters/ClientTokenParam'
-        - $ref: '#/components/parameters/ClientRequestIdParam'
-        - $ref: '#/components/parameters/AcceptLanguageParam'
-        - $ref: '#/components/parameters/SubMerchantIdParam'
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/ClientRequestIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
       requestBody:
         description: Details about what action to initiate.
         content:
@@ -212,21 +208,21 @@ paths:
       x-group-name: Value Added Services
       x-proxy-name: Get Account Details
       tags:
-        - loyalty
+      - loyalty
       summary: Get loyalty account details - account information, status
       description: Get loyalty account details - account information, status
       parameters:
-        - $ref: '#/components/parameters/ApiKeyParam'
-        - $ref: '#/components/parameters/TimestampParam'
-        - $ref: '#/components/parameters/AuthorizationParam'
-        - $ref: '#/components/parameters/ClientTokenParam'
-        - $ref: '#/components/parameters/StartDateParam'
-        - $ref: '#/components/parameters/EndDateParam'
-        - $ref: '#/components/parameters/PageNumberParam'
-        - $ref: '#/components/parameters/PageSizeParam'
-        - $ref: '#/components/parameters/FiltersParam'
-        - $ref: '#/components/parameters/AcceptLanguageParam'
-        - $ref: '#/components/parameters/SubMerchantIdParam'
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/StartDateParam'
+      - $ref: '#/components/parameters/EndDateParam'
+      - $ref: '#/components/parameters/PageNumberParam'
+      - $ref: '#/components/parameters/PageSizeParam'
+      - $ref: '#/components/parameters/FiltersParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
       requestBody:
         description: Details about loyalty account information.
         content:
@@ -270,17 +266,16 @@ paths:
       x-group-name: Value Added Services
       x-proxy-name: Create an Offer
       tags:
-        - offers
+      - offers
       summary: Creates an offer event for a client
-      description: Based on a combination of criteria, create an offer event and return
-        details to the client application.
+      description: Based on a combination of criteria, create an offer event and return details to the client application.
       parameters:
-        - $ref: '#/components/parameters/ApiKeyParam'
-        - $ref: '#/components/parameters/TimestampParam'
-        - $ref: '#/components/parameters/AuthorizationParam'
-        - $ref: '#/components/parameters/ClientTokenParam'
-        - $ref: '#/components/parameters/AcceptLanguageParam'
-        - $ref: '#/components/parameters/SubMerchantIdParam'
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
       requestBody:
         description: Details about what fields to update for the given loyalty account.
         content:
@@ -298,8 +293,7 @@ paths:
                 properties:
                   availOffersTrxnId:
                     type: string
-                    description: Identifier to be carried along with subsequent interactions
-                      using the available offers returned to the client.
+                    description: Identifier to be carried along with subsequent interactions using the available offers returned to the client.
                   basket:
                     type: object
                     properties:
@@ -327,17 +321,17 @@ paths:
       x-group-name: Value Added Services
       x-proxy-name: Delete offer by Transaction ID
       tags:
-        - offers
+      - offers
       summary: Deletes available offers by transaction id
       description: Deletes available offers by transaction id.
       parameters:
-        - $ref: '#/components/parameters/ApiKeyParam'
-        - $ref: '#/components/parameters/TimestampParam'
-        - $ref: '#/components/parameters/AuthorizationParam'
-        - $ref: '#/components/parameters/ClientTokenParam'
-        - $ref: '#/components/parameters/AcceptLanguageParam'
-        - $ref: '#/components/parameters/SubMerchantIdParam'
-        - $ref: '#/components/parameters/AvailOffersTrxnIdParam'
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      - $ref: '#/components/parameters/AvailOffersTrxnIdParam'
       responses:
         204:
           $ref: '#/components/responses/NoContent'
@@ -355,17 +349,16 @@ paths:
       x-group-name: Value Added Services
       x-proxy-name: Obtain an offer
       tags:
-        - offers
+      - offers
       summary: Obtains an offer with the loyalty host
-      description: Based on a combination of criteria, An offer can be obtained from
-        the list of available offers.
+      description: Based on a combination of criteria, An offer can be obtained from the list of available offers.
       parameters:
-        - $ref: '#/components/parameters/ApiKeyParam'
-        - $ref: '#/components/parameters/TimestampParam'
-        - $ref: '#/components/parameters/AuthorizationParam'
-        - $ref: '#/components/parameters/ClientTokenParam'
-        - $ref: '#/components/parameters/AcceptLanguageParam'
-        - $ref: '#/components/parameters/SubMerchantIdParam'
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
       requestBody:
         description: Details about what fields needed for obtaining an offer.
         content:
@@ -390,17 +383,16 @@ paths:
       x-group-name: Value Added Services
       x-proxy-name: Submit opt-in consent
       tags:
-        - opt-ins
+      - opt-ins
       summary: Submits opt-in consents with the host
-      description: Based on a combination of criteria, Submits consents and return
-        details to the client application.
+      description: Based on a combination of criteria, Submits consents and return details to the client application.
       parameters:
-        - $ref: '#/components/parameters/ApiKeyParam'
-        - $ref: '#/components/parameters/TimestampParam'
-        - $ref: '#/components/parameters/AuthorizationParam'
-        - $ref: '#/components/parameters/ClientTokenParam'
-        - $ref: '#/components/parameters/AcceptLanguageParam'
-        - $ref: '#/components/parameters/SubMerchantIdParam'
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
       requestBody:
         description: Details about what fields to update for the given loyalty account.
         content:
@@ -425,17 +417,16 @@ paths:
       x-group-name: Value Added Services
       x-proxy-name: Retrieve Consent information
       tags:
-        - opt-ins
-      summary: Retrieving the consent information for a given loyalty account from
-        the host
+      - opt-ins
+      summary: Retrieving the consent information for a given loyalty account from the host
       description: Based on a combination of criteria, Gets the list of consents.
       parameters:
-        - $ref: '#/components/parameters/ApiKeyParam'
-        - $ref: '#/components/parameters/TimestampParam'
-        - $ref: '#/components/parameters/AuthorizationParam'
-        - $ref: '#/components/parameters/ClientTokenParam'
-        - $ref: '#/components/parameters/AcceptLanguageParam'
-        - $ref: '#/components/parameters/SubMerchantIdParam'
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
       requestBody:
         description: Details about what fields needed for retrieving content.
         content:
@@ -467,9 +458,9 @@ paths:
 
 components:
   schemas:
-#-------------------------------------
-# Operational Models
-#-------------------------------------
+    #-------------------------------------
+    # Operational Models
+    #-------------------------------------
     OptInRequest:
       title: OptIn request
       type: object
@@ -546,9 +537,9 @@ components:
           $ref: '#/components/schemas/PromotionalOffer'
       description: Offer that will be used for selection.
 
-  #-------------------------------------
-  # Resource Models
-  #-------------------------------------
+    #-------------------------------------
+    # Resource Models
+    #-------------------------------------
     Address:
       type: object
       properties:
@@ -557,9 +548,7 @@ components:
           description: Canonical type values of "work", "home", and "other".
         streetAddress:
           type: string
-          description: The full street address component, which may include house
-            number, street name, P.O. box, and multi-line extended street address
-            information.
+          description: The full street address component, which may include house number, street name, P.O. box, and multi-line extended street address information.
         locality:
           type: string
           description: The city or locality component.
@@ -571,17 +560,13 @@ components:
           description: The zip code or postal code component.
         country:
           type: string
-          description: The country name component.  When specified, the value MUST
-            be in ISO 3166-1 "alpha-2" code format; e.g., the United States and Sweden
-            are "US" and "SE", respectively.
+          description: The country name component.  When specified, the value MUST be in ISO 3166-1 "alpha-2" code format; e.g., the United States and Sweden are "US" and "SE", respectively.
         formatted:
           type: string
-          description: The full mailing address, formatted for display or use with
-            a mailing label.
+          description: The full mailing address, formatted for display or use with a mailing label.
         primary:
           type: boolean
-          description: Indicates if this is the default address for the associated
-            resource. It only has meaning when used in a set or array of addresses.
+          description: Indicates if this is the default address for the associated resource. It only has meaning when used in a set or array of addresses.
       description: A physical mailing address for this user.
       example:
         type: work
@@ -638,11 +623,8 @@ components:
           maxLength: 6
           minLength: 4
           type: string
-          description: Month and year together, 'MMYY' or 'MMYYYY'.  If the latter
-            format, the string will be parsed and validated per the given format.  Any
-            other format will be rejected.
-      description: Contains account expiration data and needs to either send the values
-        in individual fields OR as a singleValue.
+          description: Month and year together, 'MMYY' or 'MMYYYY'.  If the latter format, the string will be parsed and validated per the given format.  Any other format will be rejected.
+      description: Contains account expiration data and needs to either send the values in individual fields OR as a singleValue.
 
     FdCustomerId:
       title: FD Customer ID
@@ -676,8 +658,8 @@ components:
 
     Link:
       required:
-        - href
-        - rel
+      - href
+      - rel
       type: object
       properties:
         href:
@@ -689,10 +671,10 @@ components:
           description: Defines the type of link relationship to current resource.
           example: self
           enum:
-            - current.page
-            - previous.page
-            - next.page
-            - self
+          - current.page
+          - previous.page
+          - next.page
+          - self
         method:
           type: string
           description: Defines the HTTP method for the given href.
@@ -709,15 +691,11 @@ components:
       properties:
         accountId:
           type: string
-          description: Account identifier, can be used for traditional card number
-            or any alphanumeric value.  For example, a unique value not shown on the
-            card, email address, phone number, social id, etc.
+          description: Account identifier, can be used for traditional card number or any alphanumeric value.  For example, a unique value not shown on the card, email address, phone number, social id, etc.
           example: email-id@example.com
         cardNumber:
           type: string
-          description: Card number of loyalty account. The accountId parameter superscedes
-            this field.  This field is ignored when the request is to create a new
-            acccount.
+          description: Card number of loyalty account. The accountId parameter superscedes this field.  This field is ignored when the request is to create a new acccount.
           example: "905960447"
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
@@ -756,8 +734,7 @@ components:
               type: boolean
             isVirtualAccount:
               type: boolean
-              description: Indicates if the account has an associated plastic card
-                or not.
+              description: Indicates if the account has an associated plastic card or not.
           description: Common true/false settings on an account
         balance:
           $ref: '#/components/schemas/LoyaltyBalance'
@@ -794,19 +771,16 @@ components:
       properties:
         programId:
           type: string
-          description: Unique identifier used to provide link between applications
-            across disparate systems.
+          description: Unique identifier used to provide link between applications across disparate systems.
         hostProgramId:
           type: string
-          description: Loyalty program Id used by the host (cloud) solution. Not in
-            used in uCom system. For future use.
+          description: Loyalty program Id used by the host (cloud) solution. Not in used in uCom system. For future use.
         programName:
           type: string
           description: Loyalty program name. Common name for the given loyalty program
         programDesc:
           type: string
-          description: Used to describe the loyalty program and perhaps used to display
-            to the client.
+          description: Used to describe the loyalty program and perhaps used to display to the client.
         programProvider:
           type: object
           description: Sponsor of the loyalty program.
@@ -873,11 +847,7 @@ components:
           minItems: 0
           uniqueItems: true
           type: array
-          description: Key value pairs providing additional details from host on the
-            balance retrieval. Key 'host.account.status' will provide current account
-            status from the host. Key 'host.transaction.status' will provide the transaction
-            result as success or failure. Key 'host.transaction.error' will provide
-            error message from Host if transaction status is failure
+          description: Key value pairs providing additional details from host on the balance retrieval. Key 'host.account.status' will provide current account status from the host. Key 'host.transaction.status' will provide the transaction result as success or failure. Key 'host.transaction.error' will provide error message from Host if transaction status is failure
           items:
             $ref: '#/components/schemas/NVP'
 
@@ -954,8 +924,7 @@ components:
             $ref: '#/components/schemas/WashCode'
         priceTier:
           type: string
-      description: Structure to support passing POS sale info as part of the sale
-        request.
+      description: Structure to support passing POS sale info as part of the sale request.
 
     PromotionalOffer:
       type: object
@@ -983,8 +952,7 @@ components:
             type: string
         offerMessage:
           type: string
-          description: The offer information that is for the client to see on the
-            user-interface.  This is most often set by the host system.
+          description: The offer information that is for the client to see on the user-interface.  This is most often set by the host system.
         effectiveDateTime:
           type: string
           description: Starting time for a reward validity.
@@ -1014,12 +982,10 @@ components:
           description: Links to associated promotion if it applies.
         isExclusive:
           type: boolean
-          description: Indicator if offer can be combined with other offers or is
-            mutually exclusive.
+          description: Indicator if offer can be combined with other offers or is mutually exclusive.
         userAcceptanceRequired:
           type: boolean
-          description: Indicator if a user has to accept the offer before it can be
-            applied to a transaction or accrued in an account.
+          description: Indicator if a user has to accept the offer before it can be applied to a transaction or accrued in an account.
         offerStatus:
           $ref: '#/components/schemas/OfferStatus'
         currencyCode:
@@ -1140,8 +1106,7 @@ components:
           example: TRANS_ARMOR or NETWORK_TOKEN or THIRD_PARTY_NETWORK_TOKEN
         cryptogram:
           type: string
-          description: 28 or 56 characters for Visa / Mastercard. 4 characters for
-            Discover / Amex. Required for CIT. Not required for MIT.
+          description: 28 or 56 characters for Visa / Mastercard. 4 characters for Discover / Amex. Required for CIT. Not required for MIT.
           example: 3CguW5ecfTz...Yuhw=
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
@@ -1159,8 +1124,7 @@ components:
           example: ABCD
         billingAddress:
           $ref: '#/components/schemas/Address'
-      description: Surrogate value used to represent a handle to an account without
-        sharing PCI/PII data to look it up.
+      description: Surrogate value used to represent a handle to an account without sharing PCI/PII data to look it up.
 
     Reward:
       type: object
@@ -1181,8 +1145,7 @@ components:
           format: date-time
         offerReferenceId:
           type: string
-          description: Link to the offer that provided the opportunity for a customer
-            to receive the reward.
+          description: Link to the offer that provided the opportunity for a customer to receive the reward.
         currencyCode:
           $ref: '#/components/schemas/ISO-4217'
         values:
@@ -1261,8 +1224,7 @@ components:
           example: ewogIC
         challengeIndicator:
           type: string
-          example: '01 = No preference 02 = No challenge requested 03 = Challenge
-            requested: 3DS Requestor Preference 04 = Challenge requested: Mandate'
+          example: '01 = No preference 02 = No challenge requested 03 = Challenge requested: 3DS Requestor Preference 04 = Challenge requested: Mandate'
         dsTransactionId:
           type: string
           example: 292bb6b886fc4446894f878b7e32bd5e
@@ -1312,8 +1274,7 @@ components:
         eci:
           type: string
           description: Electronic Commerce Indicator value
-      description: Details of ThreeDSecure transaction used to process the challege
-        flow
+      description: Details of ThreeDSecure transaction used to process the challege flow
 
     WashCode:
       type: object
@@ -1333,24 +1294,22 @@ components:
           description: Field to carry message from site system for display to customer.
       description: Purchased wash information.
 
-  #-------------------------------------
-  # Common Models
-  #-------------------------------------
+    #-------------------------------------
+    # Common Models
+    #-------------------------------------
     DeviceInfo:
       required:
-        - id
-        - kind
+      - id
+      - kind
       type: object
       properties:
         id:
           type: string
-          description: Unique Id for the device. Value should not contain line feeds,
-            carriage returns, tabs, leading or trailing spaces, or multiple spaces.
+          description: Unique Id for the device. Value should not contain line feeds, carriage returns, tabs, leading or trailing spaces, or multiple spaces.
           example: 537edec8-d33e-4ee8-93a7-b9f61876950c
         kind:
           type: string
-          description: Possible values are mobile, wearable, automobile, embedded,desktop,
-            other.
+          description: Possible values are mobile, wearable, automobile, embedded,desktop, other.
           example: mobile
         details:
           title: deviceData
@@ -1363,8 +1322,7 @@ components:
             properties:
               provider:
                 type: string
-                description: Identifies the provider of the data and is often used
-                  when decrypting data on the server.
+                description: Identifies the provider of the data and is often used when decrypting data on the server.
                 example: InAuth
               dataCapture:
                 type: object
@@ -1379,12 +1337,10 @@ components:
                     example: BB8E4E92...Fz1E063113
                   captureTime:
                     type: string
-                    description: Device data capture time in Internet Date/Time format
-                      - yyyy-MM-dd'T'HH:mm:ss'Z'
+                    description: Device data capture time in Internet Date/Time format - yyyy-MM-dd'T'HH:mm:ss'Z'
                     format: date-time
                     example: 2016-04-16T16:06:05Z
-                description: Device data captured as a bundle and transmitted as an
-                  encrypted and/or specifically formated string.
+                description: Device data captured as a bundle and transmitted as an encrypted and/or specifically formated string.
               dataStatic:
                 type: object
                 properties:
@@ -1410,13 +1366,11 @@ components:
                 properties:
                   latitude:
                     type: string
-                    description: Device position - latitude at the time of the data
-                      event
+                    description: Device position - latitude at the time of the data event
                     example: 13.0827 N
                   longitude:
                     type: string
-                    description: Device position - longitude at the time of the data
-                      event
+                    description: Device position - longitude at the time of the data event
                     example: 80.2707 E
                   ipAddress:
                     type: string
@@ -1424,8 +1378,7 @@ components:
                     example: 172.27.37.221
                   captureTime:
                     type: string
-                    description: Device data capture time in Internet Date/Time format
-                      - yyyy-MM-dd'T'HH:mm:ss'Z'
+                    description: Device data capture time in Internet Date/Time format - yyyy-MM-dd'T'HH:mm:ss'Z'
                     format: date-time
                     example: 2016-04-16T16:06:05Z
                 description: Device location details
@@ -1460,32 +1413,31 @@ components:
         id: 537edec8-d33e-4ee8-93a7-b9f61876950c
         kind: mobile
         details:
-          - provider: InAuth
-            dataCapture:
-              rawData: aaaaaXREUVZGRlFY...aMV
-              dataEventId: BB8E4E92...Fz1E063113
-              captureTime: 2016-04-16T16:06:05Z
-            dataStatic:
-              os: Android 5.1.1 Lollipop
-              osVersion: 5.1.1 Lollipop
-              model: XYX-1
-              Type: Moto G
-            dataDynamic:
-              latitude: 13.0827 N
-              longitude: 80.2707 E
-              ipAddress: 172.27.37.221
-              captureTime: 2016-04-16T16:06:05Z
+        - provider: InAuth
+          dataCapture:
+            rawData: aaaaaXREUVZGRlFY...aMV
+            dataEventId: BB8E4E92...Fz1E063113
+            captureTime: 2016-04-16T16:06:05Z
+          dataStatic:
+            os: Android 5.1.1 Lollipop
+            osVersion: 5.1.1 Lollipop
+            model: XYX-1
+            Type: Moto G
+          dataDynamic:
+            latitude: 13.0827 N
+            longitude: 80.2707 E
+            ipAddress: 172.27.37.221
+            captureTime: 2016-04-16T16:06:05Z
         additionalInfo:
-          - name: some-key
-            value: some-value
+        - name: some-key
+          value: some-value
 
     Error:
       type: object
       properties:
         code:
           type: string
-          description: Uniquely identifies an error condition. Client applications
-            need to read and handle errors based on this.
+          description: Uniquely identifies an error condition. Client applications need to read and handle errors based on this.
         message:
           type: string
           description: A generic description of the error condition.
@@ -1513,8 +1465,7 @@ components:
                   message:
                     type: string
                     description: Information specific to a property or attribute.
-          description: Information that needs to be understood by the client developers
-            and should not be interpreted for application processing.
+          description: Information that needs to be understood by the client developers and should not be interpreted for application processing.
         hostExtraInfo:
           minItems: 0
           uniqueItems: true
@@ -1536,72 +1487,68 @@ components:
           developerMessage: Invalid Message format in request payload
           moreInfo: https://www.example.com/errors/40000
           fieldError:
-            - field: example id
-              message: exampleId is mandatory
+          - field: example id
+            message: exampleId is mandatory
 
-  #-------------------------------------
-  # ENUM Models
-  #-------------------------------------
+    #-------------------------------------
+    # ENUM Models
+    #-------------------------------------
     BalanceUnitTypes:
       type: string
       description: Indicator to determine how to display balances
       enum:
-        - CENTS
-        - MILES
-        - POINTS
-        - STARS
-        - LITRES
+      - CENTS
+      - MILES
+      - POINTS
+      - STARS
+      - LITRES
 
     BalanceStatus:
       type: string
-      description: Indicates the status of the balance transaction of a given account.
-        'INPROGRESS' - Balance retrieval is still in inprogress 'COMPLETED' - Balance
-        is available 'ERROR' - Balance retrieval failed. System error 'UNAVAILABLE'
-        - Balance is not available. Check Host extra info for additional details
+      description: Indicates the status of the balance transaction of a given account. 'INPROGRESS' - Balance retrieval is still in inprogress 'COMPLETED' - Balance is available 'ERROR' - Balance retrieval failed. System error 'UNAVAILABLE' - Balance is not available. Check Host extra info for additional details
       enum:
-        - INPROGRESS
-        - COMPLETED
-        - ERROR
-        - UNAVAILABLE
+      - INPROGRESS
+      - COMPLETED
+      - ERROR
+      - UNAVAILABLE
 
     CreditCardType:
       title: Credit Card Type
       type: string
       description: Indicates the type of credit account association
       enum:
-        - AMEX
-        - DISCOVER
-        - MASTERCARD
-        - PLCC
-        - VISA
-        - OTHER
+      - AMEX
+      - DISCOVER
+      - MASTERCARD
+      - PLCC
+      - VISA
+      - OTHER
 
     LoyaltyAccountStatus:
       type: string
       description: Indicator of the account state as indicated by the loyalty issuer.
       enum:
-        - ENROLLED
-        - ANONYMOUS
-        - PARTIAL
-        - PENDING_DATA
-        - PENDING_VERIFICATION
-        - INACTIVE
-        - BLOCKED
+      - ENROLLED
+      - ANONYMOUS
+      - PARTIAL
+      - PENDING_DATA
+      - PENDING_VERIFICATION
+      - INACTIVE
+      - BLOCKED
 
     LoyaltyType:
       type: string
       description: Identifier to indicate type of Loyalty program being registered.
       enum:
-        - LOCAL
-        - NATIONAL
+      - LOCAL
+      - NATIONAL
 
     OfferStatus:
       type: object
       properties:
         code:
           type: string
-          description: Indicates offer status code, NOT_ACTIVATED | ACTIVATED | REDEEMED
-            | DECLINED | CANCELLED | FAILED
+          description: Indicates offer status code, NOT_ACTIVATED | ACTIVATED | REDEEMED | DECLINED | CANCELLED | FAILED
         statusInfo:
           minItems: 0
           uniqueItems: true
@@ -1615,87 +1562,85 @@ components:
       type: string
       description: Identifier to indicate the type of a Loyalty Offer.
       enum:
-        - SPLIT_PAYMENT
-        - PRE_ITEM_AMOUNT_OFF
-        - POST_ITEM_AMOUNT_OFF
-        - PRICE_ROLLBACK
-        - HBD
-        - TRANSACTION_LEVEL
+      - SPLIT_PAYMENT
+      - PRE_ITEM_AMOUNT_OFF
+      - POST_ITEM_AMOUNT_OFF
+      - PRICE_ROLLBACK
+      - HBD
+      - TRANSACTION_LEVEL
 
     ProgramStatus:
       type: string
       description: Indicates if the given loyalty program is still active or not.
       enum:
-        - ENABLED
-        - DISABLED
-        - CONTRACTED_ONLY
+      - ENABLED
+      - DISABLED
+      - CONTRACTED_ONLY
 
     RequestStatus:
       type: string
-      description: Indicates the status of the overall request. 'INPROGRESS' - Balance
-        retrieval is still in inprogress for one or more accounts 'COMPLETED' - Balance
-        retrieval is completed for all accounts
+      description: Indicates the status of the overall request. 'INPROGRESS' - Balance retrieval is still in inprogress for one or more accounts 'COMPLETED' - Balance retrieval is completed for all accounts
       enum:
-        - INPROGRESS
-        - COMPLETED
+      - INPROGRESS
+      - COMPLETED
 
     ReferenceTokenType:
       type: string
       description: Indicates if the given loyalty program is still active or not.
       enum:
-        - FORMAT_PRESERVING_MULTI_USE
-        - FORMAT_PRESERVING_SINGLE_USE
-        - CLAIM_CHECK_NONCE
-        - RANDOM_MULTI_USE
-        - RANDOM_SINGLE_USE
-        - CLAIM_CHECK_NONCE_WITH_PINCAPTURE
+      - FORMAT_PRESERVING_MULTI_USE
+      - FORMAT_PRESERVING_SINGLE_USE
+      - CLAIM_CHECK_NONCE
+      - RANDOM_MULTI_USE
+      - RANDOM_SINGLE_USE
+      - CLAIM_CHECK_NONCE_WITH_PINCAPTURE
 
     RewardDispensationCode:
       type: string
       description: Indicates when a reward is to be redeemed.
       enum:
-        - INSTANT
-        - DEFERRED
+      - INSTANT
+      - DEFERRED
 
     RewardRealizationCode:
       type: string
       description: Indicates how a reward is applied to a transaction.
       enum:
-        - NEW_PRICE
-        - PERCENT_OFF
-        - AMOUNT_OFF
-        - EARN
-        - REDEEM
+      - NEW_PRICE
+      - PERCENT_OFF
+      - AMOUNT_OFF
+      - EARN
+      - REDEEM
 
     SaleItemType:
       type: string
       description: Indicates the type of item
       enum:
-        - FUEL
-        - CARWASH
-        - OTHER
+      - FUEL
+      - CARWASH
+      - OTHER
 
     ServiceLevelCode:
       type: string
       description: Indicates service level code.
       default: S
       enum:
-        - S
-        - F
-        - N
-        - X
+      - S
+      - F
+      - N
+      - X
 
     ValueAddCurrencyType:
       type: string
       description: Indicates the type of units used to show value of a reward.
       enum:
-        - MONEY
-        - POINTS
-        - DISTANCE
-        - COUNTS
-        - VOLUMES
-        - VISITS
-        - PERCENTAGE
+      - MONEY
+      - POINTS
+      - DISTANCE
+      - COUNTS
+      - VOLUMES
+      - VISITS
+      - PERCENTAGE
 
   #-------------------------------------
   # Responses
@@ -1716,8 +1661,7 @@ components:
             $ref: '#/components/schemas/LoyaltyBalanceTransactionInfo'
 
     Conflict:
-      description: Conflict - The requested operation conflicts with the current state
-        of the identified resource.
+      description: Conflict - The requested operation conflicts with the current state of the identified resource.
       content:
         application/json:
           schema:
@@ -1771,17 +1715,14 @@ components:
     AcceptLanguageParam:
       name: Accept-Language
       in: header
-      description: The Accept-Language header contains information about the language
-        preference of a user. This HTTP header is useful to multilingual sites for
-        deciding the best language to serve to the client. i.e en-US,fr-CA
+      description: The Accept-Language header contains information about the language preference of a user. This HTTP header is useful to multilingual sites for deciding the best language to serve to the client. i.e en-US,fr-CA
       schema:
         type: string
 
     ApiKeyParam:
       name: Api-Key
       in: header
-      description: An API key is a string value passed by a client app to the API
-        proxies. The key uniquely identifies the client app.
+      description: An API key is a string value passed by a client app to the API proxies. The key uniquely identifies the client app.
       required: true
       schema:
         type: string
@@ -1805,21 +1746,14 @@ components:
     ClientTokenParam:
       name: Client-Token
       in: header
-      description: Used to pass the original client OAuth token information given
-        in a client-credentials flow.  This field is only used when the server is
-        making the request and needs to link the transaction to a specific client.  Format-
-        `Bearer {access_token}`
+      description: Used to pass the original client OAuth token information given in a client-credentials flow.  This field is only used when the server is making the request and needs to link the transaction to a specific client.  Format- `Bearer {access_token}`
       schema:
         type: string
 
     ClientRequestIdParam:
       name: Client-Request-Id
       in: header
-      description: Contains a unique ID generated by the client that can be used for
-        enforcing idempotency on POST actions. POSTs are inherently non-idempotent  and
-        submitting the exact same request multiple times would create duplicate resources.
-        Note:- Omitting this header increases the risk of duplicate transactions,
-        which for payments could cost the client issues like double-billing.
+      description: Contains a unique ID generated by the client that can be used for enforcing idempotency on POST actions. POSTs are inherently non-idempotent  and submitting the exact same request multiple times would create duplicate resources. Note:- Omitting this header increases the risk of duplicate transactions, which for payments could cost the client issues like double-billing.
       required: true
       schema:
         type: string
@@ -1873,8 +1807,7 @@ components:
     PageSizeParam:
       name: pageSize
       in: query
-      description: Max number of records per page. Supported values - 5, 10, 15, 20,
-        25 ..50
+      description: Max number of records per page. Supported values - 5, 10, 15, 20, 25 ..50
       schema:
         type: integer
 
