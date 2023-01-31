@@ -1,8 +1,6 @@
-# Heading level 1
+# Ucom Recipes 
 
-  Landing Page
-  
-  <!-- type: row -->
+<!-- type: row -->
 
 <!-- type: card
 title: How to Create, Read, Update, and Delete a Customer Profile
