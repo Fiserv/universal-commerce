@@ -79,33 +79,31 @@
 openapi: 3.0.1
 info:
   title: uCom Issuer Services
-  description: Services related to uCom issuer accounts.  Accounts can be credit,
-    debit, loyalty, prepaid, etc.
+  description: Services related to uCom issuer accounts.  Accounts can be credit, debit, loyalty, prepaid, etc.
   version: 0.2.3
 servers:
-  - url: https://int.api.firstdata.com/ucom
+- url: https://int.api.firstdata.com/ucom
 tags:
-  - name: issuer-actions
-    description: Operations handled outside standard REST flows
+- name: issuer-actions
+  description: Operations handled outside standard REST flows.
 paths:
   /v1/customers/{fdCustomerId}/actions:
     post:
-     x-group-name: Issuer Services
-     x-proxy-name: Vault an account in uCom directly from the Issuer.
+      x-group-name: Issuer Services
+      x-proxy-name: Vault an account in uCom directly from the Issuer.
       tags:
-        - issuer-actions
+      - issuer-actions
       summary: Vault an account in uCom directly from the Issuer.
-      description: Register a customer account in the uCom vault from the Issuer as
-        the client instead of an omni-channel app.
+      description: Register a customer account in the uCom vault from the Issuer as the client instead of an omni-channel app.
       parameters:
-        - $ref: '#/components/parameters/ApiKeyParam'
-        - $ref: '#/components/parameters/TimestampParam'
-        - $ref: '#/components/parameters/AuthorizationParam'
-        - $ref: '#/components/parameters/ClientTokenParam'
-        - $ref: '#/components/parameters/ClientRequestIdParam'
-        - $ref: '#/components/parameters/FdCustomerIdParam'
-        - $ref: '#/components/parameters/AcceptLanguageParam'
-        - $ref: '#/components/parameters/SubMerchantIdParam'
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/ClientRequestIdParam'
+      - $ref: '#/components/parameters/FdCustomerIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
       requestBody:
         description: Details of the account to be vaulted in uCom
         content:
@@ -131,9 +129,9 @@ paths:
 
 components:
   schemas:
-#-------------------------------------
-# Operational Models
-#-------------------------------------
+    #-------------------------------------
+    # Operational Models
+    #-------------------------------------
     Action:
       type: object
       properties:
@@ -143,19 +141,17 @@ components:
           $ref: '#/components/schemas/Account'
         deviceInfo:
           $ref: '#/components/schemas/DeviceInfo'
-      description: For some needs, there's not an easy way to follow the clean RESTful
-        resource model for an API. This helps to resolve those limitations.
+      description: For some needs, there's not an easy way to follow the clean RESTful resource model for an API. This helps to resolve those limitations.
 
-#-------------------------------------
-# Resource Models
-#-------------------------------------
+    #-------------------------------------
+    # Resource Models
+    #-------------------------------------
     Account:
       type: object
       properties:
         fdAccountId:
           type: string
-          description: Unique identifier for a customer account vaulted with uCom.  The
-            value is ignored on POST requests.
+          description: Unique identifier for a customer account vaulted with uCom.  The value is ignored on POST requests.
         type:
           $ref: '#/components/schemas/AccountType'
         status:
@@ -194,8 +190,7 @@ components:
           $ref: '#/components/schemas/EBT'
         nickName:
           type: string
-          description: Name given by the user to label the account that has meaning
-            for them visually.
+          description: Name given by the user to label the account that has meaning for them visually.
         securityQuestions:
           type: array
           description: A list of questions.
@@ -223,8 +218,7 @@ components:
           description: Date modified time in Internet Date/Time format - yyyy-MM-dd'T'HH:mm:ss'Z'
           format: date-time
           example: 2016-04-16T16:06:05Z
-      description: Account information - can only be ONE of the account types. Currently
-        OpenAPI doesn't support a "oneOf" tag to show this constraint in hte spec.
+      description: Account information - can only be ONE of the account types. Currently OpenAPI doesn't support a "oneOf" tag to show this constraint in hte spec.
       example:
         type: CREDIT
         deviceId: 537edec8-d33e-4ee8-93a7-b9f61876950c
@@ -255,8 +249,7 @@ components:
       properties:
         accountNumber:
           type: string
-          description: Unique number identifying the ACH account provided by Financial
-            institution.
+          description: Unique number identifying the ACH account provided by Financial institution.
           example: "92658250156"
         routingNumber:
           type: string
@@ -264,19 +257,16 @@ components:
           example: "999999999"
         secCode:
           type: string
-          description: SEC Code is optional data, It is specifically required for
-            ACH account which is ruled by NACHA compliance.
+          description: SEC Code is optional data, It is specifically required for ACH account which is ruled by NACHA compliance.
         cardNumber:
           type: string
-          description: ACH Card number, can only be sent when vaulting an account.  This
-            field will NOT be present in responses.
+          description: ACH Card number, can only be sent when vaulting an account.  This field will NOT be present in responses.
           example: "9111111111111111"
         cardType:
           $ref: '#/components/schemas/AchCardType'
         securityCode:
           type: string
-          description: Code to validate the ACH account, like micro deposit or security
-            code.
+          description: Code to validate the ACH account, like micro deposit or security code.
           example: "278356"
         alias:
           type: string
@@ -308,9 +298,7 @@ components:
           description: Canonical type values of "work", "home", and "other".
         streetAddress:
           type: string
-          description: The full street address component, which may include house
-            number, street name, P.O. box, and multi-line extended street address
-            information.
+          description: The full street address component, which may include house number, street name, P.O. box, and multi-line extended street address information.
         locality:
           type: string
           description: The city or locality component.
@@ -322,17 +310,13 @@ components:
           description: The zip code or postal code component.
         country:
           type: string
-          description: The country name component.  When specified, the value MUST
-            be in ISO 3166-1 "alpha-2" code format; e.g., the United States and Sweden
-            are "US" and "SE", respectively.
+          description: The country name component.  When specified, the value MUST be in ISO 3166-1 "alpha-2" code format; e.g., the United States and Sweden are "US" and "SE", respectively.
         formatted:
           type: string
-          description: The full mailing address, formatted for display or use with
-            a mailing label.
+          description: The full mailing address, formatted for display or use with a mailing label.
         primary:
           type: boolean
-          description: Indicates if this is the default address for the associated
-            resource. It only has meaning when used in a set or array of addresses.
+          description: Indicates if this is the default address for the associated resource. It only has meaning when used in a set or array of addresses.
       description: A physical mailing address for this user.
       example:
         type: work
@@ -413,8 +397,7 @@ components:
       properties:
         cardNumber:
           type: string
-          description: Primary account number, can only be sent when vaulting an account.  This
-            field will NOT be present in responses.
+          description: Primary account number, can only be sent when vaulting an account.  This field will NOT be present in responses.
           example: "4111111111111111"
         bin:
           type: string
@@ -455,8 +438,7 @@ components:
       properties:
         cardNumber:
           type: string
-          description: Primary account number, can only be sent when vaulting an account.  This
-            field will NOT be present in responses.
+          description: Primary account number, can only be sent when vaulting an account.  This field will NOT be present in responses.
         nameOnCard:
           type: string
           description: Name as printed on physical card or on virtual account
@@ -508,17 +490,13 @@ components:
       properties:
         type:
           type: string
-          description: The "type" sub-attribute is used to provide a classification
-            meaningful to the (human) user.  The user interface should encourage the
-            use of basic values of "work", "home", and "other" and MAY allow additional
-            type values to be used at the discretion of the service client.
+          description: The "type" sub-attribute is used to provide a classification meaningful to the (human) user.  The user interface should encourage the use of basic values of "work", "home", and "other" and MAY allow additional type values to be used at the discretion of the service client.
         value:
           type: string
           description: The value SHOULD be specified according to RFC5321.
         primary:
           type: boolean
-          description: Defines if this entry is to be used as the primary or default
-            for the user.
+          description: Defines if this entry is to be used as the primary or default for the user.
           default: false
       description: Email address for the user.
       example:
@@ -547,19 +525,15 @@ components:
           maxLength: 6
           minLength: 4
           type: string
-          description: Month and year together, 'MMYY' or 'MMYYYY'.  If the latter
-            format, the string will be parsed and validated per the given format.  Any
-            other format will be rejected.
-      description: Contains account expiration data and needs to either send the values
-        in individual fields OR as a singleValue.
+          description: Month and year together, 'MMYY' or 'MMYYYY'.  If the latter format, the string will be parsed and validated per the given format.  Any other format will be rejected.
+      description: Contains account expiration data and needs to either send the values in individual fields OR as a singleValue.
 
     Fleet:
       type: object
       properties:
         cardNumber:
           type: string
-          description: Primary account number, can only be sent when vaulting an account.  This
-            field will NOT be present in responses.
+          description: Primary account number, can only be sent when vaulting an account.  This field will NOT be present in responses.
         nameOnCard:
           type: string
           description: Name as printed on physical card or on virtual account
@@ -630,8 +604,7 @@ components:
           description: The id of the group.
         href:
           type: string
-          description: The URI of the corresponding "Group" resources to which the
-            user belongs.
+          description: The URI of the corresponding "Group" resources to which the user belongs.
         display:
           type: string
           description: The common name of the group.
@@ -646,15 +619,11 @@ components:
       properties:
         type:
           type: string
-          description: The "type" sub-attribute is used to provide a classification
-            meaningful to the (human) user.  The user interface should encourage the
-            use of basic values of "driving_license", "ssn", and "other" and MAY allow
-            additional type values to be used at the discretion of the service client.
+          description: The "type" sub-attribute is used to provide a classification meaningful to the (human) user.  The user interface should encourage the use of basic values of "driving_license", "ssn", and "other" and MAY allow additional type values to be used at the discretion of the service client.
           example: driving_license
         value:
           type: string
-          description: The actual number as provided by issuing authority to identify
-            user.
+          description: The actual number as provided by issuing authority to identify user.
           example: "05978345"
         issuingState:
           type: string
@@ -667,9 +636,7 @@ components:
       properties:
         value:
           type: string
-          description: A shortened version one of the following values - aim, gtalk,
-            icq, xmpp, msn, skype, qq, yahoo, or other. This will change with popularity
-            of various applicatiions at any time.
+          description: A shortened version one of the following values - aim, gtalk, icq, xmpp, msn, skype, qq, yahoo, or other. This will change with popularity of various applicatiions at any time.
         type:
           type: string
         primary:
@@ -702,8 +669,8 @@ components:
 
     Link:
       required:
-        - href
-        - rel
+      - href
+      - rel
       type: object
       properties:
         href:
@@ -715,10 +682,10 @@ components:
           description: Defines the type of link relationship to current resource.
           example: self
           enum:
-            - current.page
-            - previous.page
-            - next.page
-            - self
+          - current.page
+          - previous.page
+          - next.page
+          - self
         method:
           type: string
           description: Defines the HTTP method for the given href.
@@ -735,15 +702,11 @@ components:
       properties:
         accountId:
           type: string
-          description: Account identifier, can be used for traditional card number
-            or any alphanumeric value.  For example, a unique value not shown on the
-            card, email address, phone number, social id, etc.
+          description: Account identifier, can be used for traditional card number or any alphanumeric value.  For example, a unique value not shown on the card, email address, phone number, social id, etc.
           example: email-id@example.com
         cardNumber:
           type: string
-          description: Card number of loyalty account. The accountId parameter superscedes
-            this field.  This field is ignored when the request is to create a new
-            acccount.
+          description: Card number of loyalty account. The accountId parameter superscedes this field.  This field is ignored when the request is to create a new acccount.
           example: "905960447"
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
@@ -782,8 +745,7 @@ components:
               type: boolean
             isVirtualAccount:
               type: boolean
-              description: Indicates if the account has an associated plastic card
-                or not.
+              description: Indicates if the account has an associated plastic card or not.
           description: Common true/false settings on an account
         balance:
           $ref: '#/components/schemas/LoyaltyBalance'
@@ -826,19 +788,16 @@ components:
       properties:
         programId:
           type: string
-          description: Unique identifier used to provide link between applications
-            across disparate systems.
+          description: Unique identifier used to provide link between applications across disparate systems.
         hostProgramId:
           type: string
-          description: Loyalty program Id used by the host (cloud) solution. Not in
-            used in uCom system. For future use.
+          description: Loyalty program Id used by the host (cloud) solution. Not in used in uCom system. For future use.
         programName:
           type: string
           description: Loyalty program name. Common name for the given loyalty program
         programDesc:
           type: string
-          description: Used to describe the loyalty program and perhaps used to display
-            to the client.
+          description: Used to describe the loyalty program and perhaps used to display to the client.
         programProvider:
           type: string
           description: Sponsor of the loyalty program.
@@ -861,8 +820,7 @@ components:
       properties:
         transactionId:
           type: string
-          description: MasterPass generated Unique identifier for accessing the account
-            details.
+          description: MasterPass generated Unique identifier for accessing the account details.
           example: "1234567890120298"
         credit:
           $ref: '#/components/schemas/Credit'
@@ -913,29 +871,22 @@ components:
       properties:
         formatted:
           type: string
-          description: The full name, including all middle names, titles, and suffixes
-            as appropriate, formatted for display (e.g.,"Ms. Barbara Jane Jensen,
-            III").
+          description: The full name, including all middle names, titles, and suffixes as appropriate, formatted for display (e.g.,"Ms. Barbara Jane Jensen, III").
         familyName:
           type: string
-          description: The family name of the User, or last name in most Western languages
-            (e.g., "Jensen" given the full name "Ms. Barbara Jane Jensen, III").
+          description: The family name of the User, or last name in most Western languages (e.g., "Jensen" given the full name "Ms. Barbara Jane Jensen, III").
         givenName:
           type: string
-          description: The given name of the User, or first name in most Western languages
-            (e.g., "Barbara" given the full name "Ms. Barbara Jane Jensen, III").
+          description: The given name of the User, or first name in most Western languages (e.g., "Barbara" given the full name "Ms. Barbara Jane Jensen, III").
         middleName:
           type: string
-          description: The middle name(s) of the User (e.g., "Jane" given the full
-            name "Ms. Barbara Jane Jensen, III").
+          description: The middle name(s) of the User (e.g., "Jane" given the full name "Ms. Barbara Jane Jensen, III").
         honorificPrefix:
           type: string
-          description: The honorific prefix(es) of the User, or title in most Western
-            languages (e.g., "Ms." given the full name "Ms. Barbara Jane Jensen, III").
+          description: The honorific prefix(es) of the User, or title in most Western languages (e.g., "Ms." given the full name "Ms. Barbara Jane Jensen, III").
         honorificSuffix:
           type: string
-          description: The honorific suffix(es) of the User, or suffix in most Western
-            languages (e.g., "III" given the full name "Ms. Barbara Jane Jensen, III").
+          description: The honorific suffix(es) of the User, or suffix in most Western languages (e.g., "III" given the full name "Ms. Barbara Jane Jensen, III").
       description: The components of the user's name.
       example:
         formatted: Ms. Barbara J Jensen III
@@ -950,17 +901,13 @@ components:
       properties:
         value:
           type: string
-          description: The value SHOULD be specified according to the format defined
-            in RFC3966, e.g., 'tel:+1-201-555-0123'.
+          description: The value SHOULD be specified according to the format defined in RFC3966, e.g., 'tel:+1-201-555-0123'.
         type:
           type: string
-          description: Often has typical values of "work", "home", "mobile", "fax",
-            "pager", and "other" and MAY allow more types to be defined by the service
-            client.
+          description: Often has typical values of "work", "home", "mobile", "fax", "pager", and "other" and MAY allow more types to be defined by the service client.
         primary:
           type: boolean
-          description: Defines if this entry is to be used as the primary or default
-            for the user.
+          description: Defines if this entry is to be used as the primary or default for the user.
           default: false
       description: Phone number for the user.
       example:
@@ -975,12 +922,8 @@ components:
           description: URI pointing to user's image file.
         type:
           type: string
-          description: Defines the following canonical values to represent popular
-            photo sizes - "photo" and "thumbnail".
-      description: A URI that is a uniform resource locator (as defined in Section
-        1.1.3 of RFC3986) that points to a resource location representing the user's
-        image. The resource MUST be a file (e.g., a GIF, JPEG, or PNG image file)
-        rather than a web page containing an image.
+          description: Defines the following canonical values to represent popular photo sizes - "photo" and "thumbnail".
+      description: A URI that is a uniform resource locator (as defined in Section 1.1.3 of RFC3986) that points to a resource location representing the user's image. The resource MUST be a file (e.g., a GIF, JPEG, or PNG image file) rather than a web page containing an image.
       example:
         value: https://photos.example.com/profilephoto/72930000000Ccne/F
         type: thumbnail
@@ -994,8 +937,7 @@ components:
           example: "6759649826438453"
         cardSubType:
           type: string
-          description: Merchant or brand specific information about the type of account.Issuer/group
-            information.
+          description: Merchant or brand specific information about the type of account.Issuer/group information.
           example: Merchant Brand
         securityCode:
           type: string
@@ -1013,18 +955,16 @@ components:
 
     PrepaidBalance:
       required:
-        - currencyCode
-        - currentBalance
+      - currencyCode
+      - currentBalance
       type: object
       properties:
         currentBalance:
           type: number
-          description: The current balance of prepaid card in lower denomination of
-            the currency.
+          description: The current balance of prepaid card in lower denomination of the currency.
         beginBalance:
           type: number
-          description: The balance of prepaid card before a transaction in lower denomination
-            of the currency.
+          description: The balance of prepaid card before a transaction in lower denomination of the currency.
         currencyCode:
           $ref: '#/components/schemas/ISO-4217'
         currencyType:
@@ -1067,15 +1007,13 @@ components:
           example: TRANS_ARMOR or NETWORK_TOKEN or THIRD_PARTY_NETWORK_TOKEN
         cryptogram:
           type: string
-          description: 28 or 56 characters for Visa / Mastercard. 4 characters for
-            Discover / Amex. Required for CIT. Not required for MIT.
+          description: 28 or 56 characters for Visa / Mastercard. 4 characters for Discover / Amex. Required for CIT. Not required for MIT.
           example: 3CguW5ecfTz...Yuhw=
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
         tokenType:
           $ref: '#/components/schemas/ReferenceTokenType'
-      description: Surrogate value used to represent a handle to an account without
-        sharing PCI/PII data to look it up.
+      description: Surrogate value used to represent a handle to an account without sharing PCI/PII data to look it up.
 
     SamsungPay:
       type: object
@@ -1143,8 +1081,7 @@ components:
           example: ewogIC
         challengeIndicator:
           type: string
-          example: '01 = No preference 02 = No challenge requested 03 = Challenge
-            requested: 3DS Requestor Preference 04 = Challenge requested: Mandate'
+          example: '01 = No preference 02 = No challenge requested 03 = Challenge requested: 3DS Requestor Preference 04 = Challenge requested: Mandate'
         dsTransactionId:
           type: string
           example: 292bb6b886fc4446894f878b7e32bd5e
@@ -1194,12 +1131,11 @@ components:
         eci:
           type: string
           description: Electronic Commerce Indicator value
-      description: Details of ThreeDSecure transaction used to process the challege
-        flow
+      description: Details of ThreeDSecure transaction used to process the challege flow
 
     User:
       required:
-        - externalId
+      - externalId
       type: object
       properties:
         id:
@@ -1209,15 +1145,11 @@ components:
           example: fdCustomerId
         externalId:
           type: string
-          description: A String that is an identifier for the resource as defined
-            by the provisioning client. While the server does not enforce uniqueness,
-            it is assumed that the value's uniqueness is controlled by the client
-            setting the value.
+          description: A String that is an identifier for the resource as defined by the provisioning client. While the server does not enforce uniqueness, it is assumed that the value's uniqueness is controlled by the client setting the value.
           example: 123abc456def890ghi098jkl765mno
         userName:
           type: string
-          description: A service provider's unique identifier for the user, typically
-            used by the user to directly authenticate to the service provider.
+          description: A service provider's unique identifier for the user, typically used by the user to directly authenticate to the service provider.
           example: bjensen@example.com
         name:
           $ref: '#/components/schemas/PersonName'
@@ -1227,14 +1159,11 @@ components:
           example: Babs Jensen
         nickName:
           type: string
-          description: The casual way to address the user in real life, e.g., "Bob"
-            or "Bobby" instead of "Robert".
+          description: The casual way to address the user in real life, e.g., "Bob" or "Bobby" instead of "Robert".
           example: Babs
         profileUrl:
           type: string
-          description: A URI that is a uniform resource locator (as defined in Section
-            1.1.3 of [RFC3986]) and that points to a location representing the user's
-            online profile (e.g., a web page)
+          description: A URI that is a uniform resource locator (as defined in Section 1.1.3 of [RFC3986]) and that points to a location representing the user's online profile (e.g., a web page)
           example: https://login.example.com/bjensen
         emails:
           type: array
@@ -1258,8 +1187,7 @@ components:
             $ref: '#/components/schemas/Photo'
         userType:
           type: string
-          description: Used to identify the relationship between the organization
-            and the user.
+          description: Used to identify the relationship between the organization and the user.
           example: Employee
         title:
           type: string
@@ -1267,13 +1195,11 @@ components:
           example: Tour Guide
         preferredLanguage:
           type: string
-          description: Indicates the user's preferred written or spoken languages
-            and is generally used for selecting a localized user interface.
+          description: Indicates the user's preferred written or spoken languages and is generally used for selecting a localized user interface.
           example: en-US
         locale:
           type: string
-          description: Used to indicate the User's default location for purposes of
-            localizing such items as currency, date time format, or numerical representations.
+          description: Used to indicate the User's default location for purposes of localizing such items as currency, date time format, or numerical representations.
           example: en-US
         timezone:
           type: string
@@ -1281,27 +1207,22 @@ components:
           example: America/Los_Angeles
         active:
           type: boolean
-          description: A Boolean value indicating the user's administrative status.
-            The definitive meaning of this attribute is determined by the service
-            provider.
+          description: A Boolean value indicating the user's administrative status. The definitive meaning of this attribute is determined by the service provider.
           example: true
         password:
           type: string
-          description: This attribute is intended to be used as a means to set, replace,
-            or compare (i.e., filter for equality) a password.
+          description: This attribute is intended to be used as a means to set, replace, or compare (i.e., filter for equality) a password.
           example: some-hashed-value
         groups:
           type: array
-          description: A list of groups to which the user belongs, either through
-            direct membership, through nested groups, or dynamically calculated.
+          description: A list of groups to which the user belongs, either through direct membership, through nested groups, or dynamically calculated.
           items:
             $ref: '#/components/schemas/Group'
         identities:
           type: array
           items:
             $ref: '#/components/schemas/Identity'
-      description: User resource as defined by the System for Cross-domain Identity
-        Management (SCIM). For more info see http://www.simplecloud.info
+      description: User resource as defined by the System for Cross-domain Identity Management (SCIM). For more info see http://www.simplecloud.info
 
     Venmo:
       type: object
@@ -1317,31 +1238,28 @@ components:
       properties:
         callId:
           type: string
-          description: Identifier corresponding to an account enrolled with Visa Checkout
-            system.
+          description: Identifier corresponding to an account enrolled with Visa Checkout system.
           example: "1234732704291071701"
         credit:
           $ref: '#/components/schemas/Credit'
       description: Visa Checkout information
 
-#-------------------------------------
-# Common Models
-#-------------------------------------
+    #-------------------------------------
+    # Common Models
+    #-------------------------------------
     DeviceInfo:
       required:
-        - id
-        - kind
+      - id
+      - kind
       type: object
       properties:
         id:
           type: string
-          description: Unique Id for the device. Value should not contain line feeds,
-            carriage returns, tabs, leading or trailing spaces, or multiple spaces.
+          description: Unique Id for the device. Value should not contain line feeds, carriage returns, tabs, leading or trailing spaces, or multiple spaces.
           example: 537edec8-d33e-4ee8-93a7-b9f61876950c
         kind:
           type: string
-          description: Possible values are mobile, wearable, automobile, embedded,desktop,
-            other.
+          description: Possible values are mobile, wearable, automobile, embedded,desktop, other.
           example: mobile
         details:
           title: deviceData
@@ -1354,8 +1272,7 @@ components:
             properties:
               provider:
                 type: string
-                description: Identifies the provider of the data and is often used
-                  when decrypting data on the server.
+                description: Identifies the provider of the data and is often used when decrypting data on the server.
                 example: InAuth
               dataCapture:
                 type: object
@@ -1370,12 +1287,10 @@ components:
                     example: BB8E4E92...Fz1E063113
                   captureTime:
                     type: string
-                    description: Device data capture time in Internet Date/Time format
-                      - yyyy-MM-dd'T'HH:mm:ss'Z'
+                    description: Device data capture time in Internet Date/Time format - yyyy-MM-dd'T'HH:mm:ss'Z'
                     format: date-time
                     example: 2016-04-16T16:06:05Z
-                description: Device data captured as a bundle and transmitted as an
-                  encrypted and/or specifically formated string.
+                description: Device data captured as a bundle and transmitted as an encrypted and/or specifically formated string.
               dataStatic:
                 type: object
                 properties:
@@ -1401,13 +1316,11 @@ components:
                 properties:
                   latitude:
                     type: string
-                    description: Device position - latitude at the time of the data
-                      event
+                    description: Device position - latitude at the time of the data event
                     example: 13.0827 N
                   longitude:
                     type: string
-                    description: Device position - longitude at the time of the data
-                      event
+                    description: Device position - longitude at the time of the data event
                     example: 80.2707 E
                   ipAddress:
                     type: string
@@ -1415,8 +1328,7 @@ components:
                     example: 172.27.37.221
                   captureTime:
                     type: string
-                    description: Device data capture time in Internet Date/Time format
-                      - yyyy-MM-dd'T'HH:mm:ss'Z'
+                    description: Device data capture time in Internet Date/Time format - yyyy-MM-dd'T'HH:mm:ss'Z'
                     format: date-time
                     example: 2016-04-16T16:06:05Z
                 description: Device location details
@@ -1451,32 +1363,31 @@ components:
         id: 537edec8-d33e-4ee8-93a7-b9f61876950c
         kind: mobile
         details:
-          - provider: InAuth
-            dataCapture:
-              rawData: aaaaaXREUVZGRlFY...aMV
-              dataEventId: BB8E4E92...Fz1E063113
-              captureTime: 2016-04-16T16:06:05Z
-            dataStatic:
-              os: Android 5.1.1 Lollipop
-              osVersion: 5.1.1 Lollipop
-              model: XYX-1
-              Type: Moto G
-            dataDynamic:
-              latitude: 13.0827 N
-              longitude: 80.2707 E
-              ipAddress: 172.27.37.221
-              captureTime: 2016-04-16T16:06:05Z
+        - provider: InAuth
+          dataCapture:
+            rawData: aaaaaXREUVZGRlFY...aMV
+            dataEventId: BB8E4E92...Fz1E063113
+            captureTime: 2016-04-16T16:06:05Z
+          dataStatic:
+            os: Android 5.1.1 Lollipop
+            osVersion: 5.1.1 Lollipop
+            model: XYX-1
+            Type: Moto G
+          dataDynamic:
+            latitude: 13.0827 N
+            longitude: 80.2707 E
+            ipAddress: 172.27.37.221
+            captureTime: 2016-04-16T16:06:05Z
         additionalInfo:
-          - name: some-key
-            value: some-value
+        - name: some-key
+          value: some-value
 
     Error:
       type: object
       properties:
         code:
           type: string
-          description: Uniquely identifies an error condition. Client applications
-            need to read and handle errors based on this.
+          description: Uniquely identifies an error condition. Client applications need to read and handle errors based on this.
         message:
           type: string
           description: A generic description of the error condition.
@@ -1504,8 +1415,7 @@ components:
                   message:
                     type: string
                     description: Information specific to a property or attribute.
-          description: Information that needs to be understood by the client developers
-            and should not be interpreted for application processing.
+          description: Information that needs to be understood by the client developers and should not be interpreted for application processing.
         hostExtraInfo:
           minItems: 0
           uniqueItems: true
@@ -1527,164 +1437,163 @@ components:
           developerMessage: Invalid Message format in request payload
           moreInfo: https://www.example.com/errors/40000
           fieldError:
-            - field: example id
-              message: exampleId is mandatory
+          - field: example id
+            message: exampleId is mandatory
 
-#-------------------------------------
-# Enum Models
-#-------------------------------------
+    #-------------------------------------
+    # Enum Models
+    #-------------------------------------
     AccountStatus:
       title: Account Status
       type: string
       description: Indicates the status of an account.
       enum:
-        - ACTIVE
-        - INACTIVE
-        - ISSUER_TERMINATED
-        - WALLET_TERMINATED
+      - ACTIVE
+      - INACTIVE
+      - ISSUER_TERMINATED
+      - WALLET_TERMINATED
 
     AchEnrollmentStatus:
       type: string
       description: Indicates ACH enrollment status
       enum:
-        - ACTIVE
-        - PENDING
-        - PENDING_LINKED_ACCOUNT
+      - ACTIVE
+      - PENDING
+      - PENDING_LINKED_ACCOUNT
 
     AchEnrollmentSubStatus:
       type: string
       description: Indicates ACH enrollment pending status
       enum:
-        - PENDING_BANK_VALIDATION
-        - PENDING_PIN_VALIDATION
-        - PENDING_EMAIL_VALIDATION
-        - PENDING_PHONE_VALIDATION
-        - PENDING_SOFT_BLOCK
-        - PENDING_HARD_BLOCK
+      - PENDING_BANK_VALIDATION
+      - PENDING_PIN_VALIDATION
+      - PENDING_EMAIL_VALIDATION
+      - PENDING_PHONE_VALIDATION
+      - PENDING_SOFT_BLOCK
+      - PENDING_HARD_BLOCK
 
     AccountType:
       type: string
       description: Type of Account vaulted
       enum:
-        - CREDIT
-        - PREPAID
-        - ACH
-        - LOYALTY
-        - PAYPAL
-        - MASTERPASS
-        - VENMO
-        - THREEDSECURE
-        - VAULTED_ACCOUNT
-        - FLEET
-        - APPLE_PAY
-        - SAMSUNG_PAY
-        - GOOGLE_PAY
-        - MONEYNETWORK
-        - EBT
+      - CREDIT
+      - PREPAID
+      - ACH
+      - LOYALTY
+      - PAYPAL
+      - MASTERPASS
+      - VENMO
+      - THREEDSECURE
+      - VAULTED_ACCOUNT
+      - FLEET
+      - APPLE_PAY
+      - SAMSUNG_PAY
+      - GOOGLE_PAY
+      - MONEYNETWORK
+      - EBT
 
     ActionType:
       title: Action Type
       type: string
       description: Type of action to invoke
       enum:
-        - ACCOUNT-ADD
-        - ACCOUNT-REMOVE
-        - ACCOUNT-UPDATE
-        - VERIFICATION-SEND
-        - ACCOUNT-GET
+      - ACCOUNT-ADD
+      - ACCOUNT-REMOVE
+      - ACCOUNT-UPDATE
+      - VERIFICATION-SEND
+      - ACCOUNT-GET
 
     AchCardType:
       type: string
       description: Indicates the type of ACH card association
       enum:
-        - CONNECTPAY
+      - CONNECTPAY
 
     AchAccountType:
       type: string
       description: ACH account type
       enum:
-        - CHECKING
-        - SAVINGS
+      - CHECKING
+      - SAVINGS
 
     BalanceUnitTypes:
       type: string
       description: Indicator to determine how to display balances
       enum:
-        - CENTS
-        - MILES
-        - POINTS
-        - STARS
-        - LITRES
+      - CENTS
+      - MILES
+      - POINTS
+      - STARS
+      - LITRES
 
     CreditCardType:
       title: Credit Card Type
       type: string
       description: Indicates the type of credit account association
       enum:
-        - AMEX
-        - DISCOVER
-        - MASTERCARD
-        - PLCC
-        - VISA
-        - OTHER
+      - AMEX
+      - DISCOVER
+      - MASTERCARD
+      - PLCC
+      - VISA
+      - OTHER
 
     CurrencyPairType:
       type: string
-      description: Describes the type of currency where BASE represents the currency
-        from Host and TRANSACTION represents the one requested.
+      description: Describes the type of currency where BASE represents the currency from Host and TRANSACTION represents the one requested.
       enum:
-        - BASE
-        - TRANSACTION
+      - BASE
+      - TRANSACTION
 
     FleetCardType:
       type: string
       description: Indicates the type of fleet account association
       enum:
-        - WEX
+      - WEX
 
     LoyaltyAccountStatus:
       type: string
       description: Indicator of the account state as indicated by the loyalty issuer.
       enum:
-        - ENROLLED
-        - ANONYMOUS
-        - PARTIAL
-        - PENDING_DATA
-        - PENDING_VERIFICATION
-        - INACTIVE
-        - BLOCKED
+      - ENROLLED
+      - ANONYMOUS
+      - PARTIAL
+      - PENDING_DATA
+      - PENDING_VERIFICATION
+      - INACTIVE
+      - BLOCKED
 
     LoyaltyType:
       title: Loyalty Type
       type: string
       description: Identifier to indicate type of Loyalty program being registered.
       enum:
-        - LOCAL
-        - NATIONAL
+      - LOCAL
+      - NATIONAL
 
     ProgramStatus:
       title: Program Status
       type: string
       description: Indicates if the given loyalty program is still active or not.
       enum:
-        - ENABLED
-        - DISABLED
-        - CONTRACTED_ONLY
+      - ENABLED
+      - DISABLED
+      - CONTRACTED_ONLY
 
     ReferenceTokenType:
       type: string
       description: Indicates if the given loyalty program is still active or not.
       enum:
-        - FORMAT_PRESERVING_MULTI_USE
-        - FORMAT_PRESERVING_SINGLE_USE
-        - CLAIM_CHECK_NONCE
-        - RANDOM_MULTI_USE
-        - RANDOM_SINGLE_USE
-        - CLAIM_CHECK_NONCE_WITH_PINCAPTURE
+      - FORMAT_PRESERVING_MULTI_USE
+      - FORMAT_PRESERVING_SINGLE_USE
+      - CLAIM_CHECK_NONCE
+      - RANDOM_MULTI_USE
+      - RANDOM_SINGLE_USE
+      - CLAIM_CHECK_NONCE_WITH_PINCAPTURE
 
-#-------------------------------------
-# Responses
-#-------------------------------------
+  #-------------------------------------
+  # Responses
+  #-------------------------------------
   responses:
     Action-Created:
       description: Action created
@@ -1706,8 +1615,7 @@ components:
             $ref: '#/components/schemas/Error'
 
     Conflict:
-      description: Conflict - The requested operation conflicts with the current state
-        of the identified resource.
+      description: Conflict - The requested operation conflicts with the current state of the identified resource.
       content:
         application/json:
           schema:
@@ -1742,24 +1650,21 @@ components:
       description: Unauthorized
       content: {}
 
-#-------------------------------------
-# Parameter Models
-#-------------------------------------
+  #-------------------------------------
+  # Parameter Models
+  #-------------------------------------
   parameters:
     AcceptLanguageParam:
       name: Accept-Language
       in: header
-      description: The Accept-Language header contains information about the language
-        preference of a user. This HTTP header is useful to multilingual sites for
-        deciding the best language to serve to the client. i.e en-US,fr-CA
+      description: The Accept-Language header contains information about the language preference of a user. This HTTP header is useful to multilingual sites for deciding the best language to serve to the client. i.e en-US,fr-CA
       schema:
         type: string
 
     ApiKeyParam:
       name: Api-Key
       in: header
-      description: An API key is a string value passed by a client app to the API
-        proxies. The key uniquely identifies the client app.
+      description: An API key is a string value passed by a client app to the API proxies. The key uniquely identifies the client app.
       required: true
       schema:
         type: string
@@ -1775,21 +1680,14 @@ components:
     ClientTokenParam:
       name: Client-Token
       in: header
-      description: Used to pass the original client OAuth token information given
-        in a client-credentials flow.  This field is only used when the server is
-        making the request and needs to link the transaction to a specific client.  Format-
-        `Bearer {access_token}`
+      description: Used to pass the original client OAuth token information given in a client-credentials flow.  This field is only used when the server is making the request and needs to link the transaction to a specific client.  Format- `Bearer {access_token}`
       schema:
         type: string
 
     ClientRequestIdParam:
       name: Client-Request-Id
       in: header
-      description: Contains a unique ID generated by the client that can be used for
-        enforcing idempotency on POST actions. POSTs are inherently non-idempotent
-        and submitting the exact same request multiple times would create duplicate
-        resources. Note:- Omitting this header increases the risk of duplicate transactions,
-        which for payments could cost the client issues like double-billing.
+      description: Contains a unique ID generated by the client that can be used for enforcing idempotency on POST actions. POSTs are inherently non-idempotent and submitting the exact same request multiple times would create duplicate resources. Note:- Omitting this header increases the risk of duplicate transactions, which for payments could cost the client issues like double-billing.
       required: true
       schema:
         type: string
@@ -1808,7 +1706,7 @@ components:
       required: true
       schema:
         type: string
-        
+
     TimestampParam:
       name: Timestamp
       in: header
