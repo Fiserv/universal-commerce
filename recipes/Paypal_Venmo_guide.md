@@ -6,7 +6,7 @@ This flow is used if the partner does not have vaulting support through uCom. Th
 </span>
 
 
-**<ins> Prerequisites: </ins>**
+**<ins> Prerequisites: </ins>** </br>
 PayPal Account </br>
 PayPal account details configured in uCom. </br>
 PayPal SDK Setup/configured to generate the nonce. </br>
