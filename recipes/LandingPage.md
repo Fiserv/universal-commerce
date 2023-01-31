@@ -1,5 +1,5 @@
 # Universal Commerce Recipes 
-![Please Select any guide that you'd like to access]
+![Please Select the guide that you'd like to access]
 <!-- type: row -->
 
 <!-- type: card
