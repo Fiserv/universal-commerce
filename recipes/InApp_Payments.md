@@ -38,9 +38,9 @@ Which are the supported OS versions, devices, browser versions for Apple Pay? Se
 
 6. uCom sends DPAN, expiry, holder name, card type, cavv, eci and all necessary payment data to payment processor for payment processing.
 
-# Payeezy Integration­­
+# Payeezy Integration
 
-In order to process Apple Pay and Google Pay payments with uCom, a CSR a long with a Merchant Identifier are needed.
+In order to process Apple Pay and Google Pay payments through uCom, a CSR a long with a Merchant Identifier are needed.
 
 To get the Apple Certificate (CSR) you have to register an account with our Payeezy Developer portal. This is used for a different gateway (Payeezy), but you are just registering so you can create and save the certificate then add it your Apple developer account.
 
@@ -48,25 +48,23 @@ To get the Apple Certificate (CSR) you have to register an account with our Paye
 
 -  This process will need to be done for both Test and Prod; you would select **Sandbox** for Test and **Live** for Prod.
 
--  For questions or issues regarding the Apple developer account and portal, please work with Apple directly.
-
 ## Merchant – Create Apple Certificate Sandbox (test)
 
 ### Step 1: Create a Payeezy Developer account
 
-*Please consider creating an account using a shared/group mailbox to avoid access issues in the future. 
-*Select “developer as the merchant” option in the “Tell us about your business” section. 
+>Please consider creating an account using a shared/group mailbox to avoid access issues in the future. 
 
 1) Enroll here: [https://developer.payeezy.com/user/register](https://developer.payeezy.com/user/register)
-2) Activate your account using the email sent to your mailbox. 
-3) Enter a secure password using the activation link in the email and click the “LOG IN” button once
+>Select “developer as the merchant” option in the “Tell us about your business” section. 
+3) Activate your account using the email sent to your mailbox. 
+4) Enter a secure password using the activation link in the email and click the “LOG IN” button once
 completed. 
 4) Once logged in, click the “Get Certified” button on top to begin the certification process. You will be
 asked to change your password one more time, kindly do so. 
 5) Once the password is changed, expand the “Personal Information” section, and fill out the form
 completely. 
-*Please select “FIRSTDATA” for the “Who were you referred by?” question and fill out the target market accordingly.
-*Select “developer as the merchant” option in the “Tell us about your business” section. 
+>Please select “FIRSTDATA” for the “Who were you referred by?” question and fill out the target market accordingly.
+>Select “developer as the merchant” option in the “Tell us about your business” section. 
 6) Finally, click on “CERTIFY” and then “SAVE”. 
 7) Click cancel on the “Add A Merchant” screen that will show up as we automatically create a
 sandbox merchant ID on your behalf. 
@@ -76,11 +74,10 @@ sandbox merchant ID on your behalf.
 2) Name your API and select “Sandbox”. 
 3) You will be redirected back to the “My API” screen. Click on the API name that you just created, and you
 will see your API Key and Secret. Please take note of your API key. 
-*When ready to use the API in a production environment, you will come back to this page and select
-“LIVE” (or you can keep the original Sandbox API and create a new one for LIVE).
+>When ready to use the API in a production environment, you will come back to this page and select “LIVE” (or you can keep the original Sandbox API and create a new one for LIVE).
 4) Go to the “Merchant” page and make a note of the token. The information found on this page are
 header parameter values that uniquely identify your transactions associated with all API calls.
-Please note that ACME SOCK is a generic merchant ID for the Demo environment. It is strictly for the
+>Please note that ACME SOCK is a generic merchant ID for the Demo environment. It is strictly for the
 demo environment and not associated with a specific merchant profile. The correct value in the
 merchant token field will start with "FDOA-" and this is the value that will be provided to the uCom DL
 Team.
@@ -92,59 +89,19 @@ cert as demonstrated below:
 Enter an app label and select the product you would like, for example, Apple Pay then click on the
 “ADD” button.  
 2) Once done, take a note of the public key hash and app label. 
-* If you need to generate more than one apple pay/android pay cert, you will need to email the payeezy
+>If you need to generate more than one apple pay/android pay cert, you will need to email the payeezy
 onboarding email (payeezyboarding@fiserv.com). Same step will need to be done if any modifications
 are needed to the existing certs. 
 
-# Merchant – Genrate a Live/Prod Apple Certificate 
+# Step 4: Generate Production Credentials 
+1) Generate a live API Key, by going to the “APIS” page and clicking add a new API. Please enter your application name and select “Live” and finally click “CREATE
+YOUR APP” when done.
+2) Please take note of your API keys. 
+3) Generate a live Apple Pay cert by going to “CERTS” page, then select the “live” tab and create a new Apple Pay cert. 
+4) Request a live merchant ID by emailing the Payeezy onboarding team (payeezyboarding@fiserv.com) and requesting a live merchant ID. 
 
-1.  Create a Payeezy Developer account or log into an existing account.
+>Please note that the Sanbox & Live merchant App labels, certifications, and key information will need to be shared with uCom technical/support team for account configuration. 
 
-    Enroll here:  [https://developer.payeezy.com/](https://developer.payeezy.com/)
-
-2.  You will either get an error when attempting to create a certificate for Live or the button will be grayed out. Please follow the below steps to resolve this.
-
-3.  Please complete step 2. GET CERTIFIED of the Developer Portal setup. Once that is completed, you will be able to generate the Live/Production ApplePay CERT.
-
-4.  Skip this step if already performed.
-
-- After you click on the activate link on your Developer Email, you will be prompted to create your password.
-
--  After you create your password, you will be asked to create three security questions and answers.
-
-- Once you have completed this, you will be moved to the APIS section of the Dev Portal.
-
-5.  Click on “APIS”.
-
-6.  Click + ADD A NEW API.
-
-7.  Enter name for a dummy test APP, choose Sandbox as Type, and click “CREATE YOUR APP”.
-
-8.  Click “GET CERTIFIED.”
-
-8.  Complete the form (be sure to complete the nestled sections under “personal information” and “profile settings”). Check the box to agree to the terms and click “CERTIFY”.
-
-9.  After clicking “CERTIFY,” you should get a success response. Once this happens, click “SAVE.”
-
-10.  Once you have completed these steps, you should be able to create the Live ApplePay certificate.
-
-11.  Provide me with the email address used to enroll. I will complete the setup on my end and will notify you once completed.
-
-**Apple Pay Setup -** **Same Process for Test & Prod**
-
-1. Client/Developer will create a Payeezy Developer account.
-
-Enroll here: [https://developer.payeezy.com/](https://developer.payeezy.com/)
-
-Once logged in select the **CERTS** tab on the top right hand corner.
-
-Select the **Add Certs** drop down and select APPLE_PAY. Name the Cert under “Enter App Label”
-
-And click on **+ADD**.
-
-2. Provide us with the email address used to enroll. We will complete the setup on our end and will notify you once completed.
-
-  
 **Integrations --- Apple Pay Decrypt APIGEE Setup**
 
 1. We will need the dev email that was used to enroll and set up ApplePay within developer tool.
