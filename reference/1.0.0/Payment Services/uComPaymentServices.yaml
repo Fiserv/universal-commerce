@@ -170,6 +170,8 @@ paths:
           $ref: '#/components/responses/ServerError'
 
     post:
+      x-group-name: Payment Services
+      x-proxy-name: Create payment authorization
       tags:
         - authorization
       summary: Create a payment authorization
@@ -543,6 +545,8 @@ paths:
           $ref: '#/components/responses/ServerError'
 
     post:
+      x-group-name: Payment Services
+      x-proxy-name: Create payment sale transacation
       tags:
         - sale
       summary: Create a payment sale transaction.
@@ -607,6 +611,8 @@ paths:
           $ref: '#/components/responses/ServerError'
 
     patch:
+      x-group-name: Payment Services
+      x-proxy-name: Proceed with sale transaction
       tags:
         - sale
       summary: Patch a specific sale transaction.
@@ -1138,6 +1144,8 @@ paths:
           $ref: '#/components/responses/ServerError'
 
     post:
+      x-group-name: Payment Services
+      x-proxy-name: Void a sale transaction
       tags:
         - void
       summary: Execute void for sale transaction.

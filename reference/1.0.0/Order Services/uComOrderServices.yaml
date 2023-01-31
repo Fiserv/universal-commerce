@@ -95,6 +95,8 @@ paths:
                 $ref: '#/components/schemas/Error'
 
     post:
+      x-group-name: Order Services
+      x-proxy-name: Return order information
       tags:
         - Orders
       parameters:
@@ -138,6 +140,8 @@ paths:
 
   /v1/orders/{orderId}:
     get:
+      x-group-name: Order Services
+      x-proxy-name: Get order Id
       tags:
         - Orders
       parameters:
