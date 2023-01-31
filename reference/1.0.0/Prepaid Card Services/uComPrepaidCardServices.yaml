@@ -117,7 +117,7 @@ tags:
 paths:
   /v1/prepaids/balances:
     post:
-      x-group-name: Prepaid Card Services
+      x-group-name: Prepaid Services
       x-proxy-name: Retrieve pre-paid balance
       tags:
       - balance
@@ -1248,7 +1248,7 @@ paths:
 
   /v2/prepaids/merges:
     get:
-      x-group-name: Prepaid Card Services
+      x-group-name: Prepaid Services
       x-proxy-name: Merge balance from one vaulted prepaid card to another
       tags:
       - merge
