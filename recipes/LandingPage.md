@@ -1,4 +1,4 @@
-# Ucom Recipes 
+# Universal Commerce Recipes 
 
 <!-- type: row -->
 
