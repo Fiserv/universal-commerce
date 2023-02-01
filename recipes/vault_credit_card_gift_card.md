@@ -208,7 +208,7 @@ Client-Token: <accessToken>
 | type| String| Body| Yes| 7
 | cardNumber| String| Body| Yes| 16
 | securityCode| String| Body| Yes| 8
-| expiryDate| String| Body| Yes| -
+| expiryDate| String| Body| Yes| 2
 
 **<ins> Sample Request (Nonce Enrollment) </ins>**
 ```json
