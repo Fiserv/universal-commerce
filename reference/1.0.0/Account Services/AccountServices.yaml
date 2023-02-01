@@ -13,7 +13,7 @@ paths:
   /v1/account-tokens:
     post:
       x-group-name: Account Services
-      x-proxy-name: Tokenize an account
+      x-proxy-name: Tokenize by Card Detail
       x-default-example: FullRequest
       tags:
       - accounts
@@ -202,7 +202,7 @@ paths:
   /v1/account-tokens/{nonceTokenId}/tokenization:
     post:
       x-group-name: Account Services
-      x-proxy-name: Verify an account
+      x-proxy-name: Tokenize an Account by Nonce
       x-default-example: FullRequest
       deprecated: true
       tags:
