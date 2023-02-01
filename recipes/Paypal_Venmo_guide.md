@@ -1105,11 +1105,11 @@ This request will create a vaulted account in ucom.
 
 HTTP Method: POST
 
-Non-prod: [https://int.api.firstdata.com/ucom/v1/customers/%7BfdCustomerId%7D/accounts](https://int.api.firstdata.com/ucom/v1/customers)
+Non-prod: [https://int.api.firstdata.com/ucom/v1/customers/{fdCustomerId}/accounts]
 
-Prod: [https://prod.api.firstdata.com/ucom/v1/customers/%7BfdCustomerId%7D/accounts](https://prod.api.firstdata.com/ucom/v1/customers)
+Prod: [https://prod.api.firstdata.com/ucom/v1/customers/{fdCustomerId}/accounts]
 
-**<ins># Parameters </ins>**
+**<ins> Parameters </ins>**
 
 | Entity Name  | Parent Entity Name | Data Type | Parameter Type | Required |
 |--------------|--------------------|-----------|----------------|----------|
@@ -1128,7 +1128,7 @@ Prod: [https://prod.api.firstdata.com/ucom/v1/customers/%7BfdCustomerId%7D/accou
 | dataEventId  | dataCapture        | String    | Value          | Yes      |
 | captureTime  | dataCapture        | String    | Value          | No       |
 
-**<ins># Headers </ins>**
+**<ins> Headers </ins>**
 
 Content-Type:application/json
 
