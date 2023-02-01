@@ -56,58 +56,61 @@ To get the Apple Certificate (CSR) you have to register an account with our Paye
 
 1) Enroll here: [https://developer.payeezy.com/user/register](https://developer.payeezy.com/user/register)
 >Select “developer as the merchant” option in the “Tell us about your business” section. 
-3) Activate your account using the email sent to your mailbox. 
-4) Enter a secure password using the activation link in the email and click the “LOG IN” button once
+
+2) Activate your account using the email sent to your mailbox. 
+
+3) Enter a secure password using the activation link in the email and click the “LOG IN” button once
 completed. 
-4) Once logged in, click the “Get Certified” button on top to begin the certification process. You will be
-asked to change your password one more time, kindly do so. 
+
+4) Once logged in, click the “Get Certified” button on top to begin the certification process. You will be asked to change your password one more time, kindly do so. 
+
 5) Once the password is changed, expand the “Personal Information” section, and fill out the form
 completely. 
+
 >Please select “FIRSTDATA” for the “Who were you referred by?” question and fill out the target market accordingly.
+
 >Select “developer as the merchant” option in the “Tell us about your business” section. 
+
 6) Finally, click on “CERTIFY” and then “SAVE”. 
+
 7) Click cancel on the “Add A Merchant” screen that will show up as we automatically create a
 sandbox merchant ID on your behalf. 
 
 ## Step 2: Create a Sandbox API Key 
+
 1) Go to the “APIS” page and click the “ADD A NEW API” button. 
+
 2) Name your API and select “Sandbox”. 
-3) You will be redirected back to the “My API” screen. Click on the API name that you just created, and you
-will see your API Key and Secret. Please take note of your API key. 
+
+3) You will be redirected back to the “My API” screen. Click on the API name that you just created, and you will see your API Key and Secret. Please take note of your API key. 
+
 >When ready to use the API in a production environment, you will come back to this page and select “LIVE” (or you can keep the original Sandbox API and create a new one for LIVE).
-4) Go to the “Merchant” page and make a note of the token. The information found on this page are
-header parameter values that uniquely identify your transactions associated with all API calls.
->Please note that ACME SOCK is a generic merchant ID for the Demo environment. It is strictly for the
-demo environment and not associated with a specific merchant profile. The correct value in the
-merchant token field will start with "FDOA-" and this is the value that will be provided to the uCom DL
-Team.
+
+4) Go to the “Merchant” page and make a note of the token. The information found on this page are header parameter values that uniquely identify your transactions associated with all API calls.
+
+>Please note that ACME SOCK is a generic merchant ID for the Demo environment. It is strictly for the demo environment and not associated with a specific merchant profile. The correct value in the merchant token field will start with "FDOA-" and this is the value that will be provided to the project technical support team. 
 
 ## Step 3: Generate a Sandbox Apple Pay Cert 
-To enable Apple Pay & Google Pay through the uCom platform, you will need to generate an Apple Pay
-cert as demonstrated below: 
-1) Click on “CERTS” in the top right.
-Enter an app label and select the product you would like, for example, Apple Pay then click on the
-“ADD” button.  
+To enable Apple Pay & Google Pay through the uCom platform, you will need to generate an Apple Pay cert as demonstrated below: 
+
+1) Click on “CERTS” in the top right. Enter an app label and select the product you would like, for example, Apple Pay then click on the “ADD” button. 
+
 2) Once done, take a note of the public key hash and app label. 
->If you need to generate more than one apple pay/android pay cert, you will need to email the payeezy
-onboarding email (payeezyboarding@fiserv.com). Same step will need to be done if any modifications
-are needed to the existing certs. 
+
+>If you need to generate more than one apple pay/android pay cert, you will need to email the payeezy onboarding email (payeezyboarding@fiserv.com). Same step will need to be done if any modifications are needed to the existing certs. 
 
 # Step 4: Generate Production Credentials 
+
 1) Generate a live API Key, by going to the “APIS” page and clicking add a new API. Please enter your application name and select “Live” and finally click “CREATE
 YOUR APP” when done.
+
 2) Please take note of your API keys. 
+
 3) Generate a live Apple Pay cert by going to “CERTS” page, then select the “live” tab and create a new Apple Pay cert. 
+
 4) Request a live merchant ID by emailing the Payeezy onboarding team (payeezyboarding@fiserv.com) and requesting a live merchant ID. 
 
->Please note that the Sanbox & Live merchant App labels, certifications, and key information will need to be shared with uCom technical/support team for account configuration. 
+>Please note that the Sanbox & Live merchant App labels, certifications, and key information will need to be shared with uCom technical support/Implementations team for account configuration. 
 
-**Integrations --- Apple Pay Decrypt APIGEE Setup**
 
-1. We will need the dev email that was used to enroll and set up ApplePay within developer tool.
 
-2. We will need to complete the [Apigee Maintenance Request](https://sharepoint.1dc.com/sites/ESD/BIA/BIAIM/BIAIMECOM/Lists/Apigee%20Maintenance%20Request/AllItems.aspx?Paged=TRUE&p_ID=134&PageFirstRow=121&&View=%7bF9F9ECDF-8881-46D4-A822-0AC04C466A06%7d&InitialTabId=Ribbon%2EList&VisibilityContext=WSSTabPersistence) form to update the clients Apigee app.
-
-3. Within Apigee you will need to add the custom attribute of **payeezyDecryptDeveloperEmail** and the value will be the dev email address which was used to set up the ApplePay cert within Payeezy developer site. Sample below.
-
-4. NOTE: The attribute, once added for Apple Pay, will work the same as for Samsung Pay (both at the same time). No other changes need to be done at this point.
