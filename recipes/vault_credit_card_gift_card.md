@@ -119,8 +119,6 @@ Client-Request-Id: - <clientRequestId> <br>
 
 Encrypted PAN details for Generating Nonce.
 	
->Please note that a public 
-
 **<ins> Parameters </ins>**
 
 | Name| Data Type| Parameter Type| Required| Max Length
