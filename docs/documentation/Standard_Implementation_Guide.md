@@ -1,22 +1,4 @@
 
-![Please Select yout Type of Business]
-
-<!-- type: row -->
-
-<!-- type: card
-title: Quick Service Restaurant
-description: About...
-link: ?path=docs/about-developer-studio.md
--->
-
-<!-- type: card
-title: Petroleum Industry
-description: About...
-link: ?path=docs/about-developer-studio.md
--->
-
-<!-- type: row-end -->
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">   
@@ -77,69 +59,6 @@ Unless explicitly decided otherwise, confidential information such as account nu
  - The encrypted string should then be Base64 encoded
  - The final encoded string value  replaces the sensitive data 
  - The encoded string is used by UCG to retrieve the sensitive data
-
- >### Notifications
-
- A Notification is a callback mechanism to inform you of events occurring in our system related to a transaction. This is accomplished by making an HTTP call to an endpoint in your system at the moment these events take place.
- 
-**Event Types**
-
-| Event Type                   | Description |
-|------------------------|---------------|
-|PETROTRANSACTION_COMPLETED| Used to notify when the fueling is completed or cancelled |
-|PETROTRANSACTION_FUEL_STARTED| Used to notify when the user started the fueling |
-|PETROTRANSACTION_RECEIPT_READY| Used to notify the user when the receipt is ready |
-
-**Headers**
-
-| Header Name      | Required | Description                                                          |
-|------------------|----------|----------------------------------------------------------------------|
-| Api-Key          | Yes      | Api Key that identifies the client and used as part of the Signature |
-| Digest-Algorithm | Yes      | Algorithm used for Message Digest on the payload                     |
-| Sig-Algorithm    | Yes      | Algorithm used to generate the signature                             |
-| Sig-Timestamp    | Yes      | Not the event timestamp, the one used in Signature                   |
-| Signature        | Yes      | The signed string as described above in Signature Generation section |
-
-**Sample Header**
-
-```Json
-Content-Type: application/json
-Api-Key: BkRQT4GldvCf5hAyJ1Q3gSJiI1M3ldts
-Signature: 9a9cd131d804476e6698eb12d52e80e74b2a74ece247c111735f2cf05e315269536e0303be17d5754eaeb4d042551c62df3946140748c8bd156a0a3b31041cc2ab0af3d39c2a380adc1227d6dba859c75da6fcc698302ccf2b0a242f5a7545812451c974e41700d7b11cf321e18889d709d55d5f89bf4e4c3f7fd718f48a690788bf59b576b442cbba4a29e26cea3448340eaf4a43aa7a8027be3459d18c907bf5d17acd0e42135f841aa64849ea8a91d80ae33100c8b3dd407c02cc9ac620280df9156a1cfb46716ac37f519bb343e5c5af6e623f9ad027d627be04232cbf4eb7d37e04f0678d07876ba1d34fe8db711748920463cb14e3d37998e49eb9f125
-Sig-Timestamp: 1501621439636
-Sig-Algorithm: SHA256withRSA
-Digest-Algorithm: SHA-256
-```
-
- **Webhooks**
-
-  A webhook is a callback mechanism to inform you of changes occurring to your transaction in our system. We accomplish this by making an HTTP call to an endpoint in your system when these changes occur.
-The Merchant sends a webhook notification URL in authorization request where the App expects a fueling notifications.
-
-Json Object:
-
-```json
-"webhookUrl": {
-      "href": "string",
-      "rel": "self",
-      "method": "GET",
-      "id": "415e5cf6bfdb11e8a355529269fb1459"
-}
-```
-
-1. UCOM applies a standard URL pattern validation on the webhook endpoint URL if webhookUrl.href is present in the request
-2. UCOM configures a list of allowable domain names for a given partner and validates a requested domain name with the configured list
-3. If above point #1 or #2 failed then UCOM sends an error to the merchant as invalid message request
-4. If validation is success, we persist the webhookUrl endpoint in uCom system
-5. Whenever the fueling, completion or receipt request comes from POS, UCOM system look up the webhook endpoint from transaction level.
-6. If endpoint available at transaction level, we use it for posting the notifications
-7. If endpoint is not available in transaction, then we publish notifications to the merchant level endpoint via normal notificaiton route
-
-
-**Wallet notification securities**
-
- UCOM will share a public certificate to the merchant to receive the wallet notifications from uCom
-
 
 >### Currencies
 
@@ -303,6 +222,18 @@ This API handles services needed to initiate AUTH/CAPTURE/SALE transactions usin
 
 [Payment Services API](../api/?type=post&path=/v1/payments/auths)
 
+>## UCOM - MPPA 
+
+Mobile Payment Application (MPA): This entity is a software application embedded in a
+Mobile Device or downloaded by a consumer onto a Mobile Device, such as a smart
+phone or tablet, which enables mobile payments for in-store and forecourt transactions.
+
+Mobile Payment Processing Application (MPPA): This entity is an application provided
+by the Mobile Payment Processor (MPP) not on the Mobile Device that is responsible for
+interfacing between the Token Vault or Token/Trusted Service Provider, the MPA, the
+Site System and the Payment Front End Processor (PFEP) in order to authorize
+transactions. The below section will be applicable if Fiserv UCOM is acting as a MPPA,
+
   >### Petrol Services
 
 Services related to purchasing items at a gas station.
@@ -310,6 +241,79 @@ Services related to purchasing items at a gas station.
 <a href="../api/?type=post&path=/v1/petro-transactions"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/ea123fc9ade6fa84b7655d7a75ffb4c759644f09/assets/images/gas-station.svg" alt="Petrol_Services" style="width:100px;height:100px;"></a>  
 
 [Petro Services API](../api/?type=post&path=/v1/petro-transactions)
+
+>### Notifications
+
+ A Notification is a callback mechanism to inform you of events occurring in our system related to a transaction. This is accomplished by making an HTTP call to an endpoint in your system at the moment these events take place.
+ 
+**Event Types**
+
+| Event Type                   | Description |
+|------------------------|---------------|
+|PETROTRANSACTION_COMPLETED| Used to notify when the fueling is completed or cancelled |
+|PETROTRANSACTION_FUEL_STARTED| Used to notify when the user started the fueling |
+|PETROTRANSACTION_RECEIPT_READY| Used to notify the user when the receipt is ready |
+
+**Headers**
+
+| Header Name      | Required | Description                                                          |
+|------------------|----------|----------------------------------------------------------------------|
+| Api-Key          | Yes      | Api Key that identifies the client and used as part of the Signature |
+| Digest-Algorithm | Yes      | Algorithm used for Message Digest on the payload                     |
+| Sig-Algorithm    | Yes      | Algorithm used to generate the signature                             |
+| Sig-Timestamp    | Yes      | Not the event timestamp, the one used in Signature                   |
+| Signature        | Yes      | The signed string as described above in Signature Generation section |
+
+**Sample Header**
+
+```Json
+Content-Type: application/json
+Api-Key: BkRQT4GldvCf5hAyJ1Q3gSJiI1M3ldts
+Signature: 9a9cd131d804476e6698eb12d52e80e74b2a74ece247c111735f2cf05e315269536e0303be17d5754eaeb4d042551c62df3946140748c8bd156a0a3b31041cc2ab0af3d39c2a380adc1227d6dba859c75da6fcc698302ccf2b0a242f5a7545812451c974e41700d7b11cf321e18889d709d55d5f89bf4e4c3f7fd718f48a690788bf59b576b442cbba4a29e26cea3448340eaf4a43aa7a8027be3459d18c907bf5d17acd0e42135f841aa64849ea8a91d80ae33100c8b3dd407c02cc9ac620280df9156a1cfb46716ac37f519bb343e5c5af6e623f9ad027d627be04232cbf4eb7d37e04f0678d07876ba1d34fe8db711748920463cb14e3d37998e49eb9f125
+Sig-Timestamp: 1501621439636
+Sig-Algorithm: SHA256withRSA
+Digest-Algorithm: SHA-256
+```
+
+ **Webhooks**
+
+  A webhook is a callback mechanism to inform you of changes occurring to your transaction in our system. We accomplish this by making an HTTP call to an endpoint in your system when these changes occur.
+The Merchant sends a webhook notification URL in authorization request where the App expects a fueling notifications.
+
+Json Object:
+
+```json
+"webhookUrl": {
+      "href": "string",
+      "rel": "self",
+      "method": "GET",
+      "id": "415e5cf6bfdb11e8a355529269fb1459"
+}
+```
+
+1. UCOM applies a standard URL pattern validation on the webhook endpoint URL if webhookUrl.href is present in the request
+2. UCOM configures a list of allowable domain names for a given partner and validates a requested domain name with the configured list
+3. If above point #1 or #2 failed then UCOM sends an error to the merchant as invalid message request
+4. If validation is success, we persist the webhookUrl endpoint in uCom system
+5. Whenever the fueling, completion or receipt request comes from POS, UCOM system look up the webhook endpoint from transaction level.
+6. If endpoint available at transaction level, we use it for posting the notifications
+7. If endpoint is not available in transaction, then we publish notifications to the merchant level endpoint via normal notificaiton route
+
+
+**Wallet notification securities**
+
+ UCOM will share a public certificate to the merchant to receive the wallet notifications from uCom
+
+
+  >### Transaction History Services
+
+Services related to view the list of transactions details, receipts and can add a note to a particular transaction
+	
+<a href="../api/?type=post&path=/v1/petro-transactions"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/ea123fc9ade6fa84b7655d7a75ffb4c759644f09/assets/images/gas-station.svg" alt="Tx_Services" style="width:100px;height:100px;"></a>  
+
+[TX Services API](../api/?type=post&path=/v1/txhistory/customers/{fdCustomerId}/transactions)
+
+This completes the UCOM-MPPA section.
 
 ## Use Cases 
 
