@@ -244,7 +244,7 @@ paths:
           $ref: '#/components/responses/ServerError'
     post:
       x-group-name: Account Services
-      x-proxy-name: Vault an account in uCom
+      x-proxy-name: Vault an account
       tags:
         - accounts
       summary: Vault an account in uCom
