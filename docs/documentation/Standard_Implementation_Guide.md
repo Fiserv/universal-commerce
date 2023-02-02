@@ -222,6 +222,14 @@ This API handles services needed to initiate AUTH/CAPTURE/SALE transactions usin
 
 [Payment Services API](../api/?type=post&path=/v1/payments/auths)
 
+	
+ >### Prepaid Services
+	
+This API handles services related to prepaid cards such as creating a new prepaid card, balance check, reloading funds, balance transfer etc.
+  	
+<a href="../api/?type=post&path=/v2/prepaids/multi-purchases"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/eeaffd3f6c980477b788b332c5bf8776f32e11f2/assets/images/gift-card-svgrepo-com.svg" alt="Prepaid Payments" style="width:100px;height:100px;"></a>  
+
+[Prepaid Services API](../api/?type=post&path=/v2/prepaids/multi-purchases)
 >## UCOM - MPPA 
 
 Mobile Payment Application (MPA): This entity is a software application embedded in a
