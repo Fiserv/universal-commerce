@@ -242,9 +242,11 @@ This API handles services related to prepaid cards such as creating a new prepai
 >### Hosted Pages Services
 	
 This API handles services provides CRUD operaion for hosted pages. With the help of these APIs hosted pages will be created and rendred to UI.
+
 <a href="../api/?type=get&path=/v1/hosted-pages/pages"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/bf957bad5bdad86c33303851ad88a54840161818/assets/images/website.svg" alt="Hosted Pages" style="width:100px;height:100px;"></a>  
 
-[Prepaid Services API](../api/?type=post&path=/v2/prepaids/multi-purchases)
+[Prepaid Services API](../api/?type=get&path=/v1/hosted-pages/pages)
+	
 >## UCOM - MPPA 
 
 Mobile Payment Application (MPA): This entity is a software application embedded in a
