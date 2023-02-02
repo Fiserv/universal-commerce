@@ -112,7 +112,7 @@ paths:
   /v1/account-tokens:
     post:
       x-group-name: Account Services
-      x-proxy-name: Tokenize an account
+      x-proxy-name: Tokenize by Card Detail
       tags:
         - accounts
       summary: Tokenize an account
@@ -180,7 +180,7 @@ paths:
   /v1/account-tokens/{nonceTokenId}/tokenization:
     post:
       x-group-name: Account Services
-      x-proxy-name: Verify an account
+      x-proxy-name: Tokenize an Account by Nonce
       tags:
         - accounts
       summary: This API shoudle be called from server with HMAC in authrization header

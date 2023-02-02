@@ -186,7 +186,7 @@ paths:
   /v1/third-party-tokens:
     post:
       x-group-name: Security Services
-      x-proxy-name: DEFECT - Deprecate third-party-tokens!
+      x-proxy-name: Create Third-Party Security Access Token
       tags:
       - security
       summary: Create a security access token
