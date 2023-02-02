@@ -196,7 +196,7 @@ This is used to send the FEP (Front End Processor) messages back to the merchant
 
 ## Explore the uCom Services 
 
-Kindly click on the links below to explore each uCom endpoint. 
+Kindly click on the links below to explore each endpoint. 
 
 >### Customer Services
 
@@ -205,6 +205,14 @@ This API handles all of the uCom Customer Profile Management operations (create,
 <a href="../api/?type=post&path=/v1/customers"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/contacts-svgrepo-com.svg" alt="Customer_services" style="width:100px;height:100px;"></a>  
 
 [Customer Services API](../api/?type=post&path=/v1/customers)
+	
+>### Security Services
+	
+This API handles Services related to managing the API security features like access tokens and validation.
+  	
+<a href="../api/?type=post&path=/v1/tokens"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/3d5733abed559182f8c99a2820ee8883e83fb673/assets/images/security-shield-svgrepo-com.svg" alt="Security Services" style="width:100px;height:100px;"></a>  
+
+[Security Services API](../api/?type=post&path=/v1/tokens)
 	
  >### Account Services
 	
@@ -230,6 +238,8 @@ This API handles services related to prepaid cards such as creating a new prepai
 <a href="../api/?type=post&path=/v2/prepaids/multi-purchases"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/eeaffd3f6c980477b788b332c5bf8776f32e11f2/assets/images/gift-card-svgrepo-com.svg" alt="Prepaid Payments" style="width:100px;height:100px;"></a>  
 
 [Prepaid Services API](../api/?type=post&path=/v2/prepaids/multi-purchases)
+	
+
 >## UCOM - MPPA 
 
 Mobile Payment Application (MPA): This entity is a software application embedded in a
