@@ -309,7 +309,7 @@ Json Object:
 
 Services related to view the list of transactions details, receipts and can add a note to a particular transaction
 	
-<a href="../api/?type=post&path=/v1/petro-transactions"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/b2bc3a6e7ebf1850225e4db19eeb593723a02759/assets/images/transaction-minus-svgrepo-com.svg" alt="Tx_Services" style="width:100px;height:100px;"></a>  
+<a href="../api/?type=patch&path=/v1/txhistory/customers/{fdCustomerId}/transactions/{transactionId}"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/b2bc3a6e7ebf1850225e4db19eeb593723a02759/assets/images/transaction-minus-svgrepo-com.svg" alt="Tx_Services" style="width:100px;height:100px;"></a>  
 
 [Transaction History Services API](../api/?type=patch&path=/v1/txhistory/customers/{fdCustomerId}/transactions/{transactionId})
 
