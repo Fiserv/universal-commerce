@@ -8,7 +8,7 @@
 <base target="_blank">
 ## Fiserv Universal Commerce REST API Specification
 
-Here is how to utilize this guide. All your necessary steps are on your right and will guide you through the necessary steps to create a customer and start processing payments in universal commerce
+Here is how to utilize this guide. All your necessary steps are on your right and will guide you through the necessary steps to create a customer and start processing payments in universal commerce.
 
 ## General
 
