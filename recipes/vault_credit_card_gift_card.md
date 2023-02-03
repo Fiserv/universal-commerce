@@ -130,7 +130,10 @@ Encrypted PAN details for Generating Nonce.
 | referenceToken| String| body| Yes| -
 | tokenType| String| body| Yes| -
 | fdCustomerId| string| body| Yes| 32
-| billingPhone| String| Body| Optional (Mandatory only if Fraud is enabled)| -
+| billingPhone| String| Body| Optional (Mandatory only if Fraud is enabled)
+| expiryDate| String| Body| Yes|-|
+| Month| String| Body| Yes| Month format ‘MM’
+| Year| String| Body| Yes| Year format ‘YY’
 
 **<ins> Sample Request </ins>** 
 ```json
@@ -208,7 +211,6 @@ Client-Token: <accessToken>
 | type| String| Body| Yes| 7
 | cardNumber| String| Body| Yes| 16
 | securityCode| String| Body| Yes| 8
-| expiryDate| String| Body| Yes| 2
 
 **<ins> Sample Request (Nonce Enrollment) </ins>**
 ```json
