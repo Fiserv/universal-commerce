@@ -193,12 +193,12 @@ Prod: https://prod.api.firstdata.com/ucom/v1/customers/{fdCustomerId}/accounts
 
 **<ins> HTTP Header parameter for this API </ins>**
 
-Api-Key: <key>
-Authorization: HMAC <signature>
-Content-Type: application/json
-Timestamp: <time>
-Client-Request-Id: <$guid>
-Client-Token: <accessToken>
+Api-Key: <key> </br>
+Authorization: HMAC <signature></br>
+Content-Type: application/json </br>
+Timestamp: <time> </br>
+Client-Request-Id: <$guid> </br>
+Client-Token: <accessToken> </br>
 
 **<ins> Parameters </ins>**
 
