@@ -5,13 +5,13 @@
 <!-- type: card
 title: How to Create, Read, Update, and Delete a Customer Profile
 description: 
-link: ?path=docs/about-developer-studio.md
+link: ../recipes/?path=recipes/customerRegistration.md
 -->
 
 <!-- type: card
 title: How to Make a Guest Checkout
 description: 
-link: ?path=docs/about-developer-studio.md
+link: ../recipes/?path=recipes/guest_checkout.md
 -->
 
 <!-- type: card
