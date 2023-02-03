@@ -17,7 +17,7 @@ link: ../recipes/?path=recipes/guest_checkout.md
 <!-- type: card
 title: How to Vault a Credit Card or Gift Card 
 description: 
-link: ?path=docs/about-developer-studio.md
+link: ../recipes/?path=recipes/vault_credit_card_gift_card.md
 -->
 <!-- type: row-end -->
 
@@ -25,19 +25,19 @@ link: ?path=docs/about-developer-studio.md
 <!-- type: card
 title: How to Avoid a Duplicate Transaction 
 description: 
-link: ?path=docs/about-developer-studio.md
+link: ../recipes/duplicate_transactions.md
 -->
 
 <!-- type: card
 title: How to Make a Payment with Paypal or Venmo
 description: 
-link: ?path=docs/about-developer-studio.md
+link: ../recipes/Paypal_Venmo_guide.md
 -->
 
 <!-- type: card
 title: How to Make a split Payment 
 description: About...
-link: ?path=docs/about-developer-studio.md
+link: ../recipes/Split_Tender_Payment.md
 -->
 <!-- type: row-end -->
 
@@ -45,13 +45,13 @@ link: ?path=docs/about-developer-studio.md
 <!-- type: card
 title: How to Issue a Refund
 description: 
-link: ?path=docs/about-developer-studio.md
+link: ../recipes/?path=recipes/refunds.md
 -->
 
 <!-- type: card
 title:  How to Make a InApp Payment
 description: 
-link: ?path=docs/about-developer-studio.md
+link: ../path=recipes/InApp_Payments.md
 -->
 
 <!-- type: row-end -->
