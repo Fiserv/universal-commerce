@@ -2113,7 +2113,7 @@ Sample Response – Capture of Authorization
 
 **<ins> Sample Response (400 – Bad Request) </ins>**
 
-Sample Error Response                                                                                                                                           |
+Sample Error Response 
 
 ```json
 
@@ -2142,7 +2142,7 @@ Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/sales>
 
 Prod: <https://prod.api.firstdata.com/ucom/v1/payments/s>ales
 
-**<ins># Parameters </ins>**
+**<ins> Parameters </ins>**
 
 | Entity Name     | Parent Entity Name | Data Type | Parameter Type | Required           |
 |-----------------|--------------------|-----------|----------------|--------------------|
@@ -2180,7 +2180,7 @@ Authorization:HMAC {{signature}}
 
 Timestamp:{{time}}
 
-**<ins># Sample Request - Venmo Sale Transaction - Vaulted </ins>**
+**<ins> Sample Request - Venmo Sale Transaction - Vaulted </ins>**
 
 Sample Request – Venmo Sale Transaction - Vaulted
 ```json
