@@ -199,11 +199,11 @@ This request will complete the transaction which has been pre-authorized.
 
 HTTP Method: POST
 
-Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/auths/>{fdAuthorizationId}/captures
+Non-prod: https://int.api.firstdata.com/ucom/v1/payments/auths/{fdAuthorizationId}/captures
 
-Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>/{fdAuthorizationId}/captures
+Prod: https://prod.api.firstdata.com/ucom/v1/payments/auths/{fdAuthorizationId}/captures
 
-\*Replace fdAuthorizationId with Auth transactionId.
+> Replace fdAuthorizationId with Auth transaction Id.
 
 **<ins> Parameters </ins>**
 
@@ -315,11 +315,11 @@ This request will refund the transaction which has been completed.
 
 HTTP Method: POST
 
-Non-prod: https://int.api.firstdata.com/ucom/v1/payments/captures/%7BfdCaptureId%7D/refunds
+Non-prod: https://int.api.firstdata.com/ucom/v1/payments/captures/{fdCaptureId}/refunds
 
-Prod: <https://prod.api.firstdata.com/ucom/v1/payments/>captures/{fdCaptureId}/refunds
+Prod: https://prod.api.firstdata.com/ucom/v1/payments/captures/{fdCaptureId}/refunds
 
-\*Replace fdCaptureId with Capture transactionId .
+> Replace fdCaptureId with Capture transaction Id.
 
 **<ins> Parameters </ins>**
 
@@ -419,9 +419,9 @@ This flow will do the sale transaction.
 
 HTTP Method: POST
 
-Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/sales>
+Non-prod: https://int.api.firstdata.com/ucom/v1/payments/sales
 
-Prod: <https://prod.api.firstdata.com/ucom/v1/payments/s>ales
+Prod: https://prod.api.firstdata.com/ucom/v1/payments/sales
 
 **<ins> Parameters </ins>**
 
@@ -599,11 +599,11 @@ This request will refund of the sale transaction.
 
 HTTP Method: POST
 
-Non-prod: https://int.api.firstdata.com/ucom/v1/payments/sales/%7BfdSaleId%7D/refunds
+Non-prod: https://int.api.firstdata.com/ucom/v1/payments/sales/{fdSaleId}/refunds
 
-Prod: <https://prod.api.firstdata.com/ucom/v1/payments/>sales/{fdSaleId}/refunds
+Prod: https://prod.api.firstdata.com/ucom/v1/payments/sales/{fdSaleId}/refunds
 
-\*Replace fdSaleId with Sale transactionId .
+>Replace fdSaleId with Sale transaction Id. 
 
 **<ins> Parameters </ins>**
 
