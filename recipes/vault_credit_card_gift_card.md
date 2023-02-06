@@ -132,8 +132,8 @@ Encrypted PAN details for Generating Nonce.
 | fdCustomerId| string| body| Yes| 32
 | billingPhone| String| Body| Optional (Mandatory only if Fraud is enabled)
 | expiryDate| String| Body| Yes|-|
-| Month| String| Body| Yes| Month format ‘MM’
-| Year| String| Body| Yes| Year format ‘YY’
+| Month| String| Body| Yes| 2 (MM)
+| Year| String| Body| Yes| 2 (YY)
 
 **<ins> Sample Request </ins>** 
 ```json
