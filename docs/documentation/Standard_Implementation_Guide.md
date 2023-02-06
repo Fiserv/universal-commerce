@@ -342,7 +342,7 @@ This completes the UCOM-MPPA section.
 
 ## Use Cases 
 
-The APIs can be used in different scenarios. We will describe the most common ones to give you an idea about the possibilities. Please see the <a href="/product/UniversalCommerce/recipes/?path=recipes/customerRegistration.md">Recipes Section</a> to learn more.   
+The APIs can be used in different scenarios. We will describe the most common ones to give you an idea about the possibilities. Please see the <a href="/product/UniversalCommerce/recipes/?path=recipes/customerRegistration.md">Recipes Section</a> to learn more.
 	
 ## Testing
 	
