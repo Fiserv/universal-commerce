@@ -252,7 +252,7 @@ paths:
         - $ref: '#/components/parameters/SubMerchantIdParam'
       responses:
         200:
-          description: Receipt dtails
+          description: Receipt details
           content:
             application/json:
               schema:
