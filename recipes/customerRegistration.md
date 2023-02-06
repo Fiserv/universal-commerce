@@ -203,11 +203,11 @@ Timestamp:{{time}} <br>
 ```
 This  request can update any entity that requires updating. Any of the objects or entities in the parameters (above) will work here.
 
-**<ins> Sample Response (204 – No Content)
+**<ins> Sample Response (204 – No Content) </ins>**
 
 The request succeeded but there's really nothing to show.
 
-**<ins> Sample Response (400 – Bad Request)
+**<ins> Sample Response (400 – Bad Request) </ins>**
 ```json
 {
     "code": "279904",
