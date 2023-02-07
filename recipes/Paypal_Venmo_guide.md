@@ -22,9 +22,9 @@ This flow will preform a pre auth transaction with a paypal nonce.
 
 HTTP Method: POST
 
-Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/auths>
+Non-prod: https://int.api.firstdata.com/ucom/v1/payments/auths
 
-Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
+Prod: https://prod.api.firstdata.com/ucom/v1/payments/auths
 
 **<ins> Parameters </ins>**
 
@@ -952,15 +952,12 @@ Sample Error Response
 | access_token      | Conditionally | Required when vaulting payment information. Utilizes the tokenId returned from the /tokens api.                                                                                                                                                                               |
 
 **<ins> Sample Header </ins>**
-
-| Sample Format and Values                                                                                                                                                                                                                                                                                                                                                                                           |
-|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  
 Content-Type: application/json Api-Key: pnQgbD4jjfp5Gu2eqA1i4VnzZtT9mW5I </br>
 Timestamp: 1501621439636 </br>
 Client-Request-Id: abded-12345-ddcce-4r45t </br>
 Authorization:HMAC W5X9NAlPgSNsfQX55fXbXrk3arzL6KxcCTA6SrnxL+U= </br>
-access_token: SPaAADBdzaMbmR7RU7QdftIFLGIa |
-
+access_token: SPaAADBdzaMbmR7RU7QdftIFLGIa 
 
 # How to do Vaulted Payment via Paypal/Venmo
 
@@ -1074,7 +1071,8 @@ Timestamp:{{time}}
 
 **<ins> Sample Response (400 – Bad Request) </ins>**
 
-Sample Error Response                                                                                                                                                                                                                                                    |
+Sample Error Response  
+
 ```json
 {
    "code":"269902",
@@ -1314,11 +1312,11 @@ Sample Error Response
 
 **<ins> Option 1a: Auth with Paypal </ins>**
  
-**<ins># Description </ins>**
+**<ins> Description </ins>**
 
 This flow will preform a pre auth transaction with a paypal nonce.
 
-**<ins># Endpoint URL </ins>**
+**<ins> Endpoint URL </ins>**
 
 HTTP Method: POST
 
@@ -1469,7 +1467,7 @@ Sample Response – Paypal Authorization Transaction - Vaulted
 
 **<ins> Sample Response (400 – Bad Request) </ins>**
 
-Sample Error Response                                                                                                                                                                                                                                                                                                                      |
+Sample Error Response                                                                                                                                                                                                                                                                                                                  
 ```json
 {
    "code":"272731",
@@ -1693,7 +1691,6 @@ Timestamp:{{time}}
 
 **<ins> Sample Request - Paypal Sale Transaction - Vaulted </ins>**
 
-Sample Request – Paypal Sale Transaction - Vaulted
 ```json
 
 {
@@ -1839,7 +1836,7 @@ Non-prod: https://int.api.firstdata.com/ucom/v1/payments/auths
 
 Prod: https://prod.api.firstdata.com/ucom/v1/payments/auths
 
-**<ins># Parameters
+**<ins> Parameters </ins>**
 
 | Entity Name     | Parent Entity Name | Data Type | Parameter Type | Required |
 |-----------------|--------------------|-----------|----------------|----------|
@@ -1876,8 +1873,7 @@ Authorization:HMAC {{signature}}
 Timestamp:{{time}}
 
 **<ins> Sample Request - Venmo Authorization Transaction - Vaulted </ins>**
-
-Sample Request – Venmo Authorization Transaction - Vaulted                                                                                                             
+                                                                                                          
 
 ```json
 
@@ -2182,7 +2178,6 @@ Timestamp:{{time}}
 
 **<ins> Sample Request - Venmo Sale Transaction - Vaulted </ins>**
 
-Sample Request – Venmo Sale Transaction - Vaulted
 ```json
 
 {
