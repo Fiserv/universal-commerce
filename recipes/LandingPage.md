@@ -3,7 +3,7 @@
 <!-- type: row -->
 
 <!-- type: card
-title: <div style="text-align:center;width:100%;height:25%"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/contacts-svgrepo-com.svg" alt="Customer Service" title="Customer Service" style="width:auto; height:90%"></div> How to Create, Read, Update, and Delete a Customer Profile
+title: <div style="text-align:center;width:100%;height:25%"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/f96ce10c5e2605bf67ce61a948903352f8e1484a/assets/images/customer.svg" alt="Customer Service" title="Customer Service" style="width:auto; height:90%"></div> How to Create, Read, Update, and Delete a Customer Profile
 description: 
 link: ../recipes/?path=recipes/customerRegistration.md
 -->
