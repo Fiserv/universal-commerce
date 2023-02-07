@@ -83,7 +83,7 @@ Also, please note that if you delete a customer profile, by default all vaulted/
 <details>
 <summary><b>Can we send an auth or sale payload with the "Name on Card" field blank?</b></summary>
 
-Yes, uCom does not require name on card to be sent as part of the auth or sale transaction. 
+Yes, uCom does not require name on card to be sent as part of the auth or sale transaction.
 </details>
 
 <details>

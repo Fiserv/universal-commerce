@@ -85,7 +85,7 @@ The name of the body parameter has no effect on the parameter itself and is used
 | phoneNumbers.value     | string | Example: 555-555-5555. The value must be specified according to the format defined in RFC3966, e.g., 'tel:+1-201-555-0123'. | N |
 | phoneNumbers.primary   | boolean | Example: true                     | N |
 | phoneNumbers.type      | string | Example: work                      | N |
-| ims.value              | string | Example: someaimhandle. Instant messaging address for the user. A shortened version one of the following values - aim, gtalk, icq, xmpp, msn, skype, qq, yahoo, or other. This will change with popularity of various applicatiions at any time.   | N |
+| ims.value              | string | Example: someaimhandle. Instant messaging address for the user. A shortened version one of the following values - aim, gtalk, icq, xmpp, msn, skype, qq, yahoo, or other. This will change with popularity of various applications at any time.   | N |
 | ims.type               | string | Example: aim                       | N |
 | photo.value            | string | Example: https://photos.example.com/profilephoto/72930000000Ccne/F. A URI that is a uniform resource locator (as defined in Section 1.1.3 of RFC3986) that points to a resource location representing the user's image. The resource MUST be a file (e.g., a GIF, JPEG, or PNG image file) rather than a web page containing an image.   | N |
 | photo.type             | string | Example: Thumbnail. Defines the following canonical values to represent popular photo sizes - "photo" and "thumbnail".   | N |
@@ -104,12 +104,12 @@ The name of the body parameter has no effect on the parameter itself and is used
 | membership             | array  | membership information for the user.  | N |
 | membership.membershipType                 | string | xxx | N |
 | membership.membershipId	               | string | xxx | N |
-| membership.membershipProgramId	        | string | xxx | N |
-| membership.membershipStatus	           | string | xxx | N |
-| membership.membershipExpiryDate	       |        | xxx | N |
-| membership.accountNumber	              | string | xxx | N |
-| membership.securityCode	               | string | xxx | N |
-| membership.additionalInfo	             | string | xxx | N |
+| membership.membershipProgramId       | string | xxx | N |
+| membership.membershipStatus          | string | xxx | N |
+| membership.membershipExpiryDate      |        | xxx | N |
+| membership.accountNumber              | string | xxx | N |
+| membership.securityCode              | string | xxx | N |
+| membership.additionalInfo             | string | xxx | N |
 | deviceInfo: id                                | string | Example: 537edec8-d33e-4ee8-93a7-b9f61876950c    | N |
 | deviceInfo: kind                              | string | Example: mobile                                  | N |
 | deviceInfo.details.provider                   | string | Example: InAuth                                  | N |
@@ -314,8 +314,8 @@ Set-Cookie: NSC_VT-PNB1-OQ2-1ED-DPN-443-WJQ=ffffffff09bd36e445525d5f4f58455e445a
 ## HTTP Status Code and Reason Phrase
 
 * Code = 200, message = "Customer profile retrieved successfully"
-* Code = 400, message = "An exception occured while retrieving a Customer profile"
-* Code = 500, message = "An internal server error occured"
+* Code = 400, message = "An exception occurred while retrieving a Customer profile"
+* Code = 500, message = "An internal server error occurred"
 
 ### Example
 

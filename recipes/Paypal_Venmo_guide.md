@@ -197,9 +197,9 @@ This request will complete the transaction which has been pre authorized.
 
 HTTP Method: POST
 
-Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/auths/{fdAuthorizationId}/captures>
+Non-prod: https://int.api.firstdata.com/ucom/v1/payments/auths/{fdAuthorizationId}/captures
 
-Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths/{fdAuthorizationId}/captures>
+Prod: https://prod.api.firstdata.com/ucom/v1/payments/auths/{fdAuthorizationId}/captures
 
 >Please replace fdAuthorizationId with Auth transaction Id.
 
@@ -307,9 +307,9 @@ This flow will preform a sale transaction with a paypal nonce.
 
 HTTP Method: POST
 
-Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/sales>
+Non-prod: https://int.api.firstdata.com/ucom/v1/payments/sales
 
-Prod: <https://prod.api.firstdata.com/ucom/v1/payments/sales>
+Prod: https://prod.api.firstdata.com/ucom/v1/payments/sales
 
 **<ins> Parameters </ins>**
 
@@ -480,9 +480,9 @@ This flow will preform a pre auth transaction with a Venmo nonce.
 
 HTTP Method: POST
 
-Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/auths>
+Non-prod: https://int.api.firstdata.com/ucom/v1/payments/auths
 
-Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
+Prod: https://prod.api.firstdata.com/ucom/v1/payments/auths
 
 **<ins> Parameters </ins>**
 
@@ -658,9 +658,9 @@ This request will complete the transaction which has been pre authorized.
 
 HTTP Method: POST
 
-Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/auths/{fdAuthorizationId}/captures>
+Non-prod: https://int.api.firstdata.com/ucom/v1/payments/auths/{fdAuthorizationId}/captures
 
-Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths/{fdAuthorizationId}/captures>
+Prod: https://prod.api.firstdata.com/ucom/v1/payments/auths/{fdAuthorizationId}/captures
 
 >Replace fdAuthorizationId with Auth transaction Id.
 
@@ -769,9 +769,9 @@ This flow will preform a sale transaction with a Venmo nonce.
 
 HTTP Method: POST
 
-Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/sales>
+Non-prod: https://int.api.firstdata.com/ucom/v1/payments/sales
 
-Prod: <https://prod.api.firstdata.com/ucom/v1/payments/s>ales
+Prod: https://prod.api.firstdata.com/ucom/v1/payments/sales
 
 **<ins> Parameters </ins>**
 
@@ -978,9 +978,9 @@ The client sends the externalId field (unique identifier) for this customer and 
 
 HTTP Method: POST
 
-Non-prod: <https://int.api.firstdata.com/ucom/v1/customers>
+Non-prod: https://int.api.firstdata.com/ucom/v1/customers
 
-Prod: <https://prod.api.firstdata.com/ucom/v1/customers>
+Prod: https://prod.api.firstdata.com/ucom/v1/customers
 
 **<ins> Parameters </ins>**
 
@@ -1105,9 +1105,9 @@ This request will create a vaulted account in ucom.
 
 HTTP Method: POST
 
-Non-prod: [https://int.api.firstdata.com/ucom/v1/customers/{fdCustomerId}/accounts]
+Non-prod: https://int.api.firstdata.com/ucom/v1/customers/{fdCustomerId}/accounts
 
-Prod: [https://prod.api.firstdata.com/ucom/v1/customers/{fdCustomerId}/accounts]
+Prod: https://prod.api.firstdata.com/ucom/v1/customers/{fdCustomerId}/accounts
 
 **<ins> Parameters </ins>**
 
@@ -1212,9 +1212,9 @@ This request will create a vaulted account in ucom.
 
 HTTP Method: POST
 
-Non-prod: [https://int.api.firstdata.com/ucom/v1/customers/%7BfdCustomerId%7D/accounts](https://int.api.firstdata.com/ucom/v1/customers)
+Non-prod: https://int.api.firstdata.com/ucom/v1/customers/{fdCustomerId}/accounts
 
-Prod: [https://prod.api.firstdata.com/ucom/v1/customers/%7BfdCustomerId%7D/accounts](https://prod.api.firstdata.com/ucom/v1/customers)
+Prod: https://prod.api.firstdata.com/ucom/v1/customers/{fdCustomerId}/accounts
 
 **<ins> Parameters </ins>**
 
@@ -1322,9 +1322,9 @@ This flow will preform a pre auth transaction with a paypal nonce.
 
 HTTP Method: POST
 
-Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/auths>
+Non-prod: https://int.api.firstdata.com/ucom/v1/payments/auths
 
-Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
+Prod: https://prod.api.firstdata.com/ucom/v1/payments/auths
 
 **<ins> Parameters </ins>**
 
@@ -1506,11 +1506,11 @@ This request will complete the transaction which has been pre-authorized.
 
 HTTP Method: POST
 
-Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/auths/>{fdAuthorizationId}/captures
+Non-prod: https://int.api.firstdata.com/ucom/v1/payments/auths/{fdAuthorizationId}/captures
 
-Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>/{fdAuthorizationId}/captures
+Prod: https://prod.api.firstdata.com/ucom/v1/payments/auths/{fdAuthorizationId}/captures
 
-\*Replace fdAuthorizationId with Auth transactionId .
+> Replace fdAuthorizationId with Auth transactionId.
 
 **<ins># Parameters </ins>**
 
@@ -1651,9 +1651,9 @@ This flow will preform a pre auth transaction with a paypal nonce.
 
 HTTP Method: POST
 
-Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/sales>
+Non-prod: https://int.api.firstdata.com/ucom/v1/payments/sales
 
-Prod: <https://prod.api.firstdata.com/ucom/v1/payments/s>ales
+Prod: https://prod.api.firstdata.com/ucom/v1/payments/sales
 
 **<ins> Parameters </ins>**
 
@@ -1835,9 +1835,9 @@ This flow will preform a pre auth transaction with a Venmo nonce.
 
 HTTP Method: POST
 
-Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/auths>
+Non-prod: https://int.api.firstdata.com/ucom/v1/payments/auths
 
-Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
+Prod: https://prod.api.firstdata.com/ucom/v1/payments/auths
 
 **<ins># Parameters
 
@@ -2020,9 +2020,9 @@ This request will complete the transaction which has been pre authorized.
 
 HTTP Method: POST
 
-Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/auths/>{fdAuthorizationId}/captures
+Non-prod: https://int.api.firstdata.com/ucom/v1/payments/auths/{fdAuthorizationId}/captures
 
-Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>/{fdAuthorizationId}/captures
+Prod: https://prod.api.firstdata.com/ucom/v1/payments/auths/{fdAuthorizationId}/captures
 
 >Replace fdAuthorizationId with Auth transaction id. 
 
@@ -2113,7 +2113,7 @@ Sample Response – Capture of Authorization
 
 **<ins> Sample Response (400 – Bad Request) </ins>**
 
-Sample Error Response                                                                                                                                           |
+Sample Error Response 
 
 ```json
 
@@ -2138,11 +2138,11 @@ This flow will preform a sale transaction with a Venmo nonce.
 
 HTTP Method: POST
 
-Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/sales>
+Non-prod: https://int.api.firstdata.com/ucom/v1/payments/sales
 
-Prod: <https://prod.api.firstdata.com/ucom/v1/payments/s>ales
+Prod: https://prod.api.firstdata.com/ucom/v1/payments/sales
 
-**<ins># Parameters </ins>**
+**<ins> Parameters </ins>**
 
 | Entity Name     | Parent Entity Name | Data Type | Parameter Type | Required           |
 |-----------------|--------------------|-----------|----------------|--------------------|
@@ -2180,7 +2180,7 @@ Authorization:HMAC {{signature}}
 
 Timestamp:{{time}}
 
-**<ins># Sample Request - Venmo Sale Transaction - Vaulted </ins>**
+**<ins> Sample Request - Venmo Sale Transaction - Vaulted </ins>**
 
 Sample Request – Venmo Sale Transaction - Vaulted
 ```json

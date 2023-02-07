@@ -16,9 +16,9 @@ Registering a customer in the uCom system results in a unique identifier, 'fdCus
 
 HTTP Method: POST
 
-Non-prod: [https://int.api.firstdata.com/ucom/v1/customers](https://int.api.firstdata.com/ucom/v1/customers)
+Non-prod: https://int.api.firstdata.com/ucom/v1/customers
 
-Prod: [https://prod.api.firstdata.com/ucom/v1/customers](https://prod.api.firstdata.com/ucom/v1/customers)
+Prod: https://prod.api.firstdata.com/ucom/v1/customers
 
 **<ins> Parameters </ins>**
 
@@ -164,9 +164,9 @@ This request will update the Customer profile in uCom by providing the fdCustome
 
 HTTP Method: PATCH
 
-Non-prod: [https://int.api.firstdata.com/ucom/v1/customers/{fdCustomerId}]
+Non-prod: https://int.api.firstdata.com/ucom/v1/customers/{fdCustomerId}
 
-Prod: [https://prod.api.firstdata.com/ucom/v1/customers)/{fdCustomerId}]
+Prod: https://prod.api.firstdata.com/ucom/v1/customers/{fdCustomerId}
 
 
 **<ins> Parameters </ins>**
@@ -203,11 +203,11 @@ Timestamp:{{time}} <br>
 ```
 This  request can update any entity that requires updating. Any of the objects or entities in the parameters (above) will work here.
 
-**<ins> Sample Response (204 – No Content)
+**<ins> Sample Response (204 – No Content) </ins>**
 
 The request succeeded but there's really nothing to show.
 
-**<ins> Sample Response (400 – Bad Request)
+**<ins> Sample Response (400 – Bad Request) </ins>**
 ```json
 {
     "code": "279904",
@@ -229,9 +229,9 @@ Read a Customer Profile. Fetch the details of a customer providing the fdCustome
 
 HTTP Method: GET
 
-Non-prod: [https://int.api.firstdata.com/ucom/v1/customers/{fdCustomerId}](https://int.api.firstdata.com/ucom/v1/customers/%7BfdCustomerId%7D)
+Non-prod: https://int.api.firstdata.com/ucom/v1/customers/{fdCustomerId}
 
-Prod: [https://prod.api.firstdata.com/ucom/v1/customers/{fdCustomerId}](https://prod.api.firstdata.com/ucom/v1/customers/%7BfdCustomerId%7D)
+Prod: https://prod.api.firstdata.com/ucom/v1/customers/{fdCustomerId}
 
 **<ins> Headers </ins>**
 
@@ -304,9 +304,9 @@ Delete a customer profile from uCom system by providing the fdCustomerId.
 
 HTTP Method: DELETE
 
-Non-prod: [https://int.api.firstdata.com/ucom/v1/customers/{fdCustomerId}](https://int.api.firstdata.com/ucom/v1/customers/%7BfdCustomerId%7D)
+Non-prod: https://int.api.firstdata.com/ucom/v1/customers/{fdCustomerId}
 
-Prod: [https://prod.api.firstdata.com/ucom/v1/customers/{fdCustomerId}](https://prod.api.firstdata.com/ucom/v1/customers/%7BfdCustomerId%7D)
+Prod: https://prod.api.firstdata.com/ucom/v1/customers/{fdCustomerId}
 
 **<ins> Headers </ins>**
 

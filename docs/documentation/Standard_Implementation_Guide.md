@@ -196,7 +196,7 @@ This is used to send the FEP (Front End Processor) messages back to the merchant
 
 ## Explore the uCom Services 
 
-Kindly click on the links below to explore each uCom endpoint. 
+Kindly click on the links below to explore each endpoint. 
 
 >### Customer Services
 
@@ -205,6 +205,14 @@ This API handles all of the uCom Customer Profile Management operations (create,
 <a href="../api/?type=post&path=/v1/customers"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/contacts-svgrepo-com.svg" alt="Customer_services" style="width:100px;height:100px;"></a>  
 
 [Customer Services API](../api/?type=post&path=/v1/customers)
+	
+>### Security Services
+	
+This API handles Services related to managing the API security features like access tokens and validation.
+  	
+<a href="../api/?type=post&path=/v1/tokens"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/3d5733abed559182f8c99a2820ee8883e83fb673/assets/images/security-shield-svgrepo-com.svg" alt="Security Services" style="width:100px;height:100px;"></a>  
+
+[Security Services API](../api/?type=post&path=/v1/tokens)
 	
  >### Account Services
 	
@@ -230,6 +238,15 @@ This API handles services related to prepaid cards such as creating a new prepai
 <a href="../api/?type=post&path=/v2/prepaids/multi-purchases"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/eeaffd3f6c980477b788b332c5bf8776f32e11f2/assets/images/gift-card-svgrepo-com.svg" alt="Prepaid Payments" style="width:100px;height:100px;"></a>  
 
 [Prepaid Services API](../api/?type=post&path=/v2/prepaids/multi-purchases)
+	
+>### Hosted Pages Services
+	
+This API handles Hosted Pages services and provides CRUD operaion for its web pages. With the help of these APIs hosted pages will be created and rendred to UI.
+
+<a href="../api/?type=get&path=/v1/hosted-pages/pages"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/bf957bad5bdad86c33303851ad88a54840161818/assets/images/website.svg" alt="Hosted Pages" style="width:100px;height:100px;"></a>  
+
+[Hosted Pages Services API](../api/?type=get&path=/v1/hosted-pages/pages)
+	
 >## UCOM - MPPA 
 
 Mobile Payment Application (MPA): This entity is a software application embedded in a
@@ -317,15 +334,15 @@ Json Object:
 
 Services related to view the list of transactions details, receipts and can add a note to a particular transaction
 	
-<a href="../api/?type=patch&path=/v1/txhistory/customers/{fdCustomerId}/transactions/{transactionId}"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/b2bc3a6e7ebf1850225e4db19eeb593723a02759/assets/images/transaction-minus-svgrepo-com.svg" alt="Tx_Services" style="width:100px;height:100px;"></a>  
+<a href="../api/?type=get&path=/v1/txhistory/customers/{fdCustomerId}/transactions"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/b2bc3a6e7ebf1850225e4db19eeb593723a02759/assets/images/transaction-minus-svgrepo-com.svg" alt="Tx_Services" style="width:100px;height:100px;"></a>  
 
-[Transaction History Services API](../api/?type=patch&path=/v1/txhistory/customers/{fdCustomerId}/transactions/{transactionId})
+[Transaction History Services API](../api/?type=get&path=/v1/txhistory/customers/{fdCustomerId}/transactions)
 
 This completes the UCOM-MPPA section.
 
 ## Use Cases 
 
-The APIs can be used in different scenarios. We will describe the most common ones to give you an idea about the possibilities. Please see the <a href="/product/UniversalCommerce/recipes/?path=recipes/customerRegistration.md">Recipes Section</a> to learn more.   
+The APIs can be used in different scenarios. We will describe the most common ones to give you an idea about the possibilities. Please see the <a href="/product/UniversalCommerce/recipes/?path=recipes/customerRegistration.md">Recipes Section</a> to learn more.
 	
 ## Testing
 	

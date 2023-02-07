@@ -130,7 +130,10 @@ Encrypted PAN details for Generating Nonce.
 | referenceToken| String| body| Yes| -
 | tokenType| String| body| Yes| -
 | fdCustomerId| string| body| Yes| 32
-| billingPhone| String| Body| Optional (Mandatory only if Fraud is enabled)| -
+| billingPhone| String| Body| Optional (Mandatory only if Fraud is enabled)
+| expiryDate| String| Body| Yes|-|
+| Month| String| Body| Yes| 2 (MM)
+| Year| String| Body| Yes| 2 (YY)
 
 **<ins> Sample Request </ins>** 
 ```json
@@ -190,12 +193,12 @@ Prod: https://prod.api.firstdata.com/ucom/v1/customers/{fdCustomerId}/accounts
 
 **<ins> HTTP Header parameter for this API </ins>**
 
-Api-Key: <key>
-Authorization: HMAC <signature>
-Content-Type: application/json
-Timestamp: <time>
-Client-Request-Id: <$guid>
-Client-Token: <accessToken>
+Api-Key: <key> </br>
+Authorization: HMAC <signature></br>
+Content-Type: application/json </br>
+Timestamp: <time> </br>
+Client-Request-Id: <$guid> </br>
+Client-Token: <accessToken> </br>
 
 **<ins> Parameters </ins>**
 
@@ -208,7 +211,6 @@ Client-Token: <accessToken>
 | type| String| Body| Yes| 7
 | cardNumber| String| Body| Yes| 16
 | securityCode| String| Body| Yes| 8
-| expiryDate| String| Body| Yes| 2
 
 **<ins> Sample Request (Nonce Enrollment) </ins>**
 ```json
