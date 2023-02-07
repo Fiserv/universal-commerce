@@ -54,5 +54,12 @@ description:
 link: ../recipes/?path=recipes/InApp_Payments.md
 -->
 
+
+<!-- type: card
+title: <div style="text-align:center;width:100%;height:25%"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/373c3c0803fca20c370c7f12e29d0664f1e39d86/assets/images/payment-svgrepo-com.svg" alt="Inapp Payment" title="Inapp Payment" style="width:auto; height:90%"></div> How to Use Fraud Detect
+description: 
+link: ../recipes/?path=recipes/fraud_detect.md
+-->
+
 <!-- type: row-end -->
 
