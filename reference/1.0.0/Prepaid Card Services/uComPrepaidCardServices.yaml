@@ -261,7 +261,7 @@ paths:
 
   /v2/prepaids/purchases:
     get:
-      x-group-name: Prepaid Services Card
+      x-group-name: Prepaid Services
       x-proxy-name: Create Prepaid Card
       tags:
       - purchase
@@ -737,7 +737,7 @@ paths:
 
   /v2/prepaids/deducts/{fdParentTransactionId}/multi-void:
     post:
-      x-group-name: Prepaid Service
+      x-group-name: Prepaid Services
       x-proxy-name: Service to Void Multiple Deduct Prepaid Accounts
       tags:
       - deduct
