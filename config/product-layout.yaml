@@ -29,7 +29,7 @@
 ################################################################################
 header:
   productName: uCom
-  productionDescription: UCom Items
+  productionDescription: uCom Items
   whoIsItFor: REPLACEME
   image: 
     link: "/assets/images/Fiserv_Logo.jpg"
