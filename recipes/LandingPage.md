@@ -1,4 +1,4 @@
-### Welcome to the Universal Commerce Recipes Section 
+## Welcome to the Universal Commerce Recipes Section 
 
 <!-- type: row -->
 
