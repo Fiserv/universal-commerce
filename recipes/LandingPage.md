@@ -43,7 +43,7 @@ link: ../recipes/?path=recipes/Split_Tender_Payment.md
 
 <!-- type: row -->
 <!-- type: card
-title: <div style="text-align:center;width:100%;height:25%"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/99299089c899f788417426ac355c83d06f9b8870/assets/images/refund-svgrepo-com.svg" alt="Refunds" title="Refunds" style="width:auto; height:100px"></div> <h3 style="text-align:center">How to Issue a Refun</h3>
+title: <div style="text-align:center;width:100%;height:25%"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/99299089c899f788417426ac355c83d06f9b8870/assets/images/refund-svgrepo-com.svg" alt="Refunds" title="Refunds" style="width:auto; height:100px"></div> <h3 style="text-align:center">How to Issue a Refund</h3>
 description: 
 link: ../recipes/?path=recipes/refunds.md
 -->
