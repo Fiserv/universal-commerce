@@ -1,7 +1,7 @@
 # How to Vault a Credit Card or Gift Card
 
 <img title="icon" alt="Alt text" src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/vault-svgrepo-com.svg" width="30" height="30"> 
-This guide will walk you through the process of saving a credit card or gift card in the uCom enrollment vault. Once a customer's credit card is vaulted or saved, an account ID is created, which could be used in subsequent calls to process payments. An FD account ID could be used in ether a sales flow or an anth/capture flow, depending on the use case. 
+This guide will walk you through the process of saving a credit card or gift card in the Connected Commerce (uCom) enrollment vault. Once a customer's credit card is vaulted or saved, an account ID is created, which could be used in subsequent calls to process payments. An FD account ID could be used in ether a sales flow or an anth/capture flow, depending on the use case. 
 
 ## Step 1: Create a customer profile 
 

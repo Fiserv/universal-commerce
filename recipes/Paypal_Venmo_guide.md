@@ -2,14 +2,14 @@
 <span>
 <img title="Paypal" alt="Alt text" src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/paypal-svgrepo-com.svg" width="30" height="30">
 <img title="Venmo" alt="Alt text" src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/venmo-svgrepo-com.svg" width="30" height="30">
-This flow is used if the partner does not have vaulting support through uCom. The client generates the nonce from Paypal/Venmo and processes the transaction using the nonce through uCom.
+This flow is used if the partner does not have vaulting support through Connected Commerce (uCom). The client generates the nonce from Paypal/Venmo and processes the transaction using the nonce through Connected Commerce (uCom).
 </span>
 
 
 
 **<ins> Prerequisites: </ins>** </br>
 PayPal Account </br>
-PayPal account details configured in uCom. </br>
+PayPal account details configured in Connected Commerce (uCom). </br>
 PayPal SDK Setup/configured to generate the nonce. </br>
 
 ## Option 1a: Auth with PayPal
@@ -961,15 +961,15 @@ access_token: SPaAADBdzaMbmR7RU7QdftIFLGIa
 
 # How to do Vaulted Payment via Paypal/Venmo
 
-Please use this flow if vaulting is enabled through uCom. The client generates a nonce from Paypal/Venmo and then does vaulting with Paypal/Venmo nonce, then preform the transaction with vaulted account.
+Please use this flow if vaulting is enabled through Connected Commerce (uCom). The client generates a nonce from Paypal/Venmo and then does vaulting with Paypal/Venmo nonce, then preform the transaction with vaulted account.
 
 ## Step 1: Create a Customer
 
 **<ins> Description </ins>**
 
-This request will create a customer for card vaulting or payment purposes. This is always the first step that needs to be taken to do vaulting an account in the ucom.
+This request will create a customer for card vaulting or payment purposes. This is always the first step that needs to be taken to do vaulting an account in the Connected Commerce (uCom).
 
-The client sends the externalId field (unique identifier) for this customer and ucom generate fdCustomerId and send it in the response to the client.
+The client sends the externalId field (unique identifier) for this customer and Connected Commerce (uCom) generate fdCustomerId and send it in the response to the client.
 
 **<ins> Endpoint URL </ins>**
 
@@ -1097,7 +1097,7 @@ Sample Error Response
 
 **<ins> Description </ins>**
 
-This request will create a vaulted account in ucom.
+This request will create a vaulted account in Connected Commerce (uCom).
 
 **<ins> Endpoint URL </ins>**
 
@@ -1204,7 +1204,7 @@ Sample Error Response
 
 **<ins> Description </ins>**
 
-This request will create a vaulted account in ucom.
+This request will create a vaulted account in Connected Commerce (uCom).
 
 **<ins> Endpoint URL </ins>**
 
