@@ -20,9 +20,9 @@ Which are the supported OS versions, devices, browser versions for Apple Pay? Se
 
 * Consumer adds card as a payment method into the mobile app and enters card details into the Apple wallet.
 
-* ApplePay is not onboarded into uCom vault, but it is onboarded into Apple Wallet only.
+* ApplePay is not onboarded into Connected Commerce (uCom) vault, but it is onboarded into Apple Wallet only.
 
-* From Fiserv uCom side encryption / decryption is not happening during card onboarding.
+* From Fiserv Connected Commerce (uCom) side encryption / decryption is not happening during card onboarding.
 
 # Step 2 : Payment with Apple Pay
 
@@ -30,17 +30,17 @@ Which are the supported OS versions, devices, browser versions for Apple Pay? Se
 
 2. Consumer can select in the Apple wallet with which card payment should be done.
 
-3. Encrypted Apple Pay payload details and payment details are provided and transferred via MAS (Mobile Application Server) to uCom system.
+3. Encrypted Apple Pay payload details and payment details are provided and transferred via MAS (Mobile Application Server) to Connected Commerce (uCom) system.
 
-4. During payment flow, encrypted DPAN (Not actual PAN number), expiry, holder name, card type, cvv, eci and necessary headers are coming into uCom via (Mobile -> MAS -> uCom).
+4. During payment flow, encrypted DPAN (Not actual PAN number), expiry, holder name, card type, cvv, eci and necessary headers are coming into Connected Commerce (uCom) via (Mobile -> MAS -> Connected Commerce (uCom)).
 
-5. uCom get decrypted data (DPAN, expiry, holder name, card type, cvv, eci, etc) from Fiserv’s Payeezy decryption service.
+5. Connected Commerce (uCom) get decrypted data (DPAN, expiry, holder name, card type, cvv, eci, etc) from Fiserv’s Payeezy decryption service.
 
-6. uCom sends DPAN, expiry, holder name, card type, cvv, eci and all necessary payment data to payment processor for payment processing.
+6. Connected Commerce (uCom) sends DPAN, expiry, holder name, card type, cvv, eci and all necessary payment data to payment processor for payment processing.
 
 # Payeezy Integration
 
-In order to process Apple Pay and Google Pay payments through uCom, a CSR a long with a Merchant Identifier are needed.
+In order to process Apple Pay and Google Pay payments through Connected Commerce (uCom), a CSR a long with a Merchant Identifier are needed.
 
 To get the Apple Certificate (CSR) you have to register an account with our Payeezy Developer portal. This is used for a different gateway (Payeezy), but you are just registering so you can create and save the certificate then add it your Apple developer account.
 
@@ -91,7 +91,7 @@ sandbox merchant ID on your behalf.
 >Please note that ACME SOCK is a generic merchant ID for the Demo environment. It is strictly for the demo environment and not associated with a specific merchant profile. The correct value in the merchant token field will start with "FDOA-" and this is the value that will be provided to the project technical support team. 
 
 ## Step 3: Generate a Sandbox Apple Pay Cert 
-To enable Apple Pay & Google Pay through the uCom platform, you will need to generate an Apple Pay cert as demonstrated below: 
+To enable Apple Pay & Google Pay through the Connected Commerce (uCom) platform, you will need to generate an Apple Pay cert as demonstrated below: 
 
 1. Click on “CERTS” in the top right. Enter an app label and select the product you would like, for example, Apple Pay then click on the “ADD” button. 
 
@@ -101,7 +101,7 @@ To enable Apple Pay & Google Pay through the uCom platform, you will need to gen
 
 # Step 4: Generate Production Credentials 
 
->Please note that the Sandbox & Live merchant App labels, certifications, and key information will need to be shared with uCom technical support/Implementations team for account configuration.
+>Please note that the Sandbox & Live merchant App labels, certifications, and key information will need to be shared with Connected Commerce (uCom) technical support/Implementations team for account configuration.
 
 1. Generate a live API Key, by going to the “APIS” page and clicking add a new API. Please enter your application name and select “Live” and finally click “CREATE
 YOUR APP” when done.
