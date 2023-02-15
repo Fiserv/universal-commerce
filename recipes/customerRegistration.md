@@ -2,7 +2,7 @@
 # How to Create, Read, Update and Delete Customer Profiles 
 
 <img title="customer profile" alt="Alt text" src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/contacts-svgrepo-com.svg">
-This guide will cover all CRUD operations for customer profiles in the uCom API.
+This guide will cover all CRUD operations for customer profiles in the Connected Commerce (uCom) API.
 
 ## Create a Customer Profile
 
@@ -10,7 +10,7 @@ This guide will cover all CRUD operations for customer profiles in the uCom API.
 
 Create a Customer Profile (Customer Registration)
 
-Registering a customer in the uCom system results in a unique identifier, 'fdCustomerId' that is used in subsequent operations like vaulting a payment account or making mobile payments. 
+Registering a customer in the Connected Commerce (uCom) system results in a unique identifier, 'fdCustomerId' that is used in subsequent operations like vaulting a payment account or making mobile payments. 
 
 **<ins> Endpoint URL </ins>**
 
@@ -158,7 +158,7 @@ Timestamp:{{time}} <br>
 
 **<ins> Description </ins>**
 
-This request will update the Customer profile in uCom by providing the fdCustomerId.
+This request will update the Customer profile in Connected Commerce (uCom) by providing the fdCustomerId.
 
 **<ins> Endpoint URL </ins>**
 
@@ -298,7 +298,7 @@ This request is empty since it's a GET call. All that is needed is the fdCustome
 
 **<ins> Description </ins>**
 
-Delete a customer profile from uCom system by providing the fdCustomerId.
+Delete a customer profile from Connected Commerce (uCom) system by providing the fdCustomerId.
 
 **<ins> Endpoint URL </ins>**
 
