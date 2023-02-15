@@ -38,11 +38,11 @@ Please see the reference document for current implementation.
  
  | Header            | Value                  | Always Required | Description                                                                                                                             |
 |-------------------|------------------------|-----------------|-----------------------------------------------------------------------------------------------------------------------------------------|
-| Api-Key           | <apiKey>               | YES             | Merchant API key, Refer Apigee portal for more details                                                                                  |
-| Timestamp         | <timestamp>            | YES             | Request initiation timestamp, expecting Epoch time. The value must generate out of UTC timestamp. Sample value format is 1499961987232
-| Authorization     | HMAC <signature>       | YES             | HMAC Key generation, please refer Apigee portal for more details                                                                        |
-| Authorization     | Bearer {{accessToken}} | YES             | Used on /v1/account-tokens                                                                                                              |
-| Content-Type      | application/json       | YES             | application/json                                                                                                                        |
+| Api-Key           | <apiKey>               | Yes             | Merchant API key, Refer Apigee portal for more details                                                                                  |
+| Timestamp         | <timestamp>            | Yes             | Request initiation timestamp, expecting Epoch time. The value must generate out of UTC timestamp. Sample value format is 1499961987232
+| Authorization     | HMAC <signature>       | Yes             | HMAC Key generation, please refer Apigee portal for more details                                                                        |
+| Authorization     | Bearer {{accessToken}} | Yes             | Used on /v1/account-tokens                                                                                                              |
+| Content-Type      | application/json       | Yes             | application/json                                                                                                                        |
 | Client-Request-Id | <$guid>                |                 | This is mandatory and unique for post request to avoid duplicate entry                                                                  |
 | Client-Token      | <accessToken>          |                 | Used on POST /v1/payments/sales for anonymous transactions and /v1/customers/{fdCustomerId}/accounts for account transactions           |
 | Content-Signature | HMAC <signature>       |                 | Used on /v1/account-tokens                                                                                                              |
@@ -51,14 +51,14 @@ Please see the reference document for current implementation.
    >### Securities and Privacy
     >>Field Encryption/Decryption Algorithm
 
-Unless explicitly decided otherwise, confidential information such as account number, card number, passwords etc. should be encrypted prior to exchanging with UCG. The wallet app server has to encrypt the messages using the public key (that will be shared by UCG) and sent to UCG. The required steps for encrypting the sensitive information are;
+Unless explicitly decided otherwise, confidential information such as account number, card number, passwords etc. should be encrypted prior to exchanging with UCG. The wallet app server has to encrypt the messages using the public key (that will be shared by UCG) and sent to UCG. The steps required for encrypting the sensitive information are:
 
- - The cipher algorithm is setup to use “RSA/None/PKCS1Padding” 
+ - The cipher algorithm is setup to use “RSA/None/PKCS1Padding.” 
  - The sensitive data, such as credit card account number, should be
-   encrypted with the cipher algorithm using the shared public key
- - The encrypted string should then be Base64 encoded
- - The final encoded string value  replaces the sensitive data 
- - The encoded string is used by UCG to retrieve the sensitive data
+   encrypted with the cipher algorithm using the shared public key.
+ - The encrypted string should then be Base64 encoded.
+ - The final encoded string value  replaces the sensitive data.
+ - The encoded string is used by UCG to retrieve the sensitive data.
 
 >### Currencies
 
@@ -241,7 +241,7 @@ This API handles services related to prepaid cards such as creating a new prepai
 	
 >### Hosted Pages Services
 	
-This API handles Hosted Pages services and provides CRUD operaion for its web pages. With the help of these APIs hosted pages will be created and rendred to UI.
+This API handles Hosted Pages services and provides CRUD operation for its web pages. With the help of these APIs hosted pages will be created and rendred to UI.
 
 <a href="../api/?type=get&path=/v1/hosted-pages/pages"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/bf957bad5bdad86c33303851ad88a54840161818/assets/images/website.svg" alt="Hosted Pages" style="width:100px;height:100px;"></a>  
 
@@ -257,7 +257,7 @@ Mobile Payment Processing Application (MPPA): This entity is an application prov
 by the Mobile Payment Processor (MPP) not on the Mobile Device that is responsible for
 interfacing between the Token Vault or Token/Trusted Service Provider, the MPA, the
 Site System and the Payment Front End Processor (PFEP) in order to authorize
-transactions. The below section will be applicable if Fiserv Connected Commerce (uCom) is acting as a MPPA,
+transactions. The below section will be applicable if Fiserv Connected Commerce (uCom) is acting as a MPPA.
 
   >### Petrol Services
 
@@ -316,12 +316,12 @@ Json Object:
 }
 ```
 
-1. Connected Commerce (uCom) applies a standard URL pattern validation on the webhook endpoint URL if webhookUrl.href is present in the request
-2. Connected Commerce (uCom) configures a list of allowable domain names for a given partner and validates a requested domain name with the configured list
-3. If above point #1 or #2 failed then Connected Commerce (uCom) sends an error to the merchant as invalid message request
-4. If validation is success, we persist the webhookUrl endpoint in Connected Commerce (uCom) system
+1. Connected Commerce (uCom) applies a standard URL pattern validation on the webhook endpoint URL if webhookUrl.href is present in the request.
+2. Connected Commerce (uCom) configures a list of allowable domain names for a given partner and validates a requested domain name with the configured list.
+3. If above point #1 or #2 failed then Connected Commerce (uCom) sends an error to the merchant as invalid message request.
+4. If validation is success, we persist the webhookUrl endpoint in Connected Commerce (uCom) system.
 5. Whenever the fueling, completion or receipt request comes from POS, Connected Commerce (uCom) system look up the webhook endpoint from transaction level.
-6. If endpoint available at transaction level, we use it for posting the notifications
+6. If endpoint available at transaction level, we use it for posting the notifications.
 7. If endpoint is not available in transaction, then we publish notifications to the merchant level endpoint via normal notification route.
 
 
