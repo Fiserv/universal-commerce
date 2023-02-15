@@ -5,9 +5,9 @@
 ### General FAQs
 
 <details>
-<summary><b>How are Debit cards handled in uCom?</b></summary>
+<summary><b>How are Debit cards handled in Connected Commerce (uCom)?</b></summary>
 
-Debit cards are treated the same way as credit cards in uCom requests. 
+Debit cards are treated the same way as credit cards in Connected Commerce (uCom) requests. 
 
 </details>
 
@@ -16,7 +16,7 @@ Debit cards are treated the same way as credit cards in uCom requests.
 <details>
 <summary><b>Can we pull a customer profile using just the external customer ID?</b></summary>
 
-Yes, this operation is possible using the query strong “externalId’ as demonstrated below: </br>
+Yes, this operation is possible using the query strong "externalId" as demonstrated below: </br>
 GET /v1/customers/?externalId=customerid
 
 </details>
@@ -68,9 +68,9 @@ The number of cards allowed to be vaulted per wallet is adjustable based on the 
 </details>
 
 <details>
-<summary><b>How can we remove all credit cards or accounts vaulted to a wallet within uCom?</b></summary>
+<summary><b>How can we remove all credit cards or accounts vaulted to a wallet within Connected Commerce (uCom)?</b></summary>
 
-uCom does not offer the ability to remove all accounts tied to a specific wallet. uCom, does, however offer the ability to remove one account at a time using the API call below: <br>
+Connected Commerce (uCom) does not offer the ability to remove all accounts tied to a specific wallet. Connected Commerce (uCom) does, however, offer the ability to remove one account at a time using the API call below: <br>
 DELETE /v1/customers/{fdCustomerId}/accounts/{fdAccountId} </br>
 Also, please note that if you delete a customer profile, by default all vaulted/saved cards will be deleted automatically along with the customer profile. 
 
@@ -83,7 +83,7 @@ Also, please note that if you delete a customer profile, by default all vaulted/
 <details>
 <summary><b>Can we send an auth or sale payload with the "Name on Card" field blank?</b></summary>
 
-Yes, uCom does not require name on card to be sent as part of the auth or sale transaction.
+Yes, Connected Commerce (uCom) does not require name on card to be sent as part of the auth or sale transaction.
 </details>
 
 <details>
@@ -96,19 +96,19 @@ Yes, we recommend making use of the data returned in the “hostExtraInfo” fie
 <details>
 <summary><b>Does the platform support partial reversal of authorized funds after a portion of the held amount has been captured?</b></summary>
 
-Yes, uCom does support partial reversal. For example, let’s assume we have a auth for $50 and we only captured $20, the remaining amount will be released automatically. 
+Yes, Connected Commerce (uCom) does support partial reversal. For example, let’s assume we have a auth for $50 and we only captured $20, the remaining amount will be released automatically. 
 </details>
 
 <details>
-<summary><b>If we send Expiry month and year with an expired date, will uCom throw an error?</b></summary>
+<summary><b>If we send Expiry month and year with an expired date, will Connected Commerce (uCom) throw an error?</b></summary>
 
-UCom does not have any validation against the Expiry month and year, but our downstream payment system does the validation and throws error, which then gets passed to uCom. 
+Connected Commerce (uCom) does not have any validation against the Expiry month and year, but our downstream payment system does the validation and throws error, which then gets passed to Connected Commerce (uCom). 
 
 </details>
 
 
 <details>
-<summary><b>On the auth endpoint, fdCustomerId is marked “Required (unless specifically configured not to be)”. What does this mean exactly?  Do we need a customer id for anonymous payments?</b></summary>
+<summary><b>On the auth endpoint, fdCustomerId is marked “Required (unless specifically configured not to be).”  What does this mean exactly?  Do we need a customer id for anonymous payments?</b></summary>
 
 An fdCustomerId is required to perform payments using a vaulted account only, but it is not mandatory for anonymous payments. 
 
@@ -152,9 +152,9 @@ For QSR, void is the most likely use case as the change would likely occur very 
 ### Security FAQs
 
 <details>
-<summary><b>Can we use multiple algorithms when interacting with the uCom API?</b></summary>
+<summary><b>Can we use multiple algorithms when interacting with the Connected Commerce (uCom) API?</b></summary>
 
-No, uCom does not support multiple algorithms for the same partner.
+No, Connected Commerce (uCom) does not support multiple algorithms for the same partner.
 
 </details>
 
