@@ -101,6 +101,8 @@ To enable Apple Pay & Google Pay through the uCom platform, you will need to gen
 
 # Step 4: Generate Production Credentials 
 
+>Please note that the Sandbox & Live merchant App labels, certifications, and key information will need to be shared with uCom technical support/Implementations team for account configuration.
+
 1. Generate a live API Key, by going to the “APIS” page and clicking add a new API. Please enter your application name and select “Live” and finally click “CREATE
 YOUR APP” when done.
 
@@ -110,4 +112,4 @@ YOUR APP” when done.
 
 4. Request a live merchant ID by emailing the Payeezy onboarding team (payeezyboarding@fiserv.com) and requesting a live merchant ID. 
 
->Please note that the Sandbox & Live merchant App labels, certifications, and key information will need to be shared with uCom technical support/Implementations team for account configuration.
+
