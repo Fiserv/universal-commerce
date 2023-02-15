@@ -16,15 +16,15 @@ Which are the supported OS versions, devices, browser versions for Apple Pay? Se
 
 [https://developer.apple.com/apple-pay/sandbox-testing/](https://developer.apple.com/apple-pay/sandbox-testing/)
 
-# Step 1: Adding a card to the Apple Wallet
+## Step 1: Add a card to the Apple Wallet
 
 * Consumer adds card as a payment method into the mobile app and enters card details into the Apple wallet.
 
 * ApplePay is not onboarded into Connected Commerce (uCom) vault, but it is onboarded into Apple Wallet only.
 
-* From Fiserv Connected Commerce (uCom) side encryption / decryption is not happening during card onboarding.
+* From Fiserv Connected Commerce (uCom) side encryption/decryption does not happen during card onboarding.
 
-# Step 2 : Payment with Apple Pay
+## Step 2 : Payment with Apple Pay
 
 1. Consumers to perform payments with their plastic bank cards added into the Apple Wallet.
 
@@ -38,9 +38,9 @@ Which are the supported OS versions, devices, browser versions for Apple Pay? Se
 
 6. Connected Commerce (uCom) sends DPAN, expiry, holder name, card type, cvv, eci and all necessary payment data to payment processor for payment processing.
 
-# Payeezy Integration
+## Payeezy Integration
 
-In order to process Apple Pay and Google Pay payments through Connected Commerce (uCom), a CSR a long with a Merchant Identifier are needed.
+In order to process Apple Pay and Google Pay payments through Connected Commerce (uCom), a CSR along with a Merchant Identifier are needed.
 
 To get the Apple Certificate (CSR) you have to register an account with our Payeezy Developer portal. This is used for a different gateway (Payeezy), but you are just registering so you can create and save the certificate then add it your Apple developer account.
 
@@ -99,7 +99,7 @@ To enable Apple Pay & Google Pay through the Connected Commerce (uCom) platform,
 
 >If you need to generate more than one apple pay/android pay cert, you will need to email the Payeezy onboarding email (payeezyboarding@fiserv.com). Same step will need to be done if any modifications are needed to the existing certs. 
 
-# Step 4: Generate Production Credentials 
+## Step 4: Generate Production Credentials 
 
 >Please note that the Sandbox & Live merchant App labels, certifications, and key information will need to be shared with Connected Commerce (uCom) technical support/Implementations team for account configuration.
 
@@ -111,5 +111,16 @@ YOUR APP” when done.
 3. Generate a live Apple Pay cert by going to “CERTS” page, then select the “live” tab and create a new Apple Pay cert. 
 
 4. Request a live merchant ID by emailing the Payeezy onboarding team (payeezyboarding@fiserv.com) and requesting a live merchant ID. 
+
+## Step 5: Integrate Apple Pay & Google Pay's SDK
+
+Kindly use the links below to get started integrating Apple Pay & Google Pay into your app: 
+
+**<ins> Apple Pay: </ins>**
+https://developer.apple.com/apple-pay/implementation/
+https://developer.apple.com/apple-pay/
+
+**<ins> Google Pay: </ins>**
+https://developers.google.com/pay
 
 
