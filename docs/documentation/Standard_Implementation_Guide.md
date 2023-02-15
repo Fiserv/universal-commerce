@@ -88,15 +88,15 @@ These currencies require the same correct amount format with a maximum of 2 deci
 
   >### Idempotency
       
-   The way idempotency is enforced in uCom is strictly as follows:
+   The way idempotency is enforced in Connected Commerce (uCom) is strictly as follows:
 
-A transaction can be sent with the same idempotent ID (Client-Request-Id) at any time to receive the same response as the original transaction, however if no response from uCom was received during the initial transaction then the subsequent time the ID is sent will be treated as a new request.
+A transaction can be sent with the same idempotent ID (Client-Request-Id) at any time to receive the same response as the original transaction, however if no response from Connected Commerce (uCom) was received during the initial transaction then the subsequent time the ID is sent will be treated as a new request.
 
-A response includes timeouts, errors, or anything else that is being returned from uCom as a response to the request. This response constitutes a completed transaction as per idempotency rules.
+A response includes timeouts, errors, or anything else that is being returned from Connected Commerce (uCom) as a response to the request. This response constitutes a completed transaction as per idempotency rules.
 
 If a transaction is still in flight and the same idempotent ID is used, a 503 error will be returned to signify that the transaction is still in progress. This can be continually retried until a different response (non-503 error) is received to signify whether the transaction has completed or not.
 
-Any other 500 error received constitutes a completed transaction and would need to have a new idempotent ID generated to retry that transaction. In this case the original transaction will be rolled back and no duplicate payments will be made. An example of a scenario when you should resend the idempotent ID would be if the network timed out on client side and no response was received from the uCom application.
+Any other 500 error received constitutes a completed transaction and would need to have a new idempotent ID generated to retry that transaction. In this case the original transaction will be rolled back and no duplicate payments will be made. An example of a scenario when you should resend the idempotent ID would be if the network timed out on client side and no response was received from the Connected Commerce (uCom) application.
 
 Also note that the idempotent ID will only last for 24 hours regardless, so any retries with the same ID would need to be made within the 24-hour window after generation.
 
@@ -194,13 +194,13 @@ This is used to send the FEP (Front End Processor) messages back to the merchant
 }
 ```
 
-## Explore the uCom Services 
+## Explore the Connected Commerce (uCom) Services 
 
 Kindly click on the links below to explore each endpoint. 
 
 >### Customer Services
 
-This API handles all of the uCom Customer Profile Management operations (create, read, update, and delete).
+This API handles all of the Connected Commerce (uCom) Customer Profile Management operations (create, read, update, and delete).
 	
 <a href="../api/?type=post&path=/v1/customers"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/contacts-svgrepo-com.svg" alt="Customer_services" style="width:100px;height:100px;"></a>  
 
@@ -216,7 +216,7 @@ This API handles Services related to managing the API security features like acc
 	
  >### Account Services
 	
-Services related to uCom customer accounts. Accounts can be credit, debit, loyalty, prepaid, etc.
+Services related to Connected Commerce (uCom) customer accounts. Accounts can be credit, debit, loyalty, prepaid, etc.
   	
 <a href="../api/?type=post&path=/v1/accounts/verification"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/vault-svgrepo-com.svg" alt="Account_services" style="width:100px;height:100px;"></a>  
 
@@ -247,7 +247,7 @@ This API handles Hosted Pages services and provides CRUD operaion for its web pa
 
 [Hosted Pages Services API](../api/?type=get&path=/v1/hosted-pages/pages)
 	
->## UCOM - MPPA 
+>## uCOM - MPPA 
 
 Mobile Payment Application (MPA): This entity is a software application embedded in a
 Mobile Device or downloaded by a consumer onto a Mobile Device, such as a smart
@@ -257,7 +257,7 @@ Mobile Payment Processing Application (MPPA): This entity is an application prov
 by the Mobile Payment Processor (MPP) not on the Mobile Device that is responsible for
 interfacing between the Token Vault or Token/Trusted Service Provider, the MPA, the
 Site System and the Payment Front End Processor (PFEP) in order to authorize
-transactions. The below section will be applicable if Fiserv UCOM is acting as a MPPA,
+transactions. The below section will be applicable if Fiserv Connected Commerce (uCom) is acting as a MPPA,
 
   >### Petrol Services
 
@@ -316,29 +316,29 @@ Json Object:
 }
 ```
 
-1. UCOM applies a standard URL pattern validation on the webhook endpoint URL if webhookUrl.href is present in the request
-2. UCOM configures a list of allowable domain names for a given partner and validates a requested domain name with the configured list
-3. If above point #1 or #2 failed then UCOM sends an error to the merchant as invalid message request
-4. If validation is success, we persist the webhookUrl endpoint in uCom system
-5. Whenever the fueling, completion or receipt request comes from POS, UCOM system look up the webhook endpoint from transaction level.
+1. Connected Commerce (uCom) applies a standard URL pattern validation on the webhook endpoint URL if webhookUrl.href is present in the request
+2. Connected Commerce (uCom) configures a list of allowable domain names for a given partner and validates a requested domain name with the configured list
+3. If above point #1 or #2 failed then Connected Commerce (uCom) sends an error to the merchant as invalid message request
+4. If validation is success, we persist the webhookUrl endpoint in Connected Commerce (uCom) system
+5. Whenever the fueling, completion or receipt request comes from POS, Connected Commerce (uCom) system look up the webhook endpoint from transaction level.
 6. If endpoint available at transaction level, we use it for posting the notifications
-7. If endpoint is not available in transaction, then we publish notifications to the merchant level endpoint via normal notificaiton route
+7. If endpoint is not available in transaction, then we publish notifications to the merchant level endpoint via normal notification route.
 
 
 **Wallet notification securities**
 
- UCOM will share a public certificate to the merchant to receive the wallet notifications from uCom
+ Connected Commerce (uCom) will share a public certificate to the merchant to receive the wallet notifications from Connected Commerce (uCom).
 
 
   >### Transaction History Services
 
-Services related to view the list of transactions details, receipts and can add a note to a particular transaction
+Services related to view the list of transactions details, receipts and can add a note to a particular transaction.
 	
 <a href="../api/?type=get&path=/v1/txhistory/customers/{fdCustomerId}/transactions"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/b2bc3a6e7ebf1850225e4db19eeb593723a02759/assets/images/transaction-minus-svgrepo-com.svg" alt="Tx_Services" style="width:100px;height:100px;"></a>  
 
 [Transaction History Services API](../api/?type=get&path=/v1/txhistory/customers/{fdCustomerId}/transactions)
 
-This completes the UCOM-MPPA section.
+This completes the uCOM-MPPA section.
 
 ## Use Cases 
 
@@ -346,7 +346,7 @@ The APIs can be used in different scenarios. We will describe the most common on
 	
 ## Testing
 	
-Before you start testing the uCom API, we recommend spending some time to learn about the FEP that is assigned to your configuration in uCom. The most common FEPs used are BUYPASS, Rapid Connect and IPG. A specific set of testing cards will be provided to you by the Implementation Team once the configurations are completed. <br>
+Before you start testing the Connected Commerce (uCom) API, we recommend spending some time to learn about the FEP that is assigned to your configuration in Connected Commerce (uCom). The most common FEPs used are BUYPASS, Rapid Connect and IPG. A specific set of testing cards will be provided to you by the Implementation Team once the configurations are completed. <br>
 
 Still having questions? Check out the <a href="/product/UniversalCommerce/docs/?path=docs/faq/faq.md">FAQs Section</a> for help.
 
