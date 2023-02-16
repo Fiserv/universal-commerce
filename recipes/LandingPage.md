@@ -54,12 +54,5 @@ description:
 link: ../recipes/?path=recipes/InApp_Payments.md
 -->
 
-
-<!-- type: card
-title: <div style="text-align:center;width:100%;height:25%"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/60db24047a223608c0ee0528893de074604bae78/assets/images/security-shield-svgrepo-com.svg" alt="Fraud" title="Fraud" style="width:auto; height:150px"></div> <h3 style="text-align:center">How to Use Fraud Detect</h3>
-description: 
-link: ../recipes/?path=recipes/fraud_detect.md
--->
-
 <!-- type: row-end -->
 
