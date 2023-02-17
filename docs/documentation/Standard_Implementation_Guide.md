@@ -22,7 +22,7 @@ Concatenate the above URL and each endpoint name from the specification to get f
 
 **Example:** Full-qualified URL of /v1/customer API for Integration environment is,
 
-[https://int.api.firstdata.com/ucom/v1/customers/](https://int.api.firstdata.com/ucom/v1/customers/)
+[https://int.api.firstdata.com/ucom/v1/customers](https://int.api.firstdata.com/ucom/v1/customers)
 
 >### Authentication
 
@@ -325,10 +325,244 @@ Json Object:
 7. If endpoint is not available in transaction, then we publish notifications to the merchant level endpoint via normal notification route.
 
 
-**Wallet notification securities**
+**Wallet Notification Securities**
 
  Connected Commerce (uCom) will share a public certificate to the merchant to receive the wallet notifications from Connected Commerce (uCom).
 
+**Sample Wallet Notification Examples**
+
+###### Fuel Started Notification - PETROTRANSACTION_FUEL_STARTED
+
+```json
+
+{
+    "id": "996f118665154c8f92b0c1c832808df6",
+    "created": 1676536855343,
+    "eventType": "PetroTransaction.FUEL_STARTED",
+    "resourceType": "PetroTransaction",
+    "eventData": {
+        "transactionId": "996f118665154c8f92b0c1c832808df6",
+        "payments": [
+            {
+                "currencyCode": {
+                    "code": "USD",
+                    "number": 840,
+                    "currency": "US Dollar"
+                },
+                "requestedAuthAmount": 15.28,
+                "approvedAuthAmount": 15.28,
+                "status": "AUTHORIZED",
+                "fundingSource": {
+                    "type": "VAULTED_ACCOUNT",
+                    "vaultedAccount": {
+                        "fdAccountId": "8a7f148f864e8ceb018659614b280d84",
+                        "type": "CREDIT"
+                    },
+                    "account": {
+                        "fdAccountId": "8a7f148f864e8ceb018659614b280d84",
+                        "type": "CREDIT"
+                    },
+                    "credit": {
+                        "alias": "6668",
+                        "cardType": "DISCOVER",
+                        "expiryDate": {
+                            "month": "MASKED",
+                            "year": "MASKED"
+                        }
+                    }
+                }
+            }
+        ],
+        "status": "FUEL_STARTED",
+        "createdDateTime": "2023-02-16T08:40:32Z",
+        "lastUpdatedDateTime": "2023-02-16T08:40:55Z",
+        "salePosition": "OUTSIDE_STORE"
+    }
+}
+
+```
+
+###### Transaction Completed Notification - PETROTRANSACTION_COMPLETED
+
+```json
+
+{
+    "id": "996f118665154c8f92b0c1c832808df6",
+    "created": 1676536866581,
+    "eventType": "PetroTransaction.COMPLETED",
+    "resourceType": "PetroTransaction",
+    "eventData": {
+        "transactionId": "996f118665154c8f92b0c1c832808df6",
+        "siteInfo": {
+            "siteLocationId": "770006",
+            "fuelPurchaseInfo": {
+                "pumpNumber": 1,
+                "serviceLevelCode": "S"
+            }
+        },
+        "payments": [
+            {
+                "currencyCode": {
+                    "code": "USD",
+                    "number": 840,
+                    "currency": "US Dollar"
+                },
+                "requestedAuthAmount": 15.28,
+                "approvedAuthAmount": 15.28,
+                "capturedAmount": 19.74,
+                "status": "COMPLETED",
+                "fundingSource": {
+                    "type": "VAULTED_ACCOUNT",
+                    "vaultedAccount": {
+                        "fdAccountId": "8a7f148f864e8ceb018659614b280d84",
+                        "type": "CREDIT"
+                    },
+                    "account": {
+                        "fdAccountId": "8a7f148f864e8ceb018659614b280d84",
+                        "type": "CREDIT"
+                    },
+                    "credit": {
+                        "alias": "6668",
+                        "cardType": "DISCOVER",
+                        "expiryDate": {
+                            "month": "MASKED",
+                            "year": "MASKED"
+                        }
+                    }
+                }
+            }
+        ],
+        "status": "COMPLETED",
+        "finalTransactionAmount": 19.74,
+        "saleItems": [
+            {
+                "itemDescription": "UNLD",
+                "itemPrice": 2.639,
+                "unitOfMeasurement": "ea",
+                "unitsSold": 7.48,
+                "totalItemSaleAmount": 19.74,
+                "posCode": "00000000000001",
+                "productCode": "4",
+                "type": "FUEL",
+                "priceTier": "credit"
+            }
+        ],
+        "transactionDateTime": "2023-02-16T08:40:34Z",
+        "createdDateTime": "2023-02-16T08:40:32Z",
+        "lastUpdatedDateTime": "2023-02-16T08:41:06Z",
+        "salePosition": "OUTSIDE_STORE"
+    }
+}
+
+```
+
+###### Transaction Receipt Notification - PETROTRANSACTION_RECEIPT_READY
+
+```json
+
+{
+    "id": "996f118665154c8f92b0c1c832808df6",
+    "created": 1676536867076,
+    "eventType": "PetroTransaction.RECEIPT_READY",
+    "resourceType": "PetroTransaction.ReceiptData",
+    "eventData": {
+        "transactionId": "996f118665154c8f92b0c1c832808df6",
+        "siteInfo": {
+            "siteLocationId": "770006",
+            "fuelPurchaseInfo": {
+                "pumpNumber": 1,
+                "serviceLevelCode": "S"
+            }
+        },
+        "payments": [
+            {
+                "currencyCode": {
+                    "code": "USD",
+                    "number": 840,
+                    "currency": "US Dollar"
+                },
+                "requestedAuthAmount": 15.28,
+                "approvedAuthAmount": 15.28,
+                "capturedAmount": 19.74,
+                "status": "COMPLETED",
+                "fundingSource": {
+                    "type": "VAULTED_ACCOUNT",
+                    "vaultedAccount": {
+                        "fdAccountId": "8a7f148f864e8ceb018659614b280d84",
+                        "type": "CREDIT"
+                    },
+                    "account": {
+                        "fdAccountId": "8a7f148f864e8ceb018659614b280d84",
+                        "type": "CREDIT"
+                    },
+                    "credit": {
+                        "alias": "6668",
+                        "cardType": "DISCOVER",
+                        "expiryDate": {
+                            "month": "MASKED",
+                            "year": "MASKED"
+                        }
+                    }
+                }
+            }
+        ],
+        "status": "COMPLETED",
+        "finalTransactionAmount": 19.74,
+        "saleItems": [
+            {
+                "itemDescription": "UNLD",
+                "itemPrice": 2.639,
+                "unitOfMeasurement": "ea",
+                "unitsSold": 7.48,
+                "totalItemSaleAmount": 19.74,
+                "posCode": "00000000000001",
+                "productCode": "4",
+                "type": "FUEL",
+                "priceTier": "credit"
+            }
+        ],
+        "receiptData": {
+            "receiptSection": "full",
+            "receiptLines": {
+                "plain": [
+                    "",
+                    " FUELS LAB",
+                    "565 SOUTH MASON RD #",
+                    "KATY, AB ",
+                    "77450",
+                    "",
+                    "02/16/2023 496410494",
+                    "03:41:06 AM",
+                    "",
+                    "INVOICE null",
+                    "AUTH 020543",
+                    "",
+                    "PUMP# 1",
+                    "Supreme CR 3.195G",
+                    "PRICE/GAL $ 1.00",
+                    "FUEL PURCHASED Gal. 10",
+                    "FUEL TOTAL $ 10.00",
+                    "",
+                    "--------",
+                    "Total = $ 10.00",
+                    "",
+                    "",
+                    "CREDIT $ 11.533",
+                    "",
+                    "CRIND RECEIPT FOOTER",
+                    "",
+                    ""
+                ]
+            }
+        },
+        "transactionDateTime": "2023-02-16T08:40:34Z",
+        "createdDateTime": "2023-02-16T08:40:32Z",
+        "lastUpdatedDateTime": "2023-02-16T08:41:07Z",
+        "salePosition": "OUTSIDE_STORE"
+    }
+}
+
+```
 
   >### Transaction History Services
 
