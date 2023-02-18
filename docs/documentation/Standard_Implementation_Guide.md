@@ -275,7 +275,7 @@ Services related to purchasing items at a gas station.
 
 | Event Type                   | Description |
 |------------------------|---------------|
-|PETROTRANSACTION_COMPLETED| Used to notify when the fueling is completed or cancelled |
+|PETROTRANSACTION_COMPLETED| Used to notify when the fueling is completed or canceled |
 |PETROTRANSACTION_FUEL_STARTED| Used to notify when the user started the fueling |
 |PETROTRANSACTION_RECEIPT_READY| Used to notify the user when the receipt is ready |
 
