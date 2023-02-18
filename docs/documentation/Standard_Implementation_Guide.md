@@ -14,21 +14,21 @@ Here is how to utilize this guide. All your necessary steps are on your right an
 
 >### Connectivity
 
-The uCommerce Gateway services are accessed through the public Internet. uCommerce Gateway accepts communication only via the HTTPS channel. Custom HTTP headers are also used to carry additional information in each request.
+The Connected Commerce (uCom) Gateway services are accessed through the public Internet. Connected Commerce (uCom) Gateway accepts communication only via the HTTPS channel. Custom HTTP headers are also used to carry additional information in each request.
 
 **Fully Qualified URL**
 
 Concatenate the above URL and each endpoint name from the specification to get fully-qualified URL for each environment.
 
-**Example:** Full-qualified URL of /v1/customer API for Integration environment is,
+**Example:** Full-qualified URL of /v1/customer API for Integration environment:
 
-[https://int.api.firstdata.com/ucom/v1/customers](https://int.api.firstdata.com/ucom/v1/customers)
+[https://int.api.firstdata.com/ucom/v1/customers]
 
 >### Authentication
 
 **API-KEYS**
     
-Please see the reference document for current implementation.
+Please see the following reference document for current implementation:
 
 [https://firstdatanp-ucomgateway.apigee.io/get-started/api-security](https://firstdatanp-ucomgateway.apigee.io/get-started/api-security)
 
@@ -100,11 +100,11 @@ Any other 500 error received constitutes a completed transaction and would need 
 
 Also note that the idempotent ID will only last for 24 hours regardless, so any retries with the same ID would need to be made within the 24-hour window after generation.
 
->### FEP Host Information
+>### Front End Processor (FEP) Host Information
 
-This is used to send the FEP (Front End Processor) messages back to the merchant. 
+This is used to send the FEP messages back to the merchant.
 
-##### Possible Returns - Success cases (Applicable for all payment related operation responses)
+##### Possible Returns &#150 Success Cases (Applicable for all payment related operation responses)
 
 ```json
 {
@@ -161,7 +161,7 @@ This is used to send the FEP (Front End Processor) messages back to the merchant
 }
 ```
 
-##### Possible Returns - Failure cases
+##### Possible Returns &#150 Failure Cases
 
 ```json
 {
@@ -194,9 +194,9 @@ This is used to send the FEP (Front End Processor) messages back to the merchant
 }
 ```
 
-## Explore the Connected Commerce (uCom) Services 
+## Explore the Connected Commerce (uCom) Services
 
-Kindly click on the links below to explore each endpoint. 
+Click on the links below to explore each endpoint.
 
 >### Customer Services
 
@@ -241,7 +241,7 @@ This API handles services related to prepaid cards such as creating a new prepai
 	
 >### Hosted Pages Services
 	
-This API handles Hosted Pages services and provides CRUD operation for its web pages. With the help of these APIs hosted pages will be created and rendred to UI.
+This API handles Hosted Pages services and provides CRUD operation for its web pages. With the help of these APIs, hosted pages will be created and rendered to UI.
 
 <a href="../api/?type=get&path=/v1/hosted-pages/pages"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/bf957bad5bdad86c33303851ad88a54840161818/assets/images/website.svg" alt="Hosted Pages" style="width:100px;height:100px;"></a>  
 
@@ -285,7 +285,7 @@ Services related to purchasing items at a gas station.
 |------------------|----------|----------------------------------------------------------------------|
 | Api-Key          | Yes      | Api Key that identifies the client and used as part of the Signature |
 | Digest-Algorithm | Yes      | Algorithm used for Message Digest on the payload                     |
-| Sig-Algorithm    | Yes      | Algorithm used to generate the signature                             |
+| Sig-Algorithm    | Yes      | Algorithm used to generate the Signature                             |
 | Sig-Timestamp    | Yes      | Not the event timestamp, the one used in Signature                   |
 | Signature        | Yes      | The signed string as described above in Signature Generation section |
 
@@ -303,7 +303,7 @@ Digest-Algorithm: SHA-256
  **Webhooks**
 
   A webhook is a callback mechanism to inform you of changes occurring to your transaction in our system. We accomplish this by making an HTTP call to an endpoint in your system when these changes occur.
-The Merchant sends a webhook notification URL in authorization request where the App expects a fueling notifications.
+The Merchant sends a webhook notification URL in authorization request where the App expects a fueling notification.
 
 Json Object:
 
@@ -320,8 +320,8 @@ Json Object:
 2. Connected Commerce (uCom) configures a list of allowable domain names for a given partner and validates a requested domain name with the configured list.
 3. If above point #1 or #2 failed then Connected Commerce (uCom) sends an error to the merchant as invalid message request.
 4. If validation is success, we persist the webhookUrl endpoint in Connected Commerce (uCom) system.
-5. Whenever the fueling, completion or receipt request comes from POS, Connected Commerce (uCom) system look up the webhook endpoint from transaction level.
-6. If endpoint available at transaction level, we use it for posting the notifications.
+5. Whenever the fueling, completion or receipt request comes from POS, Connected Commerce (uCom) system looks up the webhook endpoint from transaction level.
+6. If endpoint is available at transaction level, we use it for posting the notifications.
 7. If endpoint is not available in transaction, then we publish notifications to the merchant level endpoint via normal notification route.
 
 
@@ -382,7 +382,7 @@ Json Object:
 
 ```
 
-###### Transaction Completed Notification - PETROTRANSACTION_COMPLETED
+###### Transaction Completed Notification &#150 PETROTRANSACTION_COMPLETED
 
 ```json
 
@@ -456,7 +456,7 @@ Json Object:
 
 ```
 
-###### Transaction Receipt Notification - PETROTRANSACTION_RECEIPT_READY
+###### Transaction Receipt Notification &#150 PETROTRANSACTION_RECEIPT_READY
 
 ```json
 
