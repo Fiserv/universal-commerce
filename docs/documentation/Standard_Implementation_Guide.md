@@ -100,9 +100,9 @@ Any other 500 error received constitutes a completed transaction and would need 
 
 Also note that the idempotent ID will only last for 24 hours regardless, so any retries with the same ID would need to be made within the 24-hour window after generation.
 
->### Front End Processor (FEP) Host Information
+>### Extra Host Information
 
-This is used to send the FEP messages back to the merchant.
+This information is provided by our downstream systems as additional bits of information on the transaction.
 
 ##### Possible Returns &#150 Success Cases (Applicable for all payment related operation responses)
 
@@ -255,9 +255,8 @@ phone or tablet, which enables mobile payments for in-store and forecourt transa
 
 Mobile Payment Processing Application (MPPA): This entity is an application provided
 by the Mobile Payment Processor (MPP) not on the Mobile Device that is responsible for
-interfacing between the Token Vault or Token/Trusted Service Provider, the MPA, the
-Site System and the Payment Front End Processor (PFEP) in order to authorize
-transactions. The below section will be applicable if Fiserv Connected Commerce (uCom) is acting as a MPPA.
+interfacing between the Token Vault or Token/Trusted Service Provider, the MPA, and the
+Site System in order to authorize transactions. The below section will be applicable if Fiserv Connected Commerce (uCom) is acting as a MPPA.
 
   >### Petrol Services
 
@@ -580,9 +579,9 @@ The APIs can be used in different scenarios. We will describe the most common on
 	
 ## Testing
 	
-Before you start testing the Connected Commerce (uCom) API, we recommend spending some time to learn about the FEP that is assigned to your configuration in Connected Commerce (uCom). The most common FEPs used are BUYPASS, Rapid Connect and IPG. A specific set of testing cards will be provided to you by the Implementation Team once the configurations are completed. <br>
+A specific set of testing cards will be provided to you by the Implementation Team once all the uCom configurations are completed. <br>
 
-Still having questions? Check out the <a href="/product/UniversalCommerce/docs/?path=docs/faq/faq.md">FAQs Section</a> for help.
+Still have questions? Check out the <a href="/product/UniversalCommerce/docs/?path=docs/faq/faq.md">FAQs Section</a> for more help.
 
 <div id="copy_button"></div>
 </body>
