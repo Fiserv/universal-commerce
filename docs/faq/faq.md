@@ -96,7 +96,7 @@ Yes, we recommend making use of the data returned in the "hostExtraInfo" field t
 <details>
 <summary><b>Does the platform support partial reversal of authorized funds after a portion of the held amount has been captured?</b></summary>
 
-Yes, Connected Commerce (uCom) does support partial reversal. For example, let’s assume we have a auth for $50 and we only captured $20, the remaining amount will be released automatically.
+Yes, Connected Commerce (uCom) does support partial reversal. For example, if we have an authorization for $50 and we only captured $20, the remaining amount will be released automatically.
 </details>
 
 <details>
