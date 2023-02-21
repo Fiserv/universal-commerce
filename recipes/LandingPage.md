@@ -1,4 +1,4 @@
-## Welcome to the uCom Recipes Section 
+## Welcome to the uCom Common Use Cases Section 
 
 <!-- type: row -->
 
