@@ -39,6 +39,8 @@
       link: docs/documentation/Standard_Implementation_Guide.md
     - title: Frequently Asked Questions
       link: docs/faq/faq.md
+    - title: Common Use Cases
+      link: recipes/LandingPage.md
       open: true 
 #- recipes:
 #    - title: How to Create, Read, Update, and Delete a Customer Profile
