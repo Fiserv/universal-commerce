@@ -41,6 +41,7 @@
       link: docs/faq/faq.md
     - title: Common Use Cases
       link: recipes/LandingPage.md
+      sections:
       - title: How to Create, Read, Update, and Delete a Customer Profile
         link: recipes/customerRegistration.md
       - title: How to Make a Guest Checkout
