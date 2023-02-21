@@ -146,10 +146,10 @@ paths:
   /v1/accounts/verification:
     post:
       x-group-name: Account Services
-      x-proxy-name: Tokenize an Account by Nonce
+      x-proxy-name: Verify an account
       tags:
         - accounts
-      summary: Tokenize an Account by Nonce
+      summary: Verify an account
       description: Verify an account without an associated uCom customer identifier.
       parameters:
         - $ref: '#/components/parameters/ApiKeyParam'
