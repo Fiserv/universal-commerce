@@ -464,6 +464,10 @@ components:
           $ref: '#/components/schemas/User'
         deviceInfo:
           $ref: '#/components/schemas/DeviceInfo'
+    Addresses:
+      type: array
+      items:
+        $ref: '#/components/schemas/Address'
     Address:
       type: object
       properties:
@@ -498,17 +502,6 @@ components:
           description: Indicates if this is the default address for the associated
             resource. It only has meaning when used in a set or array of addresses.
       description: A physical mailing address for this user.
-      example:
-        type: work
-        streetAddress: 100 Universal City Plaza
-        locality: Hollywood
-        region: CA
-        postalCode: "91608"
-        country: US
-        formatted: |-
-          100 Universal City Plaza
-          Hollywood, CA 91608 US
-        primary: true
     Email:
       type: object
       properties:
@@ -838,7 +831,7 @@ components:
         addresses:
           type: array
           items:
-            $ref: '#/components/schemas/Address'
+            $ref: '#/components/schemas/Addresses'
         phoneNumbers:
           type: array
           items:
