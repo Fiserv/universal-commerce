@@ -381,7 +381,7 @@ Json Object:
 
 ```
 
-###### Transaction Completed Notification &#150 PETROTRANSACTION_COMPLETED
+###### Transaction Completed Notification & PETROTRANSACTION_COMPLETED
 
 ```json
 
@@ -455,7 +455,7 @@ Json Object:
 
 ```
 
-###### Transaction Receipt Notification &#150 PETROTRANSACTION_RECEIPT_READY
+###### Transaction Receipt Notification & PETROTRANSACTION_RECEIPT_READY
 
 ```json
 
