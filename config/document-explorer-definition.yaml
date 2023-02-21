@@ -60,7 +60,7 @@
       - title: How to Issue a Refund
         link: recipes/refunds.md
       
-      open: true 
+      open: false 
 #- recipes:
 #    - title: How to Create, Read, Update, and Delete a Customer Profile
 #      link: recipes/customerRegistration.md
