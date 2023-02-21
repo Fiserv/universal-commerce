@@ -416,7 +416,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CustomerRequest'
+              $ref: '#/components/schemas/CustomerUpdateRequest'
             examples:
               UpdateEmail: {summary: Update Email, $ref: '#/components/examples/UpdateEmail'}
               UpdateLastName: {summary: Update Last Name, $ref: '#/components/examples/UpdateLastName'}
@@ -458,6 +458,14 @@ paths:
 components:
   schemas:
     CustomerRequest:
+      title: Customer Request
+      type: object
+      properties:
+        customer:
+          $ref: '#/components/schemas/User'
+        deviceInfo:
+          $ref: '#/components/schemas/DeviceInfo'
+    CustomerUpdateRequest:
       title: Customer Request
       type: object
       properties:
