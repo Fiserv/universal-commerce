@@ -150,7 +150,7 @@ paths:
       tags:
         - accounts
       summary: Tokenize an Account by Nonce
-      description: Verify an account without an associated uCom customer identifier.
+      description: Verify an account without an associated uCom customer identifier
       parameters:
         - $ref: '#/components/parameters/ApiKeyParam'
         - $ref: '#/components/parameters/TimestampParam'
