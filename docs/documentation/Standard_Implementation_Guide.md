@@ -100,11 +100,11 @@ Any other 500 error received constitutes a completed transaction and would need 
 
 Also note that the idempotent ID will only last for 24 hours regardless, so any retries with the same ID would need to be made within the 24-hour window after generation.
 
->### Extra Host Information
+>### Host Extra Information
 
 This information is provided by our downstream systems as additional bits of information on the transaction.
 
-##### Possible Returns &#150 Success Cases (Applicable for all payment related operation responses)
+##### Possible Success Responses (Applicable for all payment related operation responses)
 
 ```json
 {
@@ -161,7 +161,7 @@ This information is provided by our downstream systems as additional bits of inf
 }
 ```
 
-##### Possible Returns &#150 Failure Cases
+##### Possible Failure Responses
 
 ```json
 {
