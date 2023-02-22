@@ -29,7 +29,7 @@
 ################################################################################
 header:
   productName: Connected Commerce (uCom)
-  productionDescription: >
+  productionDescription: |
     - Connected Commerce (uCom) brings in frictionless commerce that increases brand reach, 
     - delivers relevant & timely information to users and brings in great usability 
     - experiences in a safe & secure environment. 
