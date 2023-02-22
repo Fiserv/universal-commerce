@@ -28,16 +28,30 @@
 # the delivery of this work
 ################################################################################
 header:
-  productName: uCom
-  productionDescription: uCom Items
+  productName: Connected Commerce (uCom)
+  productionDescription: Connected Commerce (uCom) Items
   whoIsItFor: REPLACEME
   image: 
     link: "/assets/images/Fiserv_Logo.jpg"
     altText: uCom
 featuredFeatures:
-  - title: Payments
-    description:  Making a payment is the most important item we can do in a payments gateway
-    tags: ["Payments", "uCom", "REPLACEME"]
+  - title: Secure Payment Card Collections 
+    description:  Wide variety of options to integrate your solution with us. Server to server, Native API's, CORS support and finally Hosted Pages are all offerings we support.
+    tags: ["Payments", "uCom", "server to server", "native API", "Hosted Pages", "CORS",]
+    bullets: ["REPLACEME", "REPLACEME" ]  
+  - title: Tokenization 
+    description:  Wide range of support with payment tokens. This includes Fiserv issued, third party and gateway specific for your token related needs. 
+    tags: ["Tokens", "uCom", "gateway"]
+    bullets: ["REPLACEME", "REPLACEME" ]  
+    relatedDocs:
+  - title: Wide range of payment support 
+    description: Traditional card support with addition to private label, EBT, Fleet and Cardnet are just some of the thirteen types of cards we support
+    tags: ["Tokenization", "uCom", "EBT", "Fleet", "visa", "mc", "cardnet", "american express", "discover", "diners club", "private label", "jcb", "union pay", "EBT Snap", "EBT Cash" ]
+    bullets: ["REPLACEME", "REPLACEME" ]  
+    relatedDocs:
+  - title: Gift Solutions 
+    description: From redemption, reload to purchase the team can support gift card use for merchants. Balance, history and balance merges are all something that is supported. 
+    tags: ["Gift", "uCom"]
     bullets: ["REPLACEME", "REPLACEME" ]  
     relatedDocs:
       - relatedDoc: 
