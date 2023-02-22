@@ -14,14 +14,14 @@ Commerce Hub supports the following encrypted payment source types: [EMV chip an
 ---
 
 ## Step 1: Create Keys
-The benefits of a encyrpted PIN Pad solution are:
+The benefits of a encrypted PIN Pad solution are:
 - Reduced coding effort for the developer because the encryption handling is already implemented by the third party vendor
 - All forms of electronic payment are accepted
 - Faster payment improving the customer experience
 - Business security by enabling acceptance of chip and signature, and chip and PIN
 
 ## Step 2: Get payment details
-The benefits of a encyrpted PIN Pad solution are:
+The benefits of a encrypted PIN Pad solution are:
 - All forms of electronic payment are accepted
 - Faster payment improving the customer experience
 - Business security by enabling acceptance of chip and signature, and chip and PIN
@@ -59,7 +59,7 @@ The benefits of a encyrpted PIN Pad solution are:
 > Commerce Hub highly recommends testing against our sandbox and end to end environments before using our production environment.
 
 ## Step 4: Finalize Transaction
-The benefits of a encyrpted PIN Pad solution are:
+The benefits of a encrypted PIN Pad solution are:
 - Reduced coding effort for the developer because the encryption handling is already implemented by the third party vendor
 - All forms of electronic payment are accepted
 - Faster payment improving the customer experience

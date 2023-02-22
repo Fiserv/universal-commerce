@@ -1,13 +1,13 @@
 {
-  "title": "Universal Commerce",
-  "name": "UniversalCommerce",
+  "title": "Connected Commerce (uCom)",
+  "name": "ConnectedCommerce",
   "brand": "Fiserv",
   "brandLogoURL": "https://raw.githubusercontent.com/Fiserv/Developer-Portal-Tenant-API/develop/assets/images/Fiserv_Logo.jpg",
   "solution": [
     "merchants",
     "carat"
   ],
-  "brandDescription": "Universal Commerce",
+  "brandDescription": "Connected Commerce",
   "categories": [
     {
       "name": "businessTypes",
@@ -27,13 +27,12 @@
       "releaseNotesPath": "/release-notes/release-notes-1.0.0.md",
       "apiSpecFileNames": [
         "Account Services/uComAccountServices",
-        "Apply and Buy/uComApplyAndBuy",
+        "Apply and Buy/ucomapplyandbuy",
         "Authentication Services/uComAuthenticationServices",
         "Customer Services/uComCustomerServices",
         "Discovery Services/uComDiscoveryServices",
         "Hosted Pages External/uComHostedPages-External",
         "Issuer Services/uComIssuerServices",
-        "Loyalty Services/uComLoyaltyTransactions",
         "Merchant Services/uComMerchantServices",
         "Order Services/uComOrderServices",
         "Payment Services/uComPaymentServices",
@@ -53,12 +52,12 @@
     "logoURL": "https://raw.githubusercontent.com/Fiserv/Developer-Portal-Tenant-API/develop/assets/images/Portal_Logo.png",
     "description": "To onboard properly into the Developer Studio as a tenant each product must support these APIs so that we can retrieve product specific API specifications and documentation.",
     "longDescription": "To onboard properly into the Developer Studio as a tenant each product must support these APIs so that we can retrieve product specific API specifications and documentation.",
-    "apiSpecification": "/v1/apis/UniversalCommerce",
-    "layout": "/v1/layouts/UniversalCommerce",
-    "documentation": "/v1/docs/UniversalCommerce",
-    "documenttree": "/v1/docs/UniversalCommerce",
-    "documenttreeV2": "/v2/docs/UniversalCommerce",
-    "sandbox": "/v1/sandboxrun/UniversalCommerce",
+    "apiSpecification": "/v1/apis/ConnectedCommerce",
+    "layout": "/v1/layouts/ConnectedCommerce",
+    "documentation": "/v1/docs/ConnectedCommerce",
+    "documenttree": "/v1/docs/ConnectedCommerce",
+    "documenttreeV2": "/v2/docs/ConnectedCommerce",
+    "sandbox": "/v1/sandboxrun/ConnectedCommerce",
     "feature": [
       {
         "name": "sandBox",

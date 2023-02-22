@@ -6,29 +6,29 @@
 </head>
 <body bgcolor="#ffffff">
 <base target="_blank">
-## Fiserv Universal Commerce REST API Specification
+## Fiserv Connected Commerce (uCom) REST API Specification
 
-Here is how to utilize this guide. All your necessary steps are on your right and will guide you through the necessary steps to create a customer and start processing payments in universal commerce.
+Here is how to utilize this guide. All your necessary steps are on your right and will guide you through the necessary steps to create a customer and start processing payments in Connected Commerce (uCom).
 
 ## General
 
 >### Connectivity
 
-The uCommerce Gateway services are accessed through the public Internet. uCommerce Gateway accepts communication only via the HTTPS channel. Custom HTTP headers are also used to carry additional information in each request.
+The Connected Commerce (uCom) Gateway services are accessed through the public Internet. Connected Commerce (uCom) Gateway accepts communication only via the HTTPS channel. Custom HTTP headers are also used to carry additional information in each request.
 
 **Fully Qualified URL**
 
 Concatenate the above URL and each endpoint name from the specification to get fully-qualified URL for each environment.
 
-**Example:** Full-qualified URL of /v1/customer API for Integration environment is,
+**Example:** Full-qualified URL of /v1/customer API for Integration environment:
 
-[https://int.api.firstdata.com/ucom/v1/customers/](https://int.api.firstdata.com/ucom/v1/customers/)
+[https://int.api.firstdata.com/ucom/v1/customers]
 
 >### Authentication
 
 **API-KEYS**
     
-Please see the reference document for current implementation.
+Please see the following reference document for current implementation:
 
 [https://firstdatanp-ucomgateway.apigee.io/get-started/api-security](https://firstdatanp-ucomgateway.apigee.io/get-started/api-security)
 
@@ -38,11 +38,11 @@ Please see the reference document for current implementation.
  
  | Header            | Value                  | Always Required | Description                                                                                                                             |
 |-------------------|------------------------|-----------------|-----------------------------------------------------------------------------------------------------------------------------------------|
-| Api-Key           | <apiKey>               | YES             | Merchant API key, Refer Apigee portal for more details                                                                                  |
-| Timestamp         | <timestamp>            | YES             | Request initiation timestamp, expecting Epoch time. The value must generate out of UTC timestamp. Sample value format is 1499961987232
-| Authorization     | HMAC <signature>       | YES             | HMAC Key generation, please refer Apigee portal for more details                                                                        |
-| Authorization     | Bearer {{accessToken}} | YES             | Used on /v1/account-tokens                                                                                                              |
-| Content-Type      | application/json       | YES             | application/json                                                                                                                        |
+| Api-Key           | <apiKey>               | Yes             | Merchant API key, Refer Apigee portal for more details                                                                                  |
+| Timestamp         | <timestamp>            | Yes             | Request initiation timestamp, expecting Epoch time. The value must generate out of UTC timestamp. Sample value format is 1499961987232
+| Authorization     | HMAC <signature>       | Yes             | HMAC Key generation, please refer Apigee portal for more details                                                                        |
+| Authorization     | Bearer {{accessToken}} | Yes             | Used on /v1/account-tokens                                                                                                              |
+| Content-Type      | application/json       | Yes             | application/json                                                                                                                        |
 | Client-Request-Id | <$guid>                |                 | This is mandatory and unique for post request to avoid duplicate entry                                                                  |
 | Client-Token      | <accessToken>          |                 | Used on POST /v1/payments/sales for anonymous transactions and /v1/customers/{fdCustomerId}/accounts for account transactions           |
 | Content-Signature | HMAC <signature>       |                 | Used on /v1/account-tokens                                                                                                              |
@@ -51,14 +51,14 @@ Please see the reference document for current implementation.
    >### Securities and Privacy
     >>Field Encryption/Decryption Algorithm
 
-Unless explicitly decided otherwise, confidential information such as account number, card number, passwords etc. should be encrypted prior to exchanging with UCG. The wallet app server has to encrypt the messages using the public key (that will be shared by UCG) and sent to UCG. The required steps for encrypting the sensitive information are;
+Unless explicitly decided otherwise, confidential information such as account number, card number, passwords etc. should be encrypted prior to exchanging with UCG. The wallet app server has to encrypt the messages using the public key (that will be shared by UCG) and sent to UCG. The steps required for encrypting the sensitive information are:
 
- - The cipher algorithm is setup to use “RSA/None/PKCS1Padding” 
+ - The cipher algorithm is setup to use “RSA/None/PKCS1Padding.” 
  - The sensitive data, such as credit card account number, should be
-   encrypted with the cipher algorithm using the shared public key
- - The encrypted string should then be Base64 encoded
- - The final encoded string value  replaces the sensitive data 
- - The encoded string is used by UCG to retrieve the sensitive data
+   encrypted with the cipher algorithm using the shared public key.
+ - The encrypted string should then be Base64 encoded.
+ - The final encoded string value  replaces the sensitive data.
+ - The encoded string is used by UCG to retrieve the sensitive data.
 
 >### Currencies
 
@@ -88,23 +88,23 @@ These currencies require the same correct amount format with a maximum of 2 deci
 
   >### Idempotency
       
-   The way idempotency is enforced in uCom is strictly as follows:
+   The way idempotency is enforced in Connected Commerce (uCom) is strictly as follows:
 
-A transaction can be sent with the same idempotent ID (Client-Request-Id) at any time to receive the same response as the original transaction, however if no response from uCom was received during the initial transaction then the subsequent time the ID is sent will be treated as a new request.
+A transaction can be sent with the same idempotent ID (Client-Request-Id) at any time to receive the same response as the original transaction, however if no response from Connected Commerce (uCom) was received during the initial transaction then the subsequent time the ID is sent will be treated as a new request.
 
-A response includes timeouts, errors, or anything else that is being returned from uCom as a response to the request. This response constitutes a completed transaction as per idempotency rules.
+A response includes timeouts, errors, or anything else that is being returned from Connected Commerce (uCom) as a response to the request. This response constitutes a completed transaction as per idempotency rules.
 
 If a transaction is still in flight and the same idempotent ID is used, a 503 error will be returned to signify that the transaction is still in progress. This can be continually retried until a different response (non-503 error) is received to signify whether the transaction has completed or not.
 
-Any other 500 error received constitutes a completed transaction and would need to have a new idempotent ID generated to retry that transaction. In this case the original transaction will be rolled back and no duplicate payments will be made. An example of a scenario when you should resend the idempotent ID would be if the network timed out on client side and no response was received from the uCom application.
+Any other 500 error received constitutes a completed transaction and would need to have a new idempotent ID generated to retry that transaction. In this case the original transaction will be rolled back and no duplicate payments will be made. An example of a scenario when you should resend the idempotent ID would be if the network timed out on client side and no response was received from the Connected Commerce (uCom) application.
 
 Also note that the idempotent ID will only last for 24 hours regardless, so any retries with the same ID would need to be made within the 24-hour window after generation.
 
->### FEP Host Information
+>### Host Extra Information
 
-This is used to send the FEP (Front End Processor) messages back to the merchant. 
+This information is provided by our downstream systems as additional bits of information on the transaction.
 
-##### Possible Returns - Success cases (Applicable for all payment related operation responses)
+##### Possible Success Responses (Applicable for all payment related operation responses)
 
 ```json
 {
@@ -161,7 +161,7 @@ This is used to send the FEP (Front End Processor) messages back to the merchant
 }
 ```
 
-##### Possible Returns - Failure cases
+##### Possible Failure Responses
 
 ```json
 {
@@ -194,13 +194,13 @@ This is used to send the FEP (Front End Processor) messages back to the merchant
 }
 ```
 
-## Explore the uCom Services 
+## Explore the Connected Commerce (uCom) Services
 
-Kindly click on the links below to explore each endpoint. 
+Click on the links below to explore each endpoint.
 
 >### Customer Services
 
-This API handles all of the uCom Customer Profile Management operations (create, read, update, and delete).
+This API handles all of the Connected Commerce (uCom) Customer Profile Management operations (create, read, update, and delete).
 	
 <a href="../api/?type=post&path=/v1/customers"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/contacts-svgrepo-com.svg" alt="Customer_services" style="width:100px;height:100px;"></a>  
 
@@ -216,7 +216,7 @@ This API handles Services related to managing the API security features like acc
 	
  >### Account Services
 	
-Services related to uCom customer accounts. Accounts can be credit, debit, loyalty, prepaid, etc.
+Services related to Connected Commerce (uCom) customer accounts. Accounts can be credit, debit, loyalty, prepaid, etc.
   	
 <a href="../api/?type=post&path=/v1/accounts/verification"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/vault-svgrepo-com.svg" alt="Account_services" style="width:100px;height:100px;"></a>  
 
@@ -241,13 +241,13 @@ This API handles services related to prepaid cards such as creating a new prepai
 	
 >### Hosted Pages Services
 	
-This API handles Hosted Pages services and provides CRUD operaion for its web pages. With the help of these APIs hosted pages will be created and rendred to UI.
+This API handles Hosted Pages services and provides CRUD operation for its web pages. With the help of these APIs, hosted pages will be created and rendered to UI.
 
 <a href="../api/?type=get&path=/v1/hosted-pages/pages"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/bf957bad5bdad86c33303851ad88a54840161818/assets/images/website.svg" alt="Hosted Pages" style="width:100px;height:100px;"></a>  
 
 [Hosted Pages Services API](../api/?type=get&path=/v1/hosted-pages/pages)
 	
->## UCOM - MPPA 
+>## uCOM - MPPA 
 
 Mobile Payment Application (MPA): This entity is a software application embedded in a
 Mobile Device or downloaded by a consumer onto a Mobile Device, such as a smart
@@ -255,9 +255,8 @@ phone or tablet, which enables mobile payments for in-store and forecourt transa
 
 Mobile Payment Processing Application (MPPA): This entity is an application provided
 by the Mobile Payment Processor (MPP) not on the Mobile Device that is responsible for
-interfacing between the Token Vault or Token/Trusted Service Provider, the MPA, the
-Site System and the Payment Front End Processor (PFEP) in order to authorize
-transactions. The below section will be applicable if Fiserv UCOM is acting as a MPPA,
+interfacing between the Token Vault or Token/Trusted Service Provider, the MPA, and the
+Site System in order to authorize transactions. The below section will be applicable if Fiserv Connected Commerce (uCom) is acting as a MPPA.
 
   >### Petrol Services
 
@@ -275,7 +274,7 @@ Services related to purchasing items at a gas station.
 
 | Event Type                   | Description |
 |------------------------|---------------|
-|PETROTRANSACTION_COMPLETED| Used to notify when the fueling is completed or cancelled |
+|PETROTRANSACTION_COMPLETED| Used to notify when the fueling is completed or canceled |
 |PETROTRANSACTION_FUEL_STARTED| Used to notify when the user started the fueling |
 |PETROTRANSACTION_RECEIPT_READY| Used to notify the user when the receipt is ready |
 
@@ -285,7 +284,7 @@ Services related to purchasing items at a gas station.
 |------------------|----------|----------------------------------------------------------------------|
 | Api-Key          | Yes      | Api Key that identifies the client and used as part of the Signature |
 | Digest-Algorithm | Yes      | Algorithm used for Message Digest on the payload                     |
-| Sig-Algorithm    | Yes      | Algorithm used to generate the signature                             |
+| Sig-Algorithm    | Yes      | Algorithm used to generate the Signature                             |
 | Sig-Timestamp    | Yes      | Not the event timestamp, the one used in Signature                   |
 | Signature        | Yes      | The signed string as described above in Signature Generation section |
 
@@ -303,7 +302,7 @@ Digest-Algorithm: SHA-256
  **Webhooks**
 
   A webhook is a callback mechanism to inform you of changes occurring to your transaction in our system. We accomplish this by making an HTTP call to an endpoint in your system when these changes occur.
-The Merchant sends a webhook notification URL in authorization request where the App expects a fueling notifications.
+The Merchant sends a webhook notification URL in authorization request where the App expects a fueling notification.
 
 Json Object:
 
@@ -316,39 +315,273 @@ Json Object:
 }
 ```
 
-1. UCOM applies a standard URL pattern validation on the webhook endpoint URL if webhookUrl.href is present in the request
-2. UCOM configures a list of allowable domain names for a given partner and validates a requested domain name with the configured list
-3. If above point #1 or #2 failed then UCOM sends an error to the merchant as invalid message request
-4. If validation is success, we persist the webhookUrl endpoint in uCom system
-5. Whenever the fueling, completion or receipt request comes from POS, UCOM system look up the webhook endpoint from transaction level.
-6. If endpoint available at transaction level, we use it for posting the notifications
-7. If endpoint is not available in transaction, then we publish notifications to the merchant level endpoint via normal notificaiton route
+1. Connected Commerce (uCom) applies a standard URL pattern validation on the webhook endpoint URL if webhookUrl.href is present in the request.
+2. Connected Commerce (uCom) configures a list of allowable domain names for a given partner and validates a requested domain name with the configured list.
+3. If above point #1 or #2 failed then Connected Commerce (uCom) sends an error to the merchant as invalid message request.
+4. If validation is success, we persist the webhookUrl endpoint in Connected Commerce (uCom) system.
+5. Whenever the fueling, completion or receipt request comes from POS, Connected Commerce (uCom) system looks up the webhook endpoint from transaction level.
+6. If endpoint is available at transaction level, we use it for posting the notifications.
+7. If endpoint is not available in transaction, then we publish notifications to the merchant level endpoint via normal notification route.
 
 
-**Wallet notification securities**
+**Wallet Notification Securities**
 
- UCOM will share a public certificate to the merchant to receive the wallet notifications from uCom
+ Connected Commerce (uCom) will share a public certificate to the merchant to receive the wallet notifications from Connected Commerce (uCom).
 
+**Sample Wallet Notification Examples**
+
+###### Fuel Started Notification - PETROTRANSACTION_FUEL_STARTED
+
+```json
+
+{
+    "id": "996f118665154c8f92b0c1c832808df6",
+    "created": 1676536855343,
+    "eventType": "PetroTransaction.FUEL_STARTED",
+    "resourceType": "PetroTransaction",
+    "eventData": {
+        "transactionId": "996f118665154c8f92b0c1c832808df6",
+        "payments": [
+            {
+                "currencyCode": {
+                    "code": "USD",
+                    "number": 840,
+                    "currency": "US Dollar"
+                },
+                "requestedAuthAmount": 15.28,
+                "approvedAuthAmount": 15.28,
+                "status": "AUTHORIZED",
+                "fundingSource": {
+                    "type": "VAULTED_ACCOUNT",
+                    "vaultedAccount": {
+                        "fdAccountId": "8a7f148f864e8ceb018659614b280d84",
+                        "type": "CREDIT"
+                    },
+                    "account": {
+                        "fdAccountId": "8a7f148f864e8ceb018659614b280d84",
+                        "type": "CREDIT"
+                    },
+                    "credit": {
+                        "alias": "6668",
+                        "cardType": "DISCOVER",
+                        "expiryDate": {
+                            "month": "MASKED",
+                            "year": "MASKED"
+                        }
+                    }
+                }
+            }
+        ],
+        "status": "FUEL_STARTED",
+        "createdDateTime": "2023-02-16T08:40:32Z",
+        "lastUpdatedDateTime": "2023-02-16T08:40:55Z",
+        "salePosition": "OUTSIDE_STORE"
+    }
+}
+
+```
+
+###### Transaction Completed Notification & PETROTRANSACTION_COMPLETED
+
+```json
+
+{
+    "id": "996f118665154c8f92b0c1c832808df6",
+    "created": 1676536866581,
+    "eventType": "PetroTransaction.COMPLETED",
+    "resourceType": "PetroTransaction",
+    "eventData": {
+        "transactionId": "996f118665154c8f92b0c1c832808df6",
+        "siteInfo": {
+            "siteLocationId": "770006",
+            "fuelPurchaseInfo": {
+                "pumpNumber": 1,
+                "serviceLevelCode": "S"
+            }
+        },
+        "payments": [
+            {
+                "currencyCode": {
+                    "code": "USD",
+                    "number": 840,
+                    "currency": "US Dollar"
+                },
+                "requestedAuthAmount": 15.28,
+                "approvedAuthAmount": 15.28,
+                "capturedAmount": 19.74,
+                "status": "COMPLETED",
+                "fundingSource": {
+                    "type": "VAULTED_ACCOUNT",
+                    "vaultedAccount": {
+                        "fdAccountId": "8a7f148f864e8ceb018659614b280d84",
+                        "type": "CREDIT"
+                    },
+                    "account": {
+                        "fdAccountId": "8a7f148f864e8ceb018659614b280d84",
+                        "type": "CREDIT"
+                    },
+                    "credit": {
+                        "alias": "6668",
+                        "cardType": "DISCOVER",
+                        "expiryDate": {
+                            "month": "MASKED",
+                            "year": "MASKED"
+                        }
+                    }
+                }
+            }
+        ],
+        "status": "COMPLETED",
+        "finalTransactionAmount": 19.74,
+        "saleItems": [
+            {
+                "itemDescription": "UNLD",
+                "itemPrice": 2.639,
+                "unitOfMeasurement": "ea",
+                "unitsSold": 7.48,
+                "totalItemSaleAmount": 19.74,
+                "posCode": "00000000000001",
+                "productCode": "4",
+                "type": "FUEL",
+                "priceTier": "credit"
+            }
+        ],
+        "transactionDateTime": "2023-02-16T08:40:34Z",
+        "createdDateTime": "2023-02-16T08:40:32Z",
+        "lastUpdatedDateTime": "2023-02-16T08:41:06Z",
+        "salePosition": "OUTSIDE_STORE"
+    }
+}
+
+```
+
+###### Transaction Receipt Notification & PETROTRANSACTION_RECEIPT_READY
+
+```json
+
+{
+    "id": "996f118665154c8f92b0c1c832808df6",
+    "created": 1676536867076,
+    "eventType": "PetroTransaction.RECEIPT_READY",
+    "resourceType": "PetroTransaction.ReceiptData",
+    "eventData": {
+        "transactionId": "996f118665154c8f92b0c1c832808df6",
+        "siteInfo": {
+            "siteLocationId": "770006",
+            "fuelPurchaseInfo": {
+                "pumpNumber": 1,
+                "serviceLevelCode": "S"
+            }
+        },
+        "payments": [
+            {
+                "currencyCode": {
+                    "code": "USD",
+                    "number": 840,
+                    "currency": "US Dollar"
+                },
+                "requestedAuthAmount": 15.28,
+                "approvedAuthAmount": 15.28,
+                "capturedAmount": 19.74,
+                "status": "COMPLETED",
+                "fundingSource": {
+                    "type": "VAULTED_ACCOUNT",
+                    "vaultedAccount": {
+                        "fdAccountId": "8a7f148f864e8ceb018659614b280d84",
+                        "type": "CREDIT"
+                    },
+                    "account": {
+                        "fdAccountId": "8a7f148f864e8ceb018659614b280d84",
+                        "type": "CREDIT"
+                    },
+                    "credit": {
+                        "alias": "6668",
+                        "cardType": "DISCOVER",
+                        "expiryDate": {
+                            "month": "MASKED",
+                            "year": "MASKED"
+                        }
+                    }
+                }
+            }
+        ],
+        "status": "COMPLETED",
+        "finalTransactionAmount": 19.74,
+        "saleItems": [
+            {
+                "itemDescription": "UNLD",
+                "itemPrice": 2.639,
+                "unitOfMeasurement": "ea",
+                "unitsSold": 7.48,
+                "totalItemSaleAmount": 19.74,
+                "posCode": "00000000000001",
+                "productCode": "4",
+                "type": "FUEL",
+                "priceTier": "credit"
+            }
+        ],
+        "receiptData": {
+            "receiptSection": "full",
+            "receiptLines": {
+                "plain": [
+                    "",
+                    " FUELS LAB",
+                    "565 SOUTH MASON RD #",
+                    "KATY, AB ",
+                    "77450",
+                    "",
+                    "02/16/2023 496410494",
+                    "03:41:06 AM",
+                    "",
+                    "INVOICE null",
+                    "AUTH 020543",
+                    "",
+                    "PUMP# 1",
+                    "Supreme CR 3.195G",
+                    "PRICE/GAL $ 1.00",
+                    "FUEL PURCHASED Gal. 10",
+                    "FUEL TOTAL $ 10.00",
+                    "",
+                    "--------",
+                    "Total = $ 10.00",
+                    "",
+                    "",
+                    "CREDIT $ 11.533",
+                    "",
+                    "CRIND RECEIPT FOOTER",
+                    "",
+                    ""
+                ]
+            }
+        },
+        "transactionDateTime": "2023-02-16T08:40:34Z",
+        "createdDateTime": "2023-02-16T08:40:32Z",
+        "lastUpdatedDateTime": "2023-02-16T08:41:07Z",
+        "salePosition": "OUTSIDE_STORE"
+    }
+}
+
+```
 
   >### Transaction History Services
 
-Services related to view the list of transactions details, receipts and can add a note to a particular transaction
+Services related to viewing the list of receipts, transactions details, and adding a note to a particular transaction
 	
 <a href="../api/?type=get&path=/v1/txhistory/customers/{fdCustomerId}/transactions"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/b2bc3a6e7ebf1850225e4db19eeb593723a02759/assets/images/transaction-minus-svgrepo-com.svg" alt="Tx_Services" style="width:100px;height:100px;"></a>  
 
 [Transaction History Services API](../api/?type=get&path=/v1/txhistory/customers/{fdCustomerId}/transactions)
 
-This completes the UCOM-MPPA section.
+This completes the uCOM-MPPA section.
 
 ## Use Cases 
 
-The APIs can be used in different scenarios. We will describe the most common ones to give you an idea about the possibilities. Please see the <a href="/product/UniversalCommerce/recipes/?path=recipes/customerRegistration.md">Recipes Section</a> to learn more.   
+The APIs can be used in different scenarios. We will describe the most common ones to give you an idea about the possibilities. Please see the <a href="../recipes/?path=recipes/LandingPage.md">Common Use Cases Section</a> to learn more.
 	
 ## Testing
 	
-Before you start testing the uCom API, we recommend spending some time to learn about the FEP that is assigned to your configuration in uCom. The most common FEPs used are BUYPASS, Rapid Connect and IPG. A specific set of testing cards will be provided to you by the Implementation Team once the configurations are completed. <br>
+A specific set of testing cards will be provided to you by the Implementation Team once all the uCom configurations are completed. <br>
 
-Still having questions? Check out the <a href="/product/UniversalCommerce/docs/?path=docs/faq/faq.md">FAQs Section</a> for help.
+Still have questions? Check out the <a href="../docs/?path=docs/faq/faq.md">FAQs Section</a> for more help.
 
 <div id="copy_button"></div>
 </body>

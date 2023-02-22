@@ -188,7 +188,7 @@ paths:
         - $ref: '#/components/parameters/AcceptLanguageParam'
         - $ref: '#/components/parameters/SubMerchantIdParam'
       requestBody:
-        description: site inoformation.
+        description: site information.
         content:
           application/json:
             schema:
@@ -279,7 +279,7 @@ paths:
       x-proxy-name: Retrieve venue information
       tags:
         - venue
-      description: Retrives venue information.
+      description: Retrieves venue information
       parameters:
         - $ref: '#/components/parameters/ApiKeyParam'
         - $ref: '#/components/parameters/TimestampParam'
@@ -311,10 +311,10 @@ paths:
   /v1/venues/{venueId}/sections:
     get:
       x-group-name: Site Services
-      x-proxy-name: Retrieves venue information
+      x-proxy-name: Retrieve venue sections
       tags:
         - venue
-      description: Retrives venue information.
+      description: Retrieves venue sections
       parameters:
         - $ref: '#/components/parameters/ApiKeyParam'
         - $ref: '#/components/parameters/TimestampParam'
@@ -344,10 +344,10 @@ paths:
   /v1/venues/{venueId}/suites:
     get:
       x-group-name: Site Services
-      x-proxy-name: Retrieves venue information
+      x-proxy-name: Retrieve venue suites
       tags:
         - venue
-      description: Retrives venue information.
+      description: Retrieves venue suites
       parameters:
         - $ref: '#/components/parameters/ApiKeyParam'
         - $ref: '#/components/parameters/TimestampParam'
@@ -377,10 +377,10 @@ paths:
   /v1/venues/{venueId}/tables:
     get:
       x-group-name: Site Services
-      x-proxy-name: Retrieves venue information
+      x-proxy-name: Retrieve venue tables
       tags:
         - venue
-      description: Retrives venue information.
+      description: Retrieves venue tables
       parameters:
         - $ref: '#/components/parameters/ApiKeyParam'
         - $ref: '#/components/parameters/TimestampParam'

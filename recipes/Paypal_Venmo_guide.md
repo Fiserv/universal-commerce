@@ -2,14 +2,14 @@
 <span>
 <img title="Paypal" alt="Alt text" src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/paypal-svgrepo-com.svg" width="30" height="30">
 <img title="Venmo" alt="Alt text" src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/venmo-svgrepo-com.svg" width="30" height="30">
-This flow is used if the partner does not have vaulting support through uCom. The client generates the nonce from Paypal/Venmo and processes the transaction using the nonce through uCom.
+This flow is used if the partner does not have vaulting support through Connected Commerce (uCom). The client generates the nonce from Paypal/Venmo and processes the transaction using the nonce through Connected Commerce (uCom).
 </span>
 
 
 
 **<ins> Prerequisites: </ins>** </br>
 PayPal Account </br>
-PayPal account details configured in uCom. </br>
+PayPal account details configured in Connected Commerce (uCom). </br>
 PayPal SDK Setup/configured to generate the nonce. </br>
 
 ## Option 1a: Auth with PayPal
@@ -22,9 +22,9 @@ This flow will preform a pre auth transaction with a paypal nonce.
 
 HTTP Method: POST
 
-Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/auths>
+Non-prod: https://int.api.firstdata.com/ucom/v1/payments/auths
 
-Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
+Prod: https://prod.api.firstdata.com/ucom/v1/payments/auths
 
 **<ins> Parameters </ins>**
 
@@ -952,27 +952,24 @@ Sample Error Response
 | access_token      | Conditionally | Required when vaulting payment information. Utilizes the tokenId returned from the /tokens api.                                                                                                                                                                               |
 
 **<ins> Sample Header </ins>**
-
-| Sample Format and Values                                                                                                                                                                                                                                                                                                                                                                                           |
-|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  
 Content-Type: application/json Api-Key: pnQgbD4jjfp5Gu2eqA1i4VnzZtT9mW5I </br>
 Timestamp: 1501621439636 </br>
 Client-Request-Id: abded-12345-ddcce-4r45t </br>
 Authorization:HMAC W5X9NAlPgSNsfQX55fXbXrk3arzL6KxcCTA6SrnxL+U= </br>
-access_token: SPaAADBdzaMbmR7RU7QdftIFLGIa |
-
+access_token: SPaAADBdzaMbmR7RU7QdftIFLGIa 
 
 # How to do Vaulted Payment via Paypal/Venmo
 
-Please use this flow if vaulting is enabled through uCom. The client generates a nonce from Paypal/Venmo and then does vaulting with Paypal/Venmo nonce, then preform the transaction with vaulted account.
+Please use this flow if vaulting is enabled through Connected Commerce (uCom). The client generates a nonce from Paypal/Venmo and then does vaulting with Paypal/Venmo nonce, then preform the transaction with vaulted account.
 
 ## Step 1: Create a Customer
 
 **<ins> Description </ins>**
 
-This request will create a customer for card vaulting or payment purposes. This is always the first step that needs to be taken to do vaulting an account in the ucom.
+This request will create a customer for card vaulting or payment purposes. This is always the first step that needs to be taken to do vaulting an account in the Connected Commerce (uCom).
 
-The client sends the externalId field (unique identifier) for this customer and ucom generate fdCustomerId and send it in the response to the client.
+The client sends the externalId field (unique identifier) for this customer and Connected Commerce (uCom) generate fdCustomerId and send it in the response to the client.
 
 **<ins> Endpoint URL </ins>**
 
@@ -1074,7 +1071,8 @@ Timestamp:{{time}}
 
 **<ins> Sample Response (400 – Bad Request) </ins>**
 
-Sample Error Response                                                                                                                                                                                                                                                    |
+Sample Error Response  
+
 ```json
 {
    "code":"269902",
@@ -1099,7 +1097,7 @@ Sample Error Response                                                           
 
 **<ins> Description </ins>**
 
-This request will create a vaulted account in ucom.
+This request will create a vaulted account in Connected Commerce (uCom).
 
 **<ins> Endpoint URL </ins>**
 
@@ -1206,7 +1204,7 @@ Sample Error Response
 
 **<ins> Description </ins>**
 
-This request will create a vaulted account in ucom.
+This request will create a vaulted account in Connected Commerce (uCom).
 
 **<ins> Endpoint URL </ins>**
 
@@ -1314,11 +1312,11 @@ Sample Error Response
 
 **<ins> Option 1a: Auth with Paypal </ins>**
  
-**<ins># Description </ins>**
+**<ins> Description </ins>**
 
 This flow will preform a pre auth transaction with a paypal nonce.
 
-**<ins># Endpoint URL </ins>**
+**<ins> Endpoint URL </ins>**
 
 HTTP Method: POST
 
@@ -1469,7 +1467,7 @@ Sample Response – Paypal Authorization Transaction - Vaulted
 
 **<ins> Sample Response (400 – Bad Request) </ins>**
 
-Sample Error Response                                                                                                                                                                                                                                                                                                                      |
+Sample Error Response                                                                                                                                                                                                                                                                                                                  
 ```json
 {
    "code":"272731",
@@ -1693,7 +1691,6 @@ Timestamp:{{time}}
 
 **<ins> Sample Request - Paypal Sale Transaction - Vaulted </ins>**
 
-Sample Request – Paypal Sale Transaction - Vaulted
 ```json
 
 {
@@ -1839,7 +1836,7 @@ Non-prod: https://int.api.firstdata.com/ucom/v1/payments/auths
 
 Prod: https://prod.api.firstdata.com/ucom/v1/payments/auths
 
-**<ins># Parameters
+**<ins> Parameters </ins>**
 
 | Entity Name     | Parent Entity Name | Data Type | Parameter Type | Required |
 |-----------------|--------------------|-----------|----------------|----------|
@@ -1876,8 +1873,7 @@ Authorization:HMAC {{signature}}
 Timestamp:{{time}}
 
 **<ins> Sample Request - Venmo Authorization Transaction - Vaulted </ins>**
-
-Sample Request – Venmo Authorization Transaction - Vaulted                                                                                                             
+                                                                                                          
 
 ```json
 
@@ -2182,7 +2178,6 @@ Timestamp:{{time}}
 
 **<ins> Sample Request - Venmo Sale Transaction - Vaulted </ins>**
 
-Sample Request – Venmo Sale Transaction - Vaulted
 ```json
 
 {

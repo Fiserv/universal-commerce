@@ -67,10 +67,10 @@ paths:
   /v1/customers:
     get:
       x-group-name: Customer Services
-      x-proxy-name: Get Customer Profile
+      x-proxy-name: Get Customer Profile by external id
       tags:
         - customers
-      summary: Read a Customer Profile by external id attribute
+      summary: Get Customer Profile by external id attribute
       description: Fetch the details of a customer providing the external Id.
       parameters:
         - $ref: '#/components/parameters/ApiKeyParam'
@@ -133,10 +133,10 @@ paths:
   /v1/customers/{fdCustomerId}:
     get:
       x-group-name: Customer Services
-      x-proxy-name: Read Customer Profile
+      x-proxy-name: Get Customer Profile by fdCustomerId 
       tags:
         - customers
-      summary: Read a Customer Profile
+      summary: Get Customer Profile by fdCustomerId
       description: Fetch the details of a customer providing the fdCustomerId.
       parameters:
         - $ref: '#/components/parameters/ApiKeyParam'
