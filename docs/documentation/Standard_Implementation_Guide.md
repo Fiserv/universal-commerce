@@ -575,13 +575,13 @@ This completes the uCOM-MPPA section.
 
 ## Use Cases 
 
-The APIs can be used in different scenarios. We will describe the most common ones to give you an idea about the possibilities. Please see the <a href="/product/UniversalCommerce/recipes/?path=recipes/LandingPage.md">Recipes Section</a> to learn more.
+The APIs can be used in different scenarios. We will describe the most common ones to give you an idea about the possibilities. Please see the <a href="../recipes/?path=recipes/LandingPage.md">Recipes Section</a> to learn more.
 	
 ## Testing
 	
 A specific set of testing cards will be provided to you by the Implementation Team once all the uCom configurations are completed. <br>
 
-Still have questions? Check out the <a href="/product/UniversalCommerce/docs/?path=docs/faq/faq.md">FAQs Section</a> for more help.
+Still have questions? Check out the <a href="../docs/?path=docs/faq/faq.md">FAQs Section</a> for more help.
 
 <div id="copy_button"></div>
 </body>
