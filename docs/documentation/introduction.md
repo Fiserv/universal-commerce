@@ -10,7 +10,7 @@ We bring in Commerce Solutions to the new digital & connected world to meet all 
 Connected Commerce (uCom) acts as a mobile gateway in accepting the request from its front end (MAS, App, POS, web browser etc.) system and route them to vaulting, payment, loyalty, prepaid/gift processing etc., based on client needs.
 
 
-##Why Connected Commerce (uCom)?
+##Connected Commerce (uCom) Features
 
 Bring in a seamless customer experience and offer services across Channels &#150; Online, Mobile & In-Store shopping
 Know your customer - Get a 360 degree view of customer activity across channels and serve their need from Anywhere & Everywhere.

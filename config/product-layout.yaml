@@ -37,24 +37,53 @@ header:
     link: "/assets/images/Fiserv_Logo.jpg"
     altText: uCom
 featuredFeatures:
-  - title: Secure Payment Card Collections 
-    description:  Wide variety of options to integrate your solution with us. Server to server, Native API's, CORS support and finally Hosted Pages are all offerings we support.
-    tags: ["Payments", "uCom", "server to server", "native API", "Hosted Pages", "CORS",]
+  - title: Complex Orchestration
+    description:  Ability to execute complex flows such as multi-tender payments, loyalty earning and redemptions, enterprise level balance management, etc.
+    tags: ["multi tender", "uCom", "loyalty", "gateway"]
     bullets: ["REPLACEME", "REPLACEME" ]  
-  - title: Tokenization 
-    description:  Wide range of support with payment tokens. This includes Fiserv issued, third party and gateway specific for your token related needs. 
-    tags: ["Tokens", "uCom", "gateway"]
-    bullets: ["REPLACEME", "REPLACEME" ]  
-    relatedDocs:
-  - title: Wide range of payment support 
-    description: Traditional card support with addition to private label, EBT, Fleet and Cardnet are just some of the thirteen types of cards we support
-    tags: ["Tokenization", "uCom", "EBT", "Fleet", "visa", "mc", "cardnet", "american express", "discover", "diners club", "private label", "jcb", "union pay", "EBT Snap", "EBT Cash" ]
+  - title: Customer Management
+    description:  Securely collect, store and manage your customer/account details. We perform payment operations to keep you out of PCI (Payment Card Industry) scope.
+    tags: ["PCI", "uCom", "secure", "gateway"]
     bullets: ["REPLACEME", "REPLACEME" ]  
     relatedDocs:
-  - title: Gift Solutions 
-    description: From redemption, reload to purchase the team can support gift card use for merchants. Balance, history and balance merges are all something that is supported. 
-    tags: ["Gift", "uCom"]
+  - title: Multi-purse Wallets 
+    description: Ability to leverage various stored value accounts for enterprise clients that are tied to a customer to manage corporate level loyalty balances, CPG offers, gift balances, etc.
+    tags: ["Multi Purse", "uCom", "wallets", "loyalty", "gift", "balances", "gateway"]
     bullets: ["REPLACEME", "REPLACEME" ]  
+    relatedDocs:
+  - title: Site Management
+    description: Expertise to manage franchise and corporate locations. Automated onboarding and maintenance is used to support enterprise clients.
+    tags: ["site management", "uCom", "gateway"]
+    bullets: ["REPLACEME", "REPLACEME" ]  
+  - title: Secure Card Collections
+    description: Wide variety of options to integrate your solution with us. Server to server, Native API's, CORS support and Hosted Pages are all supported offerings.
+    tags: ["Server to Server", "CORS","Native API", "uCom", "gateway"]
+    bullets: ["REPLACEME", "REPLACEME" ]  
+  - title: Tokenization
+    description: Various types of payment tokens such as Fiserv issued, third party and gateway specific for your token related needs.
+    tags: ["tokenization", "uCom", "gateway"]
+    bullets: ["REPLACEME", "REPLACEME" ]  
+  - title: Payment Methods
+    description: In addition to traditional credit card support, we enable many alternate payment methods such as gift cards, PayPal, Venmo, ApplePay, GooglePay, private label, EBT, Fleet, etc.
+    tags: ["Payments","Paypal","uCom", "venmo", "applepay", "GooglePay", "private label", "EBT", "Fleet", "gift cards", "gateway"]
+    bullets: ["REPLACEME", "REPLACEME" ]  
+  - title: Fraud Prevention
+    description: Core fraud prevention tools with velocity rules around Amount limits, IP restrictions, etc.  In addition, 3rd party fraud partners with device intelligence is supported.
+    tags: ["fraud","3rd Party", "uCom", "device intelligence", "gateway"]
+    bullets: ["REPLACEME", "REPLACEME" ]
+  - title: Gift Solutions
+    description: Merchants can utilize closed/open loop gift cards to support features such as redemption, reload, purchase, balance, history and balance merges.
+    tags: ["Open Loop", "Closed Loop", "uCom", "gift", "gateway"]
+    bullets: ["REPLACEME", "REPLACEME" ]  
+  - title: Delivery Optimization
+    description: End to end management around delivery from split settlement (corp/franchise/driver/tip/etc) to execution of delivery instructions to driver network.  Notifications of delivery timing and updates are provided to the end user and/or merchant.
+    tags: ["Split Settlement","delivery services", "uCom", "gateway"]
+    bullets: ["REPLACEME", "REPLACEME" ]  
+  - title: Apply and Buy
+    description: Ability for und users to apply in real-time for cards and use them for purchase in a single transaction flow.
+    tags: ["Real Time", "uCom", "Apply and Buy", "gateway"]
+    bullets: ["REPLACEME", "REPLACEME" ]     
+
     relatedDocs:
       - relatedDoc: 
         title: REPLACEME
