@@ -55,35 +55,41 @@ featuredFeatures:
     description: Expertise to manage franchise and corporate locations. Automated onboarding and maintenance is used to support enterprise clients.
     tags: ["site management", "uCom", "gateway"]
     bullets: ["REPLACEME", "REPLACEME" ]  
+    relatedDocs:
   - title: Secure Card Collections
     description: Wide variety of options to integrate your solution with us. Server to server, Native API's, CORS support and Hosted Pages are all supported offerings.
     tags: ["Server to Server", "CORS","Native API", "uCom", "gateway"]
     bullets: ["REPLACEME", "REPLACEME" ]  
+    relatedDocs:
   - title: Tokenization
     description: Various types of payment tokens such as Fiserv issued, third party and gateway specific for your token related needs.
     tags: ["tokenization", "uCom", "gateway"]
     bullets: ["REPLACEME", "REPLACEME" ]  
+    relatedDocs:
   - title: Payment Methods
     description: In addition to traditional credit card support, we enable many alternate payment methods such as gift cards, PayPal, Venmo, ApplePay, GooglePay, private label, EBT, Fleet, etc.
     tags: ["Payments","Paypal","uCom", "venmo", "applepay", "GooglePay", "private label", "EBT", "Fleet", "gift cards", "gateway"]
     bullets: ["REPLACEME", "REPLACEME" ]  
+    relatedDocs:
   - title: Fraud Prevention
     description: Core fraud prevention tools with velocity rules around Amount limits, IP restrictions, etc.  In addition, 3rd party fraud partners with device intelligence is supported.
     tags: ["fraud","3rd Party", "uCom", "device intelligence", "gateway"]
     bullets: ["REPLACEME", "REPLACEME" ]
+    relatedDocs:
   - title: Gift Solutions
     description: Merchants can utilize closed/open loop gift cards to support features such as redemption, reload, purchase, balance, history and balance merges.
     tags: ["Open Loop", "Closed Loop", "uCom", "gift", "gateway"]
     bullets: ["REPLACEME", "REPLACEME" ]  
+    relatedDocs:
   - title: Delivery Optimization
     description: End to end management around delivery from split settlement (corp/franchise/driver/tip/etc) to execution of delivery instructions to driver network.  Notifications of delivery timing and updates are provided to the end user and/or merchant.
     tags: ["Split Settlement","delivery services", "uCom", "gateway"]
     bullets: ["REPLACEME", "REPLACEME" ]  
+    relatedDocs:
   - title: Apply and Buy
     description: Ability for und users to apply in real-time for cards and use them for purchase in a single transaction flow.
     tags: ["Real Time", "uCom", "Apply and Buy", "gateway"]
-    bullets: ["REPLACEME", "REPLACEME" ]     
-
+    bullets: ["REPLACEME", "REPLACEME" ]
     relatedDocs:
       - relatedDoc: 
         title: REPLACEME
