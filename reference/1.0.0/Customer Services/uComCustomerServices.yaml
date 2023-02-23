@@ -632,10 +632,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Email'
-        addresses:
-          type: array
-          items:
-            $ref: '#/components/schemas/Address'
         phoneNumbers:
           type: array
           items:
