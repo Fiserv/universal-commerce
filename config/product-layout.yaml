@@ -35,18 +35,18 @@ header:
     link: "/assets/images/Fiserv_Logo.jpg"
     altText: uCom
 featuredFeatures:
-  - title: Complex Orchestration
-    description:  Ability to execute complex flows such as multi-tender payments, loyalty earning and redemptions, enterprise level balance management, etc.
-    tags: ["multi tender", "uCom", "loyalty", "gateway"] 
-  - title: Customer Management
-    description:  Securely collect, store and manage your customer/account details. We perform payment operations to keep you out of PCI (Payment Card Industry) scope.
-    tags: ["PCI", "uCom", "secure", "gateway"]
-  - title: Multi-purse Wallets 
-    description: Ability to leverage various stored value accounts for enterprise clients that are tied to a customer to manage corporate level loyalty balances, CPG offers, gift balances, etc.
-    tags: ["Multi Purse", "uCom", "wallets", "loyalty", "gift", "balances", "gateway"]
-  - title: Site Management
-    description: Expertise to manage franchise and corporate locations. Automated onboarding and maintenance is used to support enterprise clients.
-    tags: ["site management", "uCom", "gateway"]
+ # - title: Complex Orchestration
+ #   description:  Ability to execute complex flows such as multi-tender payments, loyalty earning and redemptions, enterprise level balance management, etc.
+ #   tags: ["multi tender", "uCom", "loyalty", "gateway"] 
+ # - title: Customer Management
+ #   description:  Securely collect, store and manage your customer/account details. We perform payment operations to keep you out of PCI (Payment Card Industry) scope.
+ #   tags: ["PCI", "uCom", "secure", "gateway"]
+ # - title: Multi-purse Wallets 
+ #   description: Ability to leverage various stored value accounts for enterprise clients that are tied to a customer to manage corporate level loyalty balances, CPG offers, gift balances, etc.
+ #   tags: ["Multi Purse", "uCom", "wallets", "loyalty", "gift", "balances", "gateway"]
+ # - title: Site Management
+ #   description: Expertise to manage franchise and corporate locations. Automated onboarding and maintenance is used to support enterprise clients.
+ #   tags: ["site management", "uCom", "gateway"]
   - title: Secure Card Collections
     description: Wide variety of options to integrate your solution with us. Server to server, Native API's, CORS support and Hosted Pages are all supported offerings.
     tags: ["Server to Server", "CORS","Native API", "uCom", "gateway"]
