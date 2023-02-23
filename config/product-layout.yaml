@@ -57,7 +57,7 @@ featuredFeatures:
    description: In addition to traditional credit card support, we enable many alternate payment methods such as gift cards, PayPal, Venmo, ApplePay, GooglePay, private label, EBT, Fleet, etc.
    tags: ["Payments","Paypal","uCom", "venmo", "applepay", "GooglePay", "private label", "EBT", "Fleet", "gift cards", "gateway"]
  - title: Fraud Prevention
-   description: Core fraud prevention tools with velocity rules around Amount limits, IP restrictions, etc.  In addition, 3rd party fraud partners with device intelligence is supported.
+   description: Core fraud prevention tools with velocity rules around Amount limits, IP restrictions, etc. In addition, 3rd party fraud partners with device intelligence is supported.
    tags: ["fraud","3rd Party", "uCom", "device intelligence", "gateway"]
  - title: Gift Solutions
    description: Merchants can utilize closed/open loop gift cards to support features such as redemption, reload, purchase, balance, history and balance merges.
