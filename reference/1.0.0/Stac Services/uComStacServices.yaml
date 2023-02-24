@@ -47,11 +47,11 @@ paths:
   /v1/stac:
     post:
       x-group-name: Stac Services
-      x-proxy-name: Create one-time payment QR code
+      x-proxy-name: Create QR code
       tags:
         - stac
-      summary: Create a one-time payment QR code
-      description: Must include a funding source
+      summary: Create QR code based on funding source.
+      description: Must include a funding source.
       parameters:
         - $ref: '#/components/parameters/ApiKeyParam'
         - $ref: '#/components/parameters/TimestampParam'
@@ -65,10 +65,20 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/StacRequest'
+            examples:
+              Vaulted Account: {summary: Request with vaulted account, $ref: '#/components/examples/VaultedAccountSTACRequest'}
         required: true
       responses:
-        201:
-          $ref: '#/components/responses/StacCreated'
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema: 
+                $ref: '#/components/responses/StacCreated'
+              examples:
+                Vaulted Account:
+                  summary: STAC response with caulted account
+                  $ref: '#/components/examples/VaultedAccountStacCreatedSuccessResponse'
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -269,6 +279,10 @@ components:
           type: string
         eciIndicator:
           type: string
+        xid:
+          type: string
+        cavv:
+          type: string           
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
         panType:
@@ -647,6 +661,10 @@ components:
           type: string
         eciIndicator:
           type: string
+        xid:
+          type: string
+        cavv:
+          type: string           
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
         panType:
@@ -1454,6 +1472,10 @@ components:
           type: string
         eciIndicator:
           type: string
+        xid:
+          type: string
+        cavv:
+          type: string          
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
         panType:
@@ -2267,3 +2289,27 @@ components:
       required: true
       schema:
         type: string
+  examples:
+    VaultedAccountSTACRequest:
+      value:
+        fdCustomerId: 88f7b006758e4833ae40ecccf268457a
+        stac:
+          fundingSource:
+            type: VAULTED_ACCOUNT
+            vaultedAccount:
+              fdAccountId: 8a7fa6d486179622018617e0216d001e
+        deviceInfo:
+          id: 537edec8-d33e-4ee8-93a7-b9f61876950c
+          kind: mobile
+          details:
+            - provider: RAVELIN
+              dataCapture:
+                dataEventId: BB8E4E92...Fz1E063113
+    VaultedAccountStacCreatedSuccessResponse:
+      value:
+        stacId: 8a7f2d848626c9370186306e9a99000e
+        qrCode:
+          qrCodeId: UCOM1fb8ef1e0b1740788da8c6d986c1ad34
+          expiryDateTime: '2023-02-08T09:55:00Z'
+        
+        

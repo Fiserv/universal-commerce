@@ -117,10 +117,20 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Provision'
+            examples:
+              Minimal : {summary: Request with vaulted card, $ref: '#/components/examples/CardProvisioningRequest'}
         required: true
       responses:
         201:
-          $ref: '#/components/responses/Created'
+          description: Success
+          content:
+            application/json:
+              schema: 
+                 $ref: '#/components/responses/Created'
+              examples:
+                Minimal - 201:
+                  summary: Purchase Prepaid card with credit Card Response
+                  $ref: '#/components/examples/CardProvisioningResponse'
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -149,7 +159,15 @@ paths:
       - $ref: '#/components/parameters/SubMerchantIdParam'
       responses:
         200:
-          $ref: '#/components/responses/OK'
+          description: Success
+          content:
+            application/json:
+              schema: 
+                 $ref: '#/components/responses/OK'
+              examples:
+                Minimal - 200:
+                  summary: Provisions details Response
+                  $ref: '#/components/examples/GetProvisioningDetailsResponse'
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -206,6 +224,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Provision'
+            examples:
+              Minimal : {summary: Request with vaulted card, $ref: '#/components/examples/UpdateProvisioningRequest'}
+            
         required: true
       responses:
         200:
@@ -457,6 +478,10 @@ components:
           type: string
         eciIndicator:
           type: string
+        xid:
+          type: string
+        cavv:
+          type: string          
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
         panType:
@@ -681,6 +706,10 @@ components:
           type: string
         eciIndicator:
           type: string
+        xid:
+          type: string
+        cavv:
+          type: string          
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
         panType:
@@ -775,7 +804,7 @@ components:
           example: email-id@example.com
         cardNumber:
           type: string
-          description: Card number of loyalty account. The accountId parameter superscedes this field.  This field is ignored when the request is to create a new acccount.
+          description: Card number of loyalty account. The accountId parameter supersedes this field.  This field is ignored when the request is to create a new acccount.
           example: "905960447"
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
@@ -800,7 +829,7 @@ components:
               type: boolean
             sms:
               type: boolean
-          description: Methods the account onwer has agreed to be contacted
+          description: Methods the account owner has agreed to be contacted
         commonFlags:
           type: object
           properties:
@@ -872,7 +901,7 @@ components:
       example:
         programId: TEST_PROGRAM
         hostProgramId: TEST_HOST_PROGRAM
-        programName: TEST_LOAYLTY_PROGRAM
+        programName: TEST_LOYALTY_PROGRAM
         programDesc: Test loyalty program
         programProvider: Test Provider
         loyaltyType: LOCAL
@@ -965,7 +994,7 @@ components:
         optCode:
           type: string
           description: It contains OTP sent to use via voice, SMS or Email in encrypted format.
-      description: channles to receive OTP - can be SMS, Phone or email. This object will be set only in case of request/reply of OTP methods.
+      description: channels to receive OTP - can be SMS, Phone or email. This object will be set only in case of request/reply of OTP methods.
       example:
         id: ch02
         type: Cell
@@ -989,7 +1018,7 @@ components:
       properties:
         payerId:
           type: string
-          description: Paypal generated Unique identfier for a Paypal account.
+          description: Paypal generated Unique identifier for a Paypal account.
           example: LPLWNMTBWMFAY
         nonce:
           type: string
@@ -1133,11 +1162,11 @@ components:
           example: 2017-03-22T08:15:30-05:00
         lastUpdatedTime:
           type: string
-          description: Date and time of update proviosn request to uCom.
+          description: Date and time of update provision request to uCom.
           format: date-time
           readOnly: true
           example: 2017-03-21T08:18:30-05:00
-      description: Details about the process of provisioning an accont.
+      description: Details about the process of provisioning an account.
 
     Question:
       type: object
@@ -1199,6 +1228,10 @@ components:
           type: string
         eciIndicator:
           type: string
+        xid:
+          type: string
+        cavv:
+          type: string          
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
         panType:
@@ -1278,7 +1311,7 @@ components:
           example: true
         cavv:
           type: string
-          description: Card authenticaion verificaiton value
+          description: Card authentication verification value
         threeDSVersion:
           type: string
         expiryDateTime:
@@ -1290,7 +1323,7 @@ components:
         eci:
           type: string
           description: Electronic Commerce Indicator value
-      description: Details of ThreeDSecure transaction used to process the challege flow
+      description: Details of ThreeDSecure transaction used to process the challenge flow
 
     User:
       required:
@@ -1449,7 +1482,7 @@ components:
                     description: Device data capture time in Internet Date/Time format - yyyy-MM-dd'T'HH:mm:ss'Z'
                     format: date-time
                     example: 2016-04-16T16:06:05Z
-                description: Device data captured as a bundle and transmitted as an encrypted and/or specifically formated string.
+                description: Device data captured as a bundle and transmitted as an encrypted and/or specifically formatted string.
               dataStatic:
                 type: object
                 properties:
@@ -1503,7 +1536,7 @@ components:
                     type: string
                     description: Mobile application name.
                     format: sting
-                    example: aplication-name
+                    example: application-name
                   country:
                     type: string
                     description: Mobile application store country.
@@ -1907,3 +1940,82 @@ components:
       required: true
       schema:
         type: string
+        
+  examples:
+    CardProvisioningRequest:
+      value:
+        deviceInfo:
+          id: 563edec8-d34e-6fe8-45a7-c9f65296953c
+          kind: mobile
+          details:
+            - provider: InAuth
+              dataCapture:
+                rawData: aaaaaXREUVZGRlFY...aMV
+                dataEventId: BB8E4E92...Fz1E063113
+                captureTime: '2017-03-21T08:15:30-05:00'
+              dataStatic:
+                os: 6S
+                model: iPhone
+                type: Apple
+                osVersion: '9.0'
+              dataDynamic:
+                latitude: '39.987756'
+                longitude: '-75.4080015'
+                ipAddress: AB11:AB12:AB13::AB15:AB16
+                captureTime: '2017-03-21T08:15:30-05:00'
+            - provider: InAuth
+              dataCapture:
+                rawData: aaaaaXREUVZGRlFY...aMV
+                dataEventId: BB8E4E92...Fz1E063113
+                captureTime: '2017-03-21T08:15:30-05:00'
+              dataStatic:
+                os: 6S
+                model: iPhone
+                type: Apple
+                osVersion: '9.0'
+              dataDynamic:
+                latitude: '39.987756'
+                longitude: '-75.4080015'
+                ipAddress: AB11:AB12:AB13::AB15:AB16
+                captureTime: '2017-03-21T08:15:30-05:00'
+                
+    CardProvisioningResponse:
+      value:
+        provisionId: 8a7f4a0784e12c680184f22044e00001
+        fdCustomerId: 9d623660a5fe449198f3b94b749983f2
+        process:
+          status: REQUESTED
+          createdTime: '2022-12-08T14:25:11Z'
+          expiryTime: '2022-12-09T14:25:11Z'
+          lastUpdatedTime: '2022-12-08T14:25:11Z'
+          
+    GetProvisioningDetailsResponse:
+      value:
+        provisionId: 8a7f4a0784e12c680184f22044e00001
+        fdCustomerId: 9d623660a5fe449198f3b94b749983f2
+        process:
+          status: REQUESTED
+          createdTime: '2022-12-08T14:25:11Z'
+          expiryTime: '2022-12-09T14:25:11Z'
+          lastUpdatedTime: '2022-12-08T14:25:11Z'
+          
+    UpdateProvisioningRequest:
+      value:
+        issuerExtraInfo:
+          - name: account_entity
+            value: <kyc>KFhRshrlByKE8Ktc9P6tcFD/xyJO2WLyfVsVSVpmHk8UAE8+EVXNsBnNizmgezQkCzcv57Obgt424wLultNhWP6Szho+qMuMse5qYvqCqIh8xR7YAaoUoawdrfPaUtVfgzBFQ6AL2/u1ru+QqxRO46eeLAW1hNxQ4MsJ5rXITTBehzQz30kXZoDBxMok1nKPqhGTof0oug/LyY930fqoZYJBb0Q1KxU5SEAI3bUvyrDtWSvT8fRWQ5gv+Bi68HXunLagAV7vwyK+NZUmQhPYs3R5b+2JZ9YO6MZzdK+m7toDi5VItBcsuo8UvmFsYXk+yv9qUoqj6+Z+FVXIWQ2MVQ==GWZheYVANKrwdtBPj07d/HUx5CAFvJDnyJZymYKdcoo4pnOFofjtT9aVNkFNIgI1xc772kqBlirVyrPobGpCk04AVHb7JL2mMFMJZ/1bk/q7WWkeW7wO+dua1R3bQRpmBJRe3CqjSDELN1W/ip4iTBgAp9ODalBWrctUe9vfM6BxaoB1I2wPz5WAGnz4q4PoMBrgT16JuJl0Hn+kqnr2bWjJlt4V/umS3eCfa25MSswP6IimxGZfvbCVZWAR5/2dmjls1i2GSgl5HObxD4CxFTSYIqBZvpwaXsYIWZTXG2grR7VprQvNi7+irJZa61xLUYe5JeFJ75oWEjsTB+cONQ==</kyc>
+          - name: wallet_server_session_id
+            value: '202001209359'
+          - name: wallet_enrollment_datetime
+            value: '202001209359'
+          - name: device_id_link_datetime
+            value: '202001209359'
+          - name: login_authentication_method
+            value: UID
+          - name: encryption_cert_name
+            value: citi.ips-uat.p-data.secondary.nam.nsroot.net
+        
+        
+        
+        
+        

@@ -675,6 +675,10 @@ components:
           type: string
         eciIndicator:
           type: string
+        xid:
+          type: string
+        cavv:
+          type: string           
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
         panType:
@@ -785,6 +789,12 @@ components:
       type: object
       description: Order customer location
       properties:
+        contactName:
+          type: string
+        contactPhone:
+          $ref: '#/components/schemas/Phone'
+        contactEmail:
+          $ref: '#/components/schemas/Email'       
         address:
           $ref: '#/components/schemas/Address'
         venueDetails:
@@ -843,6 +853,11 @@ components:
           type: string
           format: date-time
           example: "2016-04-16T16:06:05Z"
+        deliveryOption:
+            $ref: '#/components/schemas/DeliveryOption' 
+        deliveryType:
+          type: string
+          example: "CONTACTLESS"            
         deliveryWindow:
           $ref: '#/components/schemas/DeliveryWindow'
         currencyCode:
@@ -881,27 +896,33 @@ components:
       type: object
       description: Order delivery location
       properties:
-        pickupStartDate:
-          description: pickup start date
+        contactName:
           type: string
-          format: date-time
-          example: "2016-04-16T16:06:05Z"
-        pickupEndDate:
-          description: pickup end date
-          type: string
-          format: date-time
-          example: "2016-04-16T16:06:05Z"
-        deliveryType:
-          type: string
-          example: "CONTACTLESS"
-        contact:
-          $ref: '#/components/schemas/OrderContact'
+        contactPhone:
+          $ref: '#/components/schemas/Phone'
+        contactEmail:
+          $ref: '#/components/schemas/Email'        
         address:
           $ref: '#/components/schemas/Address'
         note:
           type: string
         venueDetails:
           $ref: '#/components/schemas/VenueDetails'
+
+    DeliveryInfo:
+      type: object
+      description: Delivery information
+      properties:
+        deliveryQuoteId:
+          type: string
+        deliveryOption:
+            $ref: '#/components/schemas/DeliveryOption' 
+        deliveryType:
+          type: string
+          example: "CONTACTLESS"            
+        deliveryWindow:
+            $ref: '#/components/schemas/DeliveryWindow'
+
 
     MerchantOrderWindow:
       description: Merchant ordering window details
@@ -1169,6 +1190,10 @@ components:
           type: string
         eciIndicator:
           type: string
+        xid:
+          type: string
+        cavv:
+          type: string            
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
         panType:
@@ -1417,6 +1442,8 @@ components:
         orderStatus:
           type: string
           description: Order status information
+        deliveryInfo:
+          $ref: '#/components/schemas/DeliveryInfo'
         externalCustomerId:
           type: string
           description: A String that is an identifier for the resource as defined by the provisioning client. While the server does not enforce uniqueness, it is assumed that the value's uniqueness is controlled by the client setting the value.
@@ -2320,6 +2347,10 @@ components:
           type: string
         eciIndicator:
           type: string
+        xid:
+          type: string
+        cavv:
+          type: string          
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
         panType:
@@ -2346,18 +2377,12 @@ components:
       type: object
       description: Order store location
       properties:
-        pickupStartDate:
-          description: pickup start date
+        contactName:
           type: string
-          format: date-time
-          example: "2016-04-16T16:06:05Z"
-        pickupEndDate:
-          description: pickup end date
-          type: string
-          format: date-time
-          example: "2016-04-16T16:06:05Z"
-        contact:
-          $ref: '#/components/schemas/OrderContact'
+        contactPhone:
+          $ref: '#/components/schemas/Phone'
+        contactEmail:
+          $ref: '#/components/schemas/Email' 
         address:
           $ref: '#/components/schemas/Address'
         note:

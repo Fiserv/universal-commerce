@@ -160,10 +160,41 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PetroTransactionRequest'
+            examples:
+              With Car Wash: {summary: Request with Car Wash, $ref: '#/components/examples/ServiceAuthWithcarWashRequest'}
+              Without Car Wash: {summary: Request without Car Wash, $ref: '#/components/examples/ServiceAuthWithOutcarWashRequest'}
+              PayPal: {summary: Request with PayPal, $ref: '#/components/examples/ServiceAuthPayPalRequest'}
+              Apple Pay: {summary: Request with ApplePay, $ref: '#/components/examples/ServiceAuthApplePayRequest'}
+              Google Pay: {summary: Request with GooglePay, $ref: '#/components/examples/ServiceAuthGooglePayRequest'}
+              STAC ID - QR Code: {summary: Request with STAC ID, $ref: '#/components/examples/ServiceAuthQRCodeRequest'}
         required: true
       responses:
         201:
-          $ref: '#/components/responses/Created'
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Created'
+              examples:
+                With Car Wash - 201:
+                  summary: With car wash service auth Response
+                  $ref: '#/components/examples/ServiceAuthWithcarWashResponse'
+                Without Car Wash - 201:
+                  summary: Without car wash service auth Response
+                  $ref: '#/components/examples/ServiceAuthWithcarWashResponse'
+                PayPal - 201:
+                  summary: PayPal service auth Response
+                  $ref: '#/components/examples/ServiceAuthPayPalResponse'
+                Apple Pay - 201:
+                  summary: Apple Pay service auth Response
+                  $ref: '#/components/examples/ServiceAuthApplePayResponse'
+                Google Pay - 201:
+                  summary: Google Pay service auth Response
+                  $ref: '#/components/examples/ServiceAuthGooglePayResponse'
+                STAC ID - QR Code - 201:
+                  summary: QR Code service auth Response
+                  $ref: '#/components/examples/ServiceAuthQRCodeResponse'
+          
         202:
           $ref: '#/components/responses/PartiallyCreated'
         400:
@@ -196,7 +227,31 @@ paths:
         - $ref: '#/components/parameters/SubMerchantIdParam'
       responses:
         200:
-          $ref: '#/components/responses/OK'
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/OK'
+              examples:
+                Completed - PayPal - 200:
+                  summary: Status Compeleted with PayPal Response
+                  $ref: '#/components/examples/StatusCompletedWithPayPalResponse'
+                Completed - Apple Pay - 200:
+                  summary: Status Compeleted with Apple Pay Response
+                  $ref: '#/components/examples/StatusCompletedWithApplePayResponse'
+                Completed - Credit Card - 200:
+                  summary: Status Compeleted with Credit Card Response
+                  $ref: '#/components/examples/StatusCompletedWithCreditCardResponse'
+                Cancelled - Minimal - 200:
+                  summary: Status Cancelled Response
+                  $ref: '#/components/examples/StatusCancelledResponse'
+                Authorized - Minimal - 200:
+                  summary: Status Authorized Response
+                  $ref: '#/components/examples/StatusAuhtorizedResponse'
+                Fuel Started - Minimal - 200:
+                  summary: Status Fuel Started Response
+                  $ref: '#/components/examples/StatusFuelStartedResponse'
+          
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -226,13 +281,9 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                action:
-                  $ref: '#/components/schemas/UpdateActionType'
-                deviceInfo:
-                  $ref: '#/components/schemas/DeviceInfo'
-        required: true
+              $ref : '#/components/schemas/PetroTransactionUpdateRequest'
+            examples:
+              Cancel Transaction: {summary: Request with cancel transaction, $ref: '#/components/examples/PatchSampleRequest'}
       responses:
         200:
           $ref: '#/components/responses/OK'
@@ -265,6 +316,15 @@ components:
           $ref: '#/components/schemas/PetroTransaction'
         deviceInfo:
           $ref: '#/components/schemas/DeviceInfo'
+          
+          
+    PetroTransactionUpdateRequest:
+        type: object
+        properties:
+          action:
+            $ref: '#/components/schemas/UpdateActionType'
+          deviceInfo:
+            $ref: '#/components/schemas/DeviceInfo'
 
   #-------------------------------------
   # Resource Models
@@ -440,6 +500,10 @@ components:
           type: string
         eciIndicator:
           type: string
+        xid:
+          type: string
+        cavv:
+          type: string            
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
         panType:
@@ -822,6 +886,10 @@ components:
           type: string
         eciIndicator:
           type: string
+        xid:
+          type: string
+        cavv:
+          type: string          
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
         panType:
@@ -1840,6 +1908,10 @@ components:
           type: string
         eciIndicator:
           type: string
+        xid:
+          type: string
+        cavv:
+          type: string           
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
         panType:
@@ -2761,3 +2833,753 @@ components:
       required: true
       schema:
         type: string
+        
+  examples:
+    ServiceAuthWithcarWashRequest:
+      value:
+        fdCustomerId: e135eb37d1cb46e7b6aea906ba57d600
+        transaction:
+          siteInfo:
+            siteLocationId: '770006'
+            fuelPurchaseInfo:
+              pumpNumber: 1
+              items:
+                - description: UNLD1
+                  available: true
+                  price: 3.99
+                  priceTier: credit
+                  gradeId: '1'
+            resources:
+              - id: 8a7f1f908631ab1801865376acd83699
+                name: Carwash
+                items:
+                  - id: 815
+                    itemInfo:
+                      posCodeFormat: plu
+                      posCode: '00000000000338'
+                      posCodeModifier: 3-CASH
+                      itemName: BASIC
+                      itemDescription: BASIC
+                      itemPrice: '10.01'
+                      displayOrder: 1
+                      productCode: '102'
+                      discountedPrice: 0
+                      amount: 10
+                      quantity: 1
+          payments:
+            - requestedAuthAmount: '15.28'
+              fundingSource:
+                account:
+                  fdAccountId: 8a7f148f864e8ceb018653c7f84a0c1c
+          printReceipt: true
+          activateVirtualCard: false
+        deviceInfo:
+          id: 537edec8-d33e-4ee8-93a7-b9f61876950cpl8ght0092
+          kind: mobile
+          details:
+            - provider: inauth
+              dataCapture:
+                rawData: aaaaaXREUVZGRlFY...aMV
+                dataEventId: 2ED11045-8027-4ADE-98A4-E4358E55D194
+                captureTime: '2019-03-04T07:52:37'
+              dataDynamic:
+                captureTime: '2019-03-04T07:52:37'
+                
+    ServiceAuthWithcarWashResponse:
+      value:
+        transaction:
+          transactionId: a044aa3a16444606b70887835e80788f
+          payments:
+            - currencyCode:
+                code: USD
+                number: 840
+                currency: US Dollar
+              requestedAuthAmount: 15.28
+              approvedAuthAmount: 15.28
+              fundingSource:
+                type: VAULTED_ACCOUNT
+                vaultedAccount:
+                  fdAccountId: 8a7f148f864e8ceb018653c7f84a0c1c
+                  type: CREDIT
+                credit:
+                  nameOnCard: John Smith
+                  alias: '3502'
+                  cardType: MASTERCARD
+                  billingAddress:
+                    streetAddress: 100 Universal City Plaza
+                    postalCode: '98290'
+                  expiryDate:
+                    month: '12'
+                    year: '25'
+                  token:
+                    tokenId: '1798641806263502'
+                    tokenProvider: TRANS_ARMOR
+          status: AUTHORIZED
+          hostExtraInfo:
+            - name: APPROVAL_NUMBER
+              value: '154126'
+            - name: SEQUENCE_NUMBER
+              value: '003721'
+            - name: HOST_RESPONSE_CODE
+              value: '3'
+            - name: HOST_RESPONSE_MESSAGE
+              value: APPROVED  154126
+            - name: HOST_AVS_CODE
+              value: AVS+Y
+            - name: TRANSACTION_DATETIME
+              value: 2023-02-15T01:35
+              
+    ServiceAuthWithOutcarWashRequest:
+      value:
+        fdCustomerId: 064d63ffc1a2451fb8f93fa045807454
+        transaction:
+          siteInfo:
+            siteLocationId: '770006'
+            fuelPurchaseInfo:
+              pumpNumber: 1
+              items:
+                - description: UNLD1
+                  available: true
+                  price: 3.99
+                  priceTier: credit
+                  gradeId: '1'
+          payments:
+            - requestedAuthAmount: '15.28'
+              fundingSource:
+                account:
+                  fdAccountId: 8a7f461f865353890186537ac2ef0000
+          printReceipt: true
+          activateVirtualCard: false
+        deviceInfo:
+          id: 537edec8-d33e-4ee8-93a7-b9f61876950cpl9
+          kind: mobile
+          details:
+            - provider: inauth
+              dataCapture:
+                rawData: aaaaaXREUVZGRlFY...aMV
+                dataEventId: 2ED11045-8027-4ADE-98A4-E4358E55D194
+                captureTime: '2019-03-04T07:52:37'
+              dataDynamic:
+                captureTime: '2019-03-04T07:52:37'
+                
+    ServiceAuthWithOutcarWashResponse:
+      value:
+        transaction:
+          transactionId: bc68c928419c4e7cba33b0d1e9f3b2fc
+          payments:
+            - currencyCode:
+                code: USD
+                number: 840
+                currency: US Dollar
+              requestedAuthAmount: 15.28
+              approvedAuthAmount: 15.28
+              fundingSource:
+                type: VAULTED_ACCOUNT
+                vaultedAccount:
+                  fdAccountId: 8a7f461f865353890186537ac2ef0000
+                  type: CREDIT
+                credit:
+                  nameOnCard: John Smith
+                  alias: '3502'
+                  cardType: MASTERCARD
+                  billingAddress:
+                    streetAddress: 100 Universal City Plaza
+                    postalCode: '98290'
+                  expiryDate:
+                    month: '12'
+                    year: '25'
+          status: AUTHORIZED
+          hostExtraInfo:
+            - name: APPROVAL_NUMBER
+              value: '101559'
+            - name: SEQUENCE_NUMBER
+              value: '055557'
+            - name: HOST_RESPONSE_CODE
+              value: '3'
+            - name: HOST_RESPONSE_MESSAGE
+              value: APPROVED  101559
+            - name: HOST_AVS_CODE
+              value: AVS+Y
+            - name: TRANSACTION_DATETIME
+              value: 2023-02-15T00:10
+              
+    ServiceAuthApplePayRequest:
+      value:
+        fdCustomerId: be74460e927646b8b863f18e0bc1622b
+        transaction:
+          siteInfo:
+            siteLocationId: '770006'
+            fuelPurchaseInfo:
+              pumpNumber: 1
+          payments:
+            - requestedAuthAmount: 15.28
+              fundingSource:
+                applePay:
+                  version: EC_v1
+                  decryptAlias: merchant.com.test.pay.dev.apple.pay
+                  data: C+D9TRrHih+pRWw/L6H9sB4mKHJLeJJtu+g8HyEtW0WNV3MejKUOsUUe4PXdMGU+/z1rmAzzP2J9NmhFePqFOW20Bd7ZqynWUWeGCXJ8W6pmWMN4NHpKVS/82ygvndWdnX43r92xfDh9WXR/sf82iOil0tzb1Yj2yPskf1wH/EvvhqqEA/+qCwVrjpUTnhjddfFhLuQfb2vmCcaYxAl1eYw+IHD4JaHsIFrwZ/O8lRZybcQLO14JTYiPcIQnYz9rXzt45GA3llllHqOqF8Tj5t+JxrFTmhb6jjYhE7xZMA1rbmvgLtRpt2XaZHmurFm9Ehjg3erEqHk5ju1ZGgOW/7/OOb21uN/ergvbulAdJvXa++D6wtaHQ+9DWz7UCN0yFusE9KuHOiFxMAY06ZMQOlB2q/Wi9o3LRtyE8Kc+hP6uyluxpwQuQEuI4bQMzX4bSXHDRUeROUfhoINKyKfWlVdzY6wuFX9uQxWcMjer2Xf86kSp5t5XHHFU95tM6EsxyQSEMfXNbPM=
+                  signature: MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwEAAKCAMIIB0zCCAXkCAQEwCQYHKoZIzj0EATB2MQswCQYDVQQGEwJVUzELMAkGA1UECAwCTkoxFDASBgNVBAcMC0plcnNleSBDaXR5MRMwEQYDVQQKDApGaXJzdCBEYXRhMRIwEAYDVQQLDAlGaXJzdCBBUEkxGzAZBgNVBAMMEmQxZHZ0bDEwMDAuMWRjLmNvbTAeFw0xOTA3MjUxNjI3NDlaFw0zOTA3MjAxNjI3NDlaMHYxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJOSjEUMBIGA1UEBwwLSmVyc2V5IENpdHkxEzARBgNVBAoMCkZpcnN0IERhdGExEjAQBgNVBAsMCUZpcnN0IEFQSTEbMBkGA1UEAwwSZDFkdnRsMTAwMC4xZGMuY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAErnHhPM18HFbOomJMUiLiPL7nrJuWvfPy0Gg3xsX3m8q0oWhTs1QcQDTT+TR3yh4sDRPqXnsTUwcvbrCOzdUEeTAJBgcqhkjOPQQBA0kAMEYCIQCXW2kjA36LdnEqc0qHb82FIYShdEk3hgPGxZDf6PfXygIhANrrpo/SY2YorozC73ZuQDtsGK3PHTdQZja5AgdEXy0yAAAxggFSMIIBTgIBATB7MHYxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJOSjEUMBIGA1UEBwwLSmVyc2V5IENpdHkxEzARBgNVBAoMCkZpcnN0IERhdGExEjAQBgNVBAsMCUZpcnN0IEFQSTEbMBkGA1UEAwwSZDFkdnRsMTAwMC4xZGMuY29tAgEBMA0GCWCGSAFlAwQCAQUAoGkwGAYJKoZIhvcNAQkDMQsGCSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcNMjAxMjAyMTAyNjI5WjAvBgkqhkiG9w0BCQQxIgQgughjAtCqO454sibARixaHA3Ytt9tAtwRK6xjQxgBNewwCgYIKoZIzj0EAwIERjBEAiAioXPpXP372JhUYIevU9N6W5xiyISuBsi3dzmOVualDQIgfdm38lG7oFGoUmiEe4D55yhk3AeeLRosMJF3TYLi15cAAAAAAAA=
+                  applicationData: 'null'
+                  header:
+                    ephemeralPublicKey: MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEkZSaQBXismDISRg1QpOB1hfygR8GegtW+lwD0fn24qLz+vBAX508At9FHalImKUlBVPFXSOCYfOV4s66vzrDxQ==
+                    publicKeyHash: 45Pq9eo9ppTm4Y0j/4wgBMtIQ5oF2GyLTGiv2gCTtmo=
+                    transactionId: '31323334353637'
+                  billingAddress:
+                    type: work
+                    streetAddress: 200 Universal City Plaza
+                    locality: Hollywood
+                    region: CA
+                    postalCode: '00000'
+                    country: US
+                    formatted: |-
+                      100 Universal City Plaza
+                      Hollywood, CA 91608 USA
+                    primary: true
+          printReceipt: true
+          
+    ServiceAuthApplePayResponse:
+      value:
+        transaction:
+          transactionId: b5deba9789a14a268982f4539bc3c46b
+          payments:
+            - currencyCode:
+                code: USD
+                number: 840
+                currency: US Dollar
+              requestedAuthAmount: 15.28
+              approvedAuthAmount: 15.28
+              fundingSource:
+                type: APPLE_PAY
+                applePay:
+                  dPanLast4: '9424'
+                  cardType: DISCOVER
+          status: AUTHORIZED
+          hostExtraInfo:
+            - name: APPROVAL_NUMBER
+              value: '916009'
+            - name: SEQUENCE_NUMBER
+              value: '036678'
+            - name: HOST_RESPONSE_CODE
+              value: '3'
+            - name: HOST_RESPONSE_MESSAGE
+              value: APPROVED  916009
+            - name: HOST_AVS_CODE
+              value: AVS+X
+            - name: TRANSACTION_DATETIME
+              value: 2023-02-15T03:01
+            - name: NETWORK_TRANSACTION_ID
+              value: '123456789012345'
+              
+    ServiceAuthPayPalRequest:
+      value:
+        fdCustomerId: 6a029cd6b1524e45b75c56251721b961
+        transaction:
+          siteInfo:
+            siteLocationId: '770006'
+            fuelPurchaseInfo:
+              pumpNumber: 1
+              items:
+                - description: UNLD1
+                  available: true
+                  price: 3.99
+                  priceTier: credit
+                  gradeId: '1'
+          payments:
+            - requestedAuthAmount: '15.22'
+              fundingSource:
+                account:
+                  fdAccountId: 8a7f148f864e8ceb01865421cac40c42
+          printReceipt: true
+          activateVirtualCard: false
+        deviceInfo:
+          id: 537edec8-d33e-4ee8-93a7-b9f61876950c
+          kind: mobile
+          details:
+            - provider: PAYPAL
+              dataCapture:
+                rawData: aaaaaXREUVZGRlFY...aMV
+                dataEventId: 2ED11045-8027-4ADE-98A4-E4358E55D194
+                captureTime: '2019-03-04T07:52:37'
+              dataDynamic:
+                captureTime: '2019-03-04T07:52:37'
+                
+    ServiceAuthPayPalResponse:
+      value:
+        transaction:
+          transactionId: d88a30477d744a29b96711b50b1a1848
+          payments:
+            - currencyCode:
+                code: USD
+                number: 840
+                currency: US Dollar
+              requestedAuthAmount: 15.22
+              approvedAuthAmount: 15.22
+              fundingSource:
+                type: VAULTED_ACCOUNT
+                vaultedAccount:
+                  fdAccountId: 8a7f148f864e8ceb01865421cac40c42
+                  type: PAYPAL
+          status: AUTHORIZED
+          hostExtraInfo:
+            - name: APPROVAL_NUMBER
+              value: '916059'
+            - name: SEQUENCE_NUMBER
+              value: '753383'
+            - name: HOST_RESPONSE_CODE
+              value: '2'
+            - name: HOST_RESPONSE_MESSAGE
+              value: APPROVED  916059
+            - name: TRANSACTION_DATETIME
+              value: 2023-02-15T03:13
+            - name: NETWORK_TRANSACTION_ID
+              value: '123456789012345'
+              
+    ServiceAuthGooglePayRequest:
+      value:
+        fdCustomerId: bd959362c2d14046b62524c2208bdd2c
+        transaction:
+          siteInfo:
+            siteLocationId: '127651664978'
+            fuelPurchaseInfo:
+              pumpNumber: '3'
+              items:
+                - posCode: '225'
+                  itemDescription: Unleaded
+                  itemPrice: 1.359
+                  productCode: '012'
+          payments:
+            - requestedAuthAmount: 100
+              fundingSource:
+                googlePay:
+                  signature: MEUCIQCuG/FftXBAAXPVlEjcBwRYQSbLuIzTdXzJkjjeZ/kVXQIgVb+hpZ4cL2lYLRmlc77+j1EZTxFm5YlkCJWBjH63n0c=
+                  data: '{"encryptedMessage":"Vu2Y3rngvR3UVzmMyTbjJZxcI4kBX1qXQ/a8sJIfn+7fZMtyzgJxSYm1ogXPRcA5A2oFyE66AOC3lsjgiyOH+6WqTixvIRiHTR7Ve7UkjXJDQMB7S+N28vwTv/mrIELPGFyOLJ0Nl9L4zctnOo0hLRGJSBbdf2pYF19kBliHZG446P0Jo2df1tLqkZWr+v/dmj0Xy5/QUk4b7f8/aOf1I0krvpFp3cPcDuPZYJir55NiNbdxvm8eN8LOlAaCD9mWB4cfNX8jU4Vxqsl0tCvPLy0YNNIiubNKuUP+27456MJDFIpBejcfRNRmvtdNjJ7O07+NaR44xDzQSdLQfDSN00+hUjjB5Jh6k2M/8aBChWf1UWV8lzC+h6d/dMmBzJJMFdWlZBm+ZQNhNoqGbq0C0oJWyQdehJZ/L0ndBaZR9hi2v12KJcdaVLrC2YyxT7cqeAdF5qVzLbDUBaiXVtkJC0FC4cxhUsThVgsRyh594YvIgMkDBzle4MSf9RKUdXxe9Hr/KB3EFHJWLbSklU71oGmcz7VczXox7Ja9ObOyKMFiwR0pANmBZNdPEoTIhBdJNwaTmN2v87QU","ephemeralPublicKey":"BMNDBLmt9EjkixOY43Kk9DxQb9WjH1whAr6QBKGmUtAIC8tEOHNFBbaS0n7kmul8+DNDYWiFBK6CKGNTrEMihY4\u003d","tag":"21OJBu15OkTjtrpwyUX8Bs9qtlw4E6pNp3lk5EiQuaM\u003d"}'
+                  applicationData: null
+                  dPanLast4: null
+                  version: ECv1
+                  header:
+                    applicationDataHash: null
+                    ephemeralPublicKey: null
+                    publicKeyHash: null
+                    transactionId: null
+                  billingAddress:
+                    streetAddress: 100 Universal City Plaza
+                    locality: Hollywood
+                    region: CA
+                    country: US
+                    postalCode: '00000'
+          printReceipt: true
+          
+    ServiceAuthGooglePayResponse:
+      value:
+        transaction:
+          transactionId: e0974dbca99c43a6a15f77c18f358cbb
+          payments:
+            - currencyCode:
+                code: EUR
+                number: 978
+                currency: Euro
+              requestedAuthAmount: 100
+              approvedAuthAmount: 100
+              fundingSource:
+                type: GOOGLE_PAY
+                googlePay:
+                  dPanLast4: '3478'
+                  cardType: VISA
+          status: AUTHORIZED
+          
+    ServiceAuthQRCodeRequest:
+      value:
+        fdCustomerId: f8b8332821b34d44bd8b35541ea2b1bf
+        transaction:
+          stacId: UCOM7157cd00f38246f4aa1fc5868a98700a
+          siteInfo:
+            siteLocationId: '105631661093'
+            fuelPurchaseInfo:
+              pumpNumber: 1
+              items:
+                - posCode: '345'
+                  posCodeFormat: plu
+                  posCodeModifier: '125'
+                  itemDescription: Unleaded
+                  itemPrice: 1.5
+                  unitOfMeasurement: liter
+                  productCode: '015'
+            resources:
+              - id: Car_Wash_1
+                name: Car Wash
+                items:
+                  - itemInfo:
+                      itemDescription: Standard Wash
+                      itemPrice: 7.5
+                      unitOfMeasurement: each
+                      unitsSold: 1
+                      totalItemSaleAmount: 7.5
+                      posCodeFormat: plu
+                      posCode: '102'
+                      posCodeModifier: '125'
+                      productCode: '102'
+                      type: FUEL
+          printReceipt: true
+        deviceInfo:
+          id: permIDfromInAuth
+          kind: mobile
+          details:
+            - provider: PAYPAL
+              dataCapture:
+                dataEventId: BB8E4E9281B744D29AF1E0631139F41B20172958
+                captureTime: '2017-02-15T17:30:19Z'
+                rawData: aXREUVZGRlFYZEViMkdfhTJSbk0xVmxaMVpGhCVWFsaERURlprY1hwVl
+              dataDynamic:
+                captureTime: '2017-02-15T17:30:19Z'
+            - provider: INAUTH
+              dataCapture:
+                dataEventId: BB8E4E9281B744D29AF1E0631139F41B20172958
+                captureTime: '2017-02-15T17:30:19Z'
+                rawData: aXREUVZGRlFYZEViMkdfhTJSbk0xVmxaMVpGhCVWFsaERURlprY1hwVl
+              dataDynamic:
+                captureTime: '2017-02-15T17:30:19Z'
+                
+    ServiceAuthQRCodeResponse:
+      value:
+        transaction:
+          transactionId: 22d3189ad7314ea3bdaefb74ca72d860
+          payments:
+            - currencyCode:
+                code: EUR
+                number: 978
+                currency: Euro
+              requestedAuthAmount: 50
+              approvedAuthAmount: 50
+              fundingSource:
+                type: BANCONTACT
+                bancontact:
+                  alias: '2227'
+          status: AUTHORIZED
+          
+    StatusCompletedWithPayPalResponse:
+      value:
+        transactionId: d88a30477d744a29b96711b50b1a1848
+        siteInfo:
+          siteLocationId: '770006'
+          fuelPurchaseInfo:
+            pumpNumber: 1
+            serviceLevelCode: S
+        payments:
+          - currencyCode:
+              code: USD
+              number: 840
+              currency: US Dollar
+            requestedAuthAmount: 15.22
+            approvedAuthAmount: 15.22
+            capturedAmount: 19.74
+            status: COMPLETED
+            fundingSource:
+              type: VAULTED_ACCOUNT
+              vaultedAccount:
+                fdAccountId: 8a7f148f864e8ceb01865421cac40c42
+                type: PAYPAL
+              account:
+                fdAccountId: 8a7f148f864e8ceb01865421cac40c42
+                type: PAYPAL
+        status: COMPLETED
+        finalTransactionAmount: 19.74
+        saleItems:
+          - itemDescription: UNLD
+            itemPrice: 2.639
+            unitOfMeasurement: ea
+            unitsSold: 7.48
+            totalItemSaleAmount: 19.74
+            posCode: '00000000000001'
+            productCode: '4'
+            type: FUEL
+            priceTier: credit
+        receiptData:
+          receiptSection: full
+          receiptLines:
+            plain:
+              - ''
+              - ' FUELS LAB'
+              - '565 SOUTH MASON RD #'
+              - 'KATY, AB '
+              - '77450'
+              - ''
+              - 02/15/2023 496410494
+              - 03:13:33 AM
+              - ''
+              - INVOICE null
+              - AUTH 020543
+              - ''
+              - PUMP# 1
+              - Supreme CR 3.195G
+              - PRICE/GAL $ 1.00
+              - FUEL PURCHASED Gal. 10
+              - FUEL TOTAL $ 10.00
+              - ''
+              - '--------'
+              - Total = $ 10.00
+              - ''
+              - ''
+              - CREDIT $ 11.533
+              - ''
+              - CRIND RECEIPT FOOTER
+              - ''
+              - ''
+        transactionDateTime: '2023-02-15T08:13:02Z'
+        createdDateTime: '2023-02-15T08:12:59Z'
+        lastUpdatedDateTime: '2023-02-15T08:13:34Z'
+        salePosition: OUTSIDE_STORE
+        
+    StatusCompletedWithApplePayResponse:
+      value:
+        transactionId: b5deba9789a14a268982f4539bc3c46b
+        siteInfo:
+          siteLocationId: '770006'
+          fuelPurchaseInfo:
+            pumpNumber: 1
+            serviceLevelCode: S
+        payments:
+          - currencyCode:
+              code: USD
+              number: 840
+              currency: US Dollar
+            requestedAuthAmount: 15.28
+            approvedAuthAmount: 15.28
+            capturedAmount: 19.74
+            status: COMPLETED
+            fundingSource:
+              type: APPLE_PAY
+              applePay:
+                expiryDate:
+                  month: '04'
+                  year: '21'
+                dPanLast4: '9424'
+                cardType: DISCOVER
+        status: COMPLETED
+        finalTransactionAmount: 19.74
+        saleItems:
+          - itemDescription: UNLD
+            itemPrice: 2.639
+            unitOfMeasurement: ea
+            unitsSold: 7.48
+            totalItemSaleAmount: 19.74
+            posCode: '00000000000001'
+            productCode: '4'
+            type: FUEL
+            priceTier: credit
+        receiptData:
+          receiptSection: full
+          receiptLines:
+            plain:
+              - ''
+              - ' FUELS LAB'
+              - '565 SOUTH MASON RD #'
+              - 'KATY, AB '
+              - '77450'
+              - ''
+              - 02/15/2023 496410494
+              - 03:02:07 AM
+              - ''
+              - INVOICE null
+              - AUTH 020543
+              - ''
+              - PUMP# 1
+              - Supreme CR 3.195G
+              - PRICE/GAL $ 1.00
+              - FUEL PURCHASED Gal. 10
+              - FUEL TOTAL $ 10.00
+              - ''
+              - '--------'
+              - Total = $ 10.00
+              - ''
+              - ''
+              - CREDIT $ 11.533
+              - ''
+              - CRIND RECEIPT FOOTER
+              - ''
+              - ''
+        transactionDateTime: '2023-02-15T08:01:36Z'
+        createdDateTime: '2023-02-15T08:01:33Z'
+        lastUpdatedDateTime: '2023-02-15T08:02:08Z'
+        salePosition: OUTSIDE_STORE
+        
+    StatusCompletedWithCreditCardResponse:
+      value:
+        transactionId: bc68c928419c4e7cba33b0d1e9f3b2fc
+        siteInfo:
+          siteLocationId: '770006'
+          fuelPurchaseInfo:
+            pumpNumber: 1
+            serviceLevelCode: S
+        payments:
+          - currencyCode:
+              code: USD
+              number: 840
+              currency: US Dollar
+            requestedAuthAmount: 15.28
+            approvedAuthAmount: 15.28
+            capturedAmount: 19.74
+            status: COMPLETED
+            fundingSource:
+              type: VAULTED_ACCOUNT
+              vaultedAccount:
+                fdAccountId: 8a7f461f865353890186537ac2ef0000
+                type: CREDIT
+              account:
+                fdAccountId: 8a7f461f865353890186537ac2ef0000
+                type: CREDIT
+              credit:
+                alias: '3502'
+                cardType: MASTERCARD
+                expiryDate:
+                  month: '12'
+                  year: '25'
+        status: COMPLETED
+        finalTransactionAmount: 19.74
+        saleItems:
+          - itemDescription: UNLD
+            itemPrice: 2.639
+            unitOfMeasurement: ea
+            unitsSold: 7.48
+            totalItemSaleAmount: 19.74
+            posCode: '00000000000001'
+            productCode: '4'
+            type: FUEL
+            priceTier: credit
+        receiptData:
+          receiptSection: full
+          receiptLines:
+            plain:
+              - ''
+              - ' FUELS LAB'
+              - '565 SOUTH MASON RD #'
+              - 'KATY, AB '
+              - '77450'
+              - ''
+              - 02/15/2023 496410494
+              - 00:11:27 AM
+              - ''
+              - INVOICE null
+              - AUTH 020543
+              - ''
+              - PUMP# 1
+              - Supreme CR 3.195G
+              - PRICE/GAL $ 1.00
+              - FUEL PURCHASED Gal. 10
+              - FUEL TOTAL $ 10.00
+              - ''
+              - '--------'
+              - Total = $ 10.00
+              - ''
+              - ''
+              - CREDIT $ 11.533
+              - ''
+              - CRIND RECEIPT FOOTER
+              - ''
+              - ''
+        transactionDateTime: '2023-02-15T05:10:53Z'
+        createdDateTime: '2023-02-15T05:10:46Z'
+        lastUpdatedDateTime: '2023-02-15T05:11:27Z'
+        salePosition: OUTSIDE_STORE
+        
+    StatusCancelledResponse:
+      value:
+        transactionId: 9fc044a99c364ec7bcb3d3a2b6b36dd5
+        payments:
+          - currencyCode:
+              code: USD
+              number: 840
+              currency: US Dollar
+            requestedAuthAmount: 15.22
+            approvedAuthAmount: 15.22
+            status: AUTH_CANCELLED
+            fundingSource:
+              type: VAULTED_ACCOUNT
+              vaultedAccount:
+                fdAccountId: 8a7f461f865353890186537ac2ef0000
+                type: CREDIT
+              account:
+                fdAccountId: 8a7f461f865353890186537ac2ef0000
+                type: CREDIT
+              credit:
+                alias: '3502'
+                cardType: MASTERCARD
+                expiryDate:
+                  month: '12'
+                  year: '25'
+        status: CANCELLED
+        createdDateTime: '2023-02-15T05:15:21Z'
+        lastUpdatedDateTime: '2023-02-15T05:16:09Z'
+        salePosition: OUTSIDE_STORE
+        
+    StatusAuhtorizedResponse:
+      value:
+        transactionId: c5e3705d10a341e0baacb9fe8e973ea4
+        payments:
+          - currencyCode:
+              code: USD
+              number: 840
+              currency: US Dollar
+            requestedAuthAmount: 15.22
+            approvedAuthAmount: 15.22
+            status: AUTHORIZED
+            fundingSource:
+              type: VAULTED_ACCOUNT
+              vaultedAccount:
+                fdAccountId: 8a7f148f864e8ceb0186596f05b30d85
+                type: CREDIT
+              account:
+                fdAccountId: 8a7f148f864e8ceb0186596f05b30d85
+                type: CREDIT
+              credit:
+                alias: '6668'
+                cardType: DISCOVER
+                expiryDate:
+                  month: '12'
+                  year: '25'
+        status: AUTHORIZED
+        createdDateTime: '2023-02-16T08:55:30Z'
+        lastUpdatedDateTime: '2023-02-16T08:55:33Z'
+        salePosition: OUTSIDE_STORE
+        
+    StatusFuelStartedResponse:
+      value:
+        transactionId: 6085daba39374d228529abbf6d5907f6
+        payments:
+          - currencyCode:
+              code: USD
+              number: 840
+              currency: US Dollar
+            requestedAuthAmount: 15.22
+            approvedAuthAmount: 15.22
+            status: AUTHORIZED
+            fundingSource:
+              type: VAULTED_ACCOUNT
+              vaultedAccount:
+                fdAccountId: 8a7f148f864e8ceb0186597cadd60d90
+                type: CREDIT
+              account:
+                fdAccountId: 8a7f148f864e8ceb0186597cadd60d90
+                type: CREDIT
+              credit:
+                alias: '6668'
+                cardType: DISCOVER
+                expiryDate:
+                  month: '12'
+                  year: '25'
+        status: FUEL_STARTED
+        createdDateTime: '2023-02-16T09:10:27Z'
+        lastUpdatedDateTime: '2023-02-16T09:10:51Z'
+        salePosition: OUTSIDE_STORE
+        
+    PatchSampleRequest:
+      value:
+        action: CANCEL_TRANSACTION
+        deviceInfo:
+          id: 537edec8-d33e-4ee8-93a7-b9f61876950c
+          kind: mobile
+          details:
+            - provider: RAVELIN
+              dataCapture:
+                dataEventId: 537edec8-d33e-4ee8-93a7-b9f61876950c
+        
+

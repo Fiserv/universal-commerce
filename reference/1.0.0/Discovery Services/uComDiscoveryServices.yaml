@@ -50,8 +50,17 @@ paths:
         - $ref: '#/components/parameters/AcceptLanguageParam'
         - $ref: '#/components/parameters/SubMerchantIdParam'
       responses:
-        200:
-          $ref: '#/components/responses/OK'
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema: 
+                $ref: '#/components/responses/OK'
+              examples:
+                Minimal:
+                  summary: STAC response with caulted account
+                  $ref: '#/components/examples/retailerExampleResponse'
+        
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -609,3 +618,31 @@ components:
       required: true
       schema:
         type: string
+  examples:
+    retailerExampleResponse:
+      value:
+        marketplaceName: Publisher Enabled Market Place
+        partners:
+          - partnerId: RETAILER_WALLET
+            partnerName: ' RETAILER PARTNER NAME'
+            supportedServices:
+              - PETRO
+            supportedFundingSource:
+              creditTypes:
+                - cardType: VISA
+                - cardType: MASTERCARD
+                - cardType: DISCOVER
+                - cardType: AMEX
+                - cardType: PLCC
+                  cardSubType:
+                    - NA
+              googlePayEnabled: false
+              applePayEnabled: true
+              samsungPayEnabled: false
+              amazonPayEnabled: false
+              payPalEnabled: false
+              venmoEnabled: false
+              visaCheckoutEnabled: false
+              masterPassEnabled: false
+              achEnabled: false
+        

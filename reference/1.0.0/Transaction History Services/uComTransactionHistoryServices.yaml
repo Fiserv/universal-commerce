@@ -90,19 +90,23 @@ paths:
         - $ref: '#/components/parameters/AcceptLanguageParam'
         - $ref: '#/components/parameters/SubMerchantIdParam'
       responses:
-        200:
-          description: List of transaction details
+        '200':
+          description: Success
           content:
             application/json:
-              schema:
-                type: object
-                properties:
-                  transactions:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/TransactionHistoryItem'
-                  pages:
-                    $ref: '#/components/schemas/PageLink'
+              schema: 
+                $ref: '#/components/responses/TransactionsOK'
+              examples:
+                credit:
+                  summary: Cancel response using Merchant Transaction ID
+                  $ref: '#/components/examples/CreditTransactionHistorySuccessResponse'
+                applepay:
+                  summary: Cancel response using Transaction ID
+                  $ref: '#/components/examples/ApplepayTransactionHistorySuccessResponse'
+                paypal:
+                  summary: Cancel response using Transaction ID
+                  $ref: '#/components/examples/PaypalTransactionHistorySuccessResponse'
+          
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -110,7 +114,7 @@ paths:
         '500':
           $ref: '#/components/responses/ServerError'
 
-  /v1/txhistory/customers/{fdCustomerId}/transactions/{transactionId}:
+  /v1/txhistory/customers/{fdCustomerId}/transactions/{fdTransactionId}:
     patch:
       x-group-name: Transaction History Services
       x-proxy-name: Add note to transaction 
@@ -173,19 +177,8 @@ paths:
         - $ref: '#/components/parameters/AcceptLanguageParam'
         - $ref: '#/components/parameters/SubMerchantIdParam'
       responses:
-        200:
-          description: List of vouchers
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  vouchers:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Voucher'
-                  pages:
-                    $ref: '#/components/schemas/PageLink'
+        '200':
+          $ref: '#/components/responses/VouchersOK'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -235,7 +228,7 @@ paths:
         '500':
           $ref: '#/components/responses/ServerError'
 
-  /v1/txhistory/receipts/{transactionId}:
+  /v1/txhistory/receipts/{fdTransactionId}:
     get:
       x-group-name: Transaction History Services
       x-proxy-name: Get raw receipt data 
@@ -251,12 +244,17 @@ paths:
         - $ref: '#/components/parameters/AcceptLanguageParam'
         - $ref: '#/components/parameters/SubMerchantIdParam'
       responses:
-        200:
-          description: Receipt details
+        '200':
+          description: Success
           content:
             application/json:
-              schema:
-                type: string
+              schema: 
+                $ref: '#/components/responses/ReceiptOK'
+              examples:
+                Minimal - 200 :
+                  summary: Receipt details response
+                  $ref: '#/components/examples/GetReceiptByfdTransactionIdResponse'
+          
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -1655,6 +1653,42 @@ components:
           schema:
             $ref: '#/components/schemas/Error'
 
+
+    TransactionsOK:
+      description: List of transaction details
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              transactions:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TransactionHistoryItem'
+              pages:
+                $ref: '#/components/schemas/PageLink'
+                
+    VouchersOK:
+      description: List of vouchers
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              vouchers:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Voucher'
+              pages:
+                $ref: '#/components/schemas/PageLink'
+  
+    ReceiptOK:
+      description: Receipt details
+      content:
+        application/json:
+          schema:
+            type: string
+
     Conflict:
       description: Conflict - The requested operation conflicts with the current state
         of the identified resource.
@@ -1756,7 +1790,7 @@ components:
         type: string
 
     TransactionIdParam:
-      name: transactionId
+      name: fdTransactionId
       in: path
       description: Unique identifier for the transaction
       required: true
@@ -1792,3 +1826,256 @@ components:
       description: Sub Merchant Id contains information about the merchant identifier
       schema:
         type: string
+        
+  examples:
+    CreditTransactionHistorySuccessResponse:
+      value:
+        transactions:
+          - retailerPartnerId: TEST_WALLET
+            fdCustomerId: b6d400b26cb0446190563b1b600204c2
+            status: COMPLETED
+            finalTransactionAmount: '19.74'
+            transactionDate: '2023-01-25T05:55:40Z'
+            transactionId: 9068ee2c06fd467faf8870e4cb7b1810
+            fuelPurchaseInfo:
+              pumpNumber: 1
+              serviceLevelCode: S
+              items: []
+            payments:
+              - currencyCode:
+                  code: USD
+                  number: 840
+                  currency: US Dollar
+                capturedAmount: 19.74
+                accountType: CREDIT
+                sourceType: UCOM
+            siteInfo:
+              siteName: TEST_VF 770006
+              geolocation:
+                locationId: '770006'
+                siteAddress:
+                  address:
+                    country: USA
+                    formatted: 1106 Main St.
+                  phone: {}
+                  email: {}
+            _receipt:
+              href: https://api-cat.payeezy.com/ucom/v1/txhistory/receipts/9068ee2c06fd467faf8870e4cb7b1810
+              rel: receipt
+              method: GET
+            loyaltyTransactions: []
+            saleItems:
+              - itemDescription: UNLD
+                itemPrice: 2.639
+                unitOfMeasurement: ea
+                unitsSold: 7.48
+                totalItemSaleAmount: 19.74
+                posCode: '00000000000001'
+                productCode: '4'
+                type: FUEL
+                priceTier: credit
+            vouchers: []
+        pages:
+          currentPage: 1
+          currentPageRecords: 1
+          totalPages: 1
+          totalRecords: 1
+          sortOrder: DESC
+          _links:
+            - href: https://api-cat.payeezy.com/ucom/v1/txhistory/customers/b6d400b26cb0446190563b1b600204c2/transactions?pageNo=0&pageSize=25
+              rel: current.page
+              method: GET
+            - href: https://api-cat.payeezy.com/ucom/v1/txhistory/customers/b6d400b26cb0446190563b1b600204c2/transactions?pageSize=25&pageNo=1
+              rel: first.page
+              method: GET
+            - href: https://api-cat.payeezy.com/ucom/v1/txhistory/customers/b6d400b26cb0446190563b1b600204c2/transactions?pageSize=25&pageNo=1
+              rel: last.page
+              method: GET
+
+    ApplepayTransactionHistorySuccessResponse:
+      value:
+        transactions:
+          - retailerPartnerId: TEST_WALLET
+            fdCustomerId: 8abce7a8be274dd9a716e02e0332d804
+            status: COMPLETED
+            finalTransactionAmount: '19.74'
+            transactionDate: '2023-01-25T08:48:52Z'
+            transactionId: 170bc247fd9f4df28a633646f92dda61
+            fuelPurchaseInfo:
+              pumpNumber: 1
+              serviceLevelCode: S
+              items: []
+            payments:
+              - currencyCode:
+                  code: USD
+                  number: 840
+                  currency: US Dollar
+                capturedAmount: 19.74
+                cardType: MASTERCARD
+                accountType: CREDIT
+                alias: '1171'
+                sourceType: APPLE_PAY
+            siteInfo:
+              siteName: TEST_VF 770006
+              geolocation:
+                locationId: '770006'
+                siteAddress:
+                  address:
+                    country: USA
+                    formatted: 1106 Main St.
+                  phone: {}
+                  email: {}
+            _receipt:
+              href: https://api-cat.payeezy.com/ucom/v1/txhistory/receipts/170bc247fd9f4df28a633646f92dda61
+              rel: receipt
+              method: GET
+            loyaltyTransactions:
+              - storeId: '770006'
+                transactionDateTime: '2023-01-25T08:48:50Z'
+                referenceNumber: 170bc247fd9f4df28a633646f92dda61
+                fundingSource:
+                  loyalty:
+                    loyaltyProgram:
+                      programId: ShopAndSave
+                    metadata: []
+                    issuerExtraInfo: []
+                unitsValue: 0
+                status: AUTHORIZED
+            saleItems:
+              - itemDescription: UNLD
+                itemPrice: 2.639
+                unitOfMeasurement: ea
+                unitsSold: 7.48
+                totalItemSaleAmount: 19.74
+                posCode: '00000000000001'
+                productCode: '4'
+                type: FUEL
+                priceTier: credit
+            vouchers: []
+        pages:
+          currentPage: 1
+          currentPageRecords: 1
+          totalPages: 1
+          totalRecords: 1
+          sortOrder: DESC
+          _links:
+            - href: https://api-cat.payeezy.com/ucom/v1/txhistory/customers/8abce7a8be274dd9a716e02e0332d804/transactions?pageNo=0&pageSize=25
+              rel: current.page
+              method: GET
+            - href: https://api-cat.payeezy.com/ucom/v1/txhistory/customers/8abce7a8be274dd9a716e02e0332d804/transactions?pageSize=25&pageNo=1
+              rel: first.page
+              method: GET
+            - href: https://api-cat.payeezy.com/ucom/v1/txhistory/customers/8abce7a8be274dd9a716e02e0332d804/transactions?pageSize=25&pageNo=1
+              rel: last.page
+              method: GET
+
+    PaypalTransactionHistorySuccessResponse:
+      value:
+        transactions:
+          - retailerPartnerId: TEST_WALLET
+            fdCustomerId: 3c461c2eecd4455a9926a1058367c506
+            status: COMPLETED
+            finalTransactionAmount: '19.74'
+            transactionDate: '2023-01-25T09:38:55Z'
+            transactionId: 8fdc4b3f83e64dd38105f48d69e9fbf0
+            fuelPurchaseInfo:
+              pumpNumber: 1
+              serviceLevelCode: S
+              items: []
+            payments:
+              - currencyCode:
+                  code: USD
+                  number: 840
+                  currency: US Dollar
+                capturedAmount: 19.74
+                accountType: PAYPAL
+                sourceType: UCOM
+            siteInfo:
+              siteName: TEST_VF 770006
+              geolocation:
+                locationId: '770006'
+                siteAddress:
+                  address:
+                    country: USA
+                    formatted: 1106 Main St.
+                  phone: {}
+                  email: {}
+            _receipt:
+              href: https://api-cat.payeezy.com/ucom/v1/txhistory/receipts/8fdc4b3f83e64dd38105f48d69e9fbf0
+              rel: receipt
+              method: GET
+            loyaltyTransactions: []
+            saleItems:
+              - itemDescription: UNLD
+                itemPrice: 2.639
+                unitOfMeasurement: ea
+                unitsSold: 7.48
+                totalItemSaleAmount: 19.74
+                posCode: '00000000000001'
+                productCode: '4'
+                type: FUEL
+                priceTier: credit
+            vouchers: []
+        pages:
+          currentPage: 1
+          currentPageRecords: 1
+          totalPages: 1
+          totalRecords: 1
+          sortOrder: DESC
+          _links:
+            - href: https://api-cat.payeezy.com/ucom/v1/txhistory/customers/3c461c2eecd4455a9926a1058367c506/transactions?pageNo=0&pageSize=25
+              rel: current.page
+              method: GET
+            - href: https://api-cat.payeezy.com/ucom/v1/txhistory/customers/3c461c2eecd4455a9926a1058367c506/transactions?pageSize=25&pageNo=1
+              rel: first.page
+              method: GET
+            - href: https://api-cat.payeezy.com/ucom/v1/txhistory/customers/3c461c2eecd4455a9926a1058367c506/transactions?pageSize=25&pageNo=1
+              rel: last.page
+              method: GET
+              
+    GetReceiptByfdTransactionIdResponse:
+      value:
+        receiptData:
+          receiptLines:
+            plain:
+              - ''
+              - ' FUELS LAB'
+              - '565 SOUTH MASON RD #'
+              - 'KATY, AB '
+              - '77450'
+              - ''
+              - 10/03/2018 496410494
+              - 06:35:52 AM
+              - ''
+              - 'INVOICE '
+              - AUTH 020543
+              - ''
+              - PUMP# 1
+              - Supreme CR 3.195G
+              - PRICE/GAL $ 3.00
+              - FUEL PURCHASED Gal. 10
+              - FUEL TOTAL $ 30.00
+              - ''
+              - '--------'
+              - Total = $ 30.00
+              - ''
+              - ''
+              - CREDIT $ 11.53
+              - ''
+              - ''
+              - ''
+              - '* * * * * * * * * *'
+              - Your car wash
+              - code is 1538562931668
+              - Expires 2018-10-04
+              - '* * * * * * * * * *'
+              - ''
+              - ''
+              - CRIND RECEIPT FOOTER
+              - ''
+              - ''
+        
+        
+        
+        
+        
