@@ -90,9 +90,8 @@ tags:
 paths:
   /v1/loyalty/accounts:
     post:
-      x-group-name: Loyalty
+      x-group-name: Value Added Services
       x-proxy-name: Get loyalty account details
-      x-child-product-name: Value Added Services
       tags:
       - loyalty
       summary: Get loyalty account details
@@ -138,9 +137,8 @@ paths:
 
   /v1/loyalty/accounts/{requestId}:
     get:
-      x-group-name: Loyalty
+      x-group-name: Value Added Services
       x-proxy-name: Get loyalty account details based on Request ID
-      x-child-product-name: Value Added Services
       tags:
       - loyalty
       summary: Get loyalty account details based on request id
@@ -167,9 +165,8 @@ paths:
 
   /v1/loyalty/accounts/send-verification:
     post:
-      x-group-name: Loyalty
+      x-group-name: Value Added Services
       x-proxy-name: Initiate action against Request ID
-      x-child-product-name: Value Added Services
       tags:
       - loyalty
       summary: Initiate some action against a loyalty account
@@ -208,9 +205,8 @@ paths:
 
   /v1/loyalty/transactions:
     post:
-      x-group-name: Loyalty
+      x-group-name: Value Added Services
       x-proxy-name: Get Account Details
-      x-child-product-name: Value Added Services
       tags:
       - loyalty
       summary: Get loyalty account details - account information, status
