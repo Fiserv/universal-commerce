@@ -33,8 +33,6 @@
       link: docs/documentation/introduction.md
 #    - title: Create Customer
       link: docs/documentation/customerServicesCreateCustomer_v1.md
-#    - title: Payment Services Sales
-      link: docs/documentation/introduction.md
     - title: Implementation Guide
       link: docs/documentation/Standard_Implementation_Guide.md
     - title: Frequently Asked Questions
