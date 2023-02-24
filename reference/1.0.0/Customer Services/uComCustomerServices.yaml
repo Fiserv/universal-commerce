@@ -553,9 +553,9 @@ components:
       description: Details of ThreeDSecure transaction used to process the challege flow
 
     User:
-     required:
-      - externalId
       type: array
+      required:
+      - externalId
       properties:
         id:
           type: string
