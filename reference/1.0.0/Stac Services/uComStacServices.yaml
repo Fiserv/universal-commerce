@@ -47,11 +47,11 @@ paths:
   /v1/stac:
     post:
       x-group-name: Stac Services
-      x-proxy-name: Create QR code
+      x-proxy-name: Create one-time payment QR code
       tags:
         - stac
-      summary: Create QR code based on funding source.
-      description: Must include a funding source.
+      summary: Create a one-time payment QR code
+      description: Must include a funding source
       parameters:
         - $ref: '#/components/parameters/ApiKeyParam'
         - $ref: '#/components/parameters/TimestampParam'
