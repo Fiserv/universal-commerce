@@ -27,85 +27,85 @@
 # are granted or extended by this work or
 # the delivery of this work
 ################################################################################
- 
-- sections: 
-    - title: Introduction
-      link: docs/documentation/introduction.md
-#    - title: Create Customer
-      link: docs/documentation/customerServicesCreateCustomer_v1.md
-    - title: Implementation Guide
-      link: docs/documentation/Standard_Implementation_Guide.md
-    - title: Frequently Asked Questions
-      link: docs/faq/faq.md
+
 - sections:
-    - title: Common Use Cases
-      link: recipes/LandingPage.md
-      sections:
-      - title: How to Create, Read, Update, and Delete a Customer Profile
-        link: recipes/customerRegistration.md
-      - title: How to Make a Guest Checkout
-        link: recipes/guest_checkout.md
-      - title: How to Vault a Credit Card or Gift Card 
-        link: recipes/vault_credit_card_gift_card.md
-      - title: How to Avoid a Duplicate Transaction 
-        link: recipes/duplicate_transactions.md
-      - title: How to Make a Payment with Paypal or Venmo
-        link: recipes/Paypal_Venmo_guide.md
-      - title: How to Make a split Payment
-        link: recipes/Split_Tender_Payment.md
-      - title: How to Make a InApp Payments 
-        link: recipes/InApp_Payments.md
-      - title: How to Issue a Refund
-        link: recipes/refunds.md
-      
-      open: false 
-#- recipes:
-#    - title: How to Create, Read, Update, and Delete a Customer Profile
-#      link: recipes/customerRegistration.md
-#    - title: How to Make a Guest Checkout
-#      link: recipes/guest_checkout.md
-#    - title: How to Vault a Credit Card or Gift Card 
-#      link: recipes/vault_credit_card_gift_card.md
-#    - title: How to Avoid a Duplicate Transaction 
-#      link: recipes/duplicate_transactions.md
-#    - title: How to Make a Payment with Paypal or Venmo
-#      link: recipes/Paypal_Venmo_guide.md
-#    - title: How to Make a Split Payment 
-#      link: recipes/Split_Tender_Payment.md
-#     open: true
-#      sections:
-#        - title: Create a Customer
-#          link: /docs/documentation/customerServicescrearecustomer_v1.md
-#            - title: Retrieve Token & Encryption Key
-#              link:
-#            - title: Tokenize an Account
-#              link:
-#            - title: Tokenize an Account with Nonce
-#              link:
-#            - title: Vault an Account
-#              link:
-#            - title: Get a List of Accounts
-#              link:
-#            - title: Get Account Details
-#              link:
-#            - title: Update a Vaulted Account
-#            - title: Delete a Vaulted Account
-#              link:
-#            - title: Retrieve an Account with a Nonce Token
-#              link:
- #       - title: Recipes
- #         link: /universal-commerce/tree/develop/recipes/
- #         open: true
- #         sections:
- #           - title: Paypal Venmo
- #             link: /universal-commerce/tree/develop/recipes/Paypal_Venmo_guide.md
- #           - title: Split Tender
- #             link: /universal-commerce/tree/develop/recipes/Split_Tender_Payment.md
- #           - title: Recipe 1 <Name>
- #             link: /universal-commerce/tree/develop/recipes/Recipe-1.md
- #           - title: Recipe 2 <Name>
- #             link: /universal-commerce/tree/develop/recipes/Recipe-2.md
- #           - title: Recipe 3 <Name>
- #             link: /universal-commerce/tree/develop/recipes/Recipe-3.md
- #           - title: Recipe 4 <Name>
- #             link: /universal-commerce/tree/develop/recipes/Recipe-4.md
+  - title: Introduction
+    link: docs/documentation/introduction.md
+    #    - title: Create Customer
+    #      link: docs/documentation/customerServicesCreateCustomer_v1.md
+  - title: Implementation Guide
+    link: docs/documentation/Standard_Implementation_Guide.md
+  - title: Frequently Asked Questions
+    link: docs/faq/faq.md
+- sections:
+  - title: Common Use Cases
+    link: recipes/LandingPage.md
+    sections:
+    - title: How to Create, Read, Update, and Delete a Customer Profile
+      link: recipes/customerRegistration.md
+    - title: How to Make a Guest Checkout
+      link: recipes/guest_checkout.md
+    - title: How to Vault a Credit Card or Gift Card
+      link: recipes/vault_credit_card_gift_card.md
+    - title: How to Avoid a Duplicate Transaction
+      link: recipes/duplicate_transactions.md
+    - title: How to Make a Payment with Paypal or Venmo
+      link: recipes/Paypal_Venmo_guide.md
+    - title: How to Make a split Payment
+      link: recipes/Split_Tender_Payment.md
+    - title: How to Make a InApp Payments
+      link: recipes/InApp_Payments.md
+    - title: How to Issue a Refund
+      link: recipes/refunds.md
+
+    open: false
+    #- recipes:
+    #    - title: How to Create, Read, Update, and Delete a Customer Profile
+    #      link: recipes/customerRegistration.md
+    #    - title: How to Make a Guest Checkout
+    #      link: recipes/guest_checkout.md
+    #    - title: How to Vault a Credit Card or Gift Card 
+    #      link: recipes/vault_credit_card_gift_card.md
+    #    - title: How to Avoid a Duplicate Transaction 
+    #      link: recipes/duplicate_transactions.md
+    #    - title: How to Make a Payment with Paypal or Venmo
+    #      link: recipes/Paypal_Venmo_guide.md
+    #    - title: How to Make a Split Payment 
+    #      link: recipes/Split_Tender_Payment.md
+    #     open: true
+    #      sections:
+    #        - title: Create a Customer
+    #          link: /docs/documentation/customerServicescrearecustomer_v1.md
+    #            - title: Retrieve Token & Encryption Key
+    #              link:
+    #            - title: Tokenize an Account
+    #              link:
+    #            - title: Tokenize an Account with Nonce
+    #              link:
+    #            - title: Vault an Account
+    #              link:
+    #            - title: Get a List of Accounts
+    #              link:
+    #            - title: Get Account Details
+    #              link:
+    #            - title: Update a Vaulted Account
+    #            - title: Delete a Vaulted Account
+    #              link:
+    #            - title: Retrieve an Account with a Nonce Token
+    #              link:
+#       - title: Recipes
+#         link: /universal-commerce/tree/develop/recipes/
+#         open: true
+#         sections:
+#           - title: Paypal Venmo
+#             link: /universal-commerce/tree/develop/recipes/Paypal_Venmo_guide.md
+#           - title: Split Tender
+#             link: /universal-commerce/tree/develop/recipes/Split_Tender_Payment.md
+#           - title: Recipe 1 <Name>
+#             link: /universal-commerce/tree/develop/recipes/Recipe-1.md
+#           - title: Recipe 2 <Name>
+#             link: /universal-commerce/tree/develop/recipes/Recipe-2.md
+#           - title: Recipe 3 <Name>
+#             link: /universal-commerce/tree/develop/recipes/Recipe-3.md
+#           - title: Recipe 4 <Name>
+#             link: /universal-commerce/tree/develop/recipes/Recipe-4.md
