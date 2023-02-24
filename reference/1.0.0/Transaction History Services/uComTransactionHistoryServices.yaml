@@ -242,6 +242,17 @@ paths:
       - $ref: '#/components/parameters/AcceptLanguageParam'
       - $ref: '#/components/parameters/SubMerchantIdParam'
       responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/ReceiptOK'
+              examples:
+                Minimal - 200:
+                  summary: Receipt details response
+                  $ref: '#/components/examples/GetReceiptByfdTransactionIdResponse'
+
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
