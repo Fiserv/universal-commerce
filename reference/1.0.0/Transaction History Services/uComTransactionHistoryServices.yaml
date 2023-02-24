@@ -250,7 +250,6 @@ paths:
                 $ref: '#/components/responses/ReceiptOK'
               examples:
                 Minimal - 200:
-                  summary: Receipt details response
                   $ref: '#/components/examples/GetReceiptByfdTransactionIdResponse'
 
         '400':
@@ -1972,6 +1971,7 @@ components:
             method: GET
 
     GetReceiptByfdTransactionIdResponse:
+      summary: Receipt details response
       value:
         receiptData:
           receiptLines:
