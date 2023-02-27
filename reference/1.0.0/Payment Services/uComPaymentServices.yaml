@@ -1122,7 +1122,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/RefundOK'
+                $ref: '#/components/schemas/Refund'
               examples:
                 Minimal: {summary: Request with minimal required parameters, $ref: '#/components/examples/MinimalRefundVoidResponse'}
                 
