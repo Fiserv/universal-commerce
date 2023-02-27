@@ -73,7 +73,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/StacCreated'
+                $ref: '#/components/schemas/StacCreated'
               examples:
                 Vaulted Account: {summary: STAC response with vaulted account, $ref: '#/components/examples/VaultedAccountStacCreatedSuccessResponse'}
         400:
@@ -99,7 +99,9 @@ components:
           $ref: '#/components/schemas/Stac'
         deviceInfo:
           $ref: '#/components/schemas/DeviceInfo'
-
+          
+    StacCreated:
+      $ref: '#/components/schemas/Stac'
     #-------------------------------------
     # Resource Models
     #-------------------------------------
@@ -2125,19 +2127,7 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    StacCreated:
-      description: Resource created
-      headers:
-        location:
-          description: Location of newly created resource.
-          content:
-            application/json:
-              schema:
-                type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Stac'
+    
     Unauthorized:
       description: Unauthorized
       content: {}
