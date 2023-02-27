@@ -2130,8 +2130,10 @@ components:
       headers:
         location:
           description: Location of newly created resource.
-          schema:
-            type: string
+          content:
+            application/json:
+              schema:
+                type: string
       content:
         application/json:
           schema:
