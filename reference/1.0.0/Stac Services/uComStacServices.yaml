@@ -2104,44 +2104,33 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-
     Conflict:
       description: Conflict - The requested operation conflicts with the current state of the identified resource.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-
     NoContent:
       description: The request succeeded but there's really nothing to show.
       content: {}
-
     NotFound:
       description: Not Found - The requested resource doesn't exist.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-
     ServerError:
       description: An unexpected server error occured.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-
     StacCreated:
       description: Resource created
-      headers:
-        Location:
-          description: Location of newly created resource.
-          schema:
-            type: string
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Stac'
-
     Unauthorized:
       description: Unauthorized
       content: {}
