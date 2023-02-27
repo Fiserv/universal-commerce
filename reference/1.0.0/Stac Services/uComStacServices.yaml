@@ -2127,6 +2127,11 @@ components:
             $ref: '#/components/schemas/Error'
     StacCreated:
       description: Resource created
+      headers:
+        location:
+          description: Location of newly created resource.
+          schema:
+            type: string
       content:
         application/json:
           schema:
