@@ -353,8 +353,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/VoidRequest'
-              examples:
-                Minimal : {summary: Request with Merchant Funded, $ref: '#/components/examples/MinimalAuthVoidRequest'}
+            examples:
+              Minimal : {summary: Request with Merchant Funded, $ref: '#/components/examples/MinimalAuthVoidRequest'}
       responses:
         201:
           description: Created
@@ -5498,4 +5498,3 @@ components:
             status: ACTIVE
         createdDateTime: 2019-03-29T05:15:38-0400
         fdSaleId: 867449ab492246de835a186329b51576
-            
