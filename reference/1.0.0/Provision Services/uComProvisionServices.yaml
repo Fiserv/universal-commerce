@@ -118,15 +118,15 @@ paths:
             schema:
               $ref: '#/components/schemas/Provision'
             examples:
-              Minimal : {summary: Request with vaulted card, $ref: '#/components/examples/CardProvisioningRequest'}
+              Minimal: {summary: Request with vaulted card, $ref: '#/components/examples/CardProvisioningRequest'}
         required: true
       responses:
         201:
           description: Success
           content:
             application/json:
-              schema: 
-                 $ref: '#/components/responses/Created'
+              schema:
+                $ref: '#/components/responses/Created'
               examples:
                 Minimal - 201:
                   summary: Purchase Prepaid card with credit Card Response
@@ -162,8 +162,8 @@ paths:
           description: Success
           content:
             application/json:
-              schema: 
-                 $ref: '#/components/responses/OK'
+              schema:
+                $ref: '#/components/schemas/Provision'
               examples:
                 Minimal - 200:
                   summary: Provisions details Response
@@ -225,8 +225,8 @@ paths:
             schema:
               $ref: '#/components/schemas/Provision'
             examples:
-              Minimal : {summary: Request with vaulted card, $ref: '#/components/examples/UpdateProvisioningRequest'}
-            
+              Minimal: {summary: Request with vaulted card, $ref: '#/components/examples/UpdateProvisioningRequest'}
+
         required: true
       responses:
         200:
@@ -481,7 +481,7 @@ components:
         xid:
           type: string
         cavv:
-          type: string          
+          type: string
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
         panType:
@@ -709,7 +709,7 @@ components:
         xid:
           type: string
         cavv:
-          type: string          
+          type: string
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
         panType:
@@ -1231,7 +1231,7 @@ components:
         xid:
           type: string
         cavv:
-          type: string          
+          type: string
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
         panType:
@@ -1940,7 +1940,7 @@ components:
       required: true
       schema:
         type: string
-        
+
   examples:
     CardProvisioningRequest:
       value:
@@ -1948,37 +1948,37 @@ components:
           id: 563edec8-d34e-6fe8-45a7-c9f65296953c
           kind: mobile
           details:
-            - provider: InAuth
-              dataCapture:
-                rawData: aaaaaXREUVZGRlFY...aMV
-                dataEventId: BB8E4E92...Fz1E063113
-                captureTime: '2017-03-21T08:15:30-05:00'
-              dataStatic:
-                os: 6S
-                model: iPhone
-                type: Apple
-                osVersion: '9.0'
-              dataDynamic:
-                latitude: '39.987756'
-                longitude: '-75.4080015'
-                ipAddress: AB11:AB12:AB13::AB15:AB16
-                captureTime: '2017-03-21T08:15:30-05:00'
-            - provider: InAuth
-              dataCapture:
-                rawData: aaaaaXREUVZGRlFY...aMV
-                dataEventId: BB8E4E92...Fz1E063113
-                captureTime: '2017-03-21T08:15:30-05:00'
-              dataStatic:
-                os: 6S
-                model: iPhone
-                type: Apple
-                osVersion: '9.0'
-              dataDynamic:
-                latitude: '39.987756'
-                longitude: '-75.4080015'
-                ipAddress: AB11:AB12:AB13::AB15:AB16
-                captureTime: '2017-03-21T08:15:30-05:00'
-                
+          - provider: InAuth
+            dataCapture:
+              rawData: aaaaaXREUVZGRlFY...aMV
+              dataEventId: BB8E4E92...Fz1E063113
+              captureTime: '2017-03-21T08:15:30-05:00'
+            dataStatic:
+              os: 6S
+              model: iPhone
+              type: Apple
+              osVersion: '9.0'
+            dataDynamic:
+              latitude: '39.987756'
+              longitude: '-75.4080015'
+              ipAddress: AB11:AB12:AB13::AB15:AB16
+              captureTime: '2017-03-21T08:15:30-05:00'
+          - provider: InAuth
+            dataCapture:
+              rawData: aaaaaXREUVZGRlFY...aMV
+              dataEventId: BB8E4E92...Fz1E063113
+              captureTime: '2017-03-21T08:15:30-05:00'
+            dataStatic:
+              os: 6S
+              model: iPhone
+              type: Apple
+              osVersion: '9.0'
+            dataDynamic:
+              latitude: '39.987756'
+              longitude: '-75.4080015'
+              ipAddress: AB11:AB12:AB13::AB15:AB16
+              captureTime: '2017-03-21T08:15:30-05:00'
+
     CardProvisioningResponse:
       value:
         provisionId: 8a7f4a0784e12c680184f22044e00001
@@ -1988,7 +1988,7 @@ components:
           createdTime: '2022-12-08T14:25:11Z'
           expiryTime: '2022-12-09T14:25:11Z'
           lastUpdatedTime: '2022-12-08T14:25:11Z'
-          
+
     GetProvisioningDetailsResponse:
       value:
         provisionId: 8a7f4a0784e12c680184f22044e00001
@@ -1998,24 +1998,24 @@ components:
           createdTime: '2022-12-08T14:25:11Z'
           expiryTime: '2022-12-09T14:25:11Z'
           lastUpdatedTime: '2022-12-08T14:25:11Z'
-          
+
     UpdateProvisioningRequest:
       value:
         issuerExtraInfo:
-          - name: account_entity
-            value: <kyc>KFhRshrlByKE8Ktc9P6tcFD/xyJO2WLyfVsVSVpmHk8UAE8+EVXNsBnNizmgezQkCzcv57Obgt424wLultNhWP6Szho+qMuMse5qYvqCqIh8xR7YAaoUoawdrfPaUtVfgzBFQ6AL2/u1ru+QqxRO46eeLAW1hNxQ4MsJ5rXITTBehzQz30kXZoDBxMok1nKPqhGTof0oug/LyY930fqoZYJBb0Q1KxU5SEAI3bUvyrDtWSvT8fRWQ5gv+Bi68HXunLagAV7vwyK+NZUmQhPYs3R5b+2JZ9YO6MZzdK+m7toDi5VItBcsuo8UvmFsYXk+yv9qUoqj6+Z+FVXIWQ2MVQ==GWZheYVANKrwdtBPj07d/HUx5CAFvJDnyJZymYKdcoo4pnOFofjtT9aVNkFNIgI1xc772kqBlirVyrPobGpCk04AVHb7JL2mMFMJZ/1bk/q7WWkeW7wO+dua1R3bQRpmBJRe3CqjSDELN1W/ip4iTBgAp9ODalBWrctUe9vfM6BxaoB1I2wPz5WAGnz4q4PoMBrgT16JuJl0Hn+kqnr2bWjJlt4V/umS3eCfa25MSswP6IimxGZfvbCVZWAR5/2dmjls1i2GSgl5HObxD4CxFTSYIqBZvpwaXsYIWZTXG2grR7VprQvNi7+irJZa61xLUYe5JeFJ75oWEjsTB+cONQ==</kyc>
-          - name: wallet_server_session_id
-            value: '202001209359'
-          - name: wallet_enrollment_datetime
-            value: '202001209359'
-          - name: device_id_link_datetime
-            value: '202001209359'
-          - name: login_authentication_method
-            value: UID
-          - name: encryption_cert_name
-            value: citi.ips-uat.p-data.secondary.nam.nsroot.net
-        
-        
-        
-        
-        
+        - name: account_entity
+          value: <kyc>KFhRshrlByKE8Ktc9P6tcFD/xyJO2WLyfVsVSVpmHk8UAE8+EVXNsBnNizmgezQkCzcv57Obgt424wLultNhWP6Szho+qMuMse5qYvqCqIh8xR7YAaoUoawdrfPaUtVfgzBFQ6AL2/u1ru+QqxRO46eeLAW1hNxQ4MsJ5rXITTBehzQz30kXZoDBxMok1nKPqhGTof0oug/LyY930fqoZYJBb0Q1KxU5SEAI3bUvyrDtWSvT8fRWQ5gv+Bi68HXunLagAV7vwyK+NZUmQhPYs3R5b+2JZ9YO6MZzdK+m7toDi5VItBcsuo8UvmFsYXk+yv9qUoqj6+Z+FVXIWQ2MVQ==GWZheYVANKrwdtBPj07d/HUx5CAFvJDnyJZymYKdcoo4pnOFofjtT9aVNkFNIgI1xc772kqBlirVyrPobGpCk04AVHb7JL2mMFMJZ/1bk/q7WWkeW7wO+dua1R3bQRpmBJRe3CqjSDELN1W/ip4iTBgAp9ODalBWrctUe9vfM6BxaoB1I2wPz5WAGnz4q4PoMBrgT16JuJl0Hn+kqnr2bWjJlt4V/umS3eCfa25MSswP6IimxGZfvbCVZWAR5/2dmjls1i2GSgl5HObxD4CxFTSYIqBZvpwaXsYIWZTXG2grR7VprQvNi7+irJZa61xLUYe5JeFJ75oWEjsTB+cONQ==</kyc>
+        - name: wallet_server_session_id
+          value: '202001209359'
+        - name: wallet_enrollment_datetime
+          value: '202001209359'
+        - name: device_id_link_datetime
+          value: '202001209359'
+        - name: login_authentication_method
+          value: UID
+        - name: encryption_cert_name
+          value: citi.ips-uat.p-data.secondary.nam.nsroot.net
+
+
+
+
+
