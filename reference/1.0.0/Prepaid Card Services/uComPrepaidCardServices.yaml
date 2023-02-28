@@ -145,7 +145,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/OK'
+                $ref: '#/components/schemas/Prepaid'
               examples:
                 Vaulted Card - 200: {summary: Balance response for vaulted card, $ref: '#/components/examples/VaultedCardBalnaceResponse'}
                 Plain Card - 200: {summary: Balance response for vaulted card, $ref: '#/components/examples/PlainCardBalanceResponse'}
