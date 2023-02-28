@@ -144,12 +144,12 @@ paths:
           description: Success
           content:
             application/json:
-              schema: 
+              schema:
                 $ref: '#/components/responses/OK'
               examples:
-                Vaulted Card - 200 : {summary: Balance response for vaulted card, $ref: '#/components/examples/VaultedCardBalnaceResponse'}
-                Plain Card - 200 : {summary: Balance response for vaulted card, $ref: '#/components/examples/PlainCardBalanceResponse'}
-          
+                Vaulted Card - 200: {summary: Balance response for vaulted card, $ref: '#/components/examples/VaultedCardBalnaceResponse'}
+                Plain Card - 200: {summary: Balance response for vaulted card, $ref: '#/components/examples/PlainCardBalanceResponse'}
+
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -182,19 +182,19 @@ paths:
               $ref: '#/components/schemas/PrepaidAggregateRequest'
             examples:
               Vaulted Card: {summary: Request with vaulted card, $ref: '#/components/examples/AggregateBalanceMerchantFundedRequest'}
-              
-              
+
+
         required: true
       responses:
         '200':
           description: Success
           content:
             application/json:
-              schema: 
+              schema:
                 $ref: '#/components/responses/AggregateBalanceResponse'
               examples:
                 Vaulted Card: {summary: Response with vaulted card, $ref: '#/components/examples/AggregateBalanceMerchantFundedResponse'}
-              
+
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -225,13 +225,13 @@ paths:
             schema:
               $ref: '#/components/schemas/PrepaidAccountRequest'
             examples:
-                Merchant Funded: {summary: Request with Merchant Funded, $ref: '#/components/examples/MerchantFundedPurchaseRequest'}
-                Credit Card: {summary: Request with credit card, $ref: '#/components/examples/CreditCardPurchaseRequest'}
-                Vaulted Card: {summary: Request with vaulted card, $ref: '#/components/examples/VaultedCardPurchaseRequest'}
-                Apple Pay: {summary: Request with Apple Pay, $ref: '#/components/examples/ApplePayPurchaseRequest'}
-                Google Pay: {summary: Request with Google Pay, $ref: '#/components/examples/GooglePayPurchaseRequest'}
-                Samsung Pay: {summary: Request with Samsung pay, $ref: '#/components/examples/SamsungPayPurchaseRequest'}
-                PLCC: {summary: Request with PLCC, $ref: '#/components/examples/PLCCPurchaseRequest'}
+              Merchant Funded: {summary: Request with Merchant Funded, $ref: '#/components/examples/MerchantFundedPurchaseRequest'}
+              Credit Card: {summary: Request with credit card, $ref: '#/components/examples/CreditCardPurchaseRequest'}
+              Vaulted Card: {summary: Request with vaulted card, $ref: '#/components/examples/VaultedCardPurchaseRequest'}
+              Apple Pay: {summary: Request with Apple Pay, $ref: '#/components/examples/ApplePayPurchaseRequest'}
+              Google Pay: {summary: Request with Google Pay, $ref: '#/components/examples/GooglePayPurchaseRequest'}
+              Samsung Pay: {summary: Request with Samsung pay, $ref: '#/components/examples/SamsungPayPurchaseRequest'}
+              PLCC: {summary: Request with PLCC, $ref: '#/components/examples/PLCCPurchaseRequest'}
         required: true
       responses:
         201:
@@ -866,7 +866,7 @@ paths:
               schema:
                 $ref: '#/components/responses/OK'
               examples:
-                 With fdTransactionId:
+                With fdTransactionId:
                   summary: Cancel response using fd Transaction ID
                   $ref: '#/components/examples/PurchaseVoidResponse'
         400:
@@ -982,9 +982,9 @@ paths:
               $ref: '#/components/schemas/LoadFundsRequest'
             examples:
               Merchant Funded: {summary: Request with Merchant Funded, $ref: '#/components/examples/MerchantFundedReloadRequest'}
-              
+
               Credit: {summary: Request with Credit Card, $ref: '#/components/examples/CreditCardReloadRequest'}
-             
+
               Apple Pay: {summary: Request with ApplePay, $ref: '#/components/examples/ApplePayReloadRequest'}
               Google Pay: {summary: Request with Google Pay, $ref: '#/components/examples/GooglePayReloadRequest'}
               Samsung Pay: {summary: Request with Samsung pay, $ref: '#/components/examples/SamsungPayReloadRequest'}
@@ -1012,7 +1012,7 @@ paths:
                 Samsung Pay - 201:
                   summary: prepaid card reload with samsung pay response
                   $ref: '#/components/examples/SamsungPayReloadResponse'
-                
+
         202:
           description: Partially Created
           content:
@@ -1174,9 +1174,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/OK'
+                $ref: '#/components/schemas/Prepaid'
               examples:
-                 With fdTransactionId:
+                With fdTransactionId:
                   summary: Cancel response using fd Transaction ID
                   $ref: '#/components/examples/ReloadVoidResponse'
         400:
@@ -2041,7 +2041,7 @@ components:
         xid:
           type: string
         cavv:
-          type: string          
+          type: string
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
         panType:
@@ -2416,7 +2416,7 @@ components:
         xid:
           type: string
         cavv:
-          type: string          
+          type: string
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
         panType:
@@ -3612,7 +3612,7 @@ components:
         xid:
           type: string
         cavv:
-          type: string          
+          type: string
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
         panType:
@@ -4287,7 +4287,7 @@ components:
             number: 840
             currency: US Dollar
           currencyType: BASE
-          
+
     AggregateBalanceMerchantFundedRequest:
       value:
         fdCustomerId: ab946a62a5d845b5bb9ff710fcbaf07f
@@ -4299,63 +4299,63 @@ components:
       value:
         totalBalance: 500.01
         groupBalances:
-          - groupBalance: 500.01
-            balances:
-              - prepaid:
-                  cardNumber: '7777323952676090'
-                  cardSubType: Test
-                  alias: '6090'
-                  expiryDate:
-                    month: '01'
-                    year: '25'
-                  balance:
-                    currentBalance: 0
-                    beginBalance: 0
-                    currencyCode:
-                      code: USD
-                      number: 840
-                      currency: US Dollar
-                    currencyType: BASE
-                  vaultedAccount:
-                    fdAccountId: 8a7f8d908631951201863c5ffbb701bd
-              - prepaid:
-                  cardNumber: '7777323952686981'
-                  cardSubType: Test
-                  alias: '6981'
-                  expiryDate:
-                    month: '01'
-                    year: '25'
-                  balance:
-                    currentBalance: 500.01
-                    beginBalance: 500.01
-                    currencyCode:
-                      code: USD
-                      number: 840
-                      currency: US Dollar
-                    currencyType: BASE
-                  vaultedAccount:
-                    fdAccountId: 8a7f83868631781801863c8b82ec0202
-              - prepaid:
-                  cardNumber: '7777323952676090'
-                  cardSubType: Test
-                  alias: '6090'
-                  expiryDate:
-                    month: '01'
-                    year: '25'
-                  balance:
-                    currentBalance: 0
-                    beginBalance: 0
-                    currencyCode:
-                      code: USD
-                      number: 840
-                      currency: US Dollar
-                    currencyType: BASE
-                  vaultedAccount:
-                    fdAccountId: 8a7f8d908631951201863c5ccce201bc
-        
-        
-        
-        
+        - groupBalance: 500.01
+          balances:
+          - prepaid:
+              cardNumber: '7777323952676090'
+              cardSubType: Test
+              alias: '6090'
+              expiryDate:
+                month: '01'
+                year: '25'
+              balance:
+                currentBalance: 0
+                beginBalance: 0
+                currencyCode:
+                  code: USD
+                  number: 840
+                  currency: US Dollar
+                currencyType: BASE
+              vaultedAccount:
+                fdAccountId: 8a7f8d908631951201863c5ffbb701bd
+          - prepaid:
+              cardNumber: '7777323952686981'
+              cardSubType: Test
+              alias: '6981'
+              expiryDate:
+                month: '01'
+                year: '25'
+              balance:
+                currentBalance: 500.01
+                beginBalance: 500.01
+                currencyCode:
+                  code: USD
+                  number: 840
+                  currency: US Dollar
+                currencyType: BASE
+              vaultedAccount:
+                fdAccountId: 8a7f83868631781801863c8b82ec0202
+          - prepaid:
+              cardNumber: '7777323952676090'
+              cardSubType: Test
+              alias: '6090'
+              expiryDate:
+                month: '01'
+                year: '25'
+              balance:
+                currentBalance: 0
+                beginBalance: 0
+                currencyCode:
+                  code: USD
+                  number: 840
+                  currency: US Dollar
+                currencyType: BASE
+              vaultedAccount:
+                fdAccountId: 8a7f8d908631951201863c5ccce201bc
+
+
+
+
     PlainCardBalanceRequest:
       value:
         transaction:
@@ -4376,7 +4376,7 @@ components:
             number: 840
             currency: US Dollar
           currencyType: BASE
-        
+
     MerchantFundedPurchaseRequest:
       value:
         fdCustomerId: ab946a62a5d845b5bb9ff710fcbaf07f
@@ -4388,8 +4388,8 @@ components:
             cardSubType: Test
             promotionCode: '66961'
           purchaseInfo:
-            - order:
-                orderId: order002
+          - order:
+              orderId: order002
           fundingInfo:
             fundValue: 0.01
             isMerchantFunded: true
@@ -4424,8 +4424,8 @@ components:
         createdTime: '2023-02-10T17:25:58.804Z'
         fundingInfo:
           isMerchantFunded: true
-        
-        
+
+
     CreditCardPurchaseRequest:
       value:
         fdCustomerId: 8e3de3f97aea46a090142e6a991a224c
@@ -4488,50 +4488,50 @@ components:
                 tokenId: '2895841960550005'
                 tokenProvider: TRANS_ARMOR
         hostExtraInfo:
-          - name: APPROVAL_NUMBER
-            value: '26982 '
-          - name: SEQUENCE_NUMBER
-            value: '621204'
-          - name: HOST_RESPONSE_CODE
-            value: '4'
-          - name: HOST_RESPONSE_MESSAGE
-            value: APPROVED  26982
-          - name: HOST_AVS_CODE
-            value: AVS+Y
-          - name: HOST_CVV_CODE
-            value: M
-          - name: TRANSACTION_DATETIME
-            value: 2023-01-11T05:53
-          - name: NETWORK_TRANSACTION_ID
-            value: '205260111115330'
-        
+        - name: APPROVAL_NUMBER
+          value: '26982 '
+        - name: SEQUENCE_NUMBER
+          value: '621204'
+        - name: HOST_RESPONSE_CODE
+          value: '4'
+        - name: HOST_RESPONSE_MESSAGE
+          value: APPROVED  26982
+        - name: HOST_AVS_CODE
+          value: AVS+Y
+        - name: HOST_CVV_CODE
+          value: M
+        - name: TRANSACTION_DATETIME
+          value: 2023-01-11T05:53
+        - name: NETWORK_TRANSACTION_ID
+          value: '205260111115330'
+
     VaultedCardPurchaseRequest:
       value:
-       fdCustomerId: 7b4bb73b7dc040259eff4afcf05c1a56
-       transaction:
-         orderId: Order2467828
-         storeId: Test
-         saveToVault: true
-         fundingInfo:
-           fundValue: 15.25
-           currencyCode:
-             code: USD
-             number: 840
-             digits: 2
-             currency: US Dollar
-           fundingSource:
-             vaultedAccount:
-               fdAccountId: 8a7f01e0859f29aa0185a038f7480011
-       deviceInfo:
-         id: 537edec8-d33e-4ee8-93a7-b9f61876950cs
-         kind: mobile
-         details:
-           - provider: ThreatMetrix
-             dataCapture:
-               rawData: aaaaaXREUVZGRlFY...aMV
-               dataEventId: 243c6c28672b051eb81f950f184a2adb
-               captureTime: '2016-04-16T16:06:05Z'
-       publicKeyRequired: true
+        fdCustomerId: 7b4bb73b7dc040259eff4afcf05c1a56
+        transaction:
+          orderId: Order2467828
+          storeId: Test
+          saveToVault: true
+          fundingInfo:
+            fundValue: 15.25
+            currencyCode:
+              code: USD
+              number: 840
+              digits: 2
+              currency: US Dollar
+            fundingSource:
+              vaultedAccount:
+                fdAccountId: 8a7f01e0859f29aa0185a038f7480011
+        deviceInfo:
+          id: 537edec8-d33e-4ee8-93a7-b9f61876950cs
+          kind: mobile
+          details:
+          - provider: ThreatMetrix
+            dataCapture:
+              rawData: aaaaaXREUVZGRlFY...aMV
+              dataEventId: 243c6c28672b051eb81f950f184a2adb
+              captureTime: '2016-04-16T16:06:05Z'
+        publicKeyRequired: true
     VaultedCardPurchaseResponse:
       value:
         orderId: Order2467828
@@ -4575,15 +4575,15 @@ components:
                 tokenId: '9412173864130026'
                 tokenProvider: TRANS_ARMOR
         hostExtraInfo:
-          - name: APPROVAL_NUMBER
-            value: '23633 '
-          - name: SEQUENCE_NUMBER
-            value: '378045'
-          - name: TRANSACTION_DATETIME
-            value: 2023-01-11T04:46
-          - name: NETWORK_TRANSACTION_ID
-            value: '012000111094609'
-        
+        - name: APPROVAL_NUMBER
+          value: '23633 '
+        - name: SEQUENCE_NUMBER
+          value: '378045'
+        - name: TRANSACTION_DATETIME
+          value: 2023-01-11T04:46
+        - name: NETWORK_TRANSACTION_ID
+          value: '012000111094609'
+
     ApplePayPurchaseRequest:
       value:
         fdCustomerId: ce8d722d25374dfbbc88d73609296438
@@ -4620,7 +4620,7 @@ components:
                     100 Universal City Plaza
                     Hollywood, CA 91608 USA
                   primary: true
-        
+
     ApplePayPurchaseResponse:
       value:
         orderId: Order5812033
@@ -4662,8 +4662,8 @@ components:
                   month: '12'
                   year: '24'
         hostExtraInfo:
-          - name: APPROVAL_NUMBER
-            value: ET106464
+        - name: APPROVAL_NUMBER
+          value: ET106464
     GooglePayPurchaseRequest:
       value:
         fdCustomerId: 'null'
@@ -4696,7 +4696,7 @@ components:
                     100 Universal City Plaza
                     Hollywood, CA 91608 USA
                   primary: true
-        
+
     GooglePayPurchaseResponse:
       value:
         orderId: Order5411937
@@ -4739,12 +4739,12 @@ components:
                   month: '12'
                   year: '28'
         hostExtraInfo:
-          - name: APPROVAL_NUMBER
-            value: '136083'
-          - name: SEQUENCE_NUMBER
-            value: '328701'
-          - name: TRANSACTION_DATETIME
-            value: 2023-01-11T04:03
+        - name: APPROVAL_NUMBER
+          value: '136083'
+        - name: SEQUENCE_NUMBER
+          value: '328701'
+        - name: TRANSACTION_DATETIME
+          value: 2023-01-11T04:03
     SamsungPayPurchaseRequest:
       value:
         fdCustomerId: 5e82308296bb41e3adc583e223f6a0fb
@@ -4822,15 +4822,15 @@ components:
               cardType: AMEX
               dPanLast4: '0175'
         hostExtraInfo:
-          - name: APPROVAL_NUMBER
-            value: ET175047
-            
+        - name: APPROVAL_NUMBER
+          value: ET175047
+
     PLCCPurchaseRequest:
       value:
         transaction:
           purchaseInfo:
-            - order:
-                orderId: Michelscott0fefdef13
+          - order:
+              orderId: Michelscott0fefdef13
           account:
             merchantId: '97065200008'
             altMerchantId: '0001'
@@ -4860,12 +4860,12 @@ components:
                 expiryDate:
                   month: t82eKlJ9vXxHBvGpyJrQ0YQafT7N84DWb2oHgtA7Cz189u1tyc/I/VF77r0tGPicIhTlE+E/7MPxzcujtW9DH+hrsEXxFv8IOdkvxltF+SbE3aTO865gb453+2TE4nY4xlDGTRTb1ZJwau5FwFyEJCS0+DLqASRnjEZDvTOWhipfEPCgRl7ZMtqQ3n/TZdUIfAcXnzngIDp9HH4RNx78WmcJp+/brS23tx7SoY5/+Kh9f9sSvRUsFr30vhbs4XfG3JX0mnDy5xIuxuj/myegaz2gtrEADsiInqETAKdb+dQayKux+5frB+UTZTbOXK2cOjBLy5mQXG4kGaCq6+KmEQ==
                   year: kmTUcU4XCW8wBN1xEHsAED/m4udZVEGphMvB9f4MERr91YpbAB9NTNds0CzdG8mbP4/EyqHoqrxI0xMtVRgxubPQxZktBfMA9SauHZ/17ZizxHytUusR3xOatvnqnwnnBrinVcFc2BNXKHrxM/mEpWm1X25c5TRQQTljd6UMhacHRDSRU9Y1sH92+9+5gJmfOjGewAlBnPy9ReMNsLMnD8Wz7tWx4J75uFR8beO6OYhu92IamlZCp0DjYZM+PdW/BHedd43rD8nrgoZu/fCI6b8ylqVdYIf4L9fjA8/CvCC5CQta06Y9is8HCxQEj2O2q3ttgvFsU79F2hSXAdH++w==
-                  
+
     PLCCPurchaseResponse:
       value:
         purchaseInfo:
-          - order:
-              orderId: Michelscott0fefdef13
+        - order:
+            orderId: Michelscott0fefdef13
         transactionId: 7eb5b3cf58ad4b1b91e3ae094313fe55
         saveToVault: false
         account:
@@ -4901,11 +4901,11 @@ components:
                 tokenId: '8620900353210004'
                 tokenProvider: TRANS_ARMOR
         hostExtraInfo:
-          - name: APPROVAL_NUMBER
-            value: '495284'
-          - name: SEQUENCE_NUMBER
-            value: '2201536612'
- 
+        - name: APPROVAL_NUMBER
+          value: '495284'
+        - name: SEQUENCE_NUMBER
+          value: '2201536612'
+
     CreditCardReloadRequest:
       value:
         transaction:
@@ -4980,42 +4980,42 @@ components:
                 tokenId: '2895841960550005'
                 tokenProvider: TRANS_ARMOR
         hostExtraInfo:
-          - name: APPROVAL_NUMBER
-            value: '26982 '
-          - name: SEQUENCE_NUMBER
-            value: '025600'
-          - name: HOST_RESPONSE_CODE
-            value: '4'
-          - name: HOST_RESPONSE_MESSAGE
-            value: APPROVED  26982
-          - name: HOST_AVS_CODE
-            value: AVS+Y
-          - name: HOST_CVV_CODE
-            value: M
-          - name: TRANSACTION_DATETIME
-            value: 2023-01-11T05:53
-          - name: NETWORK_TRANSACTION_ID
-            value: '205260111115342'
-    
+        - name: APPROVAL_NUMBER
+          value: '26982 '
+        - name: SEQUENCE_NUMBER
+          value: '025600'
+        - name: HOST_RESPONSE_CODE
+          value: '4'
+        - name: HOST_RESPONSE_MESSAGE
+          value: APPROVED  26982
+        - name: HOST_AVS_CODE
+          value: AVS+Y
+        - name: HOST_CVV_CODE
+          value: M
+        - name: TRANSACTION_DATETIME
+          value: 2023-01-11T05:53
+        - name: NETWORK_TRANSACTION_ID
+          value: '205260111115342'
+
     MerchantFundedReloadRequest:
       value:
-       fdCustomerId: ab946a62a5d845b5bb9ff710fcbaf07f
-       transaction:
-         destinationCard:
-           account:
-             merchantId: '97483900003'
-             altMerchantId: '0001'
-             vaultedAccount:
-               fdAccountId: 8a7f8d908631951201863c5ffbb701bd
-         purchaseInfo:
-           - order:
-               orderId: order005
-         fundingInfo:
-           fundValue: 500
-           isMerchantFunded: true
-           currencyCode:
-             code: USD
-             number: 840
+        fdCustomerId: ab946a62a5d845b5bb9ff710fcbaf07f
+        transaction:
+          destinationCard:
+            account:
+              merchantId: '97483900003'
+              altMerchantId: '0001'
+              vaultedAccount:
+                fdAccountId: 8a7f8d908631951201863c5ffbb701bd
+          purchaseInfo:
+          - order:
+              orderId: order005
+          fundingInfo:
+            fundValue: 500
+            isMerchantFunded: true
+            currencyCode:
+              code: USD
+              number: 840
     MerchantFundedReloadResponse:
       value:
         orderId: order005
@@ -5043,8 +5043,8 @@ components:
             currencyType: BASE
         createdTime: '2023-02-10T17:30:40.969Z'
         fundingInfo:
-          isMerchantFunded: true    
-        
+          isMerchantFunded: true
+
     ApplePayReloadRequest:
       value:
         fdCustomerId: ce8d722d25374dfbbc88d73609296438
@@ -5123,8 +5123,8 @@ components:
                   month: '12'
                   year: '24'
         hostExtraInfo:
-          - name: APPROVAL_NUMBER
-            value: ET197801
+        - name: APPROVAL_NUMBER
+          value: ET197801
     GooglePayReloadRequest:
       value:
         fdCustomerId: 'null'
@@ -5199,12 +5199,12 @@ components:
                   month: '12'
                   year: '28'
         hostExtraInfo:
-          - name: APPROVAL_NUMBER
-            value: '23635 '
-          - name: SEQUENCE_NUMBER
-            value: '278840'
-          - name: TRANSACTION_DATETIME
-            value: 2023-01-11T04:03
+        - name: APPROVAL_NUMBER
+          value: '23635 '
+        - name: SEQUENCE_NUMBER
+          value: '278840'
+        - name: TRANSACTION_DATETIME
+          value: 2023-01-11T04:03
     SamsungPayReloadRequest:
       value:
         fdCustomerId: 5e82308296bb41e3adc583e223f6a0fb
@@ -5283,8 +5283,8 @@ components:
               cardType: AMEX
               dPanLast4: '0175'
         hostExtraInfo:
-          - name: APPROVAL_NUMBER
-            value: ET143234
+        - name: APPROVAL_NUMBER
+          value: ET143234
 
     VaultedAccountsBalanceMergeRequest:
       value:
@@ -5296,7 +5296,7 @@ components:
           destination:
             vaultedAccount:
               fdAccountId: 8a7f83868631781801863c8b82ec0202
-        
+
     VaultedAccountsBalanceMergeResponse:
       value:
         transactionId: 134418156e4547f59a1921a997691b45
@@ -5326,7 +5326,7 @@ components:
               currencyType: BASE
           vaultedAccount:
             fdAccountId: 8a7f83868631781801863c8b82ec0202
-        
+
     VaultedCardTransactionHistoryRequest:
       value:
         fdCustomerId: ab946a62a5d845b5bb9ff710fcbaf07f
@@ -5334,7 +5334,7 @@ components:
           account:
             vaultedAccount:
               fdAccountId: 8a7f83868631781801863c8b82ec0202
-        
+
     VaultedCardTransactionHistoryResponse:
       value:
         pages:
@@ -5346,22 +5346,22 @@ components:
           totalRecords: 2
           sortOrder: desc
         transactions:
-          - amount: 500
-            currencyCode:
-              code: USD
-              number: 840
-            info: Balance Merge
-            transactionTime: '2023-02-10T18:18:00.000Z'
-            altMerchantId: '000009870001'
-          - amount: 0.01
-            currencyCode:
-              code: USD
-              number: 840
-            info: Activate Virtual Card
-            transactionTime: '2023-02-10T18:17:00.000Z'
-            altMerchantId: '000000010001'
-        
-        
+        - amount: 500
+          currencyCode:
+            code: USD
+            number: 840
+          info: Balance Merge
+          transactionTime: '2023-02-10T18:18:00.000Z'
+          altMerchantId: '000009870001'
+        - amount: 0.01
+          currencyCode:
+            code: USD
+            number: 840
+          info: Activate Virtual Card
+          transactionTime: '2023-02-10T18:17:00.000Z'
+          altMerchantId: '000000010001'
+
+
     PlainCardTransactionHistoryRequest:
       value:
         transaction:
@@ -5369,7 +5369,7 @@ components:
             cardNumber: '7777323952686981'
             merchantId: '97483900003'
             altMerchantId: '001'
-        
+
     PlainCardTransactionHistoryResponse:
       value:
         pages:
@@ -5381,21 +5381,21 @@ components:
           totalRecords: 2
           sortOrder: desc
         transactions:
-          - amount: 500
-            currencyCode:
-              code: USD
-              number: 840
-            info: Balance Merge
-            transactionTime: '2023-02-10T18:18:00.000Z'
-            altMerchantId: '000009870001'
-          - amount: 0.01
-            currencyCode:
-              code: USD
-              number: 840
-            info: Activate Virtual Card
-            transactionTime: '2023-02-10T18:17:00.000Z'
-            altMerchantId: '000000010001'
-     
+        - amount: 500
+          currencyCode:
+            code: USD
+            number: 840
+          info: Balance Merge
+          transactionTime: '2023-02-10T18:18:00.000Z'
+          altMerchantId: '000009870001'
+        - amount: 0.01
+          currencyCode:
+            code: USD
+            number: 840
+          info: Activate Virtual Card
+          transactionTime: '2023-02-10T18:17:00.000Z'
+          altMerchantId: '000000010001'
+
     ReloadVoidResponse:
       value:
         cardNumber: '7777323952676090'
@@ -5428,13 +5428,13 @@ components:
             currency: US Dollar
           currencyType: BASE
         hostExtraInfo:
-          - name: APPROVAL_NUMBER
-            value: '23633 '
-          - name: SEQUENCE_NUMBER
-            value: '170674'
-          - name: NETWORK_TRANSACTION_ID
-            value: '012000111094717'
-            
+        - name: APPROVAL_NUMBER
+          value: '23633 '
+        - name: SEQUENCE_NUMBER
+          value: '170674'
+        - name: NETWORK_TRANSACTION_ID
+          value: '012000111094717'
+
     VaultedCardBalnaceResponse:
       value:
         cardNumber: '6759649826438453'
@@ -5447,11 +5447,11 @@ components:
             code: USD
             number: 840
           currencyType: BASE
-          
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
+
