@@ -126,7 +126,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/Created'
+                $ref: '#/components/schemas/Provision'
               examples:
                 Minimal - 201:
                   summary: Purchase Prepaid card with credit Card Response
