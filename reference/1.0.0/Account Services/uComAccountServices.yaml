@@ -141,7 +141,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/Created'
+                $ref: '#/components/schemas/Account'
               examples:
                 Nonce: {summary: Credit card - nonce, $ref: '#/components/examples/TokenizeNonceR'}
                 TA Token: {summary: TA token, $ref: '#/components/examples/TokenizeTAR'}
