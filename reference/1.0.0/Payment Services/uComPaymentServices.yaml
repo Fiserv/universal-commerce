@@ -694,7 +694,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/SaleCreated'
+                $ref: '#/components/schemas/Sale'
               examples:
                 #Credit - 201:
                 #  summary: Sale with credit Card Response
