@@ -93,7 +93,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/TransactionsOK'
+                type: object
+                properties:
+                  transactions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/TransactionHistoryItem'
+                  pages:
+                    $ref: '#/components/schemas/PageLink'
               examples:
                 credit:
                   summary: Cancel response using Merchant Transaction ID
