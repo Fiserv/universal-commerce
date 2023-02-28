@@ -174,7 +174,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/Created'
+                $ref: '#/components/schemas/PetroTransaction'
               examples:
                 With Car Wash - 201:
                   summary: With car wash service auth Response
