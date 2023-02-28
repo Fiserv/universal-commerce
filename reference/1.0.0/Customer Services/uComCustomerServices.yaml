@@ -129,7 +129,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/Created'
+                $ref: '#/components/schemas/User'
               examples:
                 Minimal - 201:
                   summary: Customer Creation Minimal Response
