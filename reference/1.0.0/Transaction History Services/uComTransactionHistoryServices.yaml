@@ -247,7 +247,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/ReceiptOK'
+                type: string
               examples:
                 Minimal - 200:
                   $ref: '#/components/examples/GetReceiptByfdTransactionIdResponse'
