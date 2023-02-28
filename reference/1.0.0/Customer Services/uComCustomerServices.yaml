@@ -85,7 +85,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/OK'
+                $ref: '#/components/schemas/User'
               examples:
                 Minimal - 200:
                   summary: Get customer Details Minimal Response
@@ -161,9 +161,16 @@ paths:
       - $ref: '#/components/parameters/SubMerchantIdParam'
       responses:
         200:
-          $ref: '#/components/responses/OK'
-        200 - Minimal:
-          $ref: '#/components/responses/GetCustomerDetailsMinimalResponse'
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/OK'
+              examples:
+                Minimal - 200:
+                  summary: Get customer Details Minimal Response
+                  $ref: '#/components/examples/GetCustomerDetailsMinimalResponse'
+
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -940,12 +947,7 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    GetCustomerDetailsMinimalResponse:
-      description: GetCustomerDetailsMinimalResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/examples/GetCustomerDetailsMinimalResponse'
+
     OK:
       description: OK
       content:
