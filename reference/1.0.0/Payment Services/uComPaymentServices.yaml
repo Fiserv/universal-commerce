@@ -216,28 +216,28 @@ paths:
               schema:
                 $ref: '#/components/schemas/Authorization'
               examples:
-                Vaulted - 201:
+                Vaulted:
                   summary: Auth with vaulted Card by passing MID Response
                   $ref: '#/components/examples/VaultedAuthResponse'
-                VaultedWithStoreId - 201:
+                VaultedWithStoreId:
                   summary: Auth with vaulted Card by passing store id Response
                   $ref: '#/components/examples/VaultedWithStoreIdAuthResponse'
-                Nonce - 201:
+                Nonce:
                   summary: Auth with anonymous Response
                   $ref: '#/components/examples/NonceAuthResponse'
-                Apple Pay - 201:
+                Apple Pay:
                   summary: Auth with apple pay Response
                   $ref: '#/components/examples/ApplePayAuthResponse'
-                Google Pay - 201:
+                Google Pay:
                   summary: Auth with google pay Response
                   $ref: '#/components/examples/GooglePayAuthResponse'
-                PayPal - 201:
+                PayPal:
                   summary: Auth with PayPal Response
                   $ref: '#/components/examples/GooglePayAuthResponse'
-                Venmo - 201:
+                Venmo:
                   summary: Auth with Venmo Response
                   $ref: '#/components/examples/GooglePayAuthResponse'
-                TA Token - 201:
+                TA Token:
                   summary: Auth with TA Token Response
                   $ref: '#/components/examples/TATokenAuthResponse'
           
@@ -277,7 +277,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Authorization'
               examples:
-                Credit - 201:
+                Credit:
                   summary: AUthorization details by fdAuthorizationId
                   $ref: '#/components/examples/MinimalGetAuthResponseByfdAuthorizationId'
         400:
@@ -363,7 +363,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Authorization'
               examples:
-                Minimal - 201:
+                Minimal:
                   summary: Void auth by fdauthorizationId Response
                   $ref: '#/components/examples/MinimalAuthVoidResponse'
           
@@ -411,10 +411,10 @@ paths:
               schema:
                  $ref: '#/components/schemas/Capture'
               examples:
-                Vaulted - 201:
+                Vaulted:
                   summary: Auth with vaulted Card Response
                   $ref: '#/components/examples/TATokenAuthCaptureResponse'
-                TAToken - 201:
+                TAToken:
                   summary: Auth with TA token Response
                   $ref: '#/components/examples/TATokenAuthCaptureResponse'
         400:
@@ -697,25 +697,25 @@ paths:
                 #Credit - 201:
                 #  summary: Sale with credit Card Response
                 #  $ref: '#/components/examples/CreditCardSaleResponse'
-                Vaulted Card - 201:
+                Vaulted Card:
                   summary: Sale with Vaulted Card response
                   $ref: '#/components/examples/VaultedCardSaleResponse'
-                Nonce - 201:
+                Nonce:
                   summary: Sale with Nonce response
                   $ref: '#/components/examples/NonceSaleResponse'
-                Apple Pay - 201:
+                Apple Pay:
                   summary: Sale with apple pay response
                   $ref: '#/components/examples/ApplePaySaleResponse'
-                Google Pay - 201:
+                Google Pay:
                   summary: Sale with google pay response
                   $ref: '#/components/examples/GooglePaySaleResponse'
-                PayPal - 201:
+                PayPal:
                   summary: Sale with PayPal response
                   $ref: '#/components/examples/PayPalSaleResponse'
-                Venmo - 201:
+                Venmo:
                   summary: Sale with venmo response
                   $ref: '#/components/examples/VenmoSaleResponse'
-                TA Token - 201:
+                TA Token:
                   summary: Sale with TA token response
                   $ref: '#/components/examples/TATokenSaleResponse'
           
