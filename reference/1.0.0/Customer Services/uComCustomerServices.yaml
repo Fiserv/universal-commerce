@@ -69,7 +69,7 @@ paths:
       x-proxy-name: Get Customer Profile by external id
       tags:
       - customers
-      summary: Get Customer Profile by external id attribute
+      summary: Read a Customer Profile by external id attribute
       description: Fetch the details of a customer providing the external Id.
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
@@ -81,7 +81,15 @@ paths:
       - $ref: '#/components/parameters/SubMerchantIdParam'
       responses:
         200:
-          $ref: '#/components/responses/OK'
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              examples:
+                Minimal - 200:
+                  summary: Get customer Details Minimal Response
+                  $ref: '#/components/examples/GetCustomerDetailsMinimalResponse'
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -117,7 +125,15 @@ paths:
         required: true
       responses:
         201:
-          $ref: '#/components/responses/Created'
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Created'
+              examples:
+                Minimal - 201:
+                  summary: Customer Creation Minimal Response
+                  $ref: '#/components/examples/CustomerCreateMinimalResponse'
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -145,7 +161,16 @@ paths:
       - $ref: '#/components/parameters/SubMerchantIdParam'
       responses:
         200:
-          $ref: '#/components/responses/OK'
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/OK'
+              examples:
+                Minimal - 200:
+                  summary: Get customer Details Minimal Response
+                  $ref: '#/components/examples/GetCustomerDetailsMinimalResponse'
+
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -553,9 +578,9 @@ components:
       description: Details of ThreeDSecure transaction used to process the challege flow
 
     User:
-     required:
+      required:
       - externalId
-      type: array
+      type: object
       properties:
         id:
           type: string
@@ -588,6 +613,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Email'
+        addresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/Address'
         phoneNumbers:
           type: array
           items:
@@ -1037,6 +1066,34 @@ components:
           - value: +44-123-456-7890
             type: mobile
             primary: true
+
+    CustomerCreateMinimalResponse:
+      value:
+        id: 0a468dd9add4477f9b01dd9d9b15871a
+        externalId: customer0001
+
+    GetCustomerDetailsMinimalResponse:
+      value:
+        id: 0a468dd9add4477f9b01dd9d9b15871a
+        externalId: customer0001
+        name:
+          familyName: John
+          givenName: Smith
+        emails:
+        - value: uboddu@example.com
+          primary: true
+        addresses:
+        - streetAddress: 9 Church Road, Vange
+          locality: Basildon
+          postalCode: '3749'
+          country: PR
+        phoneNumbers:
+        - value: +44-123-456-7890
+          type: mobile
+          primary: true
+        dateCreated: '2023-02-16T17:50:26Z'
+        dateModified: '2023-02-16T17:50:26Z'
+
     CustomerUpdateMinimalRequest:
       value:
         customer:

@@ -140,8 +140,16 @@ paths:
               Plain Card: {summary: Request with plain card, $ref: '#/components/examples/PlainCardBalanceRequest'}
         required: true
       responses:
-        200:
-          $ref: '#/components/responses/OK'
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema: 
+                $ref: '#/components/responses/OK'
+              examples:
+                Vaulted Card - 200 : {summary: Balance response for vaulted card, $ref: '#/components/examples/VaultedCardBalnaceResponse'}
+                Plain Card - 200 : {summary: Balance response for vaulted card, $ref: '#/components/examples/PlainCardBalanceResponse'}
+          
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -167,16 +175,26 @@ paths:
       - $ref: '#/components/parameters/AcceptLanguageParam'
       - $ref: '#/components/parameters/SubMerchantIdParam'
       requestBody:
+
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/PrepaidAggregateRequest'
             examples:
-              Vaulted Card: {summary: Request with vaulted card, $ref: '#/components/examples/VaultedCardAggregateBalanceRequest'}
+              Vaulted Card: {summary: Request with vaulted card, $ref: '#/components/examples/AggregateBalanceMerchantFundedRequest'}
+              
+              
         required: true
       responses:
-        200:
-          $ref: '#/components/responses/AggregateBalanceResponse'
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema: 
+                $ref: '#/components/responses/AggregateBalanceResponse'
+              examples:
+                Vaulted Card: {summary: Response with vaulted card, $ref: '#/components/examples/AggregateBalanceMerchantFundedResponse'}
+              
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -185,34 +203,6 @@ paths:
           $ref: '#/components/responses/ServerError'
         204:
           $ref: '#/components/responses/NoContent'
-
-  /v1/prepaids/balances/{requestId}:
-    get:
-      x-group-name: Prepaid Services
-      x-proxy-name: Retrieve Balance by Identifier
-      tags:
-      - balance
-      description: Service to retrieve the balance based on request identifier.
-      parameters:
-      - $ref: '#/components/parameters/ApiKeyParam'
-      - $ref: '#/components/parameters/TimestampParam'
-      - $ref: '#/components/parameters/AuthorizationParam'
-      - $ref: '#/components/parameters/ClientTokenParam'
-      - $ref: '#/components/parameters/ClientRequestIdParam'
-      - $ref: '#/components/parameters/AcceptLanguageParam'
-      - $ref: '#/components/parameters/RequestIdParam'
-      - $ref: '#/components/parameters/SubMerchantIdParam'
-      responses:
-        200:
-          $ref: '#/components/responses/BalanceResponse'
-        400:
-          $ref: '#/components/responses/BadRequest'
-        404:
-          $ref: '#/components/responses/NotFound'
-        401:
-          $ref: '#/components/responses/Unauthorized'
-        500:
-          $ref: '#/components/responses/ServerError'
 
   /v1/prepaids/purchases:
     post:
@@ -236,6 +226,12 @@ paths:
               $ref: '#/components/schemas/PrepaidAccountRequest'
             examples:
                 Merchant Funded: {summary: Request with Merchant Funded, $ref: '#/components/examples/MerchantFundedPurchaseRequest'}
+                Credit Card: {summary: Request with credit card, $ref: '#/components/examples/CreditCardPurchaseRequest'}
+                Vaulted Card: {summary: Request with vaulted card, $ref: '#/components/examples/VaultedCardPurchaseRequest'}
+                Apple Pay: {summary: Request with Apple Pay, $ref: '#/components/examples/ApplePayPurchaseRequest'}
+                Google Pay: {summary: Request with Google Pay, $ref: '#/components/examples/GooglePayPurchaseRequest'}
+                Samsung Pay: {summary: Request with Samsung pay, $ref: '#/components/examples/SamsungPayPurchaseRequest'}
+                PLCC: {summary: Request with PLCC, $ref: '#/components/examples/PLCCPurchaseRequest'}
         required: true
       responses:
         201:
@@ -244,6 +240,25 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PrepaidPurchase'
+              examples:
+                Credit Card - 201:
+                  summary: Purchase Prepaid card with credit Card Response
+                  $ref: '#/components/examples/CreditCardPurchaseResponse'
+                Vaulted Card - 201:
+                  summary: Purchase Prepaid card with Vaulted Card response
+                  $ref: '#/components/examples/VaultedCardPurchaseResponse'
+                Apple Pay - 201:
+                  summary: Purchase prepaid card with apple pay response
+                  $ref: '#/components/examples/ApplePayPurchaseResponse'
+                Google Pay - 201:
+                  summary: Purchase prepaid card with google pay response
+                  $ref: '#/components/examples/GooglePayPurchaseResponse'
+                Samsung Pay - 201:
+                  summary: Purchase prepaid card with samsung pay response
+                  $ref: '#/components/examples/SamsungPayPurchaseResponse'
+                PLCC - 201:
+                  summary: Purchase prepaid card with PLCC response
+                  $ref: '#/components/examples/PLCCPurchaseResponse'
         202:
           description: Partially Created
           content:
@@ -338,10 +353,10 @@ paths:
   /v1/prepaids/void:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Deduct/Cashout Prepaid Balance
+      x-proxy-name: Void of any prepaid card transaction
       tags:
       - void
-      description: Service to deduct/cashout prepaid account
+      description: Void of any prepaid card transaction
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -844,8 +859,16 @@ paths:
               $ref: '#/components/schemas/VoidRequest'
         required: true
       responses:
-        200:
-          $ref: '#/components/responses/OK'
+        '200':
+          description: Voided
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/OK'
+              examples:
+                 With fdTransactionId:
+                  summary: Cancel response using fd Transaction ID
+                  $ref: '#/components/examples/PurchaseVoidResponse'
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -959,6 +982,12 @@ paths:
               $ref: '#/components/schemas/LoadFundsRequest'
             examples:
               Merchant Funded: {summary: Request with Merchant Funded, $ref: '#/components/examples/MerchantFundedReloadRequest'}
+              
+              Credit: {summary: Request with Credit Card, $ref: '#/components/examples/CreditCardReloadRequest'}
+             
+              Apple Pay: {summary: Request with ApplePay, $ref: '#/components/examples/ApplePayReloadRequest'}
+              Google Pay: {summary: Request with Google Pay, $ref: '#/components/examples/GooglePayReloadRequest'}
+              Samsung Pay: {summary: Request with Samsung pay, $ref: '#/components/examples/SamsungPayReloadRequest'}
         required: true
       responses:
         201:
@@ -967,6 +996,23 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/LoadFundsPurchase'
+              examples:
+                Merchant Funded - 201:
+                  summary: Merchant funded reload response
+                  $ref: '#/components/examples/MerchantFundedReloadResponse'
+                Credit Card - 201:
+                  summary: Prepaid card reload with credit card card response
+                  $ref: '#/components/examples/CreditCardReloadResponse'
+                Apple Pay - 201:
+                  summary: prepaid card reload with apple pay response
+                  $ref: '#/components/examples/ApplePayReloadResponse'
+                Google Pay - 201:
+                  summary: prepaid card reload with google pay response
+                  $ref: '#/components/examples/GooglePayReloadResponse'
+                Samsung Pay - 201:
+                  summary: prepaid card reload with samsung pay response
+                  $ref: '#/components/examples/SamsungPayReloadResponse'
+                
         202:
           description: Partially Created
           content:
@@ -1123,8 +1169,16 @@ paths:
               $ref: '#/components/schemas/VoidRequest'
         required: true
       responses:
-        200:
-          $ref: '#/components/responses/OK'
+        '200':
+          description: Voided
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/OK'
+              examples:
+                 With fdTransactionId:
+                  summary: Cancel response using fd Transaction ID
+                  $ref: '#/components/examples/ReloadVoidResponse'
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -1248,6 +1302,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MergeBalanceTransaction'
+              examples:
+                Vaulted Accounts - 201:
+                  summary: Merge response for two vaulted accounts
+                  $ref: '#/components/examples/VaultedAccountsBalanceMergeResponse'
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -1362,6 +1420,7 @@ paths:
 
   /v1/prepaids/transactions:
     post:
+      deprecated: true
       x-group-name: Prepaid Services
       x-proxy-name: Retrieve Transactions on a Prepaid Card
       tags:
@@ -1427,6 +1486,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PrepaidAccountRequest'
+            examples:
+              Vaulted Card: {summary: Request with vaulted card, $ref: '#/components/examples/VaultedCardTransactionHistoryRequest'}
+              Plain Card: {summary: Request with plain card, $ref: '#/components/examples/PlainCardTransactionHistoryRequest'}
         required: true
       responses:
         200:
@@ -1435,6 +1497,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PrepaidTxnSearchResult'
+              examples:
+                vaulted Card - 200:
+                  summary: Cancel response using Merchant Transaction ID
+                  $ref: '#/components/examples/VaultedCardTransactionHistoryResponse'
+                Plain card - 200:
+                  summary: Cancel response using Merchant Transaction ID
+                  $ref: '#/components/examples/PlainCardTransactionHistoryResponse'
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -4197,81 +4266,1191 @@ components:
   examples:
     VaultedCardBalanceRequest:
       value:
-        fdCustomerId: 424f02356e8145e398ac62743570d15f
+        fdCustomerId: ab946a62a5d845b5bb9ff710fcbaf07f
         transaction:
           account:
             vaultedAccount:
-              fdAccountId: 8a7f6c6270af0dd90170be009b2d02fc
+              fdAccountId: 8a7f8d908631951201863c5ccce201bc
+    VaultedCardBalanceResponse:
+      value:
+        cardNumber: '7777323952676090'
+        cardSubType: Test
+        alias: '6090'
+        expiryDate:
+          month: '01'
+          year: '25'
+        balance:
+          currentBalance: 500.01
+          beginBalance: 500.01
+          currencyCode:
+            code: USD
+            number: 840
+            currency: US Dollar
+          currencyType: BASE
+          
+    AggregateBalanceMerchantFundedRequest:
+      value:
+        fdCustomerId: ab946a62a5d845b5bb9ff710fcbaf07f
+        transaction:
+          account:
+            merchantId: '97483900003'
+            altMerchantId: '0001'
+    AggregateBalanceMerchantFundedResponse:
+      value:
+        totalBalance: 500.01
+        groupBalances:
+          - groupBalance: 500.01
+            balances:
+              - prepaid:
+                  cardNumber: '7777323952676090'
+                  cardSubType: Test
+                  alias: '6090'
+                  expiryDate:
+                    month: '01'
+                    year: '25'
+                  balance:
+                    currentBalance: 0
+                    beginBalance: 0
+                    currencyCode:
+                      code: USD
+                      number: 840
+                      currency: US Dollar
+                    currencyType: BASE
+                  vaultedAccount:
+                    fdAccountId: 8a7f8d908631951201863c5ffbb701bd
+              - prepaid:
+                  cardNumber: '7777323952686981'
+                  cardSubType: Test
+                  alias: '6981'
+                  expiryDate:
+                    month: '01'
+                    year: '25'
+                  balance:
+                    currentBalance: 500.01
+                    beginBalance: 500.01
+                    currencyCode:
+                      code: USD
+                      number: 840
+                      currency: US Dollar
+                    currencyType: BASE
+                  vaultedAccount:
+                    fdAccountId: 8a7f83868631781801863c8b82ec0202
+              - prepaid:
+                  cardNumber: '7777323952676090'
+                  cardSubType: Test
+                  alias: '6090'
+                  expiryDate:
+                    month: '01'
+                    year: '25'
+                  balance:
+                    currentBalance: 0
+                    beginBalance: 0
+                    currencyCode:
+                      code: USD
+                      number: 840
+                      currency: US Dollar
+                    currencyType: BASE
+                  vaultedAccount:
+                    fdAccountId: 8a7f8d908631951201863c5ccce201bc
+        
+        
+        
+        
     PlainCardBalanceRequest:
       value:
         transaction:
           account:
             cardNumber: '7076105002996016'
-    VaultedCardAggregateBalanceRequest:
+    PlainCardBalanceResponse:
       value:
-        fdCustomerId: ed0a809bc6164ed7b2dae602ae90d10d
-        groupNames:
-          - Sterling
+        cardNumber: '7777323952676090'
+        alias: '6090'
+        expiryDate:
+          month: '01'
+          year: '25'
+        balance:
+          currentBalance: 500
+          beginBalance: 500
+          currencyCode:
+            code: USD
+            number: 840
+            currency: US Dollar
+          currencyType: BASE
+        
     MerchantFundedPurchaseRequest:
       value:
-        fdCustomerId: ed0a809bc6164ed7b2dae602ae90d10d
+        fdCustomerId: ab946a62a5d845b5bb9ff710fcbaf07f
         transaction:
           saveToVault: true
           account:
-            merchantId: '99022879997'
+            merchantId: '97483900003'
             altMerchantId: '0001'
-            cardSubType: ibotta
-            promotionCode: '57051'
+            cardSubType: Test
+            promotionCode: '66961'
           purchaseInfo:
             - order:
-                orderId: order001
+                orderId: order002
           fundingInfo:
-            fundValue: 5
+            fundValue: 0.01
             isMerchantFunded: true
             currencyCode:
               code: USD
               number: 840
-    MerchantFundedReloadRequest:
+    MerchantFundedPurchaseResponse:
       value:
-        fdCustomerId: f50b867ae2fb4fc2b88e009ffcf092d8
+        orderId: order002
+        transactionId: 173aac48434044a0bf05c0e810c767f8
+        saveToVault: true
+        account:
+          merchantId: '97483900003'
+          altMerchantId: '0001'
+          promotionCode: '66961'
+          cardNumber: '7777323952676090'
+          cardSubType: Test
+          alias: '6090'
+          expiryDate:
+            month: '01'
+            year: '25'
+          balance:
+            currentBalance: 0.01
+            beginBalance: 0
+            currencyCode:
+              code: USD
+              number: 840
+              currency: US Dollar
+            currencyType: BASE
+          vaultedAccount:
+            fdAccountId: 8a7f8d908631951201863c5ccce201bc
+        createdTime: '2023-02-10T17:25:58.804Z'
+        fundingInfo:
+          isMerchantFunded: true
+        
+        
+    CreditCardPurchaseRequest:
+      value:
+        fdCustomerId: 8e3de3f97aea46a090142e6a991a224c
         transaction:
+          orderId: '3434343'
+          saveToVault: true
+          fundingInfo:
+            fundValue: 25
+            currencyCode:
+              code: USD
+              number: 840
+              digits: 2
+              currency: US Dollar
+            fundingSource:
+              credit:
+                cardNumber: ENC_[eTY6DF55+ZKJkGglXzVhHZFUJ5i/scEGD3LCu/C3tQjPeWorOjYQ21WUMuatC2X52fZ8/pjGZnkZXnp0tDpOuI7A8dHjNTYNBXIILFI9m7VPw433mYCqg+tnexX4YvsKWQRwHcxqHbuBW+oIwG+VN6ZE8elYnmKWDrjeTilTj+crwG+cXHZhsWLJwrOVowfr5cDiassynvJgOu8QSxaxXr1lUav/58umELR780PiStEfk8ml2pIbvQwsAocELkQKTSZXDYZrWf5ILwvXA0JbFst9Aka+YCFehdLlWfdnsXFOHmAy99cANRaU82MO7fXLAiiIlfBL1viVVkfrGEI/mg==]
+                cardType: VISA
+                nameOnCard: test
+                expiryDate:
+                  month: ENC_[QA5mD9fpy4/eKqo3guHIurhX75A06kDkL8cTdgrnO4R3pcq+kqS+FYunIgkVYGKsmxicuSA7GceIr6vBcQB3CzxkJeiqluZkVIQwr5kZLzwo4V0wHWMMfrsc+qGBei6XQhYynAmayzstHqc5KPfU81EhWJGfHiux0FIV1nc0KtyAXufV5p2R0PLUMMplcz6R1924xgtKy4/ZmoBEewtz0eGDxQFRo//foo6XQchREqdeIbwBDqUs/t9KbbGXUddSnfSHvBSpVE73AbhfcXaF/mky+1nllKDB6CsmRFmdXE0iB5r5AZnT/kza7Q/bS3wk8Oe3zCGR5s2E+q90+zYzZg==]
+                  year: ENC_[HJ16/3IlPxYN4k/xy/W+9p+1LjgEEDdwVPlpgc+tGFVrg3PF7sxS1o5AoRRkUAdvL8MjC3zYdQ9UBmNNGUT7HbSVXZ71GqeNGku5EEanyxvHpHo+BH7/qGH2McFvnmWB+igxMw92PuvLD3V1w4nnDzQ1UbP9rLiu5Ss7fnGEslokDOGnU3RMPYGEZHkKD25KUHhDEaylkVBQspkaewVwmdOsMwib95yQrcuM6E5gu+dkHlWtkOtnuCSPqAY59C5vVW9+SoPr4iOHeUiCVkqaxLg+vACrEYcIzmxLdABSDRiP7V7NGFH4VzCaNnJPw2gp1np8qyxUV1OBUJvmBgT7Xg==]
+                securityCode: ENC_[bX9m3XXfdhJkH69VsJViAz4HBZu3y8lr9f4/bbvo4zNJvltERfyCG2uGz/xfEqUFMYYhaT8LGCvDf2ytoIJdD4JQsCCYimNCfGZg7HvgZ0Ty/i/rCvI5bqHANcLVFfcaH60z4ALu4xo9JaqA1ZfiKd5RrXwMfMuslUIPB4WRP2bKV/Sg31gGrAo1Ckecwhp2TujYo3ZtJupj+tZfBiIinrwuK4erGx+PoQjHjAvPYSm2e3wyQBoLuJUlBrQVSsLTTV3fyGOwdKtqa8fgtnKuxXdK7FeDkvQ0RkHVc3cQM2fQVbYoBC9Di+9zJbCrIJPgvgeGVGvVGeybzpgDhMvUiA==]
+    CreditCardPurchaseResponse:
+      value:
+        orderId: Order9641141
+        transactionId: e88d2e8ca74943ec92ed5396e8dedcde
+        saveToVault: false
+        account:
+          cardNumber: '7777280826989134'
+          securityCode: '77340651'
+          alias: '9134'
+          expiryDate:
+            month: '01'
+            year: '25'
+          balance:
+            currentBalance: 15.25
+            beginBalance: 0
+            currencyCode:
+              code: USD
+              number: 840
+              currency: US Dollar
+            currencyType: BASE
+        createdTime: '2023-01-11T11:53:29.979Z'
+        fundingInfo:
+          approvedAmount: 15.25
+          fundingSource:
+            type: CREDIT
+            saveToVault: false
+            credit:
+              nameOnCard: John Smith
+              alias: '0005'
+              cardType: VISA
+              billingAddress:
+                streetAddress: 100 Universal City Plaza
+                postalCode: '20220'
+              expiryDate:
+                month: '12'
+                year: '24'
+              token:
+                tokenId: '2895841960550005'
+                tokenProvider: TRANS_ARMOR
+        hostExtraInfo:
+          - name: APPROVAL_NUMBER
+            value: '26982 '
+          - name: SEQUENCE_NUMBER
+            value: '621204'
+          - name: HOST_RESPONSE_CODE
+            value: '4'
+          - name: HOST_RESPONSE_MESSAGE
+            value: APPROVED  26982
+          - name: HOST_AVS_CODE
+            value: AVS+Y
+          - name: HOST_CVV_CODE
+            value: M
+          - name: TRANSACTION_DATETIME
+            value: 2023-01-11T05:53
+          - name: NETWORK_TRANSACTION_ID
+            value: '205260111115330'
+        
+    VaultedCardPurchaseRequest:
+      value:
+       fdCustomerId: 7b4bb73b7dc040259eff4afcf05c1a56
+       transaction:
+         orderId: Order2467828
+         storeId: Test
+         saveToVault: true
+         fundingInfo:
+           fundValue: 15.25
+           currencyCode:
+             code: USD
+             number: 840
+             digits: 2
+             currency: US Dollar
+           fundingSource:
+             vaultedAccount:
+               fdAccountId: 8a7f01e0859f29aa0185a038f7480011
+       deviceInfo:
+         id: 537edec8-d33e-4ee8-93a7-b9f61876950cs
+         kind: mobile
+         details:
+           - provider: ThreatMetrix
+             dataCapture:
+               rawData: aaaaaXREUVZGRlFY...aMV
+               dataEventId: 243c6c28672b051eb81f950f184a2adb
+               captureTime: '2016-04-16T16:06:05Z'
+       publicKeyRequired: true
+    VaultedCardPurchaseResponse:
+      value:
+        orderId: Order2467828
+        transactionId: 646d1da5822e4f9e9986063d03dfa9b4
+        saveToVault: true
+        account:
+          cardNumber: '7777347468914102'
+          securityCode: '9126'
+          alias: '4102'
+          expiryDate:
+            month: '01'
+            year: '25'
+          balance:
+            currentBalance: 15.25
+            beginBalance: 0
+            currencyCode:
+              code: USD
+              number: 840
+              currency: US Dollar
+            currencyType: BASE
+          vaultedAccount:
+            fdAccountId: 8a7fc8ec859f29a30185a03907c1000e
+        createdTime: '2023-01-11T09:46:08.617Z'
+        fundingInfo:
+          approvedAmount: 15.25
+          fundingSource:
+            type: VAULTED_ACCOUNT
+            vaultedAccount:
+              fdAccountId: 8a7f01e0859f29aa0185a038f7480011
+            credit:
+              nameOnCard: John Smith
+              alias: '0026'
+              cardType: VISA
+              billingAddress:
+                streetAddress: Y1307 Broad Hollow Road
+                postalCode: '20220'
+              expiryDate:
+                month: '12'
+                year: '25'
+              token:
+                tokenId: '9412173864130026'
+                tokenProvider: TRANS_ARMOR
+        hostExtraInfo:
+          - name: APPROVAL_NUMBER
+            value: '23633 '
+          - name: SEQUENCE_NUMBER
+            value: '378045'
+          - name: TRANSACTION_DATETIME
+            value: 2023-01-11T04:46
+          - name: NETWORK_TRANSACTION_ID
+            value: '012000111094609'
+        
+    ApplePayPurchaseRequest:
+      value:
+        fdCustomerId: ce8d722d25374dfbbc88d73609296438
+        transaction:
+          saveToVault: false
+          orderId: Order5812033
+          merchantId: MO17312456001
+          fundingInfo:
+            fundValue: 15.25
+            currencyCode:
+              code: USD
+              number: 840
+              digits: 2
+              currency: US Dollar
+            fundingSource:
+              applePay:
+                version: EC_v1
+                decryptAlias: merchant.com.testdrivein.sandbox
+                data: b7L6ZT6S7INP+W1RwVcOZkgaEf6lqVoj2F8VJPjC2Wl8JmWb8JBZHFuuiINykXRiooU988M9L+rn0yeKeEdCQGJ6X8b0qpQeoz4H/kg72J/V3IxTqxq1P2LrdzYJO5XE4+W5NSf4rf162+Jc9ft7fxKYM81uBUM1E0AaLj27RZ4mYxnOAeUTVvkZdTAyDrNyGexOAoRPAVQkjZPMp2V4+z0OORQEiGJPW6Zp6ukBlpN8D2MK527JFjiG3uNPO3dBp1HI4Qr2V48sn9d/jqDVQlnxCNHrwNCZM9a7tMkO01BMvsAuu0dbv4Lsw7vuq1IvmperVwFavNPP6qq4oTGPkQIAYLy3sxkoipk5S+QWHwnqfc9pDdcjVZ8XoIeKFbRTHtHyudWQEb2KJT0YbO8NEYj4IO4UA4xB4/jCh3GVV13ojH+xtsxxzSd1vowAbX2oZcYQvGzVOzMny+1eTATL0dfSnpefUtsCtHlnzVM=
+                signature: MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwEAAKCAMIIB0zCCAXkCAQEwCQYHKoZIzj0EATB2MQswCQYDVQQGEwJVUzELMAkGA1UECAwCTkoxFDASBgNVBAcMC0plcnNleSBDaXR5MRMwEQYDVQQKDApGaXJzdCBEYXRhMRIwEAYDVQQLDAlGaXJzdCBBUEkxGzAZBgNVBAMMEmQxZHZ0bDEwMDAuMWRjLmNvbTAeFw0xOTA3MjUxNjI3NDlaFw0zOTA3MjAxNjI3NDlaMHYxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJOSjEUMBIGA1UEBwwLSmVyc2V5IENpdHkxEzARBgNVBAoMCkZpcnN0IERhdGExEjAQBgNVBAsMCUZpcnN0IEFQSTEbMBkGA1UEAwwSZDFkdnRsMTAwMC4xZGMuY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAErnHhPM18HFbOomJMUiLiPL7nrJuWvfPy0Gg3xsX3m8q0oWhTs1QcQDTT+TR3yh4sDRPqXnsTUwcvbrCOzdUEeTAJBgcqhkjOPQQBA0kAMEYCIQCXW2kjA36LdnEqc0qHb82FIYShdEk3hgPGxZDf6PfXygIhANrrpo/SY2YorozC73ZuQDtsGK3PHTdQZja5AgdEXy0yAAAxggFSMIIBTgIBATB7MHYxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJOSjEUMBIGA1UEBwwLSmVyc2V5IENpdHkxEzARBgNVBAoMCkZpcnN0IERhdGExEjAQBgNVBAsMCUZpcnN0IEFQSTEbMBkGA1UEAwwSZDFkdnRsMTAwMC4xZGMuY29tAgEBMA0GCWCGSAFlAwQCAQUAoGkwGAYJKoZIhvcNAQkDMQsGCSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcNMjAwOTIyMTAwNTE4WjAvBgkqhkiG9w0BCQQxIgQgpqCaPXF0IRAZSKe9rw2+N+iXbC+gi3GmO/xzwUjbUkEwCgYIKoZIzj0EAwIERjBEAiB2NclnayPRSrifg3fv6yvqxg6iYZcahFoBtRmOY3vfOQIgW8SLmMIGFxvXDOAAjPAGnmSf/9NjG+ncGZ+vNS7i4SMAAAAAAAA=
+                applicationData: VEVTVA==
+                header:
+                  ephemeralPublicKey: MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEwZLvUUo3BkjjH3ugF30BS9mqj81FvnuCddM3O718/wmOJygi9uSSjhwDNrXPRt3uuMYypCvtcFA0RATA0YwQgA==
+                  publicKeyHash: 5kjTKPpV0GosrBda8lkjscYwdFcdd7tGp53TZbzhbjQ=
+                  transactionId: '31323334353637'
+                billingAddress:
+                  type: work
+                  streetAddress: 200 Universal City Plaza
+                  locality: Hollywood
+                  region: CA
+                  postalCode: '20220'
+                  country: US
+                  formatted: |-
+                    100 Universal City Plaza
+                    Hollywood, CA 91608 USA
+                  primary: true
+        
+    ApplePayPurchaseResponse:
+      value:
+        orderId: Order5812033
+        transactionId: eb171bd3691847a880ca21f5777ef7c8
+        saveToVault: false
+        account:
+          cardNumber: '7777115035932645'
+          alias: '2645'
+          expiryDate:
+            month: '01'
+            year: '00'
+          balance:
+            currentBalance: 15.25
+            beginBalance: 0
+            currencyCode:
+              code: USD
+              number: 840
+              currency: US Dollar
+            currencyType: BASE
+        createdTime: '2023-01-12T05:46:01.156Z'
+        fundingInfo:
+          approvedAmount: 15.25
+          fundingSource:
+            type: APPLE_PAY
+            applePay:
+              token:
+                tokenId: '2865430100440004'
+                tokenProvider: TRANS_ARMOR
+                expiryDate:
+                  month: '12'
+                  year: '24'
+              dPanLast4: '0004'
+              cardType: VISA
+            credit:
+              token:
+                tokenId: '2865430100440004'
+                tokenProvider: TRANS_ARMOR
+                expiryDate:
+                  month: '12'
+                  year: '24'
+        hostExtraInfo:
+          - name: APPROVAL_NUMBER
+            value: ET106464
+    GooglePayPurchaseRequest:
+      value:
+        fdCustomerId: 'null'
+        transaction:
+          saveToVault: false
+          orderId: Order5411937
+          storeId: TEST
+          fundingInfo:
+            fundValue: 15.25
+            currencyCode:
+              code: USD
+              number: 840
+              digits: 2
+              currency: US Dollar
+            fundingSource:
+              type: GOOGLE_PAY
+              googlePay:
+                data: '{"encryptedMessage":"2+F/ADEwap8GfsWVs9cr3Wm3exE1TvqDrKQ/Cr6n1BOSxkiT3NQ4TOHOxHzKt5o7RY3mHlhc+PuMKu135//tySW7kdsq4Y9P3U37CcBlRpJWN4KSFcxwMDz8nUTqbzt+vCSXStyfiEpFIMW0OfnwSTmShHizxgP/7vI3YkTyz3GQsf+KDm2UbKLmuFhGZAT4dfHkV4r4M+F3C79g4F+4LArZHvyYbLqcbSHs1t0lTeTsleKQghVhWnYJOJCy4T4DYwP8wgSTbnactdENef+Rd+loQKhn7uS8W56fjOKbh1i5rZVOuL+g98WEznDUUoNZV2lX5f0oN7sAx+/3/sHYvVkoYNwP+YtC6iPzZPjeQ3aThXJ/uXaepgv5JGcPbTiQzYWAyw0jUIQkSzC88AfGK67R8N5a/E/U7CZ6bFjus0Eui/L1Bq5wMvNWfewFmOxC2GACUkrts3wBFoo3HVvtTKmzRVKEHIONSG2XthAP7twC0SZe8Cd/8pYfrkQTWggknIub1MWQhZ9ZUbXirX4ECnwTa6nOn06G/S+PsVjfiPqScA\u003d\u003d","ephemeralPublicKey":"BGWgj7RjGJe3y+PerBzSN6U2ztNA+tQHU8KLRn/3985Q8LdCBgtMsoqoTlxGSczXaBEWGqkKu9836HQ1EBNJ1g0\u003d","tag":"RDcrFHi/XkzGcBuGOvxtFhFhnqSfGiHabCB2tLk5mvg\u003d"}'
+                signature: MEQCIF6g7ClWEnTPyHWZAuc4DyYOwMx6K2d3woehkPIhOlXqAiAwpwz7FxW9LR4Pm8RmVczV6ycM1QjrM5wbONXpsdK4yQ==
+                applicationData: VEVTVA==
+                version: ECv1
+                billingAddress:
+                  type: work
+                  streetAddress: 200 Universal City Plaza
+                  locality: Hollywood
+                  region: CA
+                  postalCode: '20220'
+                  country: US
+                  formatted: |-
+                    100 Universal City Plaza
+                    Hollywood, CA 91608 USA
+                  primary: true
+        
+    GooglePayPurchaseResponse:
+      value:
+        orderId: Order5411937
+        transactionId: 1967e160f7204de0a7c00244dbb50660
+        saveToVault: false
+        account:
+          cardNumber: '7777280826637131'
+          securityCode: '24264475'
+          alias: '7131'
+          expiryDate:
+            month: '01'
+            year: '25'
+          balance:
+            currentBalance: 15.25
+            beginBalance: 0
+            currencyCode:
+              code: USD
+              number: 840
+              currency: US Dollar
+            currencyType: BASE
+        createdTime: '2023-01-11T10:03:46.362Z'
+        fundingInfo:
+          approvedAmount: 15.25
+          fundingSource:
+            type: GOOGLE_PAY
+            credit:
+              token:
+                tokenId: '1349182419097840'
+                tokenProvider: TRANS_ARMOR
+                expiryDate:
+                  month: '12'
+                  year: '28'
+            googlePay:
+              dPanLast4: '7840'
+              cardType: MASTERCARD
+              token:
+                tokenId: '1349182419097840'
+                tokenProvider: TRANS_ARMOR
+                expiryDate:
+                  month: '12'
+                  year: '28'
+        hostExtraInfo:
+          - name: APPROVAL_NUMBER
+            value: '136083'
+          - name: SEQUENCE_NUMBER
+            value: '328701'
+          - name: TRANSACTION_DATETIME
+            value: 2023-01-11T04:03
+    SamsungPayPurchaseRequest:
+      value:
+        fdCustomerId: 5e82308296bb41e3adc583e223f6a0fb
+        transaction:
+          saveToVault: false
+          orderId: Order4763851
+          merchantId: MO17312456001
+          fundingInfo:
+            fundValue: 15.25
+            currencyCode:
+              code: USD
+              number: 840
+              digits: 2
+              currency: US Dollar
+            fundingSource:
+              samsungPay:
+                version: EC_v1
+                decryptAlias: merchant.com.test.sandbox
+                data: eyJhbGciOiJSU0ExXzUiLCJraWQiOiJTZzdHc2dTdGhTS3luTjBRSXRHYlNWOVBoTUJjVEdvanp4MFB0U3kyTnlNPSIsInR5cGUiOiJKT1NFIiwiY2hhbm5lbFNlY3VyaXR5Q29udGV4dCI6IlJTQV9QS0kiLCJlbmMiOiJBMTI4R0NNIn0.S46_CJmqo33afnT7S_PfgOEmLsGtheNi-hIen7KCGj3kJ3hPwqp7EEbOucEi-7JxSc50HVljdHn53rw1_WvwCBEjoisVniN6S0Fe7ZoO2bnuhN3kJErcrYj4k_0nrvg6gQmG530eJQ3Wg_4Kz8NItW6FQRmj0CmeEP6_tw-lNTMXBj8d1PZyYDwZz-54h2o1Os8RMsm3tigudcsBXPwvsMobPgU1NKJhzLecI_9qFvlOYRYdI-1POIkqfJy1aXKLrjumGFMYlPGso148_C7pXzW6pXUybu-mPZtjQolv79BWNSX6IJmkssQRX9Z3aucLq-PGtIl3YmlZlXHt99wXrw.UgRrlF-hRdajlfkA.J1lnY-QHOXUf_IyBssLI7x7NhKU0z1MsGrY818KHSz9wr3j4H2PZgQjXsiedTeIN0yZXS4NfvdjIDsXBAk8z2VIPfk4cGO_PRTbJubjeIfEAkORPLEnwUbcZLRMYLW35LI0JSexilFJ2jcvAn5SoavFE.
+                signature: ''
+                applicationData: VEVTVA==
+                header:
+                  ephemeralPublicKey: ''
+                  publicKeyHash: Sg7GsgSthSKynN0QItGbSV9PhMBcTGojzx0PtSy2NyM=
+                  transactionId: '31323334353637'
+                billingAddress:
+                  type: work
+                  streetAddress: 200 Universal City Plaza
+                  locality: Hollywood
+                  region: CA
+                  postalCode: '20220'
+                  country: US
+                  formatted: |-
+                    100 Universal City Plaza
+                    Hollywood, CA 91608 USA
+                  primary: true
+    SamsungPayPurchaseResponse:
+      value:
+        orderId: Order4763851
+        transactionId: 1d806ece848c4736a7b0365e57b66d9d
+        saveToVault: false
+        account:
+          cardNumber: '7777115035974754'
+          alias: '4754'
+          expiryDate:
+            month: '01'
+            year: '00'
+          balance:
+            currentBalance: 15.25
+            beginBalance: 0
+            currencyCode:
+              code: USD
+              number: 840
+              currency: US Dollar
+            currencyType: BASE
+        createdTime: '2023-01-12T05:48:34.897Z'
+        fundingInfo:
+          approvedAmount: 15.25
+          fundingSource:
+            type: SAMSUNG_PAY
+            credit:
+              token:
+                tokenId: '177558346240175'
+                tokenProvider: TRANS_ARMOR
+                expiryDate:
+                  month: '12'
+                  year: '25'
+            samsungPay:
+              token:
+                tokenId: '177558346240175'
+                tokenProvider: TRANS_ARMOR
+                expiryDate:
+                  month: '12'
+                  year: '25'
+              cardType: AMEX
+              dPanLast4: '0175'
+        hostExtraInfo:
+          - name: APPROVAL_NUMBER
+            value: ET175047
+            
+    PLCCPurchaseRequest:
+      value:
+        transaction:
+          purchaseInfo:
+            - order:
+                orderId: Michelscott0fefdef13
+          account:
+            merchantId: '97065200008'
+            altMerchantId: '0001'
+            cardSubType: test
+            promotionCode: '57051'
+          saveToVault: false
+          fundingInfo:
+            fundValue: 2
+            currencyCode:
+              code: USD
+              number: 840
+              digits: 2
+              currency: US Dollar
+            fundingSource:
+              credit:
+                cardNumber: Lr4lSlV1O9mUc9yHbt9Jlzude8PbUPXzDZ7D5jpTI+iYKtD+YAQZOS3Cf6Xoq5BHeKiIqOOZawuv8B+5Q6XBctasxDp4OxbtvOgneTZCD3bKzJ9wRSkdN+oEugJWglkiY0BmL7XOpXK/Gn9bRuG1r6HZHHjToUtzFdw83l2xexucGdQsd4x/VURPxFKC3L8YzziOECMM/oUgoVQzBVo+TxbKZechY/QZcxS5Mq6XHmGcnqhkx0kjJxS92MLzk+mPtGC/7fWenPm+bRRcFM7h6bBQ3c9K+qlFFm75T3ZPFCxczJcmFPyqwg5DkKBXiFjOM5GBMozFnj9mA9sey/8Ihw==
+                nameOnCard: John Smith
+                cardType: PLCC
+                billingAddress:
+                  type: work
+                  streetAddress: 100 Universal City Plaza
+                  locality: Hollywood
+                  region: CA
+                  postalCode: '91608'
+                  country: US
+                  primary: true
+                expiryDate:
+                  month: t82eKlJ9vXxHBvGpyJrQ0YQafT7N84DWb2oHgtA7Cz189u1tyc/I/VF77r0tGPicIhTlE+E/7MPxzcujtW9DH+hrsEXxFv8IOdkvxltF+SbE3aTO865gb453+2TE4nY4xlDGTRTb1ZJwau5FwFyEJCS0+DLqASRnjEZDvTOWhipfEPCgRl7ZMtqQ3n/TZdUIfAcXnzngIDp9HH4RNx78WmcJp+/brS23tx7SoY5/+Kh9f9sSvRUsFr30vhbs4XfG3JX0mnDy5xIuxuj/myegaz2gtrEADsiInqETAKdb+dQayKux+5frB+UTZTbOXK2cOjBLy5mQXG4kGaCq6+KmEQ==
+                  year: kmTUcU4XCW8wBN1xEHsAED/m4udZVEGphMvB9f4MERr91YpbAB9NTNds0CzdG8mbP4/EyqHoqrxI0xMtVRgxubPQxZktBfMA9SauHZ/17ZizxHytUusR3xOatvnqnwnnBrinVcFc2BNXKHrxM/mEpWm1X25c5TRQQTljd6UMhacHRDSRU9Y1sH92+9+5gJmfOjGewAlBnPy9ReMNsLMnD8Wz7tWx4J75uFR8beO6OYhu92IamlZCp0DjYZM+PdW/BHedd43rD8nrgoZu/fCI6b8ylqVdYIf4L9fjA8/CvCC5CQta06Y9is8HCxQEj2O2q3ttgvFsU79F2hSXAdH++w==
+                  
+    PLCCPurchaseResponse:
+      value:
+        purchaseInfo:
+          - order:
+              orderId: Michelscott0fefdef13
+        transactionId: 7eb5b3cf58ad4b1b91e3ae094313fe55
+        saveToVault: false
+        account:
+          cardNumber: '7777135606281969'
+          alias: '1969'
+          merchantId: '97065200008'
+          altMerchantId: '0001'
+          cardSubType: test
+          promotionCode: '57051'
+          expiryDate:
+            month: '01'
+            year: '25'
+          balance:
+            currentBalance: 2
+            beginBalance: 0
+            currencyCode:
+              code: USD
+              number: 840
+              currency: US Dollar
+            currencyType: BASE
+        createdTime: '2018-08-21T09:36:26.343Z'
+        fundingInfo:
+          fundingSource:
+            saveToVault: false
+            type: PLCC
+            credit:
+              nameOnCard: John Smith
+              alias: '0004'
+              expiryDate:
+                month: '06'
+                year: '20'
+              token:
+                tokenId: '8620900353210004'
+                tokenProvider: TRANS_ARMOR
+        hostExtraInfo:
+          - name: APPROVAL_NUMBER
+            value: '495284'
+          - name: SEQUENCE_NUMBER
+            value: '2201536612'
+ 
+    CreditCardReloadRequest:
+      value:
+        transaction:
+          orderId: Order5718423
+          storeId: Test
           destinationCard:
             account:
-              merchantId: '97483900003'
-              altMerchantId: '0001'
-              vaultedAccount:
-                fdAccountId: 8a7f8caa847ee7600184d456f9120c77
-          purchaseInfo:
-            - order:
-                orderId: order005
+              cardNumber: '7777280826989134'
+              securityCode: '77340651'
           fundingInfo:
-            fundValue: 10
-            isMerchantFunded: true
+            fundValue: 15.25
             currencyCode:
               code: USD
               number: 840
+              digits: 2
+              currency: US Dollar
+            fundingSource:
+              saveToVault: false
+              credit:
+                cardNumber: bSamSKzwa/HAsn/UygLxnG9BPLfUENdEEmBRNW/tD2W9lqmzBamJ+t0yZwvfgFRYDsWbeSD+Em2DNzxIY1IBLh6bFvx8n43PFYrzXXlyCNSnHDfMT3JRjRdtFkLpxAL35gnhXPi92WHDnQU80KTQaW7DKjnh7nNQI+xNN103vT7MCPnfLsvBsIYaLPWLKiDxbc2v1wDs4zTsH0HhxtgRpxWvAv6Z10Cfw1G68J1vJQvM6E9QJoc8FePGy0ZlSLcEz6+eC05ZID09z49/7OaANHHzxxd/PjggG3FyVjxLa/PRX31TIbUlRGlVDxXs085DL86YDYll/C8s+L1QFHENRw==
+                nameOnCard: John Smith
+                cardType: VISA
+                billingAddress:
+                  type: work
+                  streetAddress: 100 Universal City Plaza
+                  locality: Hollywood
+                  region: CA
+                  postalCode: '20220'
+                  country: US
+                  formatted: |-
+                    100 Universal City Plaza
+                    Hollywood, CA 91608 USA
+                  primary: true
+                expiryDate:
+                  month: A+Or4owI848GCVSQhuL/PjPZouBgO+sKvh2Xv64VA9sAF4cjYXj6Sdat17H64rnM8stB7SN4el01kHi7jBe2u+1+B4r77JZ1QWH9HZ7tqJXVSn4xNc3H2ULLE0kv+DBsYHzp0yy5+gDJBScMRGeee9bP3R5GrF/1KUZ6zMKanIoQw19Ml5r3Rw8e/7Tx7x67DTrG75XBvH+GgoSfRUH9TcmD2+ed1FemV/5bl/ZpPKATWlvwkevhveoWGN9/Iz1CoRGtkbBBjhXZuhz10Iwxd0M56+ZncRW0DantLNmB/8YxyKThqRP+YwTrV3qZcndoDDH0o36yt2rFSDlMgHP0Qg==
+                  year: sGJzceG1b7hOrz4dT/9Kyaw0mt2LJ7O+Wia9ZvMBPrsv7fijhLlM1OthrbZtRO05YAwJ6pojnqdozW5wAaNZ+QxIGeyvHCCYstQV+Ld+taD+0v2U1rIovXW1qc3cx+YGPyyla7GO4WrXXxZRG9jneJCrWmcW8XgTgKVL/T7zDOYTgTUVg6hCiBpbZXsuYmPe3dQovOXGzPFNS80N1DInWyReHp9WWbAqdDoIALl0RH0f4boRfSvk5bIvrcbg8ILA3RXxkclqWGjdQgRjHhtTyFrYL4gHj/r5OR8RCYeUhyucgPTuny8EPbRmjHJ76Xw6MAfrMumFDU4OTyD4LlgdRQ==
+                securityCode: wt0qakmwW9jAoQJTFqu0MFmoOoYhGza/6HVRWcf77cxe6VUu0q2ysNVlXSGNgEK0ktLwjY7MlwuLruNDjt3fPAtYMryDu+DKPEE+8poIsmss7wFu5+CTJmA+loHwnM1ZDlrqoBD6Ywg1WUA1MORYT2sVEU2Hm39ERByz7JJ+x8SHSSFkLmND1z2VZa1KL5Iwdo4o9zec60/iMxv7tiwOpUdLutya+nW7ClcT4SqCCtJByako+WG5Sb8wAN98lvkpxXkSrOAH8TOTLbiS3I6o12Xk04470AAQgohR10Vb/8FbDv55JUBfO2EiLn+Yy87ZBpG9HRXN7b1sQv21hsly9A==
+                sequenceNumber: '01'
+    CreditCardReloadResponse:
+      value:
+        orderId: Order5718423
+        transactionId: 9d68cc732d9c42709049c623e8b9f74f
+        saveToVault: false
+        destinationCard:
+          account:
+            cardNumber: '7777280826989134'
+          balanceInfo:
+            currentBalance: 30.5
+            beginBalance: 15.25
+            currencyCode:
+              code: USD
+              number: 840
+              currency: US Dollar
+            currencyType: BASE
+        createdTime: '2023-01-11T11:53:41.902Z'
+        fundingInfo:
+          approvedAmount: 15.25
+          fundingSource:
+            type: CREDIT
+            saveToVault: false
+            credit:
+              nameOnCard: John Smith
+              alias: '0005'
+              cardType: VISA
+              billingAddress:
+                streetAddress: 100 Universal City Plaza
+                postalCode: '20220'
+              expiryDate:
+                month: '12'
+                year: '24'
+              token:
+                tokenId: '2895841960550005'
+                tokenProvider: TRANS_ARMOR
+        hostExtraInfo:
+          - name: APPROVAL_NUMBER
+            value: '26982 '
+          - name: SEQUENCE_NUMBER
+            value: '025600'
+          - name: HOST_RESPONSE_CODE
+            value: '4'
+          - name: HOST_RESPONSE_MESSAGE
+            value: APPROVED  26982
+          - name: HOST_AVS_CODE
+            value: AVS+Y
+          - name: HOST_CVV_CODE
+            value: M
+          - name: TRANSACTION_DATETIME
+            value: 2023-01-11T05:53
+          - name: NETWORK_TRANSACTION_ID
+            value: '205260111115342'
+    
+    MerchantFundedReloadRequest:
+      value:
+       fdCustomerId: ab946a62a5d845b5bb9ff710fcbaf07f
+       transaction:
+         destinationCard:
+           account:
+             merchantId: '97483900003'
+             altMerchantId: '0001'
+             vaultedAccount:
+               fdAccountId: 8a7f8d908631951201863c5ffbb701bd
+         purchaseInfo:
+           - order:
+               orderId: order005
+         fundingInfo:
+           fundValue: 500
+           isMerchantFunded: true
+           currencyCode:
+             code: USD
+             number: 840
+    MerchantFundedReloadResponse:
+      value:
+        orderId: order005
+        transactionId: ae17fc7b8d18444899c877e04423eab9
+        saveToVault: false
+        destinationCard:
+          vaultedAccount:
+            fdAccountId: 8a7f8d908631951201863c5ffbb701bd
+          account:
+            merchantId: '97483900003'
+            altMerchantId: '0001'
+            cardNumber: '7777323952676090'
+            cardSubType: Test
+            alias: '6090'
+            expiryDate:
+              month: '01'
+              year: '25'
+          balanceInfo:
+            currentBalance: 500.01
+            beginBalance: 0.01
+            currencyCode:
+              code: USD
+              number: 840
+              currency: US Dollar
+            currencyType: BASE
+        createdTime: '2023-02-10T17:30:40.969Z'
+        fundingInfo:
+          isMerchantFunded: true    
+        
+    ApplePayReloadRequest:
+      value:
+        fdCustomerId: ce8d722d25374dfbbc88d73609296438
+        transaction:
+          saveToVault: false
+          orderId: Order1996975
+          merchantId: MO17312456001
+          destinationCard:
+            account:
+              cardNumber: '7777115035932645'
+              securityCode: ' '
+          fundingInfo:
+            fundValue: 15.25
+            currencyCode:
+              code: USD
+              number: 840
+              digits: 2
+              currency: US Dollar
+            fundingSource:
+              applePay:
+                version: EC_v1
+                decryptAlias: merchant.com.testdrivein.sandbox
+                data: b7L6ZT6S7INP+W1RwVcOZkgaEf6lqVoj2F8VJPjC2Wl8JmWb8JBZHFuuiINykXRiooU988M9L+rn0yeKeEdCQGJ6X8b0qpQeoz4H/kg72J/V3IxTqxq1P2LrdzYJO5XE4+W5NSf4rf162+Jc9ft7fxKYM81uBUM1E0AaLj27RZ4mYxnOAeUTVvkZdTAyDrNyGexOAoRPAVQkjZPMp2V4+z0OORQEiGJPW6Zp6ukBlpN8D2MK527JFjiG3uNPO3dBp1HI4Qr2V48sn9d/jqDVQlnxCNHrwNCZM9a7tMkO01BMvsAuu0dbv4Lsw7vuq1IvmperVwFavNPP6qq4oTGPkQIAYLy3sxkoipk5S+QWHwnqfc9pDdcjVZ8XoIeKFbRTHtHyudWQEb2KJT0YbO8NEYj4IO4UA4xB4/jCh3GVV13ojH+xtsxxzSd1vowAbX2oZcYQvGzVOzMny+1eTATL0dfSnpefUtsCtHlnzVM=
+                signature: MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwEAAKCAMIIB0zCCAXkCAQEwCQYHKoZIzj0EATB2MQswCQYDVQQGEwJVUzELMAkGA1UECAwCTkoxFDASBgNVBAcMC0plcnNleSBDaXR5MRMwEQYDVQQKDApGaXJzdCBEYXRhMRIwEAYDVQQLDAlGaXJzdCBBUEkxGzAZBgNVBAMMEmQxZHZ0bDEwMDAuMWRjLmNvbTAeFw0xOTA3MjUxNjI3NDlaFw0zOTA3MjAxNjI3NDlaMHYxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJOSjEUMBIGA1UEBwwLSmVyc2V5IENpdHkxEzARBgNVBAoMCkZpcnN0IERhdGExEjAQBgNVBAsMCUZpcnN0IEFQSTEbMBkGA1UEAwwSZDFkdnRsMTAwMC4xZGMuY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAErnHhPM18HFbOomJMUiLiPL7nrJuWvfPy0Gg3xsX3m8q0oWhTs1QcQDTT+TR3yh4sDRPqXnsTUwcvbrCOzdUEeTAJBgcqhkjOPQQBA0kAMEYCIQCXW2kjA36LdnEqc0qHb82FIYShdEk3hgPGxZDf6PfXygIhANrrpo/SY2YorozC73ZuQDtsGK3PHTdQZja5AgdEXy0yAAAxggFSMIIBTgIBATB7MHYxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJOSjEUMBIGA1UEBwwLSmVyc2V5IENpdHkxEzARBgNVBAoMCkZpcnN0IERhdGExEjAQBgNVBAsMCUZpcnN0IEFQSTEbMBkGA1UEAwwSZDFkdnRsMTAwMC4xZGMuY29tAgEBMA0GCWCGSAFlAwQCAQUAoGkwGAYJKoZIhvcNAQkDMQsGCSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcNMjAwOTIyMTAwNTE4WjAvBgkqhkiG9w0BCQQxIgQgpqCaPXF0IRAZSKe9rw2+N+iXbC+gi3GmO/xzwUjbUkEwCgYIKoZIzj0EAwIERjBEAiB2NclnayPRSrifg3fv6yvqxg6iYZcahFoBtRmOY3vfOQIgW8SLmMIGFxvXDOAAjPAGnmSf/9NjG+ncGZ+vNS7i4SMAAAAAAAA=
+                applicationData: VEVTVA==
+                header:
+                  ephemeralPublicKey: MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEwZLvUUo3BkjjH3ugF30BS9mqj81FvnuCddM3O718/wmOJygi9uSSjhwDNrXPRt3uuMYypCvtcFA0RATA0YwQgA==
+                  publicKeyHash: 5kjTKPpV0GosrBda8lkjscYwdFcdd7tGp53TZbzhbjQ=
+                  transactionId: '31323334353637'
+                billingAddress:
+                  type: work
+                  streetAddress: 200 Universal City Plaza
+                  locality: Hollywood
+                  region: CA
+                  postalCode: '20220'
+                  country: US
+                  formatted: |-
+                    100 Universal City Plaza
+                    Hollywood, CA 91608 USA
+                  primary: true
+    ApplePayReloadResponse:
+      value:
+        orderId: Order1996975
+        transactionId: dfd7d89359184d9cb092ecca8ae11fcd
+        saveToVault: false
+        destinationCard:
+          account:
+            cardNumber: '7777115035932645'
+          balanceInfo:
+            currentBalance: 30.5
+            beginBalance: 15.25
+            currencyCode:
+              code: USD
+              number: 840
+              currency: US Dollar
+            currencyType: BASE
+        createdTime: '2023-01-12T05:46:25.427Z'
+        fundingInfo:
+          approvedAmount: 15.25
+          fundingSource:
+            type: APPLE_PAY
+            applePay:
+              token:
+                tokenId: '1263934295620004'
+                tokenProvider: TRANS_ARMOR
+                expiryDate:
+                  month: '12'
+                  year: '24'
+              dPanLast4: '0004'
+              cardType: VISA
+            credit:
+              token:
+                tokenId: '1263934295620004'
+                tokenProvider: TRANS_ARMOR
+                expiryDate:
+                  month: '12'
+                  year: '24'
+        hostExtraInfo:
+          - name: APPROVAL_NUMBER
+            value: ET197801
+    GooglePayReloadRequest:
+      value:
+        fdCustomerId: 'null'
+        transaction:
+          saveToVault: false
+          orderId: Order6357194
+          storeId: Test
+          destinationCard:
+            account:
+              cardNumber: '7777280826626715'
+              securityCode: '12148586'
+          fundingInfo:
+            fundValue: 15.25
+            currencyCode:
+              code: USD
+              number: 840
+              digits: 2
+              currency: US Dollar
+            fundingSource:
+              type: GOOGLE_PAY
+              googlePay:
+                data: '{"encryptedMessage":"OR7EanFhzs+BVBQjceLPp4+MMDBV3f35IntKnbY6wJncrK1i/YdRzxTx0RRPH94PZmTBqibado9raFK3zMQcCErU9DqchRJGtGjJK0eaUU7+slpGRZx2DmmedGCGv6snJNMaAyI7RJJ7M7wVX9bN+/UHhZ7Fj/AxVcM/Xq+FIgYsl3kbC1fVNMb8W9hf+15Gf3JCgrNkYY330+w5bS3logUxo7DwBw99wtDtVu8rmOJSF870pWt1vg+XlovfZXVRdshPJ9ZEScOJUvkDcy1Wy8IcpMT1dB2O7iAIBy/ztSbQDHU9TaRYCV2o0vbxC1H9pjC8vD+wQk7OxP6mO8rLWJtAVcEsy42QIO+mi5Hb0sm6PgxhJOhbrLcvlIg2iZUjMAG//WTZ7okKLEmigIjoJe77mySignS2HD8mavEe3RQqcYC2jYs9DzFnjW7WKvBkJMfCrFpiHBBihYOCKF1CGWvdnitq74OVctuuHnKpjOx6gsq3q6joDaOUgGVgYk7BZi4jd7dykZDA+MPlEz53Aj4XdqZTHHTO+syleARQ6W0FHFp3iCwMPilvko2E205KzdvrJK14aZN3","ephemeralPublicKey":"BP1xX8UPbCcXD/0c9VcOpfFlxdpAPkVoCGlGR2yzmoJADKZ+mJWxtpbeCr3tAqwv0xEWkY+mDWUF8TS+x9HyBWQ\u003d","tag":"R/KBSo2wuEb+N8SvQ1X1rrTsDK06BeqPiBP7n3zIpbI\u003d"}'
+                signature: MEQCIF4nOt5aDUPOUgymPFQr9tZzFYJZaiiBsuRsgYUTJ8a1AiA/lLE4pBL5p/FSqHUYgYLN217+DBT5p/A3Heat1twgnw==
+                applicationData: VEVTVA==
+                version: ECv1
+                billingAddress:
+                  type: work
+                  streetAddress: 200 Universal City Plaza
+                  locality: Hollywood
+                  region: CA
+                  postalCode: '20220'
+                  country: US
+                  formatted: |-
+                    100 Universal City Plaza
+                    Hollywood, CA 91608 USA
+                  primary: true
+    GooglePayReloadResponse:
+      value:
+        orderId: Order6357194
+        transactionId: bb0249284c0946989c6121cb102dc8ea
+        saveToVault: false
+        destinationCard:
+          account:
+            cardNumber: '7777280826626715'
+          balanceInfo:
+            currentBalance: 30.5
+            beginBalance: 15.25
+            currencyCode:
+              code: USD
+              number: 840
+              currency: US Dollar
+            currencyType: BASE
+        createdTime: '2023-01-11T10:03:54.769Z'
+        fundingInfo:
+          approvedAmount: 15.25
+          fundingSource:
+            type: GOOGLE_PAY
+            credit:
+              token:
+                tokenId: '9440028900173478'
+                tokenProvider: TRANS_ARMOR
+                expiryDate:
+                  month: '12'
+                  year: '28'
+            googlePay:
+              dPanLast4: '3478'
+              cardType: VISA
+              token:
+                tokenId: '9440028900173478'
+                tokenProvider: TRANS_ARMOR
+                expiryDate:
+                  month: '12'
+                  year: '28'
+        hostExtraInfo:
+          - name: APPROVAL_NUMBER
+            value: '23635 '
+          - name: SEQUENCE_NUMBER
+            value: '278840'
+          - name: TRANSACTION_DATETIME
+            value: 2023-01-11T04:03
+    SamsungPayReloadRequest:
+      value:
+        fdCustomerId: 5e82308296bb41e3adc583e223f6a0fb
+        transaction:
+          saveToVault: false
+          orderId: Order1078948
+          merchantId: MO17312456001
+          destinationCard:
+            account:
+              cardNumber: '7777115035974754'
+              securityCode: ' '
+          fundingInfo:
+            fundValue: 15.25
+            currencyCode:
+              code: USD
+              number: 840
+              digits: 2
+              currency: US Dollar
+            fundingSource:
+              samsungPay:
+                version: EC_v1
+                decryptAlias: merchant.com.test.sandbox
+                data: eyJhbGciOiJSU0ExXzUiLCJraWQiOiJTZzdHc2dTdGhTS3luTjBRSXRHYlNWOVBoTUJjVEdvanp4MFB0U3kyTnlNPSIsInR5cGUiOiJKT1NFIiwiY2hhbm5lbFNlY3VyaXR5Q29udGV4dCI6IlJTQV9QS0kiLCJlbmMiOiJBMTI4R0NNIn0.S46_CJmqo33afnT7S_PfgOEmLsGtheNi-hIen7KCGj3kJ3hPwqp7EEbOucEi-7JxSc50HVljdHn53rw1_WvwCBEjoisVniN6S0Fe7ZoO2bnuhN3kJErcrYj4k_0nrvg6gQmG530eJQ3Wg_4Kz8NItW6FQRmj0CmeEP6_tw-lNTMXBj8d1PZyYDwZz-54h2o1Os8RMsm3tigudcsBXPwvsMobPgU1NKJhzLecI_9qFvlOYRYdI-1POIkqfJy1aXKLrjumGFMYlPGso148_C7pXzW6pXUybu-mPZtjQolv79BWNSX6IJmkssQRX9Z3aucLq-PGtIl3YmlZlXHt99wXrw.UgRrlF-hRdajlfkA.J1lnY-QHOXUf_IyBssLI7x7NhKU0z1MsGrY818KHSz9wr3j4H2PZgQjXsiedTeIN0yZXS4NfvdjIDsXBAk8z2VIPfk4cGO_PRTbJubjeIfEAkORPLEnwUbcZLRMYLW35LI0JSexilFJ2jcvAn5SoavFE.
+                signature: ''
+                applicationData: VEVTVA==
+                header:
+                  ephemeralPublicKey: ''
+                  publicKeyHash: Sg7GsgSthSKynN0QItGbSV9PhMBcTGojzx0PtSy2NyM=
+                  transactionId: '31323334353637'
+                billingAddress:
+                  type: work
+                  streetAddress: 200 Universal City Plaza
+                  locality: Hollywood
+                  region: CA
+                  postalCode: '20220'
+                  country: US
+                  formatted: |-
+                    100 Universal City Plaza
+                    Hollywood, CA 91608 USA
+                  primary: true
+    SamsungPayReloadResponse:
+      value:
+        orderId: Order1078948
+        transactionId: 61613955dbb64e518b2f2b52604b01a8
+        saveToVault: false
+        destinationCard:
+          account:
+            cardNumber: '7777115035974754'
+          balanceInfo:
+            currentBalance: 30.5
+            beginBalance: 15.25
+            currencyCode:
+              code: USD
+              number: 840
+              currency: US Dollar
+            currencyType: BASE
+        createdTime: '2023-01-12T05:48:56.182Z'
+        fundingInfo:
+          approvedAmount: 15.25
+          fundingSource:
+            type: SAMSUNG_PAY
+            credit:
+              token:
+                tokenId: '096807876860175'
+                tokenProvider: TRANS_ARMOR
+                expiryDate:
+                  month: '12'
+                  year: '25'
+            samsungPay:
+              token:
+                tokenId: '096807876860175'
+                tokenProvider: TRANS_ARMOR
+                expiryDate:
+                  month: '12'
+                  year: '25'
+              cardType: AMEX
+              dPanLast4: '0175'
+        hostExtraInfo:
+          - name: APPROVAL_NUMBER
+            value: ET143234
+
     VaultedAccountsBalanceMergeRequest:
       value:
-        fdCustomerId: 04e84f5edc3142eab9e8d640900264e8
+        fdCustomerId: ab946a62a5d845b5bb9ff710fcbaf07f
         transaction:
           source:
             vaultedAccount:
-              fdAccountId: 8a7fe357825ce27401826a735ff801a4
+              fdAccountId: 8a7f8d908631951201863c5ccce201bc
           destination:
             vaultedAccount:
-              fdAccountId: 8a7fe357825ce27401826a873a4401bb
+              fdAccountId: 8a7f83868631781801863c8b82ec0202
+        
+    VaultedAccountsBalanceMergeResponse:
+      value:
+        transactionId: 134418156e4547f59a1921a997691b45
+        source:
+          account:
+            cardNumber: '7777323952676090'
+            alias: '6090'
+            expiryDate:
+              month: '01'
+              year: '25'
+          vaultedAccount:
+            fdAccountId: 8a7f8d908631951201863c5ccce201bc
+        destination:
+          account:
+            cardNumber: '7777323952686981'
+            alias: '6981'
+            expiryDate:
+              month: '01'
+              year: '25'
+            balance:
+              currentBalance: 500.01
+              beginBalance: 0.01
+              currencyCode:
+                code: USD
+                number: 840
+                currency: US Dollar
+              currencyType: BASE
+          vaultedAccount:
+            fdAccountId: 8a7f83868631781801863c8b82ec0202
+        
     VaultedCardTransactionHistoryRequest:
       value:
-        fdCustomerId: e60d3ce559c5404183a9c20299323e89
+        fdCustomerId: ab946a62a5d845b5bb9ff710fcbaf07f
         transaction:
           account:
             vaultedAccount:
-              fdAccountId: 8a7f67be825cd57501826780941e051d
+              fdAccountId: 8a7f83868631781801863c8b82ec0202
+        
+    VaultedCardTransactionHistoryResponse:
+      value:
+        pages:
+          firstPage: true
+          lastPage: true
+          currentPage: 1
+          currentPageRecords: 2
+          totalPages: 1
+          totalRecords: 2
+          sortOrder: desc
+        transactions:
+          - amount: 500
+            currencyCode:
+              code: USD
+              number: 840
+            info: Balance Merge
+            transactionTime: '2023-02-10T18:18:00.000Z'
+            altMerchantId: '000009870001'
+          - amount: 0.01
+            currencyCode:
+              code: USD
+              number: 840
+            info: Activate Virtual Card
+            transactionTime: '2023-02-10T18:17:00.000Z'
+            altMerchantId: '000000010001'
+        
+        
     PlainCardTransactionHistoryRequest:
       value:
         transaction:
           account:
-            cardNumber: '7777323952112664'
+            cardNumber: '7777323952686981'
+            merchantId: '97483900003'
+            altMerchantId: '001'
+        
+    PlainCardTransactionHistoryResponse:
+      value:
+        pages:
+          firstPage: true
+          lastPage: true
+          currentPage: 1
+          currentPageRecords: 2
+          totalPages: 1
+          totalRecords: 2
+          sortOrder: desc
+        transactions:
+          - amount: 500
+            currencyCode:
+              code: USD
+              number: 840
+            info: Balance Merge
+            transactionTime: '2023-02-10T18:18:00.000Z'
+            altMerchantId: '000009870001'
+          - amount: 0.01
+            currencyCode:
+              code: USD
+              number: 840
+            info: Activate Virtual Card
+            transactionTime: '2023-02-10T18:17:00.000Z'
+            altMerchantId: '000000010001'
+     
+    ReloadVoidResponse:
+      value:
+        cardNumber: '7777323952676090'
+        cardSubType: Test
+        alias: '6090'
+        expiryDate:
+          month: '01'
+          year: '25'
+        balance:
+          currentBalance: 0
+          beginBalance: 500
+          currencyCode:
+            code: USD
+            number: 840
+            currency: US Dollar
+          currencyType: BASE
+    PurchaseVoidResponse:
+      value:
+        cardNumber: '7777347468914102'
+        alias: '4102'
+        expiryDate:
+          month: '01'
+          year: '25'
+        balance:
+          currentBalance: 0
+          beginBalance: 15.25
+          currencyCode:
+            code: USD
+            number: 840
+            currency: US Dollar
+          currencyType: BASE
+        hostExtraInfo:
+          - name: APPROVAL_NUMBER
+            value: '23633 '
+          - name: SEQUENCE_NUMBER
+            value: '170674'
+          - name: NETWORK_TRANSACTION_ID
+            value: '012000111094717'
+            
+    VaultedCardBalnaceResponse:
+      value:
+        cardNumber: '6759649826438453'
+        cardSubType: test
+        alias: '8453'
+        balance:
+          currentBalance: '20'
+          beginBalance: '20'
+          currencyCode:
+            code: USD
+            number: 840
+          currencyType: BASE
+          
+        
+        
+        
         
         
         

@@ -152,24 +152,10 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                token:
-                  $ref: '#/components/schemas/Token'
-                deviceInfo:
-                  $ref: '#/components/schemas/DeviceInfo'
-                anonymous:
-                  type: boolean
-                  description: Flag to indicate that the requested user does not have a uCom customer profile.
-                  default: false
-                publicKeyRequired:
-                  type: boolean
-                  description: Flag to indicate if a public key is required for payload data encryption.
-                  default: false
-              example:
-                token:
-                  fdCustomerId: bc5b70d996cb4bfebced3973880f8543
-                publicKeyRequired: true
+              $ref: '#/components/schemas/TokenRequest'
+            examples:
+              Registerd User: {summary: Request with fdcustomerId, $ref: '#/components/examples/TokenCreationWithfdcustomerId'}
+              Guest User: {summary: Request with ananymous, $ref: '#/components/examples/TokenCreationWithoutfdcustomerId'}
         required: true
       responses:
         201:
@@ -183,43 +169,29 @@ paths:
         500:
           $ref: '#/components/responses/ServerError'
 
-  /v1/third-party-tokens:
-    post:
-      x-group-name: Security Services
-      x-proxy-name: Create Third-Party Security Access Token
-      tags:
-      - security
-      summary: Create a security access token
-      description: For service calls directly from a mobile or connected device, the client needs to have an access token which is received by the client's server.
-      parameters:
-      - $ref: '#/components/parameters/AuthorizationParam'
-      - $ref: '#/components/parameters/AcceptLanguageParam'
-      - $ref: '#/components/parameters/SubMerchantIdParam'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                token:
-                  $ref: '#/components/schemas/ThirdPartyToken'
-                deviceInfo:
-                  $ref: '#/components/schemas/DeviceInfo'
-        required: true
-      responses:
-        201:
-          $ref: '#/components/responses/ThirdPartyTokenCreated'
-        400:
-          $ref: '#/components/responses/BadRequest'
-        401:
-          $ref: '#/components/responses/Unauthorized'
-        409:
-          $ref: '#/components/responses/Conflict'
-        500:
-          $ref: '#/components/responses/ServerError'
-
 components:
   schemas:
+
+#-------------------------------------
+# Operational Models
+#-------------------------------------
+
+    TokenRequest:
+      title: TokenRequest
+      type: object
+      properties:
+        token:
+          $ref: '#/components/schemas/Token'
+        deviceInfo:
+          $ref: '#/components/schemas/DeviceInfo'
+        anonymous:
+          type: boolean
+          description: Flag to indicate that the requested user does not have a uCom customer profile.
+          default: false
+        publicKeyRequired:
+          type: boolean
+          description: Flag to indicate if a public key is required for payload data encryption.
+          default: false
     #-------------------------------------
     # Resource Models
     #-------------------------------------
@@ -866,3 +838,16 @@ components:
       required: true
       schema:
         type: string
+  examples:
+    TokenCreationWithfdcustomerId:
+      value:
+        token:
+          fdCustomerId: 6feb514fa255433881ecfe7f7d9b508e
+        publicKeyRequired: true
+    TokenCreationWithoutfdcustomerId:
+      value:
+        anonymous: true
+        publicKeyRequired: true
+        
+        
+    

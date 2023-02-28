@@ -159,7 +159,14 @@ paths:
         - $ref: '#/components/parameters/SubMerchantIdParam'
       responses:
         200:
-          $ref: '#/components/responses/AuthorizationOK'
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Authorization'
+              examples: 
+                Minimal: {summary: Response with minimal required parameters, $ref: '#/components/examples/MinimalGetAuthResponse'}
+          
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -191,10 +198,49 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/AuthRequest'
+            examples:
+              vaulted: {summary: Request with vaulted account with MID, $ref: '#/components/examples/VaultedAuthRequest'}
+              VaultedWithStoreId: {summary: Request with vaulted account with store id, $ref: '#/components/examples/VaultedWithStoreIdAuthRequest'}
+              Nonce: {summary: Request with nonce, $ref: '#/components/examples/NonceAuthRequest'}
+              Apple Pay: {summary: Request with Apple pay, $ref: '#/components/examples/ApplePayAuthRequest'}
+              Google Pay: {summary: Request with Google Pay, $ref: '#/components/examples/GooglePayAuthRequest'}
+              PayPal: {summary: Request with Pay Pal, $ref: '#/components/examples/PayPalAuthVaultedRequest'}
+              Venmo: {summary: Request with Venmo, $ref: '#/components/examples/VenmoAuthVaultedRequest'}
+              TA Token: {summary: Request with TA Token, $ref: '#/components/examples/TATokenAuthRequest'}
         required: true
       responses:
         201:
-          $ref: '#/components/responses/AuthorizationCreated'
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Authorization'
+              examples:
+                Vaulted:
+                  summary: Auth with vaulted Card by passing MID Response
+                  $ref: '#/components/examples/VaultedAuthResponse'
+                VaultedWithStoreId:
+                  summary: Auth with vaulted Card by passing store id Response
+                  $ref: '#/components/examples/VaultedWithStoreIdAuthResponse'
+                Nonce:
+                  summary: Auth with anonymous Response
+                  $ref: '#/components/examples/NonceAuthResponse'
+                Apple Pay:
+                  summary: Auth with apple pay Response
+                  $ref: '#/components/examples/ApplePayAuthResponse'
+                Google Pay:
+                  summary: Auth with google pay Response
+                  $ref: '#/components/examples/GooglePayAuthResponse'
+                PayPal:
+                  summary: Auth with PayPal Response
+                  $ref: '#/components/examples/GooglePayAuthResponse'
+                Venmo:
+                  summary: Auth with Venmo Response
+                  $ref: '#/components/examples/GooglePayAuthResponse'
+                TA Token:
+                  summary: Auth with TA Token Response
+                  $ref: '#/components/examples/TATokenAuthResponse'
+          
         202:
           $ref: '#/components/responses/AuthorizationPartiallyCreated'
         400:
@@ -224,8 +270,16 @@ paths:
         - $ref: '#/components/parameters/AcceptLanguageParam'
         - $ref: '#/components/parameters/SubMerchantIdParam'
       responses:
-        200:
-          $ref: '#/components/responses/AuthorizationOK'
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Authorization'
+              examples:
+                Credit:
+                  summary: AUthorization details by fdAuthorizationId
+                  $ref: '#/components/examples/MinimalGetAuthResponseByfdAuthorizationId'
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -299,10 +353,20 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/VoidRequest'
-        required: true
+            examples:
+              Minimal : {summary: Request with Merchant Funded, $ref: '#/components/examples/MinimalAuthVoidRequest'}
       responses:
-        200:
-          $ref: '#/components/responses/AuthorizationOK'
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Authorization'
+              examples:
+                Minimal:
+                  summary: Void auth by fdauthorizationId Response
+                  $ref: '#/components/examples/MinimalAuthVoidResponse'
+          
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -335,10 +399,24 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CaptureRequest'
+            examples:
+              Vaulted: {summary: Request with Merchant Funded, $ref: '#/components/examples/VaultedAuthCaptureRequest'}
+              TA Token: {summary: Request with Merchant Funded, $ref: '#/components/examples/TATokenAuthCaptureRequest'}
         required: false
       responses:
         201:
-          $ref: '#/components/responses/CaptureCreated'
+          description: Created
+          content:
+            application/json:
+              schema:
+                 $ref: '#/components/schemas/Capture'
+              examples:
+                Vaulted:
+                  summary: Auth with vaulted Card Response
+                  $ref: '#/components/examples/TATokenAuthCaptureResponse'
+                TAToken:
+                  summary: Auth with TA token Response
+                  $ref: '#/components/examples/TATokenAuthCaptureResponse'
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -433,7 +511,13 @@ paths:
         - $ref: '#/components/parameters/SubMerchantIdParam'
       responses:
         200:
-          $ref: '#/components/responses/CaptureCreated'
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Capture'
+              examples: 
+                Minimal: {summary: Response with minimal required parameters, $ref: '#/components/examples/MinimalGetCaptureResponse'}
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -466,10 +550,18 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/VoidRequest'
+            examples: 
+              Minimal: {summary: Request with minimal required parameters, $ref: '#/components/examples/MinimalCaptureVoidRequest'}
         required: false
       responses:
         200:
-          $ref: '#/components/responses/CaptureOK'
+          description: Created
+          content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Capture'
+                examples: 
+                  Minimal: {summary: Response with minimal required parameters, $ref: '#/components/examples/MinimalCaptureVoidResponse'}
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -502,10 +594,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/RefundRequest'
+
+            examples:
+              Minimal: {summary: Request with minimal required parameters, $ref: '#/components/examples/MinimalCaptureRefundRequest'}
         required: false
       responses:
         201:
-          $ref: '#/components/responses/RefundCreated'
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Refund'
+              examples:
+                Minimal - 201:
+                  summary: capture refund response
+                  $ref: '#/components/examples/MinimalCaptureRefundResponse'
+          
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -534,7 +638,13 @@ paths:
         - $ref: '#/components/parameters/SubMerchantIdParam'
       responses:
         200:
-          $ref: '#/components/responses/SaleOK'
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sale'
+              examples: 
+                Minimal: {summary: Response with minimal required parameters, $ref: '#/components/examples/MinimalGetSaleResponse'}
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -546,7 +656,7 @@ paths:
 
     post:
       x-group-name: Payment Services
-      x-proxy-name: Create payment sale transacation
+      x-proxy-name: Create payment sale transaction
       tags:
         - sale
       summary: Create a payment sale transaction.
@@ -566,10 +676,49 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SaleRequest'
+            examples:
+                #Credit Card: {summary: Request with credit card, $ref: '#/components/examples/CreditCardSaleRequest'}
+                Vaulted Card: {summary: Request with vaulted card, $ref: '#/components/examples/VaultedCardSaleRequest'}
+                Nonce: {summary: Request with vaulted card, $ref: '#/components/examples/NonceSaleRequest'}
+                Apple Pay: {summary: Request with Apple Pay, $ref: '#/components/examples/ApplePaySaleRequest'}
+                Google Pay: {summary: Request with Google Pay, $ref: '#/components/examples/GooglePaySaleRequest'}
+                PayPal: {summary: Request with Venmo, $ref: '#/components/examples/PayPalSaleRequest'}
+                Venmo: {summary: Request with Venmo, $ref: '#/components/examples/VenmoSaleRequest'}
+                TA Token: {summary: Request with TA Token, $ref: '#/components/examples/TATokenSaleRequest'}
         required: true
       responses:
         201:
-          $ref: '#/components/responses/SaleCreated'
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sale'
+              examples:
+                #Credit - 201:
+                #  summary: Sale with credit Card Response
+                #  $ref: '#/components/examples/CreditCardSaleResponse'
+                Vaulted Card:
+                  summary: Sale with Vaulted Card response
+                  $ref: '#/components/examples/VaultedCardSaleResponse'
+                Nonce:
+                  summary: Sale with Nonce response
+                  $ref: '#/components/examples/NonceSaleResponse'
+                Apple Pay:
+                  summary: Sale with apple pay response
+                  $ref: '#/components/examples/ApplePaySaleResponse'
+                Google Pay:
+                  summary: Sale with google pay response
+                  $ref: '#/components/examples/GooglePaySaleResponse'
+                PayPal:
+                  summary: Sale with PayPal response
+                  $ref: '#/components/examples/PayPalSaleResponse'
+                Venmo:
+                  summary: Sale with venmo response
+                  $ref: '#/components/examples/VenmoSaleResponse'
+                TA Token:
+                  summary: Sale with TA token response
+                  $ref: '#/components/examples/TATokenSaleResponse'
+          
         202:
           $ref: '#/components/responses/SalePartiallyCreated'
         400:
@@ -600,7 +749,13 @@ paths:
         - $ref: '#/components/parameters/SubMerchantIdParam'
       responses:
         200:
-          $ref: '#/components/responses/SaleOK'
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sale'
+              examples: 
+                Minimal: {summary: Response with minimal required parameters, $ref: '#/components/examples/MinimalGetSaleResponse'}
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -673,10 +828,18 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/VoidRequest'
+            examples: 
+              Minimal: {summary: Request with minimal required parameters, $ref: '#/components/examples/MinimalSaleVoidRequest'}
         required: true
       responses:
         200:
-          $ref: '#/components/responses/SaleOK'
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sale'
+              examples: 
+                Minimal: {summary: Request with minimal required parameters, $ref: '#/components/examples/MinimalSaleVoidResponse'}
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -710,10 +873,19 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/RefundRequest'
+            examples: 
+              Minimal: {summary: Request with minimal required parameters, $ref: '#/components/examples/MinimalRefundSale'}
         required: false
       responses:
         201:
-          $ref: '#/components/responses/RefundCreated'
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Refund'
+              examples: 
+                Minimal: {summary: Response with minimal required parameters, $ref: '#/components/examples/MinimalRefundSaleR'}
+          
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -877,6 +1049,7 @@ paths:
       responses:
         200:
           $ref: '#/components/responses/RefundOK'
+          
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -938,10 +1111,20 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/VoidRequest'
+            examples: 
+              Minimal: {summary: Request with minimal required parameters, $ref: '#/components/examples/MinimalRefundVoidRequest'}
         required: false
       responses:
         200:
-          $ref: '#/components/responses/RefundOK'
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Refund'
+              examples:
+                Minimal: {summary: Request with minimal required parameters, $ref: '#/components/examples/MinimalRefundVoidResponse'}
+                
+          
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -993,7 +1176,7 @@ paths:
   /v2/payments/multi-refunds:
     post:
       x-group-name: Payment Services
-      x-proxy-name: Refund multi transacation
+      x-proxy-name: Refund multi transaction
       tags:
         - refund
       summary: Execute a refund for multi transactions.
@@ -1634,6 +1817,10 @@ components:
           type: string
         eciIndicator:
           type: string
+        xid:
+          type: string
+        cavv:
+          type: string          
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
         panType:
@@ -1813,6 +2000,8 @@ components:
           readOnly: true
           items:
             $ref: '#/components/schemas/Capture'
+        errorInfo:
+          $ref: '#/components/schemas/Error'            
       description: Authorization information - can only be ONE of the funding source
         among account, credit, prepaid, ApplePay.
 
@@ -2020,22 +2209,67 @@ components:
           type: string
       description: Transaction charge details
 
-    DeliveryService:
+    CommunicationPreference:
       type: object
       properties:
-        deliveryMethod:
-          type: string
-          description: Delivery method of address provided in the address section,
-            NOT_AVAILABLE, DIRECT_DELIVERY, CUSTOMER_PICKUP, COMMERCIAL_SHIPPING,
-            OTHER
-        indicator:
+        email:
           type: boolean
-        providerName:
+        phone:
+          type: boolean
+        sms:
+          type: boolean
+          
+    DeliveryLocation:
+      type: object
+      description: Order delivery location
+      properties:
+        contactName:
           type: string
-        providerId:
+        contactPhone:
+          $ref: '#/components/schemas/Phone'
+        contactEmail:
+          $ref: '#/components/schemas/Email'        
+        address:
+          $ref: '#/components/schemas/Address'
+        note:
           type: string
-      description: Delivery service information
 
+    DeliveryInfo:
+      type: object
+      description: Delivery information
+      properties:
+        deliveryQuoteId:
+          type: string
+        deliveryOption:
+            $ref: '#/components/schemas/DeliveryOption' 
+        deliveryType:
+          type: string
+          example: "CONTACTLESS"            
+        deliveryWindow:
+            $ref: '#/components/schemas/DeliveryWindow'
+
+
+    DeliveryWindow:
+      description: This object contains delivery window time.
+      type: object
+      properties:
+        pickupStartDate:
+          type: string
+          format: date-time
+          example: "2016-04-16T16:06:05Z"
+        pickupEndDate:
+          type: string
+          format: date-time
+          example: "2016-04-16T16:06:05Z"
+        dropOffStartDate:
+          type: string
+          format: date-time
+          example: "2016-04-16T16:06:05Z"
+        dropOffEndDate:
+          type: string
+          format: date-time
+          example: "2016-04-16T16:06:05Z"
+          
     DynamicDescriptors:
       type: object
       properties:
@@ -2357,6 +2591,10 @@ components:
           type: string
         eciIndicator:
           type: string
+        xid:
+          type: string
+        cavv:
+          type: string          
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
         panType:
@@ -2587,6 +2825,9 @@ components:
         altOrderId:
           type: string
           description: Alternate order id
+        orderNumber:
+          type: string
+          description: Order reference number provided by service provider        
         orderType:
           type: string
           description: Type of the order
@@ -2596,12 +2837,19 @@ components:
         recipientName:
           type: string
           description: Order recipient name
+        contactName:
+          type: string          
         shipmentType:
           type: string
           description: Type of shipment
         website:
           type: string
           description: URL of the website from where the order got originated.
+        orderStatus:
+          type: string
+          description: Order status information
+        deliveryInfo:
+          $ref: '#/components/schemas/DeliveryInfo'
         emails:
           type: array
           items:
@@ -2614,8 +2862,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Phone'
-        deliveryService:
-          $ref: '#/components/schemas/DeliveryService'
+        communicationPreference:
+          $ref: '#/components/schemas/CommunicationPreference'            
+        deliveryLocation:
+          $ref: '#/components/schemas/DeliveryLocation'
+        storeLocation:
+          $ref: '#/components/schemas/StoreLocation'          
+        note:
+          type: string          
       description: Information about the order details
 
     OfferStatus:
@@ -3079,7 +3333,7 @@ components:
           example: true
         cavv:
           type: string
-          description: Card authenticaion verificaiton value
+          description: Card authentication verification value
         threeDSVersion:
           type: string
         expiryDateTime:
@@ -3091,7 +3345,7 @@ components:
         eci:
           type: string
           description: Electronic Commerce Indicator value
-      description: Details of ThreeDSecure transaction used to process the challege
+      description: Details of ThreeDSecure transaction used to process the challenge
         flow
 
     Sale:
@@ -3250,6 +3504,10 @@ components:
           type: string
         eciIndicator:
           type: string
+        xid:
+          type: string
+        cavv:
+          type: string          
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
         panType:
@@ -3272,6 +3530,21 @@ components:
         billingPhone:
           $ref: '#/components/schemas/Phone'
 
+    StoreLocation:
+      type: object
+      description: Order store location
+      properties:
+        contactName:
+          type: string
+        contactPhone:
+          $ref: '#/components/schemas/Phone'
+        contactEmail:
+          $ref: '#/components/schemas/Email' 
+        address:
+          $ref: '#/components/schemas/Address'
+        note:
+          type: string
+          
     Supplement:
       type: object
       properties:
@@ -3303,7 +3576,7 @@ components:
           description: Unique identifier for a customer account vaulted with uCom
         securityCode:
           type: string
-          description: Card Verificatiion value.
+          description: Card Verification value.
         status:
           $ref: '#/components/schemas/AccountStatus'
         type:
@@ -3527,7 +3800,7 @@ components:
                     type: string
                     description: Mobile application name.
                     format: sting
-                    example: aplication-name
+                    example: application-name
                   country:
                     type: string
                     description: Mobile application store country.
@@ -3699,6 +3972,15 @@ components:
       enum:
         - BASE
         - TRANSACTION
+        
+    DeliveryOption:
+      title: Delivery option
+      description: Indicates the delivery option
+      type: string
+      enum:
+        - IMMEDIATE
+        - SCHEDULED
+        - OTHER
 
     FleetCardType:
       type: string
@@ -3821,7 +4103,7 @@ components:
             $ref: '#/components/schemas/Authorization'
 
     AuthorizationPartiallyCreated:
-      description: Partially created
+      description: Partially accepted
       content:
         application/json:
           schema:
@@ -3921,14 +4203,14 @@ components:
             $ref: '#/components/schemas/Sale'
 
     SalePartiallyCreated:
-      description: Partially created
+      description: Partially accepted
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Sale'
 
     ServerError:
-      description: An unexpected server error occured.
+      description: An unexpected server error occurred.
       content:
         application/json:
           schema:
@@ -4066,3 +4348,1153 @@ components:
       required: true
       schema:
         type: string
+  examples:
+    VaultedCardSaleRequest:
+      value:
+        fdCustomerId: 5866f3bb52e24b32b4c9e7f56baa3327
+        sale:
+          orderId: Order6580038
+          storeId: '5998000001'
+          requestedAmount: '80'
+          currencyCode:
+            number: 840
+          fundingSource:
+            vaultedAccount:
+              fdAccountId: 8a7f172c796409c101797eec00410263
+
+    VaultedCardSaleResponse:
+      value:
+        fdSaleId: 043994f087ba4e13a5389bc65070ca39
+        status: APPROVED
+        orderId: Order0322389
+        requestedAmount: 80
+        approvedAmount: 80
+        currencyCode:
+          code: USD
+          number: 840
+        partialPaymentAllowed: true
+        transactionDateTime: 2021-05-18T06:01:31-0400
+        fundingSource:
+          type: VAULTED_ACCOUNT
+          vaultedAccount:
+            fdAccountId: 8a7f172c796409c101797eec00410263
+            type: CREDIT
+          credit:
+            nameOnCard: John Smith
+            alias: '0222'
+            cardType: VISA
+            billingAddress:
+              streetAddress: 100 Universal City Plaza
+              postalCode: '0000'
+            expiryDate:
+              month: '12'
+              year: '22'
+        hostExtraInfo:
+          - name: APPROVAL_NUMBER
+            value: '012996'
+          - name: SEQUENCE_NUMBER
+            value: '6518'
+          - name: HOST_RESPONSE_CODE
+            value: '00'
+          - name: HOST_RESPONSE_MESSAGE
+            value: Function performed error-free
+          - name: HOST_AVS_CODE
+            value: PPX
+          - name: HOST_CVV_CODE
+            value: X
+            
+    NonceSaleRequest:
+      value:
+        fdCustomerId: dfa509ed45ab442ba31061ab2ab1e3e3
+        sale:
+          orderId: '1214324354546'
+          merchantId: MO45009483002
+          requestedAmount: 1
+          currencyCode:
+            number: 840
+          fundingSource:
+            saveToVault: false
+            token:
+              tokenId: 3ca513c3-f103-4099-a88f-adb994cc5c3a
+              tokenType: CLAIM_CHECK_NONCE
+              tokenProvider: UCOM
+        
+              
+    NonceSaleResponse:
+      value:
+        fdSaleId: 8f0aabd3c1c24ab8a54157a143fa9073
+        status: APPROVED
+        orderId: '1214324354546'
+        requestedAmount: 1
+        approvedAmount: 1
+        currencyCode:
+          code: USD
+          number: 840
+        transactionDateTime: 2021-04-23T10:22:51-0400
+        fundingSource:
+          type: CREDIT
+          credit:
+            alias: '6775'
+            cardType: VISA
+            billingAddress:
+              postalCode: J3G2P3
+            expiryDate:
+              month: '12'
+              year: '21'
+            token:
+              tokenId: '7474437453586775'
+              tokenProvider: TRANS_ARMOR
+        hostExtraInfo:
+          - name: APPROVAL_NUMBER
+            value: '003985'
+          - name: SEQUENCE_NUMBER
+            value: '614102'
+          - name: HOST_RESPONSE_CODE
+            value: '3'
+          - name: HOST_RESPONSE_MESSAGE
+            value: APPROVED 003985
+          - name: HOST_AVS_CODE
+            value: AVS+Y
+          - name: HOST_CVV_CODE
+            value: M
+          - name: TRANSACTION_DATETIME
+            value: 2021-04-23T10:22
+          - name: NETWORK_TRANSACTION_ID
+            value: '024000423142251'
+        
+    GooglePaySaleRequest:
+      value:
+        fdCustomerId: dfa509ed45ab442ba31061ab2ab1e3e3
+        sale:
+          orderId: Order2344322
+          merchantId: MO45009483002
+          requestedAmount: '2'
+          currencyCode:
+            number: 840
+          fundingSource:
+            googlePay:
+              version: ECv1
+              data: '{"encryptedMessage":"T8OLil7BqQ+s4b6Zu577Bc2uHsvk9BvmS/YgDJe7rB7IQWPYRKF0n+j tH+I4NVgo0ljvV8Ha+ijz94LHsd7UGzWPQlVXz3jNc6BydgA3d4RjZrBxSZyiCL6dXFMUk2EosvE9/su V498AbT+UCvtt4mPriK7NTVsaexEtxqC/eSZbRCa03125K18fFfkmbj2FNPmkmT4QigKFGlzCMnGEQF/ JptngmiPxcOOetD7dceVvfFs2yzDDh4TcvKSOH6Hn/3yOQQyRwtjM1/kOI0Ho+wA71FuebK/zbrUxM3p 91uwTy150hAgMJwTUvy1Q1i4C+mewHx150GA7RXChxVd/UjdfcNoAjePUzbKfW2yJk4EW1RVcYH5sam3 2rCm9putYnzW7oJZM86+N8/qG3cxuRZuCEHvKDFPrbjuOClUiRVr9LPP22tFe9r27yZr1c8l5pb/7e7H 33WNj1mAUIkHlFQp18tyEu2lBrIFDwsD4JVFVEM7tnhtx01bqcmquWNuxKEnaGGKUgyelHzUuAQaAbsI n/vIdmoea6yDFQe2fYZWoV5lv+l7Ns7Iil7E\u003d","ephemeralPublicKey":"BOildnu0C j5z27VMrPVaBS0F2m2kqabEo6dhTZ5Gv+Hb7P9k4JUwOOa2Uya+kBze+IbhaxWxmEYI6JEplWVZS08\ u003d","tag":"M44lqld9tmEYvLQmRVMeHDBxqb0ek26O00RjBRYuatg\u003d"}'
+              signature: MEYCIQCFX+lh16E4qpXpwRcY0nuQT0/4WfjfNiwkrf6tYouqQAIhAKoQX9paax1utkdxUVhDlzaCx5K vbKETqinrVe3ImAZS
+              billingAddress:
+                streetAddress: 100 Universal City Plaza
+                locality: Hollywood
+                region: CA
+                postalCode: '91608'
+                country: US
+                
+    GooglePaySaleResponse:
+      value:
+        fdSaleId: db9412af7d5tfr4f81b28e01c0aff039
+        status: APPROVED
+        orderId: Order2344322
+        requestedAmount: 2
+        approvedAmount: 2
+        currencyCode:
+          code: USD
+          number: 840
+        partialPaymentAllowed: true
+        transactionDateTime: 2021-04-18T00:56:03-0400
+        fundingSource:
+          type: GOOGLE_PAY
+          googlePay:
+            expiryDate:
+              month: '12'
+              year: '26'
+            dPanLast4: '7840'
+            cardType: MASTERCARD
+        hostExtraInfo:
+          - name: APPROVAL_NUMBER
+            value: '025217'
+          - name: SEQUENCE_NUMBER
+            value: '032007'
+          - name: HOST_RESPONSE_CODE
+            value: '2'
+          - name: HOST_RESPONSE_MESSAGE
+            value: APPROVED 025217
+          - name: TRANSACTION_DATETIME
+            value: 2021-03-18T00:56
+        
+        
+        
+        
+    ApplePaySaleRequest:
+      value:
+        fdCustomerId: 4e6aceafe75546f0943bbe4775530ee5
+        sale:
+          orderId: Order518e35we2sd3784d
+          merchantId: MO06313553001
+          requestedAmount: 4.55
+          currencyCode:
+            number: 840
+          fundingSource:
+            applePay:
+              version: EC_v1
+              data: Q7XB5Y7fNrruRnS6kNyqy3sH4xvj+Qobxb1gW4vLxfw51Aa2vLk7cNBSBEDtOIK1XroKr4lE/nCcLs2+Zdc5yFaS41Z7s6pJeLjUts4vboYLVGnb3A2jreX2eFWJh2Rf/D/OLxog26fS434uEei3VH6dfa8AlfhKn7MsNnq4JJrv3NsUu+puSFXrP80SbFadvo+2DD/yqfpWk1KLM8ih8I6H+BBjZE/uZCXVYBUuyKBcId2puYXJUoaagxkVl4TJzMDliE4li+F7I0H7VqvaaJS0QBsB2JaWLVrxKfYI3KvBx7JeubyPJHz0GufIjfTPhGOhhRW3lV+UNpDCe5rlus12m9Ac70VrPVqlIqfOYtMW9H6TylDlswKGM3BZHJ7UiQiU8tihUk4u/mz0mO2iWQbE6gpwthjTYijBvaC6ubTMaGVyIFfqHD5DS3h/Ybf13IxLJxSK86eK6OZiZf4Kl3KT0JQtQpvnqnBcSA==
+              signature: MIAGCSqGSIb3DQEHAqCAMIACAQExDTALBglghkgBZQMEAgEwCwYJKoZIhvcNAQcBoIAwggHTMIIBeQIBATAJBgcqhkjOPQQBMHYxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJOSjEUMBIGA1UEBwwLSmVyc2V5IENpdHkxEzARBgNVBAoMCkZpcnN0IERhdGExEjAQBgNVBAsMCUZpcnN0IEFQSTEbMBkGA1UEAwwSZDFkdnRsMTAwMC4xZGMuY29tMB4XDTE5MDcyNTE2Mjc0OVoXDTM5MDcyMDE2Mjc0OVowdjELMAkGA1UEBhMCVVMxCzAJBgNVBAgMAk5KMRQwEgYDVQQHDAtKZXJzZXkgQ2l0eTETMBEGA1UECgwKRmlyc3QgRGF0YTESMBAGA1UECwwJRmlyc3QgQVBJMRswGQYDVQQDDBJkMWR2dGwxMDAwLjFkYy5jb20wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAASuceE8zXwcVs6iYkxSIuI8vuesm5a98/LQaDfGxfebyrShaFOzVBxANNP5NHfKHiwNE+peexNTBy9usI7N1QR5MAkGByqGSM49BAEDSQAwRgIhAJdbaSMDfot2cSpzSodvzYUhhKF0STeGA8bFkN/o99fKAiEA2uumj9JjZiiujMLvdm5AO2wYrc8dN1BmNrkCB0RfLTIAADGCAX0wggF5AgEBMHswdjELMAkGA1UEBhMCVVMxCzAJBgNVBAgMAk5KMRQwEgYDVQQHDAtKZXJzZXkgQ2l0eTETMBEGA1UECgwKRmlyc3QgRGF0YTESMBAGA1UECwwJRmlyc3QgQVBJMRswGQYDVQQDDBJkMWR2dGwxMDAwLjFkYy5jb20CAQEwCwYJYIZIAWUDBAIBoIGTMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTIyMDkxOTE1MDcwM1owKAYJKoZIhvcNAQk0MRswGTALBglghkgBZQMEAgGhCgYIKoZIzj0EAwIwLwYJKoZIhvcNAQkEMSIEIPRbfxpgT+1Gmx88UPCXYuxt8Ohl1LxxIqhYjdSDNFbLMAoGCCqGSM49BAMCBEgwRgIhAP4eb/03lcJunuVjIClTKPbYMJO3N4TwBiNpznQVMzQvAiEAhVhcgC+eFdEngAACEG8HRmC2isq0T1HRgm6p0HrUswkAAAAAAAA=
+              applicationData: VEVTVA==
+              header:
+                ephemeralPublicKey: MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEYGSbxrqyFDZjAz0Y3Dwa4i+brjcKKW0zxfDMcNTg0Ktl9iRDfvdM2BPX1edt3nQdnIVoX/1tOtteZ55T08CZGg==
+                publicKeyHash: cNzwKkT2bIES+DTyQ5zgvzHX/y3W1U+8TjTrAgXIRxk=
+                transactionId: '31323334353637'
+              billingAddress:
+                type: work
+                streetAddress: 200 Universal City Plaza
+                locality: Hollywood
+                region: CA
+                postalCode: '91600'
+                country: US
+                formatted: |-
+                  100 Universal City Plaza
+                  Hollywood, CA 91608 USA
+                primary: true
+        deviceInfo:
+          id: 537edec8-d33e-4ee8-93a7-b9f61876950c
+          kind: mobile
+          details:
+            - provider: RAVELIN
+              dataCapture:
+                dataEventId: BB8E4E92...Fz1E063113
+    ApplePaySaleResponse:
+      value:
+        fdSaleId: d90461a67d5a49d194f098f57261eafc
+        status: APPROVED
+        orderId: Order518e35we2sd3784d
+        requestedAmount: 4.55
+        approvedAmount: 4.55
+        currencyCode:
+          code: USD
+          number: 840
+        partialPaymentAllowed: true
+        transactionDateTime: 2023-02-13T13:47:28-0500
+        fundingSource:
+          type: APPLE_PAY
+          applePay:
+            token:
+              tokenId: '1713234930820024'
+              tokenProvider: TRANS_ARMOR
+              expiryDate:
+                month: '12'
+                year: '25'
+            expiryDate:
+              month: '12'
+              year: '25'
+            dPanLast4: '0024'
+            cardType: MASTERCARD
+        hostExtraInfo:
+          - name: APPROVAL_NUMBER
+            value: '100700'
+          - name: SEQUENCE_NUMBER
+            value: '435777'
+          - name: HOST_RESPONSE_CODE
+            value: '4'
+          - name: HOST_RESPONSE_MESSAGE
+            value: APPROVED  100700
+          - name: HOST_AVS_CODE
+            value: AVS+Y
+          - name: TRANSACTION_DATETIME
+            value: 2023-02-13T12:47
+    PayPalSaleRequest:
+      value:
+        fdCustomerId: 4e6aceafe75546f0943bbe4775530ee5
+        sale:
+          orderId: Order8414424
+          merchantId: MO06313553001
+          requestedAmount: '2.25'
+          currencyCode:
+            number: 840
+          fundingSource:
+            saveToVault: false
+            paypal:
+              payerId: PayerID001
+              nonce: fake-paypal-billing-agreement-nonce
+        deviceInfo:
+          id: 537edec8-d33e-4ee8-93a7-b9f61876950c
+          kind: mobile
+          details:
+            - provider: PayPal
+              dataCapture:
+                rawData: aaaaaXREUVZGRlFY...aMV
+                dataEventId: BB8E4E92...Fz1E063113
+              dataStatic:
+                os: "Android\_5.1.1\_Lollipop"
+                osVersion: "5.1.1\_Lollipop"
+                model: XT1540
+                type: "Moto\_G"
+              dataDynamic:
+                latitude: "13.0827\_N"
+                longitude: "80.2707\_E"
+                ipAddress: 172.27.37.221
+    PayPalSaleResponse:
+      value:
+        fdSaleId: a9d4797bfdae435abb27e9af79703f4a
+        status: APPROVED
+        orderId: Order8414424
+        requestedAmount: 2.25
+        approvedAmount: 2.25
+        currencyCode:
+          code: USD
+          number: 840
+        partialPaymentAllowed: true
+        transactionDateTime: 2023-02-13T14:00:09-0500
+        fundingSource:
+          type: PAYPAL
+          paypal:
+            token:
+              tokenId: '9397022578249424'
+              tokenProvider: TRANS_ARMOR
+              expiryDate:
+                month: '01'
+                year: '28'
+        hostExtraInfo:
+          - name: APPROVAL_NUMBER
+            value: '913691'
+          - name: SEQUENCE_NUMBER
+            value: '061262'
+          - name: HOST_RESPONSE_CODE
+            value: '0'
+          - name: HOST_RESPONSE_MESSAGE
+            value: APPROVED  913691
+          - name: TRANSACTION_DATETIME
+            value: 2023-02-13T13:00
+          - name: NETWORK_TRANSACTION_ID
+            value: '123456789012345'
+    VenmoSaleRequest:
+      value:
+        fdCustomerId: 4e6aceafe75546f0943bbe4775530ee5
+        sale:
+          orderId: Order8763049
+          merchantId: MO06313553001
+          requestedAmount: '2.25'
+          currencyCode:
+            number: 840
+          fundingSource:
+            saveToVault: false
+            venmo:
+              payerId: PayerID001
+              nonce: fake-venmo-account-nonce
+        deviceInfo:
+          id: 537edec8-d33e-4ee8-93a7-b9f61876950c
+          kind: mobile
+          details:
+            - provider: Venmo
+              dataCapture:
+                rawData: aaaaaXREUVZGRlFY...aMV
+                dataEventId: BB8E4E92...Fz1E063113
+              dataStatic:
+                os: Android 5.1.1 Lollipop
+                osVersion: 5.1.1 Lollipop
+                model: XT1540
+                type: Moto G
+              dataDynamic:
+                latitude: 13.0827 N
+                longitude: 80.2707 E
+                ipAddress: 172.27.37.221
+    VenmoSaleResponse:
+      value:
+        fdSaleId: 68fd1f9db6474dafbd9661968c7b1bee
+        status: APPROVED
+        orderId: Order8763049
+        requestedAmount: 2.25
+        approvedAmount: 2.25
+        currencyCode:
+          code: USD
+          number: 840
+        partialPaymentAllowed: true
+        transactionDateTime: 2023-02-13T14:04:58-0500
+        fundingSource:
+          type: VENMO
+          venmo:
+            token:
+              tokenId: '9397022578249424'
+              tokenProvider: TRANS_ARMOR
+              expiryDate:
+                month: '11'
+                year: '30'
+        hostExtraInfo:
+          - name: APPROVAL_NUMBER
+            value: '583287'
+          - name: SEQUENCE_NUMBER
+            value: '024630'
+          - name: HOST_RESPONSE_CODE
+            value: '0'
+          - name: HOST_RESPONSE_MESSAGE
+            value: APPROVED  583287
+          - name: TRANSACTION_DATETIME
+            value: 2023-02-13T13:05
+          - name: NETWORK_TRANSACTION_ID
+            value: '123456789012345'
+    TATokenSaleRequest:
+      value:
+        sale:
+          orderId: Order8366425
+          merchantId: MO35312599001
+          requestedAmount: '2.25'
+          currencyCode:
+            number: '840'
+          fundingSource:
+            credit:
+              nameOnCard: John Smith
+              cardType: VISA
+              billingAddress:
+                type: work
+                streetAddress: 100 Universal City Plaza
+                locality: Hollywood
+                region: CA
+                postalCode: '20220'
+                country: US
+                formatted: |-
+                  100 Universal City Plaza
+                  Hollywood, CA 91608 US
+                primary: true
+              expiryDate:
+                month: '12'
+                year: '23'
+              token:
+                tokenId: '1741886859548968'
+                tokenProvider: TRANS_ARMOR
+    TATokenSaleResponse:
+      value:
+        fdSaleId: 0bce4da5be5a4a3b9eed1ca8b68302c4
+        status: APPROVED
+        orderId: Order8366425
+        requestedAmount: 2.25
+        approvedAmount: 2.25
+        currencyCode:
+          code: USD
+          number: 840
+        partialPaymentAllowed: true
+        transactionDateTime: 2023-02-07T00:21:11-0500
+        fundingSource:
+          type: CREDIT
+          credit:
+            nameOnCard: John Smith
+            alias: '8968'
+            cardType: VISA
+            billingAddress:
+              streetAddress: 100 Universal City Plaza
+              postalCode: '20220'
+            expiryDate:
+              month: '12'
+              year: '23'
+            token:
+              tokenId: '1741886859548968'
+              tokenProvider: TRANS_ARMOR
+        hostExtraInfo:
+          - name: APPROVAL_NUMBER
+            value: '34246 '
+          - name: SEQUENCE_NUMBER
+            value: '642747'
+          - name: TRANSACTION_DATETIME
+            value: 2023-02-07T00:21
+          - name: NETWORK_TRANSACTION_ID
+            value: '012000207052111'
+        
+        
+    VaultedAuthRequest:
+      value:
+        fdCustomerId: c7726f24c50d4b69877845af06d2cbf9
+        authorization:
+          orderId: Order5623322
+          merchantId: MO35312599001
+          requestedAmount: '3.25'
+          currencyCode:
+            number: '840'
+          fundingSource:
+            vaultedAccount:
+              fdAccountId: 8a7f6f8d861c224f01862a4ffe1f0240
+    VaultedAuthResponse:
+      value:
+        fdAuthorizationId: 142b9da5f1094fcf9e3b547d8b464d9e
+        authStatus: APPROVED
+        orderId: Order0573944
+        requestedAmount: 2.25
+        approvedAmount: 2.25
+        currencyCode:
+          code: USD
+          number: 840
+        transactionDateTime: 2023-02-07T00:20:18-0500
+        fundingSource:
+          type: VAULTED_ACCOUNT
+          vaultedAccount:
+            fdAccountId: 8a7f6f8d861c224f01862a4ffe1f0240
+            type: CREDIT
+          credit:
+            nameOnCard: John Smith
+            alias: '8968'
+            cardType: VISA
+            billingAddress:
+              streetAddress: 100 Universal City Plaza
+              postalCode: '20220'
+            expiryDate:
+              month: '12'
+              year: '23'
+            token:
+              tokenId: '1741886859548968'
+              tokenProvider: TRANS_ARMOR
+        hostExtraInfo:
+          - name: APPROVAL_NUMBER
+            value: '34246 '
+          - name: SEQUENCE_NUMBER
+            value: '206485'
+          - name: TRANSACTION_DATETIME
+            value: 2023-02-07T00:20
+          - name: NETWORK_TRANSACTION_ID
+            value: '012000207052019'
+            
+    VaultedWithStoreIdAuthRequest:
+      value:
+        fdCustomerId: f18041b21ae04dee9a00e8289ed262a4
+        authorization:
+          orderId: '1234567890131'
+          storeId: W770001
+          requestedAmount: 2
+          currencyCode:
+            number: 840
+          fundingSource:
+            vaultedAccount:
+              fdAccountId: 8a7f3353790bb3c2017945697c991aba
+              
+    VaultedWithStoreIdAuthResponse:
+      value:
+        fdAuthorizationId: 3b73dd32e3104849bed244a3a335dd04
+        authStatus: APPROVED
+        orderId: '1234567890131'
+        storeId: W770001
+        requestedAmount: 2
+        approvedAmount: 2
+        currencyCode:
+          code: USD
+          number: 840
+        transactionDateTime: 2021-05-25T10:00:19-0400
+        fundingSource:
+          type: VAULTED_ACCOUNT
+          vaultedAccount:
+            fdAccountId: 8a7f3353790bb3c2017945697c991aba
+            type: CREDIT
+          credit:
+            alias: '6775'
+            cardType: VISA
+            billingAddress:
+              postalCode: J3G2P3
+            expiryDate:
+              month: '12'
+              year: '21'
+            token:
+              tokenId: '7474437453586775'
+              tokenProvider: TRANS_ARMOR
+        hostExtraInfo:
+          - name: APPROVAL_NUMBER
+            value: '359930'
+          - name: SEQUENCE_NUMBER
+            value: '401447'
+          - name: HOST_RESPONSE_CODE
+            value: '3'
+          - name: HOST_RESPONSE_MESSAGE
+            value: APPROVED 359930
+          - name: HOST_AVS_CODE
+            value: AVS+Y
+          - name: TRANSACTION_DATETIME
+            value: 2021-05-25T10:00
+          - name: NETWORK_TRANSACTION_ID
+            value: '024000525140023'
+        
+        
+        
+    ApplePayAuthRequest:
+      value:
+        authorization:
+          orderId: '123456789123'
+          storeId: K750028
+          requestedAmount: '20.00'
+          currencyCode:
+            number: 840
+          fundingSource:
+            applePay:
+              version: EC_v1
+              data: iQhe7jDoda+55PsN6Ub0S9LDHYPkdPd/OlUskoe5tAYw5Gkppi0N7/yi3vYmpGmYpZ3XJDFW4b+RlzRODW1wX38iNHRXTbP3GJPW7xgRoUazUQ+DAw5f4WQm51GjNGre8G9yQhxSunPTLbSnxoUQPSCL58hMOVdyw/cDsdXvC9WmWCn/SNsIhNQVWKyPDYUfQv20FC3Fr7x3AQiDKgjkek8zMXFOBDdNhoyAqjyeexYYhLDAQXrgHXaLXpEekWfnIjuxJ/djlVPSOB1fymX0PPtR2xKhc6vcPVZCY0vhC1ysrlGSG+DFds2LtE/nrFuI+zD2FcOVtFz/6FD67TEPjPKf66F+i0+1rZ81fgevlZIrcsJfXeSB/NhWGNNNAZzZwH1Htp460wsGdjUM5KynGgVzTrFVAuXFp+3Y1s1EB1OOX+7LVo9aN1Q+dntGddTp0TiHv4sxo/nt+Dl71x4uDGCEiIBvw/U4ZH0x
+              signature: MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwEAAKCAMIIB0zCCAXkCAQEwCQYHKoZIzj0EATB2MQswCQYDVQQGEwJVUzELMAkGA1UECAwCTkoxFDASBgNVBAcMC0plcnNleSBDaXR5MRMwEQYDVQQKDApGaXJzdCBEYXRhMRIwEAYDVQQLDAlGaXJzdCBBUEkxGzAZBgNVBAMMEmQxZHZ0bDEwMDAuMWRjLmNvbTAeFw0xOTA3MjUxNjI3NDlaFw0zOTA3MjAxNjI3NDlaMHYxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJOSjEUMBIGA1UEBwwLSmVyc2V5IENpdHkxEzARBgNVBAoMCkZpcnN0IERhdGExEjAQBgNVBAsMCUZpcnN0IEFQSTEbMBkGA1UEAwwSZDFkdnRsMTAwMC4xZGMuY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAErnHhPM18HMIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwEAAKCAMIIB0zCCAXkCAQEwCQYHKoZIzj0EATB2MQswCQYDVQQGEwJVUzELMAkGA1UECAwCTkoxFDASBgNVBAcMC0plcnNleSBDaXR5MRMwEQYDVQQKDApGaXJzdCBEYXRhMRIwEAYDVQQLDAlGaXJzdCBBUEkxGzAZBgNVBAMMEmQxZHZ0bDEwMDAuMWRjLmNvbTAeFw0xOTA3MjUxNjI3NDlaFw0zOTA3MjAxNjI3NDlaMHYxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJOSjEUMBIGA1UEBwwLSmVyc2V5IENpdHkxEzARBgNVBAoMCkZpcnN0IERhdGExEjAQBgNVBAsMCUZpcnN0IEFQSTEbMBkGA1UEAwwSZDFkdnRsMTAwMC4xZGMuY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAErnHhPM18HFbOomJMUiLiPL7nrJuWvfPy0Gg3xsX3m8q0oWhTs1QcQDTT+TR3yh4sDRPqXnsTUwcvbrCOzdUEeTAJBgcqhkjOPQQBA0kAMEYCIQCXW2kjA36LdnEqc0qHb82FIYShdEk3hgPGxZDf6PfXygIhANrrpo/SY2YorozC73ZuQDtsGK3PHTdQZja5AgdEXy0yAAAxggFUMIIBUAIBATB7MHYxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJOSjEUMBIGA1UEBwwLSmVyc2V5IENpdHkxEzARBgNVBAoMCkZpcnN0IERhdGExEjAQBgNVBAsMCUZpcnN0IEFQSTEbMBkGA1UEAwwSZDFkdnRsMTAwMC4xZGMuY29tAgEBMA0GCWCGSAFlAwQCAQUAoGkwGAYJKoZIhvcNAQkDMQsGCSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcNMjAwODE0MTcxMjEyWjAvBgkqhkiG9w0BCQQxIgQgALdhoAkC7zqLpTlL6SvUlVMXmSSqY3KLm0dtEyx8CVcwCgYIKoZIzj0EAwIESDBGAiEA3cw8azRKh/7nyeDWNByu8Vt32SFqM2x6KWRSh9b2XuECIQDdvJlbxAVoGxL0pf3QQ9U+bqmtjwZcvy9BMgL1oHWUBAAAAAAAAA==
+              applicationData: VEVTVA==
+              header:
+                ephemeralPublicKey: MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEcVpsjkzx3uU+mkA7V0gZeAZkeUNIBKrGwIxKMgoVCnvgSZDLDQYxZC7UFbeyg89eiEv1eZ2Ch38efO+xGvJhhg==
+                publicKeyHash: RLP3SbLJR7bWmJFAfBa8hV5BQhRJ1AAhBrsjkNXKW7U=
+                transactionId: '31323334353637'
+    ApplePayAuthResponse:
+      value:
+        fdAuthorizationId: ad61893ab58544c7936f8380b90c310b
+        authStatus: APPROVED
+        orderId: '123456789123'
+        storeId: K750028
+        requestedAmount: 20
+        approvedAmount: 20
+        currencyCode:
+          code: USD
+          number: 840
+        transactionDateTime: 2020-08-21T08:06:17-0400
+        fundingSource:
+          type: APPLE_PAY
+          applePay:
+            token:
+              tokenId: '7289892030800026'
+              tokenProvider: TRANS_ARMOR
+              expiryDate:
+                month: '12'
+                year: '25'
+            expiryDate:
+              month: '12'
+              year: '25'
+            dPanLast4: '0026'
+            cardType: VISA
+        hostExtraInfo:
+          - name: APPROVAL_NUMBER
+            value: OK461C
+          - name: SEQUENCE_NUMBER
+            value: '401036'
+          - name: TRANSACTION_DATETIME
+            value: '20200821120617'
+            
+    GooglePayAuthRequest:
+      value:
+        authorization:
+          orderId: '123456789012'
+          storeId: K750028
+          requestedAmount: '2'
+          currencyCode:
+            number: 840
+          fundingSource:
+            googlePay:
+              version: ECv1
+              data: '{"encryptedMessage":"t7rUkBApTPtvDQBV0B1EnscSEGIc4clsGPswS639mPXXrOZnzaiYA7FUxL8bzgjXdIFobSvyUrxVWHkfMQCo1aAslJxSvHNclkq3OBxw86VThgu9zGojxqXi+cME2+SE+T/GRKD98jenPO0mLKyG8lCRPCi7zP4RJYquxQspOFM4MKS7OgbzbqPljR86bL1kmVy5rrSjdeef5ItiQBTIr9Z+tGDWnQ0MKxeN3akPWaiHb18QaL7HZxiIiDRbRVISF7YAOSSabPr7w5A9B7lc+P4EsJe0ewASO1aQzgaF0vP4N8zdIb1ilAzeNYeEqDzMCJPu5dEv1zPZoFIwKbtJaue53O/yJrtKiDLQbFUJ06Xedq+3+3qXDWcLKhy92+ICYCwqb3zxz5OCSYDL2qJB7FkOTc60aNqgG9vIuK7tpZ+qokOJwmwAN2mGvuepd61ho0YG4zPWUCabxa7MyqZ6tAKdWNFoF6mDrqnBFVPjZzkcNV3aPheoVnyvUGcOAWXmMyHkWai6WMl/qmE6wKxEuTRKUAZDnt/pqmI5d9ugF2dhlCi2ER/afhBTsRc\u003d","ephemeralPublicKey":"BBiibGwtRV8VAKMmnnlsRXMa0BV9z6OP8hNbpoy5Wem4+JAfrhL+i3HVuJkQ+X7n+6MDXD9Z5UjFSe7iX7FiqbM\u003d","tag":"PcmiJ+ycR6SaiA0UCT6Cc8ziuUiv9XlDpbIWRfvZQGI\u003d"}'
+              signature: MEUCICLv5bLh2EWKS05uOxuOyDyD48XVr3rbqfB5c6z6NnqgAiEA2h5MJMoId73fQOvIdkxvITEkK9FHLRGTFsXf+luA0t8=
+    GooglePayAuthResponse:
+      value:
+        fdAuthorizationId: be4090a45b6e42218c5ae66d8e6ae8f1
+        authStatus: APPROVED
+        orderId: '123456789012'
+        storeId: K750028
+        requestedAmount: 2
+        approvedAmount: 2
+        currencyCode:
+          code: USD
+          number: 840
+        transactionDateTime: 2020-08-21T08:02:58-0400
+        fundingSource:
+          type: GOOGLE_PAY
+          googlePay:
+            expiryDate:
+              month: '12'
+              year: '25'
+            dPanLast4: '7840'
+            cardType: MASTERCARD
+            token:
+              tokenId: '7779515672137840'
+              tokenProvider: TRANS_ARMOR
+              expiryDate:
+                month: '12'
+                year: '25'
+        hostExtraInfo:
+          - name: APPROVAL_NUMBER
+            value: OK3618
+          - name: SEQUENCE_NUMBER
+            value: '518610'
+          - name: TRANSACTION_DATETIME
+            value: '20200821120258'
+        
+    PayPalAuthVaultedRequest:
+      value:
+        fdCustomerId: f18041b21ae04dee9a00e8289ed262a4
+        authorization:
+          orderId: '12345671189123'
+          storeId: W770001
+          requestedAmount: 5
+          currencyCode:
+            number: 840
+          fundingSource:
+            vaultedAccount:
+              fdAccountId: 8a7f3353790bb3c2017941ed5e060cbd
+        deviceInfo:
+          id: 896e6893-51a0-4d8b-aecc-dfcc9945e0e4
+          kind: mobile
+          details:
+            - provider: Paypal
+              dataCapture:
+                rawData: aaaaaXREUVZGRlFYaMV
+                dataEventId: 66f021fb-c7f0-4271-ad68-f66944b71dfd
+                captureTime: '2021-05-25T11:49:54.855Z'
+              dataDynamic:
+                captureTime: '2021-05-25T11:49:54.855Z'
+    PayPalAuthVaultedResponse:
+      value:
+        fdAuthorizationId: 00fa2f9401fa4b6e841ae91d03960526
+        authStatus: APPROVED
+        orderId: '12345671189123'
+        storeId: W770001
+        requestedAmount: 5
+        approvedAmount: 5
+        currencyCode:
+          code: USD
+          number: 840
+        transactionDateTime: 2021-05-06T09:58:58-0400
+        fundingSource:
+          type: VAULTED_ACCOUNT
+          vaultedAccount:
+            fdAccountId: 8a7f3353790bb3c2017941ed5e060cbd
+            type: PAYPAL
+          paypal:
+            token:
+              tokenId: '7481631140129424'
+              tokenProvider: TRANS_ARMOR
+              expiryDate:
+                month: '11'
+                year: '29'
+            billingAgreementId: B_FAKE_ID-a3ae
+        hostExtraInfo:
+          - name: APPROVAL_NUMBER
+            value: '252998'
+          - name: SEQUENCE_NUMBER
+            value: '525638'
+          - name: HOST_RESPONSE_CODE
+            value: '2'
+          - name: HOST_RESPONSE_MESSAGE
+            value: APPROVED 252998
+          - name: TRANSACTION_DATETIME
+            value: 2021-05-06T09:58
+          - name: NETWORK_TRANSACTION_ID
+            value: '123456789012345'
+        
+        
+    VenmoAuthVaultedRequest:
+      value:
+        fdCustomerId: 6d673028d233421da25212122e273f7a
+        authorization:
+          orderId: '1234567890124'
+          storeId: W770001
+          requestedAmount: 20
+          currencyCode:
+            number: 840
+          fundingSource:
+            vaultedAccount:
+              fdAccountId: 8a7f0d8c798e7cf701799e4c81d10821
+        deviceInfo:
+          id: 896e6893-51a0-4d8b-aecc-dfcc9945e0e4
+          kind: mobile
+          details:
+            - provider: Venmo
+              dataCapture:
+                rawData: aaaaaXREUVZGRlFYaMV
+                dataEventId: 66f021fb-c7f0-4271-ad68-f66944b71dfd
+                captureTime: '2021-05-25T11:49:54.855Z'
+              dataDynamic:
+                captureTime: '2021-05-25T11:49:54.855Z'
+        
+    VenmoAuthVaultedResponse:
+      value:
+        fdAuthorizationId: 8b16126b29e548c7bb14feb87fff88ac
+        authStatus: APPROVED
+        orderId: '1234567890124'
+        storeId: W770001
+        requestedAmount: 20
+        approvedAmount: 20
+        currencyCode:
+          code: USD
+          number: 840
+        transactionDateTime: 2021-05-24T08:19:07-0400
+        fundingSource:
+          type: VAULTED_ACCOUNT
+          vaultedAccount:
+            fdAccountId: 8a7f0d8c798e7cf701799e4c81d10821
+            type: VENMO
+          venmo:
+            token:
+              tokenId: '7481631140129424'
+              tokenProvider: TRANS_ARMOR
+              expiryDate:
+                month: '08'
+                year: '30'
+        hostExtraInfo:
+          - name: APPROVAL_NUMBER
+            value: '269482'
+          - name: SEQUENCE_NUMBER
+            value: '264745'
+          - name: HOST_RESPONSE_CODE
+            value: '2'
+          - name: HOST_RESPONSE_MESSAGE
+            value: APPROVED 269482
+          - name: TRANSACTION_DATETIME
+            value: 2021-05-24T08:19
+          - name: NETWORK_TRANSACTION_ID
+            value: '123456789012345'
+        
+        
+        
+    NonceAuthRequest:
+      value:
+        fdCustomerId: c7726f24c50d4b69877845af06d2cbf9
+        authorization:
+          orderId: Order8331515
+          merchantId: MO35312599001
+          requestedAmount: 4.25
+          currencyCode:
+            number: 840
+          fundingSource:
+            saveToVault: true
+            token:
+              tokenId: 0e96800d-2cf1-47bc-9dbf-de9630ee4235
+              tokenProvider: CLAIM_CHECK_NONCE
+    NonceAuthResponse:
+      value:
+        fdAuthorizationId: 4fba5f6e30e44afd819a16cedc962f57
+        authStatus: APPROVED
+        orderId: Order8331515
+        requestedAmount: 4.25
+        approvedAmount: 4.25
+        currencyCode:
+          code: USD
+          number: 840
+        transactionDateTime: 2023-02-07T00:23:36-0500
+        fundingSource:
+          type: CREDIT
+          vaultedAccount:
+            fdAccountId: 8a7f7898861c224c01862a545d350235
+            type: CREDIT
+          credit:
+            nameOnCard: John Smith
+            alias: '8968'
+            cardType: VISA
+            billingAddress:
+              streetAddress: 100 Universal City Plaza
+              postalCode: '20220'
+            expiryDate:
+              month: '12'
+              year: '23'
+            token:
+              tokenId: '1741886859548968'
+              tokenProvider: TRANS_ARMOR
+        hostExtraInfo:
+          - name: APPROVAL_NUMBER
+            value: '34247 '
+          - name: SEQUENCE_NUMBER
+            value: '614812'
+          - name: TRANSACTION_DATETIME
+            value: 2023-02-07T00:23
+          - name: NETWORK_TRANSACTION_ID
+            value: '012000207052336'
+    TATokenAuthRequest:
+      value:
+        authorization:
+          orderId: Order7218349
+          merchantId: MO35312599001
+          requestedAmount: '2.25'
+          currencyCode:
+            number: '840'
+          fundingSource:
+            credit:
+              nameOnCard: John Smith
+              cardType: VISA
+              billingAddress:
+                type: work
+                streetAddress: 100 Universal City Plaza
+                locality: Hollywood
+                region: CA
+                postalCode: '20220'
+                country: US
+                formatted: |-
+                  100 Universal City Plaza
+                  Hollywood, CA 91608 US
+                primary: true
+              expiryDate:
+                month: '12'
+                year: '23'
+              token:
+                tokenId: '1741886859548968'
+                tokenProvider: TRANS_ARMOR
+    TATokenAuthResponse:
+      value:
+        fdAuthorizationId: d17ea6f3222d42cab3d4cb710537f2d8
+        authStatus: APPROVED
+        orderId: Order7218349
+        requestedAmount: 2.25
+        approvedAmount: 2.25
+        currencyCode:
+          code: USD
+          number: 840
+        transactionDateTime: 2023-02-07T00:21:24-0500
+        fundingSource:
+          type: CREDIT
+          credit:
+            nameOnCard: John Smith
+            alias: '8968'
+            cardType: VISA
+            billingAddress:
+              streetAddress: 100 Universal City Plaza
+              postalCode: '20220'
+            expiryDate:
+              month: '12'
+              year: '23'
+            token:
+              tokenId: '1741886859548968'
+              tokenProvider: TRANS_ARMOR
+        hostExtraInfo:
+          - name: APPROVAL_NUMBER
+            value: '37567 '
+          - name: SEQUENCE_NUMBER
+            value: '046277'
+          - name: TRANSACTION_DATETIME
+            value: 2023-02-07T00:21
+          - name: NETWORK_TRANSACTION_ID
+            value: '012000207052125'
+        
+        
+    TATokenAuthCaptureRequest:
+      value:
+        capture:
+          currencyCode:
+            number: 840
+          requestedAmount: 2.25
+    TATokenAuthCaptureResponse:
+      value:
+        fdCaptureId: 5d0eb623778441549d82244d31528744
+        status: APPROVED
+        requestedAmount: 2.25
+        approvedAmount: 2.25
+        currencyCode:
+          code: USD
+          number: 840
+        transactionDateTime: 2023-02-07T00:21:35-0500
+        fundingSource:
+          type: CREDIT
+          credit:
+            alias: '8968'
+            cardType: VISA
+        hostExtraInfo:
+          - name: APPROVAL_NUMBER
+            value: '37567 '
+          - name: SEQUENCE_NUMBER
+            value: '046277'
+          - name: TRANSACTION_DATETIME
+            value: 2023-02-07T00:21
+          - name: NETWORK_TRANSACTION_ID
+            value: '012000207052125'
+   
+    VaultedAuthCaptureRequest:
+      value:
+        fdCustomerId: c7726f24c50d4b69877845af06d2cbf9
+        capture:
+          currencyCode:
+            number: 840
+          requestedAmount: '3.25'
+    VaultedAuthCaptureResponse:
+      value:
+        fdCaptureId: 8411cf25075d46c4bd7cd80c46af79d8
+        status: APPROVED
+        requestedAmount: 3.25
+        approvedAmount: 3.25
+        currencyCode:
+          code: USD
+          number: 840
+        transactionDateTime: 2023-02-07T00:19:42-0500
+        fundingSource:
+          type: VAULTED_ACCOUNT
+        hostExtraInfo:
+          - name: APPROVAL_NUMBER
+            value: '34246 '
+          - name: SEQUENCE_NUMBER
+            value: '122578'
+          - name: TRANSACTION_DATETIME
+            value: 2023-02-07T00:19
+          - name: NETWORK_TRANSACTION_ID
+            value: '012000207051931'
+    MinimalCaptureRefundRequest:
+      value:
+        refund:
+          currencyCode:
+            number: 840
+          requestedAmount: 2.25
+    MinimalCaptureRefundResponse:
+      value:
+        fdRefundId: 38ddeba736da4e849b75753a4712911f
+        status: APPROVED
+        requestedAmount: 2.25
+        approvedAmount: 2.25
+        currencyCode:
+          code: USD
+          number: 840
+        transactionDateTime: 2023-02-07T00:21:45-0500
+        hostExtraInfo:
+          - name: APPROVAL_NUMBER
+            value: '37567 '
+          - name: SEQUENCE_NUMBER
+            value: '485027'
+          - name: TRANSACTION_DATETIME
+            value: 2023-02-07T00:21
+          - name: NETWORK_TRANSACTION_ID
+            value: '012000207052146'
+        partialPaymentAllowed: true
+        
+    MinimalGetAuthResponseByfdAuthorizationId:
+      value:
+        fdAuthorizationId: 28618d8fe42f4f2d92a10205a6099670
+        authStatus: APPROVED
+        requestedAmount: 3.25
+        approvedAmount: 3.25
+        currencyCode:
+          code: USD
+          number: 840
+        createdDateTime: 2023-02-07T00:19:31-0500
+        fundingSource:
+          type: VAULTED_ACCOUNT
+          vaultedAccount:
+            status: ACTIVE
+          credit:
+            alias: '8968'
+            cardType: VISA
+            billingAddress:
+              streetAddress: 100 Universal City Plaza
+              postalCode: '20220'
+            expiryDate:
+              month: '12'
+              year: '23'
+            token:
+              tokenId: '1741886859548968'
+              tokenProvider: TRANS_ARMOR
+    MinimalAuthVoidRequest:
+      value:
+        fdCustomerId: c7726f24c50d4b69877845af06d2cbf9
+    MinimalAuthVoidResponse:
+      value:
+        fdAuthorizationId: 142b9da5f1094fcf9e3b547d8b464d9e
+        authStatus: CANCELLED
+        orderId: Order0573944
+        transactionDateTime: 2023-02-07T00:20:22-0500
+        hostExtraInfo:
+          - name: APPROVAL_NUMBER
+            value: '34246 '
+          - name: SEQUENCE_NUMBER
+            value: '206485'
+          - name: NETWORK_TRANSACTION_ID
+            value: '012000207052019'
+            
+            
+            
+    MinimalRefundSale:
+      value:
+        refund:
+          currencyCode:
+            number: 840
+          requestedAmount: 500
+          
+    
+    
+    
+    MinimalRefundSaleR:
+      value:
+        fdRefundId: 5b4cf9da15e0475eb9ef3bcea5734442
+        status: APPROVED
+        requestedAmount: 500
+        approvedAmount: 500
+        currencyCode:
+          number: 840
+        transactionDateTime: '2017-10-04T21:49:21.94'
+        
+
+        
+    MinimalCaptureVoidRequest:
+      value: 
+
+          
+     
+      
+    MinimalCaptureVoidResponse:
+      value:
+        transactionDateTime: 2018-02-16T22:35:13+0530
+        hostExtraInfo: []
+        refunds: []
+        fdCaptureId: 8afa83bf619f886401619f93b5770009
+        status: CANCELLED
+        
+        
+        
+        
+    MinimalSaleVoidRequest:
+      value: 
+
+          
+          
+      
+      
+    MinimalSaleVoidResponse:
+      value:
+        transactionDateTime: 2018-06-18T04:50:21-0400
+        fdSaleId: 8a7fff6e63b13ea5016412167fa12107
+        status: CANCELLED
+        orderId: token001270123
+        hostExtraInfo:
+          - name: APPROVAL_NUMBER
+            value: '835910'
+          - name: SEQUENCE_NUMBER
+            value: '351156'
+        
+        
+    MinimalRefundVoidRequest:
+      value: 
+        fdCustomerId: cuid-0987613457398475
+        
+    
+    
+    
+        
+    MinimalRefundVoidResponse:
+      value:   
+        fdRefundId: 8a34144657d0aa6e0157d3808ed000f2
+        status: CANCELLED
+        transactionDateTime: '2016-04-16T16:06:05Z'
+        
+        
+        
+    MinimalGetAuthResponse:
+      value: 
+        requestedAmount: 5
+        approvedAmount: 5
+        currencyCode:
+          code: USD
+          number: 840
+          currency: US Dollar
+        fundingSource:
+          type: VAULTED_ACCOUNT
+          vaultedAccount:
+            status: ACTIVE
+        createdDateTime: 2019-03-29T03:56:59-0400
+        fdAuthorizationId: 8a08178722924906bb702541d15cf0a6
+        authStatus: APPROVED
+        
+        
+        
+    MinimalGetCaptureResponse: 
+      value: 
+        status: APPROVED
+        requestedAmount: 5.32
+        approvedAmount: 5.32
+        currencyCode:
+          code: USD
+          number: 840
+          currency: US Dollar
+        createdDateTime: 2019-03-29T05:07:24-0400
+        fdCaptureId: 5ce57048df9b4581806f56d63f571a2f
+        
+        
+        
+    MinimalGetSaleResponse:
+      value:
+        status: APPROVED
+        requestedAmount: 5
+        approvedAmount: 5
+        currencyCode:
+          code: USD
+          number: 840
+          currency: US Dollar
+        fundingSource:
+          type: VAULTED_ACCOUNT
+          vaultedAccount:
+            status: ACTIVE
+        createdDateTime: 2019-03-29T05:15:38-0400
+        fdSaleId: 867449ab492246de835a186329b51576
