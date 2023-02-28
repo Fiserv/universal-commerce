@@ -165,7 +165,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/OK'
+                $ref: '#/components/schemas/User'
               examples:
                 Minimal - 200:
                   summary: Get customer Details Minimal Response
