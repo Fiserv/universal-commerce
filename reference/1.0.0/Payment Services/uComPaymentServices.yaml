@@ -163,7 +163,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/AuthorizationOK'
+                $ref: '#/components/schemas/Authorization'
               examples: 
                 Minimal: {summary: Response with minimal required parameters, $ref: '#/components/examples/MinimalGetAuthResponse'}
           
@@ -214,7 +214,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/AuthorizationCreated'
+                $ref: '#/components/schemas/Authorization'
               examples:
                 Vaulted - 201:
                   summary: Auth with vaulted Card by passing MID Response
@@ -275,7 +275,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/AuthorizationOK'
+                $ref: '#/components/schemas/Authorization'
               examples:
                 Credit - 201:
                   summary: AUthorization details by fdAuthorizationId
@@ -363,7 +363,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/AuthorizationOK'
+                $ref: '#/components/schemas/Authorization'
               examples:
                 Minimal - 201:
                   summary: Void auth by fdauthorizationId Response
@@ -411,7 +411,7 @@ paths:
           content:
             application/json:
               schema:
-                 $ref: '#/components/responses/CaptureCreated'
+                 $ref: '#/components/schemas/Capture'
               examples:
                 Vaulted - 201:
                   summary: Auth with vaulted Card Response
@@ -517,7 +517,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/CaptureCreated'
+                $ref: '#/components/schemas/Capture'
               examples: 
                 Minimal: {summary: Response with minimal required parameters, $ref: '#/components/examples/MinimalGetCaptureResponse'}
         400:
@@ -561,7 +561,7 @@ paths:
           content:
               application/json:
                 schema:
-                  $ref: '#/components/responses/CaptureOK'
+                  $ref: '#/components/schemas/Capture'
                 examples: 
                   Minimal: {summary: Response with minimal required parameters, $ref: '#/components/examples/MinimalCaptureVoidResponse'}
         400:
@@ -606,7 +606,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/RefundCreated'
+                $ref: '#/components/schemas/Refund'
               examples:
                 Minimal - 201:
                   summary: capture refund response
@@ -644,7 +644,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/SaleOK'
+                $ref: '#/components/schemas/Sale'
               examples: 
                 Minimal: {summary: Response with minimal required parameters, $ref: '#/components/examples/MinimalGetSaleResponse'}
         400:
@@ -755,7 +755,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/SaleOK'
+                $ref: '#/components/schemas/Sale'
               examples: 
                 Minimal: {summary: Response with minimal required parameters, $ref: '#/components/examples/MinimalGetSaleResponse'}
         400:
@@ -839,7 +839,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/SaleOK'
+                $ref: '#/components/schemas/Sale'
               examples: 
                 Minimal: {summary: Request with minimal required parameters, $ref: '#/components/examples/MinimalSaleVoidResponse'}
         400:
@@ -884,7 +884,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/RefundCreated'
+                $ref: '#/components/schemas/Refund'
               examples: 
                 Minimal: {summary: Response with minimal required parameters, $ref: '#/components/examples/MinimalRefundSaleR'}
           
@@ -5501,14 +5501,3 @@ components:
         createdDateTime: 2019-03-29T05:15:38-0400
         fdSaleId: 867449ab492246de835a186329b51576
         
-        
-        
-        
-        
-        
-        
-        
-      
-        
-
-      
