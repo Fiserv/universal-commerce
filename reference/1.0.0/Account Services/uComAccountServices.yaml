@@ -263,7 +263,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/Created'
+                $ref: '#/components/schemas/Account'
               examples:
                 Nonce: {summary: Credit card - Vault using nonce, $ref: '#/components/examples/VaultWithNonceR'}
                 Server to server: {summary: Server to Server Card Enrollment, $ref: '#/components/examples/NonceCreationWithfdcustomerIdR'}
