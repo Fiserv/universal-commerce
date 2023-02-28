@@ -134,27 +134,27 @@ info:
   description: Services related to purchasing items at a petro station.
   version: 0.2.3
 servers:
-  - url: https://int.api.firstdata.com/ucom
+- url: https://int.api.firstdata.com/ucom
 tags:
-  - name: petro-transactions
-    description: Operations for purchasing items at a petro site
+- name: petro-transactions
+  description: Operations for purchasing items at a petro site
 paths:
   /v1/petro-transactions:
     post:
       x-group-name: Petro Transaction Services
       x-proxy-name: Create petro transaction
       tags:
-        - petro-transactions
+      - petro-transactions
       summary: Create a petro transaction
       description: Must include a siteLocationId, pumpNumber, funding source
       parameters:
-        - $ref: '#/components/parameters/ApiKeyParam'
-        - $ref: '#/components/parameters/TimestampParam'
-        - $ref: '#/components/parameters/AuthorizationParam'
-        - $ref: '#/components/parameters/ClientTokenParam'
-        - $ref: '#/components/parameters/RetailerPartnerIdParam'
-        - $ref: '#/components/parameters/AcceptLanguageParam'
-        - $ref: '#/components/parameters/SubMerchantIdParam'
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/RetailerPartnerIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
       requestBody:
         content:
           application/json:
@@ -194,7 +194,7 @@ paths:
                 STAC ID - QR Code - 201:
                   summary: QR Code service auth Response
                   $ref: '#/components/examples/ServiceAuthQRCodeResponse'
-          
+
         202:
           $ref: '#/components/responses/PartiallyCreated'
         400:
@@ -213,25 +213,25 @@ paths:
       x-group-name: Petro Transaction Services
       x-proxy-name: Read petro transaction
       tags:
-        - petro-transactions
+      - petro-transactions
       summary: Read a petro Transaction
       description: Fetch the information about a Transaction by providing fdTransactionId
       parameters:
-        - $ref: '#/components/parameters/ApiKeyParam'
-        - $ref: '#/components/parameters/TimestampParam'
-        - $ref: '#/components/parameters/AuthorizationParam'
-        - $ref: '#/components/parameters/ClientTokenParam'
-        - $ref: '#/components/parameters/FdTransactionIdParam'
-        - $ref: '#/components/parameters/RetailerPartnerIdParam'
-        - $ref: '#/components/parameters/AcceptLanguageParam'
-        - $ref: '#/components/parameters/SubMerchantIdParam'
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/FdTransactionIdParam'
+      - $ref: '#/components/parameters/RetailerPartnerIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
       responses:
         200:
           description: Created
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/OK'
+                $ref: '#/components/schemas/PetroTransaction'
               examples:
                 Completed - PayPal - 200:
                   summary: Status Compeleted with PayPal Response
@@ -251,7 +251,7 @@ paths:
                 Fuel Started - Minimal - 200:
                   summary: Status Fuel Started Response
                   $ref: '#/components/examples/StatusFuelStartedResponse'
-          
+
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -265,23 +265,23 @@ paths:
       x-group-name: Petro Transaction Services
       x-proxy-name: Update petro transaction
       tags:
-        - petro-transactions
+      - petro-transactions
       summary: Update a petro transaction
       description: Update the status of a transaction through its lifecycle
       parameters:
-        - $ref: '#/components/parameters/ApiKeyParam'
-        - $ref: '#/components/parameters/TimestampParam'
-        - $ref: '#/components/parameters/AuthorizationParam'
-        - $ref: '#/components/parameters/ClientTokenParam'
-        - $ref: '#/components/parameters/FdTransactionIdParam'
-        - $ref: '#/components/parameters/RetailerPartnerIdParam'
-        - $ref: '#/components/parameters/AcceptLanguageParam'
-        - $ref: '#/components/parameters/SubMerchantIdParam'
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/FdTransactionIdParam'
+      - $ref: '#/components/parameters/RetailerPartnerIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
       requestBody:
         content:
           application/json:
             schema:
-              $ref : '#/components/schemas/PetroTransactionUpdateRequest'
+              $ref: '#/components/schemas/PetroTransactionUpdateRequest'
             examples:
               Cancel Transaction: {summary: Request with cancel transaction, $ref: '#/components/examples/PatchSampleRequest'}
       responses:
@@ -302,9 +302,9 @@ paths:
 
 components:
   schemas:
-#-------------------------------------
-# Operational Models
-#-------------------------------------
+    #-------------------------------------
+    # Operational Models
+    #-------------------------------------
     PetroTransactionRequest:
       type: object
       properties:
@@ -316,26 +316,25 @@ components:
           $ref: '#/components/schemas/PetroTransaction'
         deviceInfo:
           $ref: '#/components/schemas/DeviceInfo'
-          
-          
-    PetroTransactionUpdateRequest:
-        type: object
-        properties:
-          action:
-            $ref: '#/components/schemas/UpdateActionType'
-          deviceInfo:
-            $ref: '#/components/schemas/DeviceInfo'
 
-  #-------------------------------------
-  # Resource Models
-  #-------------------------------------
+
+    PetroTransactionUpdateRequest:
+      type: object
+      properties:
+        action:
+          $ref: '#/components/schemas/UpdateActionType'
+        deviceInfo:
+          $ref: '#/components/schemas/DeviceInfo'
+
+    #-------------------------------------
+    # Resource Models
+    #-------------------------------------
     ACH:
       type: object
       properties:
         accountNumber:
           type: string
-          description: Unique number identifying the ACH account provided by Financial
-            institution.
+          description: Unique number identifying the ACH account provided by Financial institution.
           example: "92658250156"
         routingNumber:
           type: string
@@ -343,19 +342,16 @@ components:
           example: "999999999"
         secCode:
           type: string
-          description: SEC Code is optional data, It is specifically required for
-            ACH account which is ruled by NACHA compliance.
+          description: SEC Code is optional data, It is specifically required for ACH account which is ruled by NACHA compliance.
         cardNumber:
           type: string
-          description: ACH Card number, can only be sent when vaulting an account.  This
-            field will NOT be present in responses.
+          description: ACH Card number, can only be sent when vaulting an account.  This field will NOT be present in responses.
           example: "9111111111111111"
         cardType:
           $ref: '#/components/schemas/AchCardType'
         securityCode:
           type: string
-          description: Code to validate the ACH account, like micro deposit or security
-            code.
+          description: Code to validate the ACH account, like micro deposit or security code.
           example: "278356"
         alias:
           type: string
@@ -387,9 +383,7 @@ components:
           description: Canonical type values of "work", "home", and "other".
         streetAddress:
           type: string
-          description: The full street address component, which may include house
-            number, street name, P.O. box, and multi-line extended street address
-            information.
+          description: The full street address component, which may include house number, street name, P.O. box, and multi-line extended street address information.
         locality:
           type: string
           description: The city or locality component.
@@ -401,17 +395,13 @@ components:
           description: The zip code or postal code component.
         country:
           type: string
-          description: The country name component.  When specified, the value MUST
-            be in ISO 3166-1 "alpha-2" code format; e.g., the United States and Sweden
-            are "US" and "SE", respectively.
+          description: The country name component.  When specified, the value MUST be in ISO 3166-1 "alpha-2" code format; e.g., the United States and Sweden are "US" and "SE", respectively.
         formatted:
           type: string
-          description: The full mailing address, formatted for display or use with
-            a mailing label.
+          description: The full mailing address, formatted for display or use with a mailing label.
         primary:
           type: boolean
-          description: Indicates if this is the default address for the associated
-            resource. It only has meaning when used in a set or array of addresses.
+          description: Indicates if this is the default address for the associated resource. It only has meaning when used in a set or array of addresses.
       description: A physical mailing address for this user.
       example:
         type: work
@@ -503,7 +493,7 @@ components:
         xid:
           type: string
         cavv:
-          type: string            
+          type: string
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
         panType:
@@ -536,8 +526,7 @@ components:
       minimum: 0
       exclusiveMinimum: true
       type: number
-      description: Amount authorized according to the request type [auth, capture,
-        refund, etc] in lower denomination.
+      description: Amount authorized according to the request type [auth, capture, refund, etc] in lower denomination.
       format: double
       example: 500.45
 
@@ -575,8 +564,7 @@ components:
       properties:
         cardNumber:
           type: string
-          description: Primary account number, can only be sent when vaulting an account.  This
-            field will NOT be present in responses.
+          description: Primary account number, can only be sent when vaulting an account.  This field will NOT be present in responses.
           example: "4111111111111111"
         bin:
           type: string
@@ -641,8 +629,7 @@ components:
       properties:
         cardNumber:
           type: string
-          description: Primary account number, can only be sent when vaulting an account.  This
-            field will NOT be present in responses.
+          description: Primary account number, can only be sent when vaulting an account.  This field will NOT be present in responses.
         nameOnCard:
           type: string
           description: Name as printed on physical card or on virtual account
@@ -694,17 +681,13 @@ components:
       properties:
         type:
           type: string
-          description: The "type" sub-attribute is used to provide a classification
-            meaningful to the (human) user.  The user interface should encourage the
-            use of basic values of "work", "home", and "other" and MAY allow additional
-            type values to be used at the discretion of the service client.
+          description: The "type" sub-attribute is used to provide a classification meaningful to the (human) user.  The user interface should encourage the use of basic values of "work", "home", and "other" and MAY allow additional type values to be used at the discretion of the service client.
         value:
           type: string
           description: The value SHOULD be specified according to RFC5321.
         primary:
           type: boolean
-          description: Defines if this entry is to be used as the primary or default
-            for the user.
+          description: Defines if this entry is to be used as the primary or default for the user.
           default: false
       description: Email address for the user.
       example:
@@ -733,11 +716,8 @@ components:
           maxLength: 6
           minLength: 4
           type: string
-          description: Month and year together, 'MMYY' or 'MMYYYY'.  If the latter
-            format, the string will be parsed and validated per the given format.  Any
-            other format will be rejected.
-      description: Contains account expiration data and needs to either send the values
-        in individual fields OR as a singleValue.
+          description: Month and year together, 'MMYY' or 'MMYYYY'.  If the latter format, the string will be parsed and validated per the given format.  Any other format will be rejected.
+      description: Contains account expiration data and needs to either send the values in individual fields OR as a singleValue.
 
     ExternalCustomerId:
       title: External Customer ID
@@ -755,8 +735,7 @@ components:
       properties:
         cardNumber:
           type: string
-          description: Primary account number, can only be sent when vaulting an account.  This
-            field will NOT be present in responses.
+          description: Primary account number, can only be sent when vaulting an account.  This field will NOT be present in responses.
         nameOnCard:
           type: string
           description: Name as printed on physical card or on virtual account
@@ -787,8 +766,7 @@ components:
         odometer:
           maxLength: 8
           type: string
-          description: Identifies the vehicle’s odometer reading keyed in by the customer
-            or clerk.
+          description: Identifies the vehicle’s odometer reading keyed in by the customer or clerk.
         vehicleNumber:
           maxLength: 10
           type: string
@@ -800,8 +778,7 @@ components:
         driverIdNumber:
           maxLength: 10
           type: string
-          description: Identifies the unencrypted Driver Number or Identification
-            Number.
+          description: Identifies the unencrypted Driver Number or Identification Number.
         fleetEmployeeNumber:
           maxLength: 10
           type: string
@@ -838,7 +815,7 @@ components:
 
     FuelPurchaseInfo:
       required:
-        - pumpNumber
+      - pumpNumber
       type: object
       properties:
         pumpNumber:
@@ -854,13 +831,13 @@ components:
       example:
         pumpNumber: "17"
         items:
-          - posCode: "432"
-            itemDescription: Unleaded
-            itemPrice: "2.03"
-            unitOfMeasurement: gallonUS
-            posCodeFormat: plu
-            posCodeModifier: "1"
-            productCode: "102"
+        - posCode: "432"
+          itemDescription: Unleaded
+          itemPrice: "2.03"
+          unitOfMeasurement: gallonUS
+          posCodeFormat: plu
+          posCodeModifier: "1"
+          productCode: "102"
 
     GooglePay:
       type: object
@@ -889,7 +866,7 @@ components:
         xid:
           type: string
         cavv:
-          type: string          
+          type: string
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
         panType:
@@ -936,15 +913,11 @@ components:
       properties:
         accountId:
           type: string
-          description: Account identifier, can be used for traditional card number
-            or any alphanumeric value.  For example, a unique value not shown on the
-            card, email address, phone number, social id, etc.
+          description: Account identifier, can be used for traditional card number or any alphanumeric value.  For example, a unique value not shown on the card, email address, phone number, social id, etc.
           example: email-id@example.com
         cardNumber:
           type: string
-          description: Card number of loyalty account. The accountId parameter superscedes
-            this field.  This field is ignored when the request is to create a new
-            acccount.
+          description: Card number of loyalty account. The accountId parameter superscedes this field.  This field is ignored when the request is to create a new acccount.
           example: "905960447"
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
@@ -983,8 +956,7 @@ components:
               type: boolean
             isVirtualAccount:
               type: boolean
-              description: Indicates if the account has an associated plastic card
-                or not.
+              description: Indicates if the account has an associated plastic card or not.
           description: Common true/false settings on an account
         balance:
           $ref: '#/components/schemas/LoyaltyBalance'
@@ -1010,8 +982,7 @@ components:
               $ref: '#/components/schemas/VaultedAccount'
             type:
               $ref: '#/components/schemas/FundingSourceType'
-          description: Information about Loyalty account associated with the petro
-            transaction.
+          description: Information about Loyalty account associated with the petro transaction.
         requestedRedeemUnits:
           type: number
           description: Units requested by user to redeem/burn as part of transaction.
@@ -1034,8 +1005,7 @@ components:
         hostExtraInfo:
           minItems: 0
           type: array
-          description: Additional host specific information presented as name-value
-            pairs
+          description: Additional host specific information presented as name-value pairs
           items:
             $ref: '#/components/schemas/NVP'
         status:
@@ -1071,19 +1041,16 @@ components:
       properties:
         programId:
           type: string
-          description: Unique identifier used to provide link between applications
-            across disparate systems.
+          description: Unique identifier used to provide link between applications across disparate systems.
         hostProgramId:
           type: string
-          description: Loyalty program Id used by the host (cloud) solution. Not in
-            used in uCom system. For future use.
+          description: Loyalty program Id used by the host (cloud) solution. Not in used in uCom system. For future use.
         programName:
           type: string
           description: Loyalty program name. Common name for the given loyalty program
         programDesc:
           type: string
-          description: Used to describe the loyalty program and perhaps used to display
-            to the client.
+          description: Used to describe the loyalty program and perhaps used to display to the client.
         programProvider:
           type: string
           description: Sponsor of the loyalty program.
@@ -1103,8 +1070,8 @@ components:
 
     Link:
       required:
-        - href
-        - rel
+      - href
+      - rel
       type: object
       properties:
         href:
@@ -1116,10 +1083,10 @@ components:
           description: Defines the type of link relationship to current resource.
           example: self
           enum:
-            - current.page
-            - previous.page
-            - next.page
-            - self
+          - current.page
+          - previous.page
+          - next.page
+          - self
         method:
           type: string
           description: Defines the HTTP method for the given href.
@@ -1136,8 +1103,7 @@ components:
       properties:
         transactionId:
           type: string
-          description: Identifier corresponding to an account enrolled with MasterPass
-            system.
+          description: Identifier corresponding to an account enrolled with MasterPass system.
           example: "1234567890120298"
         credit:
           $ref: '#/components/schemas/Credit'
@@ -1159,13 +1125,12 @@ components:
 
     Order:
       required:
-        - orderId
+      - orderId
       type: object
       properties:
         orderId:
           type: string
-          description: Client provided unique identifier for the order related to
-            the requested authorization
+          description: Client provided unique identifier for the order related to the requested authorization
           example: Order001
         altOrderId:
           type: string
@@ -1192,8 +1157,7 @@ components:
       properties:
         code:
           type: string
-          description: Indicates offer status code, NOT_ACTIVATED | ACTIVATED | REDEEMED
-            | DECLINED | CANCELLED | FAILED
+          description: Indicates offer status code, NOT_ACTIVATED | ACTIVATED | REDEEMED | DECLINED | CANCELLED | FAILED
         statusInfo:
           minItems: 0
           uniqueItems: true
@@ -1205,7 +1169,7 @@ components:
 
     PaymentInfo:
       required:
-        - fundingSource
+      - fundingSource
       type: object
       properties:
         currencyCode:
@@ -1226,8 +1190,7 @@ components:
           properties:
             saveToVault:
               type: boolean
-              description: Flag to indicate if the provided payment method should
-                be vaulted to a secure repository for future use for the given customer.
+              description: Flag to indicate if the provided payment method should be vaulted to a secure repository for future use for the given customer.
               example: false
               default: false
             type:
@@ -1272,8 +1235,7 @@ components:
               $ref: '#/components/schemas/WalmartPay'
             ebt:
               $ref: '#/components/schemas/EBT'
-          description: The payment source to be used. Only one among the following
-            allowed.
+          description: The payment source to be used. Only one among the following allowed.
       description: Payment tender information
 
     Paypal:
@@ -1296,20 +1258,16 @@ components:
       properties:
         value:
           type: string
-          description: The value SHOULD be specified according to the format defined
-            in RFC3966, e.g., 'tel:+1-201-555-0123'.
+          description: The value SHOULD be specified according to the format defined in RFC3966, e.g., 'tel:+1-201-555-0123'.
         type:
           type: string
-          description: Often has typical values of "work","billing", "home", "mobile",
-            "fax", "pager", and "other" and MAY allow more types to be defined by
-            the service client.
+          description: Often has typical values of "work","billing", "home", "mobile", "fax", "pager", and "other" and MAY allow more types to be defined by the service client.
         extension:
           type: string
           description: Defines the extension of the phone number.
         primary:
           type: boolean
-          description: Defines if this entry is to be used as the primary or default
-            for the user.
+          description: Defines if this entry is to be used as the primary or default for the user.
           default: false
       description: Phone number for the user.
       example:
@@ -1376,8 +1334,7 @@ components:
             $ref: '#/components/schemas/WashCode'
         priceTier:
           type: string
-      description: Structure to support passing POS sale info as part of the sale
-        request.
+      description: Structure to support passing POS sale info as part of the sale request.
 
     PetroSite:
       type: object
@@ -1399,22 +1356,18 @@ components:
       properties:
         transactionId:
           type: string
-          description: Unique identifier for this purchasing transaction. Ignored
-            on POST requests since it's generated by the host system.
+          description: Unique identifier for this purchasing transaction. Ignored on POST requests since it's generated by the host system.
           readOnly: true
           example: 485-27834-285903824-095
         qrCodeId:
           type: string
-          description: Unique Identifier provided by payment platform for a given
-            funding source.
+          description: Unique Identifier provided by payment platform for a given funding source.
         stacId:
           type: string
-          description: Unique Identifier provided by payment platform for a given
-            funding source.
+          description: Unique Identifier provided by payment platform for a given funding source.
         transactionSubtype:
           type: string
-          description: Indicates subtype of a given transaction for EBT, ie EBTCASH
-            or EBTSNAP
+          description: Indicates subtype of a given transaction for EBT, ie EBTCASH or EBTSNAP
         merchantTokenCode:
           type: string
           description: Merchant token code used for token generation
@@ -1443,8 +1396,7 @@ components:
           $ref: '#/components/schemas/CapturedAmount'
         printReceipt:
           type: boolean
-          description: Indicate whether or not to print the receipt at the outside
-            fuel dispenser.
+          description: Indicate whether or not to print the receipt at the outside fuel dispenser.
         saleItems:
           type: array
           readOnly: true
@@ -1452,8 +1404,7 @@ components:
             $ref: '#/components/schemas/POSItem'
         availOffersTrxnId:
           type: string
-          description: Identifier to be carried along with subsequent interactions
-            using the available offers returned to the client.
+          description: Identifier to be carried along with subsequent interactions using the available offers returned to the client.
         offers:
           type: array
           items:
@@ -1472,8 +1423,7 @@ components:
           $ref: '#/components/schemas/SalePositionType'
         transactionNo:
           type: string
-          description: Unique identifier for this purchasing transaction used to print
-            on customer interfacing receipts
+          description: Unique identifier for this purchasing transaction used to print on customer interfacing receipts
           readOnly: true
           example: "000001"
         transactionDateTime:
@@ -1519,8 +1469,7 @@ components:
           description: Prepaid card number.
         cardSubType:
           type: string
-          description: Merchant or brand specific information about the type of account.Issuer/group
-            information.
+          description: Merchant or brand specific information about the type of account.Issuer/group information.
           example: Merchant Brand
         securityCode:
           type: string
@@ -1542,18 +1491,16 @@ components:
 
     PrepaidBalance:
       required:
-        - currencyCode
-        - currentBalance
+      - currencyCode
+      - currentBalance
       type: object
       properties:
         currentBalance:
           type: number
-          description: The current balance of prepaid card in lower denomination of
-            the currency.
+          description: The current balance of prepaid card in lower denomination of the currency.
         beginBalance:
           type: number
-          description: The balance of prepaid card before a transaction in lower denomination
-            of the currency.
+          description: The balance of prepaid card before a transaction in lower denomination of the currency.
         currencyCode:
           $ref: '#/components/schemas/ISO-4217'
         currencyType:
@@ -1636,8 +1583,7 @@ components:
             type: string
         offerMessage:
           type: string
-          description: The offer information that is for the client to see on the
-            user-interface.  This is most often set by the host system.
+          description: The offer information that is for the client to see on the user-interface.  This is most often set by the host system.
         effectiveDateTime:
           type: string
           description: Starting time for a reward validity.
@@ -1667,12 +1613,10 @@ components:
           description: Links to associated promotion if it applies.
         isExclusive:
           type: boolean
-          description: Indicator if offer can be combined with other offers or is
-            mutually exclusive.
+          description: Indicator if offer can be combined with other offers or is mutually exclusive.
         userAcceptanceRequired:
           type: boolean
-          description: Indicator if a user has to accept the offer before it can be
-            applied to a transaction or accrued in an account.
+          description: Indicator if a user has to accept the offer before it can be applied to a transaction or accrued in an account.
         offerStatus:
           $ref: '#/components/schemas/OfferStatus'
         currencyCode:
@@ -1739,20 +1683,17 @@ components:
           description: Common name for the resource as specified at the site.
         order:
           $ref: '#/components/schemas/Order'
-      description: Information about Resources associated with the Transaction.  The
-        common example is the car wash system.
+      description: Information about Resources associated with the Transaction.  The common example is the car wash system.
 
     ReceiptData:
       type: object
       properties:
         receiptSection:
           type: string
-          description: Indicates the section of the receipt the text represents [e.g.
-            full, vat, eft, loyalty, etc]
+          description: Indicates the section of the receipt the text represents [e.g. full, vat, eft, loyalty, etc]
         receiptLines:
           $ref: '#/components/schemas/ReceiptLine'
-      description: Container for the receipt lines sent from the site box as printed
-        on the paper receipt.
+      description: Container for the receipt lines sent from the site box as printed on the paper receipt.
 
     ReceiptLine:
       type: object
@@ -1799,8 +1740,7 @@ components:
       minimum: 0
       exclusiveMinimum: true
       type: number
-      description: Requested amount for the given request type [auth, capture, refund,
-        etc].
+      description: Requested amount for the given request type [auth, capture, refund, etc].
       format: double
       example: 500.0
 
@@ -1823,8 +1763,7 @@ components:
           format: date-time
         offerReferenceId:
           type: string
-          description: Link to the offer that provided the opportunity for a customer
-            to receive the reward.
+          description: Link to the offer that provided the opportunity for a customer to receive the reward.
         currencyCode:
           $ref: '#/components/schemas/ISO-4217'
         values:
@@ -1873,15 +1812,13 @@ components:
           example: TRANS_ARMOR or NETWORK_TOKEN or THIRD_PARTY_NETWORK_TOKEN
         cryptogram:
           type: string
-          description: 28 or 56 characters for Visa / Mastercard. 4 characters for
-            Discover / Amex. Required for CIT. Not required for MIT.
+          description: 28 or 56 characters for Visa / Mastercard. 4 characters for Discover / Amex. Required for CIT. Not required for MIT.
           example: 3CguW5ecfTz...Yuhw=
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
         tokenType:
           $ref: '#/components/schemas/ReferenceTokenType'
-      description: Surrogate value used to represent a handle to an account without
-        sharing PCI/PII data to look it up.
+      description: Surrogate value used to represent a handle to an account without sharing PCI/PII data to look it up.
 
     SamsungPay:
       type: object
@@ -1911,7 +1848,7 @@ components:
         xid:
           type: string
         cavv:
-          type: string           
+          type: string
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
         panType:
@@ -1953,8 +1890,7 @@ components:
           example: ewogIC
         challengeIndicator:
           type: string
-          example: '01 = No preference 02 = No challenge requested 03 = Challenge
-            requested: 3DS Requestor Preference 04 = Challenge requested: Mandate'
+          example: '01 = No preference 02 = No challenge requested 03 = Challenge requested: 3DS Requestor Preference 04 = Challenge requested: Mandate'
         dsTransactionId:
           type: string
           example: 292bb6b886fc4446894f878b7e32bd5e
@@ -1996,16 +1932,14 @@ components:
         eci:
           type: string
           description: Electronic Commerce Indicator value
-      description: Details of ThreeDSecure transaction used to process the challege
-        flow
+      description: Details of ThreeDSecure transaction used to process the challege flow
 
     SiteResource:
       type: object
       properties:
         id:
           type: string
-          description: Unique identifier for the resource at the site.  If a site
-            has multiple car wash systems, this would be used to identify each separately.
+          description: Unique identifier for the resource at the site.  If a site has multiple car wash systems, this would be used to identify each separately.
           example: car_wash_1
         name:
           type: string
@@ -2013,20 +1947,17 @@ components:
           example: Automatic Car Wash
         items:
           type: array
-          description: Item(s) for sale at the resource.  Common examples are the
-            car wash packages for sale.
+          description: Item(s) for sale at the resource.  Common examples are the car wash packages for sale.
           items:
             $ref: '#/components/schemas/SiteResourceItem'
-      description: Information about Resources associated with the Transaction.  The
-        common example is the car wash system.
+      description: Information about Resources associated with the Transaction.  The common example is the car wash system.
 
     SiteResourceItem:
       type: object
       properties:
         id:
           type: string
-          description: Generic identity field, but most often the itemInfo fields
-            are used.
+          description: Generic identity field, but most often the itemInfo fields are used.
         itemInfo:
           $ref: '#/components/schemas/POSItem'
       description: Information about individual items of a Site Resource
@@ -2088,13 +2019,12 @@ components:
 
     Vipps:
       required:
-        - paymentId
+      - paymentId
       type: object
       properties:
         paymentId:
           type: string
-          description: The payment_id of Vipps. Used to correlate with the webhook
-            of an open order.
+          description: The payment_id of Vipps. Used to correlate with the webhook of an open order.
           example: ab12-124C-ab12-124C-ab12-124C
         credit:
           $ref: '#/components/schemas/Credit'
@@ -2105,8 +2035,7 @@ components:
       properties:
         callId:
           type: string
-          description: Identifier corresponding to an account enrolled with Visa Checkout
-            system.
+          description: Identifier corresponding to an account enrolled with Visa Checkout system.
           example: "1234732704291071701"
         credit:
           $ref: '#/components/schemas/Credit'
@@ -2138,24 +2067,22 @@ components:
         token:
           $ref: '#/components/schemas/ReferenceToken'
 
-  #-------------------------------------
-  # Common Models
-  #-------------------------------------
+    #-------------------------------------
+    # Common Models
+    #-------------------------------------
     DeviceInfo:
       required:
-        - id
-        - kind
+      - id
+      - kind
       type: object
       properties:
         id:
           type: string
-          description: Unique Id for the device. Value should not contain line feeds,
-            carriage returns, tabs, leading or trailing spaces, or multiple spaces.
+          description: Unique Id for the device. Value should not contain line feeds, carriage returns, tabs, leading or trailing spaces, or multiple spaces.
           example: 537edec8-d33e-4ee8-93a7-b9f61876950c
         kind:
           type: string
-          description: Possible values are mobile, wearable, automobile, embedded,desktop,
-            other.
+          description: Possible values are mobile, wearable, automobile, embedded,desktop, other.
           example: mobile
         details:
           title: deviceData
@@ -2168,8 +2095,7 @@ components:
             properties:
               provider:
                 type: string
-                description: Identifies the provider of the data and is often used
-                  when decrypting data on the server.
+                description: Identifies the provider of the data and is often used when decrypting data on the server.
                 example: InAuth
               dataCapture:
                 type: object
@@ -2184,12 +2110,10 @@ components:
                     example: BB8E4E92...Fz1E063113
                   captureTime:
                     type: string
-                    description: Device data capture time in Internet Date/Time format
-                      - yyyy-MM-dd'T'HH:mm:ss'Z'
+                    description: Device data capture time in Internet Date/Time format - yyyy-MM-dd'T'HH:mm:ss'Z'
                     format: date-time
                     example: 2016-04-16T16:06:05Z
-                description: Device data captured as a bundle and transmitted as an
-                  encrypted and/or specifically formated string.
+                description: Device data captured as a bundle and transmitted as an encrypted and/or specifically formated string.
               dataStatic:
                 type: object
                 properties:
@@ -2215,13 +2139,11 @@ components:
                 properties:
                   latitude:
                     type: string
-                    description: Device position - latitude at the time of the data
-                      event
+                    description: Device position - latitude at the time of the data event
                     example: 13.0827 N
                   longitude:
                     type: string
-                    description: Device position - longitude at the time of the data
-                      event
+                    description: Device position - longitude at the time of the data event
                     example: 80.2707 E
                   ipAddress:
                     type: string
@@ -2229,8 +2151,7 @@ components:
                     example: 172.27.37.221
                   captureTime:
                     type: string
-                    description: Device data capture time in Internet Date/Time format
-                      - yyyy-MM-dd'T'HH:mm:ss'Z'
+                    description: Device data capture time in Internet Date/Time format - yyyy-MM-dd'T'HH:mm:ss'Z'
                     format: date-time
                     example: 2016-04-16T16:06:05Z
                 description: Device location details
@@ -2265,32 +2186,31 @@ components:
         id: 537edec8-d33e-4ee8-93a7-b9f61876950c
         kind: mobile
         details:
-          - provider: InAuth
-            dataCapture:
-              rawData: aaaaaXREUVZGRlFY...aMV
-              dataEventId: BB8E4E92...Fz1E063113
-              captureTime: 2016-04-16T16:06:05Z
-            dataStatic:
-              os: Android 5.1.1 Lollipop
-              osVersion: 5.1.1 Lollipop
-              model: XYX-1
-              Type: Moto G
-            dataDynamic:
-              latitude: 13.0827 N
-              longitude: 80.2707 E
-              ipAddress: 172.27.37.221
-              captureTime: 2016-04-16T16:06:05Z
+        - provider: InAuth
+          dataCapture:
+            rawData: aaaaaXREUVZGRlFY...aMV
+            dataEventId: BB8E4E92...Fz1E063113
+            captureTime: 2016-04-16T16:06:05Z
+          dataStatic:
+            os: Android 5.1.1 Lollipop
+            osVersion: 5.1.1 Lollipop
+            model: XYX-1
+            Type: Moto G
+          dataDynamic:
+            latitude: 13.0827 N
+            longitude: 80.2707 E
+            ipAddress: 172.27.37.221
+            captureTime: 2016-04-16T16:06:05Z
         additionalInfo:
-          - name: some-key
-            value: some-value
+        - name: some-key
+          value: some-value
 
     Error:
       type: object
       properties:
         code:
           type: string
-          description: Uniquely identifies an error condition. Client applications
-            need to read and handle errors based on this.
+          description: Uniquely identifies an error condition. Client applications need to read and handle errors based on this.
         message:
           type: string
           description: A generic description of the error condition.
@@ -2318,8 +2238,7 @@ components:
                   message:
                     type: string
                     description: Information specific to a property or attribute.
-          description: Information that needs to be understood by the client developers
-            and should not be interpreted for application processing.
+          description: Information that needs to be understood by the client developers and should not be interpreted for application processing.
         hostExtraInfo:
           minItems: 0
           uniqueItems: true
@@ -2341,105 +2260,103 @@ components:
           developerMessage: Invalid Message format in request payload
           moreInfo: https://www.example.com/errors/40000
           fieldError:
-            - field: example id
-              message: exampleId is mandatory
+          - field: example id
+            message: exampleId is mandatory
 
-  #-------------------------------------
-  # ENUM Models
-  #-------------------------------------
+    #-------------------------------------
+    # ENUM Models
+    #-------------------------------------
     AccountStatus:
       type: string
       description: Indicates the status of an account.
       enum:
-        - ACTIVE
-        - INACTIVE
-        - TERMINATED
-        - ISSUER_TERMINATED
-        - WALLET_TERMINATED
-        - PENDING
+      - ACTIVE
+      - INACTIVE
+      - TERMINATED
+      - ISSUER_TERMINATED
+      - WALLET_TERMINATED
+      - PENDING
 
     AccountType:
       type: string
       description: Type of Account vaulted
       enum:
-        - CREDIT
-        - PREPAID
-        - ACH
-        - LOYALTY
-        - PAYPAL
-        - MASTERPASS
-        - VENMO
+      - CREDIT
+      - PREPAID
+      - ACH
+      - LOYALTY
+      - PAYPAL
+      - MASTERPASS
+      - VENMO
 
     AchEnrollmentStatus:
       type: string
       description: Indicates ACH enrollment status
       enum:
-        - ACTIVE
-        - PENDING
-        - PENDING_LINKED_ACCOUNT
+      - ACTIVE
+      - PENDING
+      - PENDING_LINKED_ACCOUNT
 
     AchEnrollmentSubStatus:
       type: string
       description: Indicates ACH enrollment pending status
       enum:
-        - PENDING_BANK_VALIDATION
-        - PENDING_PIN_VALIDATION
-        - PENDING_EMAIL_VALIDATION
-        - PENDING_PHONE_VALIDATION
-        - PENDING_SOFT_BLOCK
-        - PENDING_HARD_BLOCK
+      - PENDING_BANK_VALIDATION
+      - PENDING_PIN_VALIDATION
+      - PENDING_EMAIL_VALIDATION
+      - PENDING_PHONE_VALIDATION
+      - PENDING_SOFT_BLOCK
+      - PENDING_HARD_BLOCK
 
     BalanceUnitTypes:
       type: string
       description: Indicator to determine how to display balances
       enum:
-        - CENTS
-        - MILES
-        - POINTS
-        - STARS
-        - LITRES
+      - CENTS
+      - MILES
+      - POINTS
+      - STARS
+      - LITRES
 
     CreditCardType:
       type: string
       description: Indicates the type of credit account association
       enum:
-        - AMEX
-        - DISCOVER
-        - MASTERCARD
-        - PLCC
-        - VISA
-        - OTHER
+      - AMEX
+      - DISCOVER
+      - MASTERCARD
+      - PLCC
+      - VISA
+      - OTHER
 
     AchCardType:
       type: string
       description: Indicates the type of ACH card association
       enum:
-        - CONNECTPAY
+      - CONNECTPAY
 
     AchAccountType:
       type: string
       description: ACH account type
       enum:
-        - CHECKING
-        - SAVINGS
+      - CHECKING
+      - SAVINGS
 
     CurrencyPairType:
       type: string
-      description: Describes the type of currency where BASE represents the currency
-        from Host and TRANSACTION represents the one requested.
+      description: Describes the type of currency where BASE represents the currency from Host and TRANSACTION represents the one requested.
       enum:
-        - BASE
-        - TRANSACTION
+      - BASE
+      - TRANSACTION
 
     FleetCardType:
       type: string
       description: Indicates the type of fleet account association
       enum:
-        - WEX
+      - WEX
 
     FleetTagType:
-      title: Indicates the possible values accepted in Fleet Data segment to Payment
-        Processor.
+      title: Indicates the possible values accepted in Fleet Data segment to Payment Processor.
       type: object
       properties:
         name:
@@ -2453,214 +2370,214 @@ components:
       type: string
       description: Describes the type of Funding source
       enum:
-        - VAULTED_ACCOUNT
-        - CREDIT
-        - PREPAID
-        - APPLE_PAY
-        - ANDRIOD_PAY
-        - PAYPAL
-        - TOKEN
-        - NONCE
-        - VCO
-        - VENMO
-        - LOYALTY
-        - AMAZON_PAY
-        - VIPPS
-        - FLEET
-        - BANCONTACT
-        - IDEAL
-        - WALMART_PAY
-        - EBT
+      - VAULTED_ACCOUNT
+      - CREDIT
+      - PREPAID
+      - APPLE_PAY
+      - ANDRIOD_PAY
+      - PAYPAL
+      - TOKEN
+      - NONCE
+      - VCO
+      - VENMO
+      - LOYALTY
+      - AMAZON_PAY
+      - VIPPS
+      - FLEET
+      - BANCONTACT
+      - IDEAL
+      - WALMART_PAY
+      - EBT
 
     LoyaltyAccountStatus:
       type: string
       description: Indicator of the account state as indicated by the loyalty issuer.
       enum:
-        - ENROLLED
-        - ANONYMOUS
-        - PARTIAL
-        - PENDING_DATA
-        - PENDING_VERIFICATION
-        - INACTIVE
-        - BLOCKED
+      - ENROLLED
+      - ANONYMOUS
+      - PARTIAL
+      - PENDING_DATA
+      - PENDING_VERIFICATION
+      - INACTIVE
+      - BLOCKED
 
     LoyaltyTransactionStatus:
       type: string
       description: Indicates the status of an loyalty operation.
       enum:
-        - AUTHORIZED
-        - AUTH_CANCELLED
-        - AUTH_DECLINED
-        - COMPLETED
-        - COMPLETION_DECLINED
-        - PENDING
+      - AUTHORIZED
+      - AUTH_CANCELLED
+      - AUTH_DECLINED
+      - COMPLETED
+      - COMPLETION_DECLINED
+      - PENDING
 
     LoyaltyType:
       type: string
       description: Identifier to indicate type of Loyalty program being registered.
       enum:
-        - LOCAL
-        - NATIONAL
+      - LOCAL
+      - NATIONAL
 
     OfferRealizationType:
       type: string
       description: Identifier to indicate the type of a Loyalty Offer.
       enum:
-        - SPLIT_PAYMENT
-        - PRE_ITEM_AMOUNT_OFF
-        - POST_ITEM_AMOUNT_OFF
-        - PRICE_ROLLBACK
-        - HBD
-        - TRANSACTION_LEVEL
+      - SPLIT_PAYMENT
+      - PRE_ITEM_AMOUNT_OFF
+      - POST_ITEM_AMOUNT_OFF
+      - PRICE_ROLLBACK
+      - HBD
+      - TRANSACTION_LEVEL
 
     PaymentStatus:
       type: string
       description: Indicates the status of an payment operation.
       enum:
-        - AUTHORIZED
-        - AUTH_CANCELLED
-        - AUTH_DECLINED
-        - COMPLETED
-        - COMPLETION_DECLINED
+      - AUTHORIZED
+      - AUTH_CANCELLED
+      - AUTH_DECLINED
+      - COMPLETED
+      - COMPLETION_DECLINED
 
     ProgramStatus:
       type: string
       description: Indicates if the given loyalty program is still active or not.
       enum:
-        - ENABLED
-        - DISABLED
-        - CONTRACTED_ONLY
+      - ENABLED
+      - DISABLED
+      - CONTRACTED_ONLY
 
     ReferenceTokenType:
       type: string
       description: Indicates if the given loyalty program is still active or not.
       enum:
-        - FORMAT_PRESERVING_MULTI_USE
-        - FORMAT_PRESERVING_SINGLE_USE
-        - CLAIM_CHECK_NONCE
-        - RANDOM_MULTI_USE
-        - RANDOM_SINGLE_USE
-        - CLAIM_CHECK_NONCE_WITH_PINCAPTURE
+      - FORMAT_PRESERVING_MULTI_USE
+      - FORMAT_PRESERVING_SINGLE_USE
+      - CLAIM_CHECK_NONCE
+      - RANDOM_MULTI_USE
+      - RANDOM_SINGLE_USE
+      - CLAIM_CHECK_NONCE_WITH_PINCAPTURE
 
     RewardDispensationCode:
       type: string
       description: Indicates when a reward is to be redeemed.
       enum:
-        - INSTANT
-        - DEFERRED
+      - INSTANT
+      - DEFERRED
 
     RewardRealizationCode:
       type: string
       description: Indicates how a reward is applied to a transaction.
       enum:
-        - NEW_PRICE
-        - PERCENT_OFF
-        - AMOUNT_OFF
-        - EARN
-        - REDEEM
+      - NEW_PRICE
+      - PERCENT_OFF
+      - AMOUNT_OFF
+      - EARN
+      - REDEEM
 
     QuantityUOM:
       type: string
       description: Combined unit of measure for a POS sale.
       enum:
-        - ml
-        - cc
-        - litre
-        - fluidOunce
-        - pint
-        - quart
-        - gallonUS
-        - gallonUK
-        - gram
-        - kg
-        - oz
-        - lb
-        - ea
+      - ml
+      - cc
+      - litre
+      - fluidOunce
+      - pint
+      - quart
+      - gallonUS
+      - gallonUK
+      - gram
+      - kg
+      - oz
+      - lb
+      - ea
 
     SaleItemType:
       type: string
       description: Indicates the type of item
       enum:
-        - FUEL
-        - CARWASH
-        - OTHER
+      - FUEL
+      - CARWASH
+      - OTHER
 
     SalePositionType:
       type: string
       description: Indicator to determine the sale position
       default: OUTSIDE_STORE
       enum:
-        - INSIDE_STORE
-        - OUTSIDE_STORE
+      - INSIDE_STORE
+      - OUTSIDE_STORE
 
     ServiceLevelCode:
       type: string
       description: Indicates service level code.
       default: S
       enum:
-        - S
-        - F
-        - N
-        - X
+      - S
+      - F
+      - N
+      - X
 
     TransactionStatus:
       type: string
       description: Indicates the status of an account.
       enum:
-        - AUTHORIZED
-        - CANCELLED
-        - FUEL_STARTED
-        - COMPLETED
-        - CHALLENGED
-        - AUTH_DECLINED
-        - TIMEDOUT
-        - PENDING
+      - AUTHORIZED
+      - CANCELLED
+      - FUEL_STARTED
+      - COMPLETED
+      - CHALLENGED
+      - AUTH_DECLINED
+      - TIMEDOUT
+      - PENDING
 
     UpdateActionType:
       type: string
       description: Indicates the action intended as part of update operation.
       enum:
-        - CANCEL_TRANSACTION
-        - RESUME_TRANSACTION
+      - CANCEL_TRANSACTION
+      - RESUME_TRANSACTION
 
     ValueAddCurrencyType:
       type: string
       description: Indicates the type of units used to show value of a reward.
       enum:
-        - MONEY
-        - POINTS
-        - DISTANCE
-        - COUNTS
-        - VOLUMES
-        - VISITS
-        - PERCENTAGE
+      - MONEY
+      - POINTS
+      - DISTANCE
+      - COUNTS
+      - VOLUMES
+      - VISITS
+      - PERCENTAGE
 
     VolumeUOM:
       type: string
       description: Units to measure volume.
       enum:
-        - ml
-        - cc
-        - litter
-        - fluidOunce
-        - pint
-        - quart
-        - gallonUS
-        - gallonUK
+      - ml
+      - cc
+      - litter
+      - fluidOunce
+      - pint
+      - quart
+      - gallonUS
+      - gallonUK
 
     WeightUOM:
       type: string
       description: Units to measure weight.
       enum:
-        - gram
-        - kg
-        - oz
-        - lb
-        - ea
+      - gram
+      - kg
+      - oz
+      - lb
+      - ea
 
-#-------------------------------------
-# Responses
-#-------------------------------------
+  #-------------------------------------
+  # Responses
+  #-------------------------------------
   responses:
     BadRequest:
       description: Bad request
@@ -2670,8 +2587,7 @@ components:
             $ref: '#/components/schemas/Error'
 
     Conflict:
-      description: Conflict - The requested operation conflicts with the current state
-        of the identified resource.
+      description: Conflict - The requested operation conflicts with the current state of the identified resource.
       content:
         application/json:
           schema:
@@ -2696,14 +2612,14 @@ components:
                 transactionId: 6c49cd3472a111e78cf7a6006ad3dba0
                 status: AUTHORIZED
                 payments:
-                  - currencyCode:
-                      number: 840
-                    requestedAuthAmount: 100.25
-                    approvedAuthAmount: 100.25
-                    status: AUTHORIZED
-                    fundingSource:
-                      account:
-                        fdAccountId: 003a502c72a211e78cf7a6006ad3dba0
+                - currencyCode:
+                    number: 840
+                  requestedAuthAmount: 100.25
+                  approvedAuthAmount: 100.25
+                  status: AUTHORIZED
+                  fundingSource:
+                    account:
+                      fdAccountId: 003a502c72a211e78cf7a6006ad3dba0
                 token:
                   tokenId: UCOM292bb6b886fc4446894f878b7e32bd5e
                   tokenProvider: UCOM
@@ -2752,24 +2668,21 @@ components:
       description: Unauthorized
       content: {}
 
-#-------------------------------------
-# Parameter Models
-#-------------------------------------
+  #-------------------------------------
+  # Parameter Models
+  #-------------------------------------
   parameters:
     AcceptLanguageParam:
       name: Accept-Language
       in: header
-      description: The Accept-Language header contains information about the language
-        preference of a user. This HTTP header is useful to multilingual sites for
-        deciding the best language to serve to the client. i.e en-US,fr-CA
+      description: The Accept-Language header contains information about the language preference of a user. This HTTP header is useful to multilingual sites for deciding the best language to serve to the client. i.e en-US,fr-CA
       schema:
         type: string
 
     ApiKeyParam:
       name: Api-Key
       in: header
-      description: An API key is a string value passed by a client app to the API
-        proxies. The key uniquely identifies the client app.
+      description: An API key is a string value passed by a client app to the API proxies. The key uniquely identifies the client app.
       required: true
       schema:
         type: string
@@ -2785,21 +2698,14 @@ components:
     ClientTokenParam:
       name: Client-Token
       in: header
-      description: Used to pass the original client OAuth token information given
-        in a client-credentials flow.  This field is only used when the server is
-        making the request and needs to link the transaction to a specific client.  Format-
-        `Bearer {access_token}`
+      description: Used to pass the original client OAuth token information given in a client-credentials flow.  This field is only used when the server is making the request and needs to link the transaction to a specific client.  Format- `Bearer {access_token}`
       schema:
         type: string
 
     ClientRequestIdParam:
       name: Client-Request-Id
       in: header
-      description: Contains a unique ID generated by the client that can be used for
-        enforcing idempotency on POST actions. POSTs are inherently non-idempotent
-        and submitting the exact same request multiple times would create duplicate
-        resources. NOTE - Omitting this header increases the risk of duplicate transactions,
-        which for payments could cost the client issues like double-billing.
+      description: Contains a unique ID generated by the client that can be used for enforcing idempotency on POST actions. POSTs are inherently non-idempotent and submitting the exact same request multiple times would create duplicate resources. NOTE - Omitting this header increases the risk of duplicate transactions, which for payments could cost the client issues like double-billing.
       required: true
       schema:
         type: string
@@ -2833,7 +2739,7 @@ components:
       required: true
       schema:
         type: string
-        
+
   examples:
     ServiceAuthWithcarWashRequest:
       value:
@@ -2844,91 +2750,91 @@ components:
             fuelPurchaseInfo:
               pumpNumber: 1
               items:
-                - description: UNLD1
-                  available: true
-                  price: 3.99
-                  priceTier: credit
-                  gradeId: '1'
+              - description: UNLD1
+                available: true
+                price: 3.99
+                priceTier: credit
+                gradeId: '1'
             resources:
-              - id: 8a7f1f908631ab1801865376acd83699
-                name: Carwash
-                items:
-                  - id: 815
-                    itemInfo:
-                      posCodeFormat: plu
-                      posCode: '00000000000338'
-                      posCodeModifier: 3-CASH
-                      itemName: BASIC
-                      itemDescription: BASIC
-                      itemPrice: '10.01'
-                      displayOrder: 1
-                      productCode: '102'
-                      discountedPrice: 0
-                      amount: 10
-                      quantity: 1
+            - id: 8a7f1f908631ab1801865376acd83699
+              name: Carwash
+              items:
+              - id: 815
+                itemInfo:
+                  posCodeFormat: plu
+                  posCode: '00000000000338'
+                  posCodeModifier: 3-CASH
+                  itemName: BASIC
+                  itemDescription: BASIC
+                  itemPrice: '10.01'
+                  displayOrder: 1
+                  productCode: '102'
+                  discountedPrice: 0
+                  amount: 10
+                  quantity: 1
           payments:
-            - requestedAuthAmount: '15.28'
-              fundingSource:
-                account:
-                  fdAccountId: 8a7f148f864e8ceb018653c7f84a0c1c
+          - requestedAuthAmount: '15.28'
+            fundingSource:
+              account:
+                fdAccountId: 8a7f148f864e8ceb018653c7f84a0c1c
           printReceipt: true
           activateVirtualCard: false
         deviceInfo:
           id: 537edec8-d33e-4ee8-93a7-b9f61876950cpl8ght0092
           kind: mobile
           details:
-            - provider: inauth
-              dataCapture:
-                rawData: aaaaaXREUVZGRlFY...aMV
-                dataEventId: 2ED11045-8027-4ADE-98A4-E4358E55D194
-                captureTime: '2019-03-04T07:52:37'
-              dataDynamic:
-                captureTime: '2019-03-04T07:52:37'
-                
+          - provider: inauth
+            dataCapture:
+              rawData: aaaaaXREUVZGRlFY...aMV
+              dataEventId: 2ED11045-8027-4ADE-98A4-E4358E55D194
+              captureTime: '2019-03-04T07:52:37'
+            dataDynamic:
+              captureTime: '2019-03-04T07:52:37'
+
     ServiceAuthWithcarWashResponse:
       value:
         transaction:
           transactionId: a044aa3a16444606b70887835e80788f
           payments:
-            - currencyCode:
-                code: USD
-                number: 840
-                currency: US Dollar
-              requestedAuthAmount: 15.28
-              approvedAuthAmount: 15.28
-              fundingSource:
-                type: VAULTED_ACCOUNT
-                vaultedAccount:
-                  fdAccountId: 8a7f148f864e8ceb018653c7f84a0c1c
-                  type: CREDIT
-                credit:
-                  nameOnCard: John Smith
-                  alias: '3502'
-                  cardType: MASTERCARD
-                  billingAddress:
-                    streetAddress: 100 Universal City Plaza
-                    postalCode: '98290'
-                  expiryDate:
-                    month: '12'
-                    year: '25'
-                  token:
-                    tokenId: '1798641806263502'
-                    tokenProvider: TRANS_ARMOR
+          - currencyCode:
+              code: USD
+              number: 840
+              currency: US Dollar
+            requestedAuthAmount: 15.28
+            approvedAuthAmount: 15.28
+            fundingSource:
+              type: VAULTED_ACCOUNT
+              vaultedAccount:
+                fdAccountId: 8a7f148f864e8ceb018653c7f84a0c1c
+                type: CREDIT
+              credit:
+                nameOnCard: John Smith
+                alias: '3502'
+                cardType: MASTERCARD
+                billingAddress:
+                  streetAddress: 100 Universal City Plaza
+                  postalCode: '98290'
+                expiryDate:
+                  month: '12'
+                  year: '25'
+                token:
+                  tokenId: '1798641806263502'
+                  tokenProvider: TRANS_ARMOR
           status: AUTHORIZED
           hostExtraInfo:
-            - name: APPROVAL_NUMBER
-              value: '154126'
-            - name: SEQUENCE_NUMBER
-              value: '003721'
-            - name: HOST_RESPONSE_CODE
-              value: '3'
-            - name: HOST_RESPONSE_MESSAGE
-              value: APPROVED  154126
-            - name: HOST_AVS_CODE
-              value: AVS+Y
-            - name: TRANSACTION_DATETIME
-              value: 2023-02-15T01:35
-              
+          - name: APPROVAL_NUMBER
+            value: '154126'
+          - name: SEQUENCE_NUMBER
+            value: '003721'
+          - name: HOST_RESPONSE_CODE
+            value: '3'
+          - name: HOST_RESPONSE_MESSAGE
+            value: APPROVED  154126
+          - name: HOST_AVS_CODE
+            value: AVS+Y
+          - name: TRANSACTION_DATETIME
+            value: 2023-02-15T01:35
+
     ServiceAuthWithOutcarWashRequest:
       value:
         fdCustomerId: 064d63ffc1a2451fb8f93fa045807454
@@ -2938,71 +2844,71 @@ components:
             fuelPurchaseInfo:
               pumpNumber: 1
               items:
-                - description: UNLD1
-                  available: true
-                  price: 3.99
-                  priceTier: credit
-                  gradeId: '1'
+              - description: UNLD1
+                available: true
+                price: 3.99
+                priceTier: credit
+                gradeId: '1'
           payments:
-            - requestedAuthAmount: '15.28'
-              fundingSource:
-                account:
-                  fdAccountId: 8a7f461f865353890186537ac2ef0000
+          - requestedAuthAmount: '15.28'
+            fundingSource:
+              account:
+                fdAccountId: 8a7f461f865353890186537ac2ef0000
           printReceipt: true
           activateVirtualCard: false
         deviceInfo:
           id: 537edec8-d33e-4ee8-93a7-b9f61876950cpl9
           kind: mobile
           details:
-            - provider: inauth
-              dataCapture:
-                rawData: aaaaaXREUVZGRlFY...aMV
-                dataEventId: 2ED11045-8027-4ADE-98A4-E4358E55D194
-                captureTime: '2019-03-04T07:52:37'
-              dataDynamic:
-                captureTime: '2019-03-04T07:52:37'
-                
+          - provider: inauth
+            dataCapture:
+              rawData: aaaaaXREUVZGRlFY...aMV
+              dataEventId: 2ED11045-8027-4ADE-98A4-E4358E55D194
+              captureTime: '2019-03-04T07:52:37'
+            dataDynamic:
+              captureTime: '2019-03-04T07:52:37'
+
     ServiceAuthWithOutcarWashResponse:
       value:
         transaction:
           transactionId: bc68c928419c4e7cba33b0d1e9f3b2fc
           payments:
-            - currencyCode:
-                code: USD
-                number: 840
-                currency: US Dollar
-              requestedAuthAmount: 15.28
-              approvedAuthAmount: 15.28
-              fundingSource:
-                type: VAULTED_ACCOUNT
-                vaultedAccount:
-                  fdAccountId: 8a7f461f865353890186537ac2ef0000
-                  type: CREDIT
-                credit:
-                  nameOnCard: John Smith
-                  alias: '3502'
-                  cardType: MASTERCARD
-                  billingAddress:
-                    streetAddress: 100 Universal City Plaza
-                    postalCode: '98290'
-                  expiryDate:
-                    month: '12'
-                    year: '25'
+          - currencyCode:
+              code: USD
+              number: 840
+              currency: US Dollar
+            requestedAuthAmount: 15.28
+            approvedAuthAmount: 15.28
+            fundingSource:
+              type: VAULTED_ACCOUNT
+              vaultedAccount:
+                fdAccountId: 8a7f461f865353890186537ac2ef0000
+                type: CREDIT
+              credit:
+                nameOnCard: John Smith
+                alias: '3502'
+                cardType: MASTERCARD
+                billingAddress:
+                  streetAddress: 100 Universal City Plaza
+                  postalCode: '98290'
+                expiryDate:
+                  month: '12'
+                  year: '25'
           status: AUTHORIZED
           hostExtraInfo:
-            - name: APPROVAL_NUMBER
-              value: '101559'
-            - name: SEQUENCE_NUMBER
-              value: '055557'
-            - name: HOST_RESPONSE_CODE
-              value: '3'
-            - name: HOST_RESPONSE_MESSAGE
-              value: APPROVED  101559
-            - name: HOST_AVS_CODE
-              value: AVS+Y
-            - name: TRANSACTION_DATETIME
-              value: 2023-02-15T00:10
-              
+          - name: APPROVAL_NUMBER
+            value: '101559'
+          - name: SEQUENCE_NUMBER
+            value: '055557'
+          - name: HOST_RESPONSE_CODE
+            value: '3'
+          - name: HOST_RESPONSE_MESSAGE
+            value: APPROVED  101559
+          - name: HOST_AVS_CODE
+            value: AVS+Y
+          - name: TRANSACTION_DATETIME
+            value: 2023-02-15T00:10
+
     ServiceAuthApplePayRequest:
       value:
         fdCustomerId: be74460e927646b8b863f18e0bc1622b
@@ -3012,64 +2918,64 @@ components:
             fuelPurchaseInfo:
               pumpNumber: 1
           payments:
-            - requestedAuthAmount: 15.28
-              fundingSource:
-                applePay:
-                  version: EC_v1
-                  decryptAlias: merchant.com.test.pay.dev.apple.pay
-                  data: C+D9TRrHih+pRWw/L6H9sB4mKHJLeJJtu+g8HyEtW0WNV3MejKUOsUUe4PXdMGU+/z1rmAzzP2J9NmhFePqFOW20Bd7ZqynWUWeGCXJ8W6pmWMN4NHpKVS/82ygvndWdnX43r92xfDh9WXR/sf82iOil0tzb1Yj2yPskf1wH/EvvhqqEA/+qCwVrjpUTnhjddfFhLuQfb2vmCcaYxAl1eYw+IHD4JaHsIFrwZ/O8lRZybcQLO14JTYiPcIQnYz9rXzt45GA3llllHqOqF8Tj5t+JxrFTmhb6jjYhE7xZMA1rbmvgLtRpt2XaZHmurFm9Ehjg3erEqHk5ju1ZGgOW/7/OOb21uN/ergvbulAdJvXa++D6wtaHQ+9DWz7UCN0yFusE9KuHOiFxMAY06ZMQOlB2q/Wi9o3LRtyE8Kc+hP6uyluxpwQuQEuI4bQMzX4bSXHDRUeROUfhoINKyKfWlVdzY6wuFX9uQxWcMjer2Xf86kSp5t5XHHFU95tM6EsxyQSEMfXNbPM=
-                  signature: MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwEAAKCAMIIB0zCCAXkCAQEwCQYHKoZIzj0EATB2MQswCQYDVQQGEwJVUzELMAkGA1UECAwCTkoxFDASBgNVBAcMC0plcnNleSBDaXR5MRMwEQYDVQQKDApGaXJzdCBEYXRhMRIwEAYDVQQLDAlGaXJzdCBBUEkxGzAZBgNVBAMMEmQxZHZ0bDEwMDAuMWRjLmNvbTAeFw0xOTA3MjUxNjI3NDlaFw0zOTA3MjAxNjI3NDlaMHYxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJOSjEUMBIGA1UEBwwLSmVyc2V5IENpdHkxEzARBgNVBAoMCkZpcnN0IERhdGExEjAQBgNVBAsMCUZpcnN0IEFQSTEbMBkGA1UEAwwSZDFkdnRsMTAwMC4xZGMuY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAErnHhPM18HFbOomJMUiLiPL7nrJuWvfPy0Gg3xsX3m8q0oWhTs1QcQDTT+TR3yh4sDRPqXnsTUwcvbrCOzdUEeTAJBgcqhkjOPQQBA0kAMEYCIQCXW2kjA36LdnEqc0qHb82FIYShdEk3hgPGxZDf6PfXygIhANrrpo/SY2YorozC73ZuQDtsGK3PHTdQZja5AgdEXy0yAAAxggFSMIIBTgIBATB7MHYxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJOSjEUMBIGA1UEBwwLSmVyc2V5IENpdHkxEzARBgNVBAoMCkZpcnN0IERhdGExEjAQBgNVBAsMCUZpcnN0IEFQSTEbMBkGA1UEAwwSZDFkdnRsMTAwMC4xZGMuY29tAgEBMA0GCWCGSAFlAwQCAQUAoGkwGAYJKoZIhvcNAQkDMQsGCSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcNMjAxMjAyMTAyNjI5WjAvBgkqhkiG9w0BCQQxIgQgughjAtCqO454sibARixaHA3Ytt9tAtwRK6xjQxgBNewwCgYIKoZIzj0EAwIERjBEAiAioXPpXP372JhUYIevU9N6W5xiyISuBsi3dzmOVualDQIgfdm38lG7oFGoUmiEe4D55yhk3AeeLRosMJF3TYLi15cAAAAAAAA=
-                  applicationData: 'null'
-                  header:
-                    ephemeralPublicKey: MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEkZSaQBXismDISRg1QpOB1hfygR8GegtW+lwD0fn24qLz+vBAX508At9FHalImKUlBVPFXSOCYfOV4s66vzrDxQ==
-                    publicKeyHash: 45Pq9eo9ppTm4Y0j/4wgBMtIQ5oF2GyLTGiv2gCTtmo=
-                    transactionId: '31323334353637'
-                  billingAddress:
-                    type: work
-                    streetAddress: 200 Universal City Plaza
-                    locality: Hollywood
-                    region: CA
-                    postalCode: '00000'
-                    country: US
-                    formatted: |-
-                      100 Universal City Plaza
-                      Hollywood, CA 91608 USA
-                    primary: true
+          - requestedAuthAmount: 15.28
+            fundingSource:
+              applePay:
+                version: EC_v1
+                decryptAlias: merchant.com.test.pay.dev.apple.pay
+                data: C+D9TRrHih+pRWw/L6H9sB4mKHJLeJJtu+g8HyEtW0WNV3MejKUOsUUe4PXdMGU+/z1rmAzzP2J9NmhFePqFOW20Bd7ZqynWUWeGCXJ8W6pmWMN4NHpKVS/82ygvndWdnX43r92xfDh9WXR/sf82iOil0tzb1Yj2yPskf1wH/EvvhqqEA/+qCwVrjpUTnhjddfFhLuQfb2vmCcaYxAl1eYw+IHD4JaHsIFrwZ/O8lRZybcQLO14JTYiPcIQnYz9rXzt45GA3llllHqOqF8Tj5t+JxrFTmhb6jjYhE7xZMA1rbmvgLtRpt2XaZHmurFm9Ehjg3erEqHk5ju1ZGgOW/7/OOb21uN/ergvbulAdJvXa++D6wtaHQ+9DWz7UCN0yFusE9KuHOiFxMAY06ZMQOlB2q/Wi9o3LRtyE8Kc+hP6uyluxpwQuQEuI4bQMzX4bSXHDRUeROUfhoINKyKfWlVdzY6wuFX9uQxWcMjer2Xf86kSp5t5XHHFU95tM6EsxyQSEMfXNbPM=
+                signature: MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwEAAKCAMIIB0zCCAXkCAQEwCQYHKoZIzj0EATB2MQswCQYDVQQGEwJVUzELMAkGA1UECAwCTkoxFDASBgNVBAcMC0plcnNleSBDaXR5MRMwEQYDVQQKDApGaXJzdCBEYXRhMRIwEAYDVQQLDAlGaXJzdCBBUEkxGzAZBgNVBAMMEmQxZHZ0bDEwMDAuMWRjLmNvbTAeFw0xOTA3MjUxNjI3NDlaFw0zOTA3MjAxNjI3NDlaMHYxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJOSjEUMBIGA1UEBwwLSmVyc2V5IENpdHkxEzARBgNVBAoMCkZpcnN0IERhdGExEjAQBgNVBAsMCUZpcnN0IEFQSTEbMBkGA1UEAwwSZDFkdnRsMTAwMC4xZGMuY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAErnHhPM18HFbOomJMUiLiPL7nrJuWvfPy0Gg3xsX3m8q0oWhTs1QcQDTT+TR3yh4sDRPqXnsTUwcvbrCOzdUEeTAJBgcqhkjOPQQBA0kAMEYCIQCXW2kjA36LdnEqc0qHb82FIYShdEk3hgPGxZDf6PfXygIhANrrpo/SY2YorozC73ZuQDtsGK3PHTdQZja5AgdEXy0yAAAxggFSMIIBTgIBATB7MHYxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJOSjEUMBIGA1UEBwwLSmVyc2V5IENpdHkxEzARBgNVBAoMCkZpcnN0IERhdGExEjAQBgNVBAsMCUZpcnN0IEFQSTEbMBkGA1UEAwwSZDFkdnRsMTAwMC4xZGMuY29tAgEBMA0GCWCGSAFlAwQCAQUAoGkwGAYJKoZIhvcNAQkDMQsGCSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcNMjAxMjAyMTAyNjI5WjAvBgkqhkiG9w0BCQQxIgQgughjAtCqO454sibARixaHA3Ytt9tAtwRK6xjQxgBNewwCgYIKoZIzj0EAwIERjBEAiAioXPpXP372JhUYIevU9N6W5xiyISuBsi3dzmOVualDQIgfdm38lG7oFGoUmiEe4D55yhk3AeeLRosMJF3TYLi15cAAAAAAAA=
+                applicationData: 'null'
+                header:
+                  ephemeralPublicKey: MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEkZSaQBXismDISRg1QpOB1hfygR8GegtW+lwD0fn24qLz+vBAX508At9FHalImKUlBVPFXSOCYfOV4s66vzrDxQ==
+                  publicKeyHash: 45Pq9eo9ppTm4Y0j/4wgBMtIQ5oF2GyLTGiv2gCTtmo=
+                  transactionId: '31323334353637'
+                billingAddress:
+                  type: work
+                  streetAddress: 200 Universal City Plaza
+                  locality: Hollywood
+                  region: CA
+                  postalCode: '00000'
+                  country: US
+                  formatted: |-
+                    100 Universal City Plaza
+                    Hollywood, CA 91608 USA
+                  primary: true
           printReceipt: true
-          
+
     ServiceAuthApplePayResponse:
       value:
         transaction:
           transactionId: b5deba9789a14a268982f4539bc3c46b
           payments:
-            - currencyCode:
-                code: USD
-                number: 840
-                currency: US Dollar
-              requestedAuthAmount: 15.28
-              approvedAuthAmount: 15.28
-              fundingSource:
-                type: APPLE_PAY
-                applePay:
-                  dPanLast4: '9424'
-                  cardType: DISCOVER
+          - currencyCode:
+              code: USD
+              number: 840
+              currency: US Dollar
+            requestedAuthAmount: 15.28
+            approvedAuthAmount: 15.28
+            fundingSource:
+              type: APPLE_PAY
+              applePay:
+                dPanLast4: '9424'
+                cardType: DISCOVER
           status: AUTHORIZED
           hostExtraInfo:
-            - name: APPROVAL_NUMBER
-              value: '916009'
-            - name: SEQUENCE_NUMBER
-              value: '036678'
-            - name: HOST_RESPONSE_CODE
-              value: '3'
-            - name: HOST_RESPONSE_MESSAGE
-              value: APPROVED  916009
-            - name: HOST_AVS_CODE
-              value: AVS+X
-            - name: TRANSACTION_DATETIME
-              value: 2023-02-15T03:01
-            - name: NETWORK_TRANSACTION_ID
-              value: '123456789012345'
-              
+          - name: APPROVAL_NUMBER
+            value: '916009'
+          - name: SEQUENCE_NUMBER
+            value: '036678'
+          - name: HOST_RESPONSE_CODE
+            value: '3'
+          - name: HOST_RESPONSE_MESSAGE
+            value: APPROVED  916009
+          - name: HOST_AVS_CODE
+            value: AVS+X
+          - name: TRANSACTION_DATETIME
+            value: 2023-02-15T03:01
+          - name: NETWORK_TRANSACTION_ID
+            value: '123456789012345'
+
     ServiceAuthPayPalRequest:
       value:
         fdCustomerId: 6a029cd6b1524e45b75c56251721b961
@@ -3079,61 +2985,61 @@ components:
             fuelPurchaseInfo:
               pumpNumber: 1
               items:
-                - description: UNLD1
-                  available: true
-                  price: 3.99
-                  priceTier: credit
-                  gradeId: '1'
+              - description: UNLD1
+                available: true
+                price: 3.99
+                priceTier: credit
+                gradeId: '1'
           payments:
-            - requestedAuthAmount: '15.22'
-              fundingSource:
-                account:
-                  fdAccountId: 8a7f148f864e8ceb01865421cac40c42
+          - requestedAuthAmount: '15.22'
+            fundingSource:
+              account:
+                fdAccountId: 8a7f148f864e8ceb01865421cac40c42
           printReceipt: true
           activateVirtualCard: false
         deviceInfo:
           id: 537edec8-d33e-4ee8-93a7-b9f61876950c
           kind: mobile
           details:
-            - provider: PAYPAL
-              dataCapture:
-                rawData: aaaaaXREUVZGRlFY...aMV
-                dataEventId: 2ED11045-8027-4ADE-98A4-E4358E55D194
-                captureTime: '2019-03-04T07:52:37'
-              dataDynamic:
-                captureTime: '2019-03-04T07:52:37'
-                
+          - provider: PAYPAL
+            dataCapture:
+              rawData: aaaaaXREUVZGRlFY...aMV
+              dataEventId: 2ED11045-8027-4ADE-98A4-E4358E55D194
+              captureTime: '2019-03-04T07:52:37'
+            dataDynamic:
+              captureTime: '2019-03-04T07:52:37'
+
     ServiceAuthPayPalResponse:
       value:
         transaction:
           transactionId: d88a30477d744a29b96711b50b1a1848
           payments:
-            - currencyCode:
-                code: USD
-                number: 840
-                currency: US Dollar
-              requestedAuthAmount: 15.22
-              approvedAuthAmount: 15.22
-              fundingSource:
-                type: VAULTED_ACCOUNT
-                vaultedAccount:
-                  fdAccountId: 8a7f148f864e8ceb01865421cac40c42
-                  type: PAYPAL
+          - currencyCode:
+              code: USD
+              number: 840
+              currency: US Dollar
+            requestedAuthAmount: 15.22
+            approvedAuthAmount: 15.22
+            fundingSource:
+              type: VAULTED_ACCOUNT
+              vaultedAccount:
+                fdAccountId: 8a7f148f864e8ceb01865421cac40c42
+                type: PAYPAL
           status: AUTHORIZED
           hostExtraInfo:
-            - name: APPROVAL_NUMBER
-              value: '916059'
-            - name: SEQUENCE_NUMBER
-              value: '753383'
-            - name: HOST_RESPONSE_CODE
-              value: '2'
-            - name: HOST_RESPONSE_MESSAGE
-              value: APPROVED  916059
-            - name: TRANSACTION_DATETIME
-              value: 2023-02-15T03:13
-            - name: NETWORK_TRANSACTION_ID
-              value: '123456789012345'
-              
+          - name: APPROVAL_NUMBER
+            value: '916059'
+          - name: SEQUENCE_NUMBER
+            value: '753383'
+          - name: HOST_RESPONSE_CODE
+            value: '2'
+          - name: HOST_RESPONSE_MESSAGE
+            value: APPROVED  916059
+          - name: TRANSACTION_DATETIME
+            value: 2023-02-15T03:13
+          - name: NETWORK_TRANSACTION_ID
+            value: '123456789012345'
+
     ServiceAuthGooglePayRequest:
       value:
         fdCustomerId: bd959362c2d14046b62524c2208bdd2c
@@ -3143,50 +3049,50 @@ components:
             fuelPurchaseInfo:
               pumpNumber: '3'
               items:
-                - posCode: '225'
-                  itemDescription: Unleaded
-                  itemPrice: 1.359
-                  productCode: '012'
+              - posCode: '225'
+                itemDescription: Unleaded
+                itemPrice: 1.359
+                productCode: '012'
           payments:
-            - requestedAuthAmount: 100
-              fundingSource:
-                googlePay:
-                  signature: MEUCIQCuG/FftXBAAXPVlEjcBwRYQSbLuIzTdXzJkjjeZ/kVXQIgVb+hpZ4cL2lYLRmlc77+j1EZTxFm5YlkCJWBjH63n0c=
-                  data: '{"encryptedMessage":"Vu2Y3rngvR3UVzmMyTbjJZxcI4kBX1qXQ/a8sJIfn+7fZMtyzgJxSYm1ogXPRcA5A2oFyE66AOC3lsjgiyOH+6WqTixvIRiHTR7Ve7UkjXJDQMB7S+N28vwTv/mrIELPGFyOLJ0Nl9L4zctnOo0hLRGJSBbdf2pYF19kBliHZG446P0Jo2df1tLqkZWr+v/dmj0Xy5/QUk4b7f8/aOf1I0krvpFp3cPcDuPZYJir55NiNbdxvm8eN8LOlAaCD9mWB4cfNX8jU4Vxqsl0tCvPLy0YNNIiubNKuUP+27456MJDFIpBejcfRNRmvtdNjJ7O07+NaR44xDzQSdLQfDSN00+hUjjB5Jh6k2M/8aBChWf1UWV8lzC+h6d/dMmBzJJMFdWlZBm+ZQNhNoqGbq0C0oJWyQdehJZ/L0ndBaZR9hi2v12KJcdaVLrC2YyxT7cqeAdF5qVzLbDUBaiXVtkJC0FC4cxhUsThVgsRyh594YvIgMkDBzle4MSf9RKUdXxe9Hr/KB3EFHJWLbSklU71oGmcz7VczXox7Ja9ObOyKMFiwR0pANmBZNdPEoTIhBdJNwaTmN2v87QU","ephemeralPublicKey":"BMNDBLmt9EjkixOY43Kk9DxQb9WjH1whAr6QBKGmUtAIC8tEOHNFBbaS0n7kmul8+DNDYWiFBK6CKGNTrEMihY4\u003d","tag":"21OJBu15OkTjtrpwyUX8Bs9qtlw4E6pNp3lk5EiQuaM\u003d"}'
-                  applicationData: null
-                  dPanLast4: null
-                  version: ECv1
-                  header:
-                    applicationDataHash: null
-                    ephemeralPublicKey: null
-                    publicKeyHash: null
-                    transactionId: null
-                  billingAddress:
-                    streetAddress: 100 Universal City Plaza
-                    locality: Hollywood
-                    region: CA
-                    country: US
-                    postalCode: '00000'
+          - requestedAuthAmount: 100
+            fundingSource:
+              googlePay:
+                signature: MEUCIQCuG/FftXBAAXPVlEjcBwRYQSbLuIzTdXzJkjjeZ/kVXQIgVb+hpZ4cL2lYLRmlc77+j1EZTxFm5YlkCJWBjH63n0c=
+                data: '{"encryptedMessage":"Vu2Y3rngvR3UVzmMyTbjJZxcI4kBX1qXQ/a8sJIfn+7fZMtyzgJxSYm1ogXPRcA5A2oFyE66AOC3lsjgiyOH+6WqTixvIRiHTR7Ve7UkjXJDQMB7S+N28vwTv/mrIELPGFyOLJ0Nl9L4zctnOo0hLRGJSBbdf2pYF19kBliHZG446P0Jo2df1tLqkZWr+v/dmj0Xy5/QUk4b7f8/aOf1I0krvpFp3cPcDuPZYJir55NiNbdxvm8eN8LOlAaCD9mWB4cfNX8jU4Vxqsl0tCvPLy0YNNIiubNKuUP+27456MJDFIpBejcfRNRmvtdNjJ7O07+NaR44xDzQSdLQfDSN00+hUjjB5Jh6k2M/8aBChWf1UWV8lzC+h6d/dMmBzJJMFdWlZBm+ZQNhNoqGbq0C0oJWyQdehJZ/L0ndBaZR9hi2v12KJcdaVLrC2YyxT7cqeAdF5qVzLbDUBaiXVtkJC0FC4cxhUsThVgsRyh594YvIgMkDBzle4MSf9RKUdXxe9Hr/KB3EFHJWLbSklU71oGmcz7VczXox7Ja9ObOyKMFiwR0pANmBZNdPEoTIhBdJNwaTmN2v87QU","ephemeralPublicKey":"BMNDBLmt9EjkixOY43Kk9DxQb9WjH1whAr6QBKGmUtAIC8tEOHNFBbaS0n7kmul8+DNDYWiFBK6CKGNTrEMihY4\u003d","tag":"21OJBu15OkTjtrpwyUX8Bs9qtlw4E6pNp3lk5EiQuaM\u003d"}'
+                applicationData: null
+                dPanLast4: null
+                version: ECv1
+                header:
+                  applicationDataHash: null
+                  ephemeralPublicKey: null
+                  publicKeyHash: null
+                  transactionId: null
+                billingAddress:
+                  streetAddress: 100 Universal City Plaza
+                  locality: Hollywood
+                  region: CA
+                  country: US
+                  postalCode: '00000'
           printReceipt: true
-          
+
     ServiceAuthGooglePayResponse:
       value:
         transaction:
           transactionId: e0974dbca99c43a6a15f77c18f358cbb
           payments:
-            - currencyCode:
-                code: EUR
-                number: 978
-                currency: Euro
-              requestedAuthAmount: 100
-              approvedAuthAmount: 100
-              fundingSource:
-                type: GOOGLE_PAY
-                googlePay:
-                  dPanLast4: '3478'
-                  cardType: VISA
+          - currencyCode:
+              code: EUR
+              number: 978
+              currency: Euro
+            requestedAuthAmount: 100
+            approvedAuthAmount: 100
+            fundingSource:
+              type: GOOGLE_PAY
+              googlePay:
+                dPanLast4: '3478'
+                cardType: VISA
           status: AUTHORIZED
-          
+
     ServiceAuthQRCodeRequest:
       value:
         fdCustomerId: f8b8332821b34d44bd8b35541ea2b1bf
@@ -3197,65 +3103,65 @@ components:
             fuelPurchaseInfo:
               pumpNumber: 1
               items:
-                - posCode: '345'
-                  posCodeFormat: plu
-                  posCodeModifier: '125'
-                  itemDescription: Unleaded
-                  itemPrice: 1.5
-                  unitOfMeasurement: liter
-                  productCode: '015'
+              - posCode: '345'
+                posCodeFormat: plu
+                posCodeModifier: '125'
+                itemDescription: Unleaded
+                itemPrice: 1.5
+                unitOfMeasurement: liter
+                productCode: '015'
             resources:
-              - id: Car_Wash_1
-                name: Car Wash
-                items:
-                  - itemInfo:
-                      itemDescription: Standard Wash
-                      itemPrice: 7.5
-                      unitOfMeasurement: each
-                      unitsSold: 1
-                      totalItemSaleAmount: 7.5
-                      posCodeFormat: plu
-                      posCode: '102'
-                      posCodeModifier: '125'
-                      productCode: '102'
-                      type: FUEL
+            - id: Car_Wash_1
+              name: Car Wash
+              items:
+              - itemInfo:
+                  itemDescription: Standard Wash
+                  itemPrice: 7.5
+                  unitOfMeasurement: each
+                  unitsSold: 1
+                  totalItemSaleAmount: 7.5
+                  posCodeFormat: plu
+                  posCode: '102'
+                  posCodeModifier: '125'
+                  productCode: '102'
+                  type: FUEL
           printReceipt: true
         deviceInfo:
           id: permIDfromInAuth
           kind: mobile
           details:
-            - provider: PAYPAL
-              dataCapture:
-                dataEventId: BB8E4E9281B744D29AF1E0631139F41B20172958
-                captureTime: '2017-02-15T17:30:19Z'
-                rawData: aXREUVZGRlFYZEViMkdfhTJSbk0xVmxaMVpGhCVWFsaERURlprY1hwVl
-              dataDynamic:
-                captureTime: '2017-02-15T17:30:19Z'
-            - provider: INAUTH
-              dataCapture:
-                dataEventId: BB8E4E9281B744D29AF1E0631139F41B20172958
-                captureTime: '2017-02-15T17:30:19Z'
-                rawData: aXREUVZGRlFYZEViMkdfhTJSbk0xVmxaMVpGhCVWFsaERURlprY1hwVl
-              dataDynamic:
-                captureTime: '2017-02-15T17:30:19Z'
-                
+          - provider: PAYPAL
+            dataCapture:
+              dataEventId: BB8E4E9281B744D29AF1E0631139F41B20172958
+              captureTime: '2017-02-15T17:30:19Z'
+              rawData: aXREUVZGRlFYZEViMkdfhTJSbk0xVmxaMVpGhCVWFsaERURlprY1hwVl
+            dataDynamic:
+              captureTime: '2017-02-15T17:30:19Z'
+          - provider: INAUTH
+            dataCapture:
+              dataEventId: BB8E4E9281B744D29AF1E0631139F41B20172958
+              captureTime: '2017-02-15T17:30:19Z'
+              rawData: aXREUVZGRlFYZEViMkdfhTJSbk0xVmxaMVpGhCVWFsaERURlprY1hwVl
+            dataDynamic:
+              captureTime: '2017-02-15T17:30:19Z'
+
     ServiceAuthQRCodeResponse:
       value:
         transaction:
           transactionId: 22d3189ad7314ea3bdaefb74ca72d860
           payments:
-            - currencyCode:
-                code: EUR
-                number: 978
-                currency: Euro
-              requestedAuthAmount: 50
-              approvedAuthAmount: 50
-              fundingSource:
-                type: BANCONTACT
-                bancontact:
-                  alias: '2227'
+          - currencyCode:
+              code: EUR
+              number: 978
+              currency: Euro
+            requestedAuthAmount: 50
+            approvedAuthAmount: 50
+            fundingSource:
+              type: BANCONTACT
+              bancontact:
+                alias: '2227'
           status: AUTHORIZED
-          
+
     StatusCompletedWithPayPalResponse:
       value:
         transactionId: d88a30477d744a29b96711b50b1a1848
@@ -3265,70 +3171,70 @@ components:
             pumpNumber: 1
             serviceLevelCode: S
         payments:
-          - currencyCode:
-              code: USD
-              number: 840
-              currency: US Dollar
-            requestedAuthAmount: 15.22
-            approvedAuthAmount: 15.22
-            capturedAmount: 19.74
-            status: COMPLETED
-            fundingSource:
-              type: VAULTED_ACCOUNT
-              vaultedAccount:
-                fdAccountId: 8a7f148f864e8ceb01865421cac40c42
-                type: PAYPAL
-              account:
-                fdAccountId: 8a7f148f864e8ceb01865421cac40c42
-                type: PAYPAL
+        - currencyCode:
+            code: USD
+            number: 840
+            currency: US Dollar
+          requestedAuthAmount: 15.22
+          approvedAuthAmount: 15.22
+          capturedAmount: 19.74
+          status: COMPLETED
+          fundingSource:
+            type: VAULTED_ACCOUNT
+            vaultedAccount:
+              fdAccountId: 8a7f148f864e8ceb01865421cac40c42
+              type: PAYPAL
+            account:
+              fdAccountId: 8a7f148f864e8ceb01865421cac40c42
+              type: PAYPAL
         status: COMPLETED
         finalTransactionAmount: 19.74
         saleItems:
-          - itemDescription: UNLD
-            itemPrice: 2.639
-            unitOfMeasurement: ea
-            unitsSold: 7.48
-            totalItemSaleAmount: 19.74
-            posCode: '00000000000001'
-            productCode: '4'
-            type: FUEL
-            priceTier: credit
+        - itemDescription: UNLD
+          itemPrice: 2.639
+          unitOfMeasurement: ea
+          unitsSold: 7.48
+          totalItemSaleAmount: 19.74
+          posCode: '00000000000001'
+          productCode: '4'
+          type: FUEL
+          priceTier: credit
         receiptData:
           receiptSection: full
           receiptLines:
             plain:
-              - ''
-              - ' FUELS LAB'
-              - '565 SOUTH MASON RD #'
-              - 'KATY, AB '
-              - '77450'
-              - ''
-              - 02/15/2023 496410494
-              - 03:13:33 AM
-              - ''
-              - INVOICE null
-              - AUTH 020543
-              - ''
-              - PUMP# 1
-              - Supreme CR 3.195G
-              - PRICE/GAL $ 1.00
-              - FUEL PURCHASED Gal. 10
-              - FUEL TOTAL $ 10.00
-              - ''
-              - '--------'
-              - Total = $ 10.00
-              - ''
-              - ''
-              - CREDIT $ 11.533
-              - ''
-              - CRIND RECEIPT FOOTER
-              - ''
-              - ''
+            - ''
+            - ' FUELS LAB'
+            - '565 SOUTH MASON RD #'
+            - 'KATY, AB '
+            - '77450'
+            - ''
+            - 02/15/2023 496410494
+            - 03:13:33 AM
+            - ''
+            - INVOICE null
+            - AUTH 020543
+            - ''
+            - PUMP# 1
+            - Supreme CR 3.195G
+            - PRICE/GAL $ 1.00
+            - FUEL PURCHASED Gal. 10
+            - FUEL TOTAL $ 10.00
+            - ''
+            - '--------'
+            - Total = $ 10.00
+            - ''
+            - ''
+            - CREDIT $ 11.533
+            - ''
+            - CRIND RECEIPT FOOTER
+            - ''
+            - ''
         transactionDateTime: '2023-02-15T08:13:02Z'
         createdDateTime: '2023-02-15T08:12:59Z'
         lastUpdatedDateTime: '2023-02-15T08:13:34Z'
         salePosition: OUTSIDE_STORE
-        
+
     StatusCompletedWithApplePayResponse:
       value:
         transactionId: b5deba9789a14a268982f4539bc3c46b
@@ -3338,70 +3244,70 @@ components:
             pumpNumber: 1
             serviceLevelCode: S
         payments:
-          - currencyCode:
-              code: USD
-              number: 840
-              currency: US Dollar
-            requestedAuthAmount: 15.28
-            approvedAuthAmount: 15.28
-            capturedAmount: 19.74
-            status: COMPLETED
-            fundingSource:
-              type: APPLE_PAY
-              applePay:
-                expiryDate:
-                  month: '04'
-                  year: '21'
-                dPanLast4: '9424'
-                cardType: DISCOVER
+        - currencyCode:
+            code: USD
+            number: 840
+            currency: US Dollar
+          requestedAuthAmount: 15.28
+          approvedAuthAmount: 15.28
+          capturedAmount: 19.74
+          status: COMPLETED
+          fundingSource:
+            type: APPLE_PAY
+            applePay:
+              expiryDate:
+                month: '04'
+                year: '21'
+              dPanLast4: '9424'
+              cardType: DISCOVER
         status: COMPLETED
         finalTransactionAmount: 19.74
         saleItems:
-          - itemDescription: UNLD
-            itemPrice: 2.639
-            unitOfMeasurement: ea
-            unitsSold: 7.48
-            totalItemSaleAmount: 19.74
-            posCode: '00000000000001'
-            productCode: '4'
-            type: FUEL
-            priceTier: credit
+        - itemDescription: UNLD
+          itemPrice: 2.639
+          unitOfMeasurement: ea
+          unitsSold: 7.48
+          totalItemSaleAmount: 19.74
+          posCode: '00000000000001'
+          productCode: '4'
+          type: FUEL
+          priceTier: credit
         receiptData:
           receiptSection: full
           receiptLines:
             plain:
-              - ''
-              - ' FUELS LAB'
-              - '565 SOUTH MASON RD #'
-              - 'KATY, AB '
-              - '77450'
-              - ''
-              - 02/15/2023 496410494
-              - 03:02:07 AM
-              - ''
-              - INVOICE null
-              - AUTH 020543
-              - ''
-              - PUMP# 1
-              - Supreme CR 3.195G
-              - PRICE/GAL $ 1.00
-              - FUEL PURCHASED Gal. 10
-              - FUEL TOTAL $ 10.00
-              - ''
-              - '--------'
-              - Total = $ 10.00
-              - ''
-              - ''
-              - CREDIT $ 11.533
-              - ''
-              - CRIND RECEIPT FOOTER
-              - ''
-              - ''
+            - ''
+            - ' FUELS LAB'
+            - '565 SOUTH MASON RD #'
+            - 'KATY, AB '
+            - '77450'
+            - ''
+            - 02/15/2023 496410494
+            - 03:02:07 AM
+            - ''
+            - INVOICE null
+            - AUTH 020543
+            - ''
+            - PUMP# 1
+            - Supreme CR 3.195G
+            - PRICE/GAL $ 1.00
+            - FUEL PURCHASED Gal. 10
+            - FUEL TOTAL $ 10.00
+            - ''
+            - '--------'
+            - Total = $ 10.00
+            - ''
+            - ''
+            - CREDIT $ 11.533
+            - ''
+            - CRIND RECEIPT FOOTER
+            - ''
+            - ''
         transactionDateTime: '2023-02-15T08:01:36Z'
         createdDateTime: '2023-02-15T08:01:33Z'
         lastUpdatedDateTime: '2023-02-15T08:02:08Z'
         salePosition: OUTSIDE_STORE
-        
+
     StatusCompletedWithCreditCardResponse:
       value:
         transactionId: bc68c928419c4e7cba33b0d1e9f3b2fc
@@ -3411,166 +3317,166 @@ components:
             pumpNumber: 1
             serviceLevelCode: S
         payments:
-          - currencyCode:
-              code: USD
-              number: 840
-              currency: US Dollar
-            requestedAuthAmount: 15.28
-            approvedAuthAmount: 15.28
-            capturedAmount: 19.74
-            status: COMPLETED
-            fundingSource:
-              type: VAULTED_ACCOUNT
-              vaultedAccount:
-                fdAccountId: 8a7f461f865353890186537ac2ef0000
-                type: CREDIT
-              account:
-                fdAccountId: 8a7f461f865353890186537ac2ef0000
-                type: CREDIT
-              credit:
-                alias: '3502'
-                cardType: MASTERCARD
-                expiryDate:
-                  month: '12'
-                  year: '25'
+        - currencyCode:
+            code: USD
+            number: 840
+            currency: US Dollar
+          requestedAuthAmount: 15.28
+          approvedAuthAmount: 15.28
+          capturedAmount: 19.74
+          status: COMPLETED
+          fundingSource:
+            type: VAULTED_ACCOUNT
+            vaultedAccount:
+              fdAccountId: 8a7f461f865353890186537ac2ef0000
+              type: CREDIT
+            account:
+              fdAccountId: 8a7f461f865353890186537ac2ef0000
+              type: CREDIT
+            credit:
+              alias: '3502'
+              cardType: MASTERCARD
+              expiryDate:
+                month: '12'
+                year: '25'
         status: COMPLETED
         finalTransactionAmount: 19.74
         saleItems:
-          - itemDescription: UNLD
-            itemPrice: 2.639
-            unitOfMeasurement: ea
-            unitsSold: 7.48
-            totalItemSaleAmount: 19.74
-            posCode: '00000000000001'
-            productCode: '4'
-            type: FUEL
-            priceTier: credit
+        - itemDescription: UNLD
+          itemPrice: 2.639
+          unitOfMeasurement: ea
+          unitsSold: 7.48
+          totalItemSaleAmount: 19.74
+          posCode: '00000000000001'
+          productCode: '4'
+          type: FUEL
+          priceTier: credit
         receiptData:
           receiptSection: full
           receiptLines:
             plain:
-              - ''
-              - ' FUELS LAB'
-              - '565 SOUTH MASON RD #'
-              - 'KATY, AB '
-              - '77450'
-              - ''
-              - 02/15/2023 496410494
-              - 00:11:27 AM
-              - ''
-              - INVOICE null
-              - AUTH 020543
-              - ''
-              - PUMP# 1
-              - Supreme CR 3.195G
-              - PRICE/GAL $ 1.00
-              - FUEL PURCHASED Gal. 10
-              - FUEL TOTAL $ 10.00
-              - ''
-              - '--------'
-              - Total = $ 10.00
-              - ''
-              - ''
-              - CREDIT $ 11.533
-              - ''
-              - CRIND RECEIPT FOOTER
-              - ''
-              - ''
+            - ''
+            - ' FUELS LAB'
+            - '565 SOUTH MASON RD #'
+            - 'KATY, AB '
+            - '77450'
+            - ''
+            - 02/15/2023 496410494
+            - 00:11:27 AM
+            - ''
+            - INVOICE null
+            - AUTH 020543
+            - ''
+            - PUMP# 1
+            - Supreme CR 3.195G
+            - PRICE/GAL $ 1.00
+            - FUEL PURCHASED Gal. 10
+            - FUEL TOTAL $ 10.00
+            - ''
+            - '--------'
+            - Total = $ 10.00
+            - ''
+            - ''
+            - CREDIT $ 11.533
+            - ''
+            - CRIND RECEIPT FOOTER
+            - ''
+            - ''
         transactionDateTime: '2023-02-15T05:10:53Z'
         createdDateTime: '2023-02-15T05:10:46Z'
         lastUpdatedDateTime: '2023-02-15T05:11:27Z'
         salePosition: OUTSIDE_STORE
-        
+
     StatusCancelledResponse:
       value:
         transactionId: 9fc044a99c364ec7bcb3d3a2b6b36dd5
         payments:
-          - currencyCode:
-              code: USD
-              number: 840
-              currency: US Dollar
-            requestedAuthAmount: 15.22
-            approvedAuthAmount: 15.22
-            status: AUTH_CANCELLED
-            fundingSource:
-              type: VAULTED_ACCOUNT
-              vaultedAccount:
-                fdAccountId: 8a7f461f865353890186537ac2ef0000
-                type: CREDIT
-              account:
-                fdAccountId: 8a7f461f865353890186537ac2ef0000
-                type: CREDIT
-              credit:
-                alias: '3502'
-                cardType: MASTERCARD
-                expiryDate:
-                  month: '12'
-                  year: '25'
+        - currencyCode:
+            code: USD
+            number: 840
+            currency: US Dollar
+          requestedAuthAmount: 15.22
+          approvedAuthAmount: 15.22
+          status: AUTH_CANCELLED
+          fundingSource:
+            type: VAULTED_ACCOUNT
+            vaultedAccount:
+              fdAccountId: 8a7f461f865353890186537ac2ef0000
+              type: CREDIT
+            account:
+              fdAccountId: 8a7f461f865353890186537ac2ef0000
+              type: CREDIT
+            credit:
+              alias: '3502'
+              cardType: MASTERCARD
+              expiryDate:
+                month: '12'
+                year: '25'
         status: CANCELLED
         createdDateTime: '2023-02-15T05:15:21Z'
         lastUpdatedDateTime: '2023-02-15T05:16:09Z'
         salePosition: OUTSIDE_STORE
-        
+
     StatusAuhtorizedResponse:
       value:
         transactionId: c5e3705d10a341e0baacb9fe8e973ea4
         payments:
-          - currencyCode:
-              code: USD
-              number: 840
-              currency: US Dollar
-            requestedAuthAmount: 15.22
-            approvedAuthAmount: 15.22
-            status: AUTHORIZED
-            fundingSource:
-              type: VAULTED_ACCOUNT
-              vaultedAccount:
-                fdAccountId: 8a7f148f864e8ceb0186596f05b30d85
-                type: CREDIT
-              account:
-                fdAccountId: 8a7f148f864e8ceb0186596f05b30d85
-                type: CREDIT
-              credit:
-                alias: '6668'
-                cardType: DISCOVER
-                expiryDate:
-                  month: '12'
-                  year: '25'
+        - currencyCode:
+            code: USD
+            number: 840
+            currency: US Dollar
+          requestedAuthAmount: 15.22
+          approvedAuthAmount: 15.22
+          status: AUTHORIZED
+          fundingSource:
+            type: VAULTED_ACCOUNT
+            vaultedAccount:
+              fdAccountId: 8a7f148f864e8ceb0186596f05b30d85
+              type: CREDIT
+            account:
+              fdAccountId: 8a7f148f864e8ceb0186596f05b30d85
+              type: CREDIT
+            credit:
+              alias: '6668'
+              cardType: DISCOVER
+              expiryDate:
+                month: '12'
+                year: '25'
         status: AUTHORIZED
         createdDateTime: '2023-02-16T08:55:30Z'
         lastUpdatedDateTime: '2023-02-16T08:55:33Z'
         salePosition: OUTSIDE_STORE
-        
+
     StatusFuelStartedResponse:
       value:
         transactionId: 6085daba39374d228529abbf6d5907f6
         payments:
-          - currencyCode:
-              code: USD
-              number: 840
-              currency: US Dollar
-            requestedAuthAmount: 15.22
-            approvedAuthAmount: 15.22
-            status: AUTHORIZED
-            fundingSource:
-              type: VAULTED_ACCOUNT
-              vaultedAccount:
-                fdAccountId: 8a7f148f864e8ceb0186597cadd60d90
-                type: CREDIT
-              account:
-                fdAccountId: 8a7f148f864e8ceb0186597cadd60d90
-                type: CREDIT
-              credit:
-                alias: '6668'
-                cardType: DISCOVER
-                expiryDate:
-                  month: '12'
-                  year: '25'
+        - currencyCode:
+            code: USD
+            number: 840
+            currency: US Dollar
+          requestedAuthAmount: 15.22
+          approvedAuthAmount: 15.22
+          status: AUTHORIZED
+          fundingSource:
+            type: VAULTED_ACCOUNT
+            vaultedAccount:
+              fdAccountId: 8a7f148f864e8ceb0186597cadd60d90
+              type: CREDIT
+            account:
+              fdAccountId: 8a7f148f864e8ceb0186597cadd60d90
+              type: CREDIT
+            credit:
+              alias: '6668'
+              cardType: DISCOVER
+              expiryDate:
+                month: '12'
+                year: '25'
         status: FUEL_STARTED
         createdDateTime: '2023-02-16T09:10:27Z'
         lastUpdatedDateTime: '2023-02-16T09:10:51Z'
         salePosition: OUTSIDE_STORE
-        
+
     PatchSampleRequest:
       value:
         action: CANCEL_TRANSACTION
@@ -3578,8 +3484,8 @@ components:
           id: 537edec8-d33e-4ee8-93a7-b9f61876950c
           kind: mobile
           details:
-            - provider: RAVELIN
-              dataCapture:
-                dataEventId: 537edec8-d33e-4ee8-93a7-b9f61876950c
-        
+          - provider: RAVELIN
+            dataCapture:
+              dataEventId: 537edec8-d33e-4ee8-93a7-b9f61876950c
+
 
