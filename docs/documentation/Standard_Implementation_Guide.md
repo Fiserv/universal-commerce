@@ -202,7 +202,7 @@ Click on the links below to explore each endpoint.
 
 This API handles all of the Connected Commerce (uCom) Customer Profile Management operations (create, read, update, and delete).
 	
-<a href="../api/?type=post&path=/v1/customers"><img src="../assets/images/Picture1.png" alt="Customer_services" style="width:100px;height:100px;"></a>  
+<a href="../api/?type=post&path=/v1/customers"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/Picture1.png" alt="Customer_services" style="width:100px;height:100px;"></a>  
 
 [Customer Services API](../api/?type=post&path=/v1/customers)
 	
