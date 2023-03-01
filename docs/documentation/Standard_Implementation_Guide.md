@@ -210,7 +210,7 @@ This API handles all of the Connected Commerce (uCom) Customer Profile Managemen
 	
 This API handles Services related to managing the API security features like access tokens and validation.
   	
-<a href="../api/?type=post&path=/v1/tokens"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/3d5733abed559182f8c99a2820ee8883e83fb673/assets/images/security-shield-svgrepo-com.svg" alt="Security Services" style="width:100px;height:100px;"></a>  
+<a href="../api/?type=post&path=/v1/tokens"><img src="https://github.com/Fiserv/universal-commerce/blob/develop/assets/images/Picture20.png?raw=true" alt="Security Services" style="width:100px;height:100px;"></a>  
 
 [Security Services API](../api/?type=post&path=/v1/tokens)
 	
