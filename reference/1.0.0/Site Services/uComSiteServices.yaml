@@ -63,7 +63,7 @@
 
 openapi: 3.0.1
 info:
-  title: uCom Site Services.
+  title: uCom Site Services
   description: Services for site management and configuration.
   version: 0.2.3
 servers:
