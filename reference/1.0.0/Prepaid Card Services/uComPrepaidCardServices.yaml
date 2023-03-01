@@ -5,7 +5,7 @@
 #     - Added sweep and deduct API's
 # 0.2.2
 #     - Added new V2 endpoints for void transactions
-#     - Added new V2 endpoints for mutiple transaction calls
+#     - Added new V2 endpoints for multiple transaction calls
 # 0.2.1
 #     - Added Walmart pay as fundingSource
 #     - Added SEC code for ACH
@@ -29,7 +29,7 @@
 #     - Added external customer id
 # 0.1.8
 #     - Added 3ds web support
-#     - Added new API for prepaid transaction history with pagenation
+#     - Added new API for prepaid transaction history with pagination
 #     - Added account type for ACH
 # 0.1.7
 #     - Added credit in Paypal object
@@ -40,10 +40,10 @@
 #     - Added 3ds challenge transaction expiry date time in ThreeDSecure
 # 0.1.6
 #     - No change.
-#     - Added SecurityCode in valuted Account
+#     - Added SecurityCode in vaulted Account
 #     - Added VAULTED_ACCOUNT as AccountType
 #     - Added Accept-Language header field
-#     - Added PurchaseInfo in the PrepaidTransaction, depricated orderId from the parent object
+#     - Added PurchaseInfo in the PrepaidTransaction, deprecated orderId from the parent object
 # 0.1.5
 #     - Added Link in the Error object.
 #     - Added Amazon Pay funding source
@@ -69,7 +69,7 @@
 #   - Added 'id' attribute to Link
 #   - Added 'Client-Request-Id' header to Reload api
 #   - Added 'approvedAmount' attribute to FundingInfo
-#   - Modified Http method type from GET to POST for prepaid balance and transations APIs.
+#   - Modified Http method type from GET to POST for prepaid balance and transactions APIs.
 # 0.1.0
 #   - Added 'googlePay' as 'fundingSource'
 #   - Added client-token in the header field
@@ -1521,7 +1521,7 @@ components:
       properties:
         fdCustomerId:
           $ref: '#/components/schemas/FdCustomerId'
-        memership:
+        membership:
           $ref: '#/components/schemas/Membership'
         externalCustomerId:
           $ref: '#/components/schemas/ExternalCustomerId'
@@ -1536,7 +1536,7 @@ components:
       properties:
         fdCustomerId:
           $ref: '#/components/schemas/FdCustomerId'
-        memership:
+        membership:
           $ref: '#/components/schemas/Membership'
         externalCustomerId:
           $ref: '#/components/schemas/ExternalCustomerId'
@@ -1618,7 +1618,7 @@ components:
       properties:
         fdCustomerId:
           $ref: '#/components/schemas/FdCustomerId'
-        memership:
+        membership:
           $ref: '#/components/schemas/Membership'
         externalCustomerId:
           $ref: '#/components/schemas/ExternalCustomerId'
@@ -1633,7 +1633,7 @@ components:
       properties:
         fdCustomerId:
           $ref: '#/components/schemas/FdCustomerId'
-        memership:
+        membership:
           $ref: '#/components/schemas/Membership'
         externalCustomerId:
           $ref: '#/components/schemas/ExternalCustomerId'
@@ -1648,7 +1648,7 @@ components:
       properties:
         fdCustomerId:
           $ref: '#/components/schemas/FdCustomerId'
-        memership:
+        membership:
           $ref: '#/components/schemas/Membership'
         parentExternalId:
           type: string
@@ -1697,7 +1697,7 @@ components:
       properties:
         fdCustomerId:
           $ref: '#/components/schemas/FdCustomerId'
-        memership:
+        membership:
           $ref: '#/components/schemas/Membership'
         externalCustomerId:
           $ref: '#/components/schemas/ExternalCustomerId'
@@ -1712,7 +1712,7 @@ components:
       properties:
         fdCustomerId:
           $ref: '#/components/schemas/FdCustomerId'
-        memership:
+        membership:
           $ref: '#/components/schemas/Membership'
         externalCustomerId:
           $ref: '#/components/schemas/ExternalCustomerId'
@@ -1727,7 +1727,7 @@ components:
       properties:
         fdCustomerId:
           $ref: '#/components/schemas/FdCustomerId'
-        memership:
+        membership:
           $ref: '#/components/schemas/Membership'
         externalCustomerId:
           $ref: '#/components/schemas/ExternalCustomerId'
@@ -1776,7 +1776,7 @@ components:
       properties:
         fdCustomerId:
           $ref: '#/components/schemas/FdCustomerId'
-        memership:
+        membership:
           $ref: '#/components/schemas/Membership'
         externalCustomerId:
           $ref: '#/components/schemas/ExternalCustomerId'
@@ -1825,7 +1825,7 @@ components:
       properties:
         fdCustomerId:
           $ref: '#/components/schemas/FdCustomerId'
-        memership:
+        membership:
           $ref: '#/components/schemas/Membership'
         externalCustomerId:
           $ref: '#/components/schemas/ExternalCustomerId'
@@ -1865,7 +1865,7 @@ components:
       properties:
         fdCustomerId:
           $ref: '#/components/schemas/FdCustomerId'
-        memership:
+        membership:
           $ref: '#/components/schemas/Membership'
         externalCustomerId:
           $ref: '#/components/schemas/ExternalCustomerId'
@@ -2331,7 +2331,7 @@ components:
           description: Flag that indicates if partial transaction is allowed or not
         merchantFundId:
           type: string
-          description: Merchant account identfier which will be used for funding the prepaid card transactions.
+          description: Merchant account identifier which will be used for funding the prepaid card transactions.
           example: M11AC8616001
         currencyCode:
           $ref: '#/components/schemas/ISO-4217'
@@ -2806,7 +2806,7 @@ components:
       properties:
         payerId:
           type: string
-          description: Paypal generated Unique identfier for a Paypal account.
+          description: Paypal generated Unique identifier for a Paypal account.
           example: LPLWNMTBWMFAY
         nonce:
           type: string
@@ -3570,7 +3570,7 @@ components:
           example: true
         cavv:
           type: string
-          description: Card authenticaion verificaiton value
+          description: Card authentication verification value
         threeDSVersion:
           type: string
         expiryDateTime:
@@ -3582,7 +3582,7 @@ components:
         eci:
           type: string
           description: Electronic Commerce Indicator value
-      description: Details of ThreeDSecure transaction used to process the challege flow
+      description: Details of ThreeDSecure transaction used to process the challenge flow
 
     SamsungPay:
       type: object
@@ -3655,7 +3655,7 @@ components:
           description: Unique identifier for a customer account vaulted with uCom
         securityCode:
           type: string
-          description: Card Verificatiion value.
+          description: Card Verification value.
         status:
           $ref: '#/components/schemas/AccountStatus'
         type:
@@ -3769,7 +3769,7 @@ components:
                     description: Device data capture time in Internet Date/Time format - yyyy-MM-dd'T'HH:mm:ss'Z'
                     format: date-time
                     example: 2016-04-16T16:06:05Z
-                description: Device data captured as a bundle and transmitted as an encrypted and/or specifically formated string.
+                description: Device data captured as a bundle and transmitted as an encrypted and/or specifically formatted string.
               dataStatic:
                 type: object
                 properties:
@@ -3823,7 +3823,7 @@ components:
                     type: string
                     description: Mobile application name.
                     format: sting
-                    example: aplication-name
+                    example: application-name
                   country:
                     type: string
                     description: Mobile application store country.
@@ -3984,7 +3984,6 @@ components:
       - CREDIT
       - PREPAID
       - APPLE_PAY
-      - ANDRIOD_PAY
       - PAYPAL
       - TOKEN
       - NONCE
@@ -4019,7 +4018,7 @@ components:
 
     OperationType:
       type: string
-      description: Indicates the operation type of transaction of a given account. 'PURCHASEVOID' - Void a purchase transaction 'RELOADVOID' - Void a relaod transaction 'DEDUCTVOID' - Void a deduct transaction 'SWEEPVOID' - Void a sweep transaction
+      description: Indicates the operation type of transaction of a given account. 'PURCHASEVOID' - Void a purchase transaction 'RELOADVOID' - Void a reload transaction 'DEDUCTVOID' - Void a deduct transaction 'SWEEPVOID' - Void a sweep transaction
       enum:
       - PURCHASEVOID
       - RELOADVOID
@@ -4113,7 +4112,7 @@ components:
             $ref: '#/components/schemas/Prepaid'
 
     ServerError:
-      description: An unexpected server error occured.
+      description: An unexpected server error occurred.
       content:
         application/json:
           schema:
@@ -4182,7 +4181,7 @@ components:
     EndDateParam:
       name: endDate
       in: query
-      description: Date upto which transactions are to be retrieved. Format YYYYMMDD
+      description: Date up to which transactions are to be retrieved. Format YYYYMMDD
       schema:
         type: string
         format: date-time
