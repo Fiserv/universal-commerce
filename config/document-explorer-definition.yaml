@@ -38,7 +38,7 @@
   - title: Frequently Asked Questions
     link: docs/faq/faq.md
 - sections:
-  - title: Common Use Cases
+  - title: Guides
     link: recipes/LandingPage.md
     sections:
     - title: How to Create, Read, Update, and Delete a Customer Profile
