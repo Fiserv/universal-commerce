@@ -58,7 +58,7 @@ paths:
                 $ref: '#/components/schemas/MarketPlace'
               examples:
                 Minimal:
-                  summary: STAC response with caulted account
+                  summary: STAC response with vaulted account
                   $ref: '#/components/examples/retailerExampleResponse'
         
         400:
@@ -204,7 +204,7 @@ components:
             readOnly: true
 
     ThreeDSecure:
-      description: Details of ThreeDSecure transaction used to process the challege flow
+      description: Details of ThreeDSecure transaction used to process the challenge flow
       type: object
       properties:
         transactionId:
@@ -264,7 +264,7 @@ components:
           example: true
         cavv:
           type: string
-          description: Card authenticaion verificaiton value
+          description: Card authentication verification value
         threeDSVersion:
           type: string
         expiryDateTime:
@@ -310,7 +310,7 @@ components:
                 type: string
                 example: "InAuth"
               dataCapture:
-                description: Device data captured as a bundle and transmitted as an encrypted and/or specifically formated string.
+                description: Device data captured as a bundle and transmitted as an encrypted and/or specifically formatted string.
                 type: object
                 properties:
                   rawData:
@@ -380,7 +380,7 @@ components:
                     description: Mobile application name.
                     type: string
                     format: sting
-                    example: "aplication-name"
+                    example: "application-name"
                   country:
                     description: Mobile application store country.
                     type: string
@@ -547,7 +547,7 @@ components:
             $ref: '#/components/schemas/Error'
 
     ServerError:
-      description: An unexpected server error occured.
+      description: An unexpected server error occurred.
       content:
         application/json:
           schema:
@@ -605,7 +605,7 @@ components:
 
     TimestampParam:
       name: Timestamp
-      description: Epoch timestamp in the request initiating syste
+      description: Epoch timestamp in the request initiating system
       in: header
       required: true
       schema:
@@ -613,7 +613,7 @@ components:
 
     PartnerType:
       name: partnerType
-      description:  Type of the partner to query the mapping partner details, i.e PUBLISHER/RETAILER
+      description:  Type of partner to query the mapping partner details, e.g. PUBLISHER/RETAILER
       in: query
       required: true
       schema:
