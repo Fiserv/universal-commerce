@@ -202,7 +202,7 @@ Click on the links below to explore each endpoint.
 
 This API handles all of the Connected Commerce (uCom) Customer Profile Management operations (create, read, update, and delete).
 	
-<a href="../api/?type=post&path=/v1/customers"><img src="https://github.com/Fiserv/universal-commerce/blob/develop/assets/images/Picture1.png?raw=true" alt="Customer_services" style="width:100px;height:100px;"></a>  
+<a href="../api/?type=post&path=/v1/customers"><img src="../assets/images/Picture1.png" alt="Customer_services" style="width:100px;height:100px;"></a>  
 
 [Customer Services API](../api/?type=post&path=/v1/customers)
 	
@@ -218,7 +218,7 @@ This API handles Services related to managing the API security features like acc
 	
 Services related to Connected Commerce (uCom) customer accounts. Accounts can be credit, debit, loyalty, prepaid, etc.
   	
-<a href="../api/?type=post&path=/v1/accounts/verification"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/vault-svgrepo-com.svg" alt="Account_services" style="width:100px;height:100px;"></a>  
+<a href="../api/?type=post&path=/v1/accounts/verification"><img src="https://github.com/Fiserv/universal-commerce/blob/develop/assets/images/Picture4.png?raw=true" alt="Account_services" style="width:100px;height:100px;"></a>  
 
 [Account Services API](../api/?type=post&path=/v1/accounts/verification)
 	
@@ -226,7 +226,7 @@ Services related to Connected Commerce (uCom) customer accounts. Accounts can be
 	
 This API handles services needed to initiate AUTH/CAPTURE/SALE transactions using a payment account.
   	
-<a href="../api/?type=post&path=/v1/payments/auths"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/payment-method-svgrepo-com.svg" alt="Payments" style="width:100px;height:100px;"></a>  
+<a href="../api/?type=post&path=/v1/payments/auths"><img src="https://github.com/Fiserv/universal-commerce/blob/develop/assets/images/Picture19.png?raw=true" alt="Payments" style="width:100px;height:100px;"></a>  
 
 [Payment Services API](../api/?type=post&path=/v1/payments/auths)
 
@@ -235,7 +235,7 @@ This API handles services needed to initiate AUTH/CAPTURE/SALE transactions usin
 	
 This API handles services related to prepaid cards such as creating a new prepaid card, balance check, reloading funds, balance transfer etc.
   	
-<a href="../api/?type=post&path=/v2/prepaids/multi-purchases"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/eeaffd3f6c980477b788b332c5bf8776f32e11f2/assets/images/gift-card-svgrepo-com.svg" alt="Prepaid Payments" style="width:100px;height:100px;"></a>  
+<a href="../api/?type=post&path=/v2/prepaids/multi-purchases"><img src="https://github.com/Fiserv/universal-commerce/blob/develop/assets/images/Picture21.png?raw=true" alt="Prepaid Payments" style="width:100px;height:100px;"></a>  
 
 [Prepaid Services API](../api/?type=post&path=/v2/prepaids/multi-purchases)
 	
@@ -243,7 +243,7 @@ This API handles services related to prepaid cards such as creating a new prepai
 	
 This API handles Hosted Pages services and provides CRUD operation for its web pages. With the help of these APIs, hosted pages will be created and rendered to UI.
 
-<a href="../api/?type=get&path=/v1/hosted-pages/pages"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/bf957bad5bdad86c33303851ad88a54840161818/assets/images/website.svg" alt="Hosted Pages" style="width:100px;height:100px;"></a>  
+<a href="../api/?type=get&path=/v1/hosted-pages/pages"><img src="https://github.com/Fiserv/universal-commerce/blob/develop/assets/images/Picture22.png?raw=true" alt="Hosted Pages" style="width:100px;height:100px;"></a>  
 
 [Hosted Pages Services API](../api/?type=get&path=/v1/hosted-pages/pages)
 	
