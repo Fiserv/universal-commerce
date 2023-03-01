@@ -50,7 +50,7 @@
 #     - Updated PriceAdjustment as list under POSItem
 # 0.1.6
 #     - Added new api to support refund on authorization.
-#     - Added secirityCode in valuted Account
+#     - Added securityCode in vaulted Account
 #     - Added VAULTED_ACCOUNT as AccountType
 #     - Added Accept-Language header field
 # 0.1.5
@@ -86,7 +86,7 @@
 #    - Introduced 'ach' entity in FundingSource object
 #    - Added 'cardSubType' attribute inside Credit object
 #    - Added 'nonce' attribute in Paypal object
-#    - FulePurchaseInfo added
+#    - FuelPurchaseInfo added
 # 0.0.8
 #    - No change.
 # 0.0.7
@@ -278,7 +278,7 @@ paths:
                 $ref: '#/components/schemas/Authorization'
               examples:
                 Credit:
-                  summary: AUthorization details by fdAuthorizationId
+                  summary: Authorization details by fdAuthorizationId
                   $ref: '#/components/examples/MinimalGetAuthResponseByfdAuthorizationId'
         400:
           $ref: '#/components/responses/BadRequest'
@@ -364,7 +364,7 @@ paths:
                 $ref: '#/components/schemas/Authorization'
               examples:
                 Minimal:
-                  summary: Void auth by fdauthorizationId Response
+                  summary: Void auth by fdAuthorizationId Response
                   $ref: '#/components/examples/MinimalAuthVoidResponse'
           
         400:
@@ -2893,7 +2893,7 @@ components:
       properties:
         payerId:
           type: string
-          description: Paypal generated Unique identfier for a Paypal account.
+          description: Paypal generated Unique identifier for a Paypal account.
           example: LPLWNMTBWMFAY
         nonce:
           type: string
@@ -3743,7 +3743,7 @@ components:
                     format: date-time
                     example: 2016-04-16T16:06:05Z
                 description: Device data captured as a bundle and transmitted as an
-                  encrypted and/or specifically formated string.
+                  encrypted and/or specifically formatted string.
               dataStatic:
                 type: object
                 properties:
