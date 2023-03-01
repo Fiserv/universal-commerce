@@ -283,7 +283,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Link'
-      description: Represents an event to vault an account that requires a multi-step and potentially asynchrounous process to complete.
+      description: Represents an event to vault an account that requires a multi-step and potentially asynchronous process to complete.
 
     #-------------------------------------
     # Resource Models
@@ -764,7 +764,7 @@ components:
       properties:
         value:
           type: string
-          description: A shortened version one of the following values - aim, gtalk, icq, xmpp, msn, skype, qq, yahoo, or other. This will change with popularity of various applicatiions at any time.
+          description: A shortened version one of the following values - aim, gtalk, icq, xmpp, msn, skype, qq, yahoo, or other. This will change with popularity of various applications at any time.
         type:
           type: string
         primary:
@@ -804,7 +804,7 @@ components:
           example: email-id@example.com
         cardNumber:
           type: string
-          description: Card number of loyalty account. The accountId parameter supersedes this field.  This field is ignored when the request is to create a new acccount.
+          description: Card number of loyalty account. The accountId parameter supersedes this field.  This field is ignored when the request is to create a new account.
           example: "905960447"
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
@@ -1842,7 +1842,7 @@ components:
             $ref: '#/components/schemas/Provision'
 
     ServerError:
-      description: An unexpected server error occured.
+      description: An unexpected server error occurred.
       content:
         application/json:
           schema:
