@@ -229,7 +229,7 @@ paths:
             schema:
               $ref: '#/components/schemas/CustomerRequest'
             examples:
-              Minimal: {summary: Request with miniam parameters, $ref: '#/components/examples/CustomerUpdateMinimalRequest'}
+              Minimal: {summary: Request with minimum parameters, $ref: '#/components/examples/CustomerUpdateMinimalRequest'}
         required: true
       responses:
         204:
@@ -432,7 +432,7 @@ components:
       properties:
         value:
           type: string
-          description: A shortened version one of the following values - aim, gtalk, icq, xmpp, msn, skype, qq, yahoo, or other. This will change with popularity of various applicatiions at any time.
+          description: A shortened version one of the following values - aim, gtalk, icq, xmpp, msn, skype, qq, yahoo, or other. This will change with popularity of various applications at any time.
         type:
           type: string
         primary:
@@ -563,7 +563,7 @@ components:
           example: true
         cavv:
           type: string
-          description: Card authenticaion verificaiton value
+          description: Card authentication verification value
         threeDSVersion:
           type: string
         expiryDateTime:
@@ -575,7 +575,7 @@ components:
         eci:
           type: string
           description: Electronic Commerce Indicator value
-      description: Details of ThreeDSecure transaction used to process the challege flow
+      description: Details of ThreeDSecure transaction used to process the challenge flow
 
     User:
       required:
@@ -728,7 +728,7 @@ components:
                     description: Device data capture time in Internet Date/Time format - yyyy-MM-dd'T'HH:mm:ss'Z'
                     format: date-time
                     example: 2016-04-16T16:06:05Z
-                description: Device data captured as a bundle and transmitted as an encrypted and/or specifically formated string.
+                description: Device data captured as a bundle and transmitted as an encrypted and/or specifically formatted string.
               dataStatic:
                 type: object
                 properties:
@@ -782,7 +782,7 @@ components:
                     type: string
                     description: Mobile application name.
                     format: sting
-                    example: aplication-name
+                    example: application-name
                   country:
                     type: string
                     description: Mobile application store country.
