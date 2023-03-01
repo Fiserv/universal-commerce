@@ -567,7 +567,7 @@ Json Object:
 
 Services related to viewing the list of receipts, transactions details, and adding a note to a particular transaction
 	
-<a href="../api/?type=get&path=/v1/txhistory/customers/{fdCustomerId}/transactions"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/b2bc3a6e7ebf1850225e4db19eeb593723a02759/assets/images/transaction-minus-svgrepo-com.svg" alt="Tx_Services" style="width:100px;height:100px;"></a>  
+<a href="../api/?type=get&path=/v1/txhistory/customers/{fdCustomerId}/transactions"><img src="https://github.com/Fiserv/universal-commerce/blob/develop/assets/images/Picture23.png?raw=true" alt="Tx_Services" style="width:100px;height:100px;"></a>  
 
 [Transaction History Services API](../api/?type=get&path=/v1/txhistory/customers/{fdCustomerId}/transactions)
 
