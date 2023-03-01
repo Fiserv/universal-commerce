@@ -956,7 +956,7 @@ components:
             $ref: '#/components/schemas/User'
 
     ServerError:
-      description: An unexpected server error occured.
+      description: An unexpected server error occurred.
       content:
         application/json:
           schema:
@@ -1026,7 +1026,7 @@ components:
     TimestampParam:
       name: Timestamp
       in: header
-      description: Epoch timestamp in the request initiating syste
+      description: Epoch timestamp in the request initiating system
       required: true
       schema:
         type: string
