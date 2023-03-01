@@ -1,5 +1,11 @@
 {
     "githubPullRequests.ignoredPullRequestBranches": [
         "develop"
+    ],
+    "cSpell.words": [
+        "NACHA",
+        "openapi",
+        "Venmo",
+        "Withfdcustomer"
     ]
 }
