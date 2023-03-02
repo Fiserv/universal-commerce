@@ -61,16 +61,16 @@ servers:
 - url: https://int.api.firstdata.com/ucom
 tags:
 - name: customers
-  description: Operations and details about customers which are defined as the end-user of the application.
+  description: Operations and details about customers which are defined as the end-user of the application
 paths:
   /v1/customers:
     get:
       x-group-name: Customer Services
-      x-proxy-name: Get Customer Profile by external id
+      x-proxy-name: Get Customer Profile by externalId
       tags:
       - customers
-      summary: Read a Customer Profile by external id attribute
-      description: Fetch the details of a customer providing the external Id.
+      summary: Read a Customer Profile by externalId attribute
+      description: Fetch the details of a customer providing the externalId
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -105,7 +105,7 @@ paths:
       tags:
       - customers
       summary: Create a Customer Profile, a.k.a. 'register a customer'
-      description: Registering a customer in the uCom system results in a unique identifier 'fdCustomerId' that is used in subsequent operations like vaulting a payment account and making mobile payments.
+      description: Registering a customer in the uCom system results in a unique identifier 'fdCustomerId' that is used in subsequent operations like vaulting a payment account and making mobile payments
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -150,7 +150,7 @@ paths:
       tags:
       - customers
       summary: Get Customer Profile by fdCustomerId
-      description: Fetch the details of a customer providing the fdCustomerId.
+      description: Fetch the details of a customer providing the fdCustomerId
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -186,7 +186,7 @@ paths:
       tags:
       - customers
       summary: Delete a Customer Profile
-      description: Delete a customer profile from uCom system by providing the fdCustomerId.
+      description: Delete a customer profile from uCom system by providing the fdCustomerId
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -213,7 +213,7 @@ paths:
       tags:
       - customers
       summary: Update a Customer Profile
-      description: Update the details in a Customer Profile providing the fdCustomerId.
+      description: Update the details in a Customer Profile providing the fdCustomerId
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
