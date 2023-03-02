@@ -27,7 +27,7 @@ paths:
   /v1/threedsecure/authentication:
     post:
       x-group-name: Authentication Services
-      x-proxy-name: Execute 3ds authentication
+      x-proxy-name: Execute 3ds Authentication
       tags:
       - threedsecure
       summary: Execute a 3ds authentication for a given payment card
@@ -59,7 +59,7 @@ paths:
   /v1/threedsecure/authentication/{authenticationId}:
     patch:
       x-group-name: Authentication Services
-      x-proxy-name: Update 3ds authentication
+      x-proxy-name: Update 3ds Authentication
       tags:
       - threedsecure
       summary: Update 3ds authentication for a given payment card
