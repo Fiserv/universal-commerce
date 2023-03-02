@@ -40,8 +40,8 @@
 openapi: 3.0.1
 info:
   title: uCom Hosted Pages Services
-  description: Services provides CRUD operaion for hosted pages. With the help of
-    these APIs hosted pages will be created and rendred to UI.
+  description: Services provides CRUD operation for hosted pages. With the help of
+    these APIs hosted pages will be created and rendered to UI.
   version: 0.2.3
 servers:
   - url: https://int.api.firstdata.com/ucom
@@ -270,7 +270,7 @@ components:
           example: true
         cavv:
           type: string
-          description: Card authenticaion verificaiton value
+          description: Card authentication verification value
         threeDSVersion:
           type: string
         expiryDateTime:
@@ -282,7 +282,7 @@ components:
         eci:
           type: string
           description: Electronic Commerce Indicator value
-      description: Details of ThreeDSecure transaction used to process the challege
+      description: Details of ThreeDSecure transaction used to process the challenge
         flow
 
 #-------------------------------------
@@ -336,7 +336,7 @@ components:
                     format: date-time
                     example: 2016-04-16T16:06:05Z
                 description: Device data captured as a bundle and transmitted as an
-                  encrypted and/or specifically formated string.
+                  encrypted and/or specifically formatted string.
               dataStatic:
                 type: object
                 properties:
@@ -393,7 +393,7 @@ components:
                     type: string
                     description: Mobile application name.
                     format: sting
-                    example: aplication-name
+                    example: application-name
                   country:
                     type: string
                     description: Mobile application store country.
@@ -558,7 +558,7 @@ components:
               $ref: '#/components/schemas/PageConfiguration'
 
     ServerError:
-      description: An unexpected server error occured.
+      description: An unexpected server error occurred.
       content:
         application/json:
           schema:
@@ -624,7 +624,7 @@ components:
     RedirectUrlParam:
       name: redirectUrl
       in: query
-      description: This url will be used as form post to send resposne object back
+      description: This url will be used as form post to send response object back
         to wallet app.
       required: true
       schema:

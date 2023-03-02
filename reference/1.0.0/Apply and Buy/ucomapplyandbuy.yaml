@@ -469,6 +469,10 @@ components:
           type: string
         eciIndicator:
           type: string
+        xid:
+          type: string
+        cavv:
+          type: string           
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
         panType:
@@ -696,6 +700,10 @@ components:
           type: string
         eciIndicator:
           type: string
+        xid:
+          type: string
+        cavv:
+          type: string          
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
         panType:
@@ -821,7 +829,7 @@ components:
           example: email-id@example.com
         cardNumber:
           type: string
-          description: Card number of loyalty account. The accountId parameter supersedes
+          description: Card number of loyalty account. The accountId parameter superscedes
             this field.  This field is ignored when the request is to create a new
             acccount.
           example: "905960447"
@@ -848,7 +856,7 @@ components:
               type: boolean
             sms:
               type: boolean
-          description: Methods the account owner has agreed to be contacted
+          description: Methods the account onwer has agreed to be contacted
         commonFlags:
           type: object
           properties:
@@ -1177,6 +1185,10 @@ components:
           type: string
         eciIndicator:
           type: string
+        xid:
+          type: string
+        cavv:
+          type: string          
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
         panType:
