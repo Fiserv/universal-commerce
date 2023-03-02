@@ -154,8 +154,8 @@ paths:
             schema:
               $ref: '#/components/schemas/TokenRequest'
             examples:
-              Registerd User: {summary: Request with fdcustomerId, $ref: '#/components/examples/TokenCreationWithfdcustomerId'}
-              Guest User: {summary: Request with ananymous, $ref: '#/components/examples/TokenCreationWithoutfdcustomerId'}
+              Registered User: {summary: Request with fdcustomerId, $ref: '#/components/examples/TokenCreationWithfdcustomerId'}
+              Guest User: {summary: Request with anonymous, $ref: '#/components/examples/TokenCreationWithoutfdcustomerId'}
         required: true
       responses:
         201:
@@ -476,7 +476,7 @@ components:
           example: true
         cavv:
           type: string
-          description: Card authenticaion verificaiton value
+          description: Card authentication verification value
         threeDSVersion:
           type: string
         expiryDateTime:
@@ -488,7 +488,7 @@ components:
         eci:
           type: string
           description: Electronic Commerce Indicator value
-      description: Details of ThreeDSecure transaction used to process the challege flow
+      description: Details of ThreeDSecure transaction used to process the challenge flow
 
     #-------------------------------------
     # Common Models
@@ -536,7 +536,7 @@ components:
                     description: Device data capture time in Internet Date/Time format - yyyy-MM-dd'T'HH:mm:ss'Z'
                     format: date-time
                     example: 2016-04-16T16:06:05Z
-                description: Device data captured as a bundle and transmitted as an encrypted and/or specifically formated string.
+                description: Device data captured as a bundle and transmitted as an encrypted and/or specifically formatted string.
               dataStatic:
                 type: object
                 properties:
@@ -590,7 +590,7 @@ components:
                     type: string
                     description: Mobile application name.
                     format: sting
-                    example: aplication-name
+                    example: application-name
                   country:
                     type: string
                     description: Mobile application store country.
@@ -753,7 +753,7 @@ components:
             $ref: '#/components/schemas/Token'
 
     ServerError:
-      description: An unexpected server error occured.
+      description: An unexpected server error occurred.
       content:
         application/json:
           schema:

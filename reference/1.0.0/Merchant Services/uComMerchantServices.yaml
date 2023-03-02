@@ -396,16 +396,16 @@ components:
           type: integer
         startTime:
           type: string
-          description: The hour and minutue in format HH:mm
+          description: The hour and minute in format HH:mm
         endTime:
           type: string
-          description: The hour and minutue in format HH:mm
+          description: The hour and minute in format HH:mm
         interval:
           type: integer
           description: Interval between order windows, ex. 15 minutes
         windowCloseOffset:
           type: integer
-          description: The time in minutes to stop allowing orders before the window closes. ex. -5 = orders not allowd 5 minutes before window ends. ex. 0 = orders allowed until the end_time
+          description: The time in minutes to stop allowing orders before the window closes. ex. -5 = orders not allowed 5 minutes before window ends. ex. 0 = orders allowed until the end_time
         windows:
           type: array
           items:
@@ -531,7 +531,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ProductAddition'
-      description: Product additions group contains simullar additions, like pizza toppings
+      description: Product additions group contains similar additions, like pizza toppings
 
     ProductGroup:
       type: object
@@ -766,7 +766,7 @@ components:
           example: true
         cavv:
           type: string
-          description: Card authenticaion verificaiton value
+          description: Card authentication verification value
         threeDSVersion:
           type: string
         expiryDateTime:
@@ -778,7 +778,7 @@ components:
         eci:
           type: string
           description: Electronic Commerce Indicator value
-      description: Details of ThreeDSecure transaction used to process the challege flow
+      description: Details of ThreeDSecure transaction used to process the challenge flow
 
     Weight:
       type: object
@@ -890,7 +890,7 @@ components:
       type: string
       description: Indicates the merchant category information
       enum:
-      - RESTARAUNT
+      - RESTAURANT
       - BAR
       - CONCESSIONS
       - COMMISSARY
@@ -972,7 +972,7 @@ components:
             $ref: '#/components/schemas/ClosureResponse'
 
     ServerError:
-      description: An unexpected server error occured.
+      description: An unexpected server error occurred.
       content:
         application/json:
           schema:
@@ -1041,7 +1041,7 @@ components:
     MerchantCategoryParam:
       name: merchantCategory
       in: query
-      description: Merchant category, like restaratunt, bar, general store.
+      description: Merchant category, like restaurant, bar, general store.
       schema:
         type: string
     MerchantSubCategoryParam:
@@ -1059,7 +1059,7 @@ components:
     TimestampParam:
       name: Timestamp
       in: header
-      description: Epoch timestamp in the request initiating syste
+      description: Epoch timestamp in the request initiating system
       required: true
       schema:
         type: string

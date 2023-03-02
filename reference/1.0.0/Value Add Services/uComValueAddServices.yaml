@@ -95,7 +95,7 @@ paths:
       tags:
       - loyalty
       summary: Get loyalty account details
-      description: Get loyalty account details from the issuer systems.  This is a general inquirey and not for information related to being vaulted at First Data.
+      description: Get loyalty account details from the issuer systems.  This is a general inquiry and not for information related to being vaulted at First Data.
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -695,7 +695,7 @@ components:
           example: email-id@example.com
         cardNumber:
           type: string
-          description: Card number of loyalty account. The accountId parameter superscedes this field.  This field is ignored when the request is to create a new acccount.
+          description: Card number of loyalty account. The accountId parameter supersedes this field.  This field is ignored when the request is to create a new account.
           example: "905960447"
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
@@ -720,7 +720,7 @@ components:
               type: boolean
             sms:
               type: boolean
-          description: Methods the account onwer has agreed to be contacted
+          description: Methods the account owner has agreed to be contacted
         commonFlags:
           type: object
           properties:
@@ -1007,7 +1007,7 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/POSItem'
-          description: Conditions that must be met for the rewared to be awarded.
+          description: Conditions that must be met for the reward to be awarded.
         offerCostInfo:
           type: object
           properties:
@@ -1262,7 +1262,7 @@ components:
           example: true
         cavv:
           type: string
-          description: Card authenticaion verificaiton value
+          description: Card authentication verification value
         threeDSVersion:
           type: string
         expiryDateTime:
@@ -1274,7 +1274,7 @@ components:
         eci:
           type: string
           description: Electronic Commerce Indicator value
-      description: Details of ThreeDSecure transaction used to process the challege flow
+      description: Details of ThreeDSecure transaction used to process the challenge flow
 
     WashCode:
       type: object
@@ -1340,7 +1340,7 @@ components:
                     description: Device data capture time in Internet Date/Time format - yyyy-MM-dd'T'HH:mm:ss'Z'
                     format: date-time
                     example: 2016-04-16T16:06:05Z
-                description: Device data captured as a bundle and transmitted as an encrypted and/or specifically formated string.
+                description: Device data captured as a bundle and transmitted as an encrypted and/or specifically formatted string.
               dataStatic:
                 type: object
                 properties:
@@ -1394,7 +1394,7 @@ components:
                     type: string
                     description: Mobile application name.
                     format: sting
-                    example: aplication-name
+                    example: application-name
                   country:
                     type: string
                     description: Mobile application store country.
@@ -1698,7 +1698,7 @@ components:
             $ref: '#/components/schemas/Loyalty'
 
     ServerError:
-      description: An unexpected server error occured.
+      description: An unexpected server error occurred.
       content:
         application/json:
           schema:
@@ -1792,7 +1792,7 @@ components:
     EndDateParam:
       name: endDate
       in: query
-      description: Date upto which transactions are to be retrieved. Format YYYYMMDD
+      description: Date up to which transactions are to be retrieved. Format YYYYMMDD
       schema:
         type: string
         format: date-time

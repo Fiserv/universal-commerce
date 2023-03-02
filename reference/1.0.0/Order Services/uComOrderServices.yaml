@@ -88,7 +88,7 @@ paths:
           description: Unauthorized
           content: {}
         500:
-          description: An unexpected server error occured.
+          description: An unexpected server error occurred.
           content:
             application/json:
               schema:
@@ -131,7 +131,7 @@ paths:
           description: Unauthorized
           content: {}
         500:
-          description: An unexpected server error occured.
+          description: An unexpected server error occurred.
           content:
             application/json:
               schema:
@@ -171,7 +171,7 @@ paths:
           description: Unauthorized
           content: {}
         500:
-          description: An unexpected server error occured.
+          description: An unexpected server error occurred.
           content:
             application/json:
               schema:
@@ -211,7 +211,7 @@ paths:
           description: Unauthorized
           content: {}
         500:
-          description: An unexpected server error occured.
+          description: An unexpected server error occurred.
           content:
             application/json:
               schema:
@@ -257,7 +257,7 @@ paths:
           description: Unauthorized
           content: {}
         500:
-          description: An unexpected server error occured.
+          description: An unexpected server error occurred.
           content:
             application/json:
               schema:
@@ -270,7 +270,7 @@ paths:
       x-proxy-name: Order cancellation
       tags:
         - Orders
-      description: Order cancelation request
+      description: Order cancellation request
       parameters:
         - $ref: '#/components/parameters/ApiKeyParam'
         - $ref: '#/components/parameters/TimestampParam'
@@ -281,7 +281,7 @@ paths:
         - $ref: '#/components/parameters/OrderIdParam'
         - $ref: '#/components/parameters/SubMerchantIdParam'
       requestBody:
-        description: Order cancelation information
+        description: Order cancellation information
         content:
           application/json:
             schema:
@@ -304,7 +304,7 @@ paths:
           description: Unauthorized
           content: {}
         500:
-          description: An unexpected server error occured.
+          description: An unexpected server error occurred.
           content:
             application/json:
               schema:
@@ -351,7 +351,7 @@ paths:
           description: Unauthorized
           content: {}
         500:
-          description: An unexpected server error occured.
+          description: An unexpected server error occurred.
           content:
             application/json:
               schema:
@@ -398,7 +398,7 @@ paths:
           description: Unauthorized
           content: {}
         500:
-          description: An unexpected server error occured.
+          description: An unexpected server error occurred.
           content:
             application/json:
               schema:
@@ -444,7 +444,7 @@ paths:
           description: Unauthorized
           content: {}
         500:
-          description: An unexpected server error occured.
+          description: An unexpected server error occurred.
           content:
             application/json:
               schema:
@@ -807,7 +807,7 @@ components:
         deliveryOption:
             $ref: '#/components/schemas/DeliveryOption'
         scheduledDate:
-            description: scheduled delivery date required when delivery option is seleted as SCHEDULED
+            description: scheduled delivery date required when delivery option SCHEDULED is selected
             type: string
             format: date-time
             example: "2016-04-16T16:06:05Z"
@@ -935,16 +935,16 @@ components:
           type: integer
         startTime:
           type: string
-          description: The hour and minutue in format HH:mm
+          description: The hour and minute in format HH:mm
         endTime:
           type: string
-          description: The hour and minutue in format HH:mm
+          description: The hour and minute in format HH:mm
         interval:
           type: integer
           description: Interval between order windows, ex. 15 minutes
         windowCloseOffset:
           type: integer
-          description: The time in minutes to stop allowing orders before the window closes. ex. -5 = orders not allowd 5 minutes before window ends. ex. 0 = orders allowed until the end_time
+          description: The time in minutes to stop allowing orders before the window closes. ex. -5 = orders not allowed 5 minutes before window ends. ex. 0 = orders allowed until the end_time
         windows:
           type: array
           items:
@@ -1275,7 +1275,7 @@ components:
           type: string
           example: "email-id@example.com"
         cardNumber:
-          description: Card number of loyalty account. The accountId parameter superscedes this field.  This field is ignored when the request is to create a new acccount.
+          description: Card number of loyalty account. The accountId parameter supersedes this field.  This field is ignored when the request is to create a new account.
           type: string
           example: '905960447'
         expiryDate:
@@ -1293,7 +1293,7 @@ components:
           description: Security pin number
           type: string
         communications:
-          description: Methods the account onwer has agreed to be contacted
+          description: Methods the account owner has agreed to be contacted
           type: object
           properties:
             email:
@@ -1420,7 +1420,7 @@ components:
           $ref: '#/components/schemas/ReceiptData'
 
     MerchantOrder:
-      description: Order consists of order itself, payment transaction, one or multiple fullfilments, refunds and cancelation information
+      description: Order consists of order itself, payment transaction, one or multiple fullfillments, refunds and cancellation information
       type: object
       properties:
         storeId:
@@ -1609,7 +1609,7 @@ components:
 
     OrderCancel:
       type: object
-      description: Order cancelation information
+      description: Order cancellation information
       properties:
         cancelId:
           type: string
@@ -1755,7 +1755,7 @@ components:
       properties:
         payerId:
           type: string
-          description: Paypal generated Unique identfier for a Paypal account.
+          description: Paypal generated Unique identifier for a Paypal account.
           example: "LPLWNMTBWMFAY"
         nonce:
           type: string
@@ -1980,7 +1980,7 @@ components:
           $ref: '#/components/schemas/Price'
 
     ProductAdditionGroup:
-      description: Product additions group contains simullar additions, like pizza toppings
+      description: Product additions group contains similar additions, like pizza toppings
       type: object
       properties:
         productAdditionGroupId:
@@ -2074,7 +2074,7 @@ components:
         currencyCode:
           $ref: '#/components/schemas/ISO-4217'
         qualifiers:
-          description: Conditions that must be met for the rewared to be awarded.
+          description: Conditions that must be met for the reward to be awarded.
           type: object
           properties:
             currency:
@@ -2396,7 +2396,7 @@ components:
           description: Unique identifier for a customer account vaulted with uCom
           type: string
         securityCode:
-          description: Card Verificatiion value.
+          description: Card Verification value
           type: string
         status:
           $ref: '#/components/schemas/AccountStatus'
@@ -2884,7 +2884,7 @@ components:
             $ref: '#/components/schemas/Error'
 
     ServerError:
-      description: An unexpected server error occured.
+      description: An unexpected server error occurred.
       content:
         application/json:
           schema:
@@ -2966,7 +2966,7 @@ components:
 
     OrderIdParam:
       name: orderId
-      description: Unique identifer for the Order
+      description: Unique identifier for the Order
       in: path
       required: true
       schema:
@@ -2974,7 +2974,7 @@ components:
 
     TimestampParam:
       name: Timestamp
-      description: Epoch timestamp in the request initiating syste
+      description: Epoch timestamp in the request initiating system
       in: header
       required: true
       schema:
