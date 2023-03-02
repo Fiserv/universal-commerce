@@ -256,7 +256,7 @@ paths:
               schema:
                 type: string
               examples:
-                Minimal - 200:
+                Minimal:
                   $ref: '#/components/examples/GetReceiptByfdTransactionIdResponse'
 
         '400':
