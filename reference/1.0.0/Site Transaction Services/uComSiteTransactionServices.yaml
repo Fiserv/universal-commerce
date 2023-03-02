@@ -46,7 +46,7 @@
 #     - Add OfferRealizationType enum in PromotionalOffer
 #     - Add posAdjustment (type PriceAdjustment) in PromotionalOffer
 #     - Add saleItems array of POSItem in PromotionalOfferQualifiers
-#     - Added SecurityCode in valuted Account
+#     - Added SecurityCode in vaulted Account
 #     - Added VAULTED_ACCOUNT as AccountType
 #     - Added Accept-Language header field
 #     - Added purchaseInfo object in the PetroTransaction
@@ -92,7 +92,7 @@
 #   - Added 'cardSubType' attribute in Credit object
 #   - Added 'paypal', 'visaCheckout' elements to FundingSource object
 # 0.0.8
-#   - Changeds to add offers and rewards to a purchase
+#   - Changed to add offers and rewards to a purchase
 # 0.0.7
 #   - Updated ReferenceToken to have more accurate attribute names, removed use value
 #   - Cleaned up examples in the models
@@ -115,7 +115,7 @@
 # 0.0.3
 #     - Removed 'pumpNumber' attribute from PetroSite object and moved under 'FuelPurchaseInfo' object.
 #     - Defined 'ReceiptData' object and included it into 'PetroTransaction' object.
-#     - Added 'saleItemList' attribute refering 'POSItem' to 'PetroTransaction' object.
+#     - Added 'saleItemList' attribute referring 'POSItem' to 'PetroTransaction' object.
 #     - Defined 'WashCode' object and included into 'PetroTransaction' object.
 #     - 'payment' attribute in PetroTransaction renamed as 'payments' and made into array.
 #     - 'PaymentInfo' object refactored. Removed Authorization and made into single entity.
@@ -234,20 +234,20 @@ paths:
                 $ref: '#/components/schemas/PetroTransaction'
               examples:
                 Completed - PayPal - 200:
-                  summary: Status Compeleted with PayPal Response
+                  summary: Status Completed with PayPal Response
                   $ref: '#/components/examples/StatusCompletedWithPayPalResponse'
                 Completed - Apple Pay - 200:
-                  summary: Status Compeleted with Apple Pay Response
+                  summary: Status Completed with Apple Pay Response
                   $ref: '#/components/examples/StatusCompletedWithApplePayResponse'
                 Completed - Credit Card - 200:
-                  summary: Status Compeleted with Credit Card Response
+                  summary: Status Completed with Credit Card Response
                   $ref: '#/components/examples/StatusCompletedWithCreditCardResponse'
                 Cancelled - Minimal - 200:
                   summary: Status Cancelled Response
                   $ref: '#/components/examples/StatusCancelledResponse'
                 Authorized - Minimal - 200:
                   summary: Status Authorized Response
-                  $ref: '#/components/examples/StatusAuhtorizedResponse'
+                  $ref: '#/components/examples/StatusAuthorizedResponse'
                 Fuel Started - Minimal - 200:
                   summary: Status Fuel Started Response
                   $ref: '#/components/examples/StatusFuelStartedResponse'
@@ -917,7 +917,7 @@ components:
           example: email-id@example.com
         cardNumber:
           type: string
-          description: Card number of loyalty account. The accountId parameter superscedes this field.  This field is ignored when the request is to create a new acccount.
+          description: Card number of loyalty account. The accountId parameter supersedes this field.  This field is ignored when the request is to create a new account.
           example: "905960447"
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
@@ -942,7 +942,7 @@ components:
               type: boolean
             sms:
               type: boolean
-          description: Methods the account onwer has agreed to be contacted
+          description: Methods the account owner has agreed to be contacted
         commonFlags:
           type: object
           properties:
@@ -1062,7 +1062,7 @@ components:
       example:
         programId: TEST_PROGRAM
         hostProgramId: TEST_HOST_PROGRAM
-        programName: TEST_LOAYLTY_PROGRAM
+        programName: TEST_LOYALTY_PROGRAM
         programDesc: Test loyalty program
         programProvider: Test Provider
         loyaltyType: LOCAL
@@ -1243,7 +1243,7 @@ components:
       properties:
         payerId:
           type: string
-          description: Paypal generated Unique identfier for a Paypal account.
+          description: Paypal generated Unique identifier for a Paypal account.
           example: LPLWNMTBWMFAY
         nonce:
           type: string
@@ -1640,7 +1640,7 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/POSItem'
-          description: Conditions that must be met for the rewared to be awarded.
+          description: Conditions that must be met for the reward to be awarded.
         offerCostInfo:
           type: object
           properties:
@@ -1932,7 +1932,7 @@ components:
         eci:
           type: string
           description: Electronic Commerce Indicator value
-      description: Details of ThreeDSecure transaction used to process the challege flow
+      description: Details of ThreeDSecure transaction used to process the challenge flow
 
     SiteResource:
       type: object
@@ -1999,7 +1999,7 @@ components:
           description: Unique identifier for a customer account vaulted with uCom
         securityCode:
           type: string
-          description: Card Verificatiion value.
+          description: Card Verification value.
         status:
           $ref: '#/components/schemas/AccountStatus'
         type:
@@ -2113,7 +2113,7 @@ components:
                     description: Device data capture time in Internet Date/Time format - yyyy-MM-dd'T'HH:mm:ss'Z'
                     format: date-time
                     example: 2016-04-16T16:06:05Z
-                description: Device data captured as a bundle and transmitted as an encrypted and/or specifically formated string.
+                description: Device data captured as a bundle and transmitted as an encrypted and/or specifically formatted string.
               dataStatic:
                 type: object
                 properties:
@@ -2167,7 +2167,7 @@ components:
                     type: string
                     description: Mobile application name.
                     format: sting
-                    example: aplication-name
+                    example: application-name
                   country:
                     type: string
                     description: Mobile application store country.
@@ -2374,7 +2374,6 @@ components:
       - CREDIT
       - PREPAID
       - APPLE_PAY
-      - ANDRIOD_PAY
       - PAYPAL
       - TOKEN
       - NONCE
@@ -2651,7 +2650,7 @@ components:
             $ref: '#/components/schemas/PetroTransaction'
 
     ServerError:
-      description: An unexpected server error occured.
+      description: An unexpected server error occurred.
       content:
         application/json:
           schema:
@@ -3417,7 +3416,7 @@ components:
         lastUpdatedDateTime: '2023-02-15T05:16:09Z'
         salePosition: OUTSIDE_STORE
 
-    StatusAuhtorizedResponse:
+    StatusAuthorizedResponse:
       value:
         transactionId: c5e3705d10a341e0baacb9fe8e973ea4
         payments:
