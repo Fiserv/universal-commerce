@@ -90,10 +90,10 @@ paths:
   /v1/customers/{fdCustomerId}/actions:
     post:
       x-group-name: Issuer Services
-      x-proxy-name: Vault an account in uCom directly from the Issuer
+      x-proxy-name: Vault an Account in uCom Directly from the Issuer
       tags:
       - issuer-actions
-      summary: Vault an account in uCom directly from the Issuer.
+      summary: Vault an account in uCom directly from the Issuer
       description: Register a customer account in the uCom vault from the Issuer as the client instead of an omni-channel app.
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
