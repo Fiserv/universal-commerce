@@ -87,7 +87,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/User'
               examples:
-                Minimal - 200:
+                Minimal:
                   summary: Get customer Details Minimal Response
                   $ref: '#/components/examples/GetCustomerDetailsMinimalResponse'
         400:
@@ -131,7 +131,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/User'
               examples:
-                Minimal - 201:
+                Minimal:
                   summary: Customer Creation Minimal Response
                   $ref: '#/components/examples/CustomerCreateMinimalResponse'
         400:
@@ -167,7 +167,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/User'
               examples:
-                Minimal - 200:
+                Minimal:
                   summary: Get customer Details Minimal Response
                   $ref: '#/components/examples/GetCustomerDetailsMinimalResponse'
 
