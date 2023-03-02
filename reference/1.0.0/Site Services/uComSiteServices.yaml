@@ -165,7 +165,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Site'
               examples:
-                Minimal - 200:
+                Minimal:
                   summary: Sample response of site information
                   $ref: '#/components/examples/GetSiteInformationBySiteLocationID'
 
@@ -270,7 +270,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/SitesSearchResult'
               examples:
-                Minimal - 200:
+                Minimal:
                   summary: Sample response for list of sites
                   $ref: '#/components/examples/GetSitesByGeoCoordinates'
         400:
@@ -309,7 +309,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/VenuesSearchResult'
               examples:
-                Minimal - 200:
+                Minimal:
                   summary: Sample response of venue information
                   $ref: '#/components/examples/GetVenueInformation'
         400:
@@ -346,7 +346,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/VenuesSectionSearchResult'
               examples:
-                Minimal - 200:
+                Minimal:
                   summary: Sample response of venue section information
                   $ref: '#/components/examples/GetVenueSectionInformation'
         400:
@@ -383,7 +383,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/VenuesSuiteSearchResult'
               examples:
-                Minimal - 200:
+                Minimal:
                   summary: Sample response of venue suites information
                   $ref: '#/components/examples/GetVenueSuites'
         400:
@@ -420,7 +420,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/VenuesTableSearchResult'
               examples:
-                Minimal - 200:
+                Minimal:
                   summary: Sample response of venue tables information
                   $ref: '#/components/examples/GetVenueTables'
         400:
@@ -2156,9 +2156,4 @@ components:
           attributeValue: ABOVE_SITE
         - attributeName: PRE_AUTH_AMOUNT
           attributeValue: '100'
-
-
-
-
-
 
