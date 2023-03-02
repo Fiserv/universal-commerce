@@ -147,8 +147,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Prepaid'
               examples:
-                Vaulted Card - 200: {summary: Balance response for vaulted card, $ref: '#/components/examples/VaultedCardBalanceResponse'}
-                Plain Card - 200: {summary: Balance response for vaulted card, $ref: '#/components/examples/PlainCardBalanceResponse'}
+                Vaulted Card: {summary: Balance response for vaulted card, $ref: '#/components/examples/VaultedCardBalanceResponse'}
+                Plain Card: {summary: Balance response for vaulted card, $ref: '#/components/examples/PlainCardBalanceResponse'}
 
         400:
           $ref: '#/components/responses/BadRequest'
@@ -241,22 +241,22 @@ paths:
               schema:
                 $ref: '#/components/schemas/PrepaidPurchase'
               examples:
-                Credit Card - 201:
+                Credit Card:
                   summary: Purchase Prepaid card with credit Card Response
                   $ref: '#/components/examples/CreditCardPurchaseResponse'
-                Vaulted Card - 201:
+                Vaulted Card:
                   summary: Purchase Prepaid card with Vaulted Card response
                   $ref: '#/components/examples/VaultedCardPurchaseResponse'
-                Apple Pay - 201:
+                Apple Pay:
                   summary: Purchase prepaid card with apple pay response
                   $ref: '#/components/examples/ApplePayPurchaseResponse'
-                Google Pay - 201:
+                Google Pay:
                   summary: Purchase prepaid card with google pay response
                   $ref: '#/components/examples/GooglePayPurchaseResponse'
-                Samsung Pay - 201:
+                Samsung Pay:
                   summary: Purchase prepaid card with samsung pay response
                   $ref: '#/components/examples/SamsungPayPurchaseResponse'
-                PLCC - 201:
+                PLCC:
                   summary: Purchase prepaid card with PLCC response
                   $ref: '#/components/examples/PLCCPurchaseResponse'
         202:
@@ -997,19 +997,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/LoadFundsPurchase'
               examples:
-                Merchant Funded - 201:
+                Merchant Funded:
                   summary: Merchant funded reload response
                   $ref: '#/components/examples/MerchantFundedReloadResponse'
-                Credit Card - 201:
+                Credit Card:
                   summary: Prepaid card reload with credit card card response
                   $ref: '#/components/examples/CreditCardReloadResponse'
-                Apple Pay - 201:
+                Apple Pay:
                   summary: prepaid card reload with apple pay response
                   $ref: '#/components/examples/ApplePayReloadResponse'
-                Google Pay - 201:
+                Google Pay:
                   summary: prepaid card reload with google pay response
                   $ref: '#/components/examples/GooglePayReloadResponse'
-                Samsung Pay - 201:
+                Samsung Pay:
                   summary: prepaid card reload with samsung pay response
                   $ref: '#/components/examples/SamsungPayReloadResponse'
 
@@ -1303,7 +1303,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/MergeBalanceTransaction'
               examples:
-                Vaulted Accounts - 201:
+                Vaulted Accounts:
                   summary: Merge response for two vaulted accounts
                   $ref: '#/components/examples/VaultedAccountsBalanceMergeResponse'
         400:
@@ -1498,10 +1498,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/PrepaidTxnSearchResult'
               examples:
-                vaulted Card - 200:
+                vaulted Card:
                   summary: Cancel response using Merchant Transaction ID
                   $ref: '#/components/examples/VaultedCardTransactionHistoryResponse'
-                Plain card - 200:
+                Plain card:
                   summary: Cancel response using Merchant Transaction ID
                   $ref: '#/components/examples/PlainCardTransactionHistoryResponse'
         400:
