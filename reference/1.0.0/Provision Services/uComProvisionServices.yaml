@@ -128,7 +128,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Provision'
               examples:
-                Minimal - 201:
+                Minimal:
                   summary: Purchase Prepaid card with credit Card Response
                   $ref: '#/components/examples/CardProvisioningResponse'
         400:
@@ -165,7 +165,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Provision'
               examples:
-                Minimal - 200:
+                Minimal:
                   summary: Provisions details Response
                   $ref: '#/components/examples/GetProvisioningDetailsResponse'
         400:
@@ -2014,8 +2014,3 @@ components:
           value: UID
         - name: encryption_cert_name
           value: citi.ips-uat.p-data.secondary.nam.nsroot.net
-
-
-
-
-
