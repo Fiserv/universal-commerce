@@ -68,7 +68,7 @@ paths:
   /v1/merchants/{merchantId}/closures:
     post:
       x-group-name: Merchant Services
-      x-proxy-name: Create close event
+      x-proxy-name: Create Close Event
       tags:
       - POS
       description: Create a close event at a POS system.  The close event triggers subsequent activity on the payment host.
@@ -137,10 +137,10 @@ paths:
   /v1/merchants/{merchantId}:
     get:
       x-group-name: Merchant Services
-      x-proxy-name: Retrieve merchant by Id
+      x-proxy-name: Get Merchant by merchantId
       tags:
       - Merchant
-      description: Retrieve a merchant by id
+      description: Get Merchant by merchantId
       parameters:
       - $ref: "#/components/parameters/ApiKeyParam"
       - $ref: "#/components/parameters/TimestampParam"
@@ -168,10 +168,10 @@ paths:
   /v1/merchants/{merchantId}/ordering-windows:
     get:
       x-group-name: Merchant Services
-      x-proxy-name: Retrieve merchant details
+      x-proxy-name: Get Merchant Ordering Window
       tags:
       - Merchant
-      description: Retrieve merchant ordering window details by id
+      description: Get merchant ordering window details by id
       parameters:
       - $ref: "#/components/parameters/ApiKeyParam"
       - $ref: "#/components/parameters/TimestampParam"
@@ -199,7 +199,7 @@ paths:
   /v1/merchants/{merchantId}/product-groups:
     get:
       x-group-name: Merchant Services
-      x-proxy-name: Get merchant products by group
+      x-proxy-name: Get Merchant Product Group
       tags:
       - Merchant
       description: Get merchant products organized by product groups
