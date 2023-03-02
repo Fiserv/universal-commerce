@@ -55,4 +55,3 @@ link: ../recipes/?path=recipes/InApp_Payments.md
 -->
 
 <!-- type: row-end -->
-
