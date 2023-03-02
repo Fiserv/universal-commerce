@@ -176,22 +176,22 @@ paths:
               schema:
                 $ref: '#/components/schemas/PetroTransaction'
               examples:
-                With Car Wash - 201:
+                With Car Wash:
                   summary: With car wash service auth Response
                   $ref: '#/components/examples/ServiceAuthWithcarWashResponse'
-                Without Car Wash - 201:
+                Without Car Wash:
                   summary: Without car wash service auth Response
                   $ref: '#/components/examples/ServiceAuthWithcarWashResponse'
-                PayPal - 201:
+                PayPal:
                   summary: PayPal service auth Response
                   $ref: '#/components/examples/ServiceAuthPayPalResponse'
-                Apple Pay - 201:
+                Apple Pay:
                   summary: Apple Pay service auth Response
                   $ref: '#/components/examples/ServiceAuthApplePayResponse'
-                Google Pay - 201:
+                Google Pay:
                   summary: Google Pay service auth Response
                   $ref: '#/components/examples/ServiceAuthGooglePayResponse'
-                STAC ID - QR Code - 201:
+                STAC ID - QR Code:
                   summary: QR Code service auth Response
                   $ref: '#/components/examples/ServiceAuthQRCodeResponse'
 
@@ -233,22 +233,22 @@ paths:
               schema:
                 $ref: '#/components/schemas/PetroTransaction'
               examples:
-                Completed - PayPal - 200:
+                Completed - PayPal:
                   summary: Status Completed with PayPal Response
                   $ref: '#/components/examples/StatusCompletedWithPayPalResponse'
-                Completed - Apple Pay - 200:
+                Completed - Apple Pay:
                   summary: Status Completed with Apple Pay Response
                   $ref: '#/components/examples/StatusCompletedWithApplePayResponse'
-                Completed - Credit Card - 200:
+                Completed - Credit Card:
                   summary: Status Completed with Credit Card Response
                   $ref: '#/components/examples/StatusCompletedWithCreditCardResponse'
-                Cancelled - Minimal - 200:
+                Cancelled - Minimal:
                   summary: Status Cancelled Response
                   $ref: '#/components/examples/StatusCancelledResponse'
-                Authorized - Minimal - 200:
+                Authorized - Minimal:
                   summary: Status Authorized Response
                   $ref: '#/components/examples/StatusAuthorizedResponse'
-                Fuel Started - Minimal - 200:
+                Fuel Started - Minimal:
                   summary: Status Fuel Started Response
                   $ref: '#/components/examples/StatusFuelStartedResponse'
 
