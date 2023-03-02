@@ -52,7 +52,7 @@ paths:
   /v1/hosted-pages/pages:
     get:
       x-group-name: Hosted Pages
-      x-proxy-name: Get hosted pages
+      x-proxy-name: Get Hosted Pages
       tags:
         - hosted-pages
       description: This is the first url for any client application to consume to
@@ -81,7 +81,7 @@ paths:
   /v1/hosted-pages/pages/{configId}:
     get:
       x-group-name: Hosted Pages
-      x-proxy-name: Render hosted pages
+      x-proxy-name: Render Hosted Pages
       tags:
         - hosted-pages
       description: This is preformatted url from response of the first call '/v1/hosted-pages/pages'.
@@ -114,7 +114,7 @@ paths:
   /v1/hosted-pages/pages/{configId}/contents:
     get:
       x-group-name: Hosted Pages
-      x-proxy-name: Get page content
+      x-proxy-name: Get Page Content
       tags:
         - hosted-pages
       description: This is preformatted url from response of the first call '/v1/hosted-pages/pages'.
