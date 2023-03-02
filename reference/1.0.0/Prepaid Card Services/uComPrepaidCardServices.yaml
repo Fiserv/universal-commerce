@@ -147,7 +147,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Prepaid'
               examples:
-                Vaulted Card - 200: {summary: Balance response for vaulted card, $ref: '#/components/examples/VaultedCardBalnaceResponse'}
+                Vaulted Card - 200: {summary: Balance response for vaulted card, $ref: '#/components/examples/VaultedCardBalanceResponse'}
                 Plain Card - 200: {summary: Balance response for vaulted card, $ref: '#/components/examples/PlainCardBalanceResponse'}
 
         400:
@@ -5433,24 +5433,3 @@ components:
           value: '170674'
         - name: NETWORK_TRANSACTION_ID
           value: '012000111094717'
-
-    VaultedCardBalnaceResponse:
-      value:
-        cardNumber: '6759649826438453'
-        cardSubType: test
-        alias: '8453'
-        balance:
-          currentBalance: '20'
-          beginBalance: '20'
-          currencyCode:
-            code: USD
-            number: 840
-          currencyType: BASE
-
-
-
-
-
-
-
-
