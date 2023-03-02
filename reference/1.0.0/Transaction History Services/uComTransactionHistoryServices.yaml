@@ -29,7 +29,7 @@
 # 0.1.6
 #     - Add OfferRealizationType enum to PromotionalOffer
 #     - Add posAdjustment (type PriceAdjustment) to PromotionalOffer
-#     - Added SecurityCode in valuted Account
+#     - Added SecurityCode in vaulted Account
 #     - Added VAULTED_ACCOUNT as AccountType
 #     - Added Accept-Language header field
 # 0.1.5
@@ -48,7 +48,7 @@
 # 0.1.3
 #     - Adding LoyaltyTransactionStatus, NVP with valueAsList, alias
 #     - Removed AdditionalProductCode field
-#     - Added additonal option OTHER under SaleItemType entity
+#     - Added additional option OTHER under SaleItemType entity
 # 0.1.2
 #     - No change.
 # 0.1.1
@@ -571,7 +571,7 @@ components:
       example:
         programId: TEST_PROGRAM
         hostProgramId: TEST_HOST_PROGRAM
-        programName: TEST_LOAYLTY_PROGRAM
+        programName: TEST_LOYALTY_PROGRAM
         programDesc: Test loyalty program
         programProvider: Test Provider
         loyaltyType: LOCAL
@@ -586,7 +586,7 @@ components:
           example: email-id@example.com
         cardNumber:
           type: string
-          description: Card number of loyalty account. The accountId parameter superscedes this field.  This field is ignored when the request is to create a new acccount.
+          description: Card number of loyalty account. The accountId parameter supersedes this field.  This field is ignored when the request is to create a new account.
           example: "905960447"
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
@@ -611,7 +611,7 @@ components:
               type: boolean
             sms:
               type: boolean
-          description: Methods the account onwer has agreed to be contacted
+          description: Methods the account owner has agreed to be contacted
         commonFlags:
           type: object
           properties:
@@ -914,7 +914,7 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/POSItem'
-          description: Conditions that must be met for the rewared to be awarded.
+          description: Conditions that must be met for the reward to be awarded.
         reward:
           $ref: '#/components/schemas/Reward'
         metadata:
@@ -941,7 +941,7 @@ components:
           description: Name of the site as defined as part of the onboarding process.
         welcomeMessage:
           type: string
-          description: Message displayed on the mobile device upon site checkin. The average length of this field should be around 100 characters to maintain visiblity on various mobile profiles.
+          description: Message displayed on the mobile device upon site check-in. The average length of this field should be around 100 characters to maintain visibility on various mobile profiles.
         hoursOfOperation:
           type: string
           description: Hrs of operation of site.
@@ -1221,7 +1221,7 @@ components:
           example: true
         cavv:
           type: string
-          description: Card authenticaion verificaiton value
+          description: Card authentication verification value
         threeDSVersion:
           type: string
         expiryDateTime:
@@ -1233,7 +1233,7 @@ components:
         eci:
           type: string
           description: Electronic Commerce Indicator value
-      description: Details of ThreeDSecure transaction used to process the challege flow
+      description: Details of ThreeDSecure transaction used to process the challenge flow
 
     TransactionHistoryItem:
       type: object
@@ -1309,7 +1309,7 @@ components:
           description: Unique identifier for a customer account vaulted with uCom
         securityCode:
           type: string
-          description: Card Verificatiion value.
+          description: Card Verification value.
         status:
           $ref: '#/components/schemas/AccountStatus'
         type:
@@ -1422,7 +1422,6 @@ components:
       - CREDIT
       - PREPAID
       - APPLE_PAY
-      - ANDRIOD_PAY
       - PAYPAL
       - TOKEN
       - NONCE
@@ -1658,7 +1657,7 @@ components:
             $ref: '#/components/schemas/Error'
 
     ServerError:
-      description: An unexpected server error occured.
+      description: An unexpected server error occurred.
       content:
         application/json:
           schema:
