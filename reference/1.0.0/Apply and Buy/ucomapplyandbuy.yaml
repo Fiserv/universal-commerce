@@ -76,7 +76,7 @@ paths:
   /v1/customers/{fdCustomerId}/applybuy:
     post:
       x-group-name: Apply and Buy
-      x-proxy-name: Customer initiated request
+      x-proxy-name: Customer Initiated Request
       tags:
         - applybuy
       description: Customer initiating apply and buy request for unique application
@@ -138,7 +138,7 @@ paths:
 
     delete:
       x-group-name: Apply and Buy
-      x-proxy-name: Delete application Identifier
+      x-proxy-name: Delete Application Identifier
       tags:
         - applybuy
       description: API to delete the application identifier.
