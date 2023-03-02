@@ -262,7 +262,7 @@ Site System in order to authorize transactions. The below section will be applic
 
 Services related to purchasing items at a gas station.
 	
-<a href="../api/?type=post&path=/v1/petro-transactions"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/ea123fc9ade6fa84b7655d7a75ffb4c759644f09/assets/images/gas-station.svg" alt="Petrol_Services" style="height:100px"></a>  
+<a href="../api/?type=post&path=/v1/petro-transactions"><img src="https://github.com/Fiserv/universal-commerce/blob/develop/assets/images/Picture24.png?raw=true" alt="Petrol_Services" style="height:100px"></a>  
 
 [Petro Services API](../api/?type=post&path=/v1/petro-transactions)
 
