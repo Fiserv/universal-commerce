@@ -37,7 +37,6 @@
     link: docs/documentation/Standard_Implementation_Guide.md
   - title: Frequently Asked Questions
     link: docs/faq/faq.md
-  - title: Guides
 - sections:
   - title: Common Use Cases
     link: recipes/LandingPage.md
