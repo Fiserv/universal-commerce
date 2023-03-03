@@ -992,7 +992,7 @@ paths:
   /v2/payments/multi-sales/{fdParentTransactionId}/void:
     post:
       x-group-name: Payment Services
-      x-proxy-name: Void multi-sale transaction
+      x-proxy-name: Void Multi-sale Transaction
       tags:
         - sale
       summary: Execute void for multi-sale transactions.
@@ -1328,7 +1328,7 @@ paths:
 
     post:
       x-group-name: Payment Services
-      x-proxy-name: Void a sale transaction
+      x-proxy-name: Void a Sale Transaction
       tags:
         - void
       summary: Execute void for sale transaction.
