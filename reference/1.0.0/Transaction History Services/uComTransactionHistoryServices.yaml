@@ -194,7 +194,7 @@ paths:
   /v1/txhistory/customers/{fdCustomerId}/vouchers/{voucherId}:
     patch:
       x-group-name: Transaction History Services
-      x-proxy-name: Update voucher status
+      x-proxy-name: Update Voucher Status
       tags:
       - voucher
       summary: Update voucher status
