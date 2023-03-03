@@ -56,7 +56,7 @@ paths:
   /v1/orders:
     get:
       x-group-name: Order Services
-      x-proxy-name: Return all orders
+      x-proxy-name: Return All Orders
       tags:
         - Orders
       description: Returns all orders, but result set may be limited by server
@@ -96,7 +96,7 @@ paths:
 
     post:
       x-group-name: Order Services
-      x-proxy-name: Return order information
+      x-proxy-name: Return Order Information
       tags:
         - Orders
       parameters:
@@ -141,7 +141,7 @@ paths:
   /v1/orders/{orderId}:
     get:
       x-group-name: Order Services
-      x-proxy-name: Get order Id
+      x-proxy-name: Get orderId
       tags:
         - Orders
       parameters:
@@ -179,7 +179,7 @@ paths:
 
     patch:
       x-group-name: Order Services
-      x-proxy-name: Update existing order
+      x-proxy-name: Update Existing Order
       description: update existing order
       tags:
         - Orders
@@ -221,7 +221,7 @@ paths:
   /v1/orders/{orderId}/payments:
     post:
       x-group-name: Order Services
-      x-proxy-name: Post payment information
+      x-proxy-name: Post Payment Information
       tags:
         - Orders
       parameters:
@@ -267,7 +267,7 @@ paths:
   /v1/orders/{orderId}/cancel:
     post:
       x-group-name: Order Services
-      x-proxy-name: Order cancellation
+      x-proxy-name: Order Cancellation
       tags:
         - Orders
       description: Order cancellation request
@@ -361,7 +361,7 @@ paths:
   /v1/orders/{orderId}/fulfillment:
     post:
       x-group-name: Order Services
-      x-proxy-name: Order fulfillment
+      x-proxy-name: Order Fulfillment
       tags:
         - Orders
       description: Order fulfillment callback. This API can be used by merchants only
@@ -408,7 +408,7 @@ paths:
   /v1/orders/delivery-quotes:
     post:
       x-group-name: Order Services
-      x-proxy-name: Delivery quotes
+      x-proxy-name: Delivery Quotes
       tags:
         - Orders
       description: Delivery quotes for given order
