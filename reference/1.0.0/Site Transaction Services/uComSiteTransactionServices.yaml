@@ -142,7 +142,7 @@ paths:
   /v1/petro-transactions:
     post:
       x-group-name: Petro Transaction Services
-      x-proxy-name: Create petro transaction
+      x-proxy-name: Create Petro Transaction
       tags:
       - petro-transactions
       summary: Create a petro transaction
@@ -211,7 +211,7 @@ paths:
   /v1/petro-transactions/{fdTransactionId}:
     get:
       x-group-name: Petro Transaction Services
-      x-proxy-name: Read petro transaction
+      x-proxy-name: Read Petro Transaction
       tags:
       - petro-transactions
       summary: Read a petro Transaction
@@ -258,12 +258,12 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         404:
           $ref: '#/components/responses/NotFound'
-        500:
+        500
           $ref: '#/components/responses/ServerError'
 
     patch:
       x-group-name: Petro Transaction Services
-      x-proxy-name: Update petro transaction
+      x-proxy-name: Update Petro Transaction
       tags:
       - petro-transactions
       summary: Update a petro transaction
