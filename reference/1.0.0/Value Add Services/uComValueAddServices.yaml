@@ -91,7 +91,7 @@ paths:
   /v1/loyalty/accounts:
     post:
       x-group-name: Value Added Services
-      x-proxy-name: Get loyalty account details
+      x-proxy-name: Get Loyalty Account Details
       tags:
       - loyalty
       summary: Get loyalty account details
@@ -138,11 +138,11 @@ paths:
   /v1/loyalty/accounts/{requestId}:
     get:
       x-group-name: Value Added Services
-      x-proxy-name: Get loyalty account details based on Request ID
+      x-proxy-name: Get Loyalty Account Details Based on requestId
       tags:
       - loyalty
-      summary: Get loyalty account details based on request id
-      description: Get loyalty account details based on request id
+      summary: Get loyalty account details based on requestId
+      description: Get loyalty account details based on requestId
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -166,7 +166,7 @@ paths:
   /v1/loyalty/accounts/send-verification:
     post:
       x-group-name: Value Added Services
-      x-proxy-name: Initiate action against Request ID
+      x-proxy-name: Initiate Action Against Request ID
       tags:
       - loyalty
       summary: Initiate some action against a loyalty account
@@ -319,11 +319,11 @@ paths:
   /v1/value-add/available-offers/{availOffersTrxnId}:
     delete:
       x-group-name: Value Added Services
-      x-proxy-name: Delete offer by Transaction ID
+      x-proxy-name: Delete Offer by transactionId
       tags:
       - offers
-      summary: Deletes available offers by transaction id
-      description: Deletes available offers by transaction id.
+      summary: Deletes available offers by transactionId
+      description: Deletes available offers by transactionId.
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -381,7 +381,7 @@ paths:
   /v1/value-add/opt-ins/acknowledge:
     post:
       x-group-name: Value Added Services
-      x-proxy-name: Submit opt-in consent
+      x-proxy-name: Submit Opt-in Consent
       tags:
       - opt-ins
       summary: Submits opt-in consents with the host
@@ -415,7 +415,7 @@ paths:
   /v1/value-add/opt-ins:
     post:
       x-group-name: Value Added Services
-      x-proxy-name: Retrieve Consent information
+      x-proxy-name: Retrieve Consent Information
       tags:
       - opt-ins
       summary: Retrieving the consent information for a given loyalty account from the host
