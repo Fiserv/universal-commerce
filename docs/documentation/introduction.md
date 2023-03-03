@@ -24,6 +24,6 @@ Connected Commerce (uCom) services are deployed across geography covering North 
 We have Petro (Petroleum Industry), Quick Service Restaurants (QSR), Automobiles, Grocery, Sports Arena and Health and (H&W).
 
 
-To start integrating with Connected Commerce (uCom), please refer to our <a href="./ConnectedCommerce/docs/?path=/docs/documentation/Standard_Implementation_Guide.md">Implementation Guide</a> section.
+To start integrating with Connected Commerce (uCom), please refer to our <a href="../ConnectedCommerce/docs/?path=/docs/documentation/Standard_Implementation_Guide.md">Implementation Guide</a> section.
 </body>
 </html>
