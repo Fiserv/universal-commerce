@@ -166,7 +166,7 @@ paths:
   /v1/loyalty/accounts/send-verification:
     post:
       x-group-name: Value Added Services
-      x-proxy-name: Initiate Action Against Request ID
+      x-proxy-name: Initiate Action Against requestId
       tags:
       - loyalty
       summary: Initiate some action against a loyalty account
