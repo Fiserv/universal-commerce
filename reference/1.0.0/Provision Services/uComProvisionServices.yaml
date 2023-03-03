@@ -99,7 +99,7 @@ paths:
   /v1/customers/{fdCustomerId}/provisions:
     post:
       x-group-name: Account Provisioning Services
-      x-proxy-name: Create new account
+      x-proxy-name: Create New Account
       tags:
       - provisions
       description: Provisioning is used to create a new account in a remote system.
@@ -143,7 +143,7 @@ paths:
   /v1/customers/{fdCustomerId}/provisions/{provisionId}:
     get:
       x-group-name: Account Provisioning Services
-      x-proxy-name: Provision OTP method
+      x-proxy-name: Provision OTP Method
       tags:
       - provisions
       description: API to get the provision OTP method.
@@ -179,7 +179,7 @@ paths:
 
     delete:
       x-group-name: Account Provisioning Services
-      x-proxy-name: Delete the provisioned account
+      x-proxy-name: Delete the Provisioned Account
       tags:
       - provisions
       description: API to deleted the provisioned account.
@@ -206,7 +206,7 @@ paths:
 
     patch:
       x-group-name: Account Provisioning Services
-      x-proxy-name: Update account
+      x-proxy-name: Update Account
       tags:
       - provisions
       description: Provisioning is used to update an account in a remote system.
