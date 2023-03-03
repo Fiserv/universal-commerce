@@ -26,7 +26,7 @@ link: ../recipes/?path=recipes/vault_credit_card_gift_card.md
 ![Fiserv logo]([https://github.com/Fiserv/universal-commerce/blob/develop/assets/images/Picture16.png]) "How to Avoid a Duplicate Transaction" "Width:100px")
 link: ../recipes/?path=recipes/duplicate_transactions.md
 
-#title: <div style="text-align:center;width:100%;height:25%"><img src="https://github.com/Fiserv/universal-commerce/blob/develop/assets/images/Picture16.png?#raw=true" alt="Duplicate Transaction " title="Duplicate Transaction" style="width:auto; height:60px"></div> <h3 style="text-align:center">  How to Avoid a #Duplicate Transaction </h3>
+#title: <div style="text-align:center;width:100%;height:25%"><img src="https://github.com/Fiserv/#universal-commerce/blob/develop/assets/images/Picture16.png?#raw=true" alt="Duplicate Transaction " #title="Duplicate Transaction" style="width:auto; height:60px"></div> <h3 style="text-align:center">  #How to Avoid a #Duplicate Transaction </h3>
 #description: 
 #link: ../recipes/?path=recipes/duplicate_transactions.md
 -->
