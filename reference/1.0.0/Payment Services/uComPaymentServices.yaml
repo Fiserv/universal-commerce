@@ -767,7 +767,7 @@ paths:
 
     patch:
       x-group-name: Payment Services
-      x-proxy-name: Proceed With Sale Transaction
+      x-proxy-name: Proceed with Sale Transaction
       tags:
         - sale
       summary: Patch a specific sale transaction.
