@@ -73,7 +73,7 @@ paths:
   /v1/txhistory/customers/{fdCustomerId}/transactions:
     get:
       x-group-name: Transaction History Services
-      x-proxy-name: Get sale transactions
+      x-proxy-name: Get Sale Transactions
       tags:
       - history
       summary: Get sale transaction details
@@ -122,7 +122,7 @@ paths:
   /v1/txhistory/customers/{fdCustomerId}/transactions/{fdTransactionId}:
     patch:
       x-group-name: Transaction History Services
-      x-proxy-name: Add note to transaction
+      x-proxy-name: Add Note to Transaction
       tags:
       - history
       summary: Allows to add a note to the given transaction
@@ -163,8 +163,8 @@ paths:
 
   /v1/txhistory/customers/{fdCustomerId}/vouchers:
     get:
-      x-group-name: Transaction History Services
-      x-proxy-name: Get redeemable voucher details
+      x-group-name: Transaction History Service
+      x-proxy-name: Get Redeemable Voucher Details
       tags:
       - voucher
       summary: Get redeemable vouchers details
@@ -236,7 +236,7 @@ paths:
   /v1/txhistory/receipts/{fdTransactionId}:
     get:
       x-group-name: Transaction History Services
-      x-proxy-name: Get raw receipt data
+      x-proxy-name: Get Raw Receipt Data
       tags:
       - receipt
       summary: Get raw receipt data
