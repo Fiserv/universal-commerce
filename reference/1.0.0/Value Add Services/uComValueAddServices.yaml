@@ -347,7 +347,7 @@ paths:
   /v1/value-add/select-offer:
     post:
       x-group-name: Value Added Services
-      x-proxy-name: Obtain an offer
+      x-proxy-name: Obtain an Offer
       tags:
       - offers
       summary: Obtains an offer with the loyalty host
