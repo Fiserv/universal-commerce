@@ -353,7 +353,7 @@ paths:
   /v1/prepaids/void:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Void of any prepaid card transaction
+      x-proxy-name: Void of Any Prepaid Card Transaction
       tags:
       - void
       description: Void of any prepaid card transaction
@@ -1318,7 +1318,7 @@ paths:
   /v2/prepaids/merges:
     get:
       x-group-name: Prepaid Services
-      x-proxy-name: Merge balance from one vaulted prepaid card to another
+      x-proxy-name: Merge balance from One Vaulted Prepaid Card to Another
       tags:
       - merge
       description: Service to merge balance from one vaulted prepaid card to another vaulted prepaid card.
@@ -1383,7 +1383,7 @@ paths:
   /v2/prepaids/merges/{fdTransactionId}/void:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Void of a merge transaction
+      x-proxy-name: Void of a Merge Transaction
       tags:
       - merge
       summary: Void of a merge transaction
