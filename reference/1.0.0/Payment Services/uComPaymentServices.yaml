@@ -143,7 +143,7 @@ paths:
   /v1/payments/auths:
     get:
       x-group-name: Payment Services
-      x-proxy-name: Get payment authorization
+      x-proxy-name: Get Payment Authorization
       tags:
         - authorization
       summary: Get a specific payment authorization
@@ -178,7 +178,7 @@ paths:
 
     post:
       x-group-name: Payment Services
-      x-proxy-name: Create payment authorization
+      x-proxy-name: Create Payment Authorization
       tags:
         - authorization
       summary: Create a payment authorization
@@ -255,7 +255,7 @@ paths:
   /v1/payments/auths/{fdAuthorizationId}:
     get:
       x-group-name: Payment Services
-      x-proxy-name: Get payment authorization details
+      x-proxy-name: Get Payment Authorization Details
       tags:
         - authorization
       summary: Get a specific payment authorization
@@ -291,7 +291,7 @@ paths:
 
     patch:
       x-group-name: Payment Services
-      x-proxy-name: Patch payment authorization
+      x-proxy-name: Patch Payment Authorization
       tags:
         - authorization
       summary: Patch a specific payment authorization
@@ -333,7 +333,7 @@ paths:
   /v1/payments/auths/{fdAuthorizationId}/void:
     post:
       x-group-name: Payment Services
-      x-proxy-name: Void payment authorization
+      x-proxy-name: Void Payment Authorization
       tags:
         - authorization
       summary: Execute an action on a payment authorization.
@@ -379,7 +379,7 @@ paths:
   /v1/payments/auths/{fdAuthorizationId}/captures:
     post:
       x-group-name: Payment Services
-      x-proxy-name: Capture payment authorization
+      x-proxy-name: Capture Payment Authorization
       tags:
         - authorization
       summary: Execute capture on a payment authorization.
@@ -429,7 +429,7 @@ paths:
   /v1/payments/auths/{fdAuthorizationId}/refunds:
     post:
       x-group-name: Payment Services
-      x-proxy-name: Refund payment authorization
+      x-proxy-name: Refund Payment Authorization
       tags:
         - authorization
       summary: Execute a refund on a payment authorization.
@@ -465,7 +465,7 @@ paths:
   /v1/payments/captures:
     get:
       x-group-name: Payment Services
-      x-proxy-name: Get captured payment details
+      x-proxy-name: Get Captured Payment Details
       tags:
         - capture
       summary: Get payment capture details.
@@ -494,7 +494,7 @@ paths:
   /v1/payments/captures/{fdCaptureId}:
     get:
       x-group-name: Payment Services
-      x-proxy-name: Get payment capture details
+      x-proxy-name: Get Payment Capture Details
 
       tags:
         - capture
@@ -530,7 +530,7 @@ paths:
   /v1/payments/captures/{fdCaptureId}/void:
     post:
       x-group-name: Payment Services
-      x-proxy-name: Void payment capture
+      x-proxy-name: Void Payment Capture
       tags:
         - capture
       summary: Execute an action on a payment capture
@@ -574,7 +574,7 @@ paths:
   /v1/payments/captures/{fdCaptureId}/refunds:
     post:
       x-group-name: Payment Services
-      x-proxy-name: Refund a capture
+      x-proxy-name: Refund a Capture
       tags:
         - capture
       summary: Execute a refund on a payment capture.
@@ -622,7 +622,7 @@ paths:
   /v1/payments/sales:
     get:
       x-group-name: Payment Services
-      x-proxy-name: Get sale transaction
+      x-proxy-name: Get Sale Transaction
       tags:
         - sale
       summary: Get a specific sale transaction.
@@ -656,7 +656,7 @@ paths:
 
     post:
       x-group-name: Payment Services
-      x-proxy-name: Create payment sale transaction
+      x-proxy-name: Create Payment Sale Transaction
       tags:
         - sale
       summary: Create a payment sale transaction.
@@ -733,7 +733,7 @@ paths:
   /v1/payments/sales/{fdSaleId}:
     get:
       x-group-name: Payment Services
-      x-proxy-name: Get sale details
+      x-proxy-name: Get Sale Details
       tags:
         - sale
       summary: Get a specific sale transaction.
@@ -767,7 +767,7 @@ paths:
 
     patch:
       x-group-name: Payment Services
-      x-proxy-name: Proceed with sale transaction
+      x-proxy-name: Proceed With Sale Transaction
       tags:
         - sale
       summary: Patch a specific sale transaction.
@@ -809,7 +809,7 @@ paths:
   /v1/payments/sales/{fdSaleId}/void:
     post:
       x-group-name: Payment Services
-      x-proxy-name: Cancel/Void sale transaction
+      x-proxy-name: Cancel/Void Sale Transaction
       tags:
         - sale
       summary: Execute an action on a specific sale transaction.
@@ -898,7 +898,7 @@ paths:
   /v2/payments/multi-sales:
     post:
       x-group-name: Payment Services
-      x-proxy-name: Create multiple payment sale transactions
+      x-proxy-name: Create Multiple Payment Sale Transactions
       tags:
         - sale
       summary: Create multiple payment sale transactions.
@@ -946,10 +946,10 @@ paths:
   /v2/payments/multi-sales/{fdParentTransactionId}/refunds:
     post:
       x-group-name: Payment Services
-      x-proxy-name: Refund multi sale transactions
+      x-proxy-name: Refund Multi-sale Transactions
       tags:
         - sale
-      summary: Execute a refund for multi sale transactions.
+      summary: Execute a refund for multi-sale transactions.
       description: Refund a 'multi-sale' transaction.
       parameters:
         - $ref: '#/components/parameters/ApiKeyParam'
@@ -995,7 +995,7 @@ paths:
       x-proxy-name: Void multi-sale transaction
       tags:
         - sale
-      summary: Execute void for multi sale transactions.
+      summary: Execute void for multi-sale transactions.
       description: Void a 'multi-sale' transaction.
       parameters:
         - $ref: '#/components/parameters/ApiKeyParam'
@@ -1032,10 +1032,10 @@ paths:
   /v1/payments/refunds:
     get:
       x-group-name: Payment Services
-      x-proxy-name: Get refund details
+      x-proxy-name: Get Refund Details
       tags:
         - refund
-      summary: Get refund transaction details
+      summary: Get Refund Transaction Details
       description: Fetch the refund transaction details with the refund id.
       parameters:
         - $ref: '#/components/parameters/ApiKeyParam'
@@ -1062,7 +1062,7 @@ paths:
   /v1/payments/refunds/{fdRefundId}:
     get:
       x-group-name: Payment Services
-      x-proxy-name: Get refund transaction details
+      x-proxy-name: Get Refund Transaction Details
       tags:
         - refund
       summary: Get refund transaction details
@@ -1137,7 +1137,7 @@ paths:
   /v2/payments/refunds:
     post:
       x-group-name: Payment Services
-      x-proxy-name: Refund transaction
+      x-proxy-name: Refund Transaction
       tags:
         - refund
       summary: Execute a refund for a transactions.
@@ -1176,11 +1176,11 @@ paths:
   /v2/payments/multi-refunds:
     post:
       x-group-name: Payment Services
-      x-proxy-name: Refund multi transaction
+      x-proxy-name: Refund Multi-transaction
       tags:
         - refund
-      summary: Execute a refund for multi transactions.
-      description: Refund a multi transaction.
+      summary: Execute a refund for multi-transactions.
+      description: Refund a multi-transaction.
       parameters:
         - $ref: '#/components/parameters/ApiKeyParam'
         - $ref: '#/components/parameters/TimestampParam'
@@ -1221,7 +1221,7 @@ paths:
   /v2/payments/multi-refunds/{fdParentTransactionId}/void:
     post:
       x-group-name: Payment Services
-      x-proxy-name: Cancel multi refund
+      x-proxy-name: Cancel Multi-refund
       tags:
         - refund
       summary: Execute an action on multi payment refund.
@@ -1261,7 +1261,7 @@ paths:
   /v2/payments/charges:
     post:
       x-group-name: Payment Services
-      x-proxy-name: Get fee details
+      x-proxy-name: Get Fee Details
       tags:
         - charge
       summary: Payment charge details.
@@ -1296,7 +1296,7 @@ paths:
   /v2/payments/void:
     get:
       x-group-name: Payment Services
-      x-proxy-name: Void sale transaction
+      x-proxy-name: Void Sale Transaction
       tags:
         - void
       summary: Execute void for sale transaction.
@@ -1367,11 +1367,11 @@ paths:
   /v2/payments/multi-void:
     post:
       x-group-name: Payment Services
-      x-proxy-name: Void multi sale transactions
+      x-proxy-name: Void Multi-sale Transactions
       tags:
         - void
-      summary: Execute void for multi sale transactions.
-      description: Void a multiple transactions.
+      summary: Execute void for multi-sale transactions.
+      description: Void multi-sale transactions.
       parameters:
         - $ref: '#/components/parameters/ApiKeyParam'
         - $ref: '#/components/parameters/TimestampParam'
