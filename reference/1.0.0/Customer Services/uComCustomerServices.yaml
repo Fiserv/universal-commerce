@@ -292,7 +292,7 @@ components:
           description: Indicates if this is the default address for the associated resource. It only has meaning when used in a set or array of addresses.
       description: A physical mailing address for this user.
       example:
-        type: work
+        type: object
         streetAddress: 100 Universal City Plaza
         locality: Hollywood
         region: CA
@@ -319,7 +319,7 @@ components:
       description: Email address for the user.
       example:
         value: bjensen@example.com
-        type: work
+        type: string
         primary: true
     ExpiryDate:
       type: object
@@ -393,6 +393,7 @@ components:
           description: The common name of the group.
       description: Group
       example:
+        type: object
         value: e9e30dba-f08f-4109-8486-d5c6a331660a
         href: https://example.com/v2/Groups/e9e30dba-f08f-4109-8486
         display: Tour Guides
@@ -442,7 +443,7 @@ components:
       description: Instant messaging address for the user.
       example:
         value: someaimhandle
-        type: aim
+        type: string
 
     PersonName:
       type: object
@@ -490,7 +491,7 @@ components:
       description: Phone number for the user.
       example:
         value: 555-555-5555
-        type: work
+        type: string
 
     Photo:
       type: object
@@ -504,7 +505,7 @@ components:
       description: A URI that is a uniform resource locator (as defined in Section 1.1.3 of RFC3986) that points to a resource location representing the user's image. The resource MUST be a file (e.g., a GIF, JPEG, or PNG image file) rather than a web page containing an image.
       example:
         value: https://photos.example.com/profilephoto/72930000000Ccne/F
-        type: thumbnail
+        type: string
 
     ThreeDSecure:
       type: object
