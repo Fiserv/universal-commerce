@@ -256,10 +256,10 @@ components:
       type: object
       properties:
         customer:
-          $ref: '#/components/schemas/User'
+            $ref: '#/components/schemas/User'
         deviceInfo:
           $ref: '#/components/schemas/DeviceInfo'
-
+            
     #-------------------------------------
     # Resource Models
     #-------------------------------------
@@ -269,58 +269,57 @@ components:
         type:
           type: string
           description: Canonical type values of "work", "home", and "other".
+          example: work
         streetAddress:
           type: string
           description: The full street address component, which may include house number, street name, P.O. box, and multi-line extended street address information.
+          example: 100 Universal City Plaza
         locality:
           type: string
           description: The city or locality component.
+          example: Hollywood
         region:
           type: string
           description: The state or region component.
+          example: CA
         postalCode:
           type: string
           description: The zip code or postal code component.
+          example: 91608
         country:
           type: string
           description: The country name component.  When specified, the value MUST be in ISO 3166-1 "alpha-2" code format; e.g., the United States and Sweden are "US" and "SE", respectively.
+          example: US
         formatted:
           type: string
           description: The full mailing address, formatted for display or use with a mailing label.
+          example: |-
+           100 Universal City Plaza
+           Hollywood, CA 91608 US
         primary:
           type: boolean
           description: Indicates if this is the default address for the associated resource. It only has meaning when used in a set or array of addresses.
+          example: TRUE
       description: A physical mailing address for this user.
-      example:
-        type: object
-        streetAddress: 100 Universal City Plaza
-        locality: Hollywood
-        region: CA
-        postalCode: "91608"
-        country: US
-        formatted: |-
-          100 Universal City Plaza
-          Hollywood, CA 91608 US
-        primary: true
-
+    
     Email:
       type: object
       properties:
         type:
           type: string
           description: The "type" sub-attribute is used to provide a classification meaningful to the (human) user.  The user interface should encourage the use of basic values of "work", "home", and "other" and MAY allow additional type values to be used at the discretion of the service client.
+          example: work
         value:
           type: string
           description: The value SHOULD be specified according to RFC5321.
+          example: bjensen@example.com
         primary:
           type: boolean
           description: Defines if this entry is to be used as the primary or default for the user.
           default: false
+          example: true
       description: Email address for the user.
-      example:
-        value: bjensen@example.com
-        type: string
-        primary: true
+
     ExpiryDate:
       type: object
       properties:
@@ -385,19 +384,17 @@ components:
         value:
           type: string
           description: The id of the group.
+          example: e9e30dba-f08f-4109-8486-d5c6a331660a
         href:
           type: string
           description: The URI of the corresponding "Group" resources to which the user belongs.
+          example: https://example.com/v2/Groups/e9e30dba-f08f-4109-8486
         display:
           type: string
           description: The common name of the group.
+          example: Tour Guides
       description: Group
-      example:
-        type: object
-        value: e9e30dba-f08f-4109-8486-d5c6a331660a
-        href: https://example.com/v2/Groups/e9e30dba-f08f-4109-8486
-        display: Tour Guides
-
+     
     Link:
       required:
       - href
@@ -451,62 +448,60 @@ components:
         formatted:
           type: string
           description: The full name, including all middle names, titles, and suffixes as appropriate, formatted for display (e.g.,"Ms. Barbara Jane Jensen, III").
+          example: Ms. Barbara J Jensen III
         familyName:
           type: string
           description: The family name of the User, or last name in most Western languages (e.g., "Jensen" given the full name "Ms. Barbara Jane Jensen, III").
+          example: Jensen
         givenName:
           type: string
           description: The given name of the User, or first name in most Western languages (e.g., "Barbara" given the full name "Ms. Barbara Jane Jensen, III").
+          example: Barbara
         middleName:
           type: string
           description: The middle name(s) of the User (e.g., "Jane" given the full name "Ms. Barbara Jane Jensen, III").
+          example: Jane
         honorificPrefix:
           type: string
           description: The honorific prefix(es) of the User, or title in most Western languages (e.g., "Ms." given the full name "Ms. Barbara Jane Jensen, III").
+          example: Ms.
         honorificSuffix:
           type: string
           description: The honorific suffix(es) of the User, or suffix in most Western languages (e.g., "III" given the full name "Ms. Barbara Jane Jensen, III").
+          example: III
       description: The components of the user's name.
-      example:
-        formatted: Ms. Barbara J Jensen III
-        familyName: Jensen
-        givenName: Barbara
-        middleName: Jane
-        honorificPrefix: Ms.
-        honorificSuffix: III
-
+   
     Phone:
       type: object
       properties:
         value:
           type: string
           description: The value SHOULD be specified according to the format defined in RFC3966, e.g., 'tel:+1-201-555-0123'.
+          example: 555-555-5555
         type:
           type: string
           description: Often has typical values of "work", "home", "mobile", "fax", "pager", and "other" and MAY allow more types to be defined by the service client.
+          example: work
         primary:
           type: boolean
           description: Defines if this entry is to be used as the primary or default for the user.
           default: false
+          example: true
       description: Phone number for the user.
-      example:
-        value: 555-555-5555
-        type: string
-
+  
     Photo:
       type: object
       properties:
         value:
           type: string
           description: URI pointing to user's image file.
+          example: https://photos.example.com/profilephoto/72930000000Ccne/F
         type:
           type: string
           description: Defines the following canonical values to represent popular photo sizes - "photo" and "thumbnail".
+          example: thumbnail
       description: A URI that is a uniform resource locator (as defined in Section 1.1.3 of RFC3986) that points to a resource location representing the user's image. The resource MUST be a file (e.g., a GIF, JPEG, or PNG image file) rather than a web page containing an image.
-      example:
-        value: https://photos.example.com/profilephoto/72930000000Ccne/F
-        type: string
-
+   
     ThreeDSecure:
       type: object
       properties:
