@@ -30,7 +30,7 @@
 
 - sections:
   - title: Introduction
-    link: docs/documentation/introduction.md
+    link: config/product-layout.yaml
     #    - title: Create Customer
     #      link: docs/documentation/customerServicesCreateCustomer_v1.md
   - title: Implementation Guide
