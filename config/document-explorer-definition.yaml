@@ -30,7 +30,7 @@
 
 - sections:
   - title: Introduction
-    link: ../config/?path=/config/product-layout.yaml
+    link: /product/ConnectedCommerce/?path=config/product-layout.yaml
     #    - title: Create Customer
     #      link: docs/documentation/customerServicesCreateCustomer_v1.md
   - title: Implementation Guide
