@@ -1,6 +1,6 @@
 # How to Perform a split tender payment
 
-<img title="icon" alt="Alt text" src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/payment-method-svgrepo-com.svg" width="30" height="30">
+<img title="icon" alt="Alt text" src="https://github.com/Fiserv/universal-commerce/blob/develop/assets/images/Picture17.png?raw=true" width="30" height="30">
 This flow is used to support split payment. If the user wants to do partial payment, this flow guides how to do that.
 
 Prerequisites for this flow:  Nonce token generation
