@@ -1,6 +1,6 @@
 # How to Issue a Refund
 
-<img title="icon" alt="Alt text" src="https://raw.githubusercontent.com/Fiserv/universal-commerce/99299089c899f788417426ac355c83d06f9b8870/assets/images/refund-svgrepo-com.svg" width="30" height="30"> 
+<img title="icon" alt="Alt text" src="https://github.com/Fiserv/universal-commerce/blob/develop/assets/images/Picture18.png?raw=true" width="30" height="30"> 
 In Connected Commerce (uCom), refunds are possible for transactions that have settled already, which usually happens after 24 hours of a transaction being completed. Since Connected Commerce (uCom) provides multiple ways of making a payment, there are multiple ways to perform a refund depending on the transaction type. For starters, for a sale transaction type, a sale ID is required to process a refund. Similarly, an auth/capture type of transcation will require a Capture ID.
 
 **To process a full refund, simply provide the fdSaleId in the path with no payload.**
