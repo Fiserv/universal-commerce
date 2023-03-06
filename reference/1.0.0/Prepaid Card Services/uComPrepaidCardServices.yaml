@@ -207,7 +207,7 @@ paths:
   /v1/prepaids/purchases:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Create Prepaid Card
+      x-proxy-name: Create a Prepaid Card
       tags:
       - purchase
       description: Service to create a new Prepaid Card
