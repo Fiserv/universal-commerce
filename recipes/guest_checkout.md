@@ -1,6 +1,6 @@
 
 # How to make a guest checkout? 
-<img title="icon" alt="Alt text" src="https://raw.githubusercontent.com/Fiserv/universal-commerce/b2ec46f041e39ffa4dd4e986a39ed12c68777b04/assets/images/shopping-cart-svgrepo-com.svg" width="30" height="30"> 
+<img title="icon" alt="Alt text" src="https://raw.githubusercontent.com/Fiserv/universal-commerce/f946a413c920caa34ae2b2aabf8fd04d7bcdbeea/assets/images/Picture2.png" width="30" height="30"> 
 Making a guest checkout, or an anonymous checkout, as its often referred to, is a fairly simple process in Connected Commerce (uCom). A few bits of data are needed to successfully process an anonymous checkout or order, however. For starters, an orderId, merchantId, or storeId (depending on the configuration), and the requested amount are needed to complete a guest checkout. Below, we will break down what each field means and what kind of information is needed to successfully perform an anonymous transaction. 
 
 **<ins> Endpoint URL </ins>**
