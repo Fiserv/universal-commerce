@@ -30,7 +30,7 @@
 
 - sections:
   - title: Introduction
-    link: /product/ConnectedCommerce/
+    link: /product/ConnectedCommerce
     #    - title: Create Customer
     #      link: docs/documentation/customerServicesCreateCustomer_v1.md
   - title: Implementation Guide
