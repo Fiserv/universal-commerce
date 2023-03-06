@@ -22,7 +22,7 @@ Concatenate the above URL and each endpoint name from the specification to get f
 
 **Example:** Full-qualified URL of /v1/customer API for Integration environment:
 
-[https://int.api.firstdata.com/ucom/v1/customers]
+[https://int.api.firstdata.com/ucom/v1/customers](https://int.api.firstdata.com/ucom/v1/customers)
 
 >### Authentication
 
