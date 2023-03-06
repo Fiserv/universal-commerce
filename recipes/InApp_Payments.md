@@ -1,3 +1,5 @@
+<img title="icon" alt="Alt text" src="https://github.com/Fiserv/universal-commerce/blob/develop/assets/images/Picture19.png?raw=true" height="30">
+
 # What is ApplePay?
 
 Apple Pay is an in-app payment method. As the name suggests, an in-app payment allows a consumer to pay with one touch from within a merchant’s mobile app and handles the details of the purchase flow, payment processing, receipts, etc.
