@@ -120,12 +120,12 @@ Kindly use the links below to get started integrating Apple Pay & Google Pay int
 
 **<ins> Apple Pay: </ins>**
 
-[https://developer.apple.com/apple-pay/implementation/]
+[https://developer.apple.com/apple-pay/implementation/](https://developer.apple.com/apple-pay/implementation/)
 
-https://developer.apple.com/apple-pay/
+[https://developer.apple.com/apple-pay/](https://developer.apple.com/apple-pay/)
 
 **<ins> Google Pay: </ins>**
 
-https://developers.google.com/pay
+[https://developers.google.com/pay](https://developers.google.com/pay)
 
 
