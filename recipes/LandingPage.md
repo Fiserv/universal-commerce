@@ -1,7 +1,7 @@
 ## Welcome to the uCom Common Use Cases Section 
 <!-- type: row -->
 <!-- type: card
-title: <div style="text-align:center;width:100%;height:25%"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/Picture1.png" alt="Customer Service" title="Customer Service" style="width:auto; height:60px"> <h3 style="text-align:center"></div>How to Create, Read, Update, and Delete a Customer Profile</h3>
+title: <div style="text-align:center;width:100%;height:25%"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/Picture1.png" alt="Customer Service" title="Customer Service" style="width:auto; height:60px"> </div> <h3 style="text-align:center"> How to Create, Read, Update, and Delete a Customer Profile</h3>
 description: 
 link: ../recipes/?path=recipes/customerRegistration.md
 -->
@@ -18,7 +18,7 @@ link: ../recipes/?path=recipes/vault_credit_card_gift_card.md
 <!-- type: row-end -->
 <!-- type: row -->
 <!-- type: card
-title: <div style="text-align:center;width:100%;height:25%"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/Picture16.png" alt="Duplicate Transaction" title="Duplicate Transaction" style="width:auto; height:60px"> <h3 style="text-align:center"></div> How to Avoid a Duplicate Transaction </h3>
+title: <div style="text-align:center;width:100%;height:25%"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/Picture16.png" alt="Duplicate Transaction" title="Duplicate Transaction" style="width:auto; height:60px"> </div>  <h3 style="text-align:center"> How to Avoid a Duplicate Transaction </h3>
 description: 
 link: ../recipes/?path=recipes/duplicate_transactions.md
 -->
