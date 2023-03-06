@@ -1,7 +1,7 @@
 
 # How to Create, Read, Update and Delete Customer Profiles
 
-<img title="customer profile" alt="Alt text" src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/Picture1.png">
+<img title="customer profile" alt="Alt text" src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/Picture1.png" width="30" height="30">
 This guide will cover all CRUD operations for customer profiles in the Connected Commerce (uCom) API.
 
 ## Create a Customer Profile
