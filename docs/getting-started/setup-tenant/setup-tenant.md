@@ -4,7 +4,7 @@
 
 Products within the Fiserv portfolio that are showcased through the studio are known as `tenants`.  Tenants standup a `tenant server` that will serve all the content through the studio for developers visiting the Fiserv Developer Studio.
 
-## Cloning the Github tenant repoistory
+## Cloning the Github tenant repository
 
 An example Github repository has already been prepared for you to clone.
 
@@ -14,7 +14,7 @@ Tenant can build their own tenant server code by following our guidelines. Pleas
 
 Your repository name should match with your product name.
 
-You've not got a tenant repoistory.
+You've not got a tenant repository.
 
 ## Configure your tenant
 
@@ -28,7 +28,7 @@ Your edits will be made in the `develop` branch.
 
 The `tenant.json` contains metadata information about your product.
 
-The file is located, from the repoistiory root, `/config/tenant.json`.
+The file is located, from the repository root, `/config/tenant.json`.
 
 ### Edit the product-layout.yaml
 
