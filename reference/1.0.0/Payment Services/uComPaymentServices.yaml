@@ -848,7 +848,6 @@ paths:
     post:
       x-group-name: Payment Services
       x-proxy-name: Refund a Sale Transaction
-      x-child-product-name: Payment Services
       tags:
       - sale
       summary: Execute a refund on a payment capture.
