@@ -2736,17 +2736,11 @@ components:
           type: string
           description: Type of the order
         emails:
-          type: array
-          items:
-            $ref: '#/components/schemas/Email'
+          $ref: '#/components/schemas/Email'
         addresses:
-          type: array
-          items:
-            $ref: '#/components/schemas/Address'
+          $ref: '#/components/schemas/Address'
         phoneNumbers:
-          type: array
-          items:
-            $ref: '#/components/schemas/Phone'
+          $ref: '#/components/schemas/Phone'
       description: Information about the order details
 
     OfferStatus:
