@@ -1928,9 +1928,7 @@ components:
           $ref: '#/components/schemas/FundingSource'
         purchaseInfo:
           minItems: 0
-          type: array
-          items:
-            $ref: '#/components/schemas/PurchaseInfo'
+          $ref: '#/components/schemas/PurchaseInfo'
         amountSplitInfo:
           $ref: '#/components/schemas/AmountSplitInfo'
         isSplitSettlement:
