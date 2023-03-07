@@ -67,7 +67,7 @@
 #     - added fdcustomerId in /v1/account-tokens API.
 #     - added client-token in the request header
 # 0.0.9
-#     - Cleanup, cobranded not needed
+#     - Cleanup, co-branded not needed
 #     - Introduced accountType, phone.extension, gender
 #     - Introduced Security question section under Account Object
 #     - Introduced additionalInfo for mapping NVP
@@ -83,7 +83,7 @@
 #   - Updated ReferenceToken to have more accurate attribute names, removed use value
 #   - Cleaned up examples in the models
 # 0.0.6
-#   - Added a @token to the Credit, Cobranded, Loyalty, and Prepaid models whereby a token generated or retrieved during the process can be returned to the client.
+#   - Added a @token to the Credit, Co-branded, Loyalty, and Prepaid models whereby a token generated or retrieved during the process can be returned to the client.
 # 0.0.5
 #     - No change.
 # 0.0.4

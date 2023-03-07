@@ -16,7 +16,7 @@ Fraud Mitigation by Carat is an enterprise fraud solution which mainly utilizes 
 <!-- type: card
 title: Customer Onboarding
 
-description: When a customer onboards to a merchant's platform as a registered user, they provide personally identifiable data associated with their account (e.g., name, email, phone). Calling the Fraud Mitigation service at the time of customer onboarding allows the customer profile to be built up from the first interaction that the consumer has with the platform.
+description: When a customer onboard's to a merchant's platform as a registered user, they provide personally identifiable data associated with their account (e.g., name, email, phone). Calling the Fraud Mitigation service at the time of customer onboarding allows the customer profile to be built up from the first interaction that the consumer has with the platform.
 
 Data Collected:</br>
 Customer Information</br>

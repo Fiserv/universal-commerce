@@ -22,7 +22,7 @@ Which are the supported OS versions, devices, browser versions for Apple Pay? Se
 
 * Consumer adds card as a payment method into the mobile app and enters card details into the Apple wallet.
 
-* ApplePay is not onboarded into Connected Commerce (uCom) vault, but it is onboarded into Apple Wallet only.
+* ApplePay is not on-boarded into Connected Commerce (uCom) vault, but it is on-boarded into Apple Wallet only.
 
 * From Fiserv Connected Commerce (uCom) side encryption/decryption does not happen during card onboarding.
 

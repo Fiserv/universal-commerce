@@ -101,7 +101,7 @@ Timestamp:{{time}}
 
 **<ins> Sample Response (201 – Created) </ins>**
 
-Sample Response – Paypal Authorization Transaction - Nonce    
+Sample Response – Paypal Authorization Transaction - Nonce
 
 ```json
 {
@@ -160,7 +160,7 @@ Sample Response – Paypal Authorization Transaction - Nonce
 
 **<ins> Sample Response (400 – Bad Request) </ins>**
 
-| Sample Error Response   
+| Sample Error Response
 
 ```json
 {
@@ -301,7 +301,7 @@ Sample Error Response
 
 **<ins> Description </ins>**
 
-This flow will preform a sale transaction with a paypal nonce.
+This flow will preform a sale transaction with a PayPal nonce.
 
 **<ins> Endpoint URL </ins>**
 
@@ -322,9 +322,9 @@ Prod: https://prod.api.firstdata.com/ucom/v1/payments/sales
 | currencyCode    | sale               | Object    | body           | No       |
 | number          | currencyCode       | Number    | body           | No       |
 | fundingSource   | sale               | Object    | body           | Yes      |
-| paypal          | fundingSource      | Object    | body           | Yes      |
-| payerId         | paypal             | String    | body           | Yes      |
-| nonce           | paypal             | String    | body           | Yes      |
+| PayPal          | fundingSource      | Object    | body           | Yes      |
+| payerId         | PayPal             | String    | body           | Yes      |
+| nonce           | PayPal             | String    | body           | Yes      |
 | deviceInfo      | N/A                | Object    | Value          | Yes      |
 | id              | deviceInfo         | String    | Value          | Yes      |
 | kind            | deviceInfo         | String    | Value          | Yes      |
@@ -349,7 +349,7 @@ Timestamp:{{time}}
 
 **<ins> Sample Request - Paypal Sale Transaction - Nonce </ins>**
 
-Sample Request – Paypal Sale Transaction - Nonce    
+Sample Request – Paypal Sale Transaction - Nonce
 ```json
 {
    "sale":{
@@ -445,7 +445,7 @@ Sample Response – Paypal Sale Transaction - Nonce
 ```
 **<ins> Sample Response (400 – Bad Request) </ins>**
 
-Sample Error Response                                                                                                                          
+Sample Error Response
 ```json
 {
    "code":"272701",
@@ -495,8 +495,8 @@ Prod: https://prod.api.firstdata.com/ucom/v1/payments/auths
 | currencyCode    | authorization      | Object    | body           | No                 |
 | number          | currencyCode       | Number    | body           | No                 |
 | fundingSource   | authorization      | Object    | body           | Yes                |
-| venmo           | fundingSource      | Object    | body           | Yes                |
-| nonce           | venmo              | String    | body           | Yes                |
+| Venmo           | fundingSource      | Object    | body           | Yes                |
+| nonce           | Venmo              | String    | body           | Yes                |
 | fdCustomerId    | N/A                | String    | body           | Yes (Only Vaulted) |
 | vaultedAccount  | fundingSource      | Object    | body           | Yes (Only Vaulted) |
 | fdAccountId     | vaultedAccount     | String    | body           | Yes (Only Vaulted) |
@@ -524,7 +524,7 @@ Timestamp:{{time}}
 
 **<ins> Sample Request - Venmo Authorization Transaction - Nonce </ins>**
 
-Sample Request – Venmo Authorization Transaction - Nonce                                                                                                                                                                                                                                             
+Sample Request – Venmo Authorization Transaction - Nonce
 ```json
 
 {
@@ -563,7 +563,7 @@ Sample Request – Venmo Authorization Transaction - Nonce
 ```
 **<ins> Sample Response (201 – Created)</ins>**
 
-Sample Response – Venmo Authorization Transaction - Nonce    
+Sample Response – Venmo Authorization Transaction - Nonce
 ```json
 {
    "fdAuthorizationId":"517b57799dd44edeb0c86c15e3cfc377",
@@ -688,7 +688,7 @@ Timestamp:{{time}}
 
 **<ins> Sample Request </ins>**
 
-Sample Request – Capture of Authorization        
+Sample Request – Capture of Authorization
 
 
 ```json
@@ -704,7 +704,7 @@ Sample Request – Capture of Authorization
 
 **<ins> Sample Response (200 – Created) </ins>**
 
-Sample Response – Capture of Authorization    
+Sample Response – Capture of Authorization
 ```json
 
 {
@@ -747,7 +747,7 @@ Sample Response – Capture of Authorization
 ```
 **<ins> Sample Response (400 – Bad Request) </ins>**
 
-Sample Error Response                                                                                                                             
+Sample Error Response
 ```json
 {
    "code":" 272761",
@@ -784,8 +784,8 @@ Prod: https://prod.api.firstdata.com/ucom/v1/payments/sales
 | currencyCode    | sale               | Object    | body           | No                 |
 | number          | currencyCode       | Number    | body           | No                 |
 | fundingSource   | sale               | Object    | body           | Yes                |
-| venmo           | fundingSource      | Object    | body           | Yes                |
-| nonce           | venmo              | String    | body           | Yes                |
+| Venmo           | fundingSource      | Object    | body           | Yes                |
+| nonce           | Venmo              | String    | body           | Yes                |
 | fdCustomerId    | N/A                | String    | body           | Yes (Only Vaulted) |
 | vaultedAccount  | fundingSource      | Object    | body           | Yes (Only Vaulted) |
 | fdAccountId     | vaultedAccount     | String    | body           | Yes (Only Vaulted) |
@@ -813,7 +813,7 @@ Timestamp:{{time}}
 
 **<ins> Sample Request - Venmo Sale Transaction - Nonce </ins>**
 
-Sample Request – Venmo Sale Transaction - Nonce                                                                                                                     
+Sample Request – Venmo Sale Transaction - Nonce
 ```json
 {
    "sale":{
@@ -851,7 +851,7 @@ Sample Request – Venmo Sale Transaction - Nonce
 ```
 **<ins> Sample Response (201 – Created) </ins>**
 
-Sample Response –Venmo Sale Transaction - Nonce      
+Sample Response –Venmo Sale Transaction - Nonce
 ```json
 {
    "fdSaleId":"8b16126b29e548c7bb14fe877fff88ac",
@@ -914,7 +914,7 @@ Sample Response –Venmo Sale Transaction - Nonce
 
 **<ins> Sample Response (400 – Bad Request) </ins>**
 
-Sample Error Response   
+Sample Error Response
 ```json
 {
    "code":"272701",
@@ -1112,9 +1112,9 @@ Prod: https://prod.api.firstdata.com/ucom/v1/customers/{fdCustomerId}/accounts
 | Entity Name  | Parent Entity Name | Data Type | Parameter Type | Required |
 |--------------|--------------------|-----------|----------------|----------|
 | account      | N/A                | Object    | body           | Yes      |
-| paypal       | account            | Object    | body           | Yes      |
-| payerId      | paypal             | String    | body           | Yes      |
-| nonce        | paypal             | String    | body           | Yes      |
+| PayPal       | account            | Object    | body           | Yes      |
+| payerId      | PayPal             | String    | body           | Yes      |
+| nonce        | PayPal             | String    | body           | Yes      |
 | fdCustomerId | N/A                | String    | path           | Yes      |
 | deviceInfo   | N/A                | Object    | Value          | Yes      |
 | id           | deviceInfo         | String    | Value          | Yes      |
@@ -1170,7 +1170,7 @@ Timestamp:{{time}}
 
 **<ins> Sample Response (201 – Created) </ins>**
 
-Sample Response – Paypal Nonce    
+Sample Response – Paypal Nonce
 ```json
 {
    "fdAccountId":"8a7f3353790bb3c2017941ed5e060cbd",
@@ -1181,7 +1181,7 @@ Sample Response – Paypal Nonce
 ```
 **<ins> Sample Response (400 – Bad Request) </ins>**
 
-Sample Error Response   
+Sample Error Response
 
 ```json
 {
@@ -1219,8 +1219,8 @@ Prod: https://prod.api.firstdata.com/ucom/v1/customers/{fdCustomerId}/accounts
 | Entity Name  | Parent Entity Name | Data Type | Parameter Type | Required |
 |--------------|--------------------|-----------|----------------|----------|
 | account      | N/A                | Object    | body           | Yes      |
-| venmo        | account            | Object    | body           | Yes      |
-| nonce        | venmo              | String    | body           | Yes      |
+| Venmo        | account            | Object    | body           | Yes      |
+| nonce        | Venmo              | String    | body           | Yes      |
 | fdCustomerId | N/A                | String    | path           | Yes      |
 | deviceInfo   | N/A                | Object    | Value          | Yes      |
 | id           | deviceInfo         | String    | Value          | Yes      |
@@ -1278,7 +1278,7 @@ Timestamp:{{time}}
 
 **<ins> Sample Response (201 – Created) </ins>**
 
-Sample Response – Venmo Nonce                                                               
+Sample Response – Venmo Nonce
 ```json
 {
    "fdAccountId":"8a7f0d8c798e7cf701799e4c81d10821",
@@ -1289,7 +1289,7 @@ Sample Response – Venmo Nonce
 ```
 **<ins> Sample Response (400 – Bad Request) </ins>**
 
-Sample Error Response      
+Sample Error Response
 
 ```json
 {
@@ -1362,7 +1362,7 @@ Timestamp:{{time}}
 
 **<ins> Sample Request - Paypal Authorization Transaction - Vaulted </ins>**
 
-Sample Request – Paypal Authorization Transaction - Vaulted   
+Sample Request – Paypal Authorization Transaction - Vaulted
 
 ```json
 {
@@ -1534,7 +1534,7 @@ Timestamp:{{time}}
 
 **<ins> Sample Request </ins>**
 
-Sample Response – Capture of Authorization                                       
+Sample Response – Capture of Authorization
 
 ```json
 {
@@ -1579,7 +1579,7 @@ Sample Response – Capture of Authorization
 
 **<ins> Sample Response (200 – Created) </ins>**
 
-Sample Response – Capture of Authorization      
+Sample Response – Capture of Authorization
 
 ```json
 {
@@ -1625,7 +1625,7 @@ Sample Response – Capture of Authorization
 
 **<ins> Sample Response (400 – Bad Request) </ins>**
 
-Sample Error Response     
+Sample Error Response
 
 ```json
 {
@@ -1643,7 +1643,7 @@ Sample Error Response
 
 **<ins> Description </ins>**
 
-This flow will preform a pre auth transaction with a paypal nonce.
+This flow will preform a pre auth transaction with a PayPal nonce.
 
 **<ins> Endpoint URL </ins>**
 
@@ -1730,7 +1730,7 @@ Timestamp:{{time}}
 
 **<ins> Sample Response (201 – Created) </ins>**
 
-Sample Response – Paypal Sale Transaction - Vaulted    
+Sample Response – Paypal Sale Transaction - Vaulted
 
 ```json
 {
@@ -1873,7 +1873,6 @@ Authorization:HMAC {{signature}}
 Timestamp:{{time}}
 
 **<ins> Sample Request - Venmo Authorization Transaction - Vaulted </ins>**
-                                                                                                          
 
 ```json
 
@@ -1976,7 +1975,7 @@ Sample Response – Venmo Authorization Transaction - Vaulted
 
 **<ins> Sample Response (400 – Bad Request) </ins>**
 
-Sample Error Response    
+Sample Error Response
 
 ```json
 
@@ -2046,7 +2045,7 @@ Timestamp:{{time}}
 
 **<ins> Sample Request </ins>**
 
-Sample Request – Capture of Authorization                                       
+Sample Request – Capture of Authorization
 
 ```json
 
@@ -2149,8 +2148,8 @@ Prod: https://prod.api.firstdata.com/ucom/v1/payments/sales
 | currencyCode    | sale               | Object    | body           | No                 |
 | number          | currencyCode       | Number    | body           | No                 |
 | fundingSource   | sale               | Object    | body           | Yes                |
-| venmo           | fundingSource      | Object    | body           | Yes                |
-| nonce           | venmo              | String    | body           | Yes                |
+| Venmo           | fundingSource      | Object    | body           | Yes                |
+| nonce           | Venmo              | String    | body           | Yes                |
 | fdCustomerId    | N/A                | String    | body           | Yes (Only Vaulted) |
 | vaultedAccount  | fundingSource      | Object    | body           | Yes (Only Vaulted) |
 | fdAccountId     | vaultedAccount     | String    | body           | Yes (Only Vaulted) |
@@ -2282,7 +2281,7 @@ Sample Response – Venmo Sale Transaction - Vaulted
 ```
 **<ins> Sample Response (400 – Bad Request) </ins>**
 
-Sample Error Response                                                                                                                                                 
+Sample Error Response
 
 ```json
 {

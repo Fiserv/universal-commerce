@@ -24,7 +24,7 @@
 #     - Updated Reward transactionLevel to add priceAdjustments
 #     - Updated PriceAdjustment to add maxQuantity
 #     - Added OfferStatus in the PriceAdjustments
-#     - Added washcodes under POSItem
+#     - Added wash codes under POSItem
 # 0.1.8
 #     - Added New API for STAC creation
 #     - Added 3ds web support

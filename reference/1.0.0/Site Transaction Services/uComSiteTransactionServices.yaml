@@ -55,15 +55,15 @@
 #     - Added Link in the Error object.
 #     - Added retailer partner id for marketplace
 #     - Added Amazon Pay funding source
-#     - Added DECLINED and TIMEDOUT status for error usecases
+#     - Added DECLINED and TIMED OUT status for error use cases
 #     - acsSignedContent and CardType in threeDSecureInfo object
-#     - Added AUTH_DECLINED and TIMEDOUT status for error usecases
+#     - Added AUTH_DECLINED and TIMED OUT status for error use cases
 #     - Added billing phone in Credit,ApplePay, GooglePay, SamsungPay objects
 # 0.1.4
 #     - Added 'createdDateTime', 'lastUpdatedDateTime','transactionDateTime' and ServiceLevelCode
 #     - Added FundingSourceType, AccountStatus and AccountType entities
 #     - Added ACH under funding source.
-#     - Updated salesLineItem with POSItem across all ymls. POSItem is superset of salesLineItem.
+#     - Updated salesLineItem with POSItem across all yamls. POSItem is superset of salesLineItem.
 #     - Added offerCostInfo  in the PromotionalOffers entity
 #     - Added availOffersTrxnId identifier in the PetroTransaction entity
 #     - Added previousBalanceUnits and newBalanceUnits in the LoyaltyTransactionInfo entity

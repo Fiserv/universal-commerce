@@ -230,7 +230,7 @@ components:
           items:
             $ref: '#/components/schemas/Link'
       description: Represents an event to create and vault an account that requires
-        a multi-step and potentially asynchrounous process to complete.
+        a multi-step and potentially asynchronous process to complete.
 
 #-------------------------------------
 # Resource Models
@@ -765,7 +765,7 @@ components:
           type: string
           description: A shortened version one of the following values - aim, gtalk,
             icq, xmpp, msn, skype, qq, yahoo, or other. This will change with popularity
-            of various applicatiions at any time.
+            of various applications at any time.
         type:
           type: string
         primary:
@@ -829,9 +829,9 @@ components:
           example: email-id@example.com
         cardNumber:
           type: string
-          description: Card number of loyalty account. The accountId parameter superscedes
+          description: Card number of loyalty account. The accountId parameter supersedes
             this field.  This field is ignored when the request is to create a new
-            acccount.
+            account.
           example: "905960447"
         expiryDate:
           $ref: '#/components/schemas/ExpiryDate'
@@ -856,7 +856,7 @@ components:
               type: boolean
             sms:
               type: boolean
-          description: Methods the account onwer has agreed to be contacted
+          description: Methods the account owner has agreed to be contacted
         commonFlags:
           type: object
           properties:
@@ -932,7 +932,7 @@ components:
       example:
         programId: TEST_PROGRAM
         hostProgramId: TEST_HOST_PROGRAM
-        programName: TEST_LOAYLTY_PROGRAM
+        programName: TEST_LOYALTY_PROGRAM
         programDesc: Test loyalty program
         programProvider: Test Provider
         loyaltyType: LOCAL
@@ -980,7 +980,7 @@ components:
       properties:
         payerId:
           type: string
-          description: Paypal generated Unique identfier for a Paypal account.
+          description: Paypal generated Unique identifier for a Paypal account.
           example: LPLWNMTBWMFAY
         nonce:
           type: string
@@ -1269,7 +1269,7 @@ components:
           example: true
         cavv:
           type: string
-          description: Card authenticaion verificaiton value
+          description: Card authentication verification value
         threeDSVersion:
           type: string
         expiryDateTime:
@@ -1281,7 +1281,7 @@ components:
         eci:
           type: string
           description: Electronic Commerce Indicator value
-      description: Details of ThreeDSecure transaction used to process the challege
+      description: Details of ThreeDSecure transaction used to process the challenge
         flow
 
     User:
@@ -1462,7 +1462,7 @@ components:
                     format: date-time
                     example: 2016-04-16T16:06:05Z
                 description: Device data captured as a bundle and transmitted as an
-                  encrypted and/or specifically formated string.
+                  encrypted and/or specifically formatted string.
               dataStatic:
                 type: object
                 properties:
@@ -1519,7 +1519,7 @@ components:
                     type: string
                     description: Mobile application name.
                     format: sting
-                    example: aplication-name
+                    example: application-name
                   country:
                     type: string
                     description: Mobile application store country.

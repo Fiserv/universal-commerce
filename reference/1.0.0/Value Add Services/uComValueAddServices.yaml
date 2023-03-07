@@ -53,7 +53,7 @@
 #     - Added select offer API for obtaining offer
 #     - Added few additional fields in PromotionalOffers entity
 # 0.1.2
-#     - Modified Http method type from GET to POST for loyalty account retrieval and transations APIs.
+#     - Modified Http method type from GET to POST for loyalty account retrieval and transactions APIs.
 # 0.1.1
 #   - No change.
 # 0.1.0
@@ -1505,7 +1505,7 @@ components:
 
     BalanceStatus:
       type: string
-      description: Indicates the status of the balance transaction of a given account. 'INPROGRESS' - Balance retrieval is still in inprogress 'COMPLETED' - Balance is available 'ERROR' - Balance retrieval failed. System error 'UNAVAILABLE' - Balance is not available. Check Host extra info for additional details
+      description: Indicates the status of the balance transaction of a given account. 'INPROGRESS' - Balance retrieval is still in in progress 'COMPLETED' - Balance is available 'ERROR' - Balance retrieval failed. System error 'UNAVAILABLE' - Balance is not available. Check Host extra info for additional details
       enum:
       - INPROGRESS
       - COMPLETED
@@ -1579,7 +1579,7 @@ components:
 
     RequestStatus:
       type: string
-      description: Indicates the status of the overall request. 'INPROGRESS' - Balance retrieval is still in inprogress for one or more accounts 'COMPLETED' - Balance retrieval is completed for all accounts
+      description: Indicates the status of the overall request. 'INPROGRESS' - Balance retrieval is still in in progress for one or more accounts 'COMPLETED' - Balance retrieval is completed for all accounts
       enum:
       - INPROGRESS
       - COMPLETED

@@ -1420,7 +1420,7 @@ components:
           $ref: '#/components/schemas/ReceiptData'
 
     MerchantOrder:
-      description: Order consists of order itself, payment transaction, one or multiple fullfillments, refunds and cancellation information
+      description: Order consists of order itself, payment transaction, one or multiple fulfillments, refunds and cancellation information
       type: object
       properties:
         storeId:

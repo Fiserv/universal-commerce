@@ -42,11 +42,11 @@
 #     - No change.
 # 0.0.6
 #     - Introduced new object PublicSiteInfo
-#     - Modified geolocation API to return PublicSiteInfo instead of GeoLocation
+#     - Modified geo location API to return PublicSiteInfo instead of GeoLocation
 # 0.0.5
 #     - Updated the response structure for the get operation to include pagination details
 #     - Changed name of attribute for Site in SiteRequest object
-#     - Added api to search sites based on geolocation
+#     - Added api to search sites based on geo location
 #     - Set results for search results and get all petrol sites to use same structures
 #     - Organized the parameters to be alphabetical
 # 0.0.4
@@ -56,7 +56,7 @@
 #     - Corrected attribute names in ItemCode object
 # 0.0.2
 #     - Added 'osVersion' attribute to 'DeviceInfo' object.
-#     - updated method type PUT fron PATCH
+#     - updated method type PUT from PATCH
 # 0.0.1
 #     - Initial Version
 #-------------------------------------
@@ -247,7 +247,7 @@ paths:
       x-proxy-name: Get Site Coordinates
       tags:
       - geolocation
-      description: Query for a list of sites based on geolocation coordinates and a given radius.
+      description: Query for a list of sites based on geo-location coordinates and a given radius.
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -612,7 +612,7 @@ components:
         retailerPartnerId:
           type: string
           description: Name of the configured retailer.
-      description: Geospatial data for a given location
+      description: Geo-spatial data for a given location
 
     Image:
       type: object
@@ -883,7 +883,7 @@ components:
           description: Indicator if the site is active.
         welcomeMessage:
           type: string
-          description: Message displayed on the mobile device upon site checkin. The average length of this field should be around 100 characters to maintain visibility on various mobile profiles.
+          description: Message displayed on the mobile device upon site check-in. The average length of this field should be around 100 characters to maintain visibility on various mobile profiles.
         hoursOfOperation:
           type: string
           description: Hrs of operation of site.
@@ -1782,7 +1782,7 @@ components:
     TypeParam:
       name: type
       in: query
-      description: This is to identify different types for siteCheckin/siteUpdate request. Example - type=qrcode for siteCheckin in EMEA type=site for siteCheckin in US. For GeoLocationSiteUpdate, type=geoSite
+      description: This is to identify different types for site check-in/siteUpdate request. Example - type=qrcode for site check-in in EMEA type=site for site check-in in US. For GeoLocationSiteUpdate, type=geoSite
       allowEmptyValue: false
       schema:
         type: string

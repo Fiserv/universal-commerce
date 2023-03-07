@@ -87,7 +87,7 @@ Client-Token:{{tokenId}}
 
 **<ins> Sample Response (201 – Created) </ins>**
 
-Sample Response – Authorization Transaction - Nonce                                                                                                                                                                                                                                                     
+Sample Response – Authorization Transaction - Nonce
 ```json
 
 {
@@ -160,7 +160,7 @@ Sample Response – Authorization Transaction - Nonce
 
 **<ins> Sample Response (400 – Bad Request) </ins>**
 
-Sample Error Response       
+Sample Error Response
 
 ```json
 {
@@ -229,7 +229,7 @@ Timestamp:{{time}}
 
 **<ins> Sample Request </ins>**
 
-Sample Request – Capture of Authorization                                      
+Sample Request – Capture of Authorization
 
 ```json
 
@@ -246,7 +246,7 @@ Sample Request – Capture of Authorization
 
 **<ins> Sample Response (200 – Created) </ins>**
 
-Sample Response – Capture of Authorization                                                                                                         
+Sample Response – Capture of Authorization
 
 ```json
 
@@ -291,8 +291,7 @@ Sample Response – Capture of Authorization
 ```
 **<ins> Sample Response (400 – Bad Request) </ins>**
 
-Sample Error Response                                                                                                                               
-
+Sample Error Response
 ```json
 {
    "code":" 272761",
@@ -345,7 +344,7 @@ Timestamp:{{time}}
 
 **<ins> Sample Request </ins>**
 
-Sample Response – Partial Refund                                              
+Sample Response – Partial Refund
 
 ```json
 
@@ -407,7 +406,7 @@ Sample Response – Refund of Capture
 
 ```
 
-## Option 2: Sale Flow 
+## Option 2: Sale Flow
 
 ### Step 1: Sale Transaction
 
@@ -629,7 +628,7 @@ Timestamp:{{time}}
 
 **<ins> Sample Request </ins>**
 
-Sample Response – Partial Refund    
+Sample Response – Partial Refund
 
 ```json
 
