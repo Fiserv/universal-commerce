@@ -163,7 +163,7 @@ paths:
 
   /v1/txhistory/customers/{fdCustomerId}/vouchers:
     get:
-      x-group-name: Transaction History Service
+      x-group-name: Transaction History Services
       x-proxy-name: Get Redeemable Voucher Details
       tags:
       - voucher
