@@ -80,19 +80,19 @@
   "supportConfig": [
     {
       "bug": {
-        "label": "bug,universalcommerce",
+        "label": "bug,universal-commerce",
         "template": "bug.md",
         "assignees": "paulmohljr"
       },
       "feedback": {
-        "label": "feedback,universalcommerce",
+        "label": "feedback,universal-commerce",
         "template": "feedback.md",
         "assignees": "paulmohljr"
       },
       "enhancement": {
-        "label": "enhancement,universalcommerce",
+        "label": "enhancement,universal-commerce",
         "template": "feature.md",
-        "assignees": "paulmohljrm"
+        "assignees": "paulmohljr"
       }
     }
   ]
