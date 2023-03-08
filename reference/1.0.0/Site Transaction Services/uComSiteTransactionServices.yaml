@@ -1144,11 +1144,17 @@ components:
           type: string
           description: Type of the order
         emails:
-          $ref: '#/components/schemas/Email'
+          type: array
+          items:
+            $ref: '#/components/schemas/Email'
         addresses:
-          $ref: '#/components/schemas/Address'
+          type: array
+          items:
+            $ref: '#/components/schemas/Address'
         phoneNumbers:
-          $ref: '#/components/schemas/Phone'
+          type: array
+          items:
+            $ref: '#/components/schemas/Phone'
       description: Information about the order details
 
     OfferStatus:
@@ -1258,22 +1264,21 @@ components:
         value:
           type: string
           description: The value SHOULD be specified according to the format defined in RFC3966, e.g., 'tel:+1-201-555-0123'.
+          example: 555-555-5555
         type:
           type: string
           description: Often has typical values of "work","billing", "home", "mobile", "fax", "pager", and "other" and MAY allow more types to be defined by the service client.
+          example: billing
         extension:
           type: string
           description: Defines the extension of the phone number.
+          example: "2145"
         primary:
           type: boolean
           description: Defines if this entry is to be used as the primary or default for the user.
           default: false
       description: Phone number for the user.
-      example:
-        value: 555-555-5555
-        type: billing
-        extension: "2145"
-
+      
     POSItem:
       type: object
       properties:
@@ -3864,39 +3869,36 @@ components:
         type:
           type: string
           description: Canonical type values of "work", "home", and "other".
+          example: Work
         streetAddress:
           type: string
           description: The full street address component, which may include house number, street name, P.O. box, and multi-line extended street address information.
+          example: 100 Universal City Plaza
         locality:
           type: string
           description: The city or locality component.
+          example: Hollywood
         region:
           type: string
           description: The state or region component.
+          example: CA
         postalCode:
           type: string
           description: The zip code or postal code component.
+          example: "91608"
         country:
           type: string
           description: The country name component.  When specified, the value MUST be in ISO 3166-1 "alpha-2" code format; e.g., the United States and Sweden are "US" and "SE", respectively.
+          example: US
         formatted:
           type: string
           description: The full mailing address, formatted for display or use with a mailing label.
+          example: 100 Universal City Plaza, Hollywood, CA 91608 US
         primary:
           type: boolean
           description: Indicates if this is the default address for the associated resource. It only has meaning when used in a set or array of addresses.
+          example: true
       description: A physical mailing address for this user.
-      example:
-        type: work
-        streetAddress: 100 Universal City Plaza
-        locality: Hollywood
-        region: CA
-        postalCode: "91608"
-        country: US
-        formatted: |-
-          100 Universal City Plaza
-          Hollywood, CA 91608 US
-        primary: true
 
     AmazonPay:
       type: object
@@ -4165,18 +4167,15 @@ components:
         type:
           type: string
           description: The "type" sub-attribute is used to provide a classification meaningful to the (human) user.  The user interface should encourage the use of basic values of "work", "home", and "other" and MAY allow additional type values to be used at the discretion of the service client.
+          example: bjensen@example.com
         value:
           type: string
           description: The value SHOULD be specified according to RFC5321.
+          example: work
         primary:
           type: boolean
           description: Defines if this entry is to be used as the primary or default for the user.
-          default: false
       description: Email address for the user.
-      example:
-        value: bjensen@example.com
-        type: work
-        primary: true
 
     ExpiryDate:
       type: object
