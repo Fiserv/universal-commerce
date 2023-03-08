@@ -719,19 +719,18 @@ components:
         value:
           type: string
           description: The id of the group.
+          example: e9e30dba-f08f-4109-8486-d5c6a331660a
         href:
           type: string
           description: The URI of the corresponding "Group" resources to which the
             user belongs.
+          example: https://example.com/v2/Groups/e9e30dba-f08f-4109-8486
         display:
           type: string
           description: The common name of the group.
+          example: Tour Guides
       description: Group
-      example:
-        value: e9e30dba-f08f-4109-8486-d5c6a331660a
-        href: https://example.com/v2/Groups/e9e30dba-f08f-4109-8486
-        display: Tour Guides
-
+      
     Identity:
       type: object
       properties:
