@@ -724,17 +724,16 @@ components:
         value:
           type: string
           description: The id of the group.
+          example: e9e30dba-f08f-4109-8486-d5c6a331660a
         href:
           type: string
           description: The URI of the corresponding "Group" resources to which the user belongs.
+          example: https://example.com/v2/Groups/e9e30dba-f08f-4109-8486
         display:
           type: string
           description: The common name of the group.
+          example: Tour Guides
       description: Group
-      example:
-        value: e9e30dba-f08f-4109-8486-d5c6a331660a
-        href: https://example.com/v2/Groups/e9e30dba-f08f-4109-8486
-        display: Tour Guides
 
     Identity:
       type: object
@@ -968,13 +967,16 @@ components:
       properties:
         id:
           type: string
+          example: ch02
         type:
           type: string
           readOnly: true
+          example: cell
         hint:
           type: string
           description: phone number or email id hint. Masked mail id or phone number.
           readOnly: true
+          example: xxx-xxx-6789
         preferred:
           type: boolean
           default: false
@@ -984,21 +986,13 @@ components:
             $ref: '#/components/schemas/OTPDeliveryModes'
         selectedMode:
           $ref: '#/components/schemas/OTPDeliveryModes'
+          example: SMS
         optCode:
           type: string
-          description: It contains OTP sent to use via voice, SMS or Email in encrypted format.
+          description: It contains OTP sent to use via voice, SMS or Email in encrypted format
+          example: "6789"
       description: channels to receive OTP - can be SMS, Phone or email. This object will be set only in case of request/reply of OTP methods.
-      example:
-        id: ch02
-        type: Cell
-        hint: xxx-xxx-6789
-        preferred: ??
-        deliveryModes:
-        - VOICE
-        - SMS
-        selected: SMS
-        otpCode: "6789"
-
+      
     OTPDeliveryModes:
       type: object
       description: This is OTP delivery options. It can be SMS, Phone, Email. This will be used in both cases - Receive OTP channel and Send OTP channel.
