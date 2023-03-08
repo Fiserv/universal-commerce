@@ -369,46 +369,43 @@ components:
         type:
           type: string
           description: Canonical type values of "work", "home", and "other".
+          example: work
         streetAddress:
           type: string
           description: The full street address component, which may include house
             number, street name, P.O. box, and multi-line extended street address
             information.
+          example: 100 Universal City Plaza
         locality:
           type: string
           description: The city or locality component.
+          example: Hollywood
         region:
           type: string
           description: The state or region component.
+          example: CA
         postalCode:
           type: string
           description: The zip code or postal code component.
+          example: "91608"
         country:
           type: string
           description: The country name component.  When specified, the value MUST
             be in ISO 3166-1 "alpha-2" code format; e.g., the United States and Sweden
             are "US" and "SE", respectively.
+          example: US
         formatted:
           type: string
           description: The full mailing address, formatted for display or use with
             a mailing label.
+          example: 100 Universal City Plaza, Hollywood, CA 91608 US
         primary:
           type: boolean
           description: Indicates if this is the default address for the associated
             resource. It only has meaning when used in a set or array of addresses.
+          example: true 
       description: A physical mailing address for this user.
-      example:
-        type: work
-        streetAddress: 100 Universal City Plaza
-        locality: Hollywood
-        region: CA
-        postalCode: "91608"
-        country: US
-        formatted: |-
-          100 Universal City Plaza
-          Hollywood, CA 91608 US
-        primary: true
-
+      
     ApplyBuyProcess:
       type: object
       properties:
@@ -604,20 +601,18 @@ components:
             meaningful to the (human) user.  The user interface should encourage the
             use of basic values of "work", "home", and "other" and MAY allow additional
             type values to be used at the discretion of the service client.
+          example: work
         value:
           type: string
           description: The value SHOULD be specified according to RFC5321.
+          example: bjensen@example.com
         primary:
           type: boolean
           description: Defines if this entry is to be used as the primary or default
             for the user.
           default: false
       description: Email address for the user.
-      example:
-        value: bjensen@example.com
-        type: work
-        primary: true
-
+      
     ExpiryDate:
       type: object
       properties:
@@ -766,17 +761,16 @@ components:
           description: A shortened version one of the following values - aim, gtalk,
             icq, xmpp, msn, skype, qq, yahoo, or other. This will change with popularity
             of various applications at any time.
+          example: someaimhandle
         type:
           type: string
+          example: aim
         primary:
           type: boolean
           description: Flag to indicate primary account
           default: false
       description: Instant messaging address for the user.
-      example:
-        value: someaimhandle
-        type: aim
-
+      
     ISO-4217:
       type: object
       properties:
@@ -1034,39 +1028,37 @@ components:
           type: string
           description: The value SHOULD be specified according to the format defined
             in RFC3966, e.g., 'tel:+1-201-555-0123'.
+          example: 555-555-5555
         type:
           type: string
           description: Often has typical values of "work", "home", "mobile", "fax",
             "pager", and "other" and MAY allow more types to be defined by the service
             client.
+          example: work
         primary:
           type: boolean
           description: Defines if this entry is to be used as the primary or default
             for the user.
           default: false
       description: Phone number for the user.
-      example:
-        value: 555-555-5555
-        type: work
-
+      
     Photo:
       type: object
       properties:
         value:
           type: string
           description: URI pointing to user's image file.
+          example: https://photos.example.com/profilephoto/72930000000Ccne/F
         type:
           type: string
           description: Defines the following canonical values to represent popular
             photo sizes - "photo" and "thumbnail".
+          example: thumbnail
       description: A URI that is a uniform resource locator (as defined in Section
         1.1.3 of RFC3986) that points to a resource location representing the user's
         image. The resource MUST be a file (e.g., a GIF, JPEG, or PNG image file)
         rather than a web page containing an image.
-      example:
-        value: https://photos.example.com/profilephoto/72930000000Ccne/F
-        type: thumbnail
-
+        
     Prepaid:
       type: object
       properties:
