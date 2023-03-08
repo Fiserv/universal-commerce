@@ -976,7 +976,7 @@ components:
           type: string
           description: phone number or email id hint. Masked mail id or phone number.
           readOnly: true
-          example: xxx-xxx-6789
+          example: "xxx-xxx-6789"
         preferred:
           type: boolean
           default: false
