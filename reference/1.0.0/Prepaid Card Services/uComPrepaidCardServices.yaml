@@ -963,7 +963,7 @@ paths:
   /v1/prepaids/reloads:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Reload Prepaid Card
+      x-proxy-name: Reload A Prepaid Card
       tags:
       - reload
       description: Service to load fund into a vaulted Prepaid Card
