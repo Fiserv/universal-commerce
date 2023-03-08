@@ -431,6 +431,7 @@ components:
         value:
           type: string
           description: A shortened version one of the following values - aim, gtalk, icq, xmpp, msn, skype, qq, yahoo, or other. This will change with popularity of various applications at any time.
+          example: someaimhandle
         type:
           type: string
         primary:
@@ -438,9 +439,6 @@ components:
           description: Flag to indicate primary account
           default: false
       description: Instant messaging address for the user.
-      example:
-        value: someaimhandle
-        type: string
 
     PersonName:
       type: object
@@ -606,15 +604,25 @@ components:
           description: A URI that is a uniform resource locator (as defined in Section 1.1.3 of [RFC3986]) and that points to a location representing the user's online profile (e.g., a web page)
           example: https://login.example.com/bjensen
         emails:
-          $ref: '#/components/schemas/Email'
+          type: array
+          items:
+            $ref: '#/components/schemas/Email'
         addresses:
-          $ref: '#/components/schemas/Address'
+          type: array
+          items:
+            $ref: '#/components/schemas/Address'
         phoneNumbers:
-          $ref: '#/components/schemas/Phone'
+          type: array
+          items:
+            $ref: '#/components/schemas/Phone'
         ims:
-          $ref: '#/components/schemas/IMS'
+          type: array
+          items:
+            $ref: '#/components/schemas/IMS'
         photos:
-          $ref: '#/components/schemas/Photo'
+          type: array
+          items:
+            $ref: '#/components/schemas/Photo'
         userType:
           type: string
           description: Used to identify the relationship between the organization and the user.
