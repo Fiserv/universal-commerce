@@ -90,6 +90,8 @@ The following table provides the field level data definition, along with the API
  Set to "RAVELIN" | Required |
 | deviceInfo.details.dataCapture.dataEventId | Device Intelligence generated Device ID.See [Device Intelligence](#_Device_Intelligence) for details. | Required |
 
+</details>
+
 ## What information can be passed to Fraud Mitigation?
 
 ### Sample Customer Profile Payload with Device ID 
