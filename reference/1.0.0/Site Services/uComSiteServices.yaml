@@ -510,26 +510,25 @@ components:
         type:
           type: string
           description: type of product like carwash or fuel.
+          example: fuel
         code:
           type: string
           description: This is product code provided by POS.
+          example: 2
         unitOfMeasure:
           type: string
           description: Unit of measure for a POS sale.
+          example: litre
         unitPrice:
           type: string
           description: Product price information.
+          example: 2.679
         additionalProductInfo:
           type: string
           description: Additional Product price information.
+          example: Super
       description: This contains list of product price and other product information.
-      example:
-        code: 2
-        unitOfMeasure: litre
-        unitPrice: 2.679
-        additionalProductInfo: Super
-        type: fuel
-
+      
     Email:
       type: object
       properties:
@@ -654,26 +653,34 @@ components:
         posCodeFormat:
           type: string
           description: Refer to PCATS documentation.
+          example: plu
         posCode:
           type: string
           description: Refer to PCATS documentation.
+          example: "9999"
         posCodeModifier:
           type: string
           description: Refer to PCATS documentation.
+          example: "1"
         itemName:
           type: string
           description: Item name as defined by the POS system for display on the customer device.
+          example: Basic Wash
         itemDescription:
           type: string
           description: Item description as defined by the POS system for display on the customer device.
+          example: Basic Wash
         itemPrice:
           type: string
           description: Item price as defined by the POS system for display on the customer device.
+          example: "10"
         currencyNumericCode:
           $ref: '#/components/schemas/ISO-4217'
+          example: 123
         displayOrder:
           type: integer
           description: Discounted item price as defined by the POS system. This would be a promotional discount, not based on a specific customer.
+          example: 123
         discountedPrice:
           type: number
           description: Indicator to track if discounted price is tied to a known promotion, offer, etc.
@@ -684,34 +691,19 @@ components:
           description: References position in list of offered rewards. Used by items to link to an appropriate reward.
         productCode:
           type: string
+          example: "102"
         amount:
           type: number
+          example: 100
         quantity:
           type: number
+          example: 5
         priceTier:
           type: string
         unitOfMeasurement:
           $ref: '#/components/schemas/QuantityUOM'
       description: Value object to hold site resource Item codes.
-      example:
-        posCodeFormat: plu
-        posCode: "9999"
-        posCodeModifier: "1"
-        itemName: Basic Wash
-        itemDescription: Basic Wash
-        itemPrice: "10"
-        currencyNumericCode: 123
-        displayOrder: 123
-        productCode: "102"
-        priceTier: "1.00"
-        discountedPrice: 0
-        discountId: NA
-        loyaltyRewardSequenceNumber: NA
-        amount: 100
-        quantity: 5
-        weightUOM: NA
-        volumeUOM: l
-
+      
     LanguageCode:
       type: string
       description: The language code parameter is based on two ISO specs (ISO 639-1,ISO-3166-1).  The first segment is the lower case, 2-character language code (based on ISO 639-1) followed by a hyphen "-" separator.  The second segment is the upper case, 2-character region code (based on ISO-3166-1). Examples are en-US, en-CA, fr-CA.
@@ -722,32 +714,31 @@ components:
         programId:
           type: string
           description: Unique identifier used to provide link between applications across disparate systems.
+          example: TEST_PROGRAM
         hostProgramId:
           type: string
           description: Loyalty program Id used by the host (cloud) solution. Not in used in uCom system. For future use.
+          example: TEST_HOST_PROGRAM
         programName:
           type: string
           description: Loyalty program name. Common name for the given loyalty program
+          example: TEST_LOYALTY_PROGRAM
         programDesc:
           type: string
           description: Used to describe the loyalty program and perhaps used to display to the client.
+          example: Test loyalty program
         programProvider:
           type: string
           description: Sponsor of the loyalty program.
+          example: Test Provider
         loyaltyType:
           $ref: '#/components/schemas/LoyaltyType'
+          example: LOCAL
         programStatus:
           $ref: '#/components/schemas/ProgramStatus'
+          example: ENABLED
       description: Value object to hold a list of loyalty items.
-      example:
-        programId: TEST_PROGRAM
-        hostProgramId: TEST_HOST_PROGRAM
-        programName: TEST_LOYALTY_PROGRAM
-        programDesc: Test loyalty program
-        programProvider: Test Provider
-        loyaltyType: LOCAL
-        status: ENABLED
-
+      
     Link:
       required:
       - href
@@ -1033,6 +1024,7 @@ components:
         available:
           type: boolean
           description: If the resource is available for use. If the resource goes offline FD will expect this to change in an PATCH request message.
+          example: true
         id:
           type: string
           description: Unique identifier for the resource.
@@ -1040,20 +1032,25 @@ components:
         name:
           type: string
           description: Name for the resource.
+          example: Car Wash
         type:
           type: string
           description: Type identifier for the resource.
+          example: Basic Wash
         description:
           type: string
           description: Description for the resource.
+          example: Carwash Premium
         startAvailableTime:
           type: string
           description: Used to identify the start time that a resource (e.g. carwash) is available.
           format: date
+          example: 12:00PM
         endAvailableTime:
           type: string
           description: Used to identify the end time that a resource (e.g. carwash) is available.
           format: date
+          example: 12:00PM
         itemList:
           type: array
           items:
@@ -1061,16 +1058,9 @@ components:
         resourceId:
           type: string
           description: resource id.
+          example: "831"
       description: Value object to hold site available resource.
-      example:
-        available: true
-        name: Carwash
-        type: Basic Wash
-        description: Carwash Premium
-        endAvailableTime: 12:00AM
-        startAvailableTime: 12:00PM
-        resourceId: "831"
-
+      
     SitesSearchResult:
       type: object
       properties:
