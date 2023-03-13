@@ -1,0 +1,20 @@
+{
+    "githubPullRequests.ignoredPullRequestBranches": [
+        "develop"
+    ],
+    "cSpell.words": [
+        "Apigee",
+        "auths",
+        "iframe",
+        "MMYY",
+        "NACHA",
+        "openapi",
+        "prepaids",
+        "siteservices",
+        "STAC",
+        "stackable",
+        "Vange",
+        "Venmo",
+        "Withfdcustomer"
+    ]
+}

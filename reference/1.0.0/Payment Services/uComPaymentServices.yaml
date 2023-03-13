@@ -1,0 +1,5392 @@
+#-------------------------------------
+# Document Change Log
+# 0.2.3
+#     - Added tokens reference in the Credit
+#     - Added V2 refund API
+#     - Added membership in all payment APIs
+#     - Added split settlement info is Auth/Capture/Sale
+# 0.2.2
+#     - New V2 endpoints for multi transaction use cases
+# 0.2.1
+#     - Added Walmart pay as fundingSource
+#     - Added SEC code for ACH
+#     - Added EBT as funding source
+#     - Added Merchant id as header field
+#     - Added asset provider field in the ACH
+# 0.2.0
+#     - Added dynamic descriptors API model in Refund and Void
+#     - Added 'OTHER' CreditCardType
+#     - Added fields in ThreeDSecure object
+#     - Added Price tier in POSItem
+#     - Added Alternate merchant id
+#     - Added PAN type and BIN
+#     - Added Expiry Date to InApp entities
+#     - Added new API for charge details
+#     - Added Developer Email in ApplePay/GooglePay/SamsungPay objects
+#     - Added ECIIndicator in ApplePay/GooglePay/SamsungPay objects
+#     - Added local payment methods for Ideal and Bancontact
+#     - Added exemptionCode
+# 0.1.9
+#     - Updated PriceAdjustment to add maxQuantity
+#     - Added AmountSplitInfo and DeliveryService API Models
+#     - Added GET endpoints for Sale/Auth/Capture/Refund based on client request id
+#     - Added FAILED payment status
+#     - Added OfferStatus in the PriceAdjustments
+#     - Added washcodes under POSItem
+#     - Added purchase info in Refund and Void entity
+#     - Added dynamic descriptors API model
+#     - Added external customer id
+# 0.1.8
+#     - Added QRCodeId for STAC payment
+#     - Added 3ds web support
+#     - Added account type for ACH
+# 0.1.7
+#     - Added 3ds challenge transaction expiry date time in ThreeDSecure
+#     - Added credit in Paypal object
+#     - Added enrollment status and bank name in the ACH object
+#     - Added Vipps as a funding source.
+#     - Added Fleet as a funding source.
+#     - Added NVP in the Void API
+#     - Updated PriceAdjustment as list under POSItem
+# 0.1.6
+#     - Added new api to support refund on authorization.
+#     - Added securityCode in vaulted Account
+#     - Added VAULTED_ACCOUNT as AccountType
+#     - Added Accept-Language header field
+# 0.1.5
+#     - Added Link in the Error object.
+#     - Added retailer partner id for marketplace
+#     - Added Amazon Pay funding source
+#     - acsSignedContent and CardType in threeDSecureInfo object
+#     - Added billing phonenumber and Order object
+#     - Moved OrderId to Order object
+# 0.1.4
+#     - Added ServiceLevelCode under POSItem
+#     - Added ACH under funding source.
+#     - Added Venmo under funding source.
+#     - Added PATCH operation on auth and sale transactions
+#     - Added ThreeDSecure object under Auth and Sale transactions
+#     - Added PriceAdjustment under POSItem
+# 0.1.3
+#     - Adding NVP with valueAsList
+#     - Added 'billingAddress' element in 'AndroidPay', 'ApplePay', 'GooglePay' and 'SamsungPay'
+#     - update in DeviceInfo.
+# 0.1.2
+#     - No change.
+# 0.1.1
+#     - Added 'cardType' attribute in 'ApplePay'
+#     - Added 'cardType', 'dPanLast4' attribute in 'AndroidPay', 'GooglePay' and 'SamsungPay'
+#     - Added 'hostExtraInfo' in 'Error'
+#     - Added 'id' attribute to Link
+# 0.1.0
+#   - Added 'googlePay' as 'fundingSource'
+#   - Added client-token in the header field
+# 0.0.9
+#    - Introduced 'industrySpecificInfo' element in Authorization and Capture object
+#    - Introduced 'ach' entity in FundingSource object
+#    - Added 'cardSubType' attribute inside Credit object
+#    - Added 'nonce' attribute in Paypal object
+#    - FuelPurchaseInfo added
+# 0.0.8
+#    - No change.
+# 0.0.7
+#   - Updated ReferenceToken to have more accurate attribute names, removed use value
+#   - Cleaned up examples in the models
+#   - Added 'type' attribute to 'FundingSource' object.
+#   - Added 'createdDateTime' and 'lastUpdatedDateTime' attributes to 'Authorization', 'Capture', 'Sale' and 'Refund' objects.
+# 0.0.6
+#   - Changed PaymentToken to same Token object used in Account services and not specific to payments, renamed to ReferenceToken
+#   - Added a @token to the Authorization, Credit, Prepaid and Sale models whereby a token generated or retrieved during the process can be returned to the client.
+#   - Removed ActionType enum
+# 0.0.5
+#   - Updated endpoints to call void directly, moved Action model to be VoidRequest
+#   - authorizations
+#     - Removed authorizationType, globalReceiptId and networkAuthId from Authorization object
+#     - Replaced PATCH with POST actions for void operation
+#   - captures
+#     - Removed fdAuthorizationId, orderId, merchantId, storeId from Capture object.
+#     - Added refund attribute to Capture object.
+#   - refunds
+#     - Removed fdAuthorizationId, fdCaptureId from Refund object.
+#   - sales
+#     - Added new apis for Sale transactions.
+#   - Misc
+#       - removed settlementDateTime, localTransactionDateTime from Authorization
+#       - changed localTransactionDateTime to just transactionDateTime elsewhere
+#       - added hostExtraInfo to Auth, Capture, Sale, & Refund models
+# 0.0.4
+#     - No change.
+# 0.0.3
+#     - No change.
+# 0.0.2
+#     - Added 'osVersion' attribute to 'DeviceInfo' object.
+# 0.0.1
+#     - Initial Version
+#-------------------------------------
+
+openapi: 3.0.1
+info:
+  title: uCom Payment Services
+  description: Use these services to initiate AUTH/CAPTURE/SALE transactions using a payment account. This message supports transactions for enrolled and non-enrolled funding accounts including accounts enrolled with external payment systems like Apple Pay, Android Pay, Samsung Pay, and Visa Checkout.
+  version: 0.2.3
+servers:
+- url: https://int.api.firstdata.com/ucom
+tags:
+- name: authorization
+- name: capture
+- name: refund
+- name: sale
+paths:
+  /v1/payments/auths:
+    get:
+      x-group-name: Payment Services
+      x-proxy-name: Get Payment Authorization
+      tags:
+      - authorization
+      summary: Get a specific payment authorization
+      description: Fetch details of a payment authorization
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/RetailerPartnerIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/ClientRequestIdQueryParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      responses:
+        200:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Authorization'
+              examples:
+                Minimal: {summary: Response with minimal required parameters, $ref: '#/components/examples/MinimalGetAuthResponse'}
+
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+    post:
+      x-group-name: Payment Services
+      x-proxy-name: Create Payment Authorization
+      tags:
+      - authorization
+      summary: Create a payment authorization
+      description: Must include a funding source, authorization type and requested amount greater than 0.
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/ClientRequestIdParam'
+      - $ref: '#/components/parameters/RetailerPartnerIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthRequest'
+            examples:
+              vaulted: {summary: Request with vaulted account with MID, $ref: '#/components/examples/VaultedAuthRequest'}
+              VaultedWithStoreId: {summary: Request with vaulted account with store id, $ref: '#/components/examples/VaultedWithStoreIdAuthRequest'}
+              Nonce: {summary: Request with nonce, $ref: '#/components/examples/NonceAuthRequest'}
+              Apple Pay: {summary: Request with Apple pay, $ref: '#/components/examples/ApplePayAuthRequest'}
+              Google Pay: {summary: Request with Google Pay, $ref: '#/components/examples/GooglePayAuthRequest'}
+              PayPal: {summary: Request with Pay Pal, $ref: '#/components/examples/PayPalAuthVaultedRequest'}
+              Venmo: {summary: Request with Venmo, $ref: '#/components/examples/VenmoAuthVaultedRequest'}
+              TA Token: {summary: Request with TA Token, $ref: '#/components/examples/TATokenAuthRequest'}
+        required: true
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Authorization'
+              examples:
+                Vaulted:
+                  summary: Auth with vaulted Card by passing MID Response
+                  $ref: '#/components/examples/VaultedAuthResponse'
+                VaultedWithStoreId:
+                  summary: Auth with vaulted Card by passing store id Response
+                  $ref: '#/components/examples/VaultedWithStoreIdAuthResponse'
+                Nonce:
+                  summary: Auth with anonymous Response
+                  $ref: '#/components/examples/NonceAuthResponse'
+                Apple Pay:
+                  summary: Auth with apple pay Response
+                  $ref: '#/components/examples/ApplePayAuthResponse'
+                Google Pay:
+                  summary: Auth with google pay Response
+                  $ref: '#/components/examples/GooglePayAuthResponse'
+                PayPal:
+                  summary: Auth with PayPal Response
+                  $ref: '#/components/examples/GooglePayAuthResponse'
+                Venmo:
+                  summary: Auth with Venmo Response
+                  $ref: '#/components/examples/GooglePayAuthResponse'
+                TA Token:
+                  summary: Auth with TA Token Response
+                  $ref: '#/components/examples/TATokenAuthResponse'
+
+        202:
+          $ref: '#/components/responses/AuthorizationPartiallyCreated'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        409:
+          $ref: '#/components/responses/Conflict'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /v1/payments/auths/{fdAuthorizationId}:
+    get:
+      x-group-name: Payment Services
+      x-proxy-name: Get Payment Authorization Details
+      tags:
+      - authorization
+      summary: Get a specific payment authorization
+      description: Fetch details of a payment authorization
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/FdAuthorizationIdParam'
+      - $ref: '#/components/parameters/RetailerPartnerIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Authorization'
+              examples:
+                Credit:
+                  summary: Authorization details by fdAuthorizationId
+                  $ref: '#/components/examples/MinimalGetAuthResponseByfdAuthorizationId'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+    patch:
+      x-group-name: Payment Services
+      x-proxy-name: Patch Payment Authorization
+      tags:
+      - authorization
+      summary: Patch a specific payment authorization
+      description: Proceed the transaction with action type
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/FdAuthorizationIdParam'
+      - $ref: '#/components/parameters/RetailerPartnerIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                action:
+                  $ref: '#/components/schemas/UpdateActionType'
+                threeDSecureInfo:
+                  $ref: '#/components/schemas/ThreeDSecure'
+        required: true
+      responses:
+        200:
+          $ref: '#/components/responses/AuthorizationOK'
+        204:
+          $ref: '#/components/responses/NoContent'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /v1/payments/auths/{fdAuthorizationId}/void:
+    post:
+      x-group-name: Payment Services
+      x-proxy-name: Void Payment Authorization
+      tags:
+      - authorization
+      summary: Execute an action on a payment authorization.
+      description: Used to void the payment authorization.
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/ClientRequestIdParam'
+      - $ref: '#/components/parameters/FdAuthorizationIdParam'
+      - $ref: '#/components/parameters/RetailerPartnerIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VoidRequest'
+            examples:
+              Minimal: {summary: Request with Merchant Funded, $ref: '#/components/examples/MinimalAuthVoidRequest'}
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Authorization'
+              examples:
+                Minimal:
+                  summary: Void auth by fdAuthorizationId Response
+                  $ref: '#/components/examples/MinimalAuthVoidResponse'
+
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /v1/payments/auths/{fdAuthorizationId}/captures:
+    post:
+      x-group-name: Payment Services
+      x-proxy-name: Capture Payment Authorization
+      tags:
+      - authorization
+      summary: Execute capture on a payment authorization.
+      description: Capture aka fulfill a previous authorization.
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/ClientRequestIdParam'
+      - $ref: '#/components/parameters/FdAuthorizationIdParam'
+      - $ref: '#/components/parameters/RetailerPartnerIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CaptureRequest'
+            examples:
+              Vaulted: {summary: Request with Merchant Funded, $ref: '#/components/examples/VaultedAuthCaptureRequest'}
+              TA Token: {summary: Request with Merchant Funded, $ref: '#/components/examples/TATokenAuthCaptureRequest'}
+        required: false
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Capture'
+              examples:
+                Vaulted:
+                  summary: Auth with vaulted Card Response
+                  $ref: '#/components/examples/TATokenAuthCaptureResponse'
+                TAToken:
+                  summary: Auth with TA token Response
+                  $ref: '#/components/examples/TATokenAuthCaptureResponse'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        409:
+          $ref: '#/components/responses/Conflict'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /v1/payments/auths/{fdAuthorizationId}/refunds:
+    post:
+      x-group-name: Payment Services
+      x-proxy-name: Refund Payment Authorization
+      tags:
+      - authorization
+      summary: Execute a refund on a payment authorization.
+      description: Execute a refund on a payment authorization .
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/ClientRequestIdParam'
+      - $ref: '#/components/parameters/FdAuthorizationIdParam'
+      - $ref: '#/components/parameters/RetailerPartnerIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefundRequest'
+        required: false
+      responses:
+        201:
+          $ref: '#/components/responses/RefundCreated'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        409:
+          $ref: '#/components/responses/Conflict'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /v1/payments/captures:
+    get:
+      x-group-name: Payment Services
+      x-proxy-name: Get Captured Payment Details
+      tags:
+      - capture
+      summary: Get payment capture details.
+      description: Fetch captured payment details with a capture id.
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/RetailerPartnerIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/ClientRequestIdQueryParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      responses:
+        200:
+          $ref: '#/components/responses/CaptureCreated'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/BadRequest'
+
+  /v1/payments/captures/{fdCaptureId}:
+    get:
+      x-group-name: Payment Services
+      x-proxy-name: Get Payment Capture Details
+
+      tags:
+      - capture
+      summary: Get payment capture details.
+      description: Fetch captured payment details with a capture id.
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/FdCaptureIdParam'
+      - $ref: '#/components/parameters/RetailerPartnerIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      responses:
+        200:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Capture'
+              examples:
+                Minimal: {summary: Response with minimal required parameters, $ref: '#/components/examples/MinimalGetCaptureResponse'}
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/BadRequest'
+
+  /v1/payments/captures/{fdCaptureId}/void:
+    post:
+      x-group-name: Payment Services
+      x-proxy-name: Void Payment Capture
+      tags:
+      - capture
+      summary: Execute an action on a payment capture
+      description: Used to void the capture.
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/ClientRequestIdParam'
+      - $ref: '#/components/parameters/FdCaptureIdParam'
+      - $ref: '#/components/parameters/RetailerPartnerIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VoidRequest'
+            examples:
+              Minimal: {summary: Request with minimal required parameters, $ref: '#/components/examples/MinimalCaptureVoidRequest'}
+        required: false
+      responses:
+        200:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Capture'
+              examples:
+                Minimal: {summary: Response with minimal required parameters, $ref: '#/components/examples/MinimalCaptureVoidResponse'}
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /v1/payments/captures/{fdCaptureId}/refunds:
+    post:
+      x-group-name: Payment Services
+      x-proxy-name: Refund a Capture
+      tags:
+      - capture
+      summary: Execute a refund on a payment capture.
+      description: Refund a capture .
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/ClientRequestIdParam'
+      - $ref: '#/components/parameters/FdCaptureIdParam'
+      - $ref: '#/components/parameters/RetailerPartnerIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefundRequest'
+
+            examples:
+              Minimal: {summary: Request with minimal required parameters, $ref: '#/components/examples/MinimalCaptureRefundRequest'}
+        required: false
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Refund'
+              examples:
+                Minimal - 201:
+                  summary: capture refund response
+                  $ref: '#/components/examples/MinimalCaptureRefundResponse'
+
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        409:
+          $ref: '#/components/responses/Conflict'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /v1/payments/sales:
+    get:
+      x-group-name: Payment Services
+      x-proxy-name: Get Sale Transaction
+      tags:
+      - sale
+      summary: Get a specific sale transaction.
+      description: Fetch a Sale detail object
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/RetailerPartnerIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/ClientRequestIdQueryParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      responses:
+        200:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sale'
+              examples:
+                Minimal: {summary: Response with minimal required parameters, $ref: '#/components/examples/MinimalGetSaleResponse'}
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+    post:
+      x-group-name: Payment Services
+      x-proxy-name: Create Payment Sale Transaction
+      tags:
+      - sale
+      summary: Create a payment sale transaction.
+      description: Must include a funding source and requested amount greater than 0.
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/ClientRequestIdParam'
+      - $ref: '#/components/parameters/RetailerPartnerIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SaleRequest'
+            examples:
+              #Credit Card: {summary: Request with credit card, $ref: '#/components/examples/CreditCardSaleRequest'}
+              Vaulted Card: {summary: Request with vaulted card, $ref: '#/components/examples/VaultedCardSaleRequest'}
+              Nonce: {summary: Request with vaulted card, $ref: '#/components/examples/NonceSaleRequest'}
+              Apple Pay: {summary: Request with Apple Pay, $ref: '#/components/examples/ApplePaySaleRequest'}
+              Google Pay: {summary: Request with Google Pay, $ref: '#/components/examples/GooglePaySaleRequest'}
+              PayPal: {summary: Request with Venmo, $ref: '#/components/examples/PayPalSaleRequest'}
+              Venmo: {summary: Request with Venmo, $ref: '#/components/examples/VenmoSaleRequest'}
+              TA Token: {summary: Request with TA Token, $ref: '#/components/examples/TATokenSaleRequest'}
+        required: true
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sale'
+              examples:
+                #Credit - 201:
+                #  summary: Sale with credit Card Response
+                #  $ref: '#/components/examples/CreditCardSaleResponse'
+                Vaulted Card:
+                  summary: Sale with Vaulted Card response
+                  $ref: '#/components/examples/VaultedCardSaleResponse'
+                Nonce:
+                  summary: Sale with Nonce response
+                  $ref: '#/components/examples/NonceSaleResponse'
+                Apple Pay:
+                  summary: Sale with apple pay response
+                  $ref: '#/components/examples/ApplePaySaleResponse'
+                Google Pay:
+                  summary: Sale with google pay response
+                  $ref: '#/components/examples/GooglePaySaleResponse'
+                PayPal:
+                  summary: Sale with PayPal response
+                  $ref: '#/components/examples/PayPalSaleResponse'
+                Venmo:
+                  summary: Sale with venmo response
+                  $ref: '#/components/examples/VenmoSaleResponse'
+                TA Token:
+                  summary: Sale with TA token response
+                  $ref: '#/components/examples/TATokenSaleResponse'
+
+        202:
+          $ref: '#/components/responses/SalePartiallyCreated'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        409:
+          $ref: '#/components/responses/Conflict'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /v1/payments/sales/{fdSaleId}:
+    get:
+      x-group-name: Payment Services
+      x-proxy-name: Get Sale Details
+      tags:
+      - sale
+      summary: Get a specific sale transaction.
+      description: Fetch a Sale detail object
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/FdSaleIdParam'
+      - $ref: '#/components/parameters/RetailerPartnerIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      responses:
+        200:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sale'
+              examples:
+                Minimal: {summary: Response with minimal required parameters, $ref: '#/components/examples/MinimalGetSaleResponse'}
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+    patch:
+      x-group-name: Payment Services
+      x-proxy-name: Proceed with Sale Transaction
+      tags:
+      - sale
+      summary: Patch a specific sale transaction.
+      description: Proceed sale transaction with specific action type
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/FdSaleIdParam'
+      - $ref: '#/components/parameters/RetailerPartnerIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                action:
+                  $ref: '#/components/schemas/UpdateActionType'
+                threeDSecureInfo:
+                  $ref: '#/components/schemas/ThreeDSecure'
+        required: true
+      responses:
+        200:
+          $ref: '#/components/responses/SaleOK'
+        204:
+          $ref: '#/components/responses/NoContent'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /v1/payments/sales/{fdSaleId}/void:
+    post:
+      x-group-name: Payment Services
+      x-proxy-name: Cancel/Void Sale Transaction
+      tags:
+      - sale
+      summary: Execute an action on a specific sale transaction.
+      description: Used to cancel/void a sale transaction.
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/FdSaleIdParam'
+      - $ref: '#/components/parameters/RetailerPartnerIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VoidRequest'
+            examples:
+              Minimal: {summary: Request with minimal required parameters, $ref: '#/components/examples/MinimalSaleVoidRequest'}
+        required: true
+      responses:
+        200:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sale'
+              examples:
+                Minimal: {summary: Request with minimal required parameters, $ref: '#/components/examples/MinimalSaleVoidResponse'}
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /v1/payments/sales/{fdSaleId}/refunds:
+    post:
+      x-group-name: Payment Services
+      x-proxy-name: Refund a Sale Transaction
+      tags:
+      - sale
+      summary: Execute a refund on a payment capture.
+      description: Refund a 'sale' transaction.
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/ClientRequestIdParam'
+      - $ref: '#/components/parameters/FdSaleIdParam'
+      - $ref: '#/components/parameters/RetailerPartnerIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefundRequest'
+            examples:
+              Minimal: {summary: Request with minimal required parameters, $ref: '#/components/examples/MinimalRefundSale'}
+        required: false
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Refund'
+              examples:
+                Minimal: {summary: Response with minimal required parameters, $ref: '#/components/examples/MinimalRefundSaleR'}
+
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        409:
+          $ref: '#/components/responses/Conflict'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /v2/payments/multi-sales:
+    post:
+      x-group-name: Payment Services
+      x-proxy-name: Create Multiple Payment Sale Transactions
+      tags:
+      - sale
+      summary: Create multiple payment sale transactions.
+      description: Must include a funding source and requested amount greater than 0 for each payment sale
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/ClientRequestIdParam'
+      - $ref: '#/components/parameters/RetailerPartnerIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MultiSaleRequest'
+        required: true
+      responses:
+        201:
+          description: Sale created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultiSale'
+        207:
+          description: Multiple status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultiSale'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        409:
+          $ref: '#/components/responses/Conflict'
+        425:
+          $ref: '#/components/responses/TooEarly'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /v2/payments/multi-sales/{fdParentTransactionId}/refunds:
+    post:
+      x-group-name: Payment Services
+      x-proxy-name: Refund Multi-sale Transactions
+      tags:
+      - sale
+      summary: Execute a refund for multi-sale transactions.
+      description: Refund a 'multi-sale' transaction.
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/ClientRequestIdParam'
+      - $ref: '#/components/parameters/FdParentTransactionIdParam'
+      - $ref: '#/components/parameters/RetailerPartnerIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MultiRefundRequest'
+        required: false
+      responses:
+        201:
+          description: Refund transaction response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultiRefund'
+        207:
+          description: Partial Refund transaction response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultiRefund'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        409:
+          $ref: '#/components/responses/Conflict'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /v2/payments/multi-sales/{fdParentTransactionId}/void:
+    post:
+      x-group-name: Payment Services
+      x-proxy-name: Void Multi-sale Transaction
+      tags:
+      - sale
+      summary: Execute void for multi-sale transactions.
+      description: Void a 'multi-sale' transaction.
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/FdParentTransactionIdParam'
+      - $ref: '#/components/parameters/ClientRequestIdParam'
+      - $ref: '#/components/parameters/RetailerPartnerIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MultiVoidRequest'
+        required: true
+      responses:
+        200:
+          description: Void transaction response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultiVoid'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /v1/payments/refunds:
+    get:
+      x-group-name: Payment Services
+      x-proxy-name: Get Refund Details
+      tags:
+      - refund
+      summary: Get Refund Transaction Details
+      description: Fetch the refund transaction details with the refund id.
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/RetailerPartnerIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/ClientRequestIdQueryParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      responses:
+        200:
+          $ref: '#/components/responses/RefundOK'
+
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/BadRequest'
+
+  /v1/payments/refunds/{fdRefundId}:
+    get:
+      x-group-name: Payment Services
+      x-proxy-name: Get Refund Transaction Details
+      tags:
+      - refund
+      summary: Get refund transaction details
+      description: Fetch the refund transaction details with the refund id.
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/FdRefundIdParam'
+      - $ref: '#/components/parameters/RetailerPartnerIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      responses:
+        200:
+          $ref: '#/components/responses/RefundOK'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/BadRequest'
+
+  /v1/payments/refunds/{fdRefundId}/void:
+    post:
+      x-group-name: Payment Services
+      x-proxy-name: Cancel Refund
+      tags:
+      - refund
+      summary: Execute an action on payment refund.
+      description: Used to cancel the refund.
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/ClientRequestIdParam'
+      - $ref: '#/components/parameters/FdRefundIdParam'
+      - $ref: '#/components/parameters/RetailerPartnerIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VoidRequest'
+            examples:
+              Minimal: {summary: Request with minimal required parameters, $ref: '#/components/examples/MinimalRefundVoidRequest'}
+        required: false
+      responses:
+        200:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Refund'
+              examples:
+                Minimal: {summary: Request with minimal required parameters, $ref: '#/components/examples/MinimalRefundVoidResponse'}
+
+
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /v2/payments/refunds:
+    post:
+      x-group-name: Payment Services
+      x-proxy-name: Refund Transaction
+      tags:
+      - refund
+      summary: Execute a refund for a transactions.
+      description: Refund a transaction.
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/ClientRequestIdParam'
+      - $ref: '#/components/parameters/RetailerPartnerIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefundRequest'
+        required: false
+      responses:
+        201:
+          description: Refund transaction response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Refund'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        409:
+          $ref: '#/components/responses/Conflict'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /v2/payments/multi-refunds:
+    post:
+      x-group-name: Payment Services
+      x-proxy-name: Refund Multi-transaction
+      tags:
+      - refund
+      summary: Execute a refund for multi-transactions.
+      description: Refund a multi-transaction.
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/ClientRequestIdParam'
+      - $ref: '#/components/parameters/RetailerPartnerIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MultiRefundRequest'
+        required: false
+      responses:
+        201:
+          description: Refund transaction response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultiRefund'
+        207:
+          description: Partial Refund transaction response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultiRefund'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        409:
+          $ref: '#/components/responses/Conflict'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /v2/payments/multi-refunds/{fdParentTransactionId}/void:
+    post:
+      x-group-name: Payment Services
+      x-proxy-name: Cancel Multi-refund
+      tags:
+      - refund
+      summary: Execute an action on multi payment refund.
+      description: Used to cancel the refunds.
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/ClientRequestIdParam'
+      - $ref: '#/components/parameters/FdParentTransactionIdParam'
+      - $ref: '#/components/parameters/RetailerPartnerIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MultiVoidRequest'
+        required: false
+      responses:
+        200:
+          description: Refund transaction response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultiVoid'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /v2/payments/charges:
+    post:
+      x-group-name: Payment Services
+      x-proxy-name: Get Fee Details
+      tags:
+      - charge
+      summary: Payment charge details.
+      description: Used to get the details about fee charges.
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/ClientRequestIdParam'
+      - $ref: '#/components/parameters/RetailerPartnerIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChargeRequest'
+        required: false
+      responses:
+        200:
+          $ref: '#/components/responses/ChargeOK'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /v2/payments/void:
+    get:
+      x-group-name: Payment Services
+      x-proxy-name: Void Sale Transaction
+      tags:
+      - void
+      summary: Execute void for sale transaction.
+      description: Void a transaction.
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/ClientRequestIdQueryParam'
+      - $ref: '#/components/parameters/RetailerPartnerIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      responses:
+        200:
+          description: Void transaction response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Void'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+    post:
+      x-group-name: Payment Services
+      x-proxy-name: Void a Sale Transaction
+      tags:
+      - void
+      summary: Execute void for sale transaction.
+      description: Void a transaction.
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/ClientRequestIdParam'
+      - $ref: '#/components/parameters/RetailerPartnerIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VoidRequest'
+        required: true
+      responses:
+        200:
+          description: Void transaction response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Void'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /v2/payments/multi-void:
+    post:
+      x-group-name: Payment Services
+      x-proxy-name: Void Multi-sale Transactions
+      tags:
+      - void
+      summary: Execute void for multi-sale transactions.
+      description: Void multi-sale transactions.
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/ClientRequestIdParam'
+      - $ref: '#/components/parameters/RetailerPartnerIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MultiVoidRequest'
+        required: true
+      responses:
+        200:
+          description: Void transaction response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultiVoid'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+components:
+  schemas:
+    #-------------------------------------
+    # Operational Models
+    #-------------------------------------
+    AuthRequest:
+      title: Authorization Request
+      type: object
+      properties:
+        fdCustomerId:
+          $ref: '#/components/schemas/FdCustomerId'
+        membership:
+          $ref: '#/components/schemas/Membership'
+        externalCustomerId:
+          $ref: '#/components/schemas/ExternalCustomerId'
+        authorization:
+          $ref: '#/components/schemas/Authorization'
+        deviceInfo:
+          $ref: '#/components/schemas/DeviceInfo'
+
+    CaptureRequest:
+      title: Capture Request
+      type: object
+      properties:
+        fdCustomerId:
+          $ref: '#/components/schemas/FdCustomerId'
+        membership:
+          $ref: '#/components/schemas/Membership'
+        externalCustomerId:
+          $ref: '#/components/schemas/ExternalCustomerId'
+        capture:
+          $ref: '#/components/schemas/Capture'
+        deviceInfo:
+          $ref: '#/components/schemas/DeviceInfo'
+
+    ChargeRequest:
+      type: object
+      properties:
+        stateCode:
+          type: string
+          description: state code value.
+        fundingSource:
+          $ref: '#/components/schemas/FundingSource'
+        deviceInfo:
+          $ref: '#/components/schemas/DeviceInfo'
+
+    MultiSaleRequest:
+      type: object
+      properties:
+        fdCustomerId:
+          $ref: '#/components/schemas/FdCustomerId'
+        membership:
+          $ref: '#/components/schemas/Membership'
+        externalCustomerId:
+          $ref: '#/components/schemas/ExternalCustomerId'
+        parentExternalId:
+          type: string
+          description: External transaction id reference
+        merchantTransactionId:
+          type: string
+          description: Merchant transaction id
+        merchantId:
+          type: string
+          description: Merchant identifier where the transaction is being performed.
+          example: M117008616001
+        altMerchantId:
+          type: string
+          description: Alternate Merchant identifier where the transaction is being performed.
+          example: "23232"
+        merchantTerminalId:
+          type: string
+          description: Merchant terminal identifier
+        postDate:
+          type: string
+          description: Settlement date for the transaction. Format- MMDDYYYY
+          format: date
+        hostExtraInfo:
+          minItems: 0
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/NVP'
+        isPartialPaymentAllowed:
+          type: boolean
+          description: Flag that indicates if partial transaction is allowed or not
+        isPartialSuccessAllowed:
+          type: boolean
+          description: Flag that indicates if partial success is allowed or not
+        purchaseInfo:
+          $ref: '#/components/schemas/PurchaseInfo'
+        replayCount:
+          type: number
+          description: Indicates request retry attempt count.
+        sales:
+          type: array
+          items:
+            $ref: '#/components/schemas/Sale'
+        deviceInfo:
+          $ref: '#/components/schemas/DeviceInfo'
+
+    MultiRefundRequest:
+      type: object
+      properties:
+        fdCustomerId:
+          $ref: '#/components/schemas/FdCustomerId'
+        membership:
+          $ref: '#/components/schemas/Membership'
+        externalCustomerId:
+          $ref: '#/components/schemas/ExternalCustomerId'
+        parentExternalId:
+          type: string
+          description: External transaction id reference
+        isPartialSuccessAllowed:
+          type: boolean
+          description: Flag that indicates if partial success is allowed or not
+        purchaseInfo:
+          $ref: '#/components/schemas/PurchaseInfo'
+        replayCount:
+          type: number
+          description: Indicates request retry attempt count.
+        merchantTransactionId:
+          type: string
+          description: Merchant transaction id
+        merchantId:
+          type: string
+          description: Merchant identifier where the transaction is being performed.
+          example: M117008616001
+        altMerchantId:
+          type: string
+          description: Alternate Merchant identifier where the transaction is being performed.
+          example: "23232"
+        merchantTerminalId:
+          type: string
+          description: Merchant terminal identifier
+        postDate:
+          type: string
+          description: Settlement date for the transaction. Format- MMDDYYYY
+          format: date
+        hostExtraInfo:
+          minItems: 0
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/NVP'
+        refunds:
+          type: array
+          items:
+            $ref: '#/components/schemas/Refund'
+        deviceInfo:
+          $ref: '#/components/schemas/DeviceInfo'
+
+    MultiVoidRequest:
+      type: object
+      properties:
+        fdCustomerId:
+          $ref: '#/components/schemas/FdCustomerId'
+        membership:
+          $ref: '#/components/schemas/Membership'
+        externalCustomerId:
+          $ref: '#/components/schemas/ExternalCustomerId'
+        parentExternalId:
+          type: string
+          description: External transaction id reference
+        purchaseInfo:
+          $ref: '#/components/schemas/PurchaseInfo'
+        replayCount:
+          type: number
+          description: Indicates request retry attempt count.
+        clientRequestId:
+          type: string
+          description: Client request id that was used in the sale/refund/void
+        operationType:
+          $ref: '#/components/schemas/OperationType'
+        merchantTransactionId:
+          type: string
+          description: Merchant transaction id
+        postDate:
+          type: string
+          description: Settlement date for the transaction. Format- MMDDYYYY
+          format: date
+        hostExtraInfo:
+          minItems: 0
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/NVP'
+        voids:
+          type: array
+          items:
+            $ref: '#/components/schemas/Void'
+        deviceInfo:
+          $ref: '#/components/schemas/DeviceInfo'
+
+    RefundRequest:
+      title: Refund Request
+      type: object
+      properties:
+        fdCustomerId:
+          $ref: '#/components/schemas/FdCustomerId'
+        membership:
+          $ref: '#/components/schemas/Membership'
+        externalCustomerId:
+          $ref: '#/components/schemas/ExternalCustomerId'
+        refund:
+          $ref: '#/components/schemas/Refund'
+        deviceInfo:
+          $ref: '#/components/schemas/DeviceInfo'
+
+    SaleRequest:
+      type: object
+      properties:
+        fdCustomerId:
+          $ref: '#/components/schemas/FdCustomerId'
+        membership:
+          $ref: '#/components/schemas/Membership'
+        externalCustomerId:
+          $ref: '#/components/schemas/ExternalCustomerId'
+        sale:
+          $ref: '#/components/schemas/Sale'
+        deviceInfo:
+          $ref: '#/components/schemas/DeviceInfo'
+
+    VoidRequest:
+      type: object
+      properties:
+        fdCustomerId:
+          $ref: '#/components/schemas/FdCustomerId'
+        membership:
+          $ref: '#/components/schemas/Membership'
+        externalCustomerId:
+          $ref: '#/components/schemas/ExternalCustomerId'
+        deviceInfo:
+          $ref: '#/components/schemas/DeviceInfo'
+        void:
+          $ref: '#/components/schemas/Void'
+
+    #-------------------------------------
+    # Resource Models
+    #-------------------------------------
+    ACH:
+      type: object
+      properties:
+        accountNumber:
+          type: string
+          description: Unique number identifying the ACH account provided by Financial institution.
+          example: "92658250156"
+        routingNumber:
+          type: string
+          description: Number to identify the financial institution
+          example: "999999999"
+        secCode:
+          type: string
+          description: SEC Code is optional data, It is specifically required for ACH account which is ruled by NACHA compliance.
+        cardNumber:
+          type: string
+          description: ACH Card number, can only be sent when vaulting an account.  This field will NOT be present in responses.
+          example: "9111111111111111"
+        cardType:
+          $ref: '#/components/schemas/AchCardType'
+        securityCode:
+          type: string
+          description: Code to validate the ACH account, like micro deposit or security code.
+          example: "278356"
+        alias:
+          type: string
+          description: Last four values of the cardNumber
+          readOnly: true
+          example: "1111"
+        enrollmentStatus:
+          $ref: '#/components/schemas/AchEnrollmentStatus'
+        enrollmentSubStatuses:
+          type: array
+          items:
+            $ref: '#/components/schemas/AchEnrollmentSubStatus'
+        accountType:
+          $ref: '#/components/schemas/AchAccountType'
+        bankName:
+          type: string
+          description: Name of the bank associated with the ACH account
+        expiryDate:
+          $ref: '#/components/schemas/ExpiryDate'
+        assetProvider:
+          $ref: '#/components/schemas/AssetProvider'
+      description: Information about an ACH account
+
+    Address:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Canonical type values of "work", "home", "billing" and "other".
+          example: work
+        streetAddress:
+          type: string
+          description: The full street address component, which may include house number, street name, P.O. box, and multi-line extended street address information.
+          example: 100 Universal City Plaza 
+        locality:
+          type: string
+          description: The city or locality component.
+          example: Hollywood
+        region:
+          type: string
+          description: The state or region component.
+          example: CA
+        postalCode:
+          type: string
+          description: The zip code or postal code component.
+          example: "91608"
+        country:
+          type: string
+          description: The country name component.  When specified, the value MUST be in ISO 3166-1 "alpha-2" code format; e.g., the United States and Sweden are "US" and "SE", respectively.
+          example: US
+        formatted:
+          type: string
+          description: The full mailing address, formatted for display or use with a mailing label.
+          example: 100 Universal City Plaza, Hollywood, CA 91608 US
+        primary:
+          type: boolean
+          description: Indicates if this is the default address for the associated resource. It only has meaning when used in a set or array of addresses.
+          example: true
+      description: A physical mailing address for this user.
+      
+    AndroidPay:
+      type: object
+      properties:
+        data:
+          type: string
+          example: 3CguW5ecfTzO...03d
+        signature:
+          type: string
+          example: MIAGCSqGSIb......AAAA==
+        decryptAlias:
+          type: string
+          description: field of the public key certificate.
+          example: oslo.com.xxx.Prod_mer
+        dPanLast4:
+          type: string
+          example: "9876"
+        cardType:
+          $ref: '#/components/schemas/CreditCardType'
+        header:
+          type: object
+          properties:
+            ephemeralPublicKey:
+              type: string
+              example: MFkwEw...03d
+            publicKeyHash:
+              type: string
+              example: +vbONw...IM=
+        token:
+          $ref: '#/components/schemas/ReferenceToken'
+        billingAddress:
+          $ref: '#/components/schemas/Address'
+        billingPhone:
+          $ref: '#/components/schemas/Phone'
+
+    AmazonPay:
+      type: object
+      properties:
+        token:
+          type: string
+          example: 292bb6b886fc4446894f878b7e32bd5e
+        chargeId:
+          type: string
+          example: 73883992djj39939djj929992jj08838
+        chargeReferenceId:
+          type: string
+          example: 8jdw838dhhskk9299299299ueuuue838
+        credit:
+          $ref: '#/components/schemas/Credit'
+
+    ApplePay:
+      type: object
+      properties:
+        version:
+          type: string
+          example: EC_v1
+        developerEmail:
+          type: string
+        signature:
+          type: string
+          example: MIAGCSqGSIb......AAAA==
+        decryptAlias:
+          type: string
+          description: field of the public key certificate.
+          example: oslo.com.xxx.Prod_mer
+        data:
+          type: string
+          example: 3CguW5ecfTz...Yuhw=
+        applicationData:
+          type: string
+          example: VEVTVA==
+        dPanLast4:
+          type: string
+          example: "9876"
+        bin:
+          type: string
+        eciIndicator:
+          type: string
+        xid:
+          type: string
+        cavv:
+          type: string
+        expiryDate:
+          $ref: '#/components/schemas/ExpiryDate'
+        panType:
+          type: string
+        cardType:
+          $ref: '#/components/schemas/CreditCardType'
+        header:
+          type: object
+          properties:
+            applicationDataHash:
+              type: string
+            ephemeralPublicKey:
+              type: string
+              example: MFkwEwYHKoZIzj0CIKoZIz.....NBQQ==
+            publicKeyHash:
+              type: string
+              example: +vbONwRlVqJX0........
+            transactionId:
+              type: string
+              example: 3827c5a02638.....34d50
+        token:
+          $ref: '#/components/schemas/ReferenceToken'
+        billingAddress:
+          $ref: '#/components/schemas/Address'
+        billingPhone:
+          $ref: '#/components/schemas/Phone'
+
+    Amount:
+      title: Amount
+      minimum: 0
+      exclusiveMinimum: true
+      type: number
+      format: double
+      example: 500.00
+
+    ApprovedAmount:
+      title: Approved Amount
+      minimum: 0
+      exclusiveMinimum: true
+      type: number
+      description: Amount authorized according to the request type [auth, capture, refund, etc] in lower denomination.  The value is read-only on payment requests.  For a void, the value is required.
+      format: double
+      example: 500.00
+
+    Authorization:
+      required:
+      - requestedAmount
+      type: object
+      properties:
+        fdAuthorizationId:
+          type: string
+          description: Unique Identifier provided by payment platform for a payment authorization transaction.
+          readOnly: true
+          example: 8a34144657d0aa6e0157d3808ed000f2
+        authStatus:
+          $ref: '#/components/schemas/PaymentStatus'
+        transactionSubtype:
+          type: string
+          description: Indicates subtype of a given transaction for EBT, ie EBTCASH or EBTSNAP
+        merchantId:
+          type: string
+          description: Merchant identifier where the transaction is being performed.
+          example: M117008616001
+        altMerchantId:
+          type: string
+          description: Alternate Merchant identifier where the transaction is being performed.
+          example: "23232"
+        merchantTokenCode:
+          type: string
+          description: Merchant token code used for token generation
+        merchantTerminalId:
+          type: string
+          description: Merchant terminal identifier
+        storeId:
+          type: string
+          description: Store identifier where the transaction is being performed.
+          example: "123456"
+        outdoorSale:
+          type: boolean
+          description: Flag to indicate if the transaction is made outside the store.
+          example: true
+          default: false
+        exemptionCode:
+          type: string
+          description: Exemption code for 3DS transaction
+        transactionOrigin:
+          $ref: '#/components/schemas/TransactionOrigin'
+        requestedAmount:
+          $ref: '#/components/schemas/RequestedAmount'
+        approvedAmount:
+          $ref: '#/components/schemas/ApprovedAmount'
+        currencyCode:
+          $ref: '#/components/schemas/ISO-4217'
+        dynamicDescriptors:
+          $ref: '#/components/schemas/DynamicDescriptors'
+        partialPaymentAllowed:
+          type: boolean
+          description: Flag that indicates if partial transaction is allowed or not
+        fundingSource:
+          $ref: '#/components/schemas/FundingSource'
+        purchaseInfo:
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/PurchaseInfo'
+        amountSplitInfo:
+          $ref: '#/components/schemas/AmountSplitInfo'
+        isSplitSettlement:
+          type: boolean
+        splitSettlementInfo:
+          minItems: 0
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/SplitSettlementInfo'
+        supplements:
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/Supplement'
+        industrySpecificInfo:
+          type: object
+          properties:
+            fuelPurchaseInfo:
+              $ref: '#/components/schemas/FuelPurchaseInfo'
+          description: Industry specific details like petro for example.
+        qrCodeId:
+          type: string
+          description: Unique Identifier provided by payment platform for a given funding source.
+        stacId:
+          type: string
+          description: Unique Identifier provided by payment platform for a given funding source.
+        transactionDateTime:
+          type: string
+          description: Date and time of the transaction.
+          format: date-time
+          readOnly: true
+          example: 2016-04-16T16:06:05Z
+        createdDateTime:
+          type: string
+          description: Date and time of resource creation.
+          format: date-time
+          readOnly: true
+          example: 2016-04-16T16:06:05Z
+        lastUpdatedDateTime:
+          type: string
+          description: Last updated Date and time of resource.
+          format: date-time
+          readOnly: true
+          example: 2016-04-16T16:06:05Z
+        hostExtraInfo:
+          minItems: 0
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/NVP'
+        threeDSecureInfo:
+          $ref: '#/components/schemas/ThreeDSecure'
+        fleetData:
+          $ref: '#/components/schemas/FleetData'
+        _links:
+          minItems: 0
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
+        captures:
+          type: array
+          description: Array of captures associated with the payment authorization.
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Capture'
+        errorInfo:
+          $ref: '#/components/schemas/Error'
+      description: Authorization information - can only be ONE of the funding source among account, credit, prepaid, ApplePay.
+
+    AmountSplitInfo:
+      type: object
+      properties:
+        orderAmount:
+          minimum: 0
+          exclusiveMinimum: true
+          type: number
+          format: double
+        deliveryServiceFee:
+          minimum: 0
+          exclusiveMinimum: true
+          type: number
+          format: double
+        driverTip:
+          minimum: 0
+          exclusiveMinimum: true
+          type: number
+          format: double
+        taxAmount:
+          minimum: 0
+          exclusiveMinimum: true
+          type: number
+          format: double
+        vatAmount:
+          minimum: 0
+          exclusiveMinimum: true
+          type: number
+          format: double
+        corporateFee:
+          minimum: 0
+          exclusiveMinimum: true
+          type: number
+          format: double
+      description: Amount split up based on service selected at the time of transaction
+
+    AssetProvider:
+      type: object
+      properties:
+        providerName:
+          type: string
+          example: coinbase
+
+    Bancontact:
+      type: object
+      properties:
+        returnUrl:
+          type: string
+        deepLink:
+          type: string
+        alias:
+          type: string
+          example: "9876"
+        cardType:
+          $ref: '#/components/schemas/CreditCardType'
+
+    Capture:
+      type: object
+      properties:
+        fdCaptureId:
+          type: string
+          description: Unique identifier provided for a payment capture.
+          readOnly: true
+          example: cap4144657d0aa6e0157d3808ed000f2
+        status:
+          $ref: '#/components/schemas/PaymentStatus'
+        requestedAmount:
+          $ref: '#/components/schemas/RequestedAmount'
+        approvedAmount:
+          $ref: '#/components/schemas/ApprovedAmount'
+        currencyCode:
+          $ref: '#/components/schemas/ISO-4217'
+        dynamicDescriptors:
+          $ref: '#/components/schemas/DynamicDescriptors'
+        transactionSubtype:
+          type: string
+          description: Indicates subtype of a given transaction for EBT, ie EBTCASH or EBTSNAP
+        captureCount:
+          type: integer
+          description: Specifies the current capture count among the required ones. Required only for multi capture transactions.
+          format: int32
+          example: 1
+        captureTotalCount:
+          type: integer
+          description: Specifies the total captures that are intended to be processed in the authorization. Required only for multi capture transactions.
+          format: int32
+          example: 2
+        amountSplitInfo:
+          $ref: '#/components/schemas/AmountSplitInfo'
+        splitSettlementInfo:
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/SplitSettlementInfo'
+        supplements:
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/Supplement'
+        purchaseInfo:
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/PurchaseInfo'
+        industrySpecificInfo:
+          type: object
+          properties:
+            fuelPurchaseInfo:
+              $ref: '#/components/schemas/FuelPurchaseInfo'
+          description: Industry specific details like petro for example.
+        transactionDateTime:
+          type: string
+          description: Date and time of the transaction.
+          format: date-time
+          readOnly: true
+          example: 2016-04-16T16:06:05Z
+        createdDateTime:
+          type: string
+          description: Date and time of resource creation.
+          format: date-time
+          readOnly: true
+          example: 2016-04-16T16:06:05Z
+        lastUpdatedDateTime:
+          type: string
+          description: Last updated Date and time of resource.
+          format: date-time
+          readOnly: true
+          example: 2016-04-16T16:06:05Z
+        hostExtraInfo:
+          minItems: 0
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/NVP'
+        refunds:
+          type: array
+          description: Array of refunds associated with the payment capture.
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Refund'
+      description: Information related to make a capture on a previous authorization. When requested amount not provided the full authorized amount will be applied for capture.
+
+    Credit:
+      type: object
+      properties:
+        cardNumber:
+          type: string
+          description: Primary account number, can only be sent when vaulting an account.  This field will NOT be present in responses.
+          example: "4111111111111111"
+        bin:
+          type: string
+        nameOnCard:
+          type: string
+          description: Name as printed on physical card or on virtual account
+          example: John Smith
+        alias:
+          type: string
+          description: Last four values of the cardNumber
+          readOnly: true
+          example: "1111"
+        cardType:
+          $ref: '#/components/schemas/CreditCardType'
+        cardSubType:
+          type: string
+          description: Merchant or brand specific information about the type of account
+          example: ABCD
+        billingAddress:
+          $ref: '#/components/schemas/Address'
+        billingPhone:
+          $ref: '#/components/schemas/Phone'
+        expiryDate:
+          $ref: '#/components/schemas/ExpiryDate'
+        securityCode:
+          type: string
+          example: "444"
+        sequenceNumber:
+          type: string
+          description: Applicable only for private-label accounts
+          example: "01"
+        token:
+          $ref: '#/components/schemas/ReferenceToken'
+        tokens:
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/ReferenceToken'
+      description: Information on a credit account
+
+    Charge:
+      type: object
+      properties:
+        verbiage:
+          type: string
+        returnCheckFee:
+          type: string
+        returnCheckNote:
+          type: string
+      description: Transaction charge details
+
+    CommunicationPreference:
+      type: object
+      properties:
+        email:
+          type: boolean
+        phone:
+          type: boolean
+        sms:
+          type: boolean
+
+    DeliveryLocation:
+      type: object
+      description: Order delivery location
+      properties:
+        contactName:
+          type: string
+        contactPhone:
+          $ref: '#/components/schemas/Phone'
+        contactEmail:
+          $ref: '#/components/schemas/Email'
+        address:
+          $ref: '#/components/schemas/Address'
+        note:
+          type: string
+
+    DeliveryInfo:
+      type: object
+      description: Delivery information
+      properties:
+        deliveryQuoteId:
+          type: string
+        deliveryOption:
+          $ref: '#/components/schemas/DeliveryOption'
+        deliveryType:
+          type: string
+          example: "CONTACTLESS"
+        deliveryWindow:
+          $ref: '#/components/schemas/DeliveryWindow'
+
+
+    DeliveryWindow:
+      description: This object contains delivery window time.
+      type: object
+      properties:
+        pickupStartDate:
+          type: string
+          format: date-time
+          example: "2016-04-16T16:06:05Z"
+        pickupEndDate:
+          type: string
+          format: date-time
+          example: "2016-04-16T16:06:05Z"
+        dropOffStartDate:
+          type: string
+          format: date-time
+          example: "2016-04-16T16:06:05Z"
+        dropOffEndDate:
+          type: string
+          format: date-time
+          example: "2016-04-16T16:06:05Z"
+
+    DynamicDescriptors:
+      type: object
+      properties:
+        merchantCategoryCode:
+          type: string
+          description: Merchant category code
+        merchantName:
+          type: string
+          description: Merchant name
+        merchantEmail:
+          $ref: '#/components/schemas/Email'
+        customerServiceNumber:
+          $ref: '#/components/schemas/Phone'
+        serviceEntitlementNumber:
+          type: string
+          description: Service entitlement number
+        merchantAddress:
+          $ref: '#/components/schemas/Address'
+
+    EBT:
+      type: object
+      properties:
+        cardNumber:
+          type: string
+          description: Primary account number, can only be sent when vaulting an account.  This field will NOT be present in responses.
+        nameOnCard:
+          type: string
+          description: Name as printed on physical card or on virtual account
+        alias:
+          type: string
+          description: Last four values of the cardNumber
+          readOnly: true
+        expiryDate:
+          $ref: '#/components/schemas/ExpiryDate'
+        bin:
+          type: string
+          description: BIN of EBT card
+          readOnly: true
+        pin:
+          type: string
+          description: PIN for EBT card
+        pinCaptureId:
+          type: string
+          description: Session id used on client side SDK to capture the card pin
+        transactionId:
+          type: string
+          description: The unique transaction ID
+        balance:
+          $ref: '#/components/schemas/EBTBalance'
+        metadata:
+          minItems: 0
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/NVP'
+        token:
+          $ref: '#/components/schemas/ReferenceToken'
+      description: Electronic Benefits Transfer card information
+
+    EBTBalance:
+      type: object
+      properties:
+        cashBalance:
+          type: number
+        cashCurrencyCode:
+          $ref: '#/components/schemas/ISO-4217'
+        snapBalance:
+          type: number
+        snapCurrencyCode:
+          $ref: '#/components/schemas/ISO-4217'
+
+    Email:
+      type: object
+      properties:
+        type:
+          type: string
+          description: The "type" sub-attribute is used to provide a classification meaningful to the (human) user.  The user interface should encourage the use of basic values of "work", "home", and "other" and MAY allow additional type values to be used at the discretion of the service client.
+          example: work
+        value:
+          type: string
+          description: The value SHOULD be specified according to RFC5321.
+          example: bjensen@example.com
+        primary:
+          type: boolean
+          description: Defines if this entry is to be used as the primary or default for the user.
+          default: false
+      description: Email address for the user.
+
+    ExpiryDate:
+      type: object
+      properties:
+        month:
+          maxLength: 2
+          minLength: 2
+          pattern: '[0-9]{2,2}'
+          type: string
+          description: Month format 'MM'
+          example: "09"
+        year:
+          maxLength: 2
+          minLength: 2
+          pattern: '[0-9]{2,2}'
+          type: string
+          description: Year format 'YY'
+          example: "20"
+        singleValue:
+          maxLength: 6
+          minLength: 4
+          type: string
+          description: Month and year together, 'MMYY' or 'MMYYYY'.  If the latter format, the string will be parsed and validated per the given format.  Any other format will be rejected.
+      description: Contains account expiration data and needs to either send the values in individual fields OR as a singleValue.
+
+    ExternalCustomerId:
+      title: External Customer ID
+      type: string
+      description: External customer id.
+
+    FdCustomerId:
+      title: FD Customer ID
+      type: string
+      description: FD customer identifier tied to the vaulted accounts.
+      example: cuid-0987613457398475
+
+    Fleet:
+      type: object
+      properties:
+        cardNumber:
+          type: string
+          description: Primary account number, can only be sent when vaulting an account.  This field will NOT be present in responses.
+        nameOnCard:
+          type: string
+          description: Name as printed on physical card or on virtual account
+        alias:
+          type: string
+          description: Card alias
+          readOnly: true
+        cardType:
+          $ref: '#/components/schemas/FleetCardType'
+        billingAddress:
+          $ref: '#/components/schemas/Address'
+        billingPhone:
+          $ref: '#/components/schemas/Phone'
+        expiryDate:
+          $ref: '#/components/schemas/ExpiryDate'
+        securityCode:
+          type: string
+        sequenceNumber:
+          type: string
+          description: Sequence number of the card.
+        token:
+          $ref: '#/components/schemas/ReferenceToken'
+      description: Information on a Fleet account
+
+    FleetData:
+      type: object
+      properties:
+        odometer:
+          maxLength: 8
+          type: string
+          description: Identifies the vehicle’s odometer reading keyed in by the customer or clerk.
+        vehicleNumber:
+          maxLength: 10
+          type: string
+          description: Identifies the Vehicle Number.
+        jobNumber:
+          maxLength: 10
+          type: string
+          description: Identifies the Job Number.
+        driverIdNumber:
+          maxLength: 10
+          type: string
+          description: Identifies the unencrypted Driver Number or Identification Number.
+        fleetEmployeeNumber:
+          maxLength: 10
+          type: string
+          description: Identifies the Fleet Employee Number.
+        licenseNumber:
+          maxLength: 10
+          type: string
+          description: Identifies the License
+        jobId:
+          maxLength: 12
+          type: string
+          description: Identifies the Job ID.
+        departmentNumber:
+          maxLength: 12
+          type: string
+          description: Identifies the Department
+        customerData:
+          maxLength: 12
+          type: string
+          description: Identifies the Customer Data.
+        userId:
+          maxLength: 12
+          type: string
+          description: Identifies the User ID.
+        vehicleId:
+          maxLength: 8
+          type: string
+          description: Identifies the Vehicle ID#.
+        fleetTag:
+          type: array
+          items:
+            $ref: '#/components/schemas/FleetTagType'
+      description: The Fleet Data Segment for all fleet card transaction requests.
+
+    FuelPurchaseInfo:
+      required:
+      - pumpNumber
+      type: object
+      properties:
+        pumpNumber:
+          type: number
+          description: Pump number from which fueling is requested.
+        serviceLevelCode:
+          $ref: '#/components/schemas/ServiceLevelCode'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/POSItem'
+      description: Fuel purchase information.
+      example:
+        pumpNumber: "17"
+        serviceLevelCode: S
+        items:
+        - POSCode: "432"
+          itemDescription: Unleaded
+          itemPrice: "2.03"
+          unitOfMeasurement: gallonUS
+
+    FundingSource:
+      type: object
+      properties:
+        saveToVault:
+          type: boolean
+          description: Flag to indicate if the provided payment method should be vaulted to a secure repository for future use for the given customer.
+          example: false
+          default: false
+        type:
+          $ref: '#/components/schemas/FundingSourceType'
+        vaultedAccount:
+          $ref: '#/components/schemas/VaultedAccount'
+        credit:
+          $ref: '#/components/schemas/Credit'
+        prepaid:
+          $ref: '#/components/schemas/Prepaid'
+        fleet:
+          $ref: '#/components/schemas/Fleet'
+        applePay:
+          $ref: '#/components/schemas/ApplePay'
+        androidPay:
+          $ref: '#/components/schemas/AndroidPay'
+        samsungPay:
+          $ref: '#/components/schemas/SamsungPay'
+        paypal:
+          $ref: '#/components/schemas/Paypal'
+        token:
+          $ref: '#/components/schemas/ReferenceToken'
+        visaCheckout:
+          $ref: '#/components/schemas/VisaCheckout'
+        googlePay:
+          $ref: '#/components/schemas/GooglePay'
+        masterpass:
+          $ref: '#/components/schemas/MasterPass'
+        ach:
+          $ref: '#/components/schemas/ACH'
+        venmo:
+          $ref: '#/components/schemas/Venmo'
+        vipps:
+          $ref: '#/components/schemas/Vipps'
+        amazonPay:
+          $ref: '#/components/schemas/AmazonPay'
+        ideal:
+          $ref: '#/components/schemas/Ideal'
+        bancontact:
+          $ref: '#/components/schemas/Bancontact'
+        walmartPay:
+          $ref: '#/components/schemas/WalmartPay'
+        ebt:
+          $ref: '#/components/schemas/EBT'
+      description: Holds information about funding source for the payment transaction. Can hold only one above the provided funding sources.
+
+    GooglePay:
+      type: object
+      properties:
+        version:
+          type: string
+          description: Identifies encryption/signing scheme.
+          example: EC_v1
+        developerEmail:
+          type: string
+        signature:
+          type: string
+          description: Signature to verify Google initiated message.
+          example: MIAGCSqGSIb......AAAA==
+        data:
+          type: string
+          description: Data includes encryptedMessage, ephemeralPublicKey, tag.
+          example: '{"encryptedMessage":"8nx...u003d","ephemeralPublicKey":"BGH...u003d","tag":"nvm...\u003d"}'
+        dPanLast4:
+          type: string
+          example: "9876"
+        bin:
+          type: string
+        eciIndicator:
+          type: string
+        xid:
+          type: string
+        cavv:
+          type: string
+        expiryDate:
+          $ref: '#/components/schemas/ExpiryDate'
+        panType:
+          type: string
+        cardType:
+          $ref: '#/components/schemas/CreditCardType'
+        token:
+          $ref: '#/components/schemas/ReferenceToken'
+        billingAddress:
+          $ref: '#/components/schemas/Address'
+        billingPhone:
+          $ref: '#/components/schemas/Phone'
+      description: Google Payment specific information
+
+    Ideal:
+      type: object
+      properties:
+        returnUrl:
+          type: string
+        deepLink:
+          type: string
+
+    ISO-4217:
+      type: object
+      properties:
+        code:
+          type: string
+          example: USD
+          default: USD
+        number:
+          type: integer
+          example: 840
+        digits:
+          type: integer
+          example: 2
+        currency:
+          type: string
+          example: US Dollar
+          default: US Dollar
+      description: Holds currency information
+
+    MasterPass:
+      type: object
+      properties:
+        transactionId:
+          type: string
+          description: Identifier corresponding to an account enrolled with MasterPass system.
+          example: "1234732704291071701"
+        credit:
+          $ref: '#/components/schemas/Credit'
+      description: MasterPass information
+
+    Membership:
+      type: object
+      properties:
+        membershipType:
+          type: string
+        membershipId:
+          type: string
+        membershipProgramId:
+          type: string
+        membershipStatus:
+          type: string
+        membershipExpiryDate:
+          $ref: '#/components/schemas/ExpiryDate'
+        accountNumber:
+          type: string
+        securityCode:
+          type: string
+        merchantId:
+          type: string
+          description: Merchant identifier for which the request has been initiated.
+          example: M117008616001
+        altMerchantId:
+          type: string
+          description: Alternate Merchant identifier for which the request has been initiated.
+        merchantTerminalId:
+          type: string
+          description: Merchant terminal identifier
+        verifyAccount:
+          type: boolean
+        additionalInfo:
+          minItems: 0
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/NVP'
+      description: Membership information for the user.
+
+    MultiSale:
+      type: object
+      properties:
+        parentTransactionId:
+          type: string
+          description: Unique identifier of multi transaction.
+          readOnly: true
+          example: 485-27834-285903824-095
+        merchantTransactionId:
+          type: string
+          description: Merchant transaction id
+        createdTime:
+          type: string
+          description: Multi sale creation date time value.
+          format: date-time
+          readOnly: true
+          example: 2017-03-21T08:15:30-05:00
+        parentExternalId:
+          type: string
+          description: External transaction id reference
+        purchaseInfo:
+          $ref: '#/components/schemas/PurchaseInfo'
+        sales:
+          type: array
+          items:
+            $ref: '#/components/schemas/Sale'
+      description: Multiple sale transaction details.
+
+    MultiRefund:
+      type: object
+      properties:
+        parentTransactionId:
+          type: string
+          description: Unique identifier of multi transaction.
+          readOnly: true
+          example: 485-27834-285903824-095
+        merchantTransactionId:
+          type: string
+          description: Merchant transaction id
+        createdTime:
+          type: string
+          description: Multi refund creation date time value.
+          format: date-time
+          readOnly: true
+          example: 2017-03-21T08:15:30-05:00
+        parentExternalId:
+          type: string
+          description: External transaction id reference
+        purchaseInfo:
+          $ref: '#/components/schemas/PurchaseInfo'
+        refunds:
+          type: array
+          items:
+            $ref: '#/components/schemas/Refund'
+      description: Multiple refund transaction details.
+
+    MultiVoid:
+      type: object
+      properties:
+        parentTransactionId:
+          type: string
+          description: Unique identifier of multi transaction.
+          readOnly: true
+          example: 485-27834-285903824-095
+        merchantTransactionId:
+          type: string
+          description: Merchant transaction id
+        createdTime:
+          type: string
+          description: Multi void creation date time value.
+          format: date-time
+          readOnly: true
+          example: 2017-03-21T08:15:30-05:00
+        parentExternalId:
+          type: string
+          description: External transaction id reference
+        purchaseInfo:
+          $ref: '#/components/schemas/PurchaseInfo'
+        voids:
+          type: array
+          items:
+            $ref: '#/components/schemas/Void'
+      description: Multiple void transaction details.
+
+    MultiRefundVoid:
+      type: object
+      properties:
+        parentTransactionId:
+          type: string
+          description: Unique identifier of multi transaction.
+          readOnly: true
+          example: 485-27834-285903824-095
+        merchantTransactionId:
+          type: string
+          description: Merchant transaction id
+        createdTime:
+          type: string
+          description: Multi void creation date time value.
+          format: date-time
+          readOnly: true
+          example: 2017-03-21T08:15:30-05:00
+        parentExternalId:
+          type: string
+          description: External transaction id reference
+        purchaseInfo:
+          $ref: '#/components/schemas/PurchaseInfo'
+        refunds:
+          type: array
+          items:
+            $ref: '#/components/schemas/Refund'
+      description: Multiple void transaction details.
+
+    NVP:
+      title: Name and Value pair.
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+        valueAsList:
+          minItems: 0
+          type: array
+          items:
+            type: string
+
+    Order:
+      required:
+      - orderId
+      type: object
+      properties:
+        orderId:
+          type: string
+          description: Client provided unique identifier for the order related to the requested authorization
+          example: Order001
+        altOrderId:
+          type: string
+          description: Alternate order id
+        orderNumber:
+          type: string
+          description: Order reference number provided by service provider
+        orderType:
+          type: string
+          description: Type of the order
+        shipmentIndicator:
+          type: string
+          description: Indicates order with Single or Multiple shipments
+        recipientName:
+          type: string
+          description: Order recipient name
+        contactName:
+          type: string
+        shipmentType:
+          type: string
+          description: Type of shipment
+        website:
+          type: string
+          description: URL of the website from where the order got originated.
+        orderStatus:
+          type: string
+          description: Order status information
+        deliveryInfo:
+          $ref: '#/components/schemas/DeliveryInfo'
+        emails:
+          type: array
+          items:
+            $ref: '#/components/schemas/Email'
+        addresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/Address'
+        phoneNumbers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Phone'
+        communicationPreference:
+          $ref: '#/components/schemas/CommunicationPreference'
+        deliveryLocation:
+          $ref: '#/components/schemas/DeliveryLocation'
+        storeLocation:
+          $ref: '#/components/schemas/StoreLocation'
+        note:
+          type: string
+      description: Information about the order details
+
+    OfferStatus:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Indicates offer status code, NOT_ACTIVATED | ACTIVATED | REDEEMED | DECLINED | CANCELLED | FAILED
+        statusInfo:
+          minItems: 0
+          uniqueItems: true
+          type: array
+          description: Details about what to display, images, messaging, etc.
+          items:
+            $ref: '#/components/schemas/NVP'
+      description: Maintain the status of stackable promotions
+
+    Paypal:
+      type: object
+      properties:
+        payerId:
+          type: string
+          description: Paypal generated Unique identifier for a Paypal account.
+          example: LPLWNMTBWMFAY
+        nonce:
+          type: string
+          description: Paypal generated nonce.
+          example: ab12-124C-ab12-124C-ab12-124C
+        token:
+          $ref: '#/components/schemas/ReferenceToken'
+        credit:
+          $ref: '#/components/schemas/Credit'
+      description: Information about a Paypal account.
+
+    Phone:
+      type: object
+      properties:
+        value:
+          type: string
+          description: The value SHOULD be specified according to the format defined in RFC3966, e.g., 'tel:+1-201-555-0123'.
+          example: 555-555-5555
+        type:
+          type: string
+          description: Often has typical values of "work","billing", "home", "mobile", "fax", "pager", and "other" and MAY allow more types to be defined by the service client.
+          example: billing
+        extension:
+          type: string
+          description: Defines the extension of the phone number.
+          example: "2145"
+        primary:
+          type: boolean
+          description: Defines if this entry is to be used as the primary or default for the user.
+          default: false
+      description: Phone number for the user.
+      
+    POSItem:
+      type: object
+      properties:
+        itemDescription:
+          type: string
+          example: Standard Wash (or) Unleaded Petrol
+        itemPrice:
+          type: number
+          format: double
+          example: 7.5
+        unitOfMeasurement:
+          type: string
+          example: each
+        unitsSold:
+          type: number
+          format: double
+          example: 1.0
+        totalItemSaleAmount:
+          type: number
+          format: double
+          example: 7.5
+        originalItemPrice:
+          type: number
+          format: double
+          example: 7.5
+        originalTotalSaleAmount:
+          type: number
+          format: double
+          example: 7.5
+        posCodeFormat:
+          type: string
+          example: plu
+        posCode:
+          type: string
+          example: "102"
+        posCodeModifier:
+          type: string
+          example: "1"
+        productCode:
+          type: string
+          example: "102"
+        tax:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaxDetails'
+        type:
+          $ref: '#/components/schemas/POSItemType'
+        serviceLevelCode:
+          $ref: '#/components/schemas/ServiceLevelCode'
+        priceAdjustments:
+          type: array
+          items:
+            $ref: '#/components/schemas/PriceAdjustment'
+        washCodes:
+          type: array
+          items:
+            $ref: '#/components/schemas/WashCode'
+        priceTier:
+          type: string
+      description: Structure to support passing POS sale info as part of the sale request.
+
+    POSItemType:
+      type: string
+      description: Indicates the type of item
+      enum:
+      - CARWASH
+      - FUEL
+
+    Prepaid:
+      type: object
+      properties:
+        cardNumber:
+          type: string
+          description: Prepaid card number.
+          example: "6759649826438453"
+        cardSubType:
+          type: string
+          description: Merchant or brand specific information about the type of account.Issuer/group information.
+          example: Merchant Brand
+        securityCode:
+          type: string
+          description: Security code of prepaid card
+          example: "345"
+        promotionCode:
+          type: string
+          description: Promotion code for prepaid account activation.
+        alias:
+          type: string
+          readOnly: true
+          example: "8453"
+        expiryDate:
+          $ref: '#/components/schemas/ExpiryDate'
+        balance:
+          $ref: '#/components/schemas/PrepaidBalance'
+        token:
+          $ref: '#/components/schemas/ReferenceToken'
+      description: Prepaid (a.k.a. gift) account information
+
+    PrepaidBalance:
+      required:
+      - currencyCode
+      - currentBalance
+      type: object
+      properties:
+        currentBalance:
+          type: number
+          description: The current balance of prepaid card in lower denomination of the currency.
+        beginBalance:
+          type: number
+          description: The balance of prepaid card before a transaction in lower denomination of the currency.
+        currencyCode:
+          $ref: '#/components/schemas/ISO-4217'
+        currencyType:
+          $ref: '#/components/schemas/CurrencyPairType'
+      description: Details of balance in the prepaid card.
+      example:
+        currentBalance: 1100
+        beginBalance: 1000
+        currencyCode: 840
+        currencyType: BASE
+
+    PriceAdjustment:
+      type: object
+      properties:
+        adjustmentId:
+          type: string
+          example: discount prepay
+        productCode:
+          type: string
+          example: "941"
+        programID:
+          type: string
+          example: P66
+        reason:
+          type: string
+          example: loyaltyOffer
+        amount:
+          type: number
+          format: double
+          example: 0.1
+        percentage:
+          type: number
+          format: float
+          example: 10.0
+        itemPrice:
+          type: number
+          format: double
+          example: 7.5
+        unitOfMeasurement:
+          type: string
+          example: each
+        unitsSold:
+          type: number
+          format: double
+          example: 1.0
+        rebateLabel:
+          type: string
+          example: HostDiscount
+        maxQuantity:
+          type: number
+          format: double
+          example: 7.5
+        offerStatus:
+          $ref: '#/components/schemas/OfferStatus'
+      description: Structure to support providing price adjustment for sale item.
+
+    PurchaseInfo:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the resource at the site. If a site has multiple car wash systems, this would be used to identify each separately.
+          example: car_wash_1
+        name:
+          type: string
+          description: Common name for the resource as specified at the site.
+          example: Automatic Car Wash
+        order:
+          $ref: '#/components/schemas/Order'
+        items:
+          type: array
+          description: Item(s) for sale at the resource.  Common examples are the car wash packages for sale.
+          items:
+            $ref: '#/components/schemas/POSItem'
+      description: Information about Resources associated with the Transaction.  The common example is the car wash system.
+
+    Refund:
+      type: object
+      properties:
+        fdRefundId:
+          type: string
+          description: Unique identifier provided for a refund.
+          readOnly: true
+          example: 9a34144657d0aa6e0157d3808ed000f2
+        fdTransactionId:
+          type: string
+          description: Unique identifier for sale/capture.
+          example: 9a34144657d0aa6e0157d3808ed000f2
+        externalId:
+          type: string
+          description: External transaction id reference
+        merchantId:
+          type: string
+          description: Merchant identifier where the transaction is being performed.
+          example: M117008616001
+        altMerchantId:
+          type: string
+          description: Alternate Merchant identifier where the transaction is being performed.
+          example: "23232"
+        storeId:
+          type: string
+          description: Store identifier where the transaction is being performed.
+          example: "123456"
+        merchantTokenCode:
+          type: string
+          description: Merchant token code used for token generation
+        merchantTerminalId:
+          type: string
+          description: Merchant terminal identifier
+        merchantTransactionId:
+          type: string
+          description: Merchant transaction id
+        status:
+          $ref: '#/components/schemas/PaymentStatus'
+        requestedAmount:
+          $ref: '#/components/schemas/RequestedAmount'
+        approvedAmount:
+          $ref: '#/components/schemas/ApprovedAmount'
+        currencyCode:
+          $ref: '#/components/schemas/ISO-4217'
+        amountSplitInfo:
+          $ref: '#/components/schemas/AmountSplitInfo'
+        isSplitSettlement:
+          type: boolean
+        splitSettlementInfo:
+          minItems: 0
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/SplitSettlementInfo'
+        supplements:
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/Supplement'
+        fundingSource:
+          $ref: '#/components/schemas/FundingSource'
+        dynamicDescriptors:
+          $ref: '#/components/schemas/DynamicDescriptors'
+        purchaseInfo:
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/PurchaseInfo'
+        postDate:
+          type: string
+          description: Settlement date for the transaction. Format- MMDDYYYY
+          format: date
+        transactionDateTime:
+          type: string
+          description: Date and time of the transaction.
+          format: date-time
+          readOnly: true
+          example: 2016-04-16T16:06:05Z
+        createdDateTime:
+          type: string
+          description: Date and time of resource creation.
+          format: date-time
+          readOnly: true
+          example: 2016-04-16T16:06:05Z
+        lastUpdatedDateTime:
+          type: string
+          description: Last updated Date and time of resource.
+          format: date-time
+          readOnly: true
+          example: 2016-04-16T16:06:05Z
+        hostExtraInfo:
+          minItems: 0
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/NVP'
+      description: Information related to a refund. Requested amount to refund in lower denomination. When not provided either the authorized amount in fdAuthorizationId or captured amount in fdCaptureId will be used.
+
+    RequestedAmount:
+      title: Requested Amount
+      minimum: 0
+      exclusiveMinimum: true
+      type: number
+      description: Requested amount for the given request type [auth, capture, refund, etc] in lower denomination.
+      format: double
+      example: 500.00
+
+    ReferenceToken:
+      type: object
+      properties:
+        tokenId:
+          type: string
+          description: Actual token value
+          example: 292bb6b886fc4446894f878b7e32bd5e
+        tokenProvider:
+          type: string
+          description: Indicates what system is the originator of the token
+          example: TRANS_ARMOR or NETWORK_TOKEN or THIRD_PARTY_NETWORK_TOKEN
+        cryptogram:
+          type: string
+          description: 28 or 56 characters for Visa / Mastercard. 4 characters for Discover / Amex. Required for CIT. Not required for MIT.
+          example: 3CguW5ecfTz...Yuhw=
+        expiryDate:
+          $ref: '#/components/schemas/ExpiryDate'
+        tokenType:
+          $ref: '#/components/schemas/ReferenceTokenType'
+      description: Surrogate value used to represent a handle to an account without sharing PCI/PII data to look it up.
+
+    TaxDetails:
+      type: object
+      properties:
+        code:
+          type: string
+          example: TX01
+        description:
+          type: string
+          example: Sales Tax
+        amount:
+          type: string
+          example: "7.50"
+        rate:
+          type: string
+          example: "13.5"
+      description: Tax details.
+
+    ThreeDSecure:
+      type: object
+      properties:
+        transactionId:
+          type: string
+          description: Transaction id generated on the server
+          example: 292bb6b886fc4446894f878b7e32bd5e
+        transactionStatus:
+          type: string
+          description: Transactions status of 3DS server
+          example: C
+        transactionStatusReason:
+          type: string
+          description: Reason for the transaction status
+        challengeResponse:
+          type: string
+          example: ewogIC
+        challengeIndicator:
+          type: string
+          example: '01 = No preference 02 = No challenge requested 03 = Challenge requested: 3DS Requestor Preference 04 = Challenge requested: Mandate'
+        dsTransactionId:
+          type: string
+          example: 292bb6b886fc4446894f878b7e32bd5e
+        acsTransactionId:
+          type: string
+          example: 292bb6b886fc4446894f878b7e32bd5e
+        serverTransactionId:
+          type: string
+          example: 292bb6b886fc4446894f878b7e32bd5e
+        acsReferenceNumber:
+          type: string
+          example: 292bb6b886fc4446894f878b7e32bd5e
+        acsSignedContent:
+          type: string
+          example: 292bb6b88....6fc4446894f878b7e32bd5e
+        cardType:
+          $ref: '#/components/schemas/CreditCardType'
+        challengeRequest:
+          type: string
+          example: ewogICAiYW.......MjJjMGVjIgp9
+        acsUrl:
+          type: string
+          example: https://test.modirum.com/dstests/ACSEmu2
+        iframeContent:
+          type: string
+          example: <iframe></iframe>
+        termUrl:
+          type: string
+          example: https://mydomain/3dstest?transactionId=292bb6b886fc4446894f878b7e32bd5e
+        isThreeDSMethodCompleted:
+          type: boolean
+          example: true
+        isAuthenticationCompleted:
+          type: boolean
+          example: true
+        cavv:
+          type: string
+          description: Card authentication verification value
+        threeDSVersion:
+          type: string
+        expiryDateTime:
+          type: string
+          description: 3DS challenge transaction expiry date time.
+          format: date-time
+          readOnly: true
+          example: 2020-01-01T16:06:05Z
+        eci:
+          type: string
+          description: Electronic Commerce Indicator value
+      description: Details of ThreeDSecure transaction used to process the challenge flow
+
+    Sale:
+      required:
+      - requestedAmount
+      type: object
+      properties:
+        fdSaleId:
+          type: string
+          description: Unique Identifier provided by payment platform for a payment sale transaction.
+          readOnly: true
+          example: 8a34144657d0aa6e0157d3808ed000f2
+        externalId:
+          type: string
+          description: External transaction id reference
+        status:
+          $ref: '#/components/schemas/PaymentStatus'
+        transactionSubtype:
+          type: string
+          description: Indicates subtype of a given transaction for EBT, ie EBTCASH or EBTSNAP
+        merchantId:
+          type: string
+          description: Merchant identifier where the transaction is being performed.
+          example: M117008616001
+        altMerchantId:
+          type: string
+          description: Alternate Merchant identifier where the transaction is being performed.
+          example: "23232"
+        storeId:
+          type: string
+          description: Store identifier where the transaction is being performed.
+          example: "123456"
+        merchantTokenCode:
+          type: string
+          description: Merchant token code used for token generation
+        merchantTerminalId:
+          type: string
+          description: Merchant terminal identifier
+        merchantTransactionId:
+          type: string
+          description: Merchant transaction id
+        exemptionCode:
+          type: string
+          description: Exemption code for 3DS transaction
+        transactionOrigin:
+          $ref: '#/components/schemas/TransactionOrigin'
+        requestedAmount:
+          $ref: '#/components/schemas/RequestedAmount'
+        approvedAmount:
+          $ref: '#/components/schemas/ApprovedAmount'
+        currencyCode:
+          $ref: '#/components/schemas/ISO-4217'
+        dynamicDescriptors:
+          $ref: '#/components/schemas/DynamicDescriptors'
+        postDate:
+          type: string
+          description: Settlement date for the transaction. Format- MMDDYYYY
+          format: date
+        partialPaymentAllowed:
+          type: boolean
+          description: Flag that indicates if partial transaction is allowed or not
+        fundingSource:
+          $ref: '#/components/schemas/FundingSource'
+        amountSplitInfo:
+          $ref: '#/components/schemas/AmountSplitInfo'
+        isSplitSettlement:
+          type: boolean
+        splitSettlementInfo:
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/SplitSettlementInfo'
+        supplements:
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/Supplement'
+        purchaseInfo:
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/PurchaseInfo'
+        industrySpecificInfo:
+          type: object
+          properties:
+            fuelPurchaseInfo:
+              $ref: '#/components/schemas/FuelPurchaseInfo'
+          description: Industry specific details like petro for example.
+        qrCodeId:
+          type: string
+          description: Unique Identifier provided by payment platform for a given funding source.
+          readOnly: true
+        stacId:
+          type: string
+          description: Unique Identifier provided by payment platform for a given funding source.
+        transactionDateTime:
+          type: string
+          description: Date and time of the transaction.
+          format: date-time
+          readOnly: true
+          example: 2016-04-16T16:06:05Z
+        createdDateTime:
+          type: string
+          description: Date and time of resource creation.
+          format: date-time
+          readOnly: true
+          example: 2016-04-16T16:06:05Z
+        lastUpdatedDateTime:
+          type: string
+          description: Last updated Date and time of resource.
+          format: date-time
+          readOnly: true
+          example: 2016-04-16T16:06:05Z
+        hostExtraInfo:
+          minItems: 0
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/NVP'
+        threeDSecureInfo:
+          $ref: '#/components/schemas/ThreeDSecure'
+        fleetData:
+          $ref: '#/components/schemas/FleetData'
+        errorInfo:
+          $ref: '#/components/schemas/Error'
+      description: Information related to a SALE transaction - can only be ONE of the funding source among account, credit, prepaid, ApplePay.
+
+    SamsungPay:
+      type: object
+      properties:
+        version:
+          type: string
+          example: EC_v1
+        developerEmail:
+          type: string
+        data:
+          type: string
+          example: 3CguW5ecfTzO...03d
+        signature:
+          type: string
+          example: MIAGCSqGSIb......AAAA==
+        decryptAlias:
+          type: string
+          description: field of the public key certificate.
+          example: oslo.com.xxx.Prod_mer
+        dPanLast4:
+          type: string
+          example: "9876"
+        bin:
+          type: string
+        eciIndicator:
+          type: string
+        xid:
+          type: string
+        cavv:
+          type: string
+        expiryDate:
+          $ref: '#/components/schemas/ExpiryDate'
+        panType:
+          type: string
+        cardType:
+          $ref: '#/components/schemas/CreditCardType'
+        header:
+          type: object
+          properties:
+            ephemeralPublicKey:
+              type: string
+              example: MFkwEw...03d
+            publicKeyHash:
+              type: string
+              example: +vbONw...IM=
+        token:
+          $ref: '#/components/schemas/ReferenceToken'
+        billingAddress:
+          $ref: '#/components/schemas/Address'
+        billingPhone:
+          $ref: '#/components/schemas/Phone'
+
+    StoreLocation:
+      type: object
+      description: Order store location
+      properties:
+        contactName:
+          type: string
+        contactPhone:
+          $ref: '#/components/schemas/Phone'
+        contactEmail:
+          $ref: '#/components/schemas/Email'
+        address:
+          $ref: '#/components/schemas/Address'
+        note:
+          type: string
+
+    Supplement:
+      type: object
+      properties:
+        supplementType:
+          type: string
+        supplementInfo:
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/NVP'
+      description: Supplement data
+
+    SplitSettlementInfo:
+      type: object
+      properties:
+        beneficiaryName:
+          type: string
+        beneficiaryId:
+          type: string
+        amount:
+          $ref: '#/components/schemas/Amount'
+      description: Split funding information
+
+    VaultedAccount:
+      type: object
+      properties:
+        fdAccountId:
+          type: string
+          description: Unique identifier for a customer account vaulted with uCom
+        securityCode:
+          type: string
+          description: Card Verification value.
+        status:
+          $ref: '#/components/schemas/AccountStatus'
+        type:
+          $ref: '#/components/schemas/AccountType'
+      description: FD Account information
+      example:
+        fdAccountId: muid-3d4f2ac...c91014f2dc1
+
+    Venmo:
+      type: object
+      properties:
+        nonce:
+          type: string
+          description: Venmo generated nonce.
+          example: ab12-124C-ab12-124C-ab12-124C
+        token:
+          $ref: '#/components/schemas/ReferenceToken'
+      description: Information about a Venmo account.
+
+    Vipps:
+      required:
+      - paymentId
+      type: object
+      properties:
+        paymentId:
+          type: string
+          description: The payment_id of Vipps. Used to correlate with the webhook of an open order.
+          example: ab12-124C-ab12-124C-ab12-124C
+        credit:
+          $ref: '#/components/schemas/Credit'
+      description: Information about a Vipps account. 'credit' is a read-only property.
+
+    VisaCheckout:
+      type: object
+      properties:
+        callId:
+          type: string
+          description: Identifier corresponding to an account enrolled with Visa Checkout system.
+          example: "1234732704291071701"
+        credit:
+          $ref: '#/components/schemas/Credit'
+      description: Visa Checkout information
+
+    Void:
+      type: object
+      properties:
+        fdTransactionId:
+          type: string
+          description: Unique identifier provided for sale/capture/refund.
+          example: 9a34144657d0aa6e0157d3808ed000f2
+        externalId:
+          type: string
+          description: External transaction id reference
+        merchantTransactionId:
+          type: string
+          description: Merchant transaction id
+        approvedAmount:
+          $ref: '#/components/schemas/ApprovedAmount'
+        transactionDateTime:
+          type: string
+          description: Date and time of the transaction.
+          format: date-time
+          readOnly: true
+          example: 2016-04-16T16:06:05Z
+        storeId:
+          type: string
+          description: Store identifier where the transaction is being performed.
+          example: "123456"
+        currencyCode:
+          $ref: '#/components/schemas/ISO-4217'
+        hostExtraInfo:
+          minItems: 0
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/NVP'
+        dynamicDescriptors:
+          $ref: '#/components/schemas/DynamicDescriptors'
+        fundingSource:
+          $ref: '#/components/schemas/FundingSource'
+        purchaseInfo:
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/PurchaseInfo'
+      description: Information related to a void.
+
+    WashCode:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Wash code generated by the POS system.
+        description:
+          type: string
+          description: Wash code description generated by the POS system.
+        expiration:
+          type: string
+          description: Expiration date for the purchased wash code
+          format: date-time
+        message:
+          type: string
+          description: Field to carry message from site system for display to customer.
+      description: Purchased wash information.
+
+    WalmartPay:
+      type: object
+      properties:
+        credit:
+          $ref: '#/components/schemas/Credit'
+        token:
+          $ref: '#/components/schemas/ReferenceToken'
+
+    #-------------------------------------
+    # Common Models
+    #-------------------------------------
+    DeviceInfo:
+      required:
+      - id
+      - kind
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique Id for the device. Value should not contain line feeds, carriage returns, tabs, leading or trailing spaces, or multiple spaces.
+          example: 537edec8-d33e-4ee8-93a7-b9f61876950c
+        kind:
+          type: string
+          description: Possible values are mobile, wearable, automobile, embedded,desktop, other.
+          example: mobile
+        details:
+          title: deviceData
+          minItems: 0
+          uniqueItems: true
+          type: array
+          description: Device data information from multiple providers.
+          items:
+            type: object
+            properties:
+              provider:
+                type: string
+                description: Identifies the provider of the data and is often used when decrypting data on the server.
+                example: InAuth
+              dataCapture:
+                type: object
+                properties:
+                  rawData:
+                    type: string
+                    description: Device capture - raw data blob
+                    example: aaaaaXREUVZGRlFY...aMV
+                  dataEventId:
+                    type: string
+                    description: Event identifier used map state on the server.
+                    example: BB8E4E92...Fz1E063113
+                  captureTime:
+                    type: string
+                    description: Device data capture time in Internet Date/Time format - yyyy-MM-dd'T'HH:mm:ss'Z'
+                    format: date-time
+                    example: 2016-04-16T16:06:05Z
+                description: Device data captured as a bundle and transmitted as an encrypted and/or specifically formatted string.
+              dataStatic:
+                type: object
+                properties:
+                  os:
+                    type: string
+                    description: Device OS name
+                    example: Android 5.1.1 Lollipop
+                  osVersion:
+                    type: string
+                    description: Device OS version
+                    example: 5.1.1 Lollipop
+                  model:
+                    type: string
+                    description: Device model
+                    example: XT1540
+                  type:
+                    type: string
+                    description: Device type
+                    example: Moto G
+                description: Device static details
+              dataDynamic:
+                type: object
+                properties:
+                  latitude:
+                    type: string
+                    description: Device position - latitude at the time of the data event
+                    example: 13.0827 N
+                  longitude:
+                    type: string
+                    description: Device position - longitude at the time of the data event
+                    example: 80.2707 E
+                  ipAddress:
+                    type: string
+                    description: IP address
+                    example: 172.27.37.221
+                  captureTime:
+                    type: string
+                    description: Device data capture time in Internet Date/Time format - yyyy-MM-dd'T'HH:mm:ss'Z'
+                    format: date-time
+                    example: 2016-04-16T16:06:05Z
+                description: Device location details
+              dataApplication:
+                type: object
+                properties:
+                  version:
+                    type: string
+                    description: Mobile application version.
+                    format: sting
+                    example: 1.0.0
+                  name:
+                    type: string
+                    description: Mobile application name.
+                    format: sting
+                    example: application-name
+                  country:
+                    type: string
+                    description: Mobile application store country.
+                    format: sting
+                    example: US
+                description: Mobile application specific data
+            description: Collection of device data
+        additionalInfo:
+          minItems: 0
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/NVP'
+      description: Request origin device details
+
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Uniquely identifies an error condition. Client applications need to read and handle errors based on this.
+        message:
+          type: string
+          description: A generic description of the error condition.
+        category:
+          type: string
+          description: The resource associated with the error condition.
+        developerInfo:
+          type: object
+          properties:
+            developerMessage:
+              type: string
+              description: An elaborative description of the error description.
+            moreInfo:
+              type: string
+              description: Link to the error in Developer page.
+            fieldError:
+              type: array
+              description: Detailed information about message format errors.
+              items:
+                type: object
+                properties:
+                  field:
+                    type: string
+                    description: The property or attribute associated with the error
+                  message:
+                    type: string
+                    description: Information specific to a property or attribute.
+          description: Information that needs to be understood by the client developers and should not be interpreted for application processing.
+        hostExtraInfo:
+          minItems: 0
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/NVP'
+        threeDSecureInfo:
+          $ref: '#/components/schemas/ThreeDSecure'
+        _links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
+      description: Model for error messaging
+
+    Link:
+      required:
+      - href
+      - rel
+      type: object
+      properties:
+        href:
+          type: string
+          description: URL to linked resource.
+          format: uri
+          example: https://api.example.com/v1/customers/cust-id-123456/accounts/acct-id-123456
+        rel:
+          type: string
+          description: Defines the type of link relationship to current resource.
+          example: linked.account
+        method:
+          type: string
+          description: Defines the HTTP method for the given href.
+          example: GET
+          default: GET
+        id:
+          type: string
+          description: Identifier to the resource.
+          example: 415e5cf6bfdb11e8a355529269fb1459
+      description: Model to communicate linked resources.
+
+    #-------------------------------------
+    # ENUM Models
+    #-------------------------------------
+    AccountStatus:
+      type: string
+      description: Indicates the status of an account.
+      enum:
+      - ACTIVE
+      - INACTIVE
+      - TERMINATED
+      - ISSUER_TERMINATED
+      - WALLET_TERMINATED
+      - PENDING
+
+    AccountType:
+      type: string
+      description: Type of Account vaulted
+      enum:
+      - CREDIT
+      - PREPAID
+      - ACH
+      - LOYALTY
+      - PAYPAL
+      - MASTERPASS
+      - VENMO
+      - THREEDSECURE
+      - VAULTED_ACCOUNT
+      - FLEET
+
+    AchEnrollmentStatus:
+      type: string
+      description: Indicates ACH enrollment status
+      enum:
+      - ACTIVE
+      - PENDING
+      - PENDING_LINKED_ACCOUNT
+
+    AchEnrollmentSubStatus:
+      type: string
+      description: Indicates ACH enrollment pending status
+      enum:
+      - PENDING_BANK_VALIDATION
+      - PENDING_PIN_VALIDATION
+      - PENDING_EMAIL_VALIDATION
+      - PENDING_PHONE_VALIDATION
+      - PENDING_SOFT_BLOCK
+      - PENDING_HARD_BLOCK
+
+    CreditCardType:
+      title: Credit Card Type
+      type: string
+      description: Indicates the type of credit account association
+      enum:
+      - AMEX
+      - DISCOVER
+      - MASTERCARD
+      - PLCC
+      - VISA
+      - OTHER
+
+    AchCardType:
+      type: string
+      description: Indicates the type of ACH card association
+      enum:
+      - CONNECTPAY
+
+    AchAccountType:
+      type: string
+      description: ACH account type
+      enum:
+      - CHECKING
+      - SAVINGS
+
+    CurrencyPairType:
+      type: string
+      description: Describes the type of currency where BASE represents the currency from Host and TRANSACTION represents the one requested.
+      enum:
+      - BASE
+      - TRANSACTION
+
+    DeliveryOption:
+      title: Delivery option
+      description: Indicates the delivery option
+      type: string
+      enum:
+      - IMMEDIATE
+      - SCHEDULED
+      - OTHER
+
+    FleetCardType:
+      type: string
+      description: Indicates the type of fleet account association
+      enum:
+      - WEX
+
+    FleetTagType:
+      title: Indicates the possible values accepted in Fleet Data segment to Payment Processor.
+      type: object
+      properties:
+        name:
+          type: string
+          example: VHT
+        value:
+          type: string
+          example: TXT 1200
+
+    FundingSourceType:
+      type: string
+      description: Describes the type of Funding source
+      enum:
+      - VAULTED_ACCOUNT
+      - CREDIT
+      - PREPAID
+      - APPLE_PAY
+      - ANDRIOD_PAY
+      - PAYPAL
+      - TOKEN
+      - NONCE
+      - VCO
+      - VENMO
+      - AMAZON_PAY
+      - VIPPS
+      - FLEET
+      - BANCONTACT
+      - IDEAL
+      - WALMART_PAY
+      - EBT
+      - ACH
+
+    OperationType:
+      type: string
+      description: Indicates the status of the balance transaction of a given account. 'SALEVOID' - Void a sale transaction 'REFUNDVOID' - Void a refund transaction
+      enum:
+      - SALEVOID
+      - REFUNDVOID
+
+    PaymentStatus:
+      title: Payment Status
+      type: string
+      description: Indicates the status of an payment operation.
+      enum:
+      - APPROVED
+      - DECLINED
+      - CANCELLED
+      - CHALLENGED
+      - PENDING
+      - FAILED
+
+    ReferenceTokenType:
+      type: string
+      description: Indicates if the given loyalty program is still active or not.
+      enum:
+      - FORMAT_PRESERVING_MULTI_USE
+      - FORMAT_PRESERVING_SINGLE_USE
+      - CLAIM_CHECK_NONCE
+      - RANDOM_MULTI_USE
+      - RANDOM_SINGLE_USE
+      - CLAIM_CHECK_NONCE_WITH_PINCAPTURE
+
+    ServiceLevelCode:
+      type: string
+      description: Indicates service level code.
+      default: S
+      enum:
+      - S
+      - F
+      - N
+      - X
+
+    TransactionOrigin:
+      type: string
+      description: Transaction origin details.
+      enum:
+      - ECOM
+      - MOTO
+      - POS
+
+    UpdateActionType:
+      type: string
+      description: Indicates the action intended as part of patch operation.
+      enum:
+      - RESUME_TRANSACTION
+      - CANCEL_TRANSACTION
+
+  #-------------------------------------
+  # Responses
+  #-------------------------------------
+  responses:
+    AuthorizationCreated:
+      description: Resource created
+      headers:
+        Location:
+          description: Location of newly created resource.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Authorization'
+
+    AuthorizationOK:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Authorization'
+
+    AuthorizationPartiallyCreated:
+      description: Partially accepted
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Authorization'
+
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    CaptureCreated:
+      description: Resource created
+      headers:
+        Location:
+          description: Location of newly created resource.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Capture'
+
+    CaptureOK:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Capture'
+
+    ChargeOK:
+      description: OK
+      content:
+        application/json:
+          schema:
+            minItems: 0
+            type: array
+            items:
+              $ref: '#/components/schemas/Charge'
+
+    Conflict:
+      description: Conflict - The requested operation conflicts with the current state of the identified resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    NoContent:
+      description: The request succeeded but there's really nothing to show.
+      content: {}
+
+    NotFound:
+      description: Not Found - The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    RefundCreated:
+      description: Resource created
+      headers:
+        Location:
+          description: Location of newly created resource.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Refund'
+
+    RefundOK:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Refund'
+
+    SaleCreated:
+      description: Resource created
+      headers:
+        Location:
+          description: Location of newly created resource.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Sale'
+
+    SaleOK:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Sale'
+
+    SalePartiallyCreated:
+      description: Partially accepted
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Sale'
+
+    ServerError:
+      description: An unexpected server error occurred.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    TooEarly:
+      description: Request is too early to process.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    Unauthorized:
+      description: Unauthorized
+      content: {}
+
+  #-------------------------------------
+  # Parameter Models
+  #-------------------------------------
+  parameters:
+    AcceptLanguageParam:
+      name: Accept-Language
+      in: header
+      description: The Accept-Language header contains information about the language preference of a user. This HTTP header is useful to multilingual sites for deciding the best language to serve to the client. i.e en-US,fr-CA
+      schema:
+        type: string
+
+    ApiKeyParam:
+      name: Api-Key
+      in: header
+      description: An API key is a string value passed by a client app to the API proxies. The key uniquely identifies the client app.
+      required: true
+      schema:
+        type: string
+
+    AuthorizationParam:
+      name: Authorization
+      in: header
+      description: Authorization information for the request. Format- `HMAC {hmacToken}`
+      required: true
+      schema:
+        type: string
+
+    ClientTokenParam:
+      name: Client-Token
+      in: header
+      description: Used to pass the original client OAuth token information given in a client-credentials flow.  This field is only used when the server is making the request and needs to link the transaction to a specific client.  Format- `Bearer {access_token}`
+      schema:
+        type: string
+
+    ClientRequestIdParam:
+      name: Client-Request-Id
+      in: header
+      description: Contains a unique ID generated by the client that can be used for enforcing idempotency on POST actions. POSTs are inherently non-idempotent and submitting the exact same request multiple times would create duplicate resources. Note:- Omitting this header increases the risk of duplicate transactions, which for payments could cost the client issues like double-billing.
+      required: true
+      schema:
+        type: string
+
+    ClientRequestIdQueryParam:
+      name: clientRequestId
+      in: query
+      description: Contains a unique ID generated by the client that can be used for enforcing idempotency on POST actions.
+      schema:
+        type: string
+
+    FdAuthorizationIdParam:
+      name: fdAuthorizationId
+      in: path
+      description: Unique identifier provided for the payment authorization
+      required: true
+      schema:
+        type: string
+
+    FdCaptureIdParam:
+      name: fdCaptureId
+      in: path
+      description: Unique identifier provided for a payment capture.
+      required: true
+      schema:
+        type: string
+
+    FdRefundIdParam:
+      name: fdRefundId
+      in: path
+      description: Unique identifier provided for a refund.
+      required: true
+      schema:
+        type: string
+
+    FdSaleIdParam:
+      name: fdSaleId
+      in: path
+      description: Unique identifier provided for a sale transaction.
+      required: true
+      schema:
+        type: string
+
+    FdParentTransactionIdParam:
+      name: fdParentTransactionId
+      in: path
+      description: Unique identifier provided for a parent transaction.
+      required: true
+      schema:
+        type: string
+
+    SubMerchantIdParam:
+      name: Sub-Merchant-Id
+      in: header
+      description: Sub Merchant Id contains information about the merchant identifier
+      schema:
+        type: string
+
+    RetailerPartnerIdParam:
+      name: Retailer-Partner-Id
+      in: header
+      description: Retailer partner identification for marketplace
+      schema:
+        type: string
+
+    TimestampParam:
+      name: Timestamp
+      in: header
+      description: Epoch timestamp in the request initiating system
+      required: true
+      schema:
+        type: string
+  examples:
+    VaultedCardSaleRequest:
+      value:
+        fdCustomerId: 5866f3bb52e24b32b4c9e7f56baa3327
+        sale:
+          orderId: Order6580038
+          storeId: '5998000001'
+          requestedAmount: '80'
+          currencyCode:
+            number: 840
+          fundingSource:
+            vaultedAccount:
+              fdAccountId: 8a7f172c796409c101797eec00410263
+
+    VaultedCardSaleResponse:
+      value:
+        fdSaleId: 043994f087ba4e13a5389bc65070ca39
+        status: APPROVED
+        orderId: Order0322389
+        requestedAmount: 80
+        approvedAmount: 80
+        currencyCode:
+          code: USD
+          number: 840
+        partialPaymentAllowed: true
+        transactionDateTime: 2021-05-18T06:01:31-0400
+        fundingSource:
+          type: VAULTED_ACCOUNT
+          vaultedAccount:
+            fdAccountId: 8a7f172c796409c101797eec00410263
+            type: CREDIT
+          credit:
+            nameOnCard: John Smith
+            alias: '0222'
+            cardType: VISA
+            billingAddress:
+              streetAddress: 100 Universal City Plaza
+              postalCode: '0000'
+            expiryDate:
+              month: '12'
+              year: '22'
+        hostExtraInfo:
+        - name: APPROVAL_NUMBER
+          value: '012996'
+        - name: SEQUENCE_NUMBER
+          value: '6518'
+        - name: HOST_RESPONSE_CODE
+          value: '00'
+        - name: HOST_RESPONSE_MESSAGE
+          value: Function performed error-free
+        - name: HOST_AVS_CODE
+          value: PPX
+        - name: HOST_CVV_CODE
+          value: X
+
+    NonceSaleRequest:
+      value:
+        fdCustomerId: dfa509ed45ab442ba31061ab2ab1e3e3
+        sale:
+          orderId: '1214324354546'
+          merchantId: MO45009483002
+          requestedAmount: 1
+          currencyCode:
+            number: 840
+          fundingSource:
+            saveToVault: false
+            token:
+              tokenId: 3ca513c3-f103-4099-a88f-adb994cc5c3a
+              tokenType: CLAIM_CHECK_NONCE
+              tokenProvider: UCOM
+
+
+    NonceSaleResponse:
+      value:
+        fdSaleId: 8f0aabd3c1c24ab8a54157a143fa9073
+        status: APPROVED
+        orderId: '1214324354546'
+        requestedAmount: 1
+        approvedAmount: 1
+        currencyCode:
+          code: USD
+          number: 840
+        transactionDateTime: 2021-04-23T10:22:51-0400
+        fundingSource:
+          type: CREDIT
+          credit:
+            alias: '6775'
+            cardType: VISA
+            billingAddress:
+              postalCode: J3G2P3
+            expiryDate:
+              month: '12'
+              year: '21'
+            token:
+              tokenId: '7474437453586775'
+              tokenProvider: TRANS_ARMOR
+        hostExtraInfo:
+        - name: APPROVAL_NUMBER
+          value: '003985'
+        - name: SEQUENCE_NUMBER
+          value: '614102'
+        - name: HOST_RESPONSE_CODE
+          value: '3'
+        - name: HOST_RESPONSE_MESSAGE
+          value: APPROVED 003985
+        - name: HOST_AVS_CODE
+          value: AVS+Y
+        - name: HOST_CVV_CODE
+          value: M
+        - name: TRANSACTION_DATETIME
+          value: 2021-04-23T10:22
+        - name: NETWORK_TRANSACTION_ID
+          value: '024000423142251'
+
+    GooglePaySaleRequest:
+      value:
+        fdCustomerId: dfa509ed45ab442ba31061ab2ab1e3e3
+        sale:
+          orderId: Order2344322
+          merchantId: MO45009483002
+          requestedAmount: '2'
+          currencyCode:
+            number: 840
+          fundingSource:
+            googlePay:
+              version: ECv1
+              data: '{"encryptedMessage":"T8OLil7BqQ+s4b6Zu577Bc2uHsvk9BvmS/YgDJe7rB7IQWPYRKF0n+j tH+I4NVgo0ljvV8Ha+ijz94LHsd7UGzWPQlVXz3jNc6BydgA3d4RjZrBxSZyiCL6dXFMUk2EosvE9/su V498AbT+UCvtt4mPriK7NTVsaexEtxqC/eSZbRCa03125K18fFfkmbj2FNPmkmT4QigKFGlzCMnGEQF/ JptngmiPxcOOetD7dceVvfFs2yzDDh4TcvKSOH6Hn/3yOQQyRwtjM1/kOI0Ho+wA71FuebK/zbrUxM3p 91uwTy150hAgMJwTUvy1Q1i4C+mewHx150GA7RXChxVd/UjdfcNoAjePUzbKfW2yJk4EW1RVcYH5sam3 2rCm9putYnzW7oJZM86+N8/qG3cxuRZuCEHvKDFPrbjuOClUiRVr9LPP22tFe9r27yZr1c8l5pb/7e7H 33WNj1mAUIkHlFQp18tyEu2lBrIFDwsD4JVFVEM7tnhtx01bqcmquWNuxKEnaGGKUgyelHzUuAQaAbsI n/vIdmoea6yDFQe2fYZWoV5lv+l7Ns7Iil7E\u003d","ephemeralPublicKey":"BOildnu0C j5z27VMrPVaBS0F2m2kqabEo6dhTZ5Gv+Hb7P9k4JUwOOa2Uya+kBze+IbhaxWxmEYI6JEplWVZS08\ u003d","tag":"M44lqld9tmEYvLQmRVMeHDBxqb0ek26O00RjBRYuatg\u003d"}'
+              signature: MEYCIQCFX+lh16E4qpXpwRcY0nuQT0/4WfjfNiwkrf6tYouqQAIhAKoQX9paax1utkdxUVhDlzaCx5K vbKETqinrVe3ImAZS
+              billingAddress:
+                streetAddress: 100 Universal City Plaza
+                locality: Hollywood
+                region: CA
+                postalCode: '91608'
+                country: US
+
+    GooglePaySaleResponse:
+      value:
+        fdSaleId: db9412af7d5tfr4f81b28e01c0aff039
+        status: APPROVED
+        orderId: Order2344322
+        requestedAmount: 2
+        approvedAmount: 2
+        currencyCode:
+          code: USD
+          number: 840
+        partialPaymentAllowed: true
+        transactionDateTime: 2021-04-18T00:56:03-0400
+        fundingSource:
+          type: GOOGLE_PAY
+          googlePay:
+            expiryDate:
+              month: '12'
+              year: '26'
+            dPanLast4: '7840'
+            cardType: MASTERCARD
+        hostExtraInfo:
+        - name: APPROVAL_NUMBER
+          value: '025217'
+        - name: SEQUENCE_NUMBER
+          value: '032007'
+        - name: HOST_RESPONSE_CODE
+          value: '2'
+        - name: HOST_RESPONSE_MESSAGE
+          value: APPROVED 025217
+        - name: TRANSACTION_DATETIME
+          value: 2021-03-18T00:56
+
+
+
+
+    ApplePaySaleRequest:
+      value:
+        fdCustomerId: 4e6aceafe75546f0943bbe4775530ee5
+        sale:
+          orderId: Order518e35we2sd3784d
+          merchantId: MO06313553001
+          requestedAmount: 4.55
+          currencyCode:
+            number: 840
+          fundingSource:
+            applePay:
+              version: EC_v1
+              data: Q7XB5Y7fNrruRnS6kNyqy3sH4xvj+Qobxb1gW4vLxfw51Aa2vLk7cNBSBEDtOIK1XroKr4lE/nCcLs2+Zdc5yFaS41Z7s6pJeLjUts4vboYLVGnb3A2jreX2eFWJh2Rf/D/OLxog26fS434uEei3VH6dfa8AlfhKn7MsNnq4JJrv3NsUu+puSFXrP80SbFadvo+2DD/yqfpWk1KLM8ih8I6H+BBjZE/uZCXVYBUuyKBcId2puYXJUoaagxkVl4TJzMDliE4li+F7I0H7VqvaaJS0QBsB2JaWLVrxKfYI3KvBx7JeubyPJHz0GufIjfTPhGOhhRW3lV+UNpDCe5rlus12m9Ac70VrPVqlIqfOYtMW9H6TylDlswKGM3BZHJ7UiQiU8tihUk4u/mz0mO2iWQbE6gpwthjTYijBvaC6ubTMaGVyIFfqHD5DS3h/Ybf13IxLJxSK86eK6OZiZf4Kl3KT0JQtQpvnqnBcSA==
+              signature: MIAGCSqGSIb3DQEHAqCAMIACAQExDTALBglghkgBZQMEAgEwCwYJKoZIhvcNAQcBoIAwggHTMIIBeQIBATAJBgcqhkjOPQQBMHYxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJOSjEUMBIGA1UEBwwLSmVyc2V5IENpdHkxEzARBgNVBAoMCkZpcnN0IERhdGExEjAQBgNVBAsMCUZpcnN0IEFQSTEbMBkGA1UEAwwSZDFkdnRsMTAwMC4xZGMuY29tMB4XDTE5MDcyNTE2Mjc0OVoXDTM5MDcyMDE2Mjc0OVowdjELMAkGA1UEBhMCVVMxCzAJBgNVBAgMAk5KMRQwEgYDVQQHDAtKZXJzZXkgQ2l0eTETMBEGA1UECgwKRmlyc3QgRGF0YTESMBAGA1UECwwJRmlyc3QgQVBJMRswGQYDVQQDDBJkMWR2dGwxMDAwLjFkYy5jb20wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAASuceE8zXwcVs6iYkxSIuI8vuesm5a98/LQaDfGxfebyrShaFOzVBxANNP5NHfKHiwNE+peexNTBy9usI7N1QR5MAkGByqGSM49BAEDSQAwRgIhAJdbaSMDfot2cSpzSodvzYUhhKF0STeGA8bFkN/o99fKAiEA2uumj9JjZiiujMLvdm5AO2wYrc8dN1BmNrkCB0RfLTIAADGCAX0wggF5AgEBMHswdjELMAkGA1UEBhMCVVMxCzAJBgNVBAgMAk5KMRQwEgYDVQQHDAtKZXJzZXkgQ2l0eTETMBEGA1UECgwKRmlyc3QgRGF0YTESMBAGA1UECwwJRmlyc3QgQVBJMRswGQYDVQQDDBJkMWR2dGwxMDAwLjFkYy5jb20CAQEwCwYJYIZIAWUDBAIBoIGTMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTIyMDkxOTE1MDcwM1owKAYJKoZIhvcNAQk0MRswGTALBglghkgBZQMEAgGhCgYIKoZIzj0EAwIwLwYJKoZIhvcNAQkEMSIEIPRbfxpgT+1Gmx88UPCXYuxt8Ohl1LxxIqhYjdSDNFbLMAoGCCqGSM49BAMCBEgwRgIhAP4eb/03lcJunuVjIClTKPbYMJO3N4TwBiNpznQVMzQvAiEAhVhcgC+eFdEngAACEG8HRmC2isq0T1HRgm6p0HrUswkAAAAAAAA=
+              applicationData: VEVTVA==
+              header:
+                ephemeralPublicKey: MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEYGSbxrqyFDZjAz0Y3Dwa4i+brjcKKW0zxfDMcNTg0Ktl9iRDfvdM2BPX1edt3nQdnIVoX/1tOtteZ55T08CZGg==
+                publicKeyHash: cNzwKkT2bIES+DTyQ5zgvzHX/y3W1U+8TjTrAgXIRxk=
+                transactionId: '31323334353637'
+              billingAddress:
+                type: work
+                streetAddress: 200 Universal City Plaza
+                locality: Hollywood
+                region: CA
+                postalCode: '91600'
+                country: US
+                formatted: |-
+                  100 Universal City Plaza
+                  Hollywood, CA 91608 USA
+                primary: true
+        deviceInfo:
+          id: 537edec8-d33e-4ee8-93a7-b9f61876950c
+          kind: mobile
+          details:
+          - provider: RAVELIN
+            dataCapture:
+              dataEventId: BB8E4E92...Fz1E063113
+    ApplePaySaleResponse:
+      value:
+        fdSaleId: d90461a67d5a49d194f098f57261eafc
+        status: APPROVED
+        orderId: Order518e35we2sd3784d
+        requestedAmount: 4.55
+        approvedAmount: 4.55
+        currencyCode:
+          code: USD
+          number: 840
+        partialPaymentAllowed: true
+        transactionDateTime: 2023-02-13T13:47:28-0500
+        fundingSource:
+          type: APPLE_PAY
+          applePay:
+            token:
+              tokenId: '1713234930820024'
+              tokenProvider: TRANS_ARMOR
+              expiryDate:
+                month: '12'
+                year: '25'
+            expiryDate:
+              month: '12'
+              year: '25'
+            dPanLast4: '0024'
+            cardType: MASTERCARD
+        hostExtraInfo:
+        - name: APPROVAL_NUMBER
+          value: '100700'
+        - name: SEQUENCE_NUMBER
+          value: '435777'
+        - name: HOST_RESPONSE_CODE
+          value: '4'
+        - name: HOST_RESPONSE_MESSAGE
+          value: APPROVED  100700
+        - name: HOST_AVS_CODE
+          value: AVS+Y
+        - name: TRANSACTION_DATETIME
+          value: 2023-02-13T12:47
+    PayPalSaleRequest:
+      value:
+        fdCustomerId: 4e6aceafe75546f0943bbe4775530ee5
+        sale:
+          orderId: Order8414424
+          merchantId: MO06313553001
+          requestedAmount: '2.25'
+          currencyCode:
+            number: 840
+          fundingSource:
+            saveToVault: false
+            paypal:
+              payerId: PayerID001
+              nonce: fake-paypal-billing-agreement-nonce
+        deviceInfo:
+          id: 537edec8-d33e-4ee8-93a7-b9f61876950c
+          kind: mobile
+          details:
+          - provider: PayPal
+            dataCapture:
+              rawData: aaaaaXREUVZGRlFY...aMV
+              dataEventId: BB8E4E92...Fz1E063113
+            dataStatic:
+              os: "Android 5.1.1 Lollipop"
+              osVersion: "5.1.1 Lollipop"
+              model: XT1540
+              type: "Moto G"
+            dataDynamic:
+              latitude: "13.0827 N"
+              longitude: "80.2707 E"
+              ipAddress: 172.27.37.221
+    PayPalSaleResponse:
+      value:
+        fdSaleId: a9d4797bfdae435abb27e9af79703f4a
+        status: APPROVED
+        orderId: Order8414424
+        requestedAmount: 2.25
+        approvedAmount: 2.25
+        currencyCode:
+          code: USD
+          number: 840
+        partialPaymentAllowed: true
+        transactionDateTime: 2023-02-13T14:00:09-0500
+        fundingSource:
+          type: PAYPAL
+          paypal:
+            token:
+              tokenId: '9397022578249424'
+              tokenProvider: TRANS_ARMOR
+              expiryDate:
+                month: '01'
+                year: '28'
+        hostExtraInfo:
+        - name: APPROVAL_NUMBER
+          value: '913691'
+        - name: SEQUENCE_NUMBER
+          value: '061262'
+        - name: HOST_RESPONSE_CODE
+          value: '0'
+        - name: HOST_RESPONSE_MESSAGE
+          value: APPROVED  913691
+        - name: TRANSACTION_DATETIME
+          value: 2023-02-13T13:00
+        - name: NETWORK_TRANSACTION_ID
+          value: '123456789012345'
+    VenmoSaleRequest:
+      value:
+        fdCustomerId: 4e6aceafe75546f0943bbe4775530ee5
+        sale:
+          orderId: Order8763049
+          merchantId: MO06313553001
+          requestedAmount: '2.25'
+          currencyCode:
+            number: 840
+          fundingSource:
+            saveToVault: false
+            venmo:
+              payerId: PayerID001
+              nonce: fake-venmo-account-nonce
+        deviceInfo:
+          id: 537edec8-d33e-4ee8-93a7-b9f61876950c
+          kind: mobile
+          details:
+          - provider: Venmo
+            dataCapture:
+              rawData: aaaaaXREUVZGRlFY...aMV
+              dataEventId: BB8E4E92...Fz1E063113
+            dataStatic:
+              os: Android 5.1.1 Lollipop
+              osVersion: 5.1.1 Lollipop
+              model: XT1540
+              type: Moto G
+            dataDynamic:
+              latitude: 13.0827 N
+              longitude: 80.2707 E
+              ipAddress: 172.27.37.221
+    VenmoSaleResponse:
+      value:
+        fdSaleId: 68fd1f9db6474dafbd9661968c7b1bee
+        status: APPROVED
+        orderId: Order8763049
+        requestedAmount: 2.25
+        approvedAmount: 2.25
+        currencyCode:
+          code: USD
+          number: 840
+        partialPaymentAllowed: true
+        transactionDateTime: 2023-02-13T14:04:58-0500
+        fundingSource:
+          type: VENMO
+          venmo:
+            token:
+              tokenId: '9397022578249424'
+              tokenProvider: TRANS_ARMOR
+              expiryDate:
+                month: '11'
+                year: '30'
+        hostExtraInfo:
+        - name: APPROVAL_NUMBER
+          value: '583287'
+        - name: SEQUENCE_NUMBER
+          value: '024630'
+        - name: HOST_RESPONSE_CODE
+          value: '0'
+        - name: HOST_RESPONSE_MESSAGE
+          value: APPROVED  583287
+        - name: TRANSACTION_DATETIME
+          value: 2023-02-13T13:05
+        - name: NETWORK_TRANSACTION_ID
+          value: '123456789012345'
+    TATokenSaleRequest:
+      value:
+        sale:
+          orderId: Order8366425
+          merchantId: MO35312599001
+          requestedAmount: '2.25'
+          currencyCode:
+            number: '840'
+          fundingSource:
+            credit:
+              nameOnCard: John Smith
+              cardType: VISA
+              billingAddress:
+                type: work
+                streetAddress: 100 Universal City Plaza
+                locality: Hollywood
+                region: CA
+                postalCode: '20220'
+                country: US
+                formatted: |-
+                  100 Universal City Plaza
+                  Hollywood, CA 91608 US
+                primary: true
+              expiryDate:
+                month: '12'
+                year: '23'
+              token:
+                tokenId: '1741886859548968'
+                tokenProvider: TRANS_ARMOR
+    TATokenSaleResponse:
+      value:
+        fdSaleId: 0bce4da5be5a4a3b9eed1ca8b68302c4
+        status: APPROVED
+        orderId: Order8366425
+        requestedAmount: 2.25
+        approvedAmount: 2.25
+        currencyCode:
+          code: USD
+          number: 840
+        partialPaymentAllowed: true
+        transactionDateTime: 2023-02-07T00:21:11-0500
+        fundingSource:
+          type: CREDIT
+          credit:
+            nameOnCard: John Smith
+            alias: '8968'
+            cardType: VISA
+            billingAddress:
+              streetAddress: 100 Universal City Plaza
+              postalCode: '20220'
+            expiryDate:
+              month: '12'
+              year: '23'
+            token:
+              tokenId: '1741886859548968'
+              tokenProvider: TRANS_ARMOR
+        hostExtraInfo:
+        - name: APPROVAL_NUMBER
+          value: '34246 '
+        - name: SEQUENCE_NUMBER
+          value: '642747'
+        - name: TRANSACTION_DATETIME
+          value: 2023-02-07T00:21
+        - name: NETWORK_TRANSACTION_ID
+          value: '012000207052111'
+
+
+    VaultedAuthRequest:
+      value:
+        fdCustomerId: c7726f24c50d4b69877845af06d2cbf9
+        authorization:
+          orderId: Order5623322
+          merchantId: MO35312599001
+          requestedAmount: '3.25'
+          currencyCode:
+            number: '840'
+          fundingSource:
+            vaultedAccount:
+              fdAccountId: 8a7f6f8d861c224f01862a4ffe1f0240
+    VaultedAuthResponse:
+      value:
+        fdAuthorizationId: 142b9da5f1094fcf9e3b547d8b464d9e
+        authStatus: APPROVED
+        orderId: Order0573944
+        requestedAmount: 2.25
+        approvedAmount: 2.25
+        currencyCode:
+          code: USD
+          number: 840
+        transactionDateTime: 2023-02-07T00:20:18-0500
+        fundingSource:
+          type: VAULTED_ACCOUNT
+          vaultedAccount:
+            fdAccountId: 8a7f6f8d861c224f01862a4ffe1f0240
+            type: CREDIT
+          credit:
+            nameOnCard: John Smith
+            alias: '8968'
+            cardType: VISA
+            billingAddress:
+              streetAddress: 100 Universal City Plaza
+              postalCode: '20220'
+            expiryDate:
+              month: '12'
+              year: '23'
+            token:
+              tokenId: '1741886859548968'
+              tokenProvider: TRANS_ARMOR
+        hostExtraInfo:
+        - name: APPROVAL_NUMBER
+          value: '34246 '
+        - name: SEQUENCE_NUMBER
+          value: '206485'
+        - name: TRANSACTION_DATETIME
+          value: 2023-02-07T00:20
+        - name: NETWORK_TRANSACTION_ID
+          value: '012000207052019'
+
+    VaultedWithStoreIdAuthRequest:
+      value:
+        fdCustomerId: f18041b21ae04dee9a00e8289ed262a4
+        authorization:
+          orderId: '1234567890131'
+          storeId: W770001
+          requestedAmount: 2
+          currencyCode:
+            number: 840
+          fundingSource:
+            vaultedAccount:
+              fdAccountId: 8a7f3353790bb3c2017945697c991aba
+
+    VaultedWithStoreIdAuthResponse:
+      value:
+        fdAuthorizationId: 3b73dd32e3104849bed244a3a335dd04
+        authStatus: APPROVED
+        orderId: '1234567890131'
+        storeId: W770001
+        requestedAmount: 2
+        approvedAmount: 2
+        currencyCode:
+          code: USD
+          number: 840
+        transactionDateTime: 2021-05-25T10:00:19-0400
+        fundingSource:
+          type: VAULTED_ACCOUNT
+          vaultedAccount:
+            fdAccountId: 8a7f3353790bb3c2017945697c991aba
+            type: CREDIT
+          credit:
+            alias: '6775'
+            cardType: VISA
+            billingAddress:
+              postalCode: J3G2P3
+            expiryDate:
+              month: '12'
+              year: '21'
+            token:
+              tokenId: '7474437453586775'
+              tokenProvider: TRANS_ARMOR
+        hostExtraInfo:
+        - name: APPROVAL_NUMBER
+          value: '359930'
+        - name: SEQUENCE_NUMBER
+          value: '401447'
+        - name: HOST_RESPONSE_CODE
+          value: '3'
+        - name: HOST_RESPONSE_MESSAGE
+          value: APPROVED 359930
+        - name: HOST_AVS_CODE
+          value: AVS+Y
+        - name: TRANSACTION_DATETIME
+          value: 2021-05-25T10:00
+        - name: NETWORK_TRANSACTION_ID
+          value: '024000525140023'
+
+
+
+    ApplePayAuthRequest:
+      value:
+        authorization:
+          orderId: '123456789123'
+          storeId: K750028
+          requestedAmount: '20.00'
+          currencyCode:
+            number: 840
+          fundingSource:
+            applePay:
+              version: EC_v1
+              data: iQhe7jDoda+55PsN6Ub0S9LDHYPkdPd/OlUskoe5tAYw5Gkppi0N7/yi3vYmpGmYpZ3XJDFW4b+RlzRODW1wX38iNHRXTbP3GJPW7xgRoUazUQ+DAw5f4WQm51GjNGre8G9yQhxSunPTLbSnxoUQPSCL58hMOVdyw/cDsdXvC9WmWCn/SNsIhNQVWKyPDYUfQv20FC3Fr7x3AQiDKgjkek8zMXFOBDdNhoyAqjyeexYYhLDAQXrgHXaLXpEekWfnIjuxJ/djlVPSOB1fymX0PPtR2xKhc6vcPVZCY0vhC1ysrlGSG+DFds2LtE/nrFuI+zD2FcOVtFz/6FD67TEPjPKf66F+i0+1rZ81fgevlZIrcsJfXeSB/NhWGNNNAZzZwH1Htp460wsGdjUM5KynGgVzTrFVAuXFp+3Y1s1EB1OOX+7LVo9aN1Q+dntGddTp0TiHv4sxo/nt+Dl71x4uDGCEiIBvw/U4ZH0x
+              signature: MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwEAAKCAMIIB0zCCAXkCAQEwCQYHKoZIzj0EATB2MQswCQYDVQQGEwJVUzELMAkGA1UECAwCTkoxFDASBgNVBAcMC0plcnNleSBDaXR5MRMwEQYDVQQKDApGaXJzdCBEYXRhMRIwEAYDVQQLDAlGaXJzdCBBUEkxGzAZBgNVBAMMEmQxZHZ0bDEwMDAuMWRjLmNvbTAeFw0xOTA3MjUxNjI3NDlaFw0zOTA3MjAxNjI3NDlaMHYxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJOSjEUMBIGA1UEBwwLSmVyc2V5IENpdHkxEzARBgNVBAoMCkZpcnN0IERhdGExEjAQBgNVBAsMCUZpcnN0IEFQSTEbMBkGA1UEAwwSZDFkdnRsMTAwMC4xZGMuY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAErnHhPM18HMIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwEAAKCAMIIB0zCCAXkCAQEwCQYHKoZIzj0EATB2MQswCQYDVQQGEwJVUzELMAkGA1UECAwCTkoxFDASBgNVBAcMC0plcnNleSBDaXR5MRMwEQYDVQQKDApGaXJzdCBEYXRhMRIwEAYDVQQLDAlGaXJzdCBBUEkxGzAZBgNVBAMMEmQxZHZ0bDEwMDAuMWRjLmNvbTAeFw0xOTA3MjUxNjI3NDlaFw0zOTA3MjAxNjI3NDlaMHYxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJOSjEUMBIGA1UEBwwLSmVyc2V5IENpdHkxEzARBgNVBAoMCkZpcnN0IERhdGExEjAQBgNVBAsMCUZpcnN0IEFQSTEbMBkGA1UEAwwSZDFkdnRsMTAwMC4xZGMuY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAErnHhPM18HFbOomJMUiLiPL7nrJuWvfPy0Gg3xsX3m8q0oWhTs1QcQDTT+TR3yh4sDRPqXnsTUwcvbrCOzdUEeTAJBgcqhkjOPQQBA0kAMEYCIQCXW2kjA36LdnEqc0qHb82FIYShdEk3hgPGxZDf6PfXygIhANrrpo/SY2YorozC73ZuQDtsGK3PHTdQZja5AgdEXy0yAAAxggFUMIIBUAIBATB7MHYxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJOSjEUMBIGA1UEBwwLSmVyc2V5IENpdHkxEzARBgNVBAoMCkZpcnN0IERhdGExEjAQBgNVBAsMCUZpcnN0IEFQSTEbMBkGA1UEAwwSZDFkdnRsMTAwMC4xZGMuY29tAgEBMA0GCWCGSAFlAwQCAQUAoGkwGAYJKoZIhvcNAQkDMQsGCSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcNMjAwODE0MTcxMjEyWjAvBgkqhkiG9w0BCQQxIgQgALdhoAkC7zqLpTlL6SvUlVMXmSSqY3KLm0dtEyx8CVcwCgYIKoZIzj0EAwIESDBGAiEA3cw8azRKh/7nyeDWNByu8Vt32SFqM2x6KWRSh9b2XuECIQDdvJlbxAVoGxL0pf3QQ9U+bqmtjwZcvy9BMgL1oHWUBAAAAAAAAA==
+              applicationData: VEVTVA==
+              header:
+                ephemeralPublicKey: MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEcVpsjkzx3uU+mkA7V0gZeAZkeUNIBKrGwIxKMgoVCnvgSZDLDQYxZC7UFbeyg89eiEv1eZ2Ch38efO+xGvJhhg==
+                publicKeyHash: RLP3SbLJR7bWmJFAfBa8hV5BQhRJ1AAhBrsjkNXKW7U=
+                transactionId: '31323334353637'
+    ApplePayAuthResponse:
+      value:
+        fdAuthorizationId: ad61893ab58544c7936f8380b90c310b
+        authStatus: APPROVED
+        orderId: '123456789123'
+        storeId: K750028
+        requestedAmount: 20
+        approvedAmount: 20
+        currencyCode:
+          code: USD
+          number: 840
+        transactionDateTime: 2020-08-21T08:06:17-0400
+        fundingSource:
+          type: APPLE_PAY
+          applePay:
+            token:
+              tokenId: '7289892030800026'
+              tokenProvider: TRANS_ARMOR
+              expiryDate:
+                month: '12'
+                year: '25'
+            expiryDate:
+              month: '12'
+              year: '25'
+            dPanLast4: '0026'
+            cardType: VISA
+        hostExtraInfo:
+        - name: APPROVAL_NUMBER
+          value: OK461C
+        - name: SEQUENCE_NUMBER
+          value: '401036'
+        - name: TRANSACTION_DATETIME
+          value: '20200821120617'
+
+    GooglePayAuthRequest:
+      value:
+        authorization:
+          orderId: '123456789012'
+          storeId: K750028
+          requestedAmount: '2'
+          currencyCode:
+            number: 840
+          fundingSource:
+            googlePay:
+              version: ECv1
+              data: '{"encryptedMessage":"t7rUkBApTPtvDQBV0B1EnscSEGIc4clsGPswS639mPXXrOZnzaiYA7FUxL8bzgjXdIFobSvyUrxVWHkfMQCo1aAslJxSvHNclkq3OBxw86VThgu9zGojxqXi+cME2+SE+T/GRKD98jenPO0mLKyG8lCRPCi7zP4RJYquxQspOFM4MKS7OgbzbqPljR86bL1kmVy5rrSjdeef5ItiQBTIr9Z+tGDWnQ0MKxeN3akPWaiHb18QaL7HZxiIiDRbRVISF7YAOSSabPr7w5A9B7lc+P4EsJe0ewASO1aQzgaF0vP4N8zdIb1ilAzeNYeEqDzMCJPu5dEv1zPZoFIwKbtJaue53O/yJrtKiDLQbFUJ06Xedq+3+3qXDWcLKhy92+ICYCwqb3zxz5OCSYDL2qJB7FkOTc60aNqgG9vIuK7tpZ+qokOJwmwAN2mGvuepd61ho0YG4zPWUCabxa7MyqZ6tAKdWNFoF6mDrqnBFVPjZzkcNV3aPheoVnyvUGcOAWXmMyHkWai6WMl/qmE6wKxEuTRKUAZDnt/pqmI5d9ugF2dhlCi2ER/afhBTsRc\u003d","ephemeralPublicKey":"BBiibGwtRV8VAKMmnnlsRXMa0BV9z6OP8hNbpoy5Wem4+JAfrhL+i3HVuJkQ+X7n+6MDXD9Z5UjFSe7iX7FiqbM\u003d","tag":"PcmiJ+ycR6SaiA0UCT6Cc8ziuUiv9XlDpbIWRfvZQGI\u003d"}'
+              signature: MEUCICLv5bLh2EWKS05uOxuOyDyD48XVr3rbqfB5c6z6NnqgAiEA2h5MJMoId73fQOvIdkxvITEkK9FHLRGTFsXf+luA0t8=
+    GooglePayAuthResponse:
+      value:
+        fdAuthorizationId: be4090a45b6e42218c5ae66d8e6ae8f1
+        authStatus: APPROVED
+        orderId: '123456789012'
+        storeId: K750028
+        requestedAmount: 2
+        approvedAmount: 2
+        currencyCode:
+          code: USD
+          number: 840
+        transactionDateTime: 2020-08-21T08:02:58-0400
+        fundingSource:
+          type: GOOGLE_PAY
+          googlePay:
+            expiryDate:
+              month: '12'
+              year: '25'
+            dPanLast4: '7840'
+            cardType: MASTERCARD
+            token:
+              tokenId: '7779515672137840'
+              tokenProvider: TRANS_ARMOR
+              expiryDate:
+                month: '12'
+                year: '25'
+        hostExtraInfo:
+        - name: APPROVAL_NUMBER
+          value: OK3618
+        - name: SEQUENCE_NUMBER
+          value: '518610'
+        - name: TRANSACTION_DATETIME
+          value: '20200821120258'
+
+    PayPalAuthVaultedRequest:
+      value:
+        fdCustomerId: f18041b21ae04dee9a00e8289ed262a4
+        authorization:
+          orderId: '12345671189123'
+          storeId: W770001
+          requestedAmount: 5
+          currencyCode:
+            number: 840
+          fundingSource:
+            vaultedAccount:
+              fdAccountId: 8a7f3353790bb3c2017941ed5e060cbd
+        deviceInfo:
+          id: 896e6893-51a0-4d8b-aecc-dfcc9945e0e4
+          kind: mobile
+          details:
+          - provider: Paypal
+            dataCapture:
+              rawData: aaaaaXREUVZGRlFYaMV
+              dataEventId: 66f021fb-c7f0-4271-ad68-f66944b71dfd
+              captureTime: '2021-05-25T11:49:54.855Z'
+            dataDynamic:
+              captureTime: '2021-05-25T11:49:54.855Z'
+    PayPalAuthVaultedResponse:
+      value:
+        fdAuthorizationId: 00fa2f9401fa4b6e841ae91d03960526
+        authStatus: APPROVED
+        orderId: '12345671189123'
+        storeId: W770001
+        requestedAmount: 5
+        approvedAmount: 5
+        currencyCode:
+          code: USD
+          number: 840
+        transactionDateTime: 2021-05-06T09:58:58-0400
+        fundingSource:
+          type: VAULTED_ACCOUNT
+          vaultedAccount:
+            fdAccountId: 8a7f3353790bb3c2017941ed5e060cbd
+            type: PAYPAL
+          paypal:
+            token:
+              tokenId: '7481631140129424'
+              tokenProvider: TRANS_ARMOR
+              expiryDate:
+                month: '11'
+                year: '29'
+            billingAgreementId: B_FAKE_ID-a3ae
+        hostExtraInfo:
+        - name: APPROVAL_NUMBER
+          value: '252998'
+        - name: SEQUENCE_NUMBER
+          value: '525638'
+        - name: HOST_RESPONSE_CODE
+          value: '2'
+        - name: HOST_RESPONSE_MESSAGE
+          value: APPROVED 252998
+        - name: TRANSACTION_DATETIME
+          value: 2021-05-06T09:58
+        - name: NETWORK_TRANSACTION_ID
+          value: '123456789012345'
+
+
+    VenmoAuthVaultedRequest:
+      value:
+        fdCustomerId: 6d673028d233421da25212122e273f7a
+        authorization:
+          orderId: '1234567890124'
+          storeId: W770001
+          requestedAmount: 20
+          currencyCode:
+            number: 840
+          fundingSource:
+            vaultedAccount:
+              fdAccountId: 8a7f0d8c798e7cf701799e4c81d10821
+        deviceInfo:
+          id: 896e6893-51a0-4d8b-aecc-dfcc9945e0e4
+          kind: mobile
+          details:
+          - provider: Venmo
+            dataCapture:
+              rawData: aaaaaXREUVZGRlFYaMV
+              dataEventId: 66f021fb-c7f0-4271-ad68-f66944b71dfd
+              captureTime: '2021-05-25T11:49:54.855Z'
+            dataDynamic:
+              captureTime: '2021-05-25T11:49:54.855Z'
+
+    VenmoAuthVaultedResponse:
+      value:
+        fdAuthorizationId: 8b16126b29e548c7bb14feb87fff88ac
+        authStatus: APPROVED
+        orderId: '1234567890124'
+        storeId: W770001
+        requestedAmount: 20
+        approvedAmount: 20
+        currencyCode:
+          code: USD
+          number: 840
+        transactionDateTime: 2021-05-24T08:19:07-0400
+        fundingSource:
+          type: VAULTED_ACCOUNT
+          vaultedAccount:
+            fdAccountId: 8a7f0d8c798e7cf701799e4c81d10821
+            type: VENMO
+          venmo:
+            token:
+              tokenId: '7481631140129424'
+              tokenProvider: TRANS_ARMOR
+              expiryDate:
+                month: '08'
+                year: '30'
+        hostExtraInfo:
+        - name: APPROVAL_NUMBER
+          value: '269482'
+        - name: SEQUENCE_NUMBER
+          value: '264745'
+        - name: HOST_RESPONSE_CODE
+          value: '2'
+        - name: HOST_RESPONSE_MESSAGE
+          value: APPROVED 269482
+        - name: TRANSACTION_DATETIME
+          value: 2021-05-24T08:19
+        - name: NETWORK_TRANSACTION_ID
+          value: '123456789012345'
+
+
+
+    NonceAuthRequest:
+      value:
+        fdCustomerId: c7726f24c50d4b69877845af06d2cbf9
+        authorization:
+          orderId: Order8331515
+          merchantId: MO35312599001
+          requestedAmount: 4.25
+          currencyCode:
+            number: 840
+          fundingSource:
+            saveToVault: true
+            token:
+              tokenId: 0e96800d-2cf1-47bc-9dbf-de9630ee4235
+              tokenProvider: CLAIM_CHECK_NONCE
+    NonceAuthResponse:
+      value:
+        fdAuthorizationId: 4fba5f6e30e44afd819a16cedc962f57
+        authStatus: APPROVED
+        orderId: Order8331515
+        requestedAmount: 4.25
+        approvedAmount: 4.25
+        currencyCode:
+          code: USD
+          number: 840
+        transactionDateTime: 2023-02-07T00:23:36-0500
+        fundingSource:
+          type: CREDIT
+          vaultedAccount:
+            fdAccountId: 8a7f7898861c224c01862a545d350235
+            type: CREDIT
+          credit:
+            nameOnCard: John Smith
+            alias: '8968'
+            cardType: VISA
+            billingAddress:
+              streetAddress: 100 Universal City Plaza
+              postalCode: '20220'
+            expiryDate:
+              month: '12'
+              year: '23'
+            token:
+              tokenId: '1741886859548968'
+              tokenProvider: TRANS_ARMOR
+        hostExtraInfo:
+        - name: APPROVAL_NUMBER
+          value: '34247 '
+        - name: SEQUENCE_NUMBER
+          value: '614812'
+        - name: TRANSACTION_DATETIME
+          value: 2023-02-07T00:23
+        - name: NETWORK_TRANSACTION_ID
+          value: '012000207052336'
+    TATokenAuthRequest:
+      value:
+        authorization:
+          orderId: Order7218349
+          merchantId: MO35312599001
+          requestedAmount: '2.25'
+          currencyCode:
+            number: '840'
+          fundingSource:
+            credit:
+              nameOnCard: John Smith
+              cardType: VISA
+              billingAddress:
+                type: work
+                streetAddress: 100 Universal City Plaza
+                locality: Hollywood
+                region: CA
+                postalCode: '20220'
+                country: US
+                formatted: |-
+                  100 Universal City Plaza
+                  Hollywood, CA 91608 US
+                primary: true
+              expiryDate:
+                month: '12'
+                year: '23'
+              token:
+                tokenId: '1741886859548968'
+                tokenProvider: TRANS_ARMOR
+    TATokenAuthResponse:
+      value:
+        fdAuthorizationId: d17ea6f3222d42cab3d4cb710537f2d8
+        authStatus: APPROVED
+        orderId: Order7218349
+        requestedAmount: 2.25
+        approvedAmount: 2.25
+        currencyCode:
+          code: USD
+          number: 840
+        transactionDateTime: 2023-02-07T00:21:24-0500
+        fundingSource:
+          type: CREDIT
+          credit:
+            nameOnCard: John Smith
+            alias: '8968'
+            cardType: VISA
+            billingAddress:
+              streetAddress: 100 Universal City Plaza
+              postalCode: '20220'
+            expiryDate:
+              month: '12'
+              year: '23'
+            token:
+              tokenId: '1741886859548968'
+              tokenProvider: TRANS_ARMOR
+        hostExtraInfo:
+        - name: APPROVAL_NUMBER
+          value: '37567 '
+        - name: SEQUENCE_NUMBER
+          value: '046277'
+        - name: TRANSACTION_DATETIME
+          value: 2023-02-07T00:21
+        - name: NETWORK_TRANSACTION_ID
+          value: '012000207052125'
+
+
+    TATokenAuthCaptureRequest:
+      value:
+        capture:
+          currencyCode:
+            number: 840
+          requestedAmount: 2.25
+    TATokenAuthCaptureResponse:
+      value:
+        fdCaptureId: 5d0eb623778441549d82244d31528744
+        status: APPROVED
+        requestedAmount: 2.25
+        approvedAmount: 2.25
+        currencyCode:
+          code: USD
+          number: 840
+        transactionDateTime: 2023-02-07T00:21:35-0500
+        fundingSource:
+          type: CREDIT
+          credit:
+            alias: '8968'
+            cardType: VISA
+        hostExtraInfo:
+        - name: APPROVAL_NUMBER
+          value: '37567 '
+        - name: SEQUENCE_NUMBER
+          value: '046277'
+        - name: TRANSACTION_DATETIME
+          value: 2023-02-07T00:21
+        - name: NETWORK_TRANSACTION_ID
+          value: '012000207052125'
+
+    VaultedAuthCaptureRequest:
+      value:
+        fdCustomerId: c7726f24c50d4b69877845af06d2cbf9
+        capture:
+          currencyCode:
+            number: 840
+          requestedAmount: '3.25'
+    VaultedAuthCaptureResponse:
+      value:
+        fdCaptureId: 8411cf25075d46c4bd7cd80c46af79d8
+        status: APPROVED
+        requestedAmount: 3.25
+        approvedAmount: 3.25
+        currencyCode:
+          code: USD
+          number: 840
+        transactionDateTime: 2023-02-07T00:19:42-0500
+        fundingSource:
+          type: VAULTED_ACCOUNT
+        hostExtraInfo:
+        - name: APPROVAL_NUMBER
+          value: '34246 '
+        - name: SEQUENCE_NUMBER
+          value: '122578'
+        - name: TRANSACTION_DATETIME
+          value: 2023-02-07T00:19
+        - name: NETWORK_TRANSACTION_ID
+          value: '012000207051931'
+    MinimalCaptureRefundRequest:
+      value:
+        refund:
+          currencyCode:
+            number: 840
+          requestedAmount: 2.25
+    MinimalCaptureRefundResponse:
+      value:
+        fdRefundId: 38ddeba736da4e849b75753a4712911f
+        status: APPROVED
+        requestedAmount: 2.25
+        approvedAmount: 2.25
+        currencyCode:
+          code: USD
+          number: 840
+        transactionDateTime: 2023-02-07T00:21:45-0500
+        hostExtraInfo:
+        - name: APPROVAL_NUMBER
+          value: '37567 '
+        - name: SEQUENCE_NUMBER
+          value: '485027'
+        - name: TRANSACTION_DATETIME
+          value: 2023-02-07T00:21
+        - name: NETWORK_TRANSACTION_ID
+          value: '012000207052146'
+        partialPaymentAllowed: true
+
+    MinimalGetAuthResponseByfdAuthorizationId:
+      value:
+        fdAuthorizationId: 28618d8fe42f4f2d92a10205a6099670
+        authStatus: APPROVED
+        requestedAmount: 3.25
+        approvedAmount: 3.25
+        currencyCode:
+          code: USD
+          number: 840
+        createdDateTime: 2023-02-07T00:19:31-0500
+        fundingSource:
+          type: VAULTED_ACCOUNT
+          vaultedAccount:
+            status: ACTIVE
+          credit:
+            alias: '8968'
+            cardType: VISA
+            billingAddress:
+              streetAddress: 100 Universal City Plaza
+              postalCode: '20220'
+            expiryDate:
+              month: '12'
+              year: '23'
+            token:
+              tokenId: '1741886859548968'
+              tokenProvider: TRANS_ARMOR
+    MinimalAuthVoidRequest:
+      value:
+        fdCustomerId: c7726f24c50d4b69877845af06d2cbf9
+    MinimalAuthVoidResponse:
+      value:
+        fdAuthorizationId: 142b9da5f1094fcf9e3b547d8b464d9e
+        authStatus: CANCELLED
+        orderId: Order0573944
+        transactionDateTime: 2023-02-07T00:20:22-0500
+        hostExtraInfo:
+        - name: APPROVAL_NUMBER
+          value: '34246 '
+        - name: SEQUENCE_NUMBER
+          value: '206485'
+        - name: NETWORK_TRANSACTION_ID
+          value: '012000207052019'
+
+
+
+    MinimalRefundSale:
+      value:
+        refund:
+          currencyCode:
+            number: 840
+          requestedAmount: 500
+
+
+
+
+    MinimalRefundSaleR:
+      value:
+        fdRefundId: 5b4cf9da15e0475eb9ef3bcea5734442
+        status: APPROVED
+        requestedAmount: 500
+        approvedAmount: 500
+        currencyCode:
+          number: 840
+        transactionDateTime: '2017-10-04T21:49:21.94'
+
+
+
+    MinimalCaptureVoidRequest:
+      value:
+
+
+
+
+    MinimalCaptureVoidResponse:
+      value:
+        transactionDateTime: 2018-02-16T22:35:13+0530
+        hostExtraInfo: []
+        refunds: []
+        fdCaptureId: 8afa83bf619f886401619f93b5770009
+        status: CANCELLED
+
+
+
+
+    MinimalSaleVoidRequest:
+      value:
+
+
+
+
+
+    MinimalSaleVoidResponse:
+      value:
+        transactionDateTime: 2018-06-18T04:50:21-0400
+        fdSaleId: 8a7fff6e63b13ea5016412167fa12107
+        status: CANCELLED
+        orderId: token001270123
+        hostExtraInfo:
+        - name: APPROVAL_NUMBER
+          value: '835910'
+        - name: SEQUENCE_NUMBER
+          value: '351156'
+
+
+    MinimalRefundVoidRequest:
+      value:
+        fdCustomerId: cuid-0987613457398475
+
+
+
+
+
+    MinimalRefundVoidResponse:
+      value:
+        fdRefundId: 8a34144657d0aa6e0157d3808ed000f2
+        status: CANCELLED
+        transactionDateTime: '2016-04-16T16:06:05Z'
+
+
+
+    MinimalGetAuthResponse:
+      value:
+        requestedAmount: 5
+        approvedAmount: 5
+        currencyCode:
+          code: USD
+          number: 840
+          currency: US Dollar
+        fundingSource:
+          type: VAULTED_ACCOUNT
+          vaultedAccount:
+            status: ACTIVE
+        createdDateTime: 2019-03-29T03:56:59-0400
+        fdAuthorizationId: 8a08178722924906bb702541d15cf0a6
+        authStatus: APPROVED
+
+
+
+    MinimalGetCaptureResponse:
+      value:
+        status: APPROVED
+        requestedAmount: 5.32
+        approvedAmount: 5.32
+        currencyCode:
+          code: USD
+          number: 840
+          currency: US Dollar
+        createdDateTime: 2019-03-29T05:07:24-0400
+        fdCaptureId: 5ce57048df9b4581806f56d63f571a2f
+
+
+
+    MinimalGetSaleResponse:
+      value:
+        status: APPROVED
+        requestedAmount: 5
+        approvedAmount: 5
+        currencyCode:
+          code: USD
+          number: 840
+          currency: US Dollar
+        fundingSource:
+          type: VAULTED_ACCOUNT
+          vaultedAccount:
+            status: ACTIVE
+        createdDateTime: 2019-03-29T05:15:38-0400
+        fdSaleId: 867449ab492246de835a186329b51576
