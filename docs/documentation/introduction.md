@@ -12,8 +12,7 @@ Connected Commerce (uCom) acts as a mobile gateway in accepting the request from
 
 ##Connected Commerce (uCom) Features
 
-Bring in a seamless customer experience and offer services across Channels &#150; Online, Mobile & In-Store shopping
-Know your customer - Get a 360 degree view of customer activity across channels and serve their need from Anywhere & Everywhere.
+Bring in a seamless customer experience and offer services across Channels—Online, Mobile & In-Store shopping. Know your customer—Get a 360 degree view of customer activity across channels and serve their need from Anywhere & Everywhere.
 
 	
 ##Regions we operate
