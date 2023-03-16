@@ -19,7 +19,6 @@ The Connected Commerce (uCom) Gateway services are accessed through the public I
 | Environment | Host | Base Path |
 | --- | --- | --- |
 | Integration Test / CAT | https://int.api.firstdata.com | /ucom |
-| --- | --- | --- |
 | Prod | https://prod.api.firstdata.com | /ucom |
 
 **Fully Qualified URL**
