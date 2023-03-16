@@ -3913,7 +3913,6 @@ components:
       - CREDIT
       - PREPAID
       - APPLE_PAY
-      - ANDRIOD_PAY
       - PAYPAL
       - TOKEN
       - NONCE
