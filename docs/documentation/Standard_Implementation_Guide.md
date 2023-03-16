@@ -263,7 +263,7 @@ by the Mobile Payment Processor (MPP) not on the Mobile Device that is responsib
 interfacing between the Token Vault or Token/Trusted Service Provider, the MPA, and the
 Site System in order to authorize transactions. The below section will be applicable if Fiserv Connected Commerce (uCom) is acting as a MPPA.
 
-  >### Petrol Services
+  >### Petro Services
 
 Services related to purchasing items at a gas station.
 	
