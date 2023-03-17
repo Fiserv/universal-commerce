@@ -1823,7 +1823,7 @@ components:
             $ref: '#/components/schemas/Applybuy'
 
     ServerError:
-      description: An unexpected server error occured.
+      description: An unexpected server error occurred.
       content:
         application/json:
           schema:

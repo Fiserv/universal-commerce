@@ -15,12 +15,17 @@ Here is how to utilize this guide. All your necessary steps are on your right an
 >### Connectivity
 
 The Connected Commerce (uCom) Gateway services are accessed through the public Internet. Connected Commerce (uCom) Gateway accepts communication only via the HTTPS channel. Custom HTTP headers are also used to carry additional information in each request.
+	
+| Environment | Host | Base Path |
+| --- | --- | --- |
+| Integration Test / CAT | https://int.api.firstdata.com | /ucom |
+| Prod | https://prod.api.firstdata.com | /ucom |
 
 **Fully Qualified URL**
 
-Concatenate the above URL and each endpoint name from the specification to get fully-qualified URL for each environment.
+Concatenate the above URL and add the endpoint name from the specification to get the fully-qualified URL for each environment.
 
-**Example:** Full-qualified URL of /v1/customer API for Integration environment:
+**Example:** Full-qualified URL of /v1/customer API for the Integration/CAT environment:
 
 https://int.api.firstdata.com/ucom/v1/customers
 
@@ -258,7 +263,7 @@ by the Mobile Payment Processor (MPP) not on the Mobile Device that is responsib
 interfacing between the Token Vault or Token/Trusted Service Provider, the MPA, and the
 Site System in order to authorize transactions. The below section will be applicable if Fiserv Connected Commerce (uCom) is acting as a MPPA.
 
-  >### Petrol Services
+  >### Petro Services
 
 Services related to purchasing items at a gas station.
 	
