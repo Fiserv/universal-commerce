@@ -196,6 +196,8 @@ The following table provides the field level data definition, along with the API
 | deviceInfo.kind | Set to "mobile" | Required |
 | deviceInfo.details.provider | Device Intelligence provider name. Set to "RAVELIN" | Required |
 | deviceInfo.details.dataCapture.dataEventId | Device Intelligence generated Device ID. See Device Intelligence for details. | Required |
+ 
+</details>
 
 <details>
 
@@ -220,6 +222,7 @@ To keep the installation guidelines for each of the components up to date, this 
 While the development documentation included will provide a full view to all services that the device intelligence components can provide, the only items to be considered are the generation of unique device IDs and the collection of additional device details. As such, card encryption and session tracking components can be safely ignored.
 
 </details>
+ 
 
 ## What information can be passed to Fraud Mitigation?
 
