@@ -207,10 +207,10 @@ paths:
   /v1/prepaids/purchases:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Create a Prepaid Card
+      x-proxy-name: Purchase a New Prepaid Card
       tags:
       - purchase
-      description: Service to create a new Prepaid Card
+      description: Purchase a New Prepaid Card
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -277,10 +277,10 @@ paths:
   /v2/prepaids/purchases:
     get:
       x-group-name: Prepaid Services
-      x-proxy-name: Create Prepaid Card
+      x-proxy-name: Get Status of Prepaid Card Purchase Transaction
       tags:
       - purchase
-      description: Service to create a new Prepaid card
+      description: Get Status of Prepaid Card Purchase Transaction by clientRequestId
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -308,10 +308,10 @@ paths:
   /v2/prepaids/multi-purchases:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Create New Prepaid Cards
+      x-proxy-name: Purchase Multiple Prepaid Cards
       tags:
       - purchase
-      description: Service to create new Prepaid cards
+      description: Purchase Multiple Prepaid Cards
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -966,7 +966,7 @@ paths:
       x-proxy-name: Reload A Prepaid Card
       tags:
       - reload
-      description: Service to load fund into a vaulted Prepaid Card
+      description: Service to reload funds into a vaulted Prepaid Card
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -1031,10 +1031,10 @@ paths:
   /v2/prepaids/reloads:
     get:
       x-group-name: Prepaid Services
-      x-proxy-name: Reload Prepaid Card
+      x-proxy-name: Get status of reload transaction
       tags:
       - reload
-      description: Service to load fund into a vaulted Prepaid Card
+      description: Get status of reload transaction by clientRequestId
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -1062,10 +1062,10 @@ paths:
   /v2/prepaids/multi-reloads:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Load Funds into a Vaulted Prepaid Card
+      x-proxy-name: Reload Funds to Multiple Prepaid Cards
       tags:
       - reload
-      description: Service to load funds into a vaulted Prepaid Card
+      description: Reload Funds to Multiple Prepaid Cards
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -1318,10 +1318,10 @@ paths:
   /v2/prepaids/merges:
     get:
       x-group-name: Prepaid Services
-      x-proxy-name: Merge balance from One Vaulted Prepaid Card to Another
+      x-proxy-name: Get Status of Merge Transaction Details
       tags:
       - merge
-      description: Service to merge balance from one vaulted prepaid card to another vaulted prepaid card.
+      description: Get status of merge transaction details by clientRequestId
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'

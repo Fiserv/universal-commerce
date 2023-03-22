@@ -95,7 +95,7 @@ paths:
       tags:
       - loyalty
       summary: Get loyalty account details
-      description: Get loyalty account details from the issuer systems.  This is a general inquiry and not for information related to being vaulted at First Data.
+      description: Get loyalty account details from the issuer systems. This is a general inquiry and not for information related to being vaulted at Fiserv.
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
