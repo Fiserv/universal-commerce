@@ -264,11 +264,11 @@ paths:
   /v1/value-add/available-offers:
     post:
       x-group-name: Value Added Services
-      x-proxy-name: Create an Offer
+      x-proxy-name: Get Available Offers
       tags:
       - offers
       summary: Creates an offer event for a client
-      description: Based on a combination of criteria, create an offer event and return details to the client application.
+      description: Based on a combination of criteria, get available offers and return details to the client application.
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -319,11 +319,11 @@ paths:
   /v1/value-add/available-offers/{availOffersTrxnId}:
     delete:
       x-group-name: Value Added Services
-      x-proxy-name: Delete Offer by transactionId
+      x-proxy-name: Cancel previously authorized offers
       tags:
       - offers
       summary: Deletes available offers by transactionId
-      description: Deletes available offers by transactionId.
+      description: Cancel previously authorized offers
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -347,11 +347,11 @@ paths:
   /v1/value-add/select-offer:
     post:
       x-group-name: Value Added Services
-      x-proxy-name: Obtain an Offer
+      x-proxy-name: Activate an Offer
       tags:
       - offers
-      summary: Obtains an offer with the loyalty host
-      description: Based on a combination of criteria, An offer can be obtained from the list of available offers.
+      summary: Activates an offer with the loyalty host
+      description: Based on a combination of criteria, an offer can be obtained from the list of available offers.
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
