@@ -176,7 +176,7 @@ Each environment (CAT and Prod) will have its own key. If you would like to repl
 
 <details>
 
-<summary><b>What payment methods are covered by Fraud Mitigation by Carat?<b></summary>
+<summary><b>What payment methods are covered by Fraud Mitigation by Carat?</b></summary>
 
  Fraud Mitigation by Carat provides a fraud prevention solution for a merchant's eCommerce/Digital Commerce offering. The solution supports any payment method which has a card number format as the primary key (i.e., 14-20 digits). Example payment methods currently supported for scoring are:
 
@@ -191,7 +191,7 @@ The most notable absence is PayPal support, which is on the product roadmap.
 
 <details>
 
-<summary><b>What data is required for Fraud Mitigation by Carat?<b></summary>
+<summary><b>What data is required for Fraud Mitigation by Carat?</b></summary>
 
 Data required for an effective fraud mitigation service can be broken into five categories:
 
@@ -205,7 +205,7 @@ Data required for an effective fraud mitigation service can be broken into five 
 
 <details>
 
-<summary><b>Where in the payment flow should Fraud Mitigation by Carat be implemented?<b></summary>
+<summary><b>Where in the payment flow should Fraud Mitigation by Carat be implemented?</b></summary>
 
 It is strongly advised that Fraud Mitigation by Carat is implemented pre-authorization and pre-authentication (prior to submission to networks for authorization or to 3DS services for authentication). In this set-up the fraud prevention suite can proactively prevent potential and known fraudsters prior to the card networks or issuers knowing of the attempted payment. Up front fraud prevention provides a merchant with several benefits:
 
@@ -219,7 +219,7 @@ While the solution allows for a post-authorization configuration it is strongly 
 
 <details>
 
-<summary><b>Is Device Intelligence required for Fraud Mitigation by Carat?<b></summary>
+<summary><b>Is Device Intelligence required for Fraud Mitigation by Carat?</b></summary>
 
 Fraud Mitigation by Carat provides a set of Device Intelligence components which can be integrated to a merchant’s website (JavaScript) or mobile application (SDK). The solution also allows merchants to provide device fingerprinting information pulled from another provider to the service – however the scope of data that can be provided through this method is less than that which is collected by the provided device components. Regardless of device intelligence provider the data collected is a core component of eCommerce fraud prevention, and as such integrating device intelligence is a requirement for using the solution. Any exceptions to this requirement need approval from the Fraud Mitigation Product Owner.
 </details>
