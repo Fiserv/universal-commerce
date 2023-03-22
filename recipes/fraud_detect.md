@@ -192,7 +192,7 @@ The following table provides the field level data definition, along with the API
 | purchaseInfo.items.itemPrice | Unit price for this item | Required |
 | purchaseInfo.items.totalItemSaleAmount | Total price for this item | Required |
 | purchaseInfo.items.unitsSold | Number of this item in the basket | Required |
-| deviceInfo.id | Device Intelligence generated Device ID. See [Device Intelligence](#_Device_Intelligence) for details. | Required |
+| deviceInfo.id | Device Intelligence generated Device ID. See the Device Intelligence section for details. | Required |
 | deviceInfo.kind | Set to "mobile" | Required |
 | deviceInfo.details.provider | Device Intelligence provider name. Set to "RAVELIN" | Required |
 | deviceInfo.details.dataCapture.dataEventId | Device Intelligence generated Device ID. See Device Intelligence for details. | Required |
