@@ -172,7 +172,7 @@ Each environment (CAT and Prod) will have its own key. If you would like to repl
 
 </details>
 
-### FAQs
+### Fraud Mitigation FAQs
 
 <details>
 
