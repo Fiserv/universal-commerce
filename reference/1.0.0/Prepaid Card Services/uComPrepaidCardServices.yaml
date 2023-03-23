@@ -1080,7 +1080,7 @@ paths:
             schema:
               $ref: '#/components/schemas/LoadMultiFundsRequest'
         required: true
-      responses:/v1/prepaids/reloads
+      responses:
         200:
           description: Created
           content:
