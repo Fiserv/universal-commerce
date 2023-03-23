@@ -421,10 +421,10 @@ paths:
   /v2/prepaids/multi-void:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Void multiple prepaid card transaction
+      x-proxy-name:  Cancel multiple prepaid card transactions
       tags:
       - void
-      description: Void any type of multiple prepaid card transactions
+      description: Multiple prepaid card transactions are voided.
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -589,9 +589,9 @@ paths:
     post:
       x-group-name: Prepaid Services
       x-proxy-name: Service to Void Multiple Sweep Transactions
-      tags:
+      tags: s
       - sweep
-      summary: Void YES of sweep transactions
+      summary: Void YES ofweep transactions
       description: Void NO of sweep transactions
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
@@ -715,11 +715,11 @@ paths:
   /v2/prepaids/deducts/{fdTransactionId}/void:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Void a prepaid card deduct transaction
+      x-proxy-name: Cancel a deducted transaction
       tags:
       - deduct
       summary: Void of a deduct transaction
-      description: Void a prepaid card deduct transaction
+      description: A deducted transaction is voided.
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -753,11 +753,11 @@ paths:
   /v2/prepaids/deducts/{fdParentTransactionId}/multi-void:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Service to Void Multiple Deduct Prepaid Accounts
+      x-proxy-name: Cancel multiple prepaid card transactions 
       tags:
       - deduct
       summary: Void of deduct transactions
-      description: Void of deduct transactions
+      description: Multiple deducted transactions are voided.
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -797,10 +797,10 @@ paths:
   /v1/prepaids/purchases/{fdTransactionId}:
     patch:
       x-group-name: Prepaid Services
-      x-proxy-name: Patch Prepaid Account
+      x-proxy-name: Resume a Reload Transaction
       tags:
       - purchase
-      description: Service to patch a Prepaid Card
+      description: This service resumes 3DS pending reload transaction.
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -1109,10 +1109,10 @@ paths:
       x-proxy-name: Load Funds into a Vaulted Prepaid Card
       tags:
       - reload
-      description: Service to load funds into a vaulted Prepaid Card
+      description: 
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
-      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/TThis service resumes 3DS pending reload transaction.imestampParam'
       - $ref: '#/components/parameters/AuthorizationParam'
       - $ref: '#/components/parameters/ClientTokenParam'
       - $ref: '#/components/parameters/FdTransactionIdParam'
@@ -1277,7 +1277,7 @@ paths:
       x-proxy-name: Merge Balance from One Vaulted Prepaid Card to Another
       tags:
       - merge
-      description: Service to merge balance from one vaulted prepaid card to another vaulted prepaid card
+      description: This service merges the balance from one vaulted prepaid card to another vaulted prepaid card.
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
