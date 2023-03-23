@@ -589,9 +589,9 @@ paths:
     post:
       x-group-name: Prepaid Services
       x-proxy-name: Service to Void Multiple Sweep Transactions
-      tags: s
+      tags:
       - sweep
-      summary: Void YES ofweep transactions
+      summary: Void YES of sweep transactions
       description: Void NO of sweep transactions
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
