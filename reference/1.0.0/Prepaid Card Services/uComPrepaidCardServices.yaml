@@ -1090,7 +1090,7 @@ paths:
         207:
           description: Multiple Status
           content:
-            application/json:/v1/prepaids/balances/{requestId}
+            application/json:
                 $ref: '#/components/schemas/LoadMultiFundsPurchase'
         400:
           $ref: '#/components/responses/BadRequest'
