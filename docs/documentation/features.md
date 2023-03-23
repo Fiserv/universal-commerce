@@ -29,7 +29,7 @@
 | - Multi-Store Reporting |   |
 | - Email Notifications | Direct notifications to your email |
 | - Custom Email Reports |   |
-| **Fraud and Security** |   |
+| **Fraud and Security**    |
 | - 3DS Capability | Issuer based authentication for potential liability shift of transactions |
 | - Velocity/Rules based | i.e. Max number of transactions per payment method |
 | - Restriction based | Restricted IP Addresses, Card Numbers, etc. |
