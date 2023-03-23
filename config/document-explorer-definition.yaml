@@ -35,6 +35,8 @@
     #      link: docs/documentation/customerServicesCreateCustomer_v1.md
   - title: Implementation Guide
     link: docs/documentation/Standard_Implementation_Guide.md
+  - title: Features
+    link: docs/documentation/features.md
   - title: Frequently Asked Questions
     link: docs/faq/faq.md
     
