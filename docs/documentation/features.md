@@ -51,7 +51,7 @@
 | **Online EBT (Cash and Snap)** | We can process digital EBT transactions and provide the user interface for PIN collection. |
 | **Experience Provider Integrations** | We can enable your customers to process payments outside of your standard digital and POS assets. (i.e. smart cars, Alexa, etc.) |
 | **QRC Pay at Table or in Store** | Capability for QR enabled payments at the table |
-| **ssText to Pay** | Capability to text customers in order to collect payment |
+| **Text to Pay** | Capability to text customers in order to collect payment |
 | **Virtual Account Issuance** |   |
 | - PLCC Virtual Account issuance | Ability to register customer for a private label credit card in "Apply and Buy" scenarios |
 | - Secured Credit Card issuance | Creation of a secured credit card for your customer |
