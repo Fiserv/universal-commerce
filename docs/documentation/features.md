@@ -17,24 +17,24 @@
 | **Multi-Currency** | Ability to take currency in various regions such as Canada, UK, EU, Norway, Sweden, South Africa, Switzerland, etc. |
 | **Virtual Terminal** | CSR portal to view transactions and perform refunds, etc. |
 | **Reporting** | Advanced reporting via user interface and/or automated reports delivered to email, SFTP, etc. |
-| User Access Controls |   |
-| Two-Factor Authentication | Additional security with two-factor authentication via email, etc. |
-| Account Hierarchies/Multi-Store |   |
-| Personalized User Permissions |   |
-| Automated Password Reset | Self-service for password resets |
-| Transaction Reporting Services |   |
-| Graphical Reports |   |
-| Search Functions | Ability to search on a wide array of fields |
-| Export Options for Report Data |   |
-| Multi-Store Reporting |   |
-| Email Notifications | Direct notifications to your email |
-| Custom Email Reports |   |
+| - User Access Controls |   |
+| - Two-Factor Authentication | Additional security with two-factor authentication via email, etc. |
+| - Account Hierarchies/Multi-Store |   |
+| - Personalized User Permissions |   |
+| - Automated Password Reset | Self-service for password resets |
+| - Transaction Reporting Services |   |
+| - Graphical Reports |   |
+| - Search Functions | Ability to search on a wide array of fields |
+| - Export Options for Report Data |   |
+| - Multi-Store Reporting |   |
+| - Email Notifications | Direct notifications to your email |
+| - Custom Email Reports |   |
 | **Fraud and Security** |   |
-| 3DS Capability | Issuer based authentication for potential liability shift of transactions |
-| Velocity/Rules based | i.e. Max number of transactions per payment method |
-| Restriction based | Restricted IP Addresses, Card Numbers, etc. |
-| Controls | i.e. Geo Filters, etc. |
-| Third Party | Leveraged third party providers around device intelligence, risk scoring, etc. |
+| - 3DS Capability | Issuer based authentication for potential liability shift of transactions |
+| - Velocity/Rules based | i.e. Max number of transactions per payment method |
+| - Restriction based | Restricted IP Addresses, Card Numbers, etc. |
+| - Controls | i.e. Geo Filters, etc. |
+| - Third Party | Leveraged third party providers around device intelligence, risk scoring, etc. |
 
 ## Value Added Services
 
@@ -53,15 +53,15 @@
 | **QRC Pay at Table or in Store** | Capability for QR enabled payments at the table |
 | **ssText to Pay** | Capability to text customers in order to collect payment |
 | **Virtual Account Issuance** |   |
-| PLCC Virtual Account issuance | Ability to register customer for a private label credit card in "Apply and Buy" scenarios |
-| Secured Credit Card issuance | Creation of a secured credit card for your customer |
-| Loyalty Account issuance | Orchestrate the creation of a loyalty account during payment flows |
-| Gift Card issuance | Digitally purchase gift cards from a payment method |
+| - PLCC Virtual Account issuance | Ability to register customer for a private label credit card in "Apply and Buy" scenarios |
+| - Secured Credit Card issuance | Creation of a secured credit card for your customer |
+| - Loyalty Account issuance | Orchestrate the creation of a loyalty account during payment flows |
+| - Gift Card issuance | Digitally purchase gift cards from a payment method |
 | **Petro** |   |
-| Mobile Fueling | IFSF and Conexxus interfaces to the POS are supported |
-| Carwash Purchase |   |
-| Host Based Discounting | Discounts based on card, for example |
-| Site Database | Ability to maintain all your sites via a store Id or other keys that your business uses to reference sites |
-| Location Services | Ability to serve locations by services offered as well as by geolocation based on the lat-long of a customer |
-| Experience Provider | Ability to offer fueling from alternative channels (i.e. Fleet devices, smart cars, etc.) |
-| Outdoor/Indoor Fueling |   |
+| - Mobile Fueling | IFSF and Conexxus interfaces to the POS are supported |
+| - Carwash Purchase |   |
+| - Host Based Discounting | Discounts based on card, for example |
+| - Site Database | Ability to maintain all your sites via a store Id or other keys that your business uses to reference sites |
+| - Location Services | Ability to serve locations by services offered as well as by geolocation based on the lat-long of a customer |
+| - Experience Provider | Ability to offer fueling from alternative channels (i.e. Fleet devices, smart cars, etc.) |
+| - Outdoor/Indoor Fueling |   |
