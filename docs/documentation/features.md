@@ -5,11 +5,11 @@
 | **Secure Payment Card Collection** | Hosted payment pages (via webviews/iFrames) for secure card collection in order to avoid PCI Compliance exposure. We have native API (client to server), server to server, and Cross Origin Resource (CORS) APIs to provide our clients a variety of integration options. |
 | **Tokenization** | Fiserv tokens, Fiserv managed and 3rd Party Payment Network Tokens, Gateway Specific Tokens |
 | **Payment Types** | A wide array of payment methods are available |
-| Cards | Visa, Mastercard, American Express, Discover, JCB, Union Pay, Private Label, EBT, Fleet, etc. |
-| Gift | Reload, redeem, balance inquiry and other standard operations are available. |
-| Wallets | ApplePay, GooglePay, PayPal, Venmo, Amazon Pay, Walmart Pay, etc. |
-| ACH | Standard ACH via bank login capability |
-| Local/Regional Payment Methods | BankContact (Belgium), iDEAL (Netherlands), Carnet (Mexico), etc. |
+| - Cards | Visa, Mastercard, American Express, Discover, JCB, Union Pay, Private Label, EBT, Fleet, etc. |
+| - Gift | Reload, redeem, balance inquiry and other standard operations are available. |
+|-  Wallets | ApplePay, GooglePay, PayPal, Venmo, Amazon Pay, Walmart Pay, etc. |
+| - ACH | Standard ACH via bank login capability |
+| - Local/Regional Payment Methods | BankContact (Belgium), iDEAL (Netherlands), Carnet (Mexico), etc. |
 | **Transaction Types** | Sale, Pre-Authorization, Pre-Auth Complete, Void, Refund, Reversal, Card Verification, etc. |
 | **Card on File / Vaulting** | Card on File (Fiserv Managed), Card Vaulting, Customer to Account Hierarchy, etc. |
 | **Third Party Acquiring** | Connectivity into 3rd party acquiring in UK, Germany, South Africa, Canada, USA, Belgium, Netherlands, etc. |
