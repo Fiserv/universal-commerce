@@ -1472,7 +1472,7 @@ paths:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
       - $ref: '#/components/parameters/AuthorizationParam'
-      - $ref: '#/components/parameters/ClientTokenParam'Get Prepaid Card Transaction Details
+      - $ref: '#/components/parameters/ClientTokenParam'
       - $ref: '#/components/parameters/ClientRequestIdParam'
       - $ref: '#/components/parameters/AcceptLanguageParam'
       - $ref: '#/components/parameters/PageNumberParam'
