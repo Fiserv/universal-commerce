@@ -51,7 +51,11 @@ featuredFeatures:
    tags: ["Multi Purse", "uCom", "wallets", "loyalty", "gift", "balances", "gateway"]
  - title: "Site Management"
    description: Expertise to manage franchise and corporate locations. Automated onboarding and maintenance is used to support enterprise clients.
-   tags: ["site management", "uCom", "gateway"]
+   relatedDocs:
+     - relatedDoc: 
+       title: Features
+       description: Learn more
+       link: /docs/interactive-guide/portalflow.md
  - title: Secure Card Collections
    description: Wide variety of options to integrate your solution with us. Server to server, Native API's, CORS support and Hosted Pages are all supported offerings.
    tags: ["Server to Server", "CORS","Native API", "uCom", "gateway"]
