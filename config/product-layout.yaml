@@ -68,10 +68,10 @@ featuredFeatures:
  - title: Apply and Buy
    description: Ability for und users to apply in real-time for cards and use them for purchase in a single transaction flow.
    tags: ["Real Time", "uCom", "Apply and Buy", "gateway"]
-#    - relatedDoc: 
-#        title: REPLACEME
-#        description: REPLACEME
-#        link: ./docs/REPLACE-ME1.md
+    - relatedDoc: 
+        title: Explore More Features
+        description: uCom Features
+        link: ./docs/documentation/features.md
 #      - relatedDoc: 
 #        title: REPLACEME
 #        description: REPLACEME
