@@ -60,6 +60,9 @@
       link: recipes/InApp_Payments.md
     - title: How to Issue a Refund
       link: recipes/refunds.md
+    - title: How to Use Fraud Mitigation
+      link: recipes/fraud_detect.md
+      
 
     open: false
     #- recipes:
