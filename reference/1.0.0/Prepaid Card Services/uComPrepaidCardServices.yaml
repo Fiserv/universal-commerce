@@ -1091,6 +1091,7 @@ paths:
           description: Multiple Status
           content:
             application/json:
+              schema:
                 $ref: '#/components/schemas/LoadMultiFundsPurchase'
         400:
           $ref: '#/components/responses/BadRequest'
