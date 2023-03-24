@@ -38,11 +38,11 @@ featuredFeatures:
  - title: Complex Orchestration
    description:  Ability to execute complex flows such as multi-tender payments, loyalty earning and redemptions, enterprise level balance management, etc.
    tags: ["multi tender", "uCom", "loyalty", "gateway"]
-   relatedDocs:
-    - relatedDoc: 
-      title: Explore More Features
-      description: uCom Features
-      link: ./docs/documentation/features.md
+  # relatedDocs:
+  #  - relatedDoc: 
+  #    title: Explore More Features
+  #    description: uCom Features
+  #    link: ./docs/documentation/features.md
  - title: "Customer Management"
    description:  Securely collect, store and manage your customer/account details. We perform payment operations to keep you out of PCI (Payment Card Industry) scope.
    tags: ["PCI", "uCom", "secure", "gateway"]
