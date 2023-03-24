@@ -77,7 +77,7 @@ paths:
   /v1/petro-sites:
     get:
       x-group-name: Site Services
-      x-proxy-name: Get List of Active Sites
+      x-proxy-name: Get list of petro-sites
       tags:
       - petro-sites
       description: This API is to get the list of all active sites. Site summary details will be returned. All details for given site will be returned only when the IncludeAllParam is set to true.
@@ -143,7 +143,7 @@ paths:
   /v1/petro-sites/{siteLocationId}:
     get:
       x-group-name: Site Services
-      x-proxy-name: Get Site Information
+      x-proxy-name: Get site details
       tags:
       - petro-sites
       description: This API is to get the site information from uCom system.
@@ -216,10 +216,10 @@ paths:
 
     delete:
       x-group-name: Site Services
-      x-proxy-name: Disable Sites
+      x-proxy-name: Delete site
       tags:
       - petro-sites
-      description: This API is to make the site disable from uCom system.
+      description: This API is used to Delete a site from the uCom system.
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -244,7 +244,7 @@ paths:
   /v1/geolocation/sites:
     get:
       x-group-name: Site Services
-      x-proxy-name: Get Site Coordinates
+      x-proxy-name: Search site locations by latitude and longitude
       tags:
       - geolocation
       description: Query for a list of sites based on geo-location coordinates and a given radius.
@@ -285,10 +285,10 @@ paths:
   /v1/venues:
     get:
       x-group-name: Site Services
-      x-proxy-name: Retrieve Venue Information
+      x-proxy-name: Get list of venue sections
       tags:
       - venue
-      description: Retrieves venue information
+      description: Retrieves list of venue sections
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -361,7 +361,7 @@ paths:
   /v1/venues/{venueId}/suites:
     get:
       x-group-name: Site Services
-      x-proxy-name: Retrieve Venue Suites
+      x-proxy-name: Get venue suites
       tags:
       - venue
       description: Retrieves venue suites
@@ -398,7 +398,7 @@ paths:
   /v1/venues/{venueId}/tables:
     get:
       x-group-name: Site Services
-      x-proxy-name: Retrieve Venue Tables
+      x-proxy-name: Get venue tables
       tags:
       - venue
       description: Retrieves venue tables
