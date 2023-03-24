@@ -390,7 +390,7 @@ paths:
   /v2/prepaids/void:
     get:
       x-group-name: Prepaid Services
-      x-proxy-name: Get status of Void Prepaid Transaction
+      x-proxy-name: Get Status of Void Prepaid Transaction
       tags:
       - void
       description: This service is to get status of void prepaid transaction.
@@ -550,7 +550,7 @@ paths:
   /v2/prepaids/sweeps/{fdTransactionId}/void:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Void Sweep Transaction
+      x-proxy-name: Cancel Sweep Transaction
       tags:
       - sweep
       summary: Service to void a sweep transaction
@@ -588,11 +588,11 @@ paths:
   /v2/prepaids/sweeps/{fdParentTransactionId}/multi-void:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Service to Void Multiple Sweep Transactions
+      x-proxy-name: Cancel Multiple Prepaid CardSweep Transactions
       tags:
       - sweep
-      summary: Void YES of sweep transactions
-      description: Void NO of sweep transactions
+      summary: Void of sweep transactions
+      description: Service to Void Multiple Sweep Transactions
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -669,10 +669,10 @@ paths:
   /v2/prepaids/multi-deducts:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Deduct amount from multiple prepaid cards
+      x-proxy-name: Deduct Amount from Multiple Prepaid Cards
       tags:
       - deduct
-      description: Service to deduct multiple prepaid cards
+      description: This service is to deduct multiple prepaid cards.
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -715,7 +715,7 @@ paths:
   /v2/prepaids/deducts/{fdTransactionId}/void:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Cancel a deducted transaction
+      x-proxy-name: Cancel a Deducted Transaction
       tags:
       - deduct
       summary: Void of a deducted transaction
@@ -753,7 +753,7 @@ paths:
   /v2/prepaids/deducts/{fdParentTransactionId}/multi-void:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Cancel multiple prepaid card transactions 
+      x-proxy-name: Cancel Multiple Prepaid Card Transactions 
       tags:
       - deduct
       summary: Multiple deducted transactions are voided.
@@ -963,7 +963,7 @@ paths:
   /v1/prepaids/reloads:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Reload A Prepaid Card
+      x-proxy-name: Reload a Prepaid Card
       tags:
       - reload
       description: This service is to reload funds into a vaulted Prepaid Card.
