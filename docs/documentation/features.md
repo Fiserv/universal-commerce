@@ -1,4 +1,4 @@
-## Connected Commerce Features  
+## Connected Commerce Features
 
 | **Feature** | **Additional Details** |
 | --- | --- |

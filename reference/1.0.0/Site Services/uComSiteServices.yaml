@@ -285,10 +285,10 @@ paths:
   /v1/venues:
     get:
       x-group-name: Site Services
-      x-proxy-name: Get list of venue sections
+      x-proxy-name: Get Venue Information
       tags:
       - venue
-      description: Retrieves list of venue sections
+      description: Retrieves venue information
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -324,7 +324,7 @@ paths:
   /v1/venues/{venueId}/sections:
     get:
       x-group-name: Site Services
-      x-proxy-name: Retrieve Venue Sections
+      x-proxy-name: Get list of venue sections
       tags:
       - venue
       description: Retrieves venue sections
