@@ -34,8 +34,9 @@ https://int.api.firstdata.com/ucom/v1/customers
 **API-KEYS**
     
 Please see the following reference document for current implementation:
+[API Security Guide](~/universal-commerce-1/docs/documentation/APISecurity.md/APISecurity.md)
 
-[https://firstdatanp-ucomgateway.apigee.io/get-started/api-security](https://firstdatanp-ucomgateway.apigee.io/get-started/api-security)
+<!--[https://firstdatanp-ucomgateway.apigee.io/get-started/api-security](https://firstdatanp-ucomgateway.apigee.io/get-started/api-security)-->
 
    >### Headers
    >> API HTTP headers
