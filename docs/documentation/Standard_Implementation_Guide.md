@@ -35,7 +35,8 @@ https://int.api.firstdata.com/ucom/v1/customers
     
 Please see the following reference document for current implementation:
 [API Security File](./APISecurity.md)
-<!--> <a href="../docs/?path=docs/documentation/APISecurity.md">API Security Guide</a> -->
+
+<a href="docs/documentation/APISecurity.md">API Security Guidess</a>
 
 <!--[https://firstdatanp-ucomgateway.apigee.io/get-started/api-security](https://firstdatanp-ucomgateway.apigee.io/get-started/api-security)-->
 
