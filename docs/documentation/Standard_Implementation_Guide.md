@@ -34,10 +34,10 @@ https://int.api.firstdata.com/ucom/v1/customers
 **API-KEYS**
     
 Please see the following reference document for current implementation:
-[API Security File GL Link](APISecurity.md)
-[API Security File](https://github.com/Fiserv/universal-commerce/blob/develop/docs/documentation/APISecurity.md)
+<!--[API Security File GL Link](APISecurity.md)-->
+<a href="../documentation/?path=documentation/APISecurity.md">API Security Information</a>
 
-<a href="docs/documentation/APISecurity.md">API Security Guides</a>
+<!-- <a href="docs/documentation/APISecurity.md">API Security Guides</a> -->
 
 <!--[https://firstdatanp-ucomgateway.apigee.io/get-started/api-security](https://firstdatanp-ucomgateway.apigee.io/get-started/api-security)-->
 
