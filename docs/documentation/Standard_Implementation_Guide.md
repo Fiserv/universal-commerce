@@ -40,7 +40,7 @@ Please see the following reference document for current implementation:
 
 <!--[https://firstdatanp-ucomgateway.apigee.io/get-started/api-security](https://firstdatanp-ucomgateway.apigee.io/get-started/api-security)-->
 
-   >### Headers
+  >### Headers
    >> API HTTP headers
    
  
