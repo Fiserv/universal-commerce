@@ -3,7 +3,7 @@
 
 ## What is Fraud Mitigation?
 
-Fraud Mitigation by Carat — the enterprise payment platform of Fiserv — is a comprehensive solution that can identify fraudulent activity and proactively prevent disputes prior to placing an order, while allowing genuine customers to proceed with their activity. The solution utilizes customer, device, and transactional data (beyond authorization data), specifically asking whether the customer is acting in a genuine or fraudulent manner. The aim of the solution is to achieve the business goals of a merchant; that is, reduce disputes and fraudulent actors, while not introducing customer friction for genuine customers.
+Fraud Mitigation by Carat—the enterprise payment platform of Fiserv—is a comprehensive solution that can identify fraudulent activity and proactively prevent disputes prior to placing an order, while allowing genuine customers to proceed with their activity. The solution utilizes customer, device, and transactional data (beyond authorization data), specifically asking whether the customer is acting in a genuine or fraudulent manner. The aim of the solution is to achieve the business goals of a merchant; that is, reduce disputes and fraudulent actors, while not introducing customer friction for genuine customers.
 
 ## What benefits does Fraud Mitigation offer?
 
@@ -16,7 +16,7 @@ Fraud Mitigation by Carat is an enterprise fraud solution which mainly utilizes 
 <!-- type: card
 title: Customer Onboarding
 
-description: When a customer onboard's to a merchant's platform as a registered user, they provide personally identifiable data associated with their account (e.g., name, email, phone). Calling the Fraud Mitigation service at the time of customer onboarding allows the customer profile to be built up from the first interaction that the consumer has with the platform.
+description: When a customer onboards to a merchant's platform as a registered user, they provide personally identifiable data associated with their account (e.g., name, email, phone). Calling the Fraud Mitigation service at the time of customer onboarding allows the customer profile to be built up from the first interaction that the consumer has with the platform.
 
 Data Collected:</br>
 Customer Information</br>
@@ -47,25 +47,25 @@ Transaction Information </br>
 -->
 <!-- type: row-end -->
 
-## How to integrate Fraud Mitigation in uCom?
+## How to Integrate Fraud Mitigation in uCom?
 
 <details>
 <summary> Customer Registration </summary>
 
 The customer registration service within the Fraud Mitigation platform is carried out at the time at which the customer account is being provisioned within the uCom system. It should be noted that this service will consistently return an "Approve" response to uCom (i.e., no decision), but calling this service results in a customer profile being created within the Fraud Mitigation platform at the time of the first interaction of the customer at the merchant.
 
-The following diagram provides clarity on the interaction points between the merchant, uCom and Fraud Mitigation for this service:
+The following diagram provides clarity on the interaction points between the merchant, uCom, and Fraud Mitigation for this service:
 
-1. **Merchant** integrates with appropriate uCom endpoint for customer enrollment
-2. **uCom** routes the enrollment information to Fraud Mitigation
-3. **Fraud Mitigation** responds to uCom acknowledging the request (no decision)
-4. **uCom** responds to merchant indicating if the customer account has been enrolled or not
+1. **Merchant** integrates with appropriate uCom endpoint for customer enrollment.
+2. **uCom** routes the enrollment information to Fraud Mitigation.
+3. **Fraud Mitigation** responds to uCom acknowledging the request (no decision).
+4. **uCom** responds to merchant indicating if the customer account has been enrolled or not.
 
 <Insert Flow chart>
 
 ## Data Requirements
 
-The following table provides the field level data definition, along with the API field names and requirement level. Fields marked as Required must be provided, Optional fields may be excluded if not available. If any Required fields are not collected/available discuss with the assigned Implementation Advisor.
+The following table provides the field level data definition, along with the API field names and requirement level. Fields marked as Required must be provided. Optional fields may be excluded if not available. If any Required fields are not collected or available, discuss with the assigned Implementation Advisor.
 
 |Field Name| Field Description| Requirement|
 | --- | --- | --- |
@@ -73,17 +73,17 @@ The following table provides the field level data definition, along with the API
 | customer.name.givenName | First Name of the customer. | Required |
 | customer.name.familyName | Last Name of the customer. | Required |
 | customer.emails.value | Email address of the customer. | Required |
-| customer.emails.primary | Set to "true" | Required |
+| customer.emails.primary | Set to "true." | Required |
 | customer.addresses.streetAddress | Street 1 of customer's home address. | Optional |
 | customer.addresses.locality | City of customer's home address. | Optional |
 | customer.addresses.region | State/Province of customer's home address. | Optional |
 | customer.addresses.postalCode | ZIP/Postal Code of customer's home address. | Optional |
 | customer.addresses.country | Country of customer's home address. Requires [ISO Alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) Country Codes. | Optional |
 | customer.phoneNumbers.value | Phone number of the customer. Best in [E.164](https://en.wikipedia.org/wiki/E.164) format. | Required |
-| customer.phoneNumbers.type | Set to "home" | Required |
+| customer.phoneNumbers.type | Set to "home." | Required |
 | deviceInfo.id | Device Intelligence generated Device ID. See [Device Intelligence](#_Device_Intelligence) for details. | Required |
-| deviceInfo.kind | Set to "mobile" | Required |
-| deviceInfo.details.provider | Device Intelligence provider name. Set to "RAVELIN" | Required |
+| deviceInfo.kind | Set to "mobile." | Required |
+| deviceInfo.details.provider | Device Intelligence provider name. Set to "RAVELIN." | Required |
 | deviceInfo.details.dataCapture.dataEventId | Device Intelligence generated Device ID. See [Device Intelligence](#_Device_Intelligence) for details. | Required |
 
 </details>
@@ -94,15 +94,15 @@ The following table provides the field level data definition, along with the API
 
 Invoking the payment method registration service within the Fraud Mitigation platform is carried out by uCom when a merchant requests a new payment method be adding to a customer's account profile. The service can return one of two possible responses to uCom (i.e., approve, decline).
 
-The following diagram provides a view to how this service should be enabled:
+The following steps provide an overview to how this service should be enabled:
 
 1. **Merchant** integrates with uCom's account enrollment endpoint providing information on the payment method as specified in the merchant's integration guide
 
-1. **uCom** orchestrates a request to the **Fraud Mitigation** service and receives a response
-2. **uCom** carries out card verification services on behalf of merchant
-3. **uCom** responds to the merchant informing if the account has been successfully enrolled or not
-4. **uCom** updates Fraud Mitigation with final status of account enrollment
-5. **Fraud Mitigation** acknowledges uComs enrollment status update
+1. **uCom** orchestrates a request to the **Fraud Mitigation** service and receives a response.
+2. **uCom** carries out card verification services on behalf of merchant.
+3. **uCom** responds to the merchant informing if the account has been successfully enrolled or not.
+4. **uCom** updates Fraud Mitigation with final status of account enrollment.
+5. **Fraud Mitigation** acknowledges uCom's enrollment status update.
 
 ![](RackMultipart20230309-1-mpio16_html_785c3f922c611983.gif)
 
@@ -161,7 +161,7 @@ The following table provides the field level data definition, along with the API
 | XX.merchantId | ID of the merchant completing the transaction | Required |
 | XX.fundingSource.saveToVault | Save to Vault Indicator | Required |
 | XX.fundingSource.credit.cardNumber | Encrypted card number. | Required |
-| XX.fundingSource.credit.nameOnCard | Cardholders Name. | Required |
+| XX.fundingSource.credit.nameOnCard | Cardholder's Name. | Required |
 | XX.fundingSource.credit.cardType | Card Type. | Required |
 | XX.fundingSource.credit.billingAddress.streetAddress | Street of the cardholder's address. | Required |
 | XX.fundingSource.credit.billingAddress.locality | City of the cardholder's address. | Required |
@@ -174,8 +174,8 @@ The following table provides the field level data definition, along with the API
 | XX.fundingSource.credit.securityCode | Encrypted security code on card | Required |
 | XX.fundingSource.vaultedAccount.fdAccountId | Vaulted FD account ID instead of Card Details | Required |
 | purchaseInfo.order.orderId | Order ID associated with this order | Required |
-| purchaseInfo.order.altOrderId | Custom field discuss usage with Implementation Advisor | Optional |
-| purchaseInfo.order.orderType | Custom field discuss usage with Implementation Advisor | Optional |
+| purchaseInfo.order.altOrderId | Custom field – discuss usage with Implementation Advisor | Optional |
+| purchaseInfo.order.orderType | Custom field – discuss usage with Implementation Advisor | Optional |
 | purchaseInfo.order.emails.value | Email of the customer | Required |
 | purchaseInfo.order.emails.type | Type takes value of "home" | Required |
 | purchaseInfo.order.phoneNumbers.value | Shipping or Home Phone numbers; see type | Required |
@@ -205,9 +205,9 @@ The following table provides the field level data definition, along with the API
 
 The collection of the Device Intelligence data should always occur at the point of a customer executing an action (i.e., creating an account, enrolling a payment method, completing an order) and when there is an API call to the Fraud Mitigation platform via uCom. For completeness, there is no requirement to integrate the device intelligence component across all pages of the web or mobile application and the following provides guidelines on optimal usage where the merchant is enabled for all Fraud Mitigation services:
 
-- Customer Registration: collect the device information on the page on which the customer clicks "Register Account" or equivalents
-- Payment Method Registration: collect the device information on the page on which the customer clicks "Add Payment Method" or equivalent
-- Checkout: collect the device information on the page on which the customer clicks "Pay Now" or equivalent
+- Customer Registration: Collect the device information on the page on which the customer clicks "Register Account" or equivalent.
+- Payment Method Registration: Collect the device information on the page on which the customer clicks "Add Payment Method" or equivalent.
+- Checkout: Collect the device information on the page on which the customer clicks "Pay Now" or equivalent.
 
 ## Installation Guidelines
 
@@ -346,7 +346,7 @@ While the development documentation included will provide a full view to all ser
 
 ```
 
-### Sample Auth/Checkout Payment Request With Device ID
+### Sample Auth/Checkout Payment Request with Device ID
 
 ```json
 {
