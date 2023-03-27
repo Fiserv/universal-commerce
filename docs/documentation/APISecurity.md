@@ -10,7 +10,7 @@ The following are the steps to calculate the HMAC.
 * Concatenate the API Key, Timestamp and Hashed payload (only if applicable) separated by colon ( : ) character.
 * Generate a HMAC for the concatenated message with API Secret using SHA-256 algorithm and encode using Base64.
 
-```json
+``` java
 import java.security.MessageDigest;
 import java.util.Base64;
 
