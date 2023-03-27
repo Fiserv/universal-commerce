@@ -55,7 +55,7 @@ featuredFeatures:
      - relatedDoc: 
        title: Features
        description: Learn more
-       link: /docs/interactive-guide/portalflow.md
+       link: ./docs/documentation/features.md
  - title: Secure Card Collections
    description: Wide variety of options to integrate your solution with us. Server to server, Native API's, CORS support and Hosted Pages are all supported offerings.
    tags: ["Server to Server", "CORS","Native API", "uCom", "gateway"]
