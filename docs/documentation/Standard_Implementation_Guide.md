@@ -34,7 +34,7 @@ https://int.api.firstdata.com/ucom/v1/customers
 **API-KEYS**
     
 Please see the following reference document for current implementation:
-[API Security Files] (./APISecurity.md)
+[API Security Files](./APISecurity.md)
 <!--> <a href="../docs/?path=docs/documentation/APISecurity.md">API Security Guide</a> -->
 
 <!--[https://firstdatanp-ucomgateway.apigee.io/get-started/api-security](https://firstdatanp-ucomgateway.apigee.io/get-started/api-security)-->
