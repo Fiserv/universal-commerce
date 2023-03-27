@@ -34,7 +34,7 @@ https://int.api.firstdata.com/ucom/v1/customers
 **API-KEYS**
     
 Please see the following reference document for current implementation:
-[API Security File](./APISecurity.md)
+[API Security File](./APISecurity)
 
 <a href="docs/documentation/APISecurity.md">API Security Guidess</a>
 
