@@ -226,7 +226,7 @@ While the development documentation included will provide a full view to all ser
 
 ## What information can be passed to Fraud Mitigation?
 
-**<ins> Sample Customer Registration Request – Device Intelligence </ins>**
+**<ins> Sample Customer Registration Request with Device Intelligence </ins>**
 
 ```json
 
@@ -346,7 +346,7 @@ While the development documentation included will provide a full view to all ser
 
 ```
 
-**<ins> Sample Auth/Checkout Payment Request with Device ID </ins>**
+**<ins> Sample Auth/Checkout Payment Request with Device Intelligence </ins>**
 
 ```json
 {
