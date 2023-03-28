@@ -421,7 +421,7 @@ paths:
   /v2/prepaids/multi-void:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name:  Cancel multiple prepaid card transactions
+      x-proxy-name:  Cancel Multiple Prepaid Card Transactions
       tags:
       - void
       description: Multiple prepaid card transactions are voided.
@@ -753,7 +753,7 @@ paths:
   /v2/prepaids/deducts/{fdParentTransactionId}/multi-void:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Cancel Multiple Prepaid Card Transactions 
+      x-proxy-name: Cancel Multiple Deducted Transactions 
       tags:
       - deduct
       summary: Multiple deducted transactions are voided.
