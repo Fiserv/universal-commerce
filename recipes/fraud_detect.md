@@ -9,7 +9,7 @@ Fraud Mitigation by Carat—the enterprise payment platform of Fiserv—is a com
 
 Fraud Mitigation by Carat is an enterprise fraud solution which mainly utilizes machine learning and artificial intelligence (AI) to prevent fraudulent activities carried out by customers while attempting to place an order. The solution accurately identifies differences in the patterns exhibited by genuine and fraudulent customers. The solution also uses a real-time graph network, which builds connections across hard identifiers of customers (for example, customer ID, device ID and email ID). This helps to identify and prevent the activities of fraud rings and provides significant network patterns to the machine learning algorithms. While machine learning is key to fraud prevention, rules are also a relevant part of the prevention toolkit. Fraud Mitigation by Carat combines advanced machine learning and artificial intelligence algorithms along with an expansive rules engine.
 
-## Services Available
+## Available Services 
 
 <!-- type: row -->
 
