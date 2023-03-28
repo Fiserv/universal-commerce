@@ -143,11 +143,11 @@ paths:
   /v1/payments/auths:
     get:
       x-group-name: Payment Services
-      x-proxy-name: Get payment authorization details by clientRequestId
+      x-proxy-name: Get Payment Authorization Details by clientRequestId
       tags:
       - authorization
       summary: Get a specific payment authorization
-      description: Fetch details of a payment authorization by client request id
+      description: Fetch details of a payment authorization by clientRequestId
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -254,11 +254,11 @@ paths:
   /v1/payments/auths/{fdAuthorizationId}:
     get:
       x-group-name: Payment Services
-      x-proxy-name: Get payment authorization details by authorization id
+      x-proxy-name: Get Payment Authorization Details by authorizationId
       tags:
       - authorization
       summary: Get a specific payment authorization
-      description: Fetch details of a payment authorization by authorization id
+      description: Fetch details of a payment authorization by authorizationId
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -464,11 +464,11 @@ paths:
   /v1/payments/captures:
     get:
       x-group-name: Payment Services
-      x-proxy-name: Get captured payment details by clientRequestId
+      x-proxy-name: Get Captured Payment Details by clientRequestId
       tags:
       - capture
       summary: Get payment capture details.
-      description: Fetch captured payment details with a client request id
+      description: Fetch captured payment details with a clientRequestId
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -621,7 +621,7 @@ paths:
   /v1/payments/sales:
     get:
       x-group-name: Payment Services
-      x-proxy-name: Get Sale Transaction
+      x-proxy-name: Get Sale Transaction 
       tags:
       - sale
       summary: Get a specific sale transaction.
@@ -731,11 +731,11 @@ paths:
   /v1/payments/sales/{fdSaleId}:
     get:
       x-group-name: Payment Services
-      x-proxy-name: Get sale transaction details by saleId
+      x-proxy-name: Get Sale Transaction Details by saleId
       tags:
       - sale
       summary: Get a specific sale transaction.
-      description: Fetch a Sale detail object by sale id
+      description: Fetch a Sale detail object by saleId
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -942,11 +942,11 @@ paths:
   /v2/payments/multi-sales/{fdParentTransactionId}/refunds:
     post:
       x-group-name: Payment Services
-      x-proxy-name: Refund a multi-sale transaction
+      x-proxy-name: Refund a Multisale Transaction
       tags:
       - sale
-      summary: Execute a refund for multi-sale transaction.
-      description: Refund a 'multi-sale' transaction.
+      summary: Execute a refund for multisale transaction.
+      description: Refund a 'multisale' transaction.
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -988,11 +988,11 @@ paths:
   /v2/payments/multi-sales/{fdParentTransactionId}/void:
     post:
       x-group-name: Payment Services
-      x-proxy-name: void a multi sale transaction
+      x-proxy-name: Void a Multisale Transaction
       tags:
       - sale
-      summary: Execute void for multi-sale transactions.
-      description: Void a 'multi-sale' transaction.
+      summary: Execute void for multisale transactions.
+      description: Void a 'multisale' transaction.
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -1028,11 +1028,11 @@ paths:
   /v1/payments/refunds:
     get:
       x-group-name: Payment Services
-      x-proxy-name: Get refund transaction details by clientRequestId
+      x-proxy-name: Get Refund Transaction Details by clientRequestId
       tags:
       - refund
       summary: Get Refund Transaction Details
-      description: Fetch the refund transaction details with the client request id.
+      description: Fetch the refund transaction details with the clientRequestId.
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -1058,11 +1058,11 @@ paths:
   /v1/payments/refunds/{fdRefundId}:
     get:
       x-group-name: Payment Services
-      x-proxy-name: Get refund transaction details by refund id
+      x-proxy-name: Get Refund Transaction Details by refundId
       tags:
       - refund
       summary: Get refund transaction details
-      description: Fetch the refund transaction details with the refund id.
+      description: Fetch the refund transaction details with the refundId.
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -1172,11 +1172,11 @@ paths:
   /v2/payments/multi-refunds:
     post:
       x-group-name: Payment Services
-      x-proxy-name: Multiple refunds 
+      x-proxy-name:  Execute Multiple Refunds 
       tags:
       - refund
       summary: Execute multiple refunds
-      description: Refund a multi-transactions.
+      description: Refund multitransactions.
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -1217,7 +1217,7 @@ paths:
   /v2/payments/multi-refunds/{fdParentTransactionId}/void:
     post:
       x-group-name: Payment Services
-      x-proxy-name: Cancel Multi-refund
+      x-proxy-name: Cancel multirefund
       tags:
       - refund
       summary: Execute an action on multi payment refund.
@@ -1292,11 +1292,11 @@ paths:
   /v2/payments/void:
     get:
       x-group-name: Payment Services
-      x-proxy-name: Get void transaction details by clientRequestId
+      x-proxy-name: Get Void Transaction Details by clientRequestId
       tags:
       - void
-      summary: Execute void for sale transaction by client request id
-      description: void transaction details by client request id
+      summary: Execute void for sale transaction by clientRequestId
+      description: void transaction details by clientRequestId
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -1363,11 +1363,11 @@ paths:
   /v2/payments/multi-void:
     post:
       x-group-name: Payment Services
-      x-proxy-name: Void a single transaction from multi sale transactions
+      x-proxy-name: Void a Single Transaction from Multisale Transactions
       tags:
       - void
-      summary: Execute void for multi-sale transactions.
-      description: Void multi-sale transactions.
+      summary: Execute void for multisale transactions.
+      description: Void multisale transactions.
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -2669,7 +2669,7 @@ components:
           description: Merchant transaction id
         createdTime:
           type: string
-          description: Multi sale creation date time value.
+          description: Multisale creation date time value.
           format: date-time
           readOnly: true
           example: 2017-03-21T08:15:30-05:00
