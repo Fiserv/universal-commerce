@@ -221,7 +221,7 @@ This API handles Services related to managing the API security features like acc
 
 [Security Services API](../api/?type=post&path=/v1/tokens)
 	
- ### Account Services
+### Account Services
 	
 Services related to Connected Commerce (uCom) customer accounts. Accounts can be credit, debit, loyalty, prepaid, etc.
   	
@@ -229,7 +229,7 @@ Services related to Connected Commerce (uCom) customer accounts. Accounts can be
 
 [Account Services API](../api/?type=post&path=/v1/accounts/verification)
 	
- ### Payment Services
+### Payment Services
 	
 This API handles services needed to initiate AUTH/CAPTURE/SALE transactions using a payment account.
   	
@@ -238,7 +238,7 @@ This API handles services needed to initiate AUTH/CAPTURE/SALE transactions usin
 [Payment Services API](../api/?type=post&path=/v1/payments/auths)
 
 	
- ### Prepaid Services
+### Prepaid Services
 	
 This API handles services related to prepaid cards such as creating a new prepaid card, balance check, reloading funds, balance transfer etc.
   	
@@ -265,7 +265,7 @@ by the Mobile Payment Processor (MPP) not on the Mobile Device that is responsib
 interfacing between the Token Vault or Token/Trusted Service Provider, the MPA, and the
 Site System in order to authorize transactions. The below section will be applicable if Fiserv Connected Commerce (uCom) is acting as a MPPA.
 
-  ### Petro Services
+### Petro Services
 
 Services related to purchasing items at a gas station.
 	
