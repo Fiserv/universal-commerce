@@ -169,8 +169,7 @@ The following table provides the field level data definition, along with the API
 | XX.fundingSource.credit.billingAddress.locality | City of the cardholder's address. | Required |
 | XX.fundingSource.credit.billingAddress.region | State/Province of the cardholder's address. | Required |
 | XX.fundingSource.credit.billingAddress.postalCode | ZIP/Postal Code of the cardholder's address. | Required |
-| XX.fundingSource.credit.billingAddress.country | Country of the cardholder's address.
- Requires [ISO Alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) Country Codes. | Required |
+| XX.fundingSource.credit.billingAddress.country | Country of the cardholder's address. Requires [ISO Alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) Country Codes. | Required |
 | XX.fundingSource.credit.expiryDate.month | Encrypted expiration month on card | Required |
 | XX.fundingSource.credit.expiryDate.year | Encrypted expiration year on card | Required |
 | XX.fundingSource.credit.securityCode | Encrypted security code on card | Required |
