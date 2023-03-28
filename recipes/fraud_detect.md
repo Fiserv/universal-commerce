@@ -120,12 +120,12 @@ The following table provides the field level data definition, along with the API
 | account.credit.billingAddress.region | State/Province of the cardholder's address. | Required |
 | account.credit.billingAddress.postalCode | ZIP/Postal Code of the cardholder's address. | Required |
 | account.credit.billingAddress.country | Country of the cardholder's address. Requires [ISO Alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) Country Codes. | Required |
-| account.credit.expiryDate.month | Encrypted expiration month on card | Required |
-| account.credit.expiryDate.year | Encrypted expiration year on card | Required |
-| account.credit.securityCode | Encrypted security code on card | Required |
+| account.credit.expiryDate.month | Encrypted expiration month on card. | Required |
+| account.credit.expiryDate.year | Encrypted expiration year on card. | Required |
+| account.credit.securityCode | Encrypted security code on card. | Required |
 | deviceInfo.id | Device Intelligence generated Device ID. See [Device Intelligence](#_Device_Intelligence) for details. | Required |
-| deviceInfo.kind | Set to "mobile" | Required |
-| deviceInfo.details.provider | Device Intelligence provider name. Set to "RAVELIN" | Required |
+| deviceInfo.kind | Set to "mobile". | Required |
+| deviceInfo.details.provider | Device Intelligence provider name. Set to "RAVELIN". | Required |
 | deviceInfo.details.dataCapture.dataEventId | Device Intelligence generated Device ID. See [Device Intelligence](#_Device_Intelligence) for details. | Required |
 
 </details>
@@ -157,11 +157,11 @@ The following table provides the field level data definition, along with the API
 |Field Name| Field Description| Requirement|
 | --- | --- | --- |
 | fdCustomerId | Unique ID for the specific customer. | Required |
-| XX.orderId | Order ID for this order, should be consistent across the Fraud Call and Fraud Update events for a specific order | Required |
-| XX.requestedAmount | Value of the transaction in currency base units, e.g. $20.12 should be 2012 | Required |
-| XX.currencyCode.number | Alpha-3 currency codes, e.g., US Dollar should be USD | Required |
-| XX.merchantId | ID of the merchant completing the transaction | Required |
-| XX.fundingSource.saveToVault | Save to Vault Indicator | Required |
+| XX.orderId | Order ID for this order, should be consistent across the Fraud Call and Fraud Update events for a specific order. | Required |
+| XX.requestedAmount | Value of the transaction in currency base units, e.g. $20.12 should be 2012. | Required |
+| XX.currencyCode.number | Alpha-3 currency codes, e.g., US Dollar should be USD. | Required |
+| XX.merchantId | ID of the merchant completing the transaction. | Required |
+| XX.fundingSource.saveToVault | Save to Vault Indicator. | Required |
 | XX.fundingSource.credit.cardNumber | Encrypted card number. | Required |
 | XX.fundingSource.credit.nameOnCard | Cardholder's Name. | Required |
 | XX.fundingSource.credit.cardType | Card Type. | Required |
@@ -170,32 +170,32 @@ The following table provides the field level data definition, along with the API
 | XX.fundingSource.credit.billingAddress.region | State/Province of the cardholder's address. | Required |
 | XX.fundingSource.credit.billingAddress.postalCode | ZIP/Postal Code of the cardholder's address. | Required |
 | XX.fundingSource.credit.billingAddress.country | Country of the cardholder's address. Requires [ISO Alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) Country Codes. | Required |
-| XX.fundingSource.credit.expiryDate.month | Encrypted expiration month on card | Required |
-| XX.fundingSource.credit.expiryDate.year | Encrypted expiration year on card | Required |
-| XX.fundingSource.credit.securityCode | Encrypted security code on card | Required |
-| XX.fundingSource.vaultedAccount.fdAccountId | Vaulted FD account ID instead of Card Details | Required |
-| purchaseInfo.order.orderId | Order ID associated with this order | Required |
-| purchaseInfo.order.altOrderId | Custom field – discuss usage with Implementation Advisor | Optional |
-| purchaseInfo.order.orderType | Custom field – discuss usage with Implementation Advisor | Optional |
-| purchaseInfo.order.emails.value | Email of the customer | Required |
-| purchaseInfo.order.emails.type | Type takes value of "home" | Required |
-| purchaseInfo.order.phoneNumbers.value | Shipping or Home Phone numbers; see type | Required |
-| purchaseInfo.order.phoneNumbers.type | Type takes value of "home" or "shipping" | Required |
-| purchaseInfo.order.addresses.streetAddress | Street of the address. For address type see addresses.type field | Required |
-| purchaseInfo.order.addresses.type | Type takes value of "home" or "shipping" | Optional |
+| XX.fundingSource.credit.expiryDate.month | Encrypted expiration month on card. | Required |
+| XX.fundingSource.credit.expiryDate.year | Encrypted expiration year on card. | Required |
+| XX.fundingSource.credit.securityCode | Encrypted security code on card. | Required |
+| XX.fundingSource.vaultedAccount.fdAccountId | Vaulted FD account ID instead of Card Details. | Required |
+| purchaseInfo.order.orderId | Order ID associated with this order. | Required |
+| purchaseInfo.order.altOrderId | Custom field – discuss usage with Implementation Advisor. | Optional |
+| purchaseInfo.order.orderType | Custom field – discuss usage with Implementation Advisor. | Optional |
+| purchaseInfo.order.emails.value | Email of the customer. | Required |
+| purchaseInfo.order.emails.type | Type takes value of "home". | Required |
+| purchaseInfo.order.phoneNumbers.value | Shipping or Home Phone numbers; see type. | Required |
+| purchaseInfo.order.phoneNumbers.type | Type takes value of "home" or "shipping". | Required |
+| purchaseInfo.order.addresses.streetAddress | Street of the address. For address type see addresses.type field. | Required |
+| purchaseInfo.order.addresses.type | Type takes value of "home" or "shipping". | Optional |
 | purchaseInfo.order.addresses.locality | City of the address. | Required |
 | purchaseInfo.order.addresses.region | State/Province of the address. | Required |
 | purchaseInfo.order.addresses.postalCode | ZIP/Postal Code of the ship-to-address. | Required |
 | purchaseInfo.order.addresses.country | Country of the ship-to-address. Requires [ISO Alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) Country Codes. | Required |
-| purchaseInfo.items.productCode | Unique ID for this item | Required |
-| purchaseInfo.items.itemDescription | Name of the item | Required |
+| purchaseInfo.items.productCode | Unique ID for this item. | Required |
+| purchaseInfo.items.itemDescription | Name of the item. | Required |
 | purchaseInfo.items.unitOfMeasurement | Unit of measurement; each, gallon, etc. | Required |
-| purchaseInfo.items.itemPrice | Unit price for this item | Required |
-| purchaseInfo.items.totalItemSaleAmount | Total price for this item | Required |
-| purchaseInfo.items.unitsSold | Number of this item in the basket | Required |
+| purchaseInfo.items.itemPrice | Unit price for this item. | Required |
+| purchaseInfo.items.totalItemSaleAmount | Total price for this item. | Required |
+| purchaseInfo.items.unitsSold | Number of this item in the basket. | Required |
 | deviceInfo.id | Device Intelligence generated Device ID. See the Device Intelligence section for details. | Required |
 | deviceInfo.kind | Set to "mobile" | Required |
-| deviceInfo.details.provider | Device Intelligence provider name. Set to "RAVELIN" | Required |
+| deviceInfo.details.provider | Device Intelligence provider name. Set to "RAVELIN". | Required |
 | deviceInfo.details.dataCapture.dataEventId | Device Intelligence generated Device ID. See Device Intelligence for details. | Required |
  
 </details>
