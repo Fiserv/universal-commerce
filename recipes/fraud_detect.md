@@ -104,7 +104,7 @@ The following diagram provide an overview to how this service should be enabled:
 4. **uCom** updates Fraud Mitigation with final status of account enrollment.
 5. **Fraud Mitigation** acknowledges uCom's enrollment status update.
 
-![](RackMultipart20230309-1-mpio16_html_785c3f922c611983.gif)
+<center><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/payment_diagram.png" alt="Payment Method Registration" class="center"></center>
 
 **<ins> Data Requirements </ins>**
 
@@ -145,6 +145,8 @@ The flow of this process is outlined as follows:
 3. **uCom** responds to the merchant informing if checkout attempt has been approved/declined
 4. **uCom** updates Fraud Mitigation with subsequent transaction/order information
 5. **Fraud Mitigation** acknowledges uComs transaction/order update
+ 
+ <center><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/checkout_payment.png" alt="Checkout Diagram" class="center"></center>
 
 **<ins> Data Requirements </ins>**
 
