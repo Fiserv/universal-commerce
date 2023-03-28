@@ -1,5 +1,5 @@
 
-# Fraud Mitigation
+# How to Use Fraud Mitigation
 
 ## What is Fraud Mitigation?
 
@@ -63,7 +63,7 @@ The following diagram provides clarity on the interaction points between the mer
 
 <Insert Flow chart>
 
-## Data Requirements
+**<ins> Data Requirements </ins>**
 
 The following table provides the field level data definition, along with the API field names and requirement level. Fields marked as Required must be provided. Optional fields may be excluded if not available. If any Required fields are not collected or available, discuss with the assigned Implementation Advisor.
 
@@ -106,7 +106,7 @@ The following steps provide an overview to how this service should be enabled:
 
 ![](RackMultipart20230309-1-mpio16_html_785c3f922c611983.gif)
 
-## Data Requirements
+**<ins> Data Requirements </ins>**
 
 The following table provides the field level data definition, along with the API field names and requirement level. Fields marked as Required must be provided, Optional fields may be excluded if not available. If any Required fields are not collected/available discuss with the assigned Implementation Advisor.
 
@@ -146,7 +146,7 @@ The flow of this process is outlined as follows:
 4. **uCom** updates Fraud Mitigation with subsequent transaction/order information
 5. **Fraud Mitigation** acknowledges uComs transaction/order update
 
-## Data Requirements
+**<ins> Data Requirements </ins>**
 
 The following table provides the field level data definition, along with the API field names and requirement level. Fields marked as Required must be provided, Optional fields may be excluded if not available. If any Required fields are not collected/available discuss with the assigned Implementation Advisor.
 
@@ -209,7 +209,7 @@ The collection of the Device Intelligence data should always occur at the point 
 - Payment Method Registration: Collect the device information on the page on which the customer clicks "Add Payment Method" or equivalent.
 - Checkout: Collect the device information on the page on which the customer clicks "Pay Now" or equivalent.
 
-## Installation Guidelines
+**<ins> Installation Guidelines </ins>**
 
 To keep the installation guidelines for each of the components up to date, this section provides the associated developer documentation for each offering:
 
@@ -226,7 +226,7 @@ While the development documentation included will provide a full view to all ser
 
 ## What information can be passed to Fraud Mitigation?
 
-### Sample Customer Registration Request – Device Intelligence
+**<ins> Sample Customer Registration Request – Device Intelligence </ins>**
 
 ```json
 
@@ -276,7 +276,7 @@ While the development documentation included will provide a full view to all ser
 
 ```
 
-### Sample Customer Registration Declined Response
+**<ins> Sample Customer Registration Declined Response </ins>**
 
 ```json
 
@@ -292,7 +292,7 @@ While the development documentation included will provide a full view to all ser
 
 ```
 
-### Sample Payment Method Registration Request with Device Intelligence
+**<ins> Sample Payment Method Registration Request with Device Intelligence </ins>**
 
 ```json
 
@@ -331,7 +331,7 @@ While the development documentation included will provide a full view to all ser
 }
 ```
 
-### Sample Payment Method Registration Declined Response
+ **<ins> Sample Payment Method Registration Declined Response </ins>**
 
 ```json
 
@@ -346,7 +346,7 @@ While the development documentation included will provide a full view to all ser
 
 ```
 
-### Sample Auth/Checkout Payment Request with Device ID
+**<ins> Sample Auth/Checkout Payment Request with Device ID </ins>**
 
 ```json
 {
@@ -456,7 +456,7 @@ While the development documentation included will provide a full view to all ser
 
 ```
 
-### Sample Auth Payment Method Declined Response
+**<ins> Sample Auth Payment Method Declined Response </ins>**
 
 ```json
 {
