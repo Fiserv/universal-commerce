@@ -61,7 +61,7 @@ The following diagram provides clarity on the interaction points between the mer
 3. **Fraud Mitigation** responds to uCom acknowledging the request (no decision).
 4. **uCom** responds to merchant indicating if the customer account has been enrolled or not.
 
-<Insert Flow chart>
+https://github.com/Fiserv/universal-commerce/blob/develop/assets/images/customer_diagram.png?raw=true
 
 **<ins> Data Requirements </ins>**
 
