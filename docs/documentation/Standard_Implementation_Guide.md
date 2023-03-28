@@ -205,7 +205,7 @@ This information is provided by our downstream systems as additional bits of inf
 
 Click on the links below to explore each endpoint.
 
->### Customer Services
+### Customer Services
 
 This API handles all of the Connected Commerce (uCom) Customer Profile Management operations (create, read, update, and delete).
 	
@@ -213,7 +213,7 @@ This API handles all of the Connected Commerce (uCom) Customer Profile Managemen
 
 [Customer Services API](../api/?type=post&path=/v1/customers)
 	
->### Security Services
+### Security Services
 	
 This API handles Services related to managing the API security features like access tokens and validation.
   	
@@ -221,7 +221,7 @@ This API handles Services related to managing the API security features like acc
 
 [Security Services API](../api/?type=post&path=/v1/tokens)
 	
- >### Account Services
+ ### Account Services
 	
 Services related to Connected Commerce (uCom) customer accounts. Accounts can be credit, debit, loyalty, prepaid, etc.
   	
@@ -229,7 +229,7 @@ Services related to Connected Commerce (uCom) customer accounts. Accounts can be
 
 [Account Services API](../api/?type=post&path=/v1/accounts/verification)
 	
- >### Payment Services
+ ### Payment Services
 	
 This API handles services needed to initiate AUTH/CAPTURE/SALE transactions using a payment account.
   	
@@ -238,7 +238,7 @@ This API handles services needed to initiate AUTH/CAPTURE/SALE transactions usin
 [Payment Services API](../api/?type=post&path=/v1/payments/auths)
 
 	
- >### Prepaid Services
+ ### Prepaid Services
 	
 This API handles services related to prepaid cards such as creating a new prepaid card, balance check, reloading funds, balance transfer etc.
   	
@@ -246,7 +246,7 @@ This API handles services related to prepaid cards such as creating a new prepai
 
 [Prepaid Services API](../api/?type=post&path=/v2/prepaids/multi-purchases)
 	
->### Hosted Pages Services
+### Hosted Pages Services
 	
 This API handles Hosted Pages services and provides CRUD operation for its web pages. With the help of these APIs, hosted pages will be created and rendered to UI.
 
@@ -265,7 +265,7 @@ by the Mobile Payment Processor (MPP) not on the Mobile Device that is responsib
 interfacing between the Token Vault or Token/Trusted Service Provider, the MPA, and the
 Site System in order to authorize transactions. The below section will be applicable if Fiserv Connected Commerce (uCom) is acting as a MPPA.
 
-  >### Petro Services
+  ### Petro Services
 
 Services related to purchasing items at a gas station.
 	
@@ -273,7 +273,7 @@ Services related to purchasing items at a gas station.
 
 [Petro Services API](../api/?type=post&path=/v1/petro-transactions)
 
->### Notifications
+### Notifications
 
  A Notification is a callback mechanism to inform you of events occurring in our system related to a transaction. This is accomplished by making an HTTP call to an endpoint in your system at the moment these events take place.
  
@@ -570,7 +570,7 @@ Json Object:
 
 ```
 
-  >### Transaction History Services
+### Transaction History Services
 
 Services related to viewing the list of receipts, transactions details, and adding a note to a particular transaction
 	
