@@ -3,7 +3,7 @@
 
 ## What is Fraud Mitigation?
 
-Fraud Mitigation by Carat—the enterprise payment platform of Fiserv—is a comprehensive solution that can identify fraudulent activity and proactively prevent disputes prior to placing an order, while allowing genuine customers to proceed with their activity. The solution utilizes customer, device, and transactional data (beyond authorization data), specifically asking whether the customer is acting in a genuine or fraudulent manner. The aim of the solution is to achieve the business goals of a merchant; that is, reduce disputes and fraudulent actors, while not introducing customer friction for genuine customers.
+Fraud Mitigation by Carat—the enterprise payment platform of Fiserv—is a comprehensive solution that can identify fraudulent activity and proactively prevent disputes prior to placing an order, while allowing genuine customers to proceed with their activity. The solution utilizes customer, device, and transactional data (beyond authorization data), specifically asking whether the customer is acting in a genuine or fraudulent manner. The aim of the solution is to achieve the business goals of a merchant; that is, reduce disputes and fraudulent actors, while avoiding friction for genuine customers. 
 
 ## What benefits does Fraud Mitigation offer?
 
@@ -61,7 +61,7 @@ The following diagram provides clarity on the interaction points between the mer
 3. **Fraud Mitigation** responds to uCom acknowledging the request (no decision).
 4. **uCom** responds to merchant indicating if the customer account has been enrolled or not.
 
-https://github.com/Fiserv/universal-commerce/blob/develop/assets/images/customer_diagram.png?raw=true
+![Customer Registration Diagram](https://github.com/Fiserv/universal-commerce/blob/develop/assets/images/customer_diagram.png)
 
 **<ins> Data Requirements </ins>**
 
