@@ -94,7 +94,7 @@ The following table provides the field level data definition, along with the API
 
 Invoking the payment method registration service within the Fraud Mitigation platform is carried out by uCom when a merchant requests a new payment method be adding to a customer's account profile. The service can return one of two possible responses to uCom (i.e., approve, decline).
 
-The following steps provide an overview to how this service should be enabled:
+The following diagram provide an overview to how this service should be enabled:
 
 1. **Merchant** integrates with uCom's account enrollment endpoint providing information on the payment method as specified in the merchant's integration guide
 
