@@ -1,0 +1,2025 @@
+#-------------------------------------
+# Document Change Log
+# 0.2.3
+#     - No Changes
+# 0.2.2
+#     - No Changes
+# 0.2.1
+#     - Added Merchant id as header field
+# 0.2.0
+#     - Added 'OTHER' CreditCardType
+#     - Added fields in ThreeDSecure object
+#     - Added Price tier in POSItem
+#     - Added Merchant id as header field
+# 0.1.9
+#     - OfferRealizationType enum - Add TRANSACTION_LEVEL
+#     - Updated Reward transactionLevel to add priceAdjustments
+#     - Updated PriceAdjustment to add maxQuantity
+#     - Added OfferStatus in the PriceAdjustments
+#     - Added washcodes under POSItem
+# 0.1.8
+#     - Updated Reward lineItemLevel to add SaleItem
+#     - Added 3ds web support
+#     - Added percentage currency type
+# 0.1.7
+#     - Added receipt lines in the loyalty transaction info
+#     - Added reward description in Reward
+#     - Updated PriceAdjustment as list under POSItem
+#     - Added 3ds challenge transaction expiry date time in ThreeDSecure
+# 0.1.6
+#     - Add OfferRealizationType enum to PromotionalOffer
+#     - Add posAdjustment (type PriceAdjustment) to PromotionalOffer
+#     - Added SecurityCode in vaulted Account
+#     - Added VAULTED_ACCOUNT as AccountType
+#     - Added Accept-Language header field
+# 0.1.5
+#     - Added 'currencyValue' & 'currencyCode' to LoyaltyBalance
+#     - Added Link in the Error object.
+#     - Added retailer partner id in TransactionHistoryItem
+#     - acsSignedContent and CardType in threeDSecureInfo object
+# 0.1.4
+#     - Removed transactionDate redundant field
+#     - Added 'createdDateTime', 'lastUpdatedDateTime','transactionDateTime' and ServiceLevelCode
+#     - Added FundingSourceType, AccountStatus and AccountType entities
+#     - Updated salesLineItem with POSItem across all ymls. POSItem is superset of salesLineItem.
+#     - Added previousBalanceUnits and newBalanceUnits in the LoyaltyTransactionInfo entity
+#     - Added 'rate' to TaxDetails
+#     - Added PriceAdjustment under POSItem
+# 0.1.3
+#     - Adding LoyaltyTransactionStatus, NVP with valueAsList, alias
+#     - Removed AdditionalProductCode field
+#     - Added additional option OTHER under SaleItemType entity
+# 0.1.2
+#     - No change.
+# 0.1.1
+#     - Added 'id' attribute to Link
+#-------------------------------------
+
+openapi: 3.0.1
+info:
+  title: uCom Transaction History Services
+  description: Services to request sale data including its receipt (if available) by using different filter, sorting and paging capabilities.
+  version: 0.2.3
+servers:
+- url: https://int.api.firstdata.com/ucom
+tags:
+- name: history
+  description: Operations and details about sale transaction data
+- name: voucher
+  description: Operations and details about redeemable vouchers
+- name: receipt
+  description: Operations and details about receipts
+paths:
+  /v1/txhistory/customers/{fdCustomerId}/transactions:
+    get:
+      x-group-name: Transaction History Services
+      x-proxy-name: Get Sale Transactions
+      tags:
+      - history
+      summary: Get sale transaction details
+      description: Transaction list service allows to request transactions for a given user
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/FdCustomerIdParam'
+      - $ref: '#/components/parameters/PageNumberParam'
+      - $ref: '#/components/parameters/PageSizeParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  transactions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/TransactionHistoryItem'
+                  pages:
+                    $ref: '#/components/schemas/PageLink'
+              examples:
+                credit:
+                  summary: Cancel response using Merchant Transaction ID
+                  $ref: '#/components/examples/CreditTransactionHistorySuccessResponse'
+                applepay:
+                  summary: Cancel response using Transaction ID
+                  $ref: '#/components/examples/ApplepayTransactionHistorySuccessResponse'
+                paypal:
+                  summary: Cancel response using Transaction ID
+                  $ref: '#/components/examples/PaypalTransactionHistorySuccessResponse'
+
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /v1/txhistory/customers/{fdCustomerId}/transactions/{fdTransactionId}:
+    patch:
+      x-group-name: Transaction History Services
+      x-proxy-name: Add Note to Transaction
+      tags:
+      - history
+      summary: Allows to add a note to the given transaction
+      description: Allows to add a note to the given transaction
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/FdCustomerIdParam'
+      - $ref: '#/components/parameters/TransactionIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      requestBody:
+        description: JSON formatted note is supported and required.
+        content:
+          application/json:
+            schema:
+              required:
+              - note
+              type: object
+              properties:
+                note:
+                  type: string
+        required: false
+      responses:
+        '204':
+          $ref: '#/components/responses/NoContent'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /v1/txhistory/customers/{fdCustomerId}/vouchers:
+    get:
+      x-group-name: Transaction History Services
+      x-proxy-name: Get Redeemable Voucher Details
+      tags:
+      - voucher
+      summary: Get redeemable vouchers details
+      description: List all vouchers (e.g. car wash) of a given user.
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/FdCustomerIdParam'
+      - $ref: '#/components/parameters/SiteLocationIdQueryParam'
+      - $ref: '#/components/parameters/VoucherTypeParam'
+      - $ref: '#/components/parameters/VoucherStateParam'
+      - $ref: '#/components/parameters/PageNumberParam'
+      - $ref: '#/components/parameters/PageSizeParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/VouchersOK'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /v1/txhistory/customers/{fdCustomerId}/vouchers/{voucherId}:
+    patch:
+      x-group-name: Transaction History Services
+      x-proxy-name: Update Voucher Status
+      tags:
+      - voucher
+      summary: Update voucher status
+      description: Update voucher status.
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/FdCustomerIdParam'
+      - $ref: '#/components/parameters/VoucherIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      requestBody:
+        description: JSON formatted voucher is supported and required.
+        content:
+          application/json:
+            schema:
+              required:
+              - status
+              type: object
+              properties:
+                status:
+                  type: string
+        required: false
+      responses:
+        '204':
+          $ref: '#/components/responses/NoContent'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /v1/txhistory/receipts/{fdTransactionId}:
+    get:
+      x-group-name: Transaction History Services
+      x-proxy-name: Get Raw Receipt Data
+      tags:
+      - receipt
+      summary: Get raw receipt data
+      description: Return the actual receipt data formatted by POS
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/TransactionIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+              examples:
+                Minimal:
+                  $ref: '#/components/examples/GetReceiptByfdTransactionIdResponse'
+
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+components:
+  schemas:
+    #-------------------------------------
+    # Operational Models
+    #-------------------------------------
+    ApprovedAmount:
+      title: Approved Amount
+      minimum: 0
+      exclusiveMinimum: true
+      type: number
+      description: Amount authorized according to the request type [auth, capture, refund, etc] in lower denomination.
+      format: double
+      example: 500.45
+
+    Address:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Canonical type values of "work", "home", and "other".
+        streetAddress:
+          type: string
+          description: The full street address component, which may include house number, street name, P.O. box, and multi-line extended street address information.
+        locality:
+          type: string
+          description: The city or locality component.
+        region:
+          type: string
+          description: The state or region component.
+        postalCode:
+          type: string
+          description: The zip code or postal code component.
+        country:
+          type: string
+          description: The country name component.  When specified, the value MUST be in ISO 3166-1 "alpha-2" code format; e.g., the United States and Sweden are "US" and "SE", respectively.
+        formatted:
+          type: string
+          description: The full mailing address, formatted for display or use with a mailing label.
+        primary:
+          type: boolean
+          description: Indicates if this is the default address for the associated resource. It only has meaning when used in a set or array of addresses.
+      description: A physical mailing address for this user.
+      example:
+        type: work
+        streetAddress: 100 Universal City Plaza
+        locality: Hollywood
+        region: CA
+        postalCode: "91608"
+        country: US
+        formatted: |-
+          100 Universal City Plaza
+          Hollywood, CA 91608 US
+        primary: true
+
+    CapturedAmount:
+      title: Captured Amount
+      minimum: 0
+      exclusiveMinimum: true
+      type: number
+      description: Captured amount for the sale.
+      format: double
+      example: 500
+
+    Email:
+      type: object
+      properties:
+        type:
+          type: string
+          description: The "type" sub-attribute is used to provide a classification meaningful to the (human) user.  The user interface should encourage the use of basic values of "work", "home", and "other" and MAY allow additional type values to be used at the discretion of the service client.
+        value:
+          type: string
+          description: The value SHOULD be specified according to RFC5321.
+        primary:
+          type: boolean
+          description: Defines if this entry is to be used as the primary or default for the user.
+          default: false
+      description: Email address for the user.
+      example:
+        value: bjensen@example.com
+        type: work
+        primary: true
+
+    ExpiryDate:
+      type: object
+      properties:
+        month:
+          maxLength: 2
+          minLength: 2
+          pattern: '[0-9]{2,2}'
+          type: string
+          description: Month format 'MM'
+          example: "09"
+        year:
+          maxLength: 2
+          minLength: 2
+          pattern: '[0-9]{2,2}'
+          type: string
+          description: Year format 'YY'
+          example: "20"
+        singleValue:
+          maxLength: 6
+          minLength: 4
+          type: string
+          description: Month and year together, 'MMYY' or 'MMYYYY'.  If the latter format, the string will be parsed and validated per the given format.  Any other format will be rejected.
+      description: Contains account expiration data and needs to either send the values in individual fields OR as a singleValue.
+
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Uniquely identifies an error condition. Client applications need to read and handle errors based on this.
+        message:
+          type: string
+          description: A generic description of the error condition.
+        category:
+          type: string
+          description: The resource associated with the error condition.
+        developerInfo:
+          type: object
+          properties:
+            developerMessage:
+              type: string
+              description: An elaborative description of the error description.
+            moreInfo:
+              type: string
+              description: Link to the error in Developer page.
+            fieldError:
+              type: array
+              description: Detailed information about message format errors.
+              items:
+                type: object
+                properties:
+                  field:
+                    type: string
+                    description: The property or attribute associated with the error
+                  message:
+                    type: string
+                    description: Information specific to a property or attribute.
+          description: Information that needs to be understood by the client developers and should not be interpreted for application processing.
+        hostExtraInfo:
+          minItems: 0
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/NVP'
+        threeDSecureInfo:
+          $ref: '#/components/schemas/ThreeDSecure'
+        _links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
+      description: Model for error messaging
+      example:
+        code: "40000"
+        message: Example Error
+        category: example
+        developerInfo:
+          developerMessage: Invalid Message format in request payload
+          moreInfo: https://www.example.com/errors/40000
+          fieldError:
+          - field: example id
+            message: exampleId is mandatory
+
+    FuelPurchaseInfo:
+      required:
+      - pumpNumber
+      type: object
+      properties:
+        pumpNumber:
+          type: number
+          description: Pump number from which fueling is requested.
+        requestedAmount:
+          $ref: '#/components/schemas/RequestedAmount'
+        saleItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/POSItem'
+      description: Fuel purchase information.
+      example:
+        pumpNumber: "17"
+        items:
+        - POSCode: "432"
+          itemDescription: Unleaded
+          itemPrice: "2.03"
+          unitOfMeasurement: gallonUS
+
+    Geolocation:
+      type: object
+      properties:
+        locationId:
+          type: string
+          description: The location id or number used to identify the unique site and merchant.
+          example: CA123456
+        longitude:
+          type: number
+          description: The GPS latitude value of the site. To be captured at time of onboarding. Not necessary for daily update at startup.
+        latitude:
+          type: number
+          description: The GPS longitude value of the site. To be captured at time of onboarding. Not necessary for daily update at startup.
+        siteAddress:
+          $ref: '#/components/schemas/SiteAddress'
+        PBL:
+          type: string
+          description: Identifier for the physical business location.  The value should be geologically distinct.
+      description: Geospatial data for a given location
+
+    ISO-4217:
+      type: object
+      properties:
+        code:
+          type: string
+          example: USD
+          default: USD
+        number:
+          type: integer
+          example: 840
+        digits:
+          type: integer
+          example: 2
+        currency:
+          type: string
+          example: US Dollar
+          default: US Dollar
+      description: Holds currency information
+
+    LanguageCode:
+      type: string
+      description: The language code parameter is based on two ISO specs (ISO 639-1,ISO-3166-1).  The first segment is the lower case, 2-character language code (based on ISO 639-1) followed by a hyphen "-" separator. The second segment is the upper case, 2-character region code (based on ISO-3166-1). Examples are en-US, en-CA, fr-CA.
+
+    Link:
+      required:
+      - href
+      - rel
+      type: object
+      properties:
+        href:
+          type: string
+          description: URL to linked resource.
+          format: uri
+        rel:
+          type: string
+          description: Defines the type of link relationship to current resource.
+          example: current.page,previous.page,next.page,last.page,first.page,receipt
+        method:
+          type: string
+          description: Defines the HTTP method for the given href.
+          example: GET
+          default: GET
+        id:
+          type: string
+          description: Identifier to the resource.
+          example: 415e5cf6bfdb11e8a355529269fb1459
+      description: Model to communicate linked resources.
+
+    LoyaltyBalance:
+      type: object
+      properties:
+        balance:
+          type: number
+          example: 2634.0
+        minRedeemUnits:
+          type: number
+          example: 200.0
+        maxRedeemUnits:
+          type: number
+          example: 2000.0
+        unitType:
+          $ref: '#/components/schemas/BalanceUnitTypes'
+        conversionRatio:
+          type: number
+          example: 100.0
+        currencyValue:
+          type: number
+        currencyCode:
+          $ref: '#/components/schemas/ISO-4217'
+
+    LoyaltyProgram:
+      type: object
+      properties:
+        programId:
+          type: string
+          description: Unique identifier used to provide link between applications across disparate systems.
+        hostProgramId:
+          type: string
+          description: Loyalty program Id used by the host (cloud) solution. Not in used in uCom system. For future use.
+        programName:
+          type: string
+          description: Loyalty program name. Common name for the given loyalty program
+        programDesc:
+          type: string
+          description: Used to describe the loyalty program and perhaps used to display to the client.
+        programProvider:
+          type: string
+          description: Sponsor of the loyalty program.
+        loyaltyType:
+          $ref: '#/components/schemas/LoyaltyType'
+        programStatus:
+          $ref: '#/components/schemas/ProgramStatus'
+      description: Value object to hold a list of loyalty items.
+      example:
+        programId: TEST_PROGRAM
+        hostProgramId: TEST_HOST_PROGRAM
+        programName: TEST_LOYALTY_PROGRAM
+        programDesc: Test loyalty program
+        programProvider: Test Provider
+        loyaltyType: LOCAL
+        status: ENABLED
+
+    Loyalty:
+      type: object
+      properties:
+        accountId:
+          type: string
+          description: Account identifier, can be used for traditional card number or any alphanumeric value.  For example, a unique value not shown on the card, email address, phone number, social id, etc.
+          example: email-id@example.com
+        cardNumber:
+          type: string
+          description: Card number of loyalty account. The accountId parameter supersedes this field.  This field is ignored when the request is to create a new account.
+          example: "905960447"
+        expiryDate:
+          $ref: '#/components/schemas/ExpiryDate'
+        alias:
+          type: string
+          description: Last four values of the cardNumber
+          readOnly: true
+          example: "1111"
+        accountStatus:
+          $ref: '#/components/schemas/LoyaltyAccountStatus'
+        loyaltyProgram:
+          $ref: '#/components/schemas/LoyaltyProgram'
+        pin:
+          type: string
+          description: Security pin number
+        communications:
+          type: object
+          properties:
+            email:
+              type: boolean
+            phone:
+              type: boolean
+            sms:
+              type: boolean
+          description: Methods the account owner has agreed to be contacted
+        commonFlags:
+          type: object
+          properties:
+            tncAccepted:
+              type: boolean
+            canEarn:
+              type: boolean
+            canRedeem:
+              type: boolean
+            isChildAccount:
+              type: boolean
+            isVirtualAccount:
+              type: boolean
+              description: Indicates if the account has an associated plastic card or not.
+          description: Common true/false settings on an account
+        balance:
+          $ref: '#/components/schemas/LoyaltyBalance'
+        token:
+          $ref: '#/components/schemas/ReferenceToken'
+        metadata:
+          minItems: 0
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/NVP'
+      description: Information about a Loyalty account.
+
+    LoyaltyTransactionInfo:
+      type: object
+      properties:
+        fundingSource:
+          type: object
+          properties:
+            loyalty:
+              $ref: '#/components/schemas/Loyalty'
+            vaultedAccount:
+              $ref: '#/components/schemas/VaultedAccount'
+            type:
+              $ref: '#/components/schemas/FundingSourceType'
+          description: Information about Loyalty account associated with the petro transaction.
+        requestedRedeemUnits:
+          type: number
+          description: Units requested by user to redeem/burn as part of transaction.
+        unitsRewarded:
+          type: number
+          description: Units earned/rewarded as part of transaction.
+        unitsRedeemed:
+          type: number
+          description: Units burned/redeemed as part of transaction.
+        previousBalanceUnits:
+          type: number
+          description: Previous balance units of an account.
+        newBalanceUnits:
+          type: number
+          description: New balance units of an account.
+        unitsValue:
+          type: number
+          description: Units discounted / paid currency value as part of transaction
+          format: double
+        hostExtraInfo:
+          minItems: 0
+          type: array
+          description: Additional host specific information presented as name-value pairs
+          items:
+            $ref: '#/components/schemas/NVP'
+        status:
+          $ref: '#/components/schemas/LoyaltyTransactionStatus'
+        receiptData:
+          $ref: '#/components/schemas/ReceiptData'
+      description: Information about a Loyalty transaction as part of petro transaction.
+
+    NVP:
+      title: Name and Value pair.
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+        valueAsList:
+          minItems: 0
+          type: array
+          items:
+            type: string
+
+    PageLink:
+      type: object
+      properties:
+        currentPage:
+          type: integer
+          description: Current page number
+          example: 1
+        currentPageRecords:
+          type: integer
+          description: Number of records in current page
+          example: 25
+        totalPages:
+          type: integer
+          example: 2
+        totalRecords:
+          type: integer
+          example: 27
+        sortOrder:
+          type: string
+          example: asc
+          default: asc
+          enum:
+          - asc
+          - desc
+        _links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
+      description: Page link information.
+
+    OfferStatus:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Indicates offer status code, NOT_ACTIVATED | ACTIVATED | REDEEMED | DECLINED | CANCELLED | FAILED
+        statusInfo:
+          minItems: 0
+          uniqueItems: true
+          type: array
+          description: Details about what to display, images, messaging, etc.
+          items:
+            $ref: '#/components/schemas/NVP'
+      description: Maintain the status of stackable promotions
+
+    PaymentInfo:
+      type: object
+      properties:
+        currencyCode:
+          $ref: '#/components/schemas/ISO-4217'
+        requestedAuthAmount:
+          $ref: '#/components/schemas/RequestedAmount'
+        approvedAuthAmount:
+          $ref: '#/components/schemas/ApprovedAmount'
+        capturedAmount:
+          $ref: '#/components/schemas/CapturedAmount'
+        status:
+          $ref: '#/components/schemas/PaymentStatus'
+        cardType:
+          type: string
+          description: Indicates the type of account association
+          example: VISA
+        cardSubType:
+          type: string
+          description: Merchant or brand specific information about the type of account
+          example: ABCD
+        accountType:
+          type: string
+          description: Indicates the type of account
+          readOnly: true
+          example: CREDIT
+        alias:
+          type: string
+          description: Last four values of the cardNumber
+          readOnly: true
+          example: "1111"
+        sourceType:
+          type: string
+          description: Indicates the type of payment source
+          readOnly: true
+          example: ApplePay
+        hostAuthId:
+          type: string
+          description: Unique Identifier provided by payment platform for a payment authorization transaction.
+          readOnly: true
+          example: "87341446"
+      description: Payment tender information
+
+    POSItem:
+      type: object
+      properties:
+        itemDescription:
+          type: string
+          example: Standard Wash (or) Unleaded Petrol
+        itemPrice:
+          type: number
+          format: double
+          example: 7.5
+        unitOfMeasurement:
+          type: string
+          example: each
+        unitsSold:
+          type: number
+          format: double
+          example: 1.0
+        totalItemSaleAmount:
+          type: number
+          format: double
+          example: 7.5
+        originalItemPrice:
+          type: number
+          format: double
+          example: 7.5
+        originalTotalSaleAmount:
+          type: number
+          format: double
+          example: 7.5
+        posCodeFormat:
+          type: string
+          example: plu
+        posCode:
+          type: string
+          example: "102"
+        posCodeModifier:
+          type: string
+          example: "1"
+        productCode:
+          type: string
+          example: "102"
+        tax:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaxDetails'
+        type:
+          $ref: '#/components/schemas/POSItemType'
+        serviceLevelCode:
+          $ref: '#/components/schemas/ServiceLevelCode'
+        priceAdjustments:
+          type: array
+          items:
+            $ref: '#/components/schemas/PriceAdjustment'
+        washCodes:
+          type: array
+          items:
+            $ref: '#/components/schemas/WashCode'
+        priceTier:
+          type: string
+      description: Structure to support passing POS sale info as part of the sale request.
+
+    Phone:
+      type: object
+      properties:
+        value:
+          type: string
+          description: The value SHOULD be specified according to the format defined in RFC3966, e.g., 'tel:+1-201-555-0123'.
+        type:
+          type: string
+          description: Often has typical values of "work", "home", "mobile", "fax", "pager", and "other" and MAY allow more types to be defined by the service client.
+        primary:
+          type: boolean
+          description: Defines if this entry is to be used as the primary or default for the user.
+          default: false
+      description: Phone number for the user.
+      example:
+        value: 555-555-5555
+        type: work
+
+    PromotionalOffer:
+      type: object
+      properties:
+        offerReferenceId:
+          type: string
+          description: Unique identifier for an offer.
+        offerName:
+          type: string
+          description: Common name for the reward.
+        offerDescription:
+          type: string
+          description: Description about the reward details.
+        effectiveDateTime:
+          type: string
+          description: Starting time for a reward validity.
+          format: date-time
+        expiryDateTime:
+          type: string
+          description: Ending time for a reward to be applied.
+          format: date-time
+        promotionId:
+          type: string
+          description: Links to associated promotion if it applies.
+        isExclusive:
+          type: boolean
+          description: Indicator if offer can be combined with other offers or is mutually exclusive.
+        userAcceptanceRequired:
+          type: boolean
+          description: Indicator if a user has to accept the offer before it can be applied to a transaction or accrued in an account.
+        currencyCode:
+          $ref: '#/components/schemas/ISO-4217'
+        qualifiers:
+          type: object
+          properties:
+            currency:
+              type: array
+              items:
+                type: object
+                properties:
+                  currencyType:
+                    $ref: '#/components/schemas/ValueAddCurrencyType'
+                  value:
+                    type: string
+                    description: Value of the reward in the associated currency.
+                  realizationCode:
+                    $ref: '#/components/schemas/RewardRealizationCode'
+            saleItems:
+              type: array
+              items:
+                $ref: '#/components/schemas/POSItem'
+          description: Conditions that must be met for the reward to be awarded.
+        reward:
+          $ref: '#/components/schemas/Reward'
+        metadata:
+          minItems: 0
+          uniqueItems: true
+          type: array
+          description: Details about what to display, images, messaging, etc.
+          items:
+            $ref: '#/components/schemas/NVP'
+        offerRealizationType:
+          $ref: '#/components/schemas/OfferRealizationType'
+      description: Offer opportunity details
+
+    PublicSiteInfo:
+      type: object
+      properties:
+        petroBrand:
+          $ref: '#/components/schemas/PetroBrand'
+        siteAvailable:
+          type: boolean
+          description: Indicator if the site is active.
+        siteName:
+          type: string
+          description: Name of the site as defined as part of the onboarding process.
+        welcomeMessage:
+          type: string
+          description: Message displayed on the mobile device upon site check-in. The average length of this field should be around 100 characters to maintain visibility on various mobile profiles.
+        hoursOfOperation:
+          type: string
+          description: Hrs of operation of site.
+        languageCode:
+          $ref: '#/components/schemas/LanguageCode'
+        siteAuthTimeOut:
+          type: integer
+          description: Time out configuration for a site/pump
+        geolocation:
+          $ref: '#/components/schemas/Geolocation'
+      description: Compact representation of site data returned for UI/UX needs in devices.
+
+    PriceAdjustment:
+      type: object
+      properties:
+        adjustmentId:
+          type: string
+          example: discount prepay
+        productCode:
+          type: string
+          example: "941"
+        programID:
+          type: string
+          example: P66
+        reason:
+          type: string
+          example: loyaltyOffer
+        amount:
+          type: number
+          format: double
+          example: 0.1
+        percentage:
+          type: number
+          format: float
+          example: 10.0
+        itemPrice:
+          type: number
+          format: double
+          example: 7.5
+        unitOfMeasurement:
+          type: string
+          example: each
+        unitsSold:
+          type: number
+          format: double
+          example: 1.0
+        rebateLabel:
+          type: string
+          example: HostDiscount
+        maxQuantity:
+          type: number
+          format: double
+          example: 7.5
+        offerStatus:
+          $ref: '#/components/schemas/OfferStatus'
+      description: Structure to support providing price adjustment for sale item.
+
+    ReferenceToken:
+      type: object
+      properties:
+        tokenId:
+          type: string
+          description: Actual token value
+          example: 292bb6b886fc4446894f878b7e32bd5e
+        tokenProvider:
+          type: string
+          description: Indicates what system is the originator of the token
+          example: TRANS_ARMOR or NETWORK_TOKEN or THIRD_PARTY_NETWORK_TOKEN
+        cryptogram:
+          type: string
+          description: 28 or 56 characters for Visa / Mastercard. 4 characters for Discover / Amex. Required for CIT. Not required for MIT.
+          example: 3CguW5ecfTz...Yuhw=
+        expiryDate:
+          $ref: '#/components/schemas/ExpiryDate'
+        tokenType:
+          $ref: '#/components/schemas/ReferenceTokenType'
+      description: Surrogate value used to represent a handle to an account without sharing PCI/PII data to look it up.
+
+    Reward:
+      type: object
+      properties:
+        rewardId:
+          type: string
+          description: Unique identifier for the reward instance
+        rewardDescription:
+          type: string
+          description: reward description
+        effectiveDateTime:
+          type: string
+          description: Starting time for a reward validity.
+          format: date-time
+        expiryDateTime:
+          type: string
+          description: Ending time for a reward to be applied.
+          format: date-time
+        offerReferenceId:
+          type: string
+          description: Link to the offer that provided the opportunity for a customer to receive the reward.
+        currencyCode:
+          $ref: '#/components/schemas/ISO-4217'
+        values:
+          type: object
+          properties:
+            transactionLevel:
+              type: array
+              items:
+                type: object
+                properties:
+                  currencyType:
+                    $ref: '#/components/schemas/ValueAddCurrencyType'
+                  value:
+                    type: string
+                    description: Value of the reward in the associated currency.
+                  realizationCode:
+                    $ref: '#/components/schemas/RewardRealizationCode'
+                  priceAdjustments:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PriceAdjustment'
+            lineItemLevel:
+              type: array
+              items:
+                type: object
+                properties:
+                  saleItem:
+                    $ref: '#/components/schemas/POSItem'
+                  realizationCode:
+                    $ref: '#/components/schemas/RewardRealizationCode'
+          description: Medium of exchange for the value.
+        dispensationCode:
+          $ref: '#/components/schemas/RewardDispensationCode'
+      description: Reward details
+
+    ReceiptData:
+      type: object
+      properties:
+        receiptSection:
+          type: string
+          description: Indicates the section of the receipt the text represents [e.g. full, vat, eft, loyalty, etc]
+        receiptLines:
+          $ref: '#/components/schemas/ReceiptLine'
+      description: Container for the receipt lines sent from the site box as printed on the paper receipt.
+
+    ReceiptLine:
+      type: object
+      properties:
+        plain:
+          type: array
+          items:
+            type: string
+        formatted:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              value:
+                type: string
+              order:
+                type: number
+              row:
+                type: number
+              column:
+                type: number
+              charSet:
+                type: number
+              color:
+                type: string
+              alignment:
+                type: string
+              height:
+                type: string
+              width:
+                type: string
+              charSet1:
+                type: string
+              charSet2:
+                type: string
+              charSet3:
+                type: string
+      description: A line of text on a receipt.
+
+    RequestedAmount:
+      title: Requested Amount
+      minimum: 0
+      exclusiveMinimum: true
+      type: number
+      description: Requested amount for the given request type [auth, capture, refund, etc].
+      format: double
+      example: 500
+
+    SiteAddress:
+      type: object
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        phone:
+          $ref: '#/components/schemas/Phone'
+        email:
+          $ref: '#/components/schemas/Email'
+        fax:
+          type: string
+      description: Value object to hold site address.
+
+    TaxDetails:
+      type: object
+      properties:
+        code:
+          type: string
+          example: TX01
+        description:
+          type: string
+          example: Sales Tax
+        amount:
+          type: string
+          example: "7.50"
+        rate:
+          type: string
+          example: "13.5"
+      description: Tax details.
+
+    ThreeDSecure:
+      type: object
+      properties:
+        transactionId:
+          type: string
+          description: Transaction id generated on the server
+          example: 292bb6b886fc4446894f878b7e32bd5e
+        transactionStatus:
+          type: string
+          description: Transactions status of 3DS server
+          example: C
+        transactionStatusReason:
+          type: string
+          description: Reason for the transaction status
+        challengeResponse:
+          type: string
+          example: ewogIC
+        challengeIndicator:
+          type: string
+          example: '01 = No preference 02 = No challenge requested 03 = Challenge requested: 3DS Requestor Preference 04 = Challenge requested: Mandate'
+        dsTransactionId:
+          type: string
+          example: 292bb6b886fc4446894f878b7e32bd5e
+        acsTransactionId:
+          type: string
+          example: 292bb6b886fc4446894f878b7e32bd5e
+        serverTransactionId:
+          type: string
+          example: 292bb6b886fc4446894f878b7e32bd5e
+        acsReferenceNumber:
+          type: string
+          example: 292bb6b886fc4446894f878b7e32bd5e
+        acsSignedContent:
+          type: string
+          example: 292bb6b88....6fc4446894f878b7e32bd5e
+        cardType:
+          $ref: '#/components/schemas/CreditCardType'
+        challengeRequest:
+          type: string
+          example: ewogICAiYW.......MjJjMGVjIgp9
+        acsUrl:
+          type: string
+          example: https://test.modirum.com/dstests/ACSEmu2
+        iframeContent:
+          type: string
+          example: <iframe></iframe>
+        termUrl:
+          type: string
+          example: https://mydomain/3dstest?transactionId=292bb6b886fc4446894f878b7e32bd5e
+        isThreeDSMethodCompleted:
+          type: boolean
+          example: true
+        isAuthenticationCompleted:
+          type: boolean
+          example: true
+        cavv:
+          type: string
+          description: Card authentication verification value
+        threeDSVersion:
+          type: string
+        expiryDateTime:
+          type: string
+          description: 3DS challenge transaction expiry date time.
+          format: date-time
+          readOnly: true
+          example: 2020-01-01T16:06:05Z
+        eci:
+          type: string
+          description: Electronic Commerce Indicator value
+      description: Details of ThreeDSecure transaction used to process the challenge flow
+
+    TransactionHistoryItem:
+      type: object
+      properties:
+        retailerPartnerId:
+          type: string
+        fdCustomerId:
+          type: string
+          example: cuid-0987613457398475
+        status:
+          type: string
+          example: COMPLETED
+        finalTransactionAmount:
+          type: string
+          example: "15.25"
+        transactionNo:
+          type: string
+          example: "000001"
+        transactionId:
+          type: string
+          example: b2dd25902e86458e9dfa196d9cb20065
+        note:
+          type: string
+          example: some note
+        fuelPurchaseInfo:
+          $ref: '#/components/schemas/FuelPurchaseInfo'
+        payments:
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentInfo'
+        siteInfo:
+          $ref: '#/components/schemas/PublicSiteInfo'
+        _receipt:
+          $ref: '#/components/schemas/Link'
+        loyaltyTransactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/LoyaltyTransactionInfo'
+        saleItems:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/POSItem'
+        offers:
+          type: array
+          items:
+            $ref: '#/components/schemas/PromotionalOffer'
+        transactionDateTime:
+          type: string
+          description: Date and time of the transaction.
+          format: date-time
+          readOnly: true
+          example: 2016-04-16T16:06:05Z
+        createdDateTime:
+          type: string
+          description: Date and time of resource creation.
+          format: date-time
+          readOnly: true
+          example: 2016-04-16T16:06:05Z
+        lastUpdatedDateTime:
+          type: string
+          description: Last updated Date and time of resource.
+          format: date-time
+          readOnly: true
+          example: 2016-04-16T16:06:05Z
+      description: Transaction details.
+
+    VaultedAccount:
+      type: object
+      properties:
+        fdAccountId:
+          type: string
+          description: Unique identifier for a customer account vaulted with uCom
+        securityCode:
+          type: string
+          description: Card Verification value.
+        status:
+          $ref: '#/components/schemas/AccountStatus'
+        type:
+          $ref: '#/components/schemas/AccountType'
+      description: FD Account information
+      example:
+        fdAccountId: 003a502c72a211e78cf7a6006ad3dba0
+
+    Voucher:
+      type: object
+      properties:
+        voucherId:
+          type: string
+          example: 003a502c72a211e78cf7a6006ad3dba0
+        status:
+          type: string
+          example: active
+        statusDate:
+          type: string
+          example: 2016-05-30T08:05:12.000+0000
+        voucherCode:
+          type: string
+          example: "8966834595"
+        expiryDate:
+          type: string
+          example: 2016-07-30T08:05:12.000+0000
+        message:
+          type: string
+          example: Car Wash Gold
+        voucherType:
+          type: string
+          example: CARWASH
+        siteLocationId:
+          type: string
+          example: "182651992575"
+      description: Redeemable item like a car wash code.
+
+    WashCode:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Wash code generated by the POS system.
+        description:
+          type: string
+          description: Wash code description generated by the POS system.
+        expiration:
+          type: string
+          description: Expiration date for the purchased wash code
+          format: date-time
+        message:
+          type: string
+          description: Field to carry message from site system for display to customer.
+      description: Purchased wash information.
+
+    #-------------------------------------
+    # ENUM Models
+    #-------------------------------------
+    AccountStatus:
+      type: string
+      description: Indicates the status of an account.
+      enum:
+      - ACTIVE
+      - INACTIVE
+      - TERMINATED
+      - ISSUER_TERMINATED
+      - WALLET_TERMINATED
+      - PENDING
+
+    AccountType:
+      type: string
+      description: Type of Account vaulted
+      enum:
+      - CREDIT
+      - PREPAID
+      - ACH
+      - LOYALTY
+      - PAYPAL
+      - MASTERPASS
+      - VENMO
+      - VAULTED_ACCOUNT
+
+    BalanceUnitTypes:
+      type: string
+      description: Indicator to determine how to display balances
+      enum:
+      - CENTS
+      - MILES
+      - POINTS
+      - STARS
+      - LITRES
+
+    CreditCardType:
+      title: Credit Card Type
+      type: string
+      description: Indicates the type of credit account association
+      enum:
+      - AMEX
+      - DISCOVER
+      - MASTERCARD
+      - PLCC
+      - VISA
+      - OTHER
+
+    FundingSourceType:
+      type: string
+      description: Describes the type of Funding source
+      enum:
+      - VAULTED_ACCOUNT
+      - CREDIT
+      - PREPAID
+      - APPLE_PAY
+      - PAYPAL
+      - TOKEN
+      - NONCE
+      - VCO
+      - VENMO
+      - LOYALTY
+      - AMAZON_PAY
+      - VIPPS
+      - FLEET
+      - BANCONTACT
+      - IDEAL
+
+    LoyaltyAccountStatus:
+      type: string
+      description: Indicator of the account state as indicated by the loyalty issuer.
+      enum:
+      - ENROLLED
+      - ANONYMOUS
+      - PARTIAL
+      - PENDING_DATA
+      - PENDING_VERIFICATION
+      - INACTIVE
+      - BLOCKED
+
+    LoyaltyTransactionStatus:
+      type: string
+      description: Indicates the status of an loyalty operation.
+      enum:
+      - AUTHORIZED
+      - AUTH_CANCELLED
+      - AUTH_DECLINED
+      - COMPLETED
+      - COMPLETION_DECLINED
+      - PENDING
+
+    LoyaltyType:
+      type: string
+      description: Identifier to indicate type of Loyalty program being registered.
+      enum:
+      - LOCAL
+      - NATIONAL
+
+    OfferRealizationType:
+      type: string
+      description: Identifier to indicate the type of a Loyalty Offer.
+      enum:
+      - SPLIT_PAYMENT
+      - PRE_ITEM_AMOUNT_OFF
+      - POST_ITEM_AMOUNT_OFF
+      - PRICE_ROLLBACK
+      - HBD
+      - TRANSACTION_LEVEL
+
+    PaymentStatus:
+      type: string
+      description: Indicates the status of an payment operation.
+      enum:
+      - AUTHORIZED
+      - AUTH_CANCELLED
+      - AUTH_DECLINED
+      - COMPLETED
+      - COMPLETION_DECLINED
+
+    POSItemType:
+      type: string
+      description: Indicates the type of item
+      enum:
+      - CARWASH
+      - FUEL
+      - OTHER
+
+    PetroBrand:
+      type: string
+      description: Indicator of fuel brand sold at the given site.
+      enum:
+      - ESSO
+      - EXXONMOBIL
+      - IOL
+      - SUNOCO
+
+    ProgramStatus:
+      type: string
+      description: Indicates if the given loyalty program is still active or not.
+      enum:
+      - ENABLED
+      - DISABLED
+      - CONTRACTED_ONLY
+
+    ReferenceTokenType:
+      type: string
+      description: Indicates reference token type.
+      enum:
+      - FORMAT_PRESERVING_MULTI_USE
+      - FORMAT_PRESERVING_SINGLE_USE
+      - CLAIM_CHECK_NONCE
+      - RANDOM_MULTI_USE
+      - RANDOM_SINGLE_USE
+      - CLAIM_CHECK_NONCE_WITH_PINCAPTURE
+
+    RewardDispensationCode:
+      type: string
+      description: Indicates when a reward is to be redeemed.
+      enum:
+      - INSTANT
+      - DEFERRED
+
+    RewardRealizationCode:
+      type: string
+      description: Indicates how a reward is applied to a transaction.
+      enum:
+      - NEW_PRICE
+      - PERCENT_OFF
+      - AMOUNT_OFF
+      - EARN
+      - REDEEM
+
+    SaleItemType:
+      type: string
+      description: Indicates the type of item
+      enum:
+      - FUEL
+      - CARWASH
+      - OTHER
+
+    ServiceLevelCode:
+      type: string
+      description: Indicates service level code.
+      default: S
+      enum:
+      - S
+      - F
+      - N
+      - X
+
+    ValueAddCurrencyType:
+      type: string
+      description: Indicates the type of units used to show value of a reward.
+      enum:
+      - MONEY
+      - POINTS
+      - DISTANCE
+      - COUNTS
+      - VOLUMES
+      - VISITS
+      - PERCENTAGE
+
+    VolumeUOM:
+      type: string
+      description: Units to measure volume.
+      enum:
+      - ml
+      - cc
+      - litter
+      - fluidOunce
+      - pint
+      - quart
+      - gallonUS
+      - gallonUK
+
+    WeightUOM:
+      type: string
+      description: Units to measure weight.
+      enum:
+      - gram
+      - kg
+      - oz
+      - lb
+      - ea
+
+  #-------------------------------------
+  # Responses
+  #-------------------------------------
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+
+    TransactionsOK:
+      description: List of transaction details
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              transactions:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TransactionHistoryItem'
+              pages:
+                $ref: '#/components/schemas/PageLink'
+
+    VouchersOK:
+      description: List of vouchers
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              vouchers:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Voucher'
+              pages:
+                $ref: '#/components/schemas/PageLink'
+
+    ReceiptOK:
+      description: Receipt details
+      content:
+        application/json:
+          schema:
+            type: string
+
+    Conflict:
+      description: Conflict - The requested operation conflicts with the current state of the identified resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    NoContent:
+      description: The request succeeded but there’s really nothing to show.
+      content: {}
+
+    NotFound:
+      description: Not Found - The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    ServerError:
+      description: An unexpected server error occurred.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    Unauthorized:
+      description: Unauthorized
+      content: {}
+
+  #-------------------------------------
+  # Parameter Models
+  #-------------------------------------
+  parameters:
+    AcceptLanguageParam:
+      name: Accept-Language
+      in: header
+      description: The Accept-Language header contains information about the language preference of a user. This HTTP header is useful to multilingual sites for deciding the best language to serve to the client. i.e en-US,fr-CA
+      schema:
+        type: string
+
+    ApiKeyParam:
+      name: Api-Key
+      in: header
+      description: An API key is a string value passed by a client app to the API proxies. The key uniquely identifies the client app.
+      required: true
+      schema:
+        type: string
+
+    AuthorizationParam:
+      name: Authorization
+      in: header
+      description: Authorization information for the request. Format- `HMAC {hmacToken}`
+      required: true
+      schema:
+        type: string
+
+    FdCustomerIdParam:
+      name: fdCustomerId
+      in: path
+      description: Unique identifier for a customer profile registered with uCom.
+      required: true
+      schema:
+        type: string
+
+    PageNumberParam:
+      name: pageNo
+      in: query
+      description: Page number
+      schema:
+        type: integer
+
+    PageSizeParam:
+      name: pageSize
+      in: query
+      description: Max number of records per page. Supported values - 5, 10, 15, 20, 25 ..50
+      allowEmptyValue: false
+      schema:
+        type: integer
+
+    SiteLocationIdQueryParam:
+      name: siteLocationId
+      in: query
+      description: Unique identifier to locate site
+      required: true
+      schema:
+        type: string
+
+    TimestampParam:
+      name: Timestamp
+      in: header
+      description: Epoch timestamp in the request initiating system
+      required: true
+      schema:
+        type: string
+
+    TransactionIdParam:
+      name: fdTransactionId
+      in: path
+      description: Unique identifier for the transaction
+      required: true
+      schema:
+        type: string
+
+    VoucherIdParam:
+      name: voucherId
+      in: path
+      description: Voucher identifier
+      required: true
+      schema:
+        type: string
+
+    VoucherTypeParam:
+      name: voucherType
+      in: query
+      description: Indicates which voucher type should be returned (default not limited)
+      schema:
+        type: string
+
+    VoucherStateParam:
+      name: voucherState
+      in: query
+      description: Indicates if all|active|inactive vouchers should be returned (default all)
+      schema:
+        type: string
+
+    SubMerchantIdParam:
+      name: Sub-Merchant-Id
+      in: header
+      description: Sub Merchant Id contains information about the merchant identifier
+      schema:
+        type: string
+
+  examples:
+    CreditTransactionHistorySuccessResponse:
+      value:
+        transactions:
+        - retailerPartnerId: TEST_WALLET
+          fdCustomerId: b6d400b26cb0446190563b1b600204c2
+          status: COMPLETED
+          finalTransactionAmount: '19.74'
+          transactionDate: '2023-01-25T05:55:40Z'
+          transactionId: 9068ee2c06fd467faf8870e4cb7b1810
+          fuelPurchaseInfo:
+            pumpNumber: 1
+            serviceLevelCode: S
+            items: []
+          payments:
+          - currencyCode:
+              code: USD
+              number: 840
+              currency: US Dollar
+            capturedAmount: 19.74
+            accountType: CREDIT
+            sourceType: UCOM
+          siteInfo:
+            siteName: TEST_VF 770006
+            geolocation:
+              locationId: '770006'
+              siteAddress:
+                address:
+                  country: USA
+                  formatted: 1106 Main St.
+                phone: {}
+                email: {}
+          _receipt:
+            href: https://api-cat.payeezy.com/ucom/v1/txhistory/receipts/9068ee2c06fd467faf8870e4cb7b1810
+            rel: receipt
+            method: GET
+          loyaltyTransactions: []
+          saleItems:
+          - itemDescription: UNLD
+            itemPrice: 2.639
+            unitOfMeasurement: ea
+            unitsSold: 7.48
+            totalItemSaleAmount: 19.74
+            posCode: '00000000000001'
+            productCode: '4'
+            type: FUEL
+            priceTier: credit
+          vouchers: []
+        pages:
+          currentPage: 1
+          currentPageRecords: 1
+          totalPages: 1
+          totalRecords: 1
+          sortOrder: DESC
+          _links:
+          - href: https://api-cat.payeezy.com/ucom/v1/txhistory/customers/b6d400b26cb0446190563b1b600204c2/transactions?pageNo=0&pageSize=25
+            rel: current.page
+            method: GET
+          - href: https://api-cat.payeezy.com/ucom/v1/txhistory/customers/b6d400b26cb0446190563b1b600204c2/transactions?pageSize=25&pageNo=1
+            rel: first.page
+            method: GET
+          - href: https://api-cat.payeezy.com/ucom/v1/txhistory/customers/b6d400b26cb0446190563b1b600204c2/transactions?pageSize=25&pageNo=1
+            rel: last.page
+            method: GET
+
+    ApplepayTransactionHistorySuccessResponse:
+      value:
+        transactions:
+        - retailerPartnerId: TEST_WALLET
+          fdCustomerId: 8abce7a8be274dd9a716e02e0332d804
+          status: COMPLETED
+          finalTransactionAmount: '19.74'
+          transactionDate: '2023-01-25T08:48:52Z'
+          transactionId: 170bc247fd9f4df28a633646f92dda61
+          fuelPurchaseInfo:
+            pumpNumber: 1
+            serviceLevelCode: S
+            items: []
+          payments:
+          - currencyCode:
+              code: USD
+              number: 840
+              currency: US Dollar
+            capturedAmount: 19.74
+            cardType: MASTERCARD
+            accountType: CREDIT
+            alias: '1171'
+            sourceType: APPLE_PAY
+          siteInfo:
+            siteName: TEST_VF 770006
+            geolocation:
+              locationId: '770006'
+              siteAddress:
+                address:
+                  country: USA
+                  formatted: 1106 Main St.
+                phone: {}
+                email: {}
+          _receipt:
+            href: https://api-cat.payeezy.com/ucom/v1/txhistory/receipts/170bc247fd9f4df28a633646f92dda61
+            rel: receipt
+            method: GET
+          loyaltyTransactions:
+          - storeId: '770006'
+            transactionDateTime: '2023-01-25T08:48:50Z'
+            referenceNumber: 170bc247fd9f4df28a633646f92dda61
+            fundingSource:
+              loyalty:
+                loyaltyProgram:
+                  programId: ShopAndSave
+                metadata: []
+                issuerExtraInfo: []
+            unitsValue: 0
+            status: AUTHORIZED
+          saleItems:
+          - itemDescription: UNLD
+            itemPrice: 2.639
+            unitOfMeasurement: ea
+            unitsSold: 7.48
+            totalItemSaleAmount: 19.74
+            posCode: '00000000000001'
+            productCode: '4'
+            type: FUEL
+            priceTier: credit
+          vouchers: []
+        pages:
+          currentPage: 1
+          currentPageRecords: 1
+          totalPages: 1
+          totalRecords: 1
+          sortOrder: DESC
+          _links:
+          - href: https://api-cat.payeezy.com/ucom/v1/txhistory/customers/8abce7a8be274dd9a716e02e0332d804/transactions?pageNo=0&pageSize=25
+            rel: current.page
+            method: GET
+          - href: https://api-cat.payeezy.com/ucom/v1/txhistory/customers/8abce7a8be274dd9a716e02e0332d804/transactions?pageSize=25&pageNo=1
+            rel: first.page
+            method: GET
+          - href: https://api-cat.payeezy.com/ucom/v1/txhistory/customers/8abce7a8be274dd9a716e02e0332d804/transactions?pageSize=25&pageNo=1
+            rel: last.page
+            method: GET
+
+    PaypalTransactionHistorySuccessResponse:
+      value:
+        transactions:
+        - retailerPartnerId: TEST_WALLET
+          fdCustomerId: 3c461c2eecd4455a9926a1058367c506
+          status: COMPLETED
+          finalTransactionAmount: '19.74'
+          transactionDate: '2023-01-25T09:38:55Z'
+          transactionId: 8fdc4b3f83e64dd38105f48d69e9fbf0
+          fuelPurchaseInfo:
+            pumpNumber: 1
+            serviceLevelCode: S
+            items: []
+          payments:
+          - currencyCode:
+              code: USD
+              number: 840
+              currency: US Dollar
+            capturedAmount: 19.74
+            accountType: PAYPAL
+            sourceType: UCOM
+          siteInfo:
+            siteName: TEST_VF 770006
+            geolocation:
+              locationId: '770006'
+              siteAddress:
+                address:
+                  country: USA
+                  formatted: 1106 Main St.
+                phone: {}
+                email: {}
+          _receipt:
+            href: https://api-cat.payeezy.com/ucom/v1/txhistory/receipts/8fdc4b3f83e64dd38105f48d69e9fbf0
+            rel: receipt
+            method: GET
+          loyaltyTransactions: []
+          saleItems:
+          - itemDescription: UNLD
+            itemPrice: 2.639
+            unitOfMeasurement: ea
+            unitsSold: 7.48
+            totalItemSaleAmount: 19.74
+            posCode: '00000000000001'
+            productCode: '4'
+            type: FUEL
+            priceTier: credit
+          vouchers: []
+        pages:
+          currentPage: 1
+          currentPageRecords: 1
+          totalPages: 1
+          totalRecords: 1
+          sortOrder: DESC
+          _links:
+          - href: https://api-cat.payeezy.com/ucom/v1/txhistory/customers/3c461c2eecd4455a9926a1058367c506/transactions?pageNo=0&pageSize=25
+            rel: current.page
+            method: GET
+          - href: https://api-cat.payeezy.com/ucom/v1/txhistory/customers/3c461c2eecd4455a9926a1058367c506/transactions?pageSize=25&pageNo=1
+            rel: first.page
+            method: GET
+          - href: https://api-cat.payeezy.com/ucom/v1/txhistory/customers/3c461c2eecd4455a9926a1058367c506/transactions?pageSize=25&pageNo=1
+            rel: last.page
+            method: GET
+
+    GetReceiptByfdTransactionIdResponse:
+      summary: Receipt details response
+      value:
+        receiptData:
+          receiptLines:
+            plain:
+            - ''
+            - ' FUELS LAB'
+            - '565 SOUTH MASON RD #'
+            - 'KATY, AB '
+            - '77450'
+            - ''
+            - 10/03/2018 496410494
+            - 06:35:52 AM
+            - ''
+            - 'INVOICE '
+            - AUTH 020543
+            - ''
+            - PUMP# 1
+            - Supreme CR 3.195G
+            - PRICE/GAL $ 3.00
+            - FUEL PURCHASED Gal. 10
+            - FUEL TOTAL $ 30.00
+            - ''
+            - '--------'
+            - Total = $ 30.00
+            - ''
+            - ''
+            - CREDIT $ 11.53
+            - ''
+            - ''
+            - ''
+            - '* * * * * * * * * *'
+            - Your car wash
+            - code is 1538562931668
+            - Expires 2018-10-04
+            - '* * * * * * * * * *'
+            - ''
+            - ''
+            - CRIND RECEIPT FOOTER
+            - ''
+            - ''
+
+
+
+
+

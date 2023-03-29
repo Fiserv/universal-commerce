@@ -14,7 +14,7 @@ You will find your tenant under the `Merchants` or `Financial Instutions` area b
 
 Congratulations, you've got a working tenant in the `staging` system.
 
-To have your tenant show up in the `production` system finish editing your content and simply `publish` it to the `main` branch in your repositry.  More on that can be found in the [Preview vs Publish]
+To have your tenant show up in the `production` system finish editing your content and simply `publish` it to the `main` branch in your repository.  More on that can be found in the [Preview vs Publish]
 
 ___
 

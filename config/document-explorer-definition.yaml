@@ -1,71 +1,112 @@
 ################################################################################
-# Copyrights © 2021-2022 Fiserv, Inc. or its affiliates. 
-# Fiserv is a trademark of Fiserv, Inc., 
-# registered or used in the United States and foreign countries, 
-# and may or may not be registered in your country.  
-# All trademarks, service marks, 
-# and trade names referenced in this 
-# material are the property of their 
-# respective owners. This work, including its contents 
-# and programming, is confidential and its use 
-# is strictly limited. This work is furnished only 
-# for use by duly authorized licensees of Fiserv, Inc. 
-# or its affiliates, and their designated agents 
-# or employees responsible for installation or 
-# operation of the products. Any other use, 
-# duplication, or dissemination without the 
-# prior written consent of Fiserv, Inc. 
-# or its affiliates is strictly prohibited. 
-# Except as specified by the agreement under 
-# which the materials are furnished, Fiserv, Inc. 
-# and its affiliates do not accept any liabilities 
-# with respect to the information contained herein 
-# and are not responsible for any direct, indirect, 
-# special, consequential or exemplary damages 
-# resulting from the use of this information. 
-# No warranties, either express or implied, 
-# are granted or extended by this work or 
+# Copyrights © 2021-2022 Fiserv, Inc. or its affiliates.
+# Fiserv is a trademark of Fiserv, Inc.,
+# registered or used in the United States and foreign countries,
+# and may or may not be registered in your country.
+# All trademarks, service marks,
+# and trade names referenced in this
+# material are the property of their
+# respective owners. This work, including its contents
+# and programming, is confidential and its use
+# is strictly limited. This work is furnished only
+# for use by duly authorized licensees of Fiserv, Inc.
+# or its affiliates, and their designated agents
+# or employees responsible for installation or
+# operation of the products. Any other use,
+# duplication, or dissemination without the
+# prior written consent of Fiserv, Inc.
+# or its affiliates is strictly prohibited.
+# Except as specified by the agreement under
+# which the materials are furnished, Fiserv, Inc.
+# and its affiliates do not accept any liabilities
+# with respect to the information contained herein
+# and are not responsible for any direct, indirect,
+# special, consequential or exemplary damages
+# resulting from the use of this information.
+# No warranties, either express or implied,
+# are granted or extended by this work or
 # the delivery of this work
 ################################################################################
 
 - sections:
-    - title: Introduction
-      link:
-      open: true
-      sections:
-        - title: Contact Us
-          link: docs/introduction/contact-us.md
+  - title: Introduction
+    link: docs/documentation/introduction.md
+    #    - title: Create Customer
+    #      link: docs/documentation/customerServicesCreateCustomer_v1.md
+  - title: Implementation Guide
+    link: docs/documentation/Standard_Implementation_Guide.md
+  - title: Frequently Asked Questions
+    link: docs/faq/faq.md
+    
 - sections:
-  - title: Getting Started
-    link: docs/getting-started.md
-    open: true
+  - title: Common Use Cases
+    link: recipes/LandingPage.md
     sections:
-    - title: Setup a Tenant
-      link: docs/getting-started/setup-tenant/setup-tenant.md
-    - title: Deploy Tenant
-      link: docs/getting-started/setup-tenant/deploy-tenant.md
-    - title: Register Tenant
-      link: docs/getting-started/setup-tenant/register-tenant.md
-    - title: Code a Tenant
-      link: docs/getting-started/code-a-tenant/code-tenant.md
-    - title: Preview & Publish
-      link: docs/getting-started/preview-and-publish-content/preview-and-publish.md
-- sections:
-  - title: Resources
-    link:
-    open: true
-    sections:
-    - title: API Guide
-      link: docs/resources/guides/api-guide.md
-    - title: How it works
-      link: docs/resources/guides/how-it-works.md
-    - title: How to use Stoplight
-      link: docs/resources/guides/how-to-use-stoplight.md
-    - title: How to use Docignore
-      link: docs/resources/guides/how-to-use-docignore.md
-    - title: Markdown Support
-      link: docs/resources/markdown-support.md
-    - title: Tutorials
-      link: docs/tutorials/tutorials.md
-    - title: FAQ
-      link: docs/faq/faq.md
+    - title: How to Create, Read, Update, and Delete a Customer Profile
+      link: recipes/customerRegistration.md
+    - title: How to Make a Guest Checkout
+      link: recipes/guest_checkout.md
+    - title: How to Vault a Credit Card or Gift Card
+      link: recipes/vault_credit_card_gift_card.md
+    - title: How to Avoid a Duplicate Transaction
+      link: recipes/duplicate_transactions.md
+    - title: How to Make a Payment with Paypal or Venmo
+      link: recipes/Paypal_Venmo_guide.md
+    - title: How to Make a split Payment
+      link: recipes/Split_Tender_Payment.md
+    - title: How to Make a InApp Payments
+      link: recipes/InApp_Payments.md
+    - title: How to Issue a Refund
+      link: recipes/refunds.md
+
+    open: false
+    #- recipes:
+    #    - title: How to Create, Read, Update, and Delete a Customer Profile
+    #      link: recipes/customerRegistration.md
+    #    - title: How to Make a Guest Checkout
+    #      link: recipes/guest_checkout.md
+    #    - title: How to Vault a Credit Card or Gift Card 
+    #      link: recipes/vault_credit_card_gift_card.md
+    #    - title: How to Avoid a Duplicate Transaction 
+    #      link: recipes/duplicate_transactions.md
+    #    - title: How to Make a Payment with Paypal or Venmo
+    #      link: recipes/Paypal_Venmo_guide.md
+    #    - title: How to Make a Split Payment 
+    #      link: recipes/Split_Tender_Payment.md
+    #     open: true
+    #      sections:
+    #        - title: Create a Customer
+    #          link: /docs/documentation/customerServicescrearecustomer_v1.md
+    #            - title: Retrieve Token & Encryption Key
+    #              link:
+    #            - title: Tokenize an Account
+    #              link:
+    #            - title: Tokenize an Account with Nonce
+    #              link:
+    #            - title: Vault an Account
+    #              link:
+    #            - title: Get a List of Accounts
+    #              link:
+    #            - title: Get Account Details
+    #              link:
+    #            - title: Update a Vaulted Account
+    #            - title: Delete a Vaulted Account
+    #              link:
+    #            - title: Retrieve an Account with a Nonce Token
+    #              link:
+#       - title: Recipes
+#         link: /universal-commerce/tree/develop/recipes/
+#         open: true
+#         sections:
+#           - title: Paypal Venmo
+#             link: /universal-commerce/tree/develop/recipes/Paypal_Venmo_guide.md
+#           - title: Split Tender
+#             link: /universal-commerce/tree/develop/recipes/Split_Tender_Payment.md
+#           - title: Recipe 1 <Name>
+#             link: /universal-commerce/tree/develop/recipes/Recipe-1.md
+#           - title: Recipe 2 <Name>
+#             link: /universal-commerce/tree/develop/recipes/Recipe-2.md
+#           - title: Recipe 3 <Name>
+#             link: /universal-commerce/tree/develop/recipes/Recipe-3.md
+#           - title: Recipe 4 <Name>
+#             link: /universal-commerce/tree/develop/recipes/Recipe-4.md
