@@ -1,10 +1,3 @@
-
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">   
-
-</head>
-<body bgcolor="#ffffff">
 ## Fiserv Connected Commerce (uCom) REST API Specification
 
 Here is how to utilize this guide. All your necessary steps are on your right and will guide you through the necessary steps to create a customer and start processing payments in Connected Commerce (uCom).
@@ -588,7 +581,4 @@ A specific set of testing cards will be provided to you by the Implementation Te
 
 Still have questions? Check out the <a href="../docs/?path=docs/faq/faq.md">FAQs Section</a> for more help.
 
-<div id="copy_button"></div>
-</body>
-</html>
 
