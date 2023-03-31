@@ -5,7 +5,6 @@
 
 </head>
 <body bgcolor="#ffffff">
-<base target="_blank">
 ## Fiserv Connected Commerce (uCom) REST API Specification
 
 Here is how to utilize this guide. All your necessary steps are on your right and will guide you through the necessary steps to create a customer and start processing payments in Connected Commerce (uCom).
