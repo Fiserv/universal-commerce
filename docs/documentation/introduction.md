@@ -20,7 +20,7 @@ Connected Commerce (uCom) services are deployed across geography covering North 
 
 
 ##What are the verticals in Connected Commerce (uCom)?
-We have Petro (Petroleum Industry), Quick Service Restaurants (QSR), Automobiles, Grocery, Sports Arena and Health and (H&W).
+We have Petro (Petroleum Industry), Quick Service Restaurants (QSR), Automobiles, Grocery, Sports Arena and Health and Wellness (H&W).
 
 
 To start integrating with Connected Commerce (uCom), please refer to our <a href="../docs/?path=/docs/documentation/Standard_Implementation_Guide.md">Implementation Guide</a> section.
