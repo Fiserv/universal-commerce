@@ -1,11 +1,3 @@
-
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">   
-
-</head>
-<body bgcolor="#ffffff">
-<base target="_blank">
 ## Fiserv Connected Commerce (uCom) REST API Specification
 
 Here is how to utilize this guide. All your necessary steps are on your right and will guide you through the necessary steps to create a customer and start processing payments in Connected Commerce (uCom).
@@ -31,10 +23,9 @@ https://int.api.firstdata.com/ucom/v1/customers
 
 >### Authentication
 
-**API-KEYS**
-    
+**API SECURITY**
 Please see the following reference document for current implementation:
-<a href="../docs/?path=documentation/APISecurity.md">API Security Information</a>
+<a href="../docs/?path=docs/documentation/APISecurity.md">API Security Information</a>
 <!--[API Security File GL Link](APISecurity.md)-->
 <!-- <a href="docs/documentation/APISecurity.md">API Security Guides</a> -->
 <!--[https://firstdatanp-ucomgateway.apigee.io/get-started/api-security](https://firstdatanp-ucomgateway.apigee.io/get-started/api-security)-->
@@ -590,7 +581,4 @@ A specific set of testing cards will be provided to you by the Implementation Te
 
 Still have questions? Check out the <a href="../docs/?path=docs/faq/faq.md">FAQs Section</a> for more help.
 
-<div id="copy_button"></div>
-</body>
-</html>
 
