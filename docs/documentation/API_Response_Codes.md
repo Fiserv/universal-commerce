@@ -12,7 +12,7 @@ The codes are separated into sections based on what was being done in the softwa
 |Common|269902|Invalid request format/data.|400|
 |Common|269904|Invalid Global transaction id. No data found for the given Global Transaction Id.|400|
 |Common|269905|Invalid Location Id. No data found for the given Location Id.|400|
-|Common|269906|"This service is down at the moment| please try again later."|500|
+|Common|269906|This service is down at the moment, please try again later.|500|
 |Common|279903|Your secure session has expired due to longer period of inactivity. Please try again.|400|
 |Common|279904|Customer profile not found.|400|
 |Common|279905|Account detail not found.|400|
@@ -166,8 +166,8 @@ The codes are separated into sections based on what was being done in the softwa
 |Value Add Services|280004| Invalid login or password.|400|
 |Value Add Services|280005| Error: transaction not found.|400|
 |Value Add Services|280006| Invalid location or transaction.|400|
-|Value Add Services|280007|Email is already used| invalid or blocked.|400
-|Value Add Services|280008|Unable to retrieve loyalty offer| please complete your purchase and try again.|400
+|Value Add Services|280007|Email is already used, invalid or blocked.|400|
+|Value Add Services|280008|Unable to retrieve loyalty offer, please complete your purchase and try again.|400|
 |Value Add Services|7085| Service unavailable|400|
 
 ## Loyalty
