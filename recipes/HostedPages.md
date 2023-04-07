@@ -84,6 +84,8 @@ to the merchant to decide this part of the transaction.
 
 **How to generate HMAC signature**
 
+```json
+
 var key = “”;//the 'Api-Key' ![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.005.png)
 
 var secret = “”;//the 'Api-Secret';
@@ -101,6 +103,8 @@ var b64BodyContent = CryptoJS.enc.Base64.stringify(payload\_digest); rawSignatur
 } 
 
 var signature = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA256(rawSignature, secret))); // use this in header
+
+```
 
 **3. MAS calls uCom to get page link** MAS can cache the page link for future reference though we do not recommend that. Merchant may have configured multiple pages and therefore this api will return all of them. Each page can be identified by the relation.
 
