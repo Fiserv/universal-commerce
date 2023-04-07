@@ -7,7 +7,6 @@ The codes are separated into sections based on what was being done in the softwa
 
 |Service|Response Code|Response Message|Http Status Code|
 |-------|-------------|----------------|----------------|
-
 |Common|269801|Blocked for suspicious activity.|400|
 |Common|269901|Server error occurred. Please try later.|500|
 |Common|269902|Invalid request format/data.|400|
@@ -36,16 +35,14 @@ The codes are separated into sections based on what was being done in the softwa
 
 |Service|Response Code|Response Message|Http Status Code|
 |-------|-------------|----------------|----------------|
-
-Register a Customer|270101|Customer already registered|409|
-Update Customer Profile|270201|Customer profile details update failed|400|
-Deregister Customer|270401|Consumer profile is already de-registered|400|
+|Register a Customer|270101|Customer already registered|409|
+|Update Customer Profile|270201|Customer profile details update failed|400|
+|Deregister Customer|270401|Consumer profile is already de-registered|400|
 
 ## Tokenization
 
 |Service|Response Code|Response Message|Http Status Code|
 |-------|-------------|----------------|----------------|
-
 |Payment Method Nonce|273601|Account validation failed.|400|
 |Payment Method Nonce|273602|Message decryption failed.|500|
 |Payment Method Nonce|273603|Decryption Key has expired.|400|
@@ -54,7 +51,6 @@ Deregister Customer|270401|Consumer profile is already de-registered|400|
 
 |Service|Response Code|Response Message|Http Status Code|
 |-------|-------------|----------------|----------------|
-
 |Add Account|274001|Account registration was unsuccessful. Please check the account details|400|
 |Add Account|274002|Account already registered.|409|
 |Add Account|274004|The consumer has already enrolled the maximum allowable number of accounts.|400|
@@ -67,7 +63,6 @@ Deregister Customer|270401|Consumer profile is already de-registered|400|
 
 |Service|Response Code|Response Message|Http Status Code|
 |-------|-------------|----------------|----------------|
-
 |Purchase Gift Card|271001|Gift card purchase failed : Gift card creation failure|500|
 |Purchase Gift Card|271002|Gift card purchase failed : Payment Transaction failure|400|
 |Gift Card Balance|272501|Gift card balance retrieval failed|500|
@@ -81,7 +76,6 @@ Deregister Customer|270401|Consumer profile is already de-registered|400|
 
 |Service|Response Code|Response Message|Http Status Code|
 |-------|-------------|----------------|----------------|
-
 |Sale Transaction|272701|Sale transaction failed|400|
 |Sale Transaction|272706|Sale transaction not found|400|
 |Sale Void|272711| Sale transaction cancellation failed|400|
@@ -94,7 +88,6 @@ Deregister Customer|270401|Consumer profile is already de-registered|400|
 
 |Service|Response Code|Response Message|Http Status Code|
 |-------|-------------|----------------|----------------|
-
 |Auth Transaction|272731|Auth transaction failed|400|
 |Auth Transaction|272736|Auth transaction not found|400|
 |Auth Void|272741| Auth transaction cancellation failed|400|
@@ -106,7 +99,6 @@ Deregister Customer|270401|Consumer profile is already de-registered|400|
 
 |Service|Response Code|Response Message|Http Status Code|
 |-------|-------------|----------------|----------------|
-
 |Capture Transaction|272761|Capture transaction failed|400|
 |Capture Transaction|272766|Capture transaction not found|400|
 |Capture Void|272761| Capture transaction cancellation failed|400|
@@ -118,14 +110,12 @@ Deregister Customer|270401|Consumer profile is already de-registered|400|
 
 |Service|Response Code|Response Message|Http Status Code|
 |-------|-------------|----------------|----------------|
-
 |Payment Charges|272880| Fee details not found|400|
 
 ## Petro Authorizations
 
 |Service|Response Code|Response Message|Http Status Code|
 |-------|-------------|----------------|----------------|
-
 |Service Authorization|260202|Dispenser busy|400|
 |Service Authorization|260203|Dispenser offline|400|
 |Service Authorization|260204|Pump number specified is invalid or does not exist|400|
@@ -149,7 +139,6 @@ Deregister Customer|270401|Consumer profile is already de-registered|400|
 
 |Service|Response Code|Response Message|Http Status Code|
 |-------|-------------|----------------|----------------|
-
 |Transaction Status Update|260309|The dispenser is already fueling|400|
 |Transaction Status Update|260312|The dispenser is already processing request to cancel|400|
 |Transaction Status Update|260315|Transaction has been already Cancelled|400|
@@ -160,7 +149,6 @@ Deregister Customer|270401|Consumer profile is already de-registered|400|
 
 |Service|Response Code|Response Message|Http Status Code|
 |-------|-------------|----------------|----------------|
-
 |provision|279912|Invalid request: Provision not found/valid|400|
 |provision|279914|The issuer could not continue with provision operation. Kindly contact the card issuer operations directly|400|
 |provision|279915|Authorization process could not be completed as there are no phone numbers available on file. Kindly contact the card issuer operations directly|400|
@@ -172,7 +160,6 @@ Deregister Customer|270401|Consumer profile is already de-registered|400|
 
 |Service|Response Code|Response Message|Http Status Code|
 |-------|-------------|----------------|----------------|
-
 |Value Add Services|280001| Operation was unsuccessful. Please check the account details.|400|
 |Value Add Services|280002| Please narrow the date range.|400|
 |Value Add Services|280003| Offer expired.|400|
@@ -187,7 +174,6 @@ Deregister Customer|270401|Consumer profile is already de-registered|400|
 
 |Service|Response Code|Response Message|Http Status Code|
 |-------|-------------|----------------|----------------|
-
 |Loyalty Service|300001| Transaction Processing Failure. This is a permanent failure|400|
 |Loyalty Service|300002|Transaction Processing Failure. This is a temporary failure and the transaction will be retried later|400|
 
@@ -195,7 +181,6 @@ Deregister Customer|270401|Consumer profile is already de-registered|400|
 
 |Service|Response Code|Response Message|Http Status Code|
 |-------|-------------|----------------|----------------|
-
 |Order Services |310000| Missing Header Data|400|
 |Order Services |310001| Missing Query Parameter|400|
 |Order Services |310002| Missing External Customer ID|400|
