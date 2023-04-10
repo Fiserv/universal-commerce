@@ -39,7 +39,9 @@
     link: docs/documentation/features.md
   - title: Frequently Asked Questions
     link: docs/faq/faq.md
-    
+  - title: Response Codes
+    link: docs/documentation/API_Response_Codes.md
+
 - sections:
   - title: Common Use Cases
     link: recipes/LandingPage.md
@@ -62,7 +64,7 @@
       link: recipes/refunds.md
     - title: How to Use Fraud Mitigation
       link: recipes/fraud_detect.md
-      
+
 
     open: false
     #- recipes:
