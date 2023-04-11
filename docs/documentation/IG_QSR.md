@@ -4,7 +4,7 @@
 
 <Add Product Content on QSR HERE>
 
-To get started, turn to the <a href="">API Requirements</a> page for details on client authorization (connectivity, API HTTP Headers, API security), and idempotency, then return to this webpage to navigate through the QSR services below.
+To get started, turn to the [API Fundamentals](../docs/?path=/docs/documentation/Connectivity.md) page for details on connectivity, API HTTP Headers, API security, and idempotency, then return to this webpage to navigate through the QSR services below.
 
 ## Explore the QSR Services
 
@@ -12,7 +12,7 @@ Click on the preferred link or icon below to explore each service.
 
 | **API Service**                                           | **Description** |
 | --------------------------------------------------------- | --------------  |
-| [Customer Services](../api/?type=post&path=/v1/customers) | This API handles all of the Connected Commerce (uCom) Customer Profile Management operations (create, read, update, and delete). You (a merchant) can register a new customer. The response includes the newly created fdCustomerId (ID) and the externalID parameters. |
+| [Customer Services](../api/docs/?path=/docs/documentation/customerServices.md) | This API handles all of the Connected Commerce (uCom) Customer Profile Management operations (create, read, update, and delete). You (a merchant) can register a new customer. The response includes the newly created fdCustomerId (ID) and the externalID parameters. |
 | [Security Services](../api/?type=post&path=/v1/tokens) | This API handles services related to managing the API security features like access tokens and validation.                                                                                                                                                                 |
 | [Account Services](../api/?type=post&path=/v1/accounts/verification) | This API handles services for Connected Commerce (uCom) customer accounts. Accounts can be credit, debit, loyalty, prepaid, etc.                                                                                                                         |
 | [Payment Services](../api/?type=post&path=/v1/payments/auths) | This API handles services needed to initiate AUTH/CAPTURE/SALE transactions using a payment account.                                                                                                                                                                |
