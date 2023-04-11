@@ -1,6 +1,6 @@
-# Client Authorization
+# API Fundamentals
 
-## Browse Client Authorization Content
+## Browse API Fundamentals Content
 For ease of navigation on this page, content headings are listed in the right hand navigation pane allowing you to jump to a specific section within this page.
 
 >### Connectivity
@@ -29,8 +29,7 @@ Please see the following reference document for current implementation:
 <!-- <a href="docs/documentation/APISecurity.md">API Security Guides</a> -->
 <!--[https://firstdatanp-ucomgateway.apigee.io/get-started/api-security](https://firstdatanp-ucomgateway.apigee.io/get-started/api-security)-->
 
-  >### Headers
-   >> API HTTP headers
+  >### API HTTP Headers
    
  
  | Header            | Value                  | Always Required | Description                                                                                                                             |
@@ -46,7 +45,7 @@ Please see the following reference document for current implementation:
    
 
    >### Securities and Privacy
-    >>Field Encryption/Decryption Algorithm
+    Field Encryption/Decryption Algorithm
 
 Unless explicitly decided otherwise, confidential information such as account number, card number, passwords etc. should be encrypted prior to exchanging with UCG. The wallet app server has to encrypt the messages using the public key (that will be shared by UCG) and sent to UCG. The steps required for encrypting the sensitive information are:
 
@@ -56,3 +55,5 @@ Unless explicitly decided otherwise, confidential information such as account nu
  - The encrypted string should then be Base64 encoded.
  - The final encoded string value  replaces the sensitive data.
  - The encoded string is used by UCG to retrieve the sensitive data.
+
+ [Return to Quick Service Restuarants (QSR) API Integration Guide](../docs/?path=/docs/documentation/IG_QSR.md)
