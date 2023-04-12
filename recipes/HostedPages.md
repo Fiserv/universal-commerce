@@ -172,192 +172,164 @@ ucom://finish?response=response-payload-object-string
 **Note:** Webview redirection listener URL should be decoded before handle it.
 
 1. **IOS Sample Code Snippets** 
-1. #Load HP static URL in webview   ![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.011.png)
-1. - (**void**) successfulMASRequestWithResponseDictionary:(NSDictionary \*)response {   
-1. // Step 2 - Load Hosted Pages   
-1. NSString \*tokenId = response[@"tokenId"];   
-1. NSString \*apiKey = response[@"apiKey"];   
-1. NSString \*fdCustomerId = response[@"fdCustomerId"];   
-1. NSString \*url = response[@"href"];   
-1. NSString \*requestURL = [NSString stringWithFormat:@"https://%@.api.firstdata.com/u com/v2/static/v2/ucom-sdk.html", MAS.masSharedManager.environment];   
-1. hostedPageRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString: requestURL]];   
-1. // Load   
-1. dispatch\_async(dispatch\_get\_main\_queue(), ^{   
-1. [self->\_webView loadRequest:hostedPageRequest];   
-1. [self->\_webView reloadFromOrigin];   
-1. });   
-1. }   
- 
-1. #Once webview loaded then pass configuration object and call HP javascript method   
-1. - (**void**) webView:(WKWebView \*)webView didFinishNavigation:(WKNavigation \*)navigatio n {   
-1. MAS \*sharedInstance = [MAS masSharedManager];   
-1. NSString \*execTemplate =    
-1. @"uComClient.init({   
-1. \"apiKey\":\"%@\",   
 
-23. \"redirectUrl\":\"%@\",   ![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.012.png)
-23. \"fdCustomerId\":\"%@\",   
-23. \"pageId\":\"%@\",   
-23. \"accessToken\":\"%@\",   
-23. \"encryptionKey\":\"%@\",   
-23. \"env\":\"%@\"});";   
-23. NSString \*exec = [NSString stringWithFormat:execTemplate,sharedInstance.apiKey,  \_redirectUrl,    
-23. sharedInstance.fdCustomerId, sharedInstance.pageId, sharedInstance.bearer,   
-23. sharedInstance.encryptionKey, sharedInstance.environment];   
-23. [\_webView evaluateJavaScript:exec completionHandler:nil];   
-23. **if** ([\_activityIndicatorView isAnimating]) {   
-23. [\_activityIndicatorView stopAnimating];   
-23. }   
-23. }   
- 
-23. #pragma mark WKNavigationDelegate methods (Redirection Listener Methods)   
-23. - (**void**) webView:(WKWebView \*)webView decidePolicyForNavigationAction:(WKNavigation Action \*)navigationAction decisionHandler:(**void** (^)(WKNavigationActionPolicy))decisionH andler {   
-23. //Step 4 - Handle finish redirection   
-23. NSString \*requestURL = navigationAction.request.URL.absoluteString;   
-23. NSLog(@"Redirect has occurred ...");   
-23. NSLog(@"Request Url: %@", requestURL);   
-23. **if** ([requestURL hasPrefix:@"ucom://finish"]) {   
-23. // This is the clue that Hosted Posted is finished   
-23. NSLog(@" --------------------------------------------------------------
+```json
 
-");   
+ #Load HP static URL in webview 
+ - (void) successfulMASRequestWithResponseDictionary:(NSDictionary *)response { 
+ // Step 2 - Load Hosted Pages 
+ NSString *tokenId = response[@"tokenId"]; 
+ NSString *apiKey = response[@"apiKey"]; 
+ NSString *fdCustomerId = response[@"fdCustomerId"]; 
+ NSString *url = response[@"href"]; 
+ NSString *requestURL = [NSString stringWithFormat:@"https://%@.api.firstdata.com/u
+com/v2/static/v2/ucom-sdk.html", MAS.masSharedManager.environment]; 
+ hostedPageRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:
+requestURL]]; 
+ // Load 
+ dispatch_async(dispatch_get_main_queue(), ^{ 
+ [self->_webView loadRequest:hostedPageRequest]; 
+ [self->_webView reloadFromOrigin]; 
+ }); 
+ } 
 
-47. NSLog(@"| REQUEST URL: %@", requestURL);   
-47. NSLog(@" --------------------------------------------------------------
+ #Once webview loaded then pass configuration object and call HP javascript method 
+ - (void) webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigatio
+n { 
+ MAS *sharedInstance = [MAS masSharedManager]; 
+ NSString *execTemplate = 
+ @"uComClient.init({ 
+ \"apiKey\":\"%@\", 
+ \"redirectUrl\":\"%@\", 
+ \"fdCustomerId\":\"%@\", 
+ \"pageId\":\"%@\", 
+ \"accessToken\":\"%@\", 
+ \"encryptionKey\":\"%@\", 
+ \"env\":\"%@\"});"; 
+ NSString *exec = [NSString stringWithFormat:execTemplate,sharedInstance.apiKey,
+_redirectUrl, 
+ sharedInstance.fdCustomerId, sharedInstance.pageId, sharedInstance.bearer, 
+ sharedInstance.encryptionKey, sharedInstance.environment]; 
+ [_webView evaluateJavaScript:exec completionHandler:nil]; 
+ if ([_activityIndicatorView isAnimating]) { 
+ [_activityIndicatorView stopAnimating]; 
+ } 
+ } 
 
-");   
+ #pragma mark WKNavigationDelegate methods (Redirection Listener Methods) 
+ - (void) webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigation
+Action *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionH
+andler { 
+ //Step 4 - Handle finish redirection 
+ NSString *requestURL = navigationAction.request.URL.absoluteString; 
+ NSLog(@"Redirect has occurred ..."); 
+ NSLog(@"Request Url: %@", requestURL); 
+ if ([requestURL hasPrefix:@"ucom://finish"]) { 
+ // This is the clue that Hosted Posted is finished 
+ NSLog(@" --------------------------------------------------------------
+"); 
+ NSLog(@"| REQUEST URL: %@", requestURL); 
+ NSLog(@" --------------------------------------------------------------
+"); 
+ decisionHandler(WKNavigationActionPolicyCancel); 
+ NSString *resultStr = [[requestURL componentsSeparatedByString:@"ucom://fin
+ish?response="].lastObject stringByRemovingPercentEncoding]; 
+ UIAlertController *alertController = [UIAlertController alertControllerWith
+Title:@"Result" message:resultStr preferredStyle:UIAlertControllerStyleAlert]; 
+ UIAlertAction *okButton = [UIAlertAction actionWithTitle:@"OK" style:UIAler
+tActionStyleDefault handler:^(UIAlertAction * _Nonnull action) { 
+ [self.navigationController popViewControllerAnimated:YES]; 
+ }]; 
+ [alertController addAction:okButton]; 
+ [self presentViewController:alertController animated:YES completion:nil]; 
+ } else { 
+ // Otherwise don't intercept 
+ decisionHandler(WKNavigationActionPolicyAllow); 
+ } } 
 
-49. decisionHandler(WKNavigationActionPolicyCancel);   
-49. NSString \*resultStr = [[requestURL componentsSeparatedByString:@"ucom://fin ish?response="].lastObject stringByRemovingPercentEncoding];   
-49. UIAlertController \*alertController = [UIAlertController alertControllerWith Title:@"Result" message:resultStr preferredStyle:UIAlertControllerStyleAlert];   
-49. UIAlertAction \*okButton = [UIAlertAction actionWithTitle:@"OK" style:UIAler tActionStyleDefault handler:^(UIAlertAction \* \_Nonnull action) {   
-49. [self.navigationController popViewControllerAnimated:YES];   
-49. }];   
-49. [alertController addAction:okButton];   
-49. [self presentViewController:alertController animated:YES completion:nil];   
-49. } **else** {   
-49. // Otherwise don't intercept   
-49. decisionHandler(WKNavigationActionPolicyAllow);   
-49. } }   
+
+```
+
 2. **Android Sample Code Snippets** 
 
-@Override![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.013.png)
+```json
 
+@Override
 protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_web);
+    // Load Hosted Pages
+    String url = "";
+    url =
+        String.format("https://%s.api.firstdata.com/ucom/v2/static/v2/mobile/%s/ucomsdk.html", getEnvironmentString(env), getEnvironmentString(env));
+    FDLogger.INSTANCE.d(TAG, url);
+    HashMap < String, String > headers = new HashMap < > ();
+    headers.put(Constants.Header.API_KEY, apiKey);
+    headers.put(Constants.Header.AUTHORIZATION, Constants.Header.BEARER +
+        tokenId);
+    headers.put(Constants.Header.TIMESTAMP, String.valueOf(new Date().getTime()));
+    FDLogger.INSTANCE.map(TAG, headers);
+    webView.loadUrl(url, headers);
+    webView.setWebViewClient(new WebViewClient() {
+        @Override
+        public void onPageFinished(WebView view, String url) {
+            super.onPageFinished(view, url);
+            progressBar.setVisibility(View.GONE);
+            String javascript = "";
+            //Initialize the SDK with SDK configuration params by calling this 
+            ucomSDK.init() method and pass required parameters
+            javascript = String.format(
+                "uComClient.init({" +
+                "\"%s\":\"%s\"," +
+                "\"%s\":\"%s\"," +
+                "\"%s\":\"%s\"," +
+                "\"%s\":\"%s\"," +
+                "\"%s\":\"%s\"," +
+                "\"%s\":\"%s\"," +
+                "\"%s\":\"%s\"" +
+                "});",
+                Constants.BundleKey.API_KEY, apiKey,
+                Constants.BundleKey.REDIRECT_URL, redirectUrl,
+                Constants.BundleKey.FD_CUSTOMER_ID, fdCustomerId,
+                Constants.BundleKey.PAGE_ID, pageId,
+                Constants.BundleKey.ACCESS_TOKEN, tokenId,
+                Constants.BundleKey.ENCRYPTION_KEY, encryptionKey,
+                Constants.BundleKey.ENV, getEnvironmentString(env));
+            FDLogger.INSTANCE.d(TAG, javascript);
+            webView.evaluateJavascript(javascript, null);
+        }
+        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+            Uri uri = request.getUrl();
+            FDLogger.INSTANCE.d(TAG, uri.getScheme());
+            FDLogger.INSTANCE.d(TAG, uri.getPath());
+            // Handle finish redirection
+            String resultString = request.getUrl().toString();
+            String decodedstr = null;
+            if (resultString.startsWith("ucom://finish")) {
+                // This is the clue that Hosted Posted is finished
+                Log.i(TAG, "REQUEST URL: " + resultString);
+                try {
+                    decodedstr = URLDecoder.decode(resultString, "UTF-8");
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+                Log.i(TAG, "Decoded String: " + decodedstr);
+                if (!resultString.startsWith("ucom://finish?result=failure")) {
+                    finish();
+                    return true;
+                }
+            } else {
+                // Otherwise don't intercept
+                Log.i(TAG, "REQUEST URL: " + resultString);
+            }
+            return super.shouldOverrideUrlLoading(view, request);
+        }
+    });
+}
 
-super.onCreate(savedInstanceState); setContentView(R.layout.activity\_web); 
-
-// Load Hosted Pages
-
-String url = ""; 
-
-url = 
-
-String.format("https://%s.api.firstdata.com/ucom/v2/static/v2/mobile/%s/ucom - sdk.html"![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.014.png), getEnvironmentString(env), getEnvironmentString(env));
-
-FDLogger.INSTANCE.d(TAG,url);
-
-HashMap<String, String> headers = new HashMap<>(); 
-
-headers.put(Constants.Header.API\_KEY, apiKey);
-
-headers.put(Constants.Header.AUTHORIZATION, Constants.Header.BEARER + tokenId);
-
-headers.put(Constants.Header.TIMESTAMP, String.valueOf(new Date().getTime())); FDLogger.INSTANCE.map(TAG,headers);
-
-webView.loadUrl(url, headers);
-
-webView.setWebViewClient(new WebViewClient(){ 
-
-@Override
-
-public void onPageFinished(WebView view, String url) { 
-
-super.onPageFinished(view, url); progressBar.setVisibility(View.GONE); 
-
-String javascript = ""; 
-
-//Initialize the SDK with SDK configuration params by calling this ucomSDK.init() method and pass required parameters
-
-javascript = String.format( 
-
-"uComClient.init({" + 
-
-"\"%s\":\"%s\"," + 
-
-"\"%s\":\"%s\"," + 
-
-"\"%s\":\"%s\"," + 
-
-"\"%s\":\"%s\"," + 
-
-"\"%s\":\"%s\"," + 
-
-"\"%s\":\"%s\"," + 
-
-"\"%s\":\"%s\"" + 
-
-"});", 
-
-Constants.BundleKey.API\_KEY, apiKey, Constants.BundleKey.REDIRECT\_URL, redirectUrl, Constants.BundleKey.FD\_CUSTOMER\_ID, fdCustomerId, Constants.BundleKey.PAGE\_ID, pageId, Constants.BundleKey.ACCESS\_TOKEN, tokenId, ![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.015.png)Constants.BundleKey.ENCRYPTION\_KEY, encryptionKey, Constants.BundleKey.ENV, getEnvironmentString(env));
-
-FDLogger.INSTANCE.d(TAG, javascript); webView.evaluateJavascript(javascript, null); 
-
-} 
-
-@RequiresApi(api = Build.VERSION\_CODES.LOLLIPOP) 
-
-@Override
-
-public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) { 
-
-Uri uri = request.getUrl(); FDLogger.INSTANCE.d(TAG,uri.getScheme()); FDLogger.INSTANCE.d(TAG,uri.getPath());
-
-// Handle finish redirection
-
-String resultString = request.getUrl().toString(); 
-
-String decodedstr = null; 
-
-if (resultString.startsWith("ucom://finish")) {
-
-// This is the clue that Hosted Posted is finished
-
-Log.i(TAG, "REQUEST URL: " + resultString);
-
-try { 
-
-decodedstr = URLDecoder.decode(resultString, "UTF-8"); 
-
-} catch (UnsupportedEncodingException e) { e.printStackTrace(); 
-
-} 
-
-Log.i(TAG, "Decoded String: " + decodedstr);
-
-if (!resultString.startsWith("ucom://finish?result=failure")) { finish(); 
-
-return true; 
-
-} 
-
-} 
-
-else { 
-
-// Otherwise don't intercept
-
-Log.i(TAG, "REQUEST URL: " + resultString);
-
-} 
-
-return super.shouldOverrideUrlLoading(view, request);
-
-} 
-
-}); 
-
-} 
+```
 
 2. **Website Integration Steps** 
 1. Include the uCom SDK library on head tag on your html page 
@@ -389,121 +361,74 @@ e: Pass Mount Id where SDK needs to be mounted on the screen
 
 **3.2.2.1 Web Sample Code** 
 
-<html> ![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.016.png)<head> 
+```json
+<html>
+   <head>
+      <!-- uCom SDK -->
+      <script src="https://int.api.firstdata.com/ucom/v2/static/v2/js/ucomsdk.js"></script>
+   </head>
+   <body>
+      <!-- uCom SDK container -->
+      <div id="ucom-container"></div>
+      <script>
+         /* 
+         // return Callback method
+         // Hosted Pages Response (Error/Success) will be returned to this callback 
+         once the hosted page actions get completed.
+         */
+         function returnCallBack(response) {
+         console.log('UCOM response:', response);
+         /* Kill the uCom UI */
+         ucomSDK.stop();
+         /* Do rest of the flow here */
+         }
+         //Configuration object
+         var configs = {
+         "accessToken": "<access-token>",
+         "apiKey": "<API-KEY>",
+         "fdCustomerId": "<transaction-id>",
+         "pageUrl": "https://int.api.firstdata.com/ucom/v1/hostedpages/pages/<your-page-id>",
+         "mountId": "ucom-container",
+         "encryptionKey": "<encryption-key>",
+         "redirectUrl": "<redirect-url>",
+         /*Below attribute should be enabled when you integrate and test it on 
+         http://localhist in lower (CAT) environment. This attribute should be removed in 
+         higher environment*/
+         /* "debug": true */
+         }
+         /*
+         ucomSDK.init(<configs>, <callbackMethod>, <isLoggingEnabled>);
+         @params 
+         configs - configurations object,
+         callbackMethod - callback method,
+         isLoggingEnabled - pass true to enable console debug logging(true/false)
+         */
+         //Initialize the uCom SDK with configurations
+         ucomSDK.init(configs, returnCallBack);
+         //Event Subscribe
+         ucomSDK.on('ready', function() {
+         //Handle ready event
+         });
+         ucomSDK.on('change', function(event) {
+         if (event.formValid) {
+         //Enable pay button
+         } else {
+         //Disable pay button
+         }
+         });
+         ucomSDK.on('error', function(response) {
+         //Handle Error Response
+         });
+         ucomSDK.on('success', function(response) {
+         //Handle nonce
+         });
+         //Start the uCom UI
+         ucomSDK.start();
+      </script>
+   </body>
+</html>
 
-<!-- uCom SDK  --> 
-
-<script src="https://int.api.firstdata.com/ucom/v2/static/v2/js/ucom - sdk.js"![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.017.png)></script> 
-
-</head> 
-
-<body> 
-
-<!-- uCom SDK container --> 
-
-<div id="ucom-container"></div> 
-
-<script> 
-
-/\*  
-
-// return Callback method
-
-// Hosted Pages Response (Error/Success) will be returned to this callback once the hosted page actions get completed.![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.018.png)
-
-\*/ 
-
-function returnCallBack(response) { 
-
-console.log('UCOM response:', response); 
-
-/\* Kill the uCom UI \*/
-
-ucomSDK.stop(); 
-
-/\* Do rest of the flow here \*/
-
-} 
-
-//Configuration object
-
-var configs = { 
-
-"accessToken": "<access-token>", 
-
-"apiKey": "<API-KEY>", 
-
-"fdCustomerId": "<transaction-id>", 
-
-"pageUrl": "https://int.api.firstdata.com/ucom/v1/hosted - pages/pages/<your-page-id>", 
-
-"mountId": "ucom-container", 
-
-"encryptionKey": "<encryption-key>", 
-
-"redirectUrl": "<redirect-url>", 
-
-/\*Below attribute should be enabled when you integrate and test it on http://localhist in lower (CAT) environment. This attribute should be removed in higher environment\*/![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.019.png)
-
-/\* "debug": true \*/
-
-} /\* 
-
-ucomSDK.init(<configs>, <callbackMethod>, <isLoggingEnabled>);![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.020.png)
-
-@params  
-
-configs          - configurations object,
-
-callbackMethod   - callback method,
-
-isLoggingEnabled - pass true to enable console debug logging(true/false) \*/ 
-
-//Initialize the uCom SDK with configurations
-
-ucomSDK.init(configs, returnCallBack); 
-
-//Event Subscribe
-
-ucomSDK.on('ready', function() {
-
-//Handle ready event
-
-}); 
-
-ucomSDK.on('change', function(event) { 
-
-if (event.formValid) { 
-
-//Enable pay button
-
-} else { 
-
-//Disable pay button
-
-} 
-
-}); 
-
-ucomSDK.on('error', function(response) { 
-
-//Handle Error Response
-
-}); 
-
-ucomSDK.on('success', function(response) { 
-
-//Handle nonce
-
-}); 
-
-//Start the uCom UI
-
-ucomSDK.start(); </script> 
-
-</body> 
-
-</html> 
+```
 
 Please refer below table for additional sdk configurations properties 
 
@@ -541,59 +466,46 @@ Once HP is finished, it will send the result app callback URL and redirectUrl(PO
 
 This is the failure response payload from uCom API 
 
-"response":{  ![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.030.png)
+```json
+"response":{
+   "code":"279912",
+   "message":"Decryption failed.",
+   "category":"common",
+   "developerInfo":{
+      "developerMessage":"Decryption failed due to invalid/expired keyId.",
+      "fieldError":[
+         {
+            "field":"KeyId/Algorithm error.",
+            "message":"crypto-service: Single use key has already been used (CR008): Key#9bff66d610b48efb829a409c8d619f1dc8306da8fb10d997abbed44fc353fa21"
+         }
+      ]
+   }
+}
+}
 
-"code":"279912", 
-
-"message":"Decryption failed.", 
-
-"category":"common", 
-
-"developerInfo":{   
-
-"developerMessage":"Decryption failed due to invalid/expired keyId.", "fieldError":[   
-
-{   
-
-"field":"KeyId/Algorithm error.", 
-
-"message":"crypto-service: Single use key has already been used (CR008): Key#9bff66d610b48efb829a409c8d619f1dc8306da8fb10d997abbed44fc353fa21" } 
-
-] 
-
-} 
-
-} 
-
-} 
+```
 
 2. **Success**  
 
 This is the success response payload from uCom API 
 
-{   ![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.031.png)
+```json
+{
+   "type":"CREDIT",
+   "token":{
+      "tokenType":"CLAIM_CHECK_NONCE",
+      "tokenProvider":"UCOM",
+      "tokenId":"4f0dd98e-bf56-499c-b562-7936ca20964c"
+   },
+   "isSaveCard":true,
+   "credit":{
+      "nameOnCard":"Michael John",
+      "cardType":"VISA",
+      "alias":"2345"
+   }
+}
 
-"type":"CREDIT", 
-
-"token":{  
-
-"tokenType":"CLAIM\_CHECK\_NONCE", 
-
-"tokenProvider":"UCOM", 
-
-"tokenId":"4f0dd98e-bf56-499c-b562-7936ca20964c" }, 
-
-"isSaveCard":true, 
-
-"credit":{ 
-
-"nameOnCard":"Michael John", "cardType":"VISA", 
-
-"alias":"2345" 
-
-} 
-
-} 
+```
 
 3. **Success Response with SDK Error** 
 
