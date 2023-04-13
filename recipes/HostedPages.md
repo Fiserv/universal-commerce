@@ -468,34 +468,8 @@ Once HP is finished, it will send the result app callback URL and redirectUrl(PO
 ![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.029.png)
 
 **3.3.1 Hosted Pages Response Payload** 
-
-1. **New Card**  
-1. **Failure**  
-
-This is the failure response payload from uCom API 
-
-```json
-"response":{
-   "code":"279912",
-   "message":"Decryption failed.",
-   "category":"common",
-   "developerInfo":{
-      "developerMessage":"Decryption failed due to invalid/expired keyId.",
-      "fieldError":[
-         {
-            "field":"KeyId/Algorithm error.",
-            "message":"crypto-service: Single use key has already been used (CR008): Key#9bff66d610b48efb829a409c8d619f1dc8306da8fb10d997abbed44fc353fa21"
-         }
-      ]
-   }
-}
-}
-
-```
-
-2. **Success**  
-
-This is the success response payload from uCom API 
+          
+**Success response payload from uCom API**  
 
 ```json
 {
@@ -515,189 +489,167 @@ This is the success response payload from uCom API
 
 ```
 
+Failure response payload from uCom API 
+
+```json
+{
+    "code": "279912",
+    "message": "Decryption failed.",
+    "category": "common",
+    "developerInfo": {
+        "developerMessage": "Decryption failed due to invalid/expired keyId.",
+        "fieldError": [
+            {
+                "field": "KeyId/Algorithm error.",
+                "message": "crypto-service: Single use key has already been used (CR008): Key#9bff66d610b48efb829a409c8d619f1dc8306da8fb10d997abbed44fc353fa21"
+            }
+        ]
+    }
+}
+}
+
+```
+
 3. **Success Response with SDK Error** 
 
 This is the success response with sdk errors payload. Sometimes card will be enrolled 
 
 successfully but SDK will fail to post the response into redirect URL due to some reason. In this case SDK will send back with success response with SDK errors. 
 
-{   ![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.032.png)
+```json
+          
+"type": "CREDIT",
+"token": {
+    "tokenType":"CLAIM\_CHECK\_NONCE",
+    "tokenProvider": "UCOM",
+    "tokenId": "4f0dd98e-bf56-499c-b562-7936ca20964c"
+},
+"isSaveCard": true,
+"credit": {
+    "nameOnCard": "Michael John",
+    "cardType": "VISA",
+    "alias": "2345"
+},
+"developerInfo": {
+    "developerMessage": "Redirect URl is failure",
+    "fieldError": [
+        {
+            "code": 1013,
+            "field": "Redirect URL",
+            "message": "Redirect URL is failure"
+        }
+    ]
+}
+}          
 
-"type":"CREDIT", 
-
-"token":{  
-
-"tokenType":"CLAIM\_CHECK\_NONCE", 
-
-"tokenProvider":"UCOM", 
-
-"tokenId":"4f0dd98e-bf56-499c-b562-7936ca20964c" }, 
-
-"isSaveCard":true, 
-
-"credit":{ 
-
-"nameOnCard":"Michael John", "cardType":"VISA", 
-
-"alias":"2345" 
-
-}, 
-
-"developerInfo":{ 
-
-"developerMessage":"Redirect URl is failure", "fieldError":[{ 
-
-"code": 1013, 
-
-"field":"Redirect URL", "message":"Redirect URL is failure"
-
-} 
-
-] 
-
-} 
-
-} 
+```
 
 4. **Success with Threatmetrix Details** 
 
 This is the enrollment response with TM(Threatmetrix) payload from uCom API 
+          
+```json
 
-{   ![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.033.png)
-
-"type":"CREDIT", 
-
-"token":{  
-
-"tokenType":"CLAIM\_CHECK\_NONCE", 
-
-"tokenProvider":"UCOM", 
-
-"tokenId":"4f0dd98e-bf56-499c-b562-7936ca20964c" }, 
-
-"isSaveCard":true, 
-
-"credit":{ 
-
-"nameOnCard":"Michael John", 
-
-"cardType":"VISA", 
-
-"alias":"2345" 
-
-}, 
-
-"userSysDetails":{ 
-
-
-"orgId":"8cz43sdv", ![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.034.png)"sessionId":"2fb1a98a-7182-497f-bc2a-79c37e556cb2"
-
-} 
-
-} 
+{
+    "type": "CREDIT",
+    "token": {
+        "tokenType":"CLAIM CHECK NONCE",
+        "tokenProvider": "UCOM",
+        "tokenId": "4f0dd98e-bf56-499c-b562-7936ca20964c"
+    },
+    "isSaveCard": true,
+    "credit": {
+        "nameOnCard": "Michael John",
+        "cardType": "VISA",
+        "alias": "2345"
+    },
+    "userSysDetails": {
+        "orgId": "8cz43sdv",
+        "sessionId": "2fb1a98a-7182-497f-bc2a-79c37e556cb2"
+    }
+}
+          
+```
 
 5. **Success with Extra Params Details** 
 
 Merchant has the ability to pass the billing address into SDK. If they inject the billing address into SDK then that information will be part of the response. 
+          
+```json
 
-{   ![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.035.png)
-
-"type":"CREDIT", 
-
-"token":{  
-
-"tokenType":"CLAIM\_CHECK\_NONCE", 
-
-"tokenProvider":"UCOM", "tokenId":"4f0dd98e-bf56-499c-b562-7936ca20964c"
-
-}, 
-
-"isSaveCard":true, 
-
-"credit":{ 
-
-"nameOnCard":"Michael John", 
-
-"cardType":"VISA", 
-
-"alias":"2345", 
-
-"billingAddress": { 
-
-"type": "work", 
-
-"streetAddress": "100 universal city plaza", 
-
-"locality": "Hollywood", 
-
-"region": "CA", 
-
-"postalCode": "98290", 
-
-"country": "US", 
-
-"formatted": "100 universal city plaza, Hollywood, CA 98290 USA", "primary": true 
-
-} 
-
-} 
-
-} 
+{
+    "type": "CREDIT",
+    "token": {
+        "tokenType": "CLAIM_CHECK_NONCE",
+        "tokenProvider": "UCOM",
+        "tokenId": "4f0dd98e-bf56-499c-b562-7936ca20964c"
+    },
+    "isSaveCard": true,
+    "credit": {
+        "nameOnCard": "Michael John",
+        "cardType": "VISA",
+        "alias": "2345",
+        "billingAddress": {
+            "type": "work",
+            "streetAddress": "100 universal city plaza",
+            "locality": "Hollywood",
+            "region": "CA",
+            "postalCode": "98290",
+            "country": "US",
+            "formatted": "100 universal city plaza, Hollywood, CA 98290 USA",
+            "primary": true
+        }
+    }
+}
+          
+```
 
 2. **Vaulted Card**  
 1. **Failure**  
 
 This is the failure response payload from uCom API 
+          
+```json
 
-{ ![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.036.png)
-
-"response":{  
-
-"code":"279912", 
-
-"message":"Decryption failed.", 
-
-"category":"common", 
-
-"developerInfo":{   
-
-"developerMessage":"Decryption failed due to invalid/expired keyId.", "fieldError":[   
-
-{   
-
-"field":"KeyId/Algorithm error.", 
-
-"message":"crypto-service: Single use key has already been used (CR008): Key#9bff66d610b48efb829a409c8d619f1dc8306da8fb10d997abbed44fc353fa21" } 
-
-] 
-
-} 
-
-} 
-
-} 
+{
+    "response": {
+        "code": "279912",
+        "message": "Decryption failed.",
+        "category": "common",
+        "developerInfo": {
+            "developerMessage": "Decryption failed due to invalid/expired keyId.",
+            "fieldError": [
+                {
+                    "field": "KeyId/Algorithm error.",
+                    "message": "crypto-service: Single use key has already been used (CR008): Key#9bff66d610b48efb829a409c8d619f1dc8306da8fb10d997abbed44fc353fa21"
+                }
+            ]
+        }
+    }
+}
+          
+```
 
 2. **Success**  
 
 This is the success response payload from uCom API 
+          
+ ```json         
 
-{   ![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.037.png)
-
-"type":"VAULTED\_ACCOUNT", 
-
-"token":{  
-
-"tokenType":"CLAIM\_CHECK\_NONCE", "tokenProvider":"UCOM", "tokenId":"4f0dd98e-bf56-499c-b562-7936ca20964c"
-
-}, 
-
-"credit":{ 
-
-"cardType":"VISA", "alias":"2345" 
-
-} 
-
-} 
+{
+    "type": "VAULTED_ACCOUNT",
+    "token": {
+        "tokenType": "CLAIM_CHECK_NONCE",
+        "tokenProvider": "UCOM",
+        "tokenId": "4f0dd98e-bf56-499c-b562-7936ca20964c"
+    },
+    "credit": {
+        "cardType": "VISA",
+        "alias": "2345"
+    }
+}
+          
+```
 
 3. **Success Response with SDK Error** 
 
@@ -705,73 +657,54 @@ This is the success response with sdk errors payload. Sometimes card will be enr
 
 successfully but SDK will fail to post the response into redirect URL due to some reason. In this case SDK will send back with success response with SDK errors. 
 
-{   ![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.038.png)
-
-"type":"VAULTED\_ACCOUNT", 
-
-"token":{  
-
-"tokenType":"CLAIM\_CHECK\_NONCE", 
-
-"tokenProvider":"UCOM", 
-
-"tokenId":"4f0dd98e-bf56-499c-b562-7936ca20964c" }, 
-
-"credit":{ 
-
-"cardType":"VISA", 
-
-"alias":"2345" 
-
-}, 
-
-"developerInfo":{ 
-
-"developerMessage":"Redirect URl is failure", "fieldError":[{ 
-
-"code": 1013, 
-
-"field":"Redirect URL", "message":"Redirect URL is failure"
-
-} 
-
-] 
-
-} 
-
-} 
+{
+    "type": "VAULTED_ACCOUNT",
+    "token": {
+        "tokenType": "CLAIM_CHECK NONCE",
+        "tokenProvider": "UCOM",
+        "tokenId": "4f0dd98e-bf56-499c-b562-7936ca20964c"
+    },
+    "credit": {
+        "cardType": "VISA",
+        "alias": "2345"
+    },
+    "developerInfo": {
+        "developerMessage": "Redirect URl is failure",
+        "fieldError": [
+            {
+                "code": 1013,
+                "field": "Redirect URL",
+                "message": "Redirect URL is failure"
+            }
+        ]
+    }
+}
 
 4. **Success with Threatmetrix Details** 
 
 This is the enrollment response with TM(Threatmetrix) payload from uCom API 
+          
+          
+```json
 
-{ ![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.039.png)
-
-"type":"VAULTED\_ACCOUNT", 
-
-"token":{  
-
-"tokenType":"CLAIM\_CHECK\_NONCE", "tokenProvider":"UCOM", "tokenId":"4f0dd98e-bf56-499c-b562-7936ca20964c"
-
-}, 
-
-"credit":{ 
-
-"cardType":"VISA", "alias":"2345" 
-
-}, 
-
-"userSysDetails":{ 
-
-"orgId":"8cz43sdv", 
-
-
-"sessionId":"2fb1a98a-7182-497f-bc2a-79c37e556cb2"![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.040.png)
-
-} 
-
-} 
-
+{
+    "type": "VAULTED_ACCOUNT",
+    "token": {
+        "tokenType": "CLAIM_CHECK_NONCE",
+        "tokenProvider": "UCOM",
+        "tokenId": "4f0dd98e-bf56-499c-b562-7936ca20964c"
+    },
+    "credit": {
+        "cardType": "VISA",
+        "alias": "2345"
+    },
+    "userSysDetails": {
+        "orgId": "8cz43sdv",
+        "sessionId": "2fb1a98a-7182-497f-bc2a-79c37e556cb2"
+    }
+          
+```          
+          
 5. **Success with Extra Params Details** 
 
 Merchant has the ability to pass the billing address into SDK. If they inject the billing address into SDK then that information will be part of the response. 
