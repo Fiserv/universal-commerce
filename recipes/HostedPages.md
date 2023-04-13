@@ -506,7 +506,6 @@ Failure response payload from uCom API
         ]
     }
 }
-}
 
 ```
 
@@ -517,29 +516,30 @@ This is the success response with sdk errors payload. Sometimes card will be enr
 successfully but SDK will fail to post the response into redirect URL due to some reason. In this case SDK will send back with success response with SDK errors. 
 
 ```json       
-"type": "CREDIT",
-"token": {
-    "tokenType":"CLAIM\_CHECK\_NONCE",
-    "tokenProvider": "UCOM",
-    "tokenId": "4f0dd98e-bf56-499c-b562-7936ca20964c"
-},
-"isSaveCard": true,
-"credit": {
-    "nameOnCard": "Michael John",
-    "cardType": "VISA",
-    "alias": "2345"
-},
-"developerInfo": {
-    "developerMessage": "Redirect URl is failure",
-    "fieldError": [
-        {
-            "code": 1013,
-            "field": "Redirect URL",
-            "message": "Redirect URL is failure"
-        }
-    ]
-}
-}          
+{
+    "type": "CREDIT",
+    "token": {
+        "tokenType": "CLAIM_CHECK_NONCE",
+        "tokenProvider": "UCOM",
+        "tokenId": "4f0dd98e-bf56-499c-b562-7936ca20964c"
+    },
+    "isSaveCard": true,
+    "credit": {
+        "nameOnCard": "Michael John",
+        "cardType": "VISA",
+        "alias": "2345"
+    },
+    "developerInfo": {
+        "developerMessage": "Redirect URl is failure",
+        "fieldError": [
+            {
+                "code": 1013,
+                "field": "Redirect URL",
+                "message": "Redirect URL is failure"
+            }
+        ]
+    }
+}         
 ```
 
 4. **Success with Threatmetrix Details** 
@@ -735,30 +735,30 @@ Merchant has the ability to pass the billing address into SDK. If they inject th
 4. **Events** 
 
 The only way to communicate with HP is by listening to an event. HP will emit and communicate back if you are subscribed with those events. 
-```json
+```javascript
 ucomSDK.on(event, handler);          
 ```
 
 1. **onReady** 
 
 Triggered when iFrame is fully rendered and can accept user’s inputs. 
-```code
-ucomSDK.on('ready', function() { //Handle ready event
-}); 
+```javascript
+ucomSDK.on('ready', function () { //Handle ready event
+});
 ```
 2. **onChange** 
 
 Triggered when form value is changed. The event payload always contains object with form valid status. 
 
-```code
+```javascript
           
-ucomSDK.on('change', function() {
-if (event.formValid) {
-        //Enable pay button
-    } else {
-        //Disable pay button
-    }
-}); 
+ucomSDK.on('change', function () {
+   if (event.formValid) {
+      //Enable pay button
+   } else {
+      //Disable pay button
+   }
+});          
 
 ```
           
@@ -766,8 +766,8 @@ Handler Event Object
 
 ```code
 {
-    "elementType": "payment",
-    "formValid": false
+   "elementType": "payment",
+   "formValid": false
 }
           
 ```
@@ -775,18 +775,21 @@ Handler Event Object
 3. **onError** 
 
 Triggered when HP’s API errors. The event payload object contains API error which needs to be handled on app. Please refer the **section 3** for error payload structure. 
-```code
-ucomSDK.on('error', function(response) { //Handle Error Response
-}); 
+```javascript
+          
+ucomSDK.on('error', function (response) { //Handle Error Response
+});
           
 ```
 
 4. **onSuccess** 
 
 Triggered when HP’s nonce generated. The event payload object contains nonce which needs to be handled on app. Please refer the **section 3** for error payload structure. 
-```code
-ucomSDK.on('success', function(response) { //Handle Nonce 
-}); 
+```javascript
+          
+ucomSDK.on('success', function (response) { //Handle Nonce 
+});
+          
 ```
 5. **API Error Status Codes** 
 
