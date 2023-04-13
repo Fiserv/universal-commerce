@@ -890,23 +890,20 @@ HP will allow to submit the form through mobile native button or website button 
 
 Browser/App will be sending the preflight request (OPTIONS method) instead of actual method(POST/GET) to server when access different domain in ajax call. In this case, we have to handle and enable CORS in server to handle this preflight request. OPTIONS method has to be handled and respond with following request:
 
-access-control-allow-headers  ACCEPT, fdCustomerId, ORIGIN, AUTHORIZATION, CONTENT-TYPE ![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.054.png)
-
-access-control-allow-methods  POST, GET, OPTIONS access-control-allow-origin  \*
-
-allow  GET, HEAD, POST, PUT, DELETE, TRACE, OPTIONS, PATCH connection  Keep-Alive 
-
-content-language  en-US 
-
-content-length  0
-
-date  Tue, 19 Dec 2017 23:14:23 GMT
-
-keep-alive  timeout=10, max=100
-
-x-powered-by  Servlet/3.0
-
-Once browser/app receives the above as a response header then, it will subsequently invoke actual methods.
+```code
+access-control-allow-headers !ACCEPT, fdCustomerId, ORIGIN, 
+AUTHORIZATION, CONTENT-TYPE
+ access-control-allow-methods !POST, GET, OPTIONS
+ access-control-allow-origin !*
+ allow !GET, HEAD, POST, PUT, DELETE, TRACE, OPTIONS, PATCH
+ connection !Keep-Alive
+ content-language !en-US
+ content-length !0
+ date !Tue, 19 Dec 2017 23:14:23 GMT
+ keep-alive !timeout=10, max=100
+ x-powered-by !Servlet/3.0          
+```
+>Once browser/app receives the above as a response header then, it will subsequently invoke actual methods.
 
 2. **Multiple Languages Support** 
 
@@ -931,14 +928,8 @@ HP customization is limited. But it provides option to change the following styl
 
 **Default View** 
 
-![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.055.jpeg)
-
 **Error View** 
-
-![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.056.png)
 
 7. **Local Validation by Hosted Page** 
 
 HP will do its own local validation of fields and show error to user. Local validation is configurable. 
-
-© 2023 Fiserv, Inc. 
