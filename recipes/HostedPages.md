@@ -1,8 +1,7 @@
-﻿1. **Roles** 
+1. **Roles** 
 
 There are 4 roles 
 
-![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.002.png)
 
 1. **Mobile Application (App)** - This could be a native mobile application running on IOS or Android devices. This could also be a web application running on a 
 
@@ -154,16 +153,17 @@ Call **uComClient.init()** javascript method with configuration objects after We
 
 ```javascript
 
-uComClient.init({
-    "accessToken":"\<token-id\>\>",
-    "apiKey":"\<API-key\>",
-    //If guest checkout then do not pass fdCustomerId
-    "fdCustomerId":"\<fdCustomerId\>",
-    //Get it from pageLink
-    "pageId":"\<page-id\>\>",
-    "encryptionKey": "<Encryption-Key>",
-    "redirectUrl": "<MAS-URL>"
-});Note: Please refer additional params section 3.2.3
+ComClient.init({
+   "accessToken": "<token-id>>",
+   "apiKey": "<API-key>",
+   //If guest checkout then do not pass fdCustomerId 
+   "fdCustomerId": "<fdCustomerId>",
+   //Get it from pageLink 
+   "pageId": "<page-id>>",
+   "encryptionKey": "<Encryption-Key>",
+   "redirectUrl": "<MAS-URL>"
+});
+Note: Please refer additional params section 3.2 .3
 
 ```
 **Step 3:**
