@@ -109,71 +109,79 @@ var signature = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA256(rawSignature, 
 **3. MAS calls uCom to get page link** MAS can cache the page link for future reference though we do not recommend that. Merchant may have configured multiple pages and therefore this api will return all of them. Each page can be identified by the relation.
 
 
+API (HTTP GET): https://int.api.firstdata.com/ucom/v1/hosted-pages/pages
+Headers: 
+Content-Type = application/json
+Authorization = HMAC {signature}
+Api-Key = {api-key}
+Timestamp = {time UTC in milliseconds}
 
-|Api (HTTP GET) |**https://int.api.firstdata.com/ucom/v1/hosted-pages/pages**|
-| :- | - |
-|Document ||
-|Headers |<p>Content-Type = application/json Authorization = HMAC {signature} Api-Key = {api-key} </p><p>Timestamp = {time UTC in milliseconds}</p>|
-|Sample Response |<p>{ ![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.006.png)</p><p>"\_links": [</p><p>` `{ </p><p>"href": "https://int.api.firstdata.com/ucom/v1/hosted - pages/pages/f74237ec-112a-4204-a37b-2cfe9daa904f", </p><p>"rel": " account.add",</p><p>"method": "GET",</p><p>"version": "v2"![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.007.png)</p><p>` `} </p>|
+Response: 
 
-] }![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.008.png)
+```json
+{
+    "_links": [
+        {
+            "href": "https://int.api.firstdata.com/ucom/v1/hostedpages/pages/f74237ec-112a-4204-a37b-2cfe9daa904f",
+            "rel": " account.add",
+            "method": "GET",
+            "version": "v2"
+        }
+    ]
+}
 
-2. **Load Hosted Page** 
+```
+
+## 3.2 Load Hosted Page
 
 To start the hosted page, app needs api-key, pageLink, tokenId, fdCustomerId, encryptionKey and redirectUrl. Mobile apps must make sure that they have disabled webview caching and enabled loading javascript in webview.
 
-**3.2.1 Mobile Webview Integration Steps** 
+### 3.2.1 Mobile Webview Integration Steps
 
-**Step1:**  
+**Step 1:**
 
-Load the below URL in WebView 
+Load the below URL in WebView
 
+| **Environment** | **WebView URL** |
+| --- | --- |
+| CAT | https://int.api.firstdata.com/ucom/v2/static/v2/mobile/int/ucom-sdk.html |
+| PRE-PROD | https://cat.api.firstdata.com/ucom/v2/static/v2/mobile/cat/ucomsdk.html |
+| PROD | https://prod.api.firstdata.com/ucom/v2/static/v2/mobile/prod/ucomsdk.html |
 
+**Step 2:**
 
-|**Environment** |**WebView URL** |
-| - | - |
-|CAT |https://int.api.firstdata.com/ucom/v2/static/v2/mobile/int/ucom-sdk.html |
-|||
-|PRE-PROD |https://cat.api.firstdata.com/ucom/v2/static/v2/mobile/cat/ucom -|
-||sdk.html |
-|PROD |https://prod.api.firstdata.com/ucom/v2/static/v2/mobile/prod/ucom -|
-||sdk.html |
-**Step2:**  
+Call **uComClient.init()** javascript method with configuration objects after WebView is loaded
 
-Call **uComClient.init()** javascript method with configuration objects after WebView is loaded ![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.009.png)
+```json
 
-uComClient.init({ 
-
-"accessToken": "<token-id>>", 
-
-"apiKey": "<API-key>", 
-
-//If guest checkout then do not pass fdCustomerId  "fdCustomerId": "<fdCustomerId>", 
-
-//Get it from pageLink  
-
-"pageId": "<page-id>>", 
-
-
-"encryptionKey": "<Encryption-Key>", ![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.010.png)"redirectUrl": "<MAS-URL>" 
-
+uComClient.init({
+    "accessToken":"\<token-id\>\>",
+    "apiKey":"\<API-key\>",
+    //If guest checkout then do not pass fdCustomerId
+    "fdCustomerId":"\<fdCustomerId\>",
+    //Get it from pageLink
+    "pageId":"\<page-id\>\>",
+    "encryptionKey": "<Encryption-Key>",
+    "redirectUrl": "<MAS-URL>"
 });Note: Please refer additional params section 3.2.3
 
-**Step3:**  
+```
+**Step 3:**
 
 Set local redirection listener
 
-A redirection listener should be set on the webview to catch the event that HP has finished its work. HP will call this redirection in case of permanent failures and final success(nonce). A permanent failure is if js fails to load or Ajax call fails or tokenId has expired or encryptionKey invalid. 
+A redirection listener should be set on the webview to catch the event that HP has finished its work. HP will call this redirection in case of permanent failures and final success(nonce). A permanent failure is if js fails to load or Ajax call fails or tokenId has expired or encryptionKey invalid.
 
-Once HP get response from uCom then it will do URL redirect with encoded URI. **Redirection Listener URL:** 
+Once HP get response from uCom then it will do URL redirect with encoded URI.
+
+**Redirection Listener URL:**
 
 ucom://finish?response=response-payload-object-string
 
 **Note:** Webview redirection listener URL should be decoded before handle it.
-
 1. **IOS Sample Code Snippets** 
 
-```json
+```code
 
  #Load HP static URL in webview 
  - (void) successfulMASRequestWithResponseDictionary:(NSDictionary *)response { 
@@ -252,7 +260,7 @@ tActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 
 2. **Android Sample Code Snippets** 
 
-```json
+```code
 
 @Override
 protected void onCreate(Bundle savedInstanceState) {
@@ -334,21 +342,21 @@ protected void onCreate(Bundle savedInstanceState) {
 2. **Website Integration Steps** 
 1. Include the uCom SDK library on head tag on your html page 
 
-**URL:**  **https://<env>.api.firstdata.com/ucom/v2/static/v2/js/ucom-sdk.js** **Environment Variable:** <**int/cat/prod>** 
+**URL:**  **https://<env>.api.firstdata.com/ucom/v2/static/v2/js/ucom-sdk.js** 
+ **Environment Variable:** <**int/cat/prod>** 
 
-
-
-|**Variable** |**Environment** |
+|**Variable** |**Environment**|
 | - | - |
 |INT |CAT/CERT |
 |CAT |PRE-PROD |
-|PROD |PRODUCTION |
+|PROD |PRODUCTION|
+ 
 2. Initialize the SDK with SDK configuration params by call this **ucomSDK.init()** method 
 1. Pass access toekn
 1. Pass API Key 
 1. Pass fdCustomerId
 
-d: Pass pageURL 
+d: Pass page URL 
 
 e: Pass Mount Id where SDK needs to be mounted on the screen
 
@@ -361,7 +369,7 @@ e: Pass Mount Id where SDK needs to be mounted on the screen
 
 **3.2.2.1 Web Sample Code** 
 
-```json
+```code
 <html>
    <head>
       <!-- uCom SDK -->
