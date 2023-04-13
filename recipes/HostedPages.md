@@ -84,7 +84,7 @@ to the merchant to decide this part of the transaction.
 
 **How to generate HMAC signature**
 
-```json
+```code
 
 var key = “”;//the 'Api-Key' ![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.005.png)
 
