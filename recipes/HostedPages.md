@@ -516,8 +516,7 @@ This is the success response with sdk errors payload. Sometimes card will be enr
 
 successfully but SDK will fail to post the response into redirect URL due to some reason. In this case SDK will send back with success response with SDK errors. 
 
-```json
-          
+```json       
 "type": "CREDIT",
 "token": {
     "tokenType":"CLAIM\_CHECK\_NONCE",
@@ -541,7 +540,6 @@ successfully but SDK will fail to post the response into redirect URL due to som
     ]
 }
 }          
-
 ```
 
 4. **Success with Threatmetrix Details** 
@@ -656,7 +654,7 @@ This is the success response payload from uCom API
 This is the success response with sdk errors payload. Sometimes card will be enrolled 
 
 successfully but SDK will fail to post the response into redirect URL due to some reason. In this case SDK will send back with success response with SDK errors. 
-
+```json
 {
     "type": "VAULTED_ACCOUNT",
     "token": {
@@ -679,7 +677,8 @@ successfully but SDK will fail to post the response into redirect URL due to som
         ]
     }
 }
-
+```
+          
 4. **Success with Threatmetrix Details** 
 
 This is the enrollment response with TM(Threatmetrix) payload from uCom API 
@@ -708,99 +707,87 @@ This is the enrollment response with TM(Threatmetrix) payload from uCom API
 5. **Success with Extra Params Details** 
 
 Merchant has the ability to pass the billing address into SDK. If they inject the billing address into SDK then that information will be part of the response. 
-
-{   ![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.041.png)
-
-"type":"VAULTED\_ACCOUNT", 
-
-"token":{  
-
-"tokenType":"CLAIM\_CHECK\_NONCE", "tokenProvider":"UCOM", "tokenId":"4f0dd98e-bf56-499c-b562-7936ca20964c"
-
-}, 
-
-"credit":{ 
-
-"cardType":"VISA", 
-
-"alias":"2345", 
-
-"billingAddress": { 
-
-"type": "work", 
-
-"streetAddress": "100 universal city plaza", 
-
-"locality": "Hollywood", 
-
-"region": "CA", 
-
-"postalCode": "98290", 
-
-"country": "US", 
-
-"formatted": "100 universal city plaza, Hollywood, CA 98290 USA", "primary": true 
-
-} 
-
-} 
-
-} 
-
+```json
+{
+    "type": "VAULTED_ACCOUNT",
+    "token": {
+        "tokenType": "CLAIM_CHECK_NONCE",
+        "tokenProvider": "UCOM",
+        "tokenId": "4f0dd98e-bf56-499c-b562-7936ca20964c"
+    },
+    "credit": {
+        "cardType": "VISA",
+        "alias": "2345",
+        "billingAddress": {
+            "type": "work",
+            "streetAddress": "100 universal city plaza",
+            "locality": "Hollywood",
+            "region": "CA",
+            "postalCode": "98290",
+            "country": "US",
+            "formatted": "100 universal city plaza, Hollywood, CA 98290 USA",
+            "primary": true
+        }
+    }
+}
+          
+```
 4. **Events** 
 
 The only way to communicate with HP is by listening to an event. HP will emit and communicate back if you are subscribed with those events. 
-
-ucomSDK.on(event, handler); ![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.042.png)
+```json
+ucomSDK.on(event, handler);          
+```
 
 1. **onReady** 
 
-Triggered when iFrame is fully rendered and can accept user’s inputs 
-
-ucomSDK.on('ready', function() {  ![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.043.png)//Handle ready event
-
+Triggered when iFrame is fully rendered and can accept user’s inputs. 
+```code
+ucomSDK.on('ready', function() { //Handle ready event
 }); 
-
+```
 2. **onChange** 
 
-Triggered when form value changed. The event payload always contains object with form valid status. 
+Triggered when form value is changed. The event payload always contains object with form valid status. 
 
-ucomSDK.on('change', function() {  ![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.044.png)if (event.formValid) { 
-
-`  `//Enable pay button
-
-` `} else { 
-
-`  `//Disable pay button
-
-` `} 
-
+```code
+          
+ucomSDK.on('change', function() {
+if (event.formValid) {
+        //Enable pay button
+    } else {
+        //Disable pay button
+    }
 }); 
 
+```
+          
 Handler Event Object 
 
-{ ![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.045.png)
-
-` `"elementType": "payment", 
-
-` `"formValid": false ![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.040.png)} 
+```code
+{
+    "elementType": "payment",
+    "formValid": false
+}
+          
+```
 
 3. **onError** 
 
 Triggered when HP’s API errors. The event payload object contains API error which needs to be handled on app. Please refer the **section 3** for error payload structure. 
-
-ucomSDK.on('error', function(response) { ![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.046.png) //Handle Error Response
-
+```code
+ucomSDK.on('error', function(response) { //Handle Error Response
 }); 
+          
+```
 
 4. **onSuccess** 
 
 Triggered when HP’s nonce generated. The event payload object contains nonce which needs to be handled on app. Please refer the **section 3** for error payload structure. 
-
-ucomSDK.on('success', function(response) {  ![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.047.png)//Handle Nonce 
-
+```code
+ucomSDK.on('success', function(response) { //Handle Nonce 
 }); 
-
+```
 5. **API Error Status Codes** 
 
 Below error status code needs to be handled from client side. These API error responses will be communicated back to App JavaScript main callback to handle the errors and show the appropriate error dialog. 
@@ -810,52 +797,45 @@ Below error status code needs to be handled from client side. These API error re
 Following errors will be thrown before hosted pages screen render 
 
 
-
 |**Status Code** |**Transaction Status Desc** |**Comments** |
 | - | - | - |
 |**269904** |**Configuration record(s) not found.** |**When we pass the invalid page id then API will throw this error** |
-|**401** |**Unauthorized** |**This error will occur when we pass invalid access token id.**  |
-Example response payload 
+|**401** |**Unauthorized** |**This error will occur when we pass invalid access token id.**|
 
-{ ![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.048.png)
+**Example response payload** 
 
-"response": { 
-
-"code": "269904", 
-
-"message": "Configuration record(s) not found.", "category": "common", 
-
-"developerInfo": { 
-
-"developerMessage": "Configuration record(s) not found." } 
-
-} 
-
-} 
-
-{ ![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.049.png)
-
-"response": { 
-
-"code": 401, 
-
-"message": "Unauthorized", "category": "common", "developerInfo": { 
-
-"developerMessage": "Unauthorized"
-
-} ![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.040.png)
-
-} 
-
-} 
-
+```json
+{
+    "response": {
+        "code": "269904",
+        "message": "Configuration record(s) not found.",
+        "category": "common",
+        "developerInfo": {
+            "developerMessage": "Configuration record(s) not found."
+        }
+    }
+}
+```
+```json
+{
+    "response": {
+        "code": 401,
+        "message": "Unauthorized",
+        "category": "common",
+        "developerInfo": {
+            "developerMessage": "Unauthorized"
+        }
+    }
+}
+          
+```
 **5.2 Error Responses After Form Submission** 
 
 Following errors will be thrown after hosted pages screen render 
 
 
 
-|` `**Status Code** |**Transaction Status Desc** |**Comments** |
+|**Status Code** |**Transaction Status Desc** |**Comments** |
 | - | - | - |
 |**279912** |**Decryption failed.** |**When we pass the invalid or already used public key into SDK then API will throw this error.** |
 |**269901** |**Unable to process your request, please try again later, if problem persist, contact sys admin.** |**This error will occur when our backend is down.** |
@@ -863,49 +843,39 @@ Following errors will be thrown after hosted pages screen render
 
 
 Example response payload:  
-
-{ ![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.050.png)
-
-"response": { 
-
-"code": "279912", 
-
-"message": "Decryption failed.", 
-
-"category": "common", 
-
-"developerInfo": { 
-
-"developerMessage": "Decryption failed due to invalid/expired 
-
-keyId.", 
-
-"fieldError": [{ 
-
-"field": "KeyId/Algorithm error.", 
-
-"message": "crypto-service: Single use key has already been used (CR008): Key#9bff66d610b48efb829a409c8d619f1dc8306da8fb10d997abbed44fc353fa21" ![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.051.png)}] 
-
-} 
-
-} 
-
-} 
-
-{ ![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.052.png)
-
-"response": { 
-
-"code": 401, 
-
-"message": "Unauthorized", "category": "common", "developerInfo": { 
-
-"developerMessage": "Unauthorized" } 
-
-} 
-
-} 
-
+```json
+          
+{
+    "response": {
+        "code": "279912",
+        "message": "Decryption failed.",
+        "category": "common",
+        "developerInfo": {
+            "developerMessage": "Decryption failed due to invalid/expiredkeyId.",
+            "fieldError": [
+                {
+                    "field": "KeyId/Algorithm error.",
+                    "message": "crypto-service: Single use key has already been used (CR008): Key#9bff66d610b48efb829a409c8d619f1dc8306da8fb10d997abbed44fc353fa21"
+                }
+            ]
+        }
+    }
+}
+         
+```
+```json
+{
+    "response": {
+        "code": 401,
+        "message": "Unauthorized",
+        "category": "common",
+        "developerInfo": {
+            "developerMessage": "Unauthorized"
+        }
+    }
+}
+          
+```
 6. **Native/Web Button Submit** 
 
 HP will allow to submit the form through mobile native button or website button from outside iFrame. Following command will trigger the save action![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.053.png)
