@@ -152,7 +152,7 @@ Load the below URL in WebView
 
 Call **uComClient.init()** javascript method with configuration objects after WebView is loaded
 
-```json
+```javascript
 
 uComClient.init({
     "accessToken":"\<token-id\>\>",
