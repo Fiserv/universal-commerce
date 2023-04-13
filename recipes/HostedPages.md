@@ -1,6 +1,10 @@
+# How to Implement Hosted Pages
+
+The goal of this guide is to describe how to implement and use Hosted Pages. It is not intended to describe all the interactions between App, Mobile Application Server, and uCom Server. 
+
 1. **Roles** 
 
-There are 4 roles 
+There are 4 roles:
 
 
 1. **Mobile Application (App)** - This could be a native mobile application running on IOS or Android devices. This could also be a web application running on a 
