@@ -4,11 +4,37 @@
 
 <Add Product Content on QSR HERE>
 
+## Getting Started
 To get started, turn to the [API Fundamentals](../docs/?path=/docs/documentation/Connectivity.md) page for details on connectivity, API HTTP Headers, API security, and idempotency, then return to this webpage to navigate through the QSR services below.
+
+### Step 1: Onboard customer 
+Determine whether a merchant wants to vault an account into Connected Commerce (uCom) or use guest checkout (anonymous checkout)
+    A. Register customer profile (Create customer)
+    B. [Guest checkout](../docs/?path=recipes/guest_checkout.md&branch=develop)
+
+Note: If merchant wants to use guest checkout, then it is not necessary to register customer profile. Although once customer profile is created for a specific merchant, that merchant can opt to perform guest checkout without vaulting.
+
+### Step 2: Register account
+    Registering an account consists of several steps listed here below. These steps are prerequisites for a merchant to send card details to Connected Commerce (uCom). 
+    Step 2a: Get access token
+    Step 2b: Nonce creation 
+    Step 2c: Vault account – Prerequisite to this and guest check out is Connected Commerce (uCom) tokenization.
+
+### Step 3: Select payment type
+Determine whether a merchant wants to use vaulted account check out or guest check out.
+    A. Vaulted account: Send key parameters – payment by fdAccountId, merchantId, and transaction details
+
+       Note: In order to vault an account, tokenization—a secure way for Connected Commerce and end customer to securely exchange card details—must be done first
+    
+    B. Guest check out: Tokenize card details and decrypt by consumer system
+        1. Nonce tokenization
+        2. Payment by nonce
+            a. Vaulted account - Payment by fdAccountId, transaction details
+            b. Payment by nonce, transaction details 
 
 ## Explore the QSR Services
 
-Click on the preferred link or icon below to explore each service.
+Click on the preferred link below to explore each service.
 
 | **API Service**                                           | **Description** |
 | --------------------------------------------------------- | --------------  |
