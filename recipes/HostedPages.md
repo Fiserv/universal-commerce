@@ -2,7 +2,7 @@
 
 The goal of this guide is to describe how to implement and use Hosted Pages. It is not intended to describe all the interactions between App, Mobile Application Server, and uCom Server. 
 
-1. **Roles** 
+## 1. Roles 
 
 There are 4 roles:
 
@@ -16,7 +16,7 @@ There are 4 roles:
 
 1.4 **uCom Server (uCom)** - This is the Fiserv solution server which provides all the APIs. This server sits behind Apigee.
 
-2. **Setup** 
+## 2. Setup 
 
 The following parameters are needed to use HP: 
 
@@ -30,7 +30,7 @@ The following parameters are needed to use HP:
 
 2.5 **PageLink (url and relation)** - This is the unique page which is going to display the use case. Url is the address where page is hosted, and Relation is the name of the use case. PageLink can be retrieved run time via the api (ucom/v1/hosted - pages/pages) and can be cached. We prefer that PageLink should be freshly fetched. The page contents are configured offline.
 
-3. **Flow** 
+## 3. Flow 
 
 <center><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/HostedPages%20(2).png" alt="HP Diagram" class="center"></center>
 
@@ -756,7 +756,7 @@ Merchant has the ability to pass the billing address into SDK. If they inject th
 }
           
 ```
-4. **Events** 
+## 4. Events
 
 The only way to communicate with HP is by listening to an event. HP will emit and communicate back if you are subscribed with those events. 
           
@@ -822,7 +822,7 @@ ucomSDK.on('success', function (response) { //Handle Nonce
 });
           
 ```
-5. **API Error Status Codes** 
+## 5. API Error Status Codes
 
 Below error status code needs to be handled from client side. These API error responses will be communicated back to App JavaScript main callback to handle the errors and show the appropriate error dialog. 
 
@@ -913,13 +913,13 @@ Example response payload:
 }
           
 ```
-6. **Native/Web Button Submit** 
+## 6. Native/Web Button Submit
 
 HP will allow to submit the form through mobile native button or website button from outside iFrame. Following command will trigger the save action![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.053.png)
 
 //Trigger form save from outside iFrame or web view ucomSDK.triggerSaveAction(); 
 
-7. **FAQ's** 
+## 7. FAQ's
 1. **How to enable CORS in server?** 
 
 Browser/App will be sending the preflight request (OPTIONS method) instead of actual method(POST/GET) to server when access different domain in ajax call. In this case, we have to handle and enable CORS in server to handle this preflight request. OPTIONS method has to be handled and respond with following request:
