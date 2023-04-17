@@ -961,9 +961,11 @@ HP customization is limited. But it provides option to change the following styl
 **Sample Form** 
 
 **Default View** 
-
+<center><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/HostedPages%20(1).jpeg" alt="HP Diagram" class="center"></center>
 **Error View** 
 
+ <center><img src="https://github.com/Fiserv/universal-commerce/blob/develop/assets/images/HostedPages%20(5).png?raw=true" alt="HP Diagram" class="center"></center>         
+          
 7. **Local Validation by Hosted Page** 
 
 HP will do its own local validation of fields and show error to user. Local validation is configurable. 
