@@ -25,13 +25,13 @@ Determine whether a merchant wants to use vaulted account or guest check out.
 
 A. Vaulted account: Send key parameters – payment by fdAccountId, merchantId, and transaction details
 
-    Note: In order to vault an account, tokenization—a secure way for Connected Commerce and end customer to securely exchange card details—must be done first.
+ Note: In order to vault an account, tokenization—a secure way for Connected Commerce and end customer to securely exchange card details—must be done first.
 
 B. Guest check out: Tokenize card details and process for payment
-    1. Call account tokens to get nonce token
-    2. Payment by nonce
-        a. Vaulted account - Payment by fdAccountId, transaction details
-        b. Payment by nonce, transaction details
+ 1. Call account tokens to get nonce token
+ 2. Payment by nonce
+  a. Vaulted account - Payment by fdAccountId, transaction details
+  b. Payment by nonce, transaction details
 
 ## Explore the QSR Services
 
