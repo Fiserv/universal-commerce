@@ -145,7 +145,7 @@ Sample Response:
 
 ```
 
-## 3.2 Load Hosted Page
+** 3.2 Load Hosted Page **
 
 To start the hosted page, app needs api-key, pageLink, tokenId, fdCustomerId, encryptionKey and redirectUrl. Mobile apps must make sure that they have disabled webview caching and enabled loading javascript in webview.
 
@@ -756,7 +756,7 @@ Merchant has the ability to pass the billing address into SDK. If they inject th
 }
           
 ```
-## 4. Events
+##4. Events
 
 The only way to communicate with HP is by listening to an event. HP will emit and communicate back if you are subscribed with those events. 
           
