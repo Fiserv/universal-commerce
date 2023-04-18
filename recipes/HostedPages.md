@@ -487,7 +487,7 @@ Please refer below table for additional sdk configurations properties
           
 ```
           
-3. **Handle POST from Hosted Pages** 
+**3.Handle POST from Hosted Pages** 
 
 Once HP is finished, it will send the result app callback URL and redirectUrl(POST URL). MAS must implement this api to receive the result body. MAS will have to enable CORS on their end to allow access from javascript originating from “int.api.firstdata.com" and "prod.api.firstdata.com”. 
 
@@ -535,11 +535,12 @@ Failure response payload from uCom API
 
 ```
 
-3. **Success Response with SDK Error** 
+**3. Success Response with SDK Error** 
 
 This is the success response with sdk errors payload. Sometimes card will be enrolled successfully but the SDK will fail to post the response into redirect URL due to some reason. In this case SDK will send back with success response with SDK errors. 
          
-```json       
+```json
+
 {
     "type": "CREDIT",
     "token": {
@@ -567,7 +568,7 @@ This is the success response with sdk errors payload. Sometimes card will be enr
           
 ```
 
-4. **Success Response with Threatmetrix Details** 
+**4. Success Response with Threatmetrix Details** 
 
 This is the enrollment response with TM(Threatmetrix) payload from uCom API 
           
@@ -594,7 +595,7 @@ This is the enrollment response with TM(Threatmetrix) payload from uCom API
           
 ```
 
-5. **Success with Extra Params Details** 
+**5. Success with Extra Params Details** 
 
 Merchant has the ability to pass the billing address into SDK. If they inject the billing address into SDK then that information will be part of the response. 
           
@@ -627,8 +628,8 @@ Merchant has the ability to pass the billing address into SDK. If they inject th
           
 ```
 
-2. **Vaulted Card**  
-1. **Failure**  
+**2. Vaulted Card**  
+**1. Failure**  
 
 This is the failure response payload from uCom API 
           
@@ -653,11 +654,11 @@ This is the failure response payload from uCom API
           
 ```
 
-2. **Success**  
+**2. Success**  
 
 This is the success response payload from uCom API 
           
- ```json         
+```json         
 
 {
     "type": "VAULTED_ACCOUNT",
@@ -674,9 +675,10 @@ This is the success response payload from uCom API
           
 ```
 
-3. **Success Response with SDK Error** 
+**3. Success Response with SDK Error** 
 
 This is the success response with sdk errors payload. Sometimes card will be enrolled successfully but SDK will fail to post the response into redirect URL due to some reason. In this case SDK will send back with success response with SDK errors. 
+
 ```json
 {
     "type": "VAULTED_ACCOUNT",
@@ -700,9 +702,10 @@ This is the success response with sdk errors payload. Sometimes card will be enr
         ]
     }
 }
+
 ```
           
-4. **Success with Threatmetrix Details** 
+**4. Success with Threatmetrix Details** 
 
 This is the enrollment response with TM(Threatmetrix) payload from uCom API 
           
@@ -727,7 +730,7 @@ This is the enrollment response with TM(Threatmetrix) payload from uCom API
           
 ```          
           
-5. **Success with Extra Params Details** 
+**5. Success with Extra Params Details** 
 
 Merchant has the ability to pass the billing address into SDK. If they inject the billing address into SDK then that information will be part of the response.
           
