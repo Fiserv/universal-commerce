@@ -538,7 +538,7 @@ Failure response payload from uCom API
 **3. Success Response with SDK Error** 
 
 <P>This is the success response with sdk errors payload. Sometimes card will be enrolled successfully but the SDK will fail to post the response into redirect URL due to some reason. In this case SDK will send back with success response with SDK errors. </p> 
-        
+
 ```json
 
 {
@@ -656,7 +656,7 @@ This is the failure response payload from uCom API
 
 **2. Success**  
 
-This is the success response payload from uCom API 
+<p>This is the success response payload from uCom API</p>
           
 ```json         
 
@@ -677,7 +677,7 @@ This is the success response payload from uCom API
 
 **3. Success Response with SDK Error** 
 
-This is the success response with sdk errors payload. Sometimes card will be enrolled successfully but SDK will fail to post the response into redirect URL due to some reason. In this case SDK will send back with success response with SDK errors. 
+<p>This is the success response with sdk errors payload. Sometimes card will be enrolled successfully but SDK will fail to post the response into redirect URL due to some reason. In this case SDK will send back with success response with SDK errors.</p>
 
 ```json
 {
