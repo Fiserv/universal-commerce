@@ -659,7 +659,6 @@ This is the failure response payload from uCom API
 <p>This is the success response payload from uCom API</p>
           
 ```json         
-
 {
     "type": "VAULTED_ACCOUNT",
     "token": {
@@ -671,10 +670,8 @@ This is the failure response payload from uCom API
         "cardType": "VISA",
         "alias": "2345"
     }
-}
-          
+}         
 ```
-
 **3. Success Response with SDK Error** 
 
 <p>This is the success response with sdk errors payload. Sometimes card will be enrolled successfully but SDK will fail to post the response into redirect URL due to some reason. In this case SDK will send back with success response with SDK errors.</p>
