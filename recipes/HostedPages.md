@@ -763,7 +763,7 @@ Merchant has the ability to pass the billing address into SDK. If they inject th
 
 The only way to communicate with HP is by listening to an event. HP will emit and communicate back if you are subscribed with those events. 
           
-```javascript
+```code
           
 ucomSDK.on(event, handler);   
           
@@ -773,7 +773,7 @@ ucomSDK.on(event, handler);
 
 Triggered when iFrame is fully rendered and can accept user’s inputs. 
           
-```javascript
+```code
           
 ucomSDK.on('ready', function () { //Handle ready event
 });
@@ -783,7 +783,7 @@ ucomSDK.on('ready', function () { //Handle ready event
 
 Triggered when form value is changed. The event payload always contains object with form valid status. 
 
-```javascript
+```code
           
 ucomSDK.on('change', function () {
    if (event.formValid) {
@@ -808,7 +808,7 @@ Handler Event Object
 3. **onError** 
 
 Triggered when HP’s API errors. The event payload object contains API error which needs to be handled on app. Please refer the **section 3** for error payload structure. 
-```javascript
+```code
           
 ucomSDK.on('error', function (response) { //Handle Error Response
 });
@@ -819,7 +819,7 @@ ucomSDK.on('error', function (response) { //Handle Error Response
 
 Triggered when HP’s nonce generated. The event payload object contains nonce which needs to be handled on app. Please refer the **section 3** for error payload structure. 
           
-```javascript
+```code
           
 ucomSDK.on('success', function (response) { //Handle Nonce 
 });
