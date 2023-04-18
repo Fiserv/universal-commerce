@@ -657,7 +657,6 @@ This is the failure response payload from uCom API
 **2. Success**  
 
 <p>This is the success response payload from uCom API</p>
-          
 ```json
 {
     "type": "VAULTED_ACCOUNT",
