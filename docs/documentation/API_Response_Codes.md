@@ -5,7 +5,7 @@ The codes are separated into sections based on what was being done in the softwa
 
 ## Common
 
-|Service|Response Code|Response Message|Http Status Code|
+|Use Case|Response Code|Response Message|Http Status Code|
 |-------|-------------|----------------|----------------|
 |Common|269801|Blocked for suspicious activity.|400|
 |Common|269901|Server error occurred. Please try later.|500|
@@ -33,7 +33,7 @@ The codes are separated into sections based on what was being done in the softwa
 
 ## Customer
 
-|Service|Response Code|Response Message|Http Status Code|
+|Use Case|Response Code|Response Message|Http Status Code|
 |-------|-------------|----------------|----------------|
 |Register a Customer|270101|Customer already registered|409|
 |Update Customer Profile|270201|Customer profile details update failed|400|
@@ -41,7 +41,7 @@ The codes are separated into sections based on what was being done in the softwa
 
 ## Tokenization
 
-|Service|Response Code|Response Message|Http Status Code|
+|Use Case|Response Code|Response Message|Http Status Code|
 |-------|-------------|----------------|----------------|
 |Payment Method Nonce|273601|Account validation failed.|400|
 |Payment Method Nonce|273602|Message decryption failed.|500|
@@ -49,7 +49,7 @@ The codes are separated into sections based on what was being done in the softwa
 
 ## Account
 
-|Service|Response Code|Response Message|Http Status Code|
+|Use Case|Response Code|Response Message|Http Status Code|
 |-------|-------------|----------------|----------------|
 |Add Account|274001|Account registration was unsuccessful. Please check the account details|400|
 |Add Account|274002|Account already registered.|409|
@@ -61,7 +61,7 @@ The codes are separated into sections based on what was being done in the softwa
 
 ## Prepaid
 
-|Service|Response Code|Response Message|Http Status Code|
+|Use Case|Response Code|Response Message|Http Status Code|
 |-------|-------------|----------------|----------------|
 |Purchase Gift Card|271001|Gift card purchase failed : Gift card creation failure|500|
 |Purchase Gift Card|271002|Gift card purchase failed : Payment Transaction failure|400|
@@ -74,7 +74,7 @@ The codes are separated into sections based on what was being done in the softwa
 
 ## Sale
 
-|Service|Response Code|Response Message|Http Status Code|
+|Use Case|Response Code|Response Message|Http Status Code|
 |-------|-------------|----------------|----------------|
 |Sale Transaction|272701|Sale transaction failed|400|
 |Sale Transaction|272706|Sale transaction not found|400|
@@ -86,7 +86,7 @@ The codes are separated into sections based on what was being done in the softwa
 
 ## Authorization
 
-|Service|Response Code|Response Message|Http Status Code|
+|Use Case|Response Code|Response Message|Http Status Code|
 |-------|-------------|----------------|----------------|
 |Auth Transaction|272731|Auth transaction failed|400|
 |Auth Transaction|272736|Auth transaction not found|400|
@@ -97,7 +97,7 @@ The codes are separated into sections based on what was being done in the softwa
 
 ## Capture
 
-|Service|Response Code|Response Message|Http Status Code|
+|Use Case|Response Code|Response Message|Http Status Code|
 |-------|-------------|----------------|----------------|
 |Capture Transaction|272761|Capture transaction failed|400|
 |Capture Transaction|272766|Capture transaction not found|400|
@@ -108,13 +108,13 @@ The codes are separated into sections based on what was being done in the softwa
 
 ## Charges
 
-|Service|Response Code|Response Message|Http Status Code|
+|Use Case|Response Code|Response Message|Http Status Code|
 |-------|-------------|----------------|----------------|
 |Payment Charges|272880| Fee details not found|400|
 
 ## Petro Authorizations
 
-|Service|Response Code|Response Message|Http Status Code|
+|Use Case|Response Code|Response Message|Http Status Code|
 |-------|-------------|----------------|----------------|
 |Service Authorization|260202|Dispenser busy|400|
 |Service Authorization|260203|Dispenser offline|400|
@@ -137,7 +137,7 @@ The codes are separated into sections based on what was being done in the softwa
 
 ## Petro Transaction Status
 
-|Service|Response Code|Response Message|Http Status Code|
+|Use Case|Response Code|Response Message|Http Status Code|
 |-------|-------------|----------------|----------------|
 |Transaction Status Update|260309|The dispenser is already fueling|400|
 |Transaction Status Update|260312|The dispenser is already processing request to cancel|400|
@@ -147,7 +147,7 @@ The codes are separated into sections based on what was being done in the softwa
 
 ## Provisioning
 
-|Service|Response Code|Response Message|Http Status Code|
+|Use Case|Response Code|Response Message|Http Status Code|
 |-------|-------------|----------------|----------------|
 |provision|279912|Invalid request: Provision not found/valid|400|
 |provision|279914|The issuer could not continue with provision operation. Kindly contact the card issuer operations directly|400|
@@ -158,7 +158,7 @@ The codes are separated into sections based on what was being done in the softwa
 
 ## Value Add Services
 
-|Service|Response Code|Response Message|Http Status Code|
+|Use Case|Response Code|Response Message|Http Status Code|
 |-------|-------------|----------------|----------------|
 |Value Add Services|280001| Operation was unsuccessful. Please check the account details.|400|
 |Value Add Services|280002| Please narrow the date range.|400|
@@ -172,14 +172,14 @@ The codes are separated into sections based on what was being done in the softwa
 
 ## Loyalty
 
-|Service|Response Code|Response Message|Http Status Code|
+|Use Case|Response Code|Response Message|Http Status Code|
 |-------|-------------|----------------|----------------|
 |Loyalty Service|300001| Transaction Processing Failure. This is a permanent failure|400|
 |Loyalty Service|300002|Transaction Processing Failure. This is a temporary failure and the transaction will be retried later|400|
 
 ## Order
 
-|Service|Response Code|Response Message|Http Status Code|
+|Use Case|Response Code|Response Message|Http Status Code|
 |-------|-------------|----------------|----------------|
 |Order Services |310000| Missing Header Data|400|
 |Order Services |310001| Missing Query Parameter|400|
