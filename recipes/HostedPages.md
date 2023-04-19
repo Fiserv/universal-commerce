@@ -145,7 +145,7 @@ Sample Response:
 
 ```
 
-** 3.2 Load Hosted Page **
+**3.2 Load Hosted Page**
 
 To start the hosted page, app needs api-key, pageLink, tokenId, fdCustomerId, encryptionKey and redirectUrl. Mobile apps must make sure that they have disabled webview caching and enabled loading javascript in webview.
 
