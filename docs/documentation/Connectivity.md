@@ -31,7 +31,7 @@ Please see the following reference document for current implementation:
 
 ### API HTTP Headers
 
- | Header            | Value                  | Always Required | Description                                                                                                                             |
+ | Header            | Value                  | Always Required | Description                          [label](outlook:%5C%5Critu.patel%40fiserv.com%5CDeleted%20Items)                                                                                                   |
 |-------------------|------------------------|-----------------|-----------------------------------------------------------------------------------------------------------------------------------------|
 | Api-Key           | <apiKey>               | Yes             | Merchant API key, Refer Apigee portal for more details                                                                                  |
 | Timestamp         | <timestamp>            | Yes             | Request initiation timestamp, expecting Epoch time. The value must generate out of UTC timestamp. Sample value format is 1499961987232
