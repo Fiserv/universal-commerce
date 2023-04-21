@@ -22,7 +22,7 @@ https://int.api.firstdata.com/ucom/v1/customers
 
 ### Authentication
 
-**API SECURITY**
+**API SECURITY**  
 Please see the following reference document for current implementation:
 <a href="../docs/?path=docs/documentation/APISecurity.md">API Security Information</a>
 <!--[API Security File GL Link](APISecurity.md)-->
@@ -42,7 +42,7 @@ Please see the following reference document for current implementation:
 | Client-Token      | <accessToken>          |                 | Used on POST /v1/payments/sales for anonymous transactions and /v1/customers/{fdCustomerId}/accounts for account transactions           |
 | Content-Signature | HMAC <signature>       |                 | Used on /v1/account-tokens                                                                                                              |
 
-### Securities and Privacy
+### Security and Privacy
   Field Encryption/Decryption Algorithm
 
 Unless explicitly decided otherwise, confidential information such as account number, card number, passwords etc. should be encrypted prior to exchanging with UCG. The wallet app server has to encrypt the messages using the public key (that will be shared by UCG) and sent to UCG. The steps required for encrypting the sensitive information are:
@@ -54,4 +54,4 @@ Unless explicitly decided otherwise, confidential information such as account nu
  - The final encoded string value  replaces the sensitive data.
  - The encoded string is used by UCG to retrieve the sensitive data.
 
- [Return to Quick Service Restaurants (QSR) API Integration Guide](../docs/?path=/docs/documentation/IG_QSR.md)
+[Return to Quick Service Restaurants (QSR) API Integration Guide](../docs/?path=/docs/documentation/IG_QSR.md)
