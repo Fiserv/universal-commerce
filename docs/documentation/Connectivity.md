@@ -8,6 +8,7 @@ For ease of navigation on this page, content headings are listed in the right ha
 The Connected Commerce (uCom) Gateway services are accessed through the public Internet. Connected Commerce (uCom) Gateway accepts communication only via the HTTPS channel. Custom HTTP headers are also used to carry additional information in each request.
 
 | Environment            | Host                           | Base Path |
+|------------------------|--------------------------------|-----------|
 | Integration Test / CAT | https://int.api.firstdata.com  | /ucom     |
 | Prod                   | https://prod.api.firstdata.com | /ucom     |
 

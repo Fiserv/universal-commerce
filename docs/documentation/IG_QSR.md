@@ -18,9 +18,6 @@ Determine whether a customer wants to vault an account into Connected Commerce (
 >**Note:**
 >If customer wants to use Guest Checkout, then it is not necessary to register customer profile. Although once customer profile is created for a specific customer, that customer can still opt to perform anonymous payment, where vaulting is not required.
 
-<Add Payment using nonce >
-
-
 ### Step 2: Set up payment account
 Registering an account consists of several steps listed here below. These steps are required for a merchant to send card details to Connected Commerce (uCom).
 
@@ -32,7 +29,8 @@ Step 2c: [Vault account](../api/?type=post&path=/v1/customers/{fdCustomerId}/acc
 >For Guest Checkout (Anonymous Payment), skip step 2c above.
 
 ### Step 3: Select payment type
-Determine whether a customer wants to use Vaulted Account or Guest Checkout (anonymous payment).  
+Determine whether a customer wants to use Vaulted Account or Guest Checkout (anonymous payment).
+
 A. Vaulted account: Send key parameters <ADD LINK TO VAULTED CARDS USE CASE once that page is created> – payment by fdAccountId, merchantId, and transaction details  
 <ADD How to retrieve what is vaulted - How to pull details from vaulted list>  [Get Account Details](..//api/?type=get&path=/v1/customers/{fdCustomerId}/accounts/{fdAccountId}) and [Get List of Accounts](../api/?type=get&path=/v1/customers/{fdCustomerId}/accounts)
 
