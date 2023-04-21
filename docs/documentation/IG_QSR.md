@@ -12,29 +12,33 @@ Determine whether a customer wants to vault an account into Connected Commerce (
 ### Step 1: Set up customer profile
 
  A. [Register customer](../api/?type=post&path=/v1/customers)  
- OR
+ OR  
  B. [Guest checkout](../docs/?path=recipes/guest_checkout.md)
 
-Note: If customer wants to use guest checkout, then it is not necessary to register customer profile. Although once customer profile is created for a specific customer, that customer can still opt to perform anonymous payment, where vaulting is not required.
+>**Note:**
+>If customer wants to use guest checkout, then it is not necessary to register customer profile. Although once customer profile is created for a specific customer, that customer can still opt to perform anonymous payment, where vaulting is not required.
 
 <Add Payment using nonce >
 
 
 ### Step 2: Set up payment account
-Registering an account consists of several steps listed here below. These steps are required for a merchant to send card details to Connected Commerce (uCom).  
+Registering an account consists of several steps listed here below. These steps are required for a merchant to send card details to Connected Commerce (uCom).
+
 Step 2a: [Create Security Access Token](../api/?type=post&path=/v1/tokens) (This is the first step to transfer PCI data (public key and token Id) from client to Connected Commerce (uCom)).  
 Step 2b: [Tokenize by Card Detail](../api/?type=post&path=/v1/account-tokens) (Call account tokens to send encrypted card details and get nonce token.)  
 Step 2c: [Vault account](../api/?type=post&path=/v1/customers/{fdCustomerId}/accounts)  
 
-NOTE: For guest checkout (anonymous payment), skip 2c above.
+>**Note:**
+>For guest checkout (anonymous payment), skip 2c above.
 
 ### Step 3: Select payment type
 Determine whether a customer wants to use vaulted account or guest check out (anonymous payment).  
 
-A. Vaulted account: Send key parameters <ADD LINK TO USE CASE ONCE CREATED> – payment by fdAccountId, merchantId, and transaction details  
+A. Vaulted account: Send key parameters <ADD LINK TO USE CASE once that page is created> – payment by fdAccountId, merchantId, and transaction details  
 <How to retrieve what is vaulted - How to pull details from vaulted list> - <Link to Get ACCOUNT DETAILS and GET LIST OF ACCOUNTS>
 
- Note: In order to vault an account, tokenization—a secure way for Connected Commerce and end customer to securely exchange card details—must be done first.  
+ >**Note:**
+ >In order to vault an account, tokenization—a secure way for Connected Commerce and end customer to securely exchange card details—must be done first.  
 
 B. Guest check out: Tokenize card details and process payment using nonce.  
 
