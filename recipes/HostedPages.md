@@ -1,10 +1,13 @@
+# What is Hosted Pages
+Hosted payment pages is a Fiserv offering for secure card collection via webview or iFrame in order to avoid PCI Compliance exposure. We have a native API (client to server), server to server, and Cross Origin Resource (CORS) APIs to provide our clients a variety of integration options.
+
 # How to Implement Hosted Pages
 
 The goal of this guide is to describe how to implement and use Hosted Pages. It is not intended to describe all the interactions between App, Mobile Application Server, and uCom Server. 
 
-## 1. Roles 
+## Hosted Pages Components  
 
-There are 4 roles:
+Hosted Pages has 4 main Components, the Mobile Applcation, the Mobile Application Server, Hosted Page and the uCom Sever/API.  
 
 <center><img src="https://github.com/Fiserv/universal-commerce/blob/develop/assets/images/HostedPages%20(1).png?raw=true" alt="HP Diagram" class="center"></center>
 
@@ -16,9 +19,9 @@ There are 4 roles:
 
 1.4 **uCom Server (uCom)** - This is the Fiserv solution server which provides all the APIs. This server sits behind Apigee.
 
-## 2. Setup 
+## Integration Prerequisites
 
-The following parameters are needed to use HP: 
+The following parameters are needed to access Hosted Pages: 
 
 2.1 **Api-Key** - This will be generated for you when you create an Apigee account. This should be saved securely on MAS and shared with App. Api-key is fixed for a merchant. 
 
@@ -30,7 +33,7 @@ The following parameters are needed to use HP:
 
 2.5 **PageLink (url and relation)** - This is the unique page which is going to display the use case. Url is the address where page is hosted, and Relation is the name of the use case. PageLink can be retrieved run time via the api (ucom/v1/hosted - pages/pages) and can be cached. We prefer that PageLink should be freshly fetched. The page contents are configured offline.
 
-## 3. Flow 
+## Architecture Flow 
 
 <center><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/HostedPages%20(2).png" alt="HP Diagram" class="center"></center>
 
