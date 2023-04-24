@@ -5,45 +5,45 @@ Hosted payment pages is a Fiserv offering for secure card collection via webview
 
 The goal of this guide is to describe how to implement and use Hosted Pages. It is not intended to describe all the interactions between App, Mobile Application Server, and uCom Server. 
 
-## Hosted Pages Components  
+## Components  
 
 Hosted Pages has 4 main Components, the Mobile Applcation, the Mobile Application Server, Hosted Page and the uCom Sever/API.  
 
 <center><img src="https://github.com/Fiserv/universal-commerce/blob/develop/assets/images/HostedPages%20(1).png?raw=true" alt="HP Diagram" class="center"></center>
 
-1.1 **Mobile Application (App)** - This could be a native mobile application running on IOS or Android devices. This could also be a web application running on a browser. 
+1. **Mobile Application (App)** - This could be a native mobile application running on IOS or Android devices. This could also be a web application running on a browser. 
 
-1.2 **Mobile Application Server (MAS)** - This is a server which is a communication bridge between the App and uCom. It also stores uCom developer account information like app id, app secret, and encryption key securely.
+2. **Mobile Application Server (MAS)** - This is a server which is a communication bridge between the App and uCom. It also stores uCom developer account information like app id, app secret, and encryption key securely.
 
-1.3 **Hosted Page (HP)** - This is a web page rendered on native webview or browser which will display the UI to let user enter their account information like Credit card, debit card, gift card etc. This page securely captures the account information from user and passes it to uCom server. When finished, the page sends the result to redirectUrl.
+3. **Hosted Page (HP)** - This is a web page rendered on native webview or browser which will display the UI to let user enter their account information like Credit card, debit card, gift card etc. This page securely captures the account information from user and passes it to uCom server. When finished, the page sends the result to redirectUrl.
 
-1.4 **uCom Server (uCom)** - This is the Fiserv solution server which provides all the APIs. This server sits behind Apigee.
+4. **uCom Server (uCom)** - This is the Fiserv solution server which provides all the APIs. This server sits behind Apigee.
 
 ## Integration Prerequisites
 
-The following parameters are needed to access Hosted Pages: 
+The following parameters are needed to access the Hosted Pages: 
 
-2.1 **Api-Key** - This will be generated for you when you create an Apigee account. This should be saved securely on MAS and shared with App. Api-key is fixed for a merchant. 
+1. **Api-Key** - This will be generated for you when you create an Apigee account. This should be saved securely on MAS and shared with App. Api-key is fixed for a merchant. 
 
-2.2 **Api-Secret** - This will be generated for you when you create an Apigee account. This should be saved securely on the application server. This should NOT be shared with app. Api-key is fixed for a merchant.
+2. **Api-Secret** - This will be generated for you when you create an Apigee account. This should be saved securely on the application server. This should NOT be shared with app. Api-key is fixed for a merchant.
 
-2.3 **Redirect Url/MAS Url (Asynchronous)** - All the Hosted pages responses(error/success) will be responded back to JavaScript main return callback only. Responses should be parsed and handled from JavaScript callback. Additionally same responses will be delivered to your MAS URL by Hosted pages via HTTP POST (Ajax Call) asynchronously. This API should be provided by MAS. MAS has to enable CORS for Fiserv origin “int.api.firstdata.com", "cat.api.firstdata.com", and "prod.api.firstdata.com”. This can be used for auditing purposes when a web browser or an app crash accidently. 
+3. **Redirect Url/MAS Url (Asynchronous)** - All the Hosted pages responses(error/success) will be responded back to JavaScript main return callback only. Responses should be parsed and handled from JavaScript callback. Additionally same responses will be delivered to your MAS URL by Hosted pages via HTTP POST (Ajax Call) asynchronously. This API should be provided by MAS. MAS has to enable CORS for Fiserv origin “int.api.firstdata.com", "cat.api.firstdata.com", and "prod.api.firstdata.com”. This can be used for auditing purposes when a web browser or an app crash accidently. 
 
-2.4 **FDCustomerId** - This must be obtained using other uCom apis. This is optional when you initate SDK with guest checkout option.
+4. **FDCustomerId** - This must be obtained using other uCom apis. This is optional when you initate SDK with guest checkout option.
 
-2.5 **PageLink (url and relation)** - This is the unique page which is going to display the use case. Url is the address where page is hosted, and Relation is the name of the use case. PageLink can be retrieved run time via the api (ucom/v1/hosted - pages/pages) and can be cached. We prefer that PageLink should be freshly fetched. The page contents are configured offline.
+5. **PageLink (url and relation)** - This is the unique page which is going to display the use case. Url is the address where page is hosted, and Relation is the name of the use case. PageLink can be retrieved run time via the api (ucom/v1/hosted - pages/pages) and can be cached. We prefer that PageLink should be freshly fetched. The page contents are configured offline.
 
 ## Architecture Flow 
 
 <center><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/HostedPages%20(2).png" alt="HP Diagram" class="center"></center>
 
-3.1 **Start a New Session** - App calls MAS to get tokenId, encryptionKey and pageLink. tokenId and encryptionKey should not be cached or stored on the app and should be fetched from MAS. The tokenId and encryptionKey expires frequently and therefore this step should be done every time user starts the flow. 
+1. **Start a New Session** - App calls MAS to get tokenId, encryptionKey and pageLink. tokenId and encryptionKey should not be cached or stored on the app and should be fetched from MAS. The tokenId and encryptionKey expires frequently and therefore this step should be done every time user starts the flow. 
 
 <center><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/HostedPages%20(3).png" alt="HP Diagram" class="center"></center>
 
-3.1.1 **App calls MAS** - The api between app and MAS is not part of this document. It’s up to the merchant to decide this part of the transaction.
+2. **App calls MAS** - The api between app and MAS is not part of this document. It’s up to the merchant to decide this part of the transaction.
 
-3.1.2 **MAS calls uCom to getToken** - MAS has to call uCom to get a tokenId. MAS should not cache the tokenId. getToken call will provide the one time session token and public key which needs to be passed to SDK to launch HP.
+3. **MAS calls uCom to getToken** - MAS has to call uCom to get a tokenId. MAS should not cache the tokenId. getToken call will provide the one time session token and public key which needs to be passed to SDK to launch HP.
 
 **Endpoint URL**
 
@@ -93,12 +93,12 @@ Sample Response (201 – Created)
 
 ```
 
-**How to generate HMAC signature**
+**Generate HMAC signature**
 
-Please see the following reference document for current implementation:
+Please see the following reference document which covers the process of generating HMAC signature:
 <a href="../docs/?path=docs/documentation/APISecurity.md">API Security Information</a>
 
-**3. MAS calls uCom to get page link** MAS can cache the page link for future reference though we do not recommend that. Merchant may have configured multiple pages and therefore this api will return all of them. Each page can be identified by the relation.
+**4. MAS calls uCom to get page link** MAS can cache the page link for future reference though we do not recommend that. Merchant may have configured multiple pages and therefore this api will return all of them. Each page can be identified by the relation.
 
 **Endpoint URL**
 https://int.api.firstdata.com/ucom/v1/hosted-pages/pages
@@ -132,9 +132,25 @@ Sample Response:
 
 ```
 
-**3.2 Load Hosted Page**
+**5. Load Hosted Page**
 
 To start the hosted page, app needs api-key, pageLink, tokenId, fdCustomerId, encryptionKey and redirectUrl. Mobile apps must make sure that they have disabled webview caching and enabled loading javascript in webview.
+
+<!--
+type: tab
+titles: WebView, iFrame 
+-->
+Webview stuff 
+<!--
+type: tab
+-->
+
+iFrame stuff 
+
+<!-- type: tab-end -->
+
+---
+
 
 **3.2.1 Mobile Webview Integration Steps**
 
