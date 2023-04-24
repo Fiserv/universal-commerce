@@ -97,7 +97,6 @@ Sample Response (201 – Created)
 
 Please see the following reference document for current implementation:
 <a href="../docs/?path=docs/documentation/APISecurity.md">API Security Information</a>
-```
 
 **3. MAS calls uCom to get page link** MAS can cache the page link for future reference though we do not recommend that. Merchant may have configured multiple pages and therefore this api will return all of them. Each page can be identified by the relation.
 
