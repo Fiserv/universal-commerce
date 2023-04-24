@@ -23,7 +23,9 @@ Registering an account consists of several steps listed here below. These steps 
 
 Step 2a: [Create Security Access Token](../api/?type=post&path=/v1/tokens) (This is the first step to transfer PCI data (public key and token Id) from client to Connected Commerce (uCom)).  
 Step 2b: [Tokenize by Card Detail](../api/?type=post&path=/v1/account-tokens) (Call account tokens to send encrypted card details and get nonce token.)  
->**Note:** For Guest Checkout (Anonymous Payment), skip step 2c below and jump to step 3.  
+
+>**Note:** For Guest Checkout (Anonymous Payment), skip step 2c below and jump to step 3.
+
 Step 2c: [Vault account](../api/?type=post&path=/v1/customers/{fdCustomerId}/accounts)  
 
 ### Step 3: Select payment type
