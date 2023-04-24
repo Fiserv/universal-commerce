@@ -134,25 +134,13 @@ Sample Response:
 
 **5. Load Hosted Page**
 
-To start the hosted page, app needs api-key, pageLink, tokenId, fdCustomerId, encryptionKey and redirectUrl. Mobile apps must make sure that they have disabled webview caching and enabled loading javascript in webview.
+To start the hosted page, the app needs the api-key, pageLink, tokenId, fdCustomerId, encryptionKey and redirectUrl. Mobile apps must make sure that they have disabled webview caching and enabled loading javascript in webview.
 
 <!--
 type: tab
 titles: WebView, iFrame 
 -->
-Webview stuff 
-<!--
-type: tab
--->
-
-iFrame stuff 
-
-<!-- type: tab-end -->
-
----
-
-
-**3.2.1 Mobile Webview Integration Steps**
+**Mobile Webview Integration Steps**
 
 **Step 1:**
 
@@ -356,7 +344,12 @@ protected void onCreate(Bundle savedInstanceState) {
 
 ```
 
-2. **Website Integration Steps** 
+<!--
+type: tab
+-->
+
+
+**Website Integration Steps** 
 1. Include the uCom SDK library on head tag on your html page 
 
 **URL:**  **https://<env>.api.firstdata.com/ucom/v2/static/v2/js/ucom-sdk.js**    
@@ -453,6 +446,10 @@ protected void onCreate(Bundle savedInstanceState) {
 </html>
 
 ```
+
+<!-- type: tab-end -->
+
+---
 
 Please refer below table for additional sdk configurations properties 
 
