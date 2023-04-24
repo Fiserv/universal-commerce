@@ -90,23 +90,8 @@ Sample Response (201 – Created)
 
 **How to generate HMAC signature**
 
-```java
-
-var key = “”; //the 'Api-Key'
-var secret = “”; //the 'Api-Secret';
-var time = new Date().getTime(); // use this time in header
-var method = request.method;
-var rawSignature = key + ":" + time;
-var requestBody = request.data;
-if (method != 'GET' && method != 'DELETE') {
-    var payload_digest = CryptoJS.SHA256(requestBody);
-    var b64BodyContent = CryptoJS.enc.Base64.stringify(payload_digest);
-    rawSignature = rawSignature + ":" + b64BodyContent;
-}
-var signature =
-    CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA256(rawSignature, secret)));
-// use this in header
-
+Please see the following reference document for current implementation:
+<a href="../docs/?path=docs/documentation/APISecurity.md">API Security Information</a>
 ```
 
 **3. MAS calls uCom to get page link** MAS can cache the page link for future reference though we do not recommend that. Merchant may have configured multiple pages and therefore this api will return all of them. Each page can be identified by the relation.
