@@ -23,8 +23,8 @@ Determine whether a customer wants to vault an account into Connected Commerce (
 ### Step 2: Set up payment account
 Registering an account consists of several steps listed here below. These steps are required for a merchant to send card details to Connected Commerce (uCom).
 
-Step 2a: [Create Security Access Token](../api/?type=post&path=/v1/tokens) (This is the first step to transfer PCI data (public key and token Id) from client to Connected Commerce (uCom)).  
-Step 2b: [Tokenize by Card Detail](../api/?type=post&path=/v1/account-tokens) (Call account tokens to send encrypted card details and get nonce token.)  
+Step 2a: [Create Security Access Token](../api/?type=post&path=/v1/tokens) This is the first step to transfer PCI data (public key and token Id) from client to Connected Commerce (uCom).  
+Step 2b: [Tokenize by Card Detail](../api/?type=post&path=/v1/account-tokens) This step calls account tokens to send encrypted card details and get nonce token.  
 
 >**Note:** For Guest Checkout (Anonymous Payment), skip step 2c below and jump to step 3.
 
@@ -64,7 +64,7 @@ Supported Services:
 For other payment related options such as to cancel, void, or refund a transaction, click on the Payment Services dropdown on the <Explore the QSR Services> page and select the action you want to perform. From there, you may also explore the other QSR API services through the links provided.
 
 ## Error Codes
-For error codes table, click here<ADD LINK>.
+For error codes table, go to [Response Codes](../docs/?path=docs/documentation/API_Response_Codes.md).
 
 ## Petro API Flow
 
