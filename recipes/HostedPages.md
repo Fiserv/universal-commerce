@@ -867,11 +867,11 @@ Following errors will be thrown after hosted pages screen render
 
 
 
-|**Status Code**|**Transaction Status Desc**|**Comments**|
-| - | - | - |
-|**279912** |**Decryption failed.**|**When we pass the invalid or already used public key into SDK then API will throw this error.**|
-|**269901** |**Unable to process your request, please try again later, if problem persist, contact sys admin.**|**This error will occur when our backend is down.** |
-|**401** |**Access Token expired or Unauthorized**|**This error will occur when user idle and try to submit the rendered form with expired access token.**|
+| Status Code     | Transaction Status Desc | Comments |
+|----------------|-------------------|----------- |
+| 279912    | Decryption failed.	       | When we pass the invalid or already used public key into SDK then API will throw this error.     |
+| 269901    | Unable to process your request, please try again later, if problem persist, contact sys admin.       | This error will occur when our backend is down.     |
+| 401    | Access Token expired or Unauthorized       | This error will occur when user idle and try to submit the rendered form with expired access token.     |
 
 
 Example response payload:  
