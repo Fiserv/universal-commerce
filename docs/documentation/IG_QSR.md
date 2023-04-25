@@ -1,8 +1,10 @@
-# Quick Service Restaurants (QSR) API Integration Guide
+# Quick Service Restaurants (QSR) and Petro API Integration Guide
 
 ## Overview
 
 <Add Product Content on QSR HERE>
+
+## QSR API Flow
 
 ## Getting Started
 To get started, turn to the [API Fundamentals](../docs/?path=/docs/documentation/Connectivity.md) page for details on connectivity, API HTTP Headers, API security, then return to this webpage to navigate through the QSR services below.
@@ -63,3 +65,20 @@ For other payment related options such as to cancel, void, or refund a transacti
 
 ## Error Codes
 For error codes table, click here<ADD LINK>.
+
+## Petro API Flow
+
+### Step 1: Set up customer profile
+
+### Step 2: Set up payment account
+
+### Step 3: Locate a gas station
+
+  A. Pay at pump – type of gas, air pressure, car wash, . . . GO TO STEP 4  
+  B. Pay in store – Generate QR in app (Create Stack Request to generate QR code)
+
+### Step 4: Select payment type
+
+  A. Request service authorization (app confirms authorization and next step)  
+  B. Receipt received  
+  C. Site transaction history
