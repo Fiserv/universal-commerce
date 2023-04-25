@@ -829,10 +829,10 @@ Below error status code needs to be handled from client side. These API error re
 Following errors will be thrown before hosted pages screen render 
 
 
-|**Status Code** |**Transaction Status Desc** |**Comments** |
-| - | - | - |
-|**269904** |**Configuration record(s) not found.** |**When we pass the invalid page id then API will throw this error** |
-|**401** |**Unauthorized** |**This error will occur when we pass invalid access token id.**|
+| Status Code     | Transaction Status Desc | Comments |
+|----------------|-------------------|----------- |
+| 269904    | Configuration record(s) not found.       | When we pass the invalid page id then API will throw this error     |
+| 401    | Unauthorized       | This error will occur when we pass invalid access token id.     |
 
 **Example response payload** 
 
