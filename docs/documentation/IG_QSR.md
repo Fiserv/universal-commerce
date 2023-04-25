@@ -31,8 +31,10 @@ Step 2c: [Vault account](../api/?type=post&path=/v1/customers/{fdCustomerId}/acc
 ### Step 3: Select payment type
 Determine whether a customer wants to use Vaulted Account or Guest Checkout (anonymous payment).
 
-A. Vaulted account: Send key parameters <ADD LINK TO VAULTED CARDS USE CASE once that page is created> – payment by fdAccountId, merchantId, and transaction details  
-<ADD How to retrieve what is vaulted - How to pull details from vaulted list>  [Get Account Details](..//api/?type=get&path=/v1/customers/{fdCustomerId}/accounts/{fdAccountId}) and [Get List of Accounts](../api/?type=get&path=/v1/customers/{fdCustomerId}/accounts)
+A. Vaulted account: User has the ability to select payment type from already saved payment methods.
+<ADD LINK TO VAULTED CARDS USE CASE once that page is created>
+<ADD How to retrieve what is vaulted - How to pull details from vaulted list>
+Go to the [Get Account Details](..//api/?type=get&path=/v1/customers/{fdCustomerId}/accounts/{fdAccountId}) and [Get List of Accounts](../api/?type=get&path=/v1/customers/{fdCustomerId}/accounts) APIs to explore these payment methods.
 
  >**Note:**
  >In order to vault an account, **tokenization**—a secure way for Connected Commerce and end customer to securely exchange card details—must be done first.  
