@@ -755,7 +755,7 @@ Merchant has the ability to pass the billing address into SDK. If they inject th
 }
           
 ```
-## 4. Events
+## Events
 
 <p>The only way to communicate with HP is by listening to an event. HP will emit and communicate back if you are subscribed with those events.</p>
           
@@ -821,7 +821,7 @@ ucomSDK.on('success', function (response) { //Handle Nonce
 });
           
 ```
-## 5. API Error Status Codes
+## API Error Status Codes
 
 Below error status code needs to be handled from client side. These API error responses will be communicated back to App JavaScript main callback to handle the errors and show the appropriate error dialog. 
 
@@ -912,7 +912,7 @@ Example response payload:
 }
           
 ```
-## 6. Native/Web Button Submit
+## Native/Web Button Submit
 
 HP will allow to submit the form through mobile native button or website button from outside iFrame. Following command will trigger the save action![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.053.png)
 
