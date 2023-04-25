@@ -1,7 +1,7 @@
+# How to Implement Hosted Pages
+
 # What is Hosted Pages
 Hosted payment pages is a Fiserv offering for secure card collection via webview or iFrame in order to avoid PCI Compliance exposure. We have a native API (client to server), server to server, and Cross Origin Resource (CORS) APIs to provide our clients a variety of integration options.
-
-# How to Implement Hosted Pages
 
 The goal of this guide is to describe how to implement and use Hosted Pages. It is not intended to describe all the interactions between App, Mobile Application Server, and uCom Server. 
 
