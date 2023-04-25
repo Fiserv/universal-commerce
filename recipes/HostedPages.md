@@ -356,11 +356,11 @@ type: tab
     
  **Environment Variable:** <**int/cat/prod>** 
 
-|**Variable**|**Environment**|
-| - | - |
-|INT |CAT/CERT |
-|CAT |PRE-PROD |
-|PROD |PRODUCTION|
+| Variable     | Environment |
+|----------------|-------------------|
+| INT    | CAT/CERT	       |
+| CAT    | PRE-PROD       |
+| PROD    | PRODUCTION       |
  
 2. Initialize the SDK with SDK configuration params by call this **ucomSDK.init()** method 
     a. Pass access toekn
