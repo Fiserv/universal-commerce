@@ -362,14 +362,14 @@ type: tab
 | CAT    | PRE-PROD       |
 | PROD    | PRODUCTION       |
  
-2. Initialize the SDK with SDK configuration params by call this **ucomSDK.init()** method 
-    a. Pass access toekn
-    b. Pass API Key 
-    c. Pass fdCustomerId
-    d: Pass page URL 
-    e: Pass Mount Id where SDK needs to be mounted on the screen
-    f. Pass EncryptionKey 
-    g. Pass RedirectURL
+2. Initialize the SDK with SDK configuration params by calling this **ucomSDK.init()** method </b>
+    a. Pass access toekn </b>
+    b. Pass API Key </b>
+    c. Pass fdCustomerId </b>
+    d: Pass page URL </b>
+    e: Pass Mount Id where SDK needs to be mounted on the screen </b>
+    f. Pass EncryptionKey </b>
+    g. Pass RedirectURL </b>
     
 3. Call **uComSDK.start()** method to render SDK on mounted element on your page
 3. Call **uComSDK.stop()** whenever you want to kill the SDK from the page.
