@@ -224,7 +224,7 @@ While the solution allows for a post-authorization configuration it is strongly 
 Fraud Mitigation by Carat provides a set of Device Intelligence components which can be integrated to a merchant’s website (JavaScript) or mobile application (SDK). The solution also allows merchants to provide device fingerprinting information pulled from another provider to the service – however the scope of data that can be provided through this method is less than that which is collected by the provided device components. Regardless of device intelligence provider the data collected is a core component of eCommerce fraud prevention, and as such integrating device intelligence is a requirement for using the solution. Any exceptions to this requirement need approval from the Fraud Mitigation Product Owner.
 </details>
 
-## Hosted Pages 
+### Hosted Pages 
 
 <details>
 <summary>**How to enable CORS on Mobile App server?** </summary>
