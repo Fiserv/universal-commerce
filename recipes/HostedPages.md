@@ -1,3 +1,27 @@
+| SDK Params     | Required/Optional | Description|
+|----------------|-------------------|----------- |
+| accessToken    | dataCapture       | String     |
+| apiKey    | dataCapture       | String     |
+| fdCustomerId    | dataCapture       | String     |
+| accessToken    | dataCapture       | String     |
+| accessToken    | dataCapture       | String     |
+| accessToken    | dataCapture       | String     |
+| accessToken    | dataCapture       | String     |
+| accessToken    | dataCapture       | String     |
+| accessToken    | dataCapture       | String     |
+| accessToken    | dataCapture       | String     |
+| accessToken    | dataCapture       | String     |
+| accessToken    | dataCapture       | String     |
+| accessToken    | dataCapture       | String     |
+| accessToken    | dataCapture       | String     |
+| accessToken    | dataCapture       | String     |
+| accessToken    | dataCapture       | String     |
+| accessToken    | dataCapture       | String     |
+| accessToken    | dataCapture       | String     |
+| accessToken    | dataCapture       | String     |
+| accessToken    | dataCapture       | String     |
+| accessToken    | dataCapture       | String     |
+
 # How to Implement Hosted Pages
 
 # What is Hosted Pages
