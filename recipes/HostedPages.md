@@ -454,6 +454,7 @@ type: tab
 Please refer below table for additional sdk configurations properties 
 
 3. **SDK Configuration property Value** 
+          
 |SDK Params|Required/Optional|Description|
 | - | - | - |
 |accessToken|R|Session Token Id|
