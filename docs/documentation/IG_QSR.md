@@ -7,16 +7,16 @@
 ## Getting Started
 To get started, turn to the [API Fundamentals](../docs/?path=/docs/documentation/Connectivity.md) page for details on connectivity, API HTTP Headers, API security, then return to this webpage to navigate through the QSR services below.
 
-Determine whether a customer wants to vault an account into Connected Commerce (uCom) or use Guest Checkout (Anonymous Checkout).  
+Determine whether a customer wants to vault an account into Connected Commerce (uCom) or use Guest Checkout (Anonymous Payment).  
 
 ### Step 1: Set up customer profile
 
  A. [Register customer](../api/?type=post&path=/v1/customers)  
  OR  
- B. [Guest checkout](../docs/?path=recipes/guest_checkout.md)
+ B. [Guest Checkout](../docs/?path=recipes/guest_checkout.md)
 
 >**Note:**
->If customer wants to use Guest Checkout, then it is not necessary to register customer profile. Although once customer profile is created for a specific customer, that customer can still opt to perform anonymous payment, where vaulting is not required.
+>If customer wants to use Guest Checkout, then it is not necessary to register customer profile. Although once customer profile is created for a specific customer, that customer can still opt to make an Anonymous Payment, where vaulting is not required.
 
 ### Step 2: Set up payment account
 Registering an account consists of several steps listed here below. These steps are required for a merchant to send card details to Connected Commerce (uCom).
@@ -26,10 +26,10 @@ Step 2b: [Tokenize by Card Detail](../api/?type=post&path=/v1/account-tokens) (C
 
 >**Note:** For Guest Checkout (Anonymous Payment), skip step 2c below and jump to step 3.
 
-Step 2c: [Vault account](../api/?type=post&path=/v1/customers/{fdCustomerId}/accounts)  
+Step 2c: [Vault an Account](../api/?type=post&path=/v1/customers/{fdCustomerId}/accounts)  
 
 ### Step 3: Select payment type
-Determine whether a customer wants to use Vaulted Account or Guest Checkout (anonymous payment).
+Determine whether a customer wants to use Vaulted Account or Guest Checkout (Anonymous Payment).
 
 A. Vaulted account: User has the ability to select payment type from already saved payment methods.
 <ADD LINK TO VAULTED CARDS USE CASE once that page is created>
