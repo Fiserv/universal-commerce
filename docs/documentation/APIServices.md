@@ -1,4 +1,4 @@
-# Explore the QSR Services
+# Explore the Connected Commerce (uCom) Services
 
 Click on the preferred link below to explore each service.
 
