@@ -1,27 +1,3 @@
-| SDK Params     | Required/Optional | Description|
-|----------------|-------------------|----------- |
-| accessToken    | dataCapture       | String     |
-| apiKey    | dataCapture       | String     |
-| fdCustomerId    | dataCapture       | String     |
-| accessToken    | dataCapture       | String     |
-| accessToken    | dataCapture       | String     |
-| accessToken    | dataCapture       | String     |
-| accessToken    | dataCapture       | String     |
-| accessToken    | dataCapture       | String     |
-| accessToken    | dataCapture       | String     |
-| accessToken    | dataCapture       | String     |
-| accessToken    | dataCapture       | String     |
-| accessToken    | dataCapture       | String     |
-| accessToken    | dataCapture       | String     |
-| accessToken    | dataCapture       | String     |
-| accessToken    | dataCapture       | String     |
-| accessToken    | dataCapture       | String     |
-| accessToken    | dataCapture       | String     |
-| accessToken    | dataCapture       | String     |
-| accessToken    | dataCapture       | String     |
-| accessToken    | dataCapture       | String     |
-| accessToken    | dataCapture       | String     |
-
 # How to Implement Hosted Pages
 
 # What is Hosted Pages
@@ -478,20 +454,20 @@ type: tab
 Please refer below table for additional sdk configurations properties 
 
 3. **SDK Configuration property Value** 
-          
-|SDK Params|Required/Optional|Description|
-| - | - | - |
-|accessToken|R|Session Token Id|
-|apiKey|R|API Key|
-|fdCustomerId|R |First data Customer Id|
-|PageURL|R|Page link url of the page|
-|mountId|R|Mount Id where HP should be rendered|
-|encryptionKey|R|Public key from session token response to encrypt the data|
-|redirectUrl |O|MAS URL to capture all the hosted pages response for auditing purpose.|
-|orgId |O|Org id should be passed if Threatmetrix should be enabled on HP|
-|sessionId|O |Session id should be passed if Threatmetrix should be enabled on HP|   
-|extraObject|O |Additional details can be passed to HP to generate nonce as part of card detail. Example is below|
-|debug|O|Eg: debug: true This attribute should be passed if you develop and integrate it on localhost (**http://localhost)** and bypass the https error on CAT environment. Note: This attribute should be removed in higher environment.|
+                   
+| SDK Params     | Required/Optional | Description|
+|----------------|-------------------|----------- |
+| accessToken    | Required       | Session Token Id     |
+| apiKey    | Required       | API Key     |
+| fdCustomerId    | Required       | First data Customer Id     |
+| PageURL    | Required       | Page link url of the page     |
+| mountId    | Required       | Mount Id where HP should be rendered     |
+| encryptionKey    | Required       | Public key from session token response to encrypt the data     |
+| redirectUrl    | Optional       | MAS URL to capture all the hosted pages response for auditing purpose.     |
+| orgId    | Optional       | Org id should be passed if Threatmetrix should be enabled on HP     |
+| sessionId    | Optional       | Session id should be passed if Threatmetrix should be enabled on HP     |
+| extraObject    | Optional       | Additional details can be passed to HP to generate nonce as part of card detail. Example is below     |
+| debug    | Optional       | Eg: debug: true This attribute should be passed if you develop and integrate it on localhost (http://localhost) and bypass the https error on CAT environment. Note: This attribute should be removed in higher environment.     |
 
 **ExtraObject Sample Payload**
           
