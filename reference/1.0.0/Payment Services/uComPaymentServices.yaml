@@ -332,7 +332,7 @@ paths:
   /v1/payments/auths/{fdAuthorizationId}/void:
     post:
       x-group-name: Payment Services
-      x-proxy-name: Void Payment Authorization
+      x-proxy-name: Cancel Payment Authorization
       tags:
       - authorization
       summary: Execute an action on a payment authorization.
@@ -529,7 +529,7 @@ paths:
   /v1/payments/captures/{fdCaptureId}/void:
     post:
       x-group-name: Payment Services
-      x-proxy-name: Void Payment Capture
+      x-proxy-name: Cancel Payment Capture
       tags:
       - capture
       summary: Execute an action on a payment capture
@@ -988,7 +988,7 @@ paths:
   /v2/payments/multi-sales/{fdParentTransactionId}/void:
     post:
       x-group-name: Payment Services
-      x-proxy-name: Void a Multisale Transaction
+      x-proxy-name: Cancel a Multisale Transaction
       tags:
       - sale
       summary: Execute void for multisale transactions.
@@ -1217,7 +1217,7 @@ paths:
   /v2/payments/multi-refunds/{fdParentTransactionId}/void:
     post:
       x-group-name: Payment Services
-      x-proxy-name: Cancel multirefund
+      x-proxy-name: Cancel Multirefund
       tags:
       - refund
       summary: Execute an action on multi payment refund.
@@ -1324,7 +1324,7 @@ paths:
 
     post:
       x-group-name: Payment Services
-      x-proxy-name: Void a Sale Transaction
+      x-proxy-name: Cancel a Sale Transaction
       tags:
       - void
       summary: Execute void for sale transaction.
@@ -1363,7 +1363,7 @@ paths:
   /v2/payments/multi-void:
     post:
       x-group-name: Payment Services
-      x-proxy-name: Void a Single Transaction from Multisale Transactions
+      x-proxy-name: Cancel a Single Transaction from Multisale Transactions
       tags:
       - void
       summary: Execute void for multisale transactions.
