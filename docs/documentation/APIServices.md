@@ -6,7 +6,7 @@ Click on the preferred link below to explore each service.
 <summary><b>Customer Services</b></summary>
 
 [Create Customer Profile](../api/?type=post&path=/v1/customers):  
-  Register a customer in the Connected Commerce (uCom) system.  
+Register a customer in the Connected Commerce (uCom) system.  
 [Delete Customer Profile](../api/?type=delete&path=/v1/customers/{fdCustomerId}):  
   Delete a customer profile from Connected Commerce (uCom) system by providing the fdCustomerId.  
 [Get Customer Profile by externalId](../api/?type=get&path=/v1/customers):  
