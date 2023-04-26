@@ -319,7 +319,7 @@ paths:
   /v1/value-add/available-offers/{availOffersTrxnId}:
     delete:
       x-group-name: Value Added Services
-      x-proxy-name: Cancel previously authorized offers
+      x-proxy-name: Cancel Previously Authorized Offers
       tags:
       - offers
       summary: Deletes available offers by transactionId

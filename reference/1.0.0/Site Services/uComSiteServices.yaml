@@ -77,7 +77,7 @@ paths:
   /v1/petro-sites:
     get:
       x-group-name: Site Services
-      x-proxy-name: Get list of petro-sites
+      x-proxy-name: Get List of Petro-sites
       tags:
       - petro-sites
       description: This API is to get the list of all active sites. Site summary details will be returned. All details for given site will be returned only when the IncludeAllParam is set to true.
@@ -143,7 +143,7 @@ paths:
   /v1/petro-sites/{siteLocationId}:
     get:
       x-group-name: Site Services
-      x-proxy-name: Get site details
+      x-proxy-name: Get Site Details
       tags:
       - petro-sites
       description: This API is to get the site information from uCom system.
@@ -216,7 +216,7 @@ paths:
 
     delete:
       x-group-name: Site Services
-      x-proxy-name: Delete site
+      x-proxy-name: Delete Site
       tags:
       - petro-sites
       description: This API is used to Delete a site from the uCom system.
@@ -244,7 +244,7 @@ paths:
   /v1/geolocation/sites:
     get:
       x-group-name: Site Services
-      x-proxy-name: Search site locations by latitude and longitude
+      x-proxy-name: Search Site Locations by Latitude and Longitude
       tags:
       - geolocation
       description: Query for a list of sites based on geo-location coordinates and a given radius.
@@ -324,7 +324,7 @@ paths:
   /v1/venues/{venueId}/sections:
     get:
       x-group-name: Site Services
-      x-proxy-name: Get list of venue sections
+      x-proxy-name: Get List of Venue Sections
       tags:
       - venue
       description: Retrieves venue sections
@@ -361,7 +361,7 @@ paths:
   /v1/venues/{venueId}/suites:
     get:
       x-group-name: Site Services
-      x-proxy-name: Get venue suites
+      x-proxy-name: Get Venue Suites
       tags:
       - venue
       description: Retrieves venue suites
@@ -398,7 +398,7 @@ paths:
   /v1/venues/{venueId}/tables:
     get:
       x-group-name: Site Services
-      x-proxy-name: Get venue tables
+      x-proxy-name: Get Venue Tables
       tags:
       - venue
       description: Retrieves venue tables
