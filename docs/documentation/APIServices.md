@@ -5,16 +5,13 @@ Click on the preferred link below to explore each service.
 <details>
 <summary><b>Customer Services</b></summary>
 
-[Create Customer Profile](../api/?type=post&path=/v1/customers):  
-Register a customer in the Connected Commerce (uCom) system.  
-[Delete Customer Profile](../api/?type=delete&path=/v1/customers/{fdCustomerId}):  
-  Delete a customer profile from Connected Commerce (uCom) system by providing the fdCustomerId.  
-[Get Customer Profile by externalId](../api/?type=get&path=/v1/customers):  
-  Fetch the details of a customer providing the externalId.  
-[Get Customer Profile by fdCustomerId](../api/?type=get&path=/v1/customers/{fdCustomerId}):  
-  Fetch the details of a customer providing the fdCustomerId.  
-[Update Customer Profile](../api/?type=patch&path=/v1/customers/{fdCustomerId}):  
-  Update the details in a Customer Profile providing the fdCustomerId.  
+| API                                                                                         | Description                                                                                    |
+|---------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
+| [Create Customer Profile](../api/?type=post&path=/v1/customers)                             | Register a customer in the Connected Commerce (uCom) system.                                   |
+| [Delete Customer Profile](../api/?type=delete&path=/v1/customers/{fdCustomerId})            | Delete a customer profile from Connected Commerce (uCom) system by providing the fdCustomerId. |
+| [Get Customer Profile by externalId](../api/?type=get&path=/v1/customers)                   | Fetch the details of a customer providing the externalId.                                      |
+| [Get Customer Profile by fdCustomerId](../api/?type=get&path=/v1/customers/{fdCustomerId}): | Fetch the details of a customer providing the fdCustomerId.                                    |
+| [Update Customer Profile](../api/?type=patch&path=/v1/customers/{fdCustomerId}):            |  Update the details in a Customer Profile providing the fdCustomerId.                          |
 </details>
 
 <details>
