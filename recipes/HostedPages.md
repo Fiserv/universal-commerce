@@ -37,13 +37,15 @@ The following parameters are needed to access the Hosted Pages:
 
 <center><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/HostedPages%20(2).png" alt="HP Diagram" class="center"></center>
 
-1. **Start a New Session** - App calls MAS to get tokenId, encryptionKey and pageLink. tokenId and encryptionKey should not be cached or stored on the app and should be fetched from MAS. The tokenId and encryptionKey expires frequently and therefore this step should be done every time user starts the flow. 
+## Getting Started 
+
+**Step 1: Start a New Session** - App calls MAS to get tokenId, encryptionKey and pageLink. tokenId and encryptionKey should not be cached or stored on the app and should be fetched from MAS. The tokenId and encryptionKey expires frequently and therefore this step should be done every time user starts the flow. 
 
 <center><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/HostedPages%20(3).png" alt="HP Diagram" class="center"></center>
 
-2. **App calls MAS** - The api between app and MAS is not part of this document. It’s up to the merchant to decide this part of the transaction.
+**Step 2: App calls MAS** - The api between app and MAS is not part of this document. It’s up to the merchant to decide this part of the transaction.
 
-3. **MAS calls uCom to getToken** - MAS has to call uCom to get a tokenId. MAS should not cache the tokenId. getToken call will provide the one time session token and public key which needs to be passed to SDK to launch HP.
+3. **Step 3: MAS calls uCom to getToken** - MAS has to call uCom to get a tokenId. MAS should not cache the tokenId. getToken call will provide the one time session token and public key which needs to be passed to SDK to launch HP.
 
 **Endpoint URL**
 
@@ -65,6 +67,7 @@ Authorization = HMAC {signature}
 
 Timestamp = {time UTC in milliseconds}
 
+>Please refer to the <a href="../docs/?path=docs/documentation/APISecurity.md">API Security section</a> for more information on how to generate HMAC signature. 
 
 Sample Request: 
 
@@ -93,12 +96,7 @@ Sample Response (201 – Created)
 
 ```
 
-**Generate HMAC signature**
-
-Please see the following reference document which covers the process of generating HMAC signature:
-<a href="../docs/?path=docs/documentation/APISecurity.md">API Security Information</a>
-
-**4. MAS calls uCom to get page link** MAS can cache the page link for future reference though we do not recommend that. Merchant may have configured multiple pages and therefore this api will return all of them. Each page can be identified by the relation.
+**Step 4: MAS calls uCom to get page link** MAS can cache the page link for future reference though we do not recommend that. Merchant may have configured multiple pages and therefore this api will return all of them. Each page can be identified by the relation.
 
 **Endpoint URL**
 https://int.api.firstdata.com/ucom/v1/hosted-pages/pages
@@ -132,9 +130,9 @@ Sample Response:
 
 ```
 
-**5. Load Hosted Page**
+**Step 5: Load Hosted Page**
 
-To start the hosted page, the app needs the api-key, pageLink, tokenId, fdCustomerId, encryptionKey and redirectUrl. Mobile apps must make sure that they have disabled webview caching and enabled loading javascript in webview.
+To start the hosted page, the app needs the api-key, pageLink, tokenId, fdCustomerId, encryptionKey and redirectUrl. Mobile apps must make sure that they have disabled webview caching and enabled loading javascript in webview. There are two ways to implment hosted Pages: Webview  or iFrame 
 
 <!--
 type: tab
@@ -184,7 +182,7 @@ Once HP get response from uCom then it will do URL redirect with encoded URI.
 ucom://finish?response=response-payload-object-string
 
 **Note:** Webview redirection listener URL should be decoded before handle it.
-1. **IOS Sample Code Snippets** 
+**IOS Sample Code Snippets** 
 
 ```code
 
@@ -263,7 +261,7 @@ tActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 
 ```
 
-2. **Android Sample Code Snippets** 
+**Android Sample Code Snippets** 
 
 ```code
 
@@ -376,7 +374,7 @@ type: tab
 
 **Note: The javascript method should be called after the web content is loaded. Refer the sample code below**
 
-**3.2.2.1 Web Sample Code** 
+**Web Sample Code** 
 
 ```code
 <html>
@@ -451,9 +449,9 @@ type: tab
 
 ---
 
-Please refer below table for additional sdk configurations properties 
+Please refer to the table below for additional SDK configuration properties:  
 
-3. **SDK Configuration property Value** 
+**SDK Configuration property Value** 
                    
 | SDK Params     | Required/Optional | Description|
 |----------------|-------------------|----------- |
@@ -486,13 +484,13 @@ Please refer below table for additional sdk configurations properties
           
 ```
           
-**3.Handle POST from Hosted Pages** 
+**Handle POST from Hosted Pages** 
 
 Once HP is finished, it will send the result app callback URL and redirectUrl(POST URL). MAS must implement this api to receive the result body. MAS will have to enable CORS on their end to allow access from javascript originating from “int.api.firstdata.com" and "prod.api.firstdata.com”. 
 
 <center><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/HostedPages%20(4).png" alt="HP Diagram" class="center"></center>
 
-**3.3.1 Hosted Pages Response Payload** 
+**Hosted Pages Response Payload** 
           
 **Success response payload from uCom API**  
 
@@ -534,7 +532,7 @@ Failure response payload from uCom API
 
 ```
 
-**3. Success Response with SDK Error** 
+**Success Response with SDK Error** 
 
 <P>This is the success response with sdk errors payload. Sometimes card will be enrolled successfully but the SDK will fail to post the response into redirect URL due to some reason. In this case SDK will send back with success response with SDK errors. </p> 
 
@@ -567,7 +565,7 @@ Failure response payload from uCom API
           
 ```
 
-**4. Success Response with Threatmetrix Details** 
+**Success Response with Threatmetrix Details** 
 
 This is the enrollment response with TM(Threatmetrix) payload from uCom API 
           
@@ -594,7 +592,7 @@ This is the enrollment response with TM(Threatmetrix) payload from uCom API
           
 ```
 
-**5. Success with Extra Params Details** 
+**Success with Extra Params Details** 
 
 Merchant has the ability to pass the billing address into SDK. If they inject the billing address into SDK then that information will be part of the response. 
           
@@ -653,7 +651,7 @@ This is the failure response payload from uCom API
           
 ```
 
-**2. Success**  
+**Success**  
 
 <p>This is the success response payload from uCom API</p>
 ```json
@@ -670,7 +668,7 @@ This is the failure response payload from uCom API
     }
 }         
 ```
-**3. Success Response with SDK Error** 
+**Success Response with SDK Error** 
 
 <p>This is the success response with sdk errors payload. Sometimes card will be enrolled successfully but SDK will fail to post the response into redirect URL due to some reason. In this case SDK will send back with success response with SDK errors.</p>
 
@@ -700,7 +698,7 @@ This is the failure response payload from uCom API
 
 ```
           
-**4. Success with Threatmetrix Details** 
+**Success with Threatmetrix Details** 
 
 This is the enrollment response with TM(Threatmetrix) payload from uCom API 
           
@@ -725,7 +723,7 @@ This is the enrollment response with TM(Threatmetrix) payload from uCom API
           
 ```          
           
-**5. Success with Extra Params Details** 
+**Success with Extra Params Details** 
 
 Merchant has the ability to pass the billing address into SDK. If they inject the billing address into SDK then that information will be part of the response.
           
@@ -861,7 +859,7 @@ Following errors will be thrown before hosted pages screen render
 }
           
 ```
-**5.2 Error Responses After Form Submission** 
+**Error Responses After Form Submission** 
 
 Following errors will be thrown after hosted pages screen render 
 
@@ -911,9 +909,11 @@ Example response payload:
 }
           
 ```
-## Native/Web Button Submit
+## Optional: Native/Web Button Submit
 
-HP will allow to submit the form through mobile native button or website button from outside iFrame. Following command will trigger the save action![](HP.a2aa8847-ce11-46ac-9d67-daa7836546bd.053.png)
+If needed, Hosted Pages has the ability to submit the form through mobile native button or website button from outside iFrame. Following command will trigger the save action: 
+>Trigger form save from outside iFrame or web view 
 
-//Trigger form save from outside iFrame or web view ucomSDK.triggerSaveAction(); 
-
+```code
+ucomSDK.triggerSaveAction(); 
+```
