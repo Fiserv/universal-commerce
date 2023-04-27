@@ -12,6 +12,7 @@ Click on the preferred link below to explore each service.
 | [Get Customer Profile by externalId](../api/?type=get&path=/v1/customers)                  | Fetch the details of a customer providing the externalId.                                      |
 | [Get Customer Profile by fdCustomerId](../api/?type=get&path=/v1/customers/{fdCustomerId}) | Fetch the details of a customer providing the fdCustomerId.                                    |
 | [Update Customer Profile](../api/?type=patch&path=/v1/customers/{fdCustomerId})            |  Update the details in a Customer Profile providing the fdCustomerId.                          |
+</details>
 
 <details>
 <summary><b>Security Services</b></summary>
