@@ -61,5 +61,11 @@ description:
 link: ../recipes/?path=recipes/HostedPages.md
 -->
 
+<!-- type: card
 
+-->
+
+<!-- type: card
+
+-->
 <!-- type: row-end -->
