@@ -60,12 +60,6 @@ title: <div style="text-align:center;width:100%;height:25%"><img src="https://gi
 description: 
 link: ../recipes/?path=recipes/HostedPages.md
 -->
-<!-- type: card
 
--->
-
-<!-- type: card
-
--->
 
 <!-- type: row-end -->
