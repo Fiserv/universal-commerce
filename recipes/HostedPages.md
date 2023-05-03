@@ -493,8 +493,9 @@ Please refer to the table below for additional SDK configuration properties:
 <center><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/HostedPages%20(4).png" alt="HP Diagram" class="center"></center>
 
 **Hosted Pages Response Payload** 
-          
-**New Card Sample Responses**
+
+<details>
+<summary>**New Card Sample Responses**</summary>
 
 >**Success response payload from uCom API**  
 
@@ -515,7 +516,6 @@ Please refer to the table below for additional SDK configuration properties:
 }
 
 ```
-
 
 >**Success Response with SDK Error** 
 
@@ -630,10 +630,12 @@ Merchant has the ability to pass the billing address into SDK. If they inject th
 }
 
 ```
+</details>
 
-**Vaulted Card Sample Responses**  
+<details>
+<summary>**Vaulted Card Sample Responses**</summary>
 
-**Success**  
+>**Success**  
 
 <p>This is the success response payload from uCom API</p>
 ```json
@@ -650,7 +652,7 @@ Merchant has the ability to pass the billing address into SDK. If they inject th
     }
 }         
 ```
-**Success Response with SDK Error** 
+>**Success Response with SDK Error** 
 
 <p>This is the success response with sdk errors payload. Sometimes card will be enrolled successfully but SDK will fail to post the response into redirect URL due to some reason. In this case SDK will send back with success response with SDK errors.</p>
 
@@ -680,7 +682,7 @@ Merchant has the ability to pass the billing address into SDK. If they inject th
 
 ```
           
-**Success with Threatmetrix Details** 
+>**Success with Threatmetrix Details** 
 
 This is the enrollment response with TM(Threatmetrix) payload from uCom API 
           
@@ -705,7 +707,7 @@ This is the enrollment response with TM(Threatmetrix) payload from uCom API
           
 ```          
           
-**Success with Extra Params Details** 
+>**Success with Extra Params Details** 
 
 Merchant has the ability to pass the billing address into SDK. If they inject the billing address into SDK then that information will be part of the response.
           
@@ -735,7 +737,8 @@ Merchant has the ability to pass the billing address into SDK. If they inject th
           
 ```
 
-**Failure**  
+<!-- theme: danger -->
+>**Failure**  
 
 This is the failure response payload from uCom API 
           
@@ -759,6 +762,8 @@ This is the failure response payload from uCom API
 }
           
 ```
+    
+</details>
 ## Events
 
 <p>The only way to communicate with HP is by listening to an event. HP will emit and communicate back if you are subscribed with those events.</p>
