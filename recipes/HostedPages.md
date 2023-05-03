@@ -37,7 +37,7 @@ The following parameters are needed to access the Hosted Pages:
 
 <center><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/HostedPages%20(2).png" alt="HP Diagram" class="center"></center>
 
-## Getting Started 
+## Implementation Steps
 
 **Step 1: Start a New Session** - App calls MAS to get tokenId, encryptionKey and pageLink. tokenId and encryptionKey should not be cached or stored on the app and should be fetched from MAS. The tokenId and encryptionKey expires frequently and therefore this step should be done every time user starts the flow. 
 
@@ -449,7 +449,9 @@ type: tab
 
 ---
 
-Please refer to the table below for additional SDK configuration properties:  
+Please refer to the table below for additional SDK configuration properties: 
+
+>Please note that the SDK configurations below are applicable for both Hosted Pages implementation: webview and iFrame.
 
 **SDK Configuration property Value** 
                    
@@ -486,13 +488,15 @@ Please refer to the table below for additional SDK configuration properties:
           
 **Handle POST from Hosted Pages** 
 
-Once HP is finished, it will send the result app callback URL and redirectUrl(POST URL). MAS must implement this api to receive the result body. MAS will have to enable CORS on their end to allow access from javascript originating from “int.api.firstdata.com" and "prod.api.firstdata.com”. 
+>Once HP is finished, it will send the result app callback URL and redirectUrl (POST URL). MAS must implement this api to receive the result body. MAS will have to enable CORS on their end to allow access from javascript originating from “int.api.firstdata.com" and "prod.api.firstdata.com”. 
 
 <center><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/HostedPages%20(4).png" alt="HP Diagram" class="center"></center>
 
 **Hosted Pages Response Payload** 
           
-**Success response payload from uCom API**  
+**New Card Sample Responses**
+
+>**Success response payload from uCom API**  
 
 ```json
 {
@@ -512,27 +516,8 @@ Once HP is finished, it will send the result app callback URL and redirectUrl(PO
 
 ```
 
-Failure response payload from uCom API 
 
-```json
-{
-    "code": "279912",
-    "message": "Decryption failed.",
-    "category": "common",
-    "developerInfo": {
-        "developerMessage": "Decryption failed due to invalid/expired keyId.",
-        "fieldError": [
-            {
-                "field": "KeyId/Algorithm error.",
-                "message": "crypto-service: Single use key has already been used (CR008): Key#9bff66d610b48efb829a409c8d619f1dc8306da8fb10d997abbed44fc353fa21"
-            }
-        ]
-    }
-}
-
-```
-
-**Success Response with SDK Error** 
+>**Success Response with SDK Error** 
 
 <P>This is the success response with sdk errors payload. Sometimes card will be enrolled successfully but the SDK will fail to post the response into redirect URL due to some reason. In this case SDK will send back with success response with SDK errors. </p> 
 
@@ -565,7 +550,7 @@ Failure response payload from uCom API
           
 ```
 
-**Success Response with Threatmetrix Details** 
+>**Success Response with Threatmetrix Details** 
 
 This is the enrollment response with TM(Threatmetrix) payload from uCom API 
           
@@ -592,7 +577,7 @@ This is the enrollment response with TM(Threatmetrix) payload from uCom API
           
 ```
 
-**Success with Extra Params Details** 
+>**Success with Extra Params Details** 
 
 Merchant has the ability to pass the billing address into SDK. If they inject the billing address into SDK then that information will be part of the response. 
           
@@ -625,31 +610,28 @@ Merchant has the ability to pass the billing address into SDK. If they inject th
           
 ```
 
-**2. Vaulted Card**  
-**1. Failure**  
+<!-- theme: danger -->
+>**Failure response payload from uCom API** 
 
-This is the failure response payload from uCom API 
-          
 ```json
-
 {
-    "response": {
-        "code": "279912",
-        "message": "Decryption failed.",
-        "category": "common",
-        "developerInfo": {
-            "developerMessage": "Decryption failed due to invalid/expired keyId.",
-            "fieldError": [
-                {
-                    "field": "KeyId/Algorithm error.",
-                    "message": "crypto-service: Single use key has already been used (CR008): Key#9bff66d610b48efb829a409c8d619f1dc8306da8fb10d997abbed44fc353fa21"
-                }
-            ]
-        }
+    "code": "279912",
+    "message": "Decryption failed.",
+    "category": "common",
+    "developerInfo": {
+        "developerMessage": "Decryption failed due to invalid/expired keyId.",
+        "fieldError": [
+            {
+                "field": "KeyId/Algorithm error.",
+                "message": "crypto-service: Single use key has already been used (CR008): Key#9bff66d610b48efb829a409c8d619f1dc8306da8fb10d997abbed44fc353fa21"
+            }
+        ]
     }
 }
-          
+
 ```
+
+**Vaulted Card Sample Responses**  
 
 **Success**  
 
@@ -747,6 +729,31 @@ Merchant has the ability to pass the billing address into SDK. If they inject th
             "country": "US",
             "formatted": "100 universal city plaza, Hollywood, CA 98290 USA",
             "primary": true
+        }
+    }
+}
+          
+```
+
+**Failure**  
+
+This is the failure response payload from uCom API 
+          
+```json
+
+{
+    "response": {
+        "code": "279912",
+        "message": "Decryption failed.",
+        "category": "common",
+        "developerInfo": {
+            "developerMessage": "Decryption failed due to invalid/expired keyId.",
+            "fieldError": [
+                {
+                    "field": "KeyId/Algorithm error.",
+                    "message": "crypto-service: Single use key has already been used (CR008): Key#9bff66d610b48efb829a409c8d619f1dc8306da8fb10d997abbed44fc353fa21"
+                }
+            ]
         }
     }
 }
