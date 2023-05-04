@@ -1,5 +1,8 @@
 #-------------------------------------
 # Document Change Log
+# 0.2.4
+#     - Added corporate mid identifiers in Sale/MultiSale API
+#     - Added storeId in the StoreLocation object
 # 0.2.3
 #     - Added tokens reference in the Credit
 #     - Added V2 refund API
@@ -140,11 +143,11 @@ paths:
   /v1/payments/auths:
     get:
       x-group-name: Payment Services
-      x-proxy-name: Get Payment Authorization
+      x-proxy-name: Get Payment Authorization Details by clientRequestId
       tags:
       - authorization
       summary: Get a specific payment authorization
-      description: Fetch details of a payment authorization
+      description: Fetch details of a payment authorization by clientRequestId
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -251,11 +254,11 @@ paths:
   /v1/payments/auths/{fdAuthorizationId}:
     get:
       x-group-name: Payment Services
-      x-proxy-name: Get Payment Authorization Details
+      x-proxy-name: Get Payment Authorization Details by authorizationId
       tags:
       - authorization
       summary: Get a specific payment authorization
-      description: Fetch details of a payment authorization
+      description: Fetch details of a payment authorization by authorizationId
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -329,7 +332,7 @@ paths:
   /v1/payments/auths/{fdAuthorizationId}/void:
     post:
       x-group-name: Payment Services
-      x-proxy-name: Void Payment Authorization
+      x-proxy-name: Cancel Payment Authorization
       tags:
       - authorization
       summary: Execute an action on a payment authorization.
@@ -461,11 +464,11 @@ paths:
   /v1/payments/captures:
     get:
       x-group-name: Payment Services
-      x-proxy-name: Get Captured Payment Details
+      x-proxy-name: Get Captured Payment Details by clientRequestId
       tags:
       - capture
       summary: Get payment capture details.
-      description: Fetch captured payment details with a capture id.
+      description: Fetch captured payment details with a clientRequestId
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -526,7 +529,7 @@ paths:
   /v1/payments/captures/{fdCaptureId}/void:
     post:
       x-group-name: Payment Services
-      x-proxy-name: Void Payment Capture
+      x-proxy-name: Cancel Payment Capture
       tags:
       - capture
       summary: Execute an action on a payment capture
@@ -618,7 +621,7 @@ paths:
   /v1/payments/sales:
     get:
       x-group-name: Payment Services
-      x-proxy-name: Get Sale Transaction
+      x-proxy-name: Get Sale Transaction 
       tags:
       - sale
       summary: Get a specific sale transaction.
@@ -728,11 +731,11 @@ paths:
   /v1/payments/sales/{fdSaleId}:
     get:
       x-group-name: Payment Services
-      x-proxy-name: Get Sale Details
+      x-proxy-name: Get Sale Transaction Details by saleId
       tags:
       - sale
       summary: Get a specific sale transaction.
-      description: Fetch a Sale detail object
+      description: Fetch a Sale detail object by saleId
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -939,11 +942,11 @@ paths:
   /v2/payments/multi-sales/{fdParentTransactionId}/refunds:
     post:
       x-group-name: Payment Services
-      x-proxy-name: Refund Multi-sale Transactions
+      x-proxy-name: Refund a Multisale Transaction
       tags:
       - sale
-      summary: Execute a refund for multi-sale transactions.
-      description: Refund a 'multi-sale' transaction.
+      summary: Execute a refund for multisale transaction.
+      description: Refund a 'multisale' transaction.
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -985,11 +988,11 @@ paths:
   /v2/payments/multi-sales/{fdParentTransactionId}/void:
     post:
       x-group-name: Payment Services
-      x-proxy-name: Void Multi-sale Transaction
+      x-proxy-name: Cancel a Multisale Transaction
       tags:
       - sale
-      summary: Execute void for multi-sale transactions.
-      description: Void a 'multi-sale' transaction.
+      summary: Execute void for multisale transactions.
+      description: Void a 'multisale' transaction.
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -1025,11 +1028,11 @@ paths:
   /v1/payments/refunds:
     get:
       x-group-name: Payment Services
-      x-proxy-name: Get Refund Details
+      x-proxy-name: Get Refund Transaction Details by clientRequestId
       tags:
       - refund
       summary: Get Refund Transaction Details
-      description: Fetch the refund transaction details with the refund id.
+      description: Fetch the refund transaction details with the clientRequestId.
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -1055,11 +1058,11 @@ paths:
   /v1/payments/refunds/{fdRefundId}:
     get:
       x-group-name: Payment Services
-      x-proxy-name: Get Refund Transaction Details
+      x-proxy-name: Get Refund Transaction Details by refundId
       tags:
       - refund
       summary: Get refund transaction details
-      description: Fetch the refund transaction details with the refund id.
+      description: Fetch the refund transaction details with the refundId.
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -1169,11 +1172,11 @@ paths:
   /v2/payments/multi-refunds:
     post:
       x-group-name: Payment Services
-      x-proxy-name: Refund Multi-transaction
+      x-proxy-name:  Execute Multiple Refunds 
       tags:
       - refund
-      summary: Execute a refund for multi-transactions.
-      description: Refund a multi-transaction.
+      summary: Execute multiple refunds
+      description: Refund multitransactions.
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -1214,7 +1217,7 @@ paths:
   /v2/payments/multi-refunds/{fdParentTransactionId}/void:
     post:
       x-group-name: Payment Services
-      x-proxy-name: Cancel Multi-refund
+      x-proxy-name: Cancel Multirefund
       tags:
       - refund
       summary: Execute an action on multi payment refund.
@@ -1289,11 +1292,11 @@ paths:
   /v2/payments/void:
     get:
       x-group-name: Payment Services
-      x-proxy-name: Void Sale Transaction
+      x-proxy-name: Get Void Transaction Details by clientRequestId
       tags:
       - void
-      summary: Execute void for sale transaction.
-      description: Void a transaction.
+      summary: Execute void for sale transaction by clientRequestId
+      description: void transaction details by clientRequestId
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -1321,7 +1324,7 @@ paths:
 
     post:
       x-group-name: Payment Services
-      x-proxy-name: Void a Sale Transaction
+      x-proxy-name: Cancel a Sale Transaction
       tags:
       - void
       summary: Execute void for sale transaction.
@@ -1360,11 +1363,11 @@ paths:
   /v2/payments/multi-void:
     post:
       x-group-name: Payment Services
-      x-proxy-name: Void Multi-sale Transactions
+      x-proxy-name: Cancel a Single Transaction from Multisale Transactions
       tags:
       - void
-      summary: Execute void for multi-sale transactions.
-      description: Void multi-sale transactions.
+      summary: Execute void for multisale transactions.
+      description: Void multisale transactions.
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -1468,6 +1471,11 @@ components:
         merchantTerminalId:
           type: string
           description: Merchant terminal identifier
+        transactionSubtype:
+          type: string
+          description: Indicates subtype of a given transaction for EBT, ie EBTCASH or EBTSNAP 
+        corporateMerchantInfo:
+          $ref: '#/components/schemas/CorporateMerchantInfo'          
         postDate:
           type: string
           description: Settlement date for the transaction. Format- MMDDYYYY
@@ -1489,6 +1497,11 @@ components:
         replayCount:
           type: number
           description: Indicates request retry attempt count.
+        totalRequestedAmount:
+          $ref: '#/components/schemas/RequestedAmount'   
+        splitByRankId:
+          type: boolean
+          description: Flag that indicates if split by rankId should be handled          
         sales:
           type: array
           items:
@@ -2183,6 +2196,16 @@ components:
         sms:
           type: boolean
 
+    CorporateMerchantInfo:
+      type: object
+      properties:
+        merchantId:
+          type: string
+        altMerchantId:
+          type: string
+        merchantTerminalId:
+          type: string
+
     DeliveryLocation:
       type: object
       description: Order delivery location
@@ -2646,7 +2669,7 @@ components:
           description: Merchant transaction id
         createdTime:
           type: string
-          description: Multi sale creation date time value.
+          description: Multisale creation date time value.
           format: date-time
           readOnly: true
           example: 2017-03-21T08:15:30-05:00
@@ -3283,6 +3306,9 @@ components:
           description: Unique Identifier provided by payment platform for a payment sale transaction.
           readOnly: true
           example: 8a34144657d0aa6e0157d3808ed000f2
+        rankId:
+          type: string
+          description: rankId is a required field when splitByRankId is true
         externalId:
           type: string
           description: External transaction id reference
@@ -3312,6 +3338,8 @@ components:
         merchantTransactionId:
           type: string
           description: Merchant transaction id
+        corporateMerchantInfo:
+          $ref: '#/components/schemas/CorporateMerchantInfo'
         exemptionCode:
           type: string
           description: Exemption code for 3DS transaction
@@ -3453,6 +3481,8 @@ components:
       type: object
       description: Order store location
       properties:
+        storeId:
+          type: string
         contactName:
           type: string
         contactPhone:
@@ -4239,6 +4269,7 @@ components:
       required: true
       schema:
         type: string
+
   examples:
     VaultedCardSaleRequest:
       value:
@@ -4309,7 +4340,6 @@ components:
               tokenId: 3ca513c3-f103-4099-a88f-adb994cc5c3a
               tokenType: CLAIM_CHECK_NONCE
               tokenProvider: UCOM
-
 
     NonceSaleResponse:
       value:
@@ -4406,9 +4436,6 @@ components:
         - name: TRANSACTION_DATETIME
           value: 2021-03-18T00:56
 
-
-
-
     ApplePaySaleRequest:
       value:
         fdCustomerId: 4e6aceafe75546f0943bbe4775530ee5
@@ -4446,6 +4473,7 @@ components:
           - provider: RAVELIN
             dataCapture:
               dataEventId: BB8E4E92...Fz1E063113
+
     ApplePaySaleResponse:
       value:
         fdSaleId: d90461a67d5a49d194f098f57261eafc
@@ -4485,6 +4513,7 @@ components:
           value: AVS+Y
         - name: TRANSACTION_DATETIME
           value: 2023-02-13T12:47
+
     PayPalSaleRequest:
       value:
         fdCustomerId: 4e6aceafe75546f0943bbe4775530ee5
@@ -4516,6 +4545,7 @@ components:
               latitude: "13.0827 N"
               longitude: "80.2707 E"
               ipAddress: 172.27.37.221
+
     PayPalSaleResponse:
       value:
         fdSaleId: a9d4797bfdae435abb27e9af79703f4a
@@ -4550,6 +4580,7 @@ components:
           value: 2023-02-13T13:00
         - name: NETWORK_TRANSACTION_ID
           value: '123456789012345'
+
     VenmoSaleRequest:
       value:
         fdCustomerId: 4e6aceafe75546f0943bbe4775530ee5
@@ -4581,6 +4612,7 @@ components:
               latitude: 13.0827 N
               longitude: 80.2707 E
               ipAddress: 172.27.37.221
+
     VenmoSaleResponse:
       value:
         fdSaleId: 68fd1f9db6474dafbd9661968c7b1bee
@@ -4615,6 +4647,7 @@ components:
           value: 2023-02-13T13:05
         - name: NETWORK_TRANSACTION_ID
           value: '123456789012345'
+
     TATokenSaleRequest:
       value:
         sale:
@@ -4644,6 +4677,7 @@ components:
               token:
                 tokenId: '1741886859548968'
                 tokenProvider: TRANS_ARMOR
+
     TATokenSaleResponse:
       value:
         fdSaleId: 0bce4da5be5a4a3b9eed1ca8b68302c4
@@ -4681,7 +4715,6 @@ components:
         - name: NETWORK_TRANSACTION_ID
           value: '012000207052111'
 
-
     VaultedAuthRequest:
       value:
         fdCustomerId: c7726f24c50d4b69877845af06d2cbf9
@@ -4694,6 +4727,7 @@ components:
           fundingSource:
             vaultedAccount:
               fdAccountId: 8a7f6f8d861c224f01862a4ffe1f0240
+
     VaultedAuthResponse:
       value:
         fdAuthorizationId: 142b9da5f1094fcf9e3b547d8b464d9e
@@ -4790,8 +4824,6 @@ components:
         - name: NETWORK_TRANSACTION_ID
           value: '024000525140023'
 
-
-
     ApplePayAuthRequest:
       value:
         authorization:
@@ -4810,6 +4842,7 @@ components:
                 ephemeralPublicKey: MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEcVpsjkzx3uU+mkA7V0gZeAZkeUNIBKrGwIxKMgoVCnvgSZDLDQYxZC7UFbeyg89eiEv1eZ2Ch38efO+xGvJhhg==
                 publicKeyHash: RLP3SbLJR7bWmJFAfBa8hV5BQhRJ1AAhBrsjkNXKW7U=
                 transactionId: '31323334353637'
+
     ApplePayAuthResponse:
       value:
         fdAuthorizationId: ad61893ab58544c7936f8380b90c310b
@@ -4857,6 +4890,7 @@ components:
               version: ECv1
               data: '{"encryptedMessage":"t7rUkBApTPtvDQBV0B1EnscSEGIc4clsGPswS639mPXXrOZnzaiYA7FUxL8bzgjXdIFobSvyUrxVWHkfMQCo1aAslJxSvHNclkq3OBxw86VThgu9zGojxqXi+cME2+SE+T/GRKD98jenPO0mLKyG8lCRPCi7zP4RJYquxQspOFM4MKS7OgbzbqPljR86bL1kmVy5rrSjdeef5ItiQBTIr9Z+tGDWnQ0MKxeN3akPWaiHb18QaL7HZxiIiDRbRVISF7YAOSSabPr7w5A9B7lc+P4EsJe0ewASO1aQzgaF0vP4N8zdIb1ilAzeNYeEqDzMCJPu5dEv1zPZoFIwKbtJaue53O/yJrtKiDLQbFUJ06Xedq+3+3qXDWcLKhy92+ICYCwqb3zxz5OCSYDL2qJB7FkOTc60aNqgG9vIuK7tpZ+qokOJwmwAN2mGvuepd61ho0YG4zPWUCabxa7MyqZ6tAKdWNFoF6mDrqnBFVPjZzkcNV3aPheoVnyvUGcOAWXmMyHkWai6WMl/qmE6wKxEuTRKUAZDnt/pqmI5d9ugF2dhlCi2ER/afhBTsRc\u003d","ephemeralPublicKey":"BBiibGwtRV8VAKMmnnlsRXMa0BV9z6OP8hNbpoy5Wem4+JAfrhL+i3HVuJkQ+X7n+6MDXD9Z5UjFSe7iX7FiqbM\u003d","tag":"PcmiJ+ycR6SaiA0UCT6Cc8ziuUiv9XlDpbIWRfvZQGI\u003d"}'
               signature: MEUCICLv5bLh2EWKS05uOxuOyDyD48XVr3rbqfB5c6z6NnqgAiEA2h5MJMoId73fQOvIdkxvITEkK9FHLRGTFsXf+luA0t8=
+
     GooglePayAuthResponse:
       value:
         fdAuthorizationId: be4090a45b6e42218c5ae66d8e6ae8f1
@@ -4914,6 +4948,7 @@ components:
               captureTime: '2021-05-25T11:49:54.855Z'
             dataDynamic:
               captureTime: '2021-05-25T11:49:54.855Z'
+
     PayPalAuthVaultedResponse:
       value:
         fdAuthorizationId: 00fa2f9401fa4b6e841ae91d03960526
@@ -5016,8 +5051,6 @@ components:
         - name: NETWORK_TRANSACTION_ID
           value: '123456789012345'
 
-
-
     NonceAuthRequest:
       value:
         fdCustomerId: c7726f24c50d4b69877845af06d2cbf9
@@ -5032,6 +5065,7 @@ components:
             token:
               tokenId: 0e96800d-2cf1-47bc-9dbf-de9630ee4235
               tokenProvider: CLAIM_CHECK_NONCE
+
     NonceAuthResponse:
       value:
         fdAuthorizationId: 4fba5f6e30e44afd819a16cedc962f57
@@ -5070,6 +5104,7 @@ components:
           value: 2023-02-07T00:23
         - name: NETWORK_TRANSACTION_ID
           value: '012000207052336'
+
     TATokenAuthRequest:
       value:
         authorization:
@@ -5099,6 +5134,7 @@ components:
               token:
                 tokenId: '1741886859548968'
                 tokenProvider: TRANS_ARMOR
+
     TATokenAuthResponse:
       value:
         fdAuthorizationId: d17ea6f3222d42cab3d4cb710537f2d8
@@ -5135,13 +5171,13 @@ components:
         - name: NETWORK_TRANSACTION_ID
           value: '012000207052125'
 
-
     TATokenAuthCaptureRequest:
       value:
         capture:
           currencyCode:
             number: 840
           requestedAmount: 2.25
+
     TATokenAuthCaptureResponse:
       value:
         fdCaptureId: 5d0eb623778441549d82244d31528744
@@ -5174,6 +5210,7 @@ components:
           currencyCode:
             number: 840
           requestedAmount: '3.25'
+
     VaultedAuthCaptureResponse:
       value:
         fdCaptureId: 8411cf25075d46c4bd7cd80c46af79d8
@@ -5195,12 +5232,14 @@ components:
           value: 2023-02-07T00:19
         - name: NETWORK_TRANSACTION_ID
           value: '012000207051931'
+
     MinimalCaptureRefundRequest:
       value:
         refund:
           currencyCode:
             number: 840
           requestedAmount: 2.25
+
     MinimalCaptureRefundResponse:
       value:
         fdRefundId: 38ddeba736da4e849b75753a4712911f
@@ -5248,9 +5287,11 @@ components:
             token:
               tokenId: '1741886859548968'
               tokenProvider: TRANS_ARMOR
+
     MinimalAuthVoidRequest:
       value:
         fdCustomerId: c7726f24c50d4b69877845af06d2cbf9
+
     MinimalAuthVoidResponse:
       value:
         fdAuthorizationId: 142b9da5f1094fcf9e3b547d8b464d9e
@@ -5265,17 +5306,12 @@ components:
         - name: NETWORK_TRANSACTION_ID
           value: '012000207052019'
 
-
-
     MinimalRefundSale:
       value:
         refund:
           currencyCode:
             number: 840
           requestedAmount: 500
-
-
-
 
     MinimalRefundSaleR:
       value:
@@ -5287,13 +5323,8 @@ components:
           number: 840
         transactionDateTime: '2017-10-04T21:49:21.94'
 
-
-
     MinimalCaptureVoidRequest:
       value:
-
-
-
 
     MinimalCaptureVoidResponse:
       value:
@@ -5303,15 +5334,8 @@ components:
         fdCaptureId: 8afa83bf619f886401619f93b5770009
         status: CANCELLED
 
-
-
-
     MinimalSaleVoidRequest:
       value:
-
-
-
-
 
     MinimalSaleVoidResponse:
       value:
@@ -5325,22 +5349,15 @@ components:
         - name: SEQUENCE_NUMBER
           value: '351156'
 
-
     MinimalRefundVoidRequest:
       value:
         fdCustomerId: cuid-0987613457398475
-
-
-
-
 
     MinimalRefundVoidResponse:
       value:
         fdRefundId: 8a34144657d0aa6e0157d3808ed000f2
         status: CANCELLED
         transactionDateTime: '2016-04-16T16:06:05Z'
-
-
 
     MinimalGetAuthResponse:
       value:
@@ -5358,8 +5375,6 @@ components:
         fdAuthorizationId: 8a08178722924906bb702541d15cf0a6
         authStatus: APPROVED
 
-
-
     MinimalGetCaptureResponse:
       value:
         status: APPROVED
@@ -5371,8 +5386,6 @@ components:
           currency: US Dollar
         createdDateTime: 2019-03-29T05:07:24-0400
         fdCaptureId: 5ce57048df9b4581806f56d63f571a2f
-
-
 
     MinimalGetSaleResponse:
       value:

@@ -44,4 +44,12 @@ title: <div style="text-align:center;width:100%;height:25%"><img src="https://gi
 description: 
 link: ../recipes/?path=recipes/InApp_Payments.md
 -->
+
+<!-- type: card
+title: <div style="text-align:center;width:100%;height:25%"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/Picture2.png" alt="Fraud" title="Fraud" style="width:auto; height:60px""></div> <h3 style="text-align:center">How to Use Fraud Mitigation</h3>
+description: 
+link: ../recipes/?path=recipes/fraud_detect.md
+-->
+
 <!-- type: row-end -->
+
