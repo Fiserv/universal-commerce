@@ -45,7 +45,7 @@ The following parameters are needed to access the Hosted Pages:
 
 **Step 2: App calls MAS** - The api between app and MAS is not part of this document. It’s up to the merchant to decide this part of the transaction.
 
-3. **Step 3: MAS calls uCom to getToken** - MAS has to call uCom to get a tokenId. MAS should not cache the tokenId. getToken call will provide the one time session token and public key which needs to be passed to the SDK to launch Hosted Pages.
+**Step 3: MAS calls uCom to getToken** - MAS has to call uCom to get a tokenId. MAS should not cache the tokenId. getToken call will provide the one time session token and public key which needs to be passed to the SDK to launch Hosted Pages.
 
 **Endpoint URL**
 
@@ -492,7 +492,7 @@ Please refer to the table below for additional SDK configuration properties:
 
 <center><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/HostedPages%20(4).png" alt="HP Diagram" class="center"></center>
 
-**Hosted Pages Response Payload** 
+## Hosted Pages Response Payloads
 
 <details>
 <summary>**New Card Sample Responses**</summary>
