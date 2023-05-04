@@ -45,7 +45,7 @@ The following parameters are needed to access the Hosted Pages:
 
 **Step 2: App calls MAS** - The api between app and MAS is not part of this document. It’s up to the merchant to decide this part of the transaction.
 
-3. **Step 3: MAS calls uCom to getToken** - MAS has to call uCom to get a tokenId. MAS should not cache the tokenId. getToken call will provide the one time session token and public key which needs to be passed to SDK to launch HP.
+3. **Step 3: MAS calls uCom to getToken** - MAS has to call uCom to get a tokenId. MAS should not cache the tokenId. getToken call will provide the one time session token and public key which needs to be passed to the SDK to launch Hosted Pages.
 
 **Endpoint URL**
 
@@ -173,9 +173,9 @@ Note: Please refer additional params section 3.2 .3
 
 Set local redirection listener
 
-A redirection listener should be set on the webview to catch the event that HP has finished its work. HP will call this redirection in case of permanent failures and final success(nonce). A permanent failure is if js fails to load or Ajax call fails or tokenId has expired or encryptionKey invalid.
+A redirection listener should be set on the webview to catch the event that Hosted Pages has finished its work. Hosted Pages will call this redirection in case of permanent failures and final success(nonce). A permanent failure is if js fails to load or Ajax call fails or tokenId has expired or encryptionKey invalid.
 
-Once HP get response from uCom then it will do URL redirect with encoded URI.
+Once Hosted Pages get response from uCom then it will do URL redirect with encoded URI.
 
 **Redirection Listener URL:**
 
@@ -461,12 +461,12 @@ Please refer to the table below for additional SDK configuration properties:
 | apiKey    | Required       | API Key     |
 | fdCustomerId    | Required       | First data Customer Id     |
 | PageURL    | Required       | Page link url of the page     |
-| mountId    | Required       | Mount Id where HP should be rendered     |
+| mountId    | Required       | Mount Id where Hosted Pages should be rendered     |
 | encryptionKey    | Required       | Public key from session token response to encrypt the data     |
 | redirectUrl    | Optional       | MAS URL to capture all the hosted pages response for auditing purpose.     |
-| orgId    | Optional       | Org id should be passed if Threatmetrix should be enabled on HP     |
-| sessionId    | Optional       | Session id should be passed if Threatmetrix should be enabled on HP     |
-| extraObject    | Optional       | Additional details can be passed to HP to generate nonce as part of card detail. Example is below     |
+| orgId    | Optional       | Org id should be passed if Threatmetrix should be enabled on Hosted Pages     |
+| sessionId    | Optional       | Session id should be passed if Threatmetrix should be enabled on Hosted Pages     |
+| extraObject    | Optional       | Additional details can be passed to Hosted Pages to generate nonce as part of card detail. Example is below     |
 | debug    | Optional       | Eg: debug: true This attribute should be passed if you develop and integrate it on localhost (http://localhost) and bypass the https error on CAT environment. Note: This attribute should be removed in higher environment.     |
 
 **ExtraObject Sample Payload**
@@ -488,7 +488,7 @@ Please refer to the table below for additional SDK configuration properties:
           
 **Handle POST from Hosted Pages** 
 
->Once HP is finished, it will send the result app callback URL and redirectUrl (POST URL). MAS must implement this api to receive the result body. MAS will have to enable CORS on their end to allow access from javascript originating from “int.api.firstdata.com" and "prod.api.firstdata.com”. 
+>Once Hosted Pages is finished, it will send the result app callback URL and redirectUrl (POST URL). MAS must implement this api to receive the result body. MAS will have to enable CORS on their end to allow access from javascript originating from “int.api.firstdata.com" and "prod.api.firstdata.com”. 
 
 <center><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/HostedPages%20(4).png" alt="HP Diagram" class="center"></center>
 
@@ -766,7 +766,7 @@ This is the failure response payload from uCom API
 </details>
 ## Events
 
-<p>The only way to communicate with HP is by listening to an event. HP will emit and communicate back if you are subscribed with those events.</p>
+<p>The only way to communicate with Hosted Pages is by listening to an event. Hosted Pages will emit and communicate back if you are subscribed with those events.</p>
           
 ```code
           
@@ -812,7 +812,7 @@ Handler Event Object
 
 3. **onError** 
 
-Triggered when HP’s API errors. The event payload object contains API error which needs to be handled on app. Please refer the **section 3** for error payload structure. 
+Triggered when the Hosted Pages API has errors. The event payload object contains API error which needs to be handled on app. 
 ```code
           
 ucomSDK.on('error', function (response) { //Handle Error Response
@@ -822,7 +822,7 @@ ucomSDK.on('error', function (response) { //Handle Error Response
 
 4. **onSuccess** 
 
-Triggered when HP’s nonce generated. The event payload object contains nonce which needs to be handled on app. Please refer the **section 3** for error payload structure. 
+Triggered when Hosted Pages generates a nonce. The event payload object contains nonce which needs to be handled on app. 
           
 ```code
           
@@ -834,17 +834,17 @@ ucomSDK.on('success', function (response) { //Handle Nonce
 
 Below error status code needs to be handled from client side. These API error responses will be communicated back to App JavaScript main callback to handle the errors and show the appropriate error dialog. 
 
-**51 Error Responses Before Screen Render** 
+**Error Responses Before Screen Renders** 
 
 Following errors will be thrown before hosted pages screen render 
 
 
 | Status Code     | Transaction Status Desc | Comments |
 |----------------|-------------------|----------- |
-| 269904    | Configuration record(s) not found.       | When we pass the invalid page id then API will throw this error     |
-| 401    | Unauthorized       | This error will occur when we pass invalid access token id.     |
+| 269904    | Configuration record(s) not found.       | When an invalid page id is passed, then the API will throw this error     |
+| 401    | Unauthorized       | This error will occur when when an invalid access token id is passed.     |
 
-**Example response payload** 
+**Example Response Payload** 
 
 ```json
 {
@@ -923,8 +923,9 @@ Example response payload:
 ```
 ## Native/Web Submit Button 
 
-If needed, Hosted Pages has the ability to submit the form through the mobile app native button or website button from outside iFrame. Following command will trigger the save action: 
->Trigger form save from outside iFrame or web view 
+If needed, Hosted Pages has the ability to submit the form through the mobile app native button or website button from outside the iFrame. Following command will trigger the save action: 
+
+>Please note: this has to be triggered from outside the iFrame or web view.
 
 ```code
 ucomSDK.triggerSaveAction(); 
