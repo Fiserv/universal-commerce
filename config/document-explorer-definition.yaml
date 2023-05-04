@@ -64,8 +64,7 @@
       link: recipes/refunds.md
     - title: How to Use Fraud Mitigation
       link: recipes/fraud_detect.md
-    - title: How to Implement Hosted Pages
-      link: recipes/HostedPages.md
+
 
 
     open: false
