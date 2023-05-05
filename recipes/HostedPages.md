@@ -465,11 +465,11 @@ Call **uComSDK.stop()** whenever you want to kill the SDK from the page.
 
 ---
 
+**SDK Configuration property Values**
+
 Please refer to the table below for additional SDK configuration properties: 
 
->Please note that the SDK configurations below are applicable for both Hosted Pages implementation: webview and iFrame.
-
-**SDK Configuration property Value** 
+>Please note that the SDK configurations below are applicable for both Hosted Pages implementation: webview and iFrame. 
                    
 | SDK Params     | Required/Optional | Description|
 |----------------|-------------------|----------- |
