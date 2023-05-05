@@ -366,9 +366,9 @@ Include the uCom SDK library on head tag of the html page
 
 Initialize the SDK with SDK configuration params by calling this **ucomSDK.init()** method
 
-    a. Pass access toekn
+    a. Pass access token
     
-    b. Pass API Key
+    b. Pass API Key 
     
     c. Pass fdCustomerId
     
