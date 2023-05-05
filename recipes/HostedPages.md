@@ -364,21 +364,21 @@ Include the uCom SDK library on head tag of the html page
  
 **Step 2:**
 
-Initialize the SDK with SDK configuration params by calling this **ucomSDK.init()** method</b>
+Initialize the SDK with SDK configuration params by calling this **ucomSDK.init()** method
 
-    a. Pass access toekn</b>
+    a. Pass access toekn
     
-    b. Pass API Key</b>
+    b. Pass API Key
     
-    c. Pass fdCustomerId</b>
+    c. Pass fdCustomerId
     
-    d: Pass page URL</b>
+    d: Pass page URL
     
-    e: Pass Mount Id where SDK needs to be mounted on the screen</b>
+    e: Pass Mount Id where SDK needs to be mounted on the screen
     
-    f. Pass EncryptionKey</b>
+    f. Pass EncryptionKey
     
-    g. Pass RedirectURL</b>
+    g. Pass RedirectURL 
     
 **Step 3:**
 Call **uComSDK.start()** method to render SDK on mounted element on your page
