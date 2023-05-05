@@ -348,9 +348,11 @@ type: tab
 
 
 ## Website Integration Steps
-1. Include the uCom SDK library on head tag on your html page 
+**Step 1:**
 
-**URL:**  **https://<env>.api.firstdata.com/ucom/v2/static/v2/js/ucom-sdk.js**    
+Include the uCom SDK library on head tag of the html page 
+
+**URL:**  https://<env>.api.firstdata.com/ucom/v2/static/v2/js/ucom-sdk.js  
     
  **Environment Variable:** <**int/cat/prod>** 
 
@@ -360,19 +362,22 @@ type: tab
 | CAT    | PRE-PROD       |
 | PROD    | PRODUCTION       |
  
-2. Initialize the SDK with SDK configuration params by calling this **ucomSDK.init()** method </b>
-    a. Pass access toekn </b>
-    b. Pass API Key </b>
-    c. Pass fdCustomerId </b>
-    d: Pass page URL </b>
-    e: Pass Mount Id where SDK needs to be mounted on the screen </b>
-    f. Pass EncryptionKey </b>
-    g. Pass RedirectURL </b>
+**Step 2:**
+Initialize the SDK with SDK configuration params by calling this **ucomSDK.init()** method</b>
+    a. Pass access toekn</b>
+    b. Pass API Key</b>
+    c. Pass fdCustomerId</b>
+    d: Pass page URL</b>
+    e: Pass Mount Id where SDK needs to be mounted on the screen</b>
+    f. Pass EncryptionKey</b>
+    g. Pass RedirectURL</b>
     
-3. Call **uComSDK.start()** method to render SDK on mounted element on your page
-3. Call **uComSDK.stop()** whenever you want to kill the SDK from the page.
+**Step 3:**
+Call **uComSDK.start()** method to render SDK on mounted element on your page
+**Step 4:**
+Call **uComSDK.stop()** whenever you want to kill the SDK from the page.
 
-**Note: The javascript method should be called after the web content is loaded. Refer the sample code below**
+**Note: The javascript method should be called after the web content is loaded. Refer to the sample code below**
 
 **Web Sample Code** 
 
@@ -703,8 +708,7 @@ This is the enrollment response with TM(Threatmetrix) payload from uCom API
     "userSysDetails": {
         "orgId": "8cz43sdv",
         "sessionId": "2fb1a98a-7182-497f-bc2a-79c37e556cb2"
-    }
-          
+    }          
 ```          
           
 >**Success with Extra Params Details** 
