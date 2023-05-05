@@ -352,7 +352,7 @@ type: tab
 
 Include the uCom SDK library on head tag of the html page 
 
-**URL:**  https://<env>.api.firstdata.com/ucom/v2/static/v2/js/ucom-sdk.js  
+**URL:**  https://env.api.firstdata.com/ucom/v2/static/v2/js/ucom-sdk.js  
     
  **Environment Variable:** <**int/cat/prod>** 
 
@@ -374,6 +374,7 @@ Initialize the SDK with SDK configuration params by calling this **ucomSDK.init(
     
 **Step 3:**
 Call **uComSDK.start()** method to render SDK on mounted element on your page
+
 **Step 4:**
 Call **uComSDK.stop()** whenever you want to kill the SDK from the page.
 
