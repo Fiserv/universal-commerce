@@ -381,9 +381,11 @@ Initialize the SDK with SDK configuration params by calling this **ucomSDK.init(
     g. Pass RedirectURL 
     
 **Step 3:**
+
 Call **uComSDK.start()** method to render SDK on mounted element on your page
 
 **Step 4:**
+
 Call **uComSDK.stop()** whenever you want to kill the SDK from the page.
 
 **Note: The javascript method should be called after the web content is loaded. Refer to the sample code below**
