@@ -355,8 +355,11 @@ Include the uCom SDK library on head tag of the html page.
 **URLs:**  
 
 CAT: https://int.api.firstdata.com/ucom/v2/static/v2/js/ucom-sdk.js  
+
 PRE-PROD: https://cat.api.firstdata.com/ucom/v2/static/v2/js/ucom-sdk.js 
+
 PROD: https://prod.api.firstdata.com/ucom/v2/static/v2/js/ucom-sdk.js 
+
      
 **Step 2:**
 
