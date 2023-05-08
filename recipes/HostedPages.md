@@ -96,7 +96,7 @@ Sample Response (201 – Created)
 
 ```
 
-**Step 4: MAS calls uCom to get page link** MAS can cache the page link for future reference though we do not recommend that. Merchant may have configured multiple pages and therefore this api will return all of them. Each page can be identified by the relation.
+**Step 4: MAS calls uCom to get page link** - MAS can cache the page link for future reference though we do not recommend that. Merchant may have configured multiple pages and therefore this api will return all of them. Each page can be identified by the relation.
 
 **Endpoint URL**
 https://int.api.firstdata.com/ucom/v1/hosted-pages/pages
