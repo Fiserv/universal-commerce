@@ -166,9 +166,10 @@ ComClient.init({
    "encryptionKey": "<Encryption-Key>",
    "redirectUrl": "<MAS-URL>"
 });
-Note: Please refer additional params section 3.2 .3
 
 ```
+>Note: Please refer to the **SDK Configuration Property Values** section for additional params.
+
 **Step 3:**
 
 Set local redirection listener
@@ -464,7 +465,7 @@ The javascript method should be called after the web content is loaded. Refer to
 
 ---
 
-**SDK Configuration property Values**
+**SDK Configuration Property Values**
 
 Please refer to the table below for additional SDK configuration properties: 
 
