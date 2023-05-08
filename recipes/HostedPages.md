@@ -183,6 +183,7 @@ Once Hosted Pages get response from uCom then it will do URL redirect with encod
 ucom://finish?response=response-payload-object-string
 
 **Note:** Webview redirection listener URL should be decoded before handle it.
+
 **IOS Sample Code Snippets** 
 
 ```code
