@@ -942,8 +942,7 @@ Example response payload:
 
 If needed, Hosted Pages has the ability to submit the form through the mobile app native button or website button from outside the iFrame. Following command will trigger the save action: 
 
->Please note: this has to be triggered from outside the iFrame or web view.
-
 ```code
 ucomSDK.triggerSaveAction(); 
 ```
+>Please note: this has to be triggered from outside the iFrame or web view.
