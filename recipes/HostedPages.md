@@ -142,7 +142,7 @@ titles: WebView, iFrame
 
 **Step 1:**
 
-Load the below URL in WebView
+Load the URL below in WebView:
 
 CAT: https://int.api.firstdata.com/ucom/v2/static/v2/mobile/int/ucom-sdk.html 
 
@@ -350,18 +350,14 @@ type: tab
 ## Website Integration Steps
 **Step 1:**
 
-Include the uCom SDK library on head tag of the html page 
+Include the uCom SDK library on head tag of the html page. 
 
-**URL:**  https://env.api.firstdata.com/ucom/v2/static/v2/js/ucom-sdk.js  
-    
- **Environment Variable:** <**int/cat/prod>** 
+**URLs:**  
 
-| Variable     | Environment |
-|----------------|-------------------|
-| INT    | CAT/CERT	       |
-| CAT    | PRE-PROD       |
-| PROD    | PRODUCTION       |
- 
+CAT: https://int.api.firstdata.com/ucom/v2/static/v2/js/ucom-sdk.js  
+PRE-PROD: https://cat.api.firstdata.com/ucom/v2/static/v2/js/ucom-sdk.js 
+PROD: https://prod.api.firstdata.com/ucom/v2/static/v2/js/ucom-sdk.js 
+     
 **Step 2:**
 
 Initialize the SDK with SDK configuration params by calling this **ucomSDK.init()** method
