@@ -388,7 +388,7 @@ Call **uComSDK.start()** method to render SDK on mounted element on your page
 
 Call **uComSDK.stop()** whenever you want to kill the SDK from the page.
 
-**Note: The javascript method should be called after the web content is loaded. Refer to the sample code below**
+The javascript method should be called after the web content is loaded. Refer to the sample code below:
 
 **Web Sample Code** 
 
@@ -469,7 +469,7 @@ Call **uComSDK.stop()** whenever you want to kill the SDK from the page.
 
 Please refer to the table below for additional SDK configuration properties: 
 
->Please note that the SDK configurations below are applicable for both Hosted Pages implementation: webview and iFrame. 
+>Please note that the SDK configurations below are applicable for both Hosted Page implementations: webview and iFrame. 
                    
 | SDK Params     | Required/Optional | Description|
 |----------------|-------------------|----------- |
@@ -780,6 +780,8 @@ This is the failure response payload from uCom API
     
 </details>
 ## Events
+
+>Please note that this section is applicable for both Hosted Page implementations: webview and iFrame. 
 
 <p>The only way to communicate with Hosted Pages is by listening to an event. Hosted Pages will emit and communicate back if you are subscribed with those events.</p>
           
