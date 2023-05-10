@@ -53,7 +53,7 @@ B. Guest Checkout: Tokenize card details and process payment using nonce.
 To explore the payment features, go to [Create Payment Sale Authorization](../api/?type=post&path=/v1/payments/sales). Navigate to the Request tab and from the dropdown, select your preferred payment type you want to browse.
 
 Supported Services:
-- Vaulted Card
+- Sale with Vaulted Card
 - Sale with Nonce
 - Sale with Apple Pay
 - Sale with Google Pay
