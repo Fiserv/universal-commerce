@@ -362,7 +362,7 @@ PRE-PROD: https://cat.api.firstdata.com/ucom/v2/static/v2/js/ucom-sdk.js
 PROD: https://prod.api.firstdata.com/ucom/v2/static/v2/js/ucom-sdk.js 
 
      
-**B) Initialize the SDK with SDK configuration params by calling this ucomSDK.init() method**
+**B) Initialize the SDK with SDK configuration params by calling this ucomSDK.init() method.**
 
     a. Pass access token
     
@@ -378,7 +378,7 @@ PROD: https://prod.api.firstdata.com/ucom/v2/static/v2/js/ucom-sdk.js
     
     g. Pass RedirectURL 
     
-**C) Call uComSDK.start() method to render SDK on mounted element on your page**
+**C) Call uComSDK.start() method to render SDK on mounted element on your page.**
 
 **D) Call uComSDK.stop() whenever you want to kill the SDK from the page.**
 
