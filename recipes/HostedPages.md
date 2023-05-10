@@ -23,8 +23,8 @@ The following parameters are needed to access the Hosted Pages:
 
 | Parameter| Description|
 |---|---|
-| **Api-Key**  | This will be generated for you when you create an Apigee account. This should be saved securely on MAS and shared with App. Api-key is fixed for a merchant.|   
-| **Api-Secret**  | This will be generated for you when you create an Apigee account. This should be saved securely on the application server. This should NOT be shared with app. Api-key is fixed for a merchant. |
+| **Api Key**  | This will be generated for you when you create an Apigee account. This should be saved securely on MAS and shared with App. Api-key is fixed for a merchant.|   
+| **Api Secret**  | This will be generated for you when you create an Apigee account. This should be saved securely on the application server. This should NOT be shared with app. Api-key is fixed for a merchant. |
 | **Redirect Url/MAS Url (Asynchronous)** | All the Hosted pages responses(error/success) will be responded back to JavaScript main return callback only. Responses should be parsed and handled from JavaScript callback. Additionally same responses will be delivered to your MAS URL by Hosted pages via HTTP POST (Ajax Call) asynchronously. This API should be provided by MAS. MAS has to enable CORS for Fiserv origin “int.api.firstdata.com", "cat.api.firstdata.com", and "prod.api.firstdata.com”. This can be used for auditing purposes when a web browser or an app crash accidently.|
 | **FDCustomerId**  | This must be obtained using other uCom apis. This is optional when you initate SDK with guest checkout option. |
 | **PageLink (url and relation)** | This is the unique page which is going to display the use case. Url is the address where page is hosted, and Relation is the name of the use case. PageLink can be retrieved run time via the api (ucom/v1/hosted - pages/pages) and can be cached. We prefer that PageLink should be freshly fetched. The page contents are configured offline. |
@@ -135,12 +135,13 @@ Sample Response:
 
 ### Step 5: Load Hosted Page
 
-To start the hosted page, the app needs the api-key, pageLink, tokenId, fdCustomerId, encryptionKey and redirectUrl. Mobile apps must make sure that they have disabled webview caching and enabled loading javascript in webview. There are two ways to implment hosted Pages: Webview  or iFrame 
+There are two ways to load hosted Pages: Webview  or iFrame.To start the hosted page, the app needs the api-key, pageLink, tokenId, fdCustomerId, encryptionKey and redirectUrl. Please ensure that the Mobile app has disabled webview caching and enabled loading javascript in webview. 
 
 <!--
 type: tab
 titles: WebView, iFrame 
 -->
+
 **Mobile Webview Integration Steps**
 
 **Step 1:**
