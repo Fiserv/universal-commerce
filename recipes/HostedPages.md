@@ -141,7 +141,7 @@ To start the hosted page, the app needs the api-key, pageLink, tokenId, fdCustom
 type: tab
 titles: WebView, iFrame 
 -->
-## Mobile Webview Integration Steps
+**Mobile Webview Integration Steps**
 
 **Step 1:**
 
@@ -352,7 +352,8 @@ type: tab
 -->
 
 
-## Website Integration Steps
+**Website Integration Steps**
+
 **Step 1:**
 
 Include the uCom SDK library on head tag of the html page. 
