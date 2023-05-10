@@ -144,7 +144,7 @@ titles: WebView, iFrame
 
 **Mobile Webview Integration Steps**
 
-**Step 1:**
+**Step 1A:**
 
 Load the URL below in WebView:
 
@@ -154,7 +154,7 @@ PRE-PROD: https://cat.api.firstdata.com/ucom/v2/static/v2/mobile/cat/ucomsdk.htm
 
 PROD: https://prod.api.firstdata.com/ucom/v2/static/v2/mobile/prod/ucomsdk.html 
 
-**Step 2:**
+**Step 2A:**
 
 Call **uComClient.init()** javascript method with configuration objects after WebView is loaded as demonstrated below: 
 
@@ -174,7 +174,7 @@ ComClient.init({
 ```
 >Note: Please refer to the **SDK Configuration Property Values** section for additional params.
 
-**Step 3:**
+**Step 3A:**
 
 Set local redirection listener
 
@@ -355,7 +355,7 @@ type: tab
 
 **Website Integration Steps**
 
-**Step 1:**
+**Step 1B:**
 
 Include the uCom SDK library on head tag of the html page. 
 
@@ -368,7 +368,7 @@ PRE-PROD: https://cat.api.firstdata.com/ucom/v2/static/v2/js/ucom-sdk.js
 PROD: https://prod.api.firstdata.com/ucom/v2/static/v2/js/ucom-sdk.js 
 
      
-**Step 2:**
+**Step 2B:**
 
 Initialize the SDK with SDK configuration params by calling this **ucomSDK.init()** method
 
@@ -386,11 +386,11 @@ Initialize the SDK with SDK configuration params by calling this **ucomSDK.init(
     
     g. Pass RedirectURL 
     
-**Step 3:**
+**Step 3B:**
 
 Call **uComSDK.start()** method to render SDK on mounted element on your page
 
-**Step 4:**
+**Step 4B:**
 
 Call **uComSDK.stop()** whenever you want to kill the SDK from the page.
 
