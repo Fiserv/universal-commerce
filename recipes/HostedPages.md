@@ -727,7 +727,8 @@ This is the enrollment response with TM(Threatmetrix) payload from uCom API
     "userSysDetails": {
         "orgId": "8cz43sdv",
         "sessionId": "2fb1a98a-7182-497f-bc2a-79c37e556cb2"
-    }          
+    }  
+    
 ```          
           
 >**Success with Extra Params Details** 
