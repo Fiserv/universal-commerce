@@ -380,7 +380,7 @@ PROD: https://prod.api.firstdata.com/ucom/v2/static/v2/js/ucom-sdk.js
     
 **C) Call uComSDK.start() method to render SDK on mounted element on the page.**
 
-**D) Call uComSDK.stop() whenever you want to kill the SDK from the page.**
+**D) Call uComSDK.stop() to kill the SDK from the page.**
 
 The javascript method should be called after the web content is loaded. Refer to the sample code below:
 
