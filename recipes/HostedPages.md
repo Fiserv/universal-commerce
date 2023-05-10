@@ -1,5 +1,3 @@
-# How to Implement Hosted Pages
-
 # What is Hosted Pages
 Hosted payment pages is a Fiserv offering for secure card collection via webview or iFrame in order to avoid PCI Compliance exposure. We have a native API (client to server), server to server, and Cross Origin Resource (CORS) APIs to provide our clients a variety of integration options.
 
@@ -20,6 +18,14 @@ Hosted Pages has 4 main Components, the Mobile Applcation, the Mobile Applicatio
 4. **uCom Server (uCom)** - This is the Fiserv solution server which provides all the APIs. This server sits behind Apigee.
 
 ## Integration Prerequisites
+
+| Parameter| Description|
+|---|---|
+| **Api-Key**  | This will be generated for you when you create an Apigee account. This should be saved securely on MAS and shared with App. Api-key is fixed for a merchant.|   
+| **Api-Secret**  | This will be generated for you when you create an Apigee account. This should be saved securely on the application server. This should NOT be shared with app. Api-key is fixed for a merchant. |
+| **Redirect Url/MAS Url (Asynchronous)** | All the Hosted pages responses(error/success) will be responded back to JavaScript main return callback only. Responses should be parsed and handled from JavaScript callback. Additionally same responses will be delivered to your MAS URL by Hosted pages via HTTP POST (Ajax Call) asynchronously. This API should be provided by MAS. MAS has to enable CORS for Fiserv origin “int.api.firstdata.com", "cat.api.firstdata.com", and "prod.api.firstdata.com”. This can be used for auditing purposes when a web browser or an app crash accidently.|
+| **FDCustomerId**  | This must be obtained using other uCom apis. This is optional when you initate SDK with guest checkout option. |
+| **PageLink (url and relation)** | This is the unique page which is going to display the use case. Url is the address where page is hosted, and Relation is the name of the use case. PageLink can be retrieved run time via the api (ucom/v1/hosted - pages/pages) and can be cached. We prefer that PageLink should be freshly fetched. The page contents are configured offline. |
 
 The following parameters are needed to access the Hosted Pages: 
 
