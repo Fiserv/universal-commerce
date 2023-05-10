@@ -144,9 +144,7 @@ titles: WebView, iFrame
 
 **Mobile Webview Integration Steps**
 
-**Step 1A:**
-
-Load the URL below in WebView:
+**A) Load the URL below in WebView:**
 
 CAT: https://int.api.firstdata.com/ucom/v2/static/v2/mobile/int/ucom-sdk.html 
 
@@ -154,9 +152,8 @@ PRE-PROD: https://cat.api.firstdata.com/ucom/v2/static/v2/mobile/cat/ucomsdk.htm
 
 PROD: https://prod.api.firstdata.com/ucom/v2/static/v2/mobile/prod/ucomsdk.html 
 
-**Step 2A:**
+**B) Call uComClient.init() javascript method with configuration objects after WebView is loaded as demonstrated below:**
 
-Call **uComClient.init()** javascript method with configuration objects after WebView is loaded as demonstrated below: 
 
 ```javascript
 
@@ -174,9 +171,8 @@ ComClient.init({
 ```
 >Note: Please refer to the **SDK Configuration Property Values** section for additional params.
 
-**Step 3A:**
+**C) Set local redirection listener**
 
-Set local redirection listener
 
 A redirection listener should be set on the webview to catch the event that Hosted Pages has finished its work. Hosted Pages will call this redirection in case of permanent failures and final success(nonce). A permanent failure is if js fails to load or Ajax call fails or tokenId has expired or encryptionKey invalid.
 
@@ -355,9 +351,7 @@ type: tab
 
 **Website Integration Steps**
 
-**Step 1B:**
-
-Include the uCom SDK library on head tag of the html page. 
+**A) Include the uCom SDK library on head tag of the html page.**
 
 **URLs:**  
 
@@ -368,9 +362,7 @@ PRE-PROD: https://cat.api.firstdata.com/ucom/v2/static/v2/js/ucom-sdk.js
 PROD: https://prod.api.firstdata.com/ucom/v2/static/v2/js/ucom-sdk.js 
 
      
-**Step 2B:**
-
-Initialize the SDK with SDK configuration params by calling this **ucomSDK.init()** method
+**B) Initialize the SDK with SDK configuration params by calling this ucomSDK.init() method**
 
     a. Pass access token
     
@@ -386,13 +378,9 @@ Initialize the SDK with SDK configuration params by calling this **ucomSDK.init(
     
     g. Pass RedirectURL 
     
-**Step 3B:**
+**C) Call uComSDK.start() method to render SDK on mounted element on your page**
 
-Call **uComSDK.start()** method to render SDK on mounted element on your page
-
-**Step 4B:**
-
-Call **uComSDK.stop()** whenever you want to kill the SDK from the page.
+**D) Call uComSDK.stop() whenever you want to kill the SDK from the page.**
 
 The javascript method should be called after the web content is loaded. Refer to the sample code below:
 
