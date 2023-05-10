@@ -172,10 +172,127 @@ Each environment (CAT and Prod) will have its own key. If you would like to repl
 
 </details>
 
+### Fraud Mitigation FAQs
+
+<details>
+
+<summary><b>What payment methods are covered by Fraud Mitigation by Carat?</b></summary>
+
+ Fraud Mitigation by Carat provides a fraud prevention solution for a merchant's eCommerce/Digital Commerce offering. The solution supports any payment method which has a card number format as the primary key (i.e., 14-20 digits). Example payment methods currently supported for scoring are:
+
+- Major Card Brands: Visa, MasterCard, Discover, AMEX, etc.
+- Local Payment Methods: Carte Bancaires, Carte Bleue, CartaSi, etc.
+- Digital Wallets: Apple Pay, Google Pay, Samsung Pay, Amazon Pay, etc.
+- Other: Gift Cards, PLCC, EBT Online, etc.
+
+The most notable absence is PayPal support, which is on the product roadmap.
+
+</details>
+
+<details>
+
+<summary><b>What data is required for Fraud Mitigation by Carat?</b></summary>
+
+Data required for an effective fraud mitigation service can be broken into five categories:
+
+- Customer Information: customer ID, name, address, email address and telephone number
+- Payment Method Information: card number, expiration date, cardholder name and address
+- Order Information: price, currency, basket contents, shipping address and store information
+- Transaction Information: transaction type, issuer response, 3DS response and transaction status
+- Device Information: device ID, IP address, device manufacturer, model and operating system
+
+</details>
+
+<details>
+
+<summary><b>Where in the payment flow should Fraud Mitigation by Carat be implemented?</b></summary>
+
+It is strongly advised that Fraud Mitigation by Carat is implemented pre-authorization and pre-authentication (prior to submission to networks for authorization or to 3DS services for authentication). In this set-up the fraud prevention suite can proactively prevent potential and known fraudsters prior to the card networks or issuers knowing of the attempted payment. Up front fraud prevention provides a merchant with several benefits:
+
+- Where a payment is declined due to being categorized as potentially fraudulent, the merchant does not suffer the costs associated with processing the transaction
+- Where an attack on a merchant's eCommerce platform is identified the fraudulent activity never reaches the networks or issuers, helping the merchant avoid fines
+- Known fraudsters on a merchant's eCommerce platform are instantly refused to conduct payments
+
+While the solution allows for a post-authorization configuration it is strongly discouraged and is only implementable with sign-off from the Fraud Mitigation Product Owner.
+
+</details>
+
+<details>
+
+<summary><b>Is Device Intelligence required for Fraud Mitigation by Carat?</b></summary>
+
+Fraud Mitigation by Carat provides a set of Device Intelligence components which can be integrated to a merchant’s website (JavaScript) or mobile application (SDK). The solution also allows merchants to provide device fingerprinting information pulled from another provider to the service – however the scope of data that can be provided through this method is less than that which is collected by the provided device components. Regardless of device intelligence provider the data collected is a core component of eCommerce fraud prevention, and as such integrating device intelligence is a requirement for using the solution. Any exceptions to this requirement need approval from the Fraud Mitigation Product Owner.
+</details>
+
+### Hosted Pages 
+
+<details>
+<summary>**How to enable CORS on Mobile App server?** </summary>
+
+Browser/App will be sending the preflight request (OPTIONS method) instead of actual method(POST/GET) to server when access different domain in ajax call. In this case, we have to handle and enable CORS in server to handle this preflight request. OPTIONS method has to be handled and respond with following request:
+
+```code
+access-control-allow-headers !ACCEPT, fdCustomerId, ORIGIN, 
+AUTHORIZATION, CONTENT-TYPE
+ access-control-allow-methods !POST, GET, OPTIONS
+ access-control-allow-origin !*
+ allow !GET, HEAD, POST, PUT, DELETE, TRACE, OPTIONS, PATCH
+ connection !Keep-Alive
+ content-language !en-US
+ content-length !0
+ date !Tue, 19 Dec 2017 23:14:23 GMT
+ keep-alive !timeout=10, max=100
+ x-powered-by !Servlet/3.0          
+```
+>Once browser/app receives the above as a response header then, it will subsequently invoke actual methods.
+
+</details>
+
+<details>
+<summary>**Does Hosted Pages support other Languages?**</summary>
+
+HP supports all texts in multiple languages. This process is manual and someone has to provide all texts displayed by HP in different languages. Please note that error messages from uCom server do not support multiple languages in current version.
+
+</details>
+
+<details>
+<summary>**How to enable Threatmetrix feature on Hosted Pages?**</summary>
+
+Threatmetrix feature can be enabled on HP when you pass the orgId and sessionId in SDK configuration parameters.
+
+</details>
 
 
 
+<details>
+<summary>**Is it possible to control the look and feel of Hosted Pages?** </summary>
 
+HP customization is limited. But it provides option to change the following style properties
+
+1. Background Color, Text color 
+1. Label Changes 
+1. Native Button (Form can be triggered from outside of iFrame)
+1. Fields position changes 
+1. Label position (Above or floating) Changes 
+1. Hint text changes 
+
+**Sample Form** 
+
+**Default View** 
+<center><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/HostedPages%20(1).jpeg" alt="HP Diagram" class="center"></center>
+**Error View** 
+
+ <center><img src="https://github.com/Fiserv/universal-commerce/blob/develop/assets/images/HostedPages%20(5).png?raw=true" alt="HP Diagram" class="center"></center>         
+          
+</details>
+
+
+<details>
+<summary>**Does Hosted Pages support Local Validation?**</summary>
+
+HP will do its own local validation of fields and show errors to the end-user as needed. Local validation is configurable. 
+
+</details>
 
 [//]: # (These are reference links used in markdown file)
 

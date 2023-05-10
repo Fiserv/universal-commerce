@@ -35,9 +35,13 @@
     #      link: docs/documentation/customerServicesCreateCustomer_v1.md
   - title: Implementation Guide
     link: docs/documentation/Standard_Implementation_Guide.md
+  - title: Features
+    link: docs/documentation/features.md
   - title: Frequently Asked Questions
     link: docs/faq/faq.md
-    
+  - title: Response Codes
+    link: docs/documentation/API_Response_Codes.md
+
 - sections:
   - title: Common Use Cases
     link: recipes/LandingPage.md
@@ -58,6 +62,10 @@
       link: recipes/InApp_Payments.md
     - title: How to Issue a Refund
       link: recipes/refunds.md
+    - title: How to Use Fraud Mitigation
+      link: recipes/fraud_detect.md
+
+
 
     open: false
     #- recipes:

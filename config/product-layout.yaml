@@ -29,24 +29,41 @@
 ################################################################################
 header:
   productName: Connected Commerce (uCom)
-  productionDescription: Connected Commerce (uCom) brings in frictionless commerce that increases brand reach, delivers relevant & timely information to users and brings in great usability experiences in a safe & secure environment. We bring in Commerce Solutions to the new digital & connected world to meet all sorts of "Customer Expectations," "Consumer Experience," "Speed to Market" and "Set Industry Trend." Connected Commerce (uCom) acts as a mobile gateway in accepting the request from its front end (MAS, App, POS, web browser etc.) system and route them to vaulting, payment, loyalty, prepaid/gift processing etc., based on client needs. </br></br> <b> Why Connected Commerce (uCom)? </b> </br></br> Bring in a seamless customer experience and offer services across Channels; Online, Mobile & In-Store shopping Know your customer - Get a 360 degree view of customer activity across channels and serve their need from Anywhere & Everywhere. </br></br> <b> Regions we operate </b> </br></br> Connected Commerce (uCom) services are deployed across geography covering North America, EMEA and LATAM regions. </br></br> <b> What are the verticals in Connected Commerce (uCom)? </b> </br></br> We have Petro (Petroleum Industry), Quick Service Restaurants (QSR), Automobiles, Grocery, Sports Arena and Health and Wellness (H&W). </br> </br> To start integrating with Connected Commerce (uCom), please refer to our <a href="/product/ConnectedCommerce/docs/?path=/docs/documentation/Standard_Implementation_Guide.md">Implementation Guide</a> section. 
+  productDescription: Connected Commerce (uCom) brings in frictionless commerce that increases brand reach, delivers relevant & timely information to users and brings in great usability experiences in a safe & secure environment. We bring in Commerce Solutions to the new digital & connected world to meet all sorts of "Customer Expectations," "Consumer Experience," "Speed to Market" and "Set Industry Trend." Connected Commerce (uCom) acts as a mobile gateway in accepting the request from its front end (MAS, App, POS, web browser etc.) system and route them to vaulting, payment, loyalty, prepaid/gift processing etc., based on client needs. </br></br> <b> Why Connected Commerce (uCom)? </b> </br></br> Bring in a seamless customer experience and offer services across Channels—Online, Mobile & In-Store shopping. Know your customer—Get a 360 degree view of customer activity across channels and serve their needs from Anywhere & Everywhere. </br></br> <b> Regions we operate </b> </br></br> Connected Commerce (uCom) services are deployed across geography covering North America, EMEA and LATAM regions. </br></br> <b> What are the verticals in Connected Commerce (uCom)? </b> </br></br> We have Petro (Petroleum Industry), Quick Service Restaurants (QSR), Automobiles, Grocery, Sports Arena and Health and Wellness (H&W). </br> </br> To start integrating with Connected Commerce (uCom), please refer to our <a href="/product/ConnectedCommerce/docs/?path=/docs/documentation/Standard_Implementation_Guide.md">Implementation Guide</a> section. 
   whoIsItFor: test
+  getStarted: ./docs/documentation/features.md
   image: 
     link: "/assets/images/Fiserv_Logo.jpg"
     altText: uCom
 featuredFeatures:
  - title: Complex Orchestration
    description:  Ability to execute complex flows such as multi-tender payments, loyalty earning and redemptions, enterprise level balance management, etc.
-   tags: ["multi tender", "uCom", "loyalty", "gateway"]
+   relatedDocs:
+     - relatedDoc: 
+       title: Features
+       description: Learn more
+       link: ./docs/documentation/features.md
  - title: "Customer Management"
    description:  Securely collect, store and manage your customer/account details. We perform payment operations to keep you out of PCI (Payment Card Industry) scope.
-   tags: ["PCI", "uCom", "secure", "gateway"]
+   relatedDocs:
+     - relatedDoc: 
+       title: Features
+       description: Learn more
+       link: ./docs/documentation/features.md
  - title: Multi-purse Wallets 
    description: Ability to leverage various stored value accounts for enterprise clients that are tied to a customer to manage corporate level loyalty balances, CPG offers, gift balances, etc.
-   tags: ["Multi Purse", "uCom", "wallets", "loyalty", "gift", "balances", "gateway"]
+   relatedDocs:
+     - relatedDoc: 
+       title: Features
+       description: Learn more
+       link: ./docs/documentation/features.md
  - title: "Site Management"
    description: Expertise to manage franchise and corporate locations. Automated onboarding and maintenance is used to support enterprise clients.
-   tags: ["site management", "uCom", "gateway"]
+   relatedDocs:
+     - relatedDoc: 
+       title: Features
+       description: Learn more
+       link: ./docs/documentation/features.md
  - title: Secure Card Collections
    description: Wide variety of options to integrate your solution with us. Server to server, Native API's, CORS support and Hosted Pages are all supported offerings.
    tags: ["Server to Server", "CORS","Native API", "uCom", "gateway"]
@@ -67,11 +84,7 @@ featuredFeatures:
    tags: ["Split Settlement","delivery services", "uCom", "gateway"]
  - title: Apply and Buy
    description: Ability for und users to apply in real-time for cards and use them for purchase in a single transaction flow.
-   tags: ["Real Time", "uCom", "Apply and Buy", "gateway"]
-#    - relatedDoc: 
-#        title: REPLACEME
-#        description: REPLACEME
-#        link: ./docs/REPLACE-ME1.md
+   tags: ["Real Time", "uCom", "Apply and Buy", "gateway"]   
 #      - relatedDoc: 
 #        title: REPLACEME
 #        description: REPLACEME
