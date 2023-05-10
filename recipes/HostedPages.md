@@ -516,6 +516,8 @@ Please refer to the table below for additional SDK configuration properties:
 
 ## Hosted Pages Response Payloads
 
+Below are possible responses from Hosted Pages that must be handled accordingly. The responses will differ based on the flow used, whether it's a new card, or vaulted card.
+
 <details>
 <summary>**New Card Sample Responses**</summary>
 
