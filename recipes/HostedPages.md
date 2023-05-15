@@ -304,11 +304,9 @@ type: tab
 
 **Website Integration Steps**
 
-**A) Include the uCom SDK library on head tag of the html page.**
-
 <details>
     
-<summary>**URLs:**</summary>
+<summary>** A) Include the uCom SDK library below on head tag of the html page.**</summary>
 
 CAT: https://int.api.firstdata.com/ucom/v2/static/v2/js/ucom-sdk.js  
 
