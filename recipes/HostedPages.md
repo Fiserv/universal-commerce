@@ -45,54 +45,7 @@ The api between app and MAS is not part of this document. It’s up to the merch
 
 MAS has to call uCom to get a tokenId. MAS should not cache the tokenId. getToken call will provide the one time session token and public key which needs to be passed to the SDK to launch Hosted Pages.
 
-**Endpoint URL**
-
-HTTP Method: POST
-
-CAT: https://int.api.firstdata.com/ucom/v1/tokens
-
-PREPROD: https://cat.api.firstdata.com/ucom/v1/tokens
-
-PROD: https://prod.api.firstdata.com/ucom/v1/tokens
-
-**Headers**
-
-Content-Type = application/json
-
-Api-Key = {api-key}
-
-Authorization = HMAC {signature}
-
-Timestamp = {time UTC in milliseconds}
-
->Please refer to the <a href="../docs/?path=docs/documentation/APISecurity.md">API Security section</a> for more information on how to generate HMAC signature. 
-
-Sample Request: 
-
-```json
-{
-    "token": {
-        "fdCustomerId":"c1d648272d1144b4981711d1200e24bd"
-    },
-    "publicKeyRequired": true
-}
-
-```
-
-Sample Response (201 – Created)
-
-```json
-{
-    "tokenId": "cZq0YBzOZuhS90Udzl8Nlp35uq4w",
-    "fdCustomerId": "c1d648272d1144b4981711d1200e24bd",
-    "issuedOn": 1507684425488,
-    "expiresInSeconds": 599,
-    "publicKey": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwoEfMkE6Ly12XoucbmT1f7HvnBLSXZvOowzMKg57EqpWeB1F4JmeZTsqiC8X2t0xnhaY6SjD1xBEPfsFXN07smIsntWfzENPxyPhbtwqXtDauhfr1yqTxHRCzO393KwotFio6tkwLUsR76zsqJ4tIm49zp4JAzE8gHK4S371k/6YOIFOefuzc9mLcg+L+fakRcVOMhF/HldKyw+tda4TBPE+S/RMdksoF+IYFaD668hzUrwMKoBYg1ZCc6YmnthWTIM1mWr5wGKYoQnMDWPsWAcG6N5r28vk4YHBfA9gnuxC7EehDkDk4CR3TjrIhg+W2yTkew8YJYRbKwUeEhZqQIDAQAB",
-    "algorithm": "RSA/NONE/PKCS1Padding",
-    "status": "ACTIVE"
-}
-
-```
+[Click here for instructions on Creating Security Access Token](../api/?type=post&path=/v1/tokens)
 
 ### Step 4: MAS calls uCom to get page link 
 
