@@ -32,6 +32,10 @@ The following parameters are needed to access the Hosted Pages:
 
 ## Steps to Integrate Hosted Pages
 
+### Architecture Flow 
+
+<center><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/HostedPages%20(2).png" alt="HP Diagram" class="center"></center>
+
 ### Step 1: Start a New Session  
 App calls MAS to get tokenId, encryptionKey and pageLink. tokenId and encryptionKey should not be cached or stored on the app and should be fetched from MAS. The tokenId and encryptionKey expires frequently and therefore this step should be done every time user starts the flow. 
 
