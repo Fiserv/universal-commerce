@@ -343,6 +343,8 @@ PROD: https://prod.api.firstdata.com/ucom/v2/static/v2/js/ucom-sdk.js
     
 <summary>**C) Call uComSDK.start() method to render SDK on mounted element on the page.**</summary>
 
+</details>    
+    
 <details>
     
 <summary>**D) Call uComSDK.stop() to kill the SDK from the page.**</summary>
@@ -418,8 +420,7 @@ The javascript method should be called after the web content is loaded. Refer to
    </body>
 </html>
 
-```
-          
+```          
 </details>
           
 <!-- type: tab-end -->
