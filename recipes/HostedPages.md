@@ -95,7 +95,7 @@ titles: WebView, iFrame
 **Mobile Webview Integration Steps**
 
 <details>
-<summary>**A) Load the URL below in WebView:**</summary>
+<summary>**A) Load the URL in WebView.**</summary>
 
 CAT: https://int.api.firstdata.com/ucom/v2/static/v2/mobile/int/ucom-sdk.html 
 
@@ -106,7 +106,7 @@ PROD: https://prod.api.firstdata.com/ucom/v2/static/v2/mobile/prod/ucomsdk.html
 </details>
 
 <details>
-<summary>**B) Call uComClient.init() javascript method after WebView is loaded with configuration objects**</summary>
+<summary>**B) Call uComClient.init() javascript method after WebView is loaded with configuration objects.**</summary>
 
 
 ```javascript
@@ -128,7 +128,7 @@ ComClient.init({
 </details>
     
 <details>    
-<summary>**C) Set local redirection listener**</summary>
+<summary>**C) Set local redirection listener.**</summary>
 
 
 A redirection listener should be set on the webview to catch the event that Hosted Pages has finished its work. Hosted Pages will call this redirection in case of permanent failures and final success(nonce). A permanent failure is if js fails to load or Ajax call fails or tokenId has expired or encryptionKey invalid.
