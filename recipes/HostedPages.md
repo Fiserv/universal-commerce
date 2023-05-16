@@ -106,7 +106,7 @@ PROD: https://prod.api.firstdata.com/ucom/v2/static/v2/mobile/prod/ucomsdk.html
 </details>
 
 <details>
-<summary>**B) Call uComClient.init() javascript method with configuration objects after WebView is loaded as demonstrated below:**</summary>
+<summary>**B) Call uComClient.init() javascript method after WebView is loaded with configuration objects as demonstrated below:**</summary>
 
 
 ```javascript
@@ -336,6 +336,8 @@ PROD: https://prod.api.firstdata.com/ucom/v2/static/v2/js/ucom-sdk.js
     f. Pass EncryptionKey
     
     g. Pass RedirectURL 
+    
+</details>   
     
 <details>
     
