@@ -45,9 +45,9 @@ App calls MAS to get tokenId, encryptionKey and pageLink. tokenId and encryption
 
 The api between app and MAS is not part of this document. It’s up to the merchant to decide this part of the transaction.
 
-### Step 3: MAS calls uCom to getToken 
+### Step 3: MAS calls uCom to Get Token 
 
-MAS has to call uCom to get a tokenId. MAS should not cache the tokenId. getToken call will provide the one time session token and public key which needs to be passed to the SDK to launch Hosted Pages.
+MAS has to call uCom to get a tokenId. MAS should not cache the tokenId. The get Token call will provide the one time session token and public key which needs to be passed to the SDK to launch Hosted Pages.
 
 [Click here for instructions on Creating Security Access Token](../api/?type=post&path=/v1/tokens)
 
