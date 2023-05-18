@@ -29,7 +29,7 @@ Step 2c: [Vault an Account](../api/?type=post&path=/v1/customers/{fdCustomerId}/
 
 <!--
 type: tab
-titles: Restaurant, Gas Station 
+titles: Restaurant, Gas Station, Automobiles, Sports Arena, Health & Wellness 
 -->
 ### Step 3: Select payment type
 
@@ -42,8 +42,20 @@ Go to the [Get Account Details](..//api/?type=get&path=/v1/customers/{fdCustomer
 
 B. One Time Payment processing: One Time Payment processing can be done by simply following the vaulting process Step 2a & 2b and use the nonce to do payment
 
-C. Guest Checkout: Guest checkout is same process like One Time Payment processing 
+C. Guest Checkout: Guest checkout is same process like One Time Payment processing
 
+<!--
+type: tab
+-->
+TODO
+<!--
+type: tab
+-->
+TODO
+<!--
+type: tab
+-->
+TODO
 <!--
 type: tab
 -->
