@@ -28,10 +28,10 @@ Step 2c: [Vault an Account](../api/?type=post&path=/v1/customers/{fdCustomerId}/
 ## What is your Business?
 
 <!--
-ty3pe: tab
+type: tab
 titles: Restaurant, Gas Station 
 -->
-## Step 3: Select payment type
+### Step 3: Select payment type
 
 Once the customer is are ready for checkout, customer has the option to choose either payment using Vaulted Account or One Time Payment without vaulting (Anonymous Payment) or prefer Guest Checkout.
 
