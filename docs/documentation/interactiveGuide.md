@@ -47,7 +47,10 @@ C. Guest Checkout: Guest checkout is same process like One Time Payment processi
 <!--
 type: tab
 -->
-TODO
+### Step 3: Locate a Gas Station
+
+Connected Commerce (uCom) provide Site location service to get information of the Gas stations, Go to the [Get List of Petro Sites](..//api/?type=get&path=/v1/petro-sites) and [Get Site Details](../api/?type=get&path=/v1/petro-sites/{siteLocationId}) APIs to explore these API services.
+
 <!--
 type: tab
 -->
