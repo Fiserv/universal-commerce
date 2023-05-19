@@ -64,7 +64,7 @@ HTTP Method: GET
 
 Content-Type = application/json
 
-Authorization = HMAC {signature}
+Authorization = Bearer {{tokenId}}
 
 Api-Key = {api-key}
 
