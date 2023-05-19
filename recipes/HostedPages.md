@@ -542,11 +542,11 @@ This is the enrollment response with TM(Threatmetrix) payload from uCom API.
 >Please note that this only applies if Threatmetrix is enabled and part of the hosted pages configurations on the back end.   
           
 ```json
-
+    
 {
     "type": "CREDIT",
     "token": {
-        "tokenType":"CLAIM CHECK NONCE",
+        "tokenType": "CLAIM CHECK NONCE",
         "tokenProvider": "UCOM",
         "tokenId": "4f0dd98e-bf56-499c-b562-7936ca20964c"
     },
@@ -561,7 +561,7 @@ This is the enrollment response with TM(Threatmetrix) payload from uCom API.
         "sessionId": "2fb1a98a-7182-497f-bc2a-79c37e556cb2"
     }
 }
-          
+    
 ```
 
 >**Success with Extra Params Details** 
