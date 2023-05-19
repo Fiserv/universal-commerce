@@ -541,7 +541,7 @@ Below are possible responses from Hosted Pages that must be handled accordingly.
 This is the enrollment response with TM(Threatmetrix) payload from uCom API. 
    
 <!-- theme: danger -->
->Please note that this only applies if Threatmetrix is enabled and part of the hosted pages configurations on the back end.   
+>Please note that this only applies if  Threatmetrix is enabled and part of the hosted pages configurations on the back end.   
           
 ```json
     
@@ -676,7 +676,7 @@ Merchant has the ability to pass the billing address into SDK. If they inject th
 This is the enrollment response with TM(Threatmetrix) payload from uCom API.
     
 <!-- theme: danger -->
->Please note that this only applies if Threatmetrix is enabled and part of the hosted pages configurations on the back end.          
+>Please note that this only applies if  Threatmetrix is enabled and part of the hosted pages configurations on the back end.          
           
 ```json
 {
