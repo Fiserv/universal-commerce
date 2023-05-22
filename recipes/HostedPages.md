@@ -19,6 +19,12 @@ Hosted Pages has 4 main Components, the Mobile Application, the Mobile Applicati
 
 4. **uCom Server (uCom)** - This is the Fiserv solution server which provides all the APIs. This server sits behind Apigee.
 
+### Architecture Flow 
+
+<center><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/HostedPages%20(2).png" alt="HP Diagram" class="center"></center>
+
+## Steps to Integrate Hosted Pages
+
 ## Integration Prerequisites
 
 The following parameters are needed to access the Hosted Pages: 
@@ -30,13 +36,6 @@ The following parameters are needed to access the Hosted Pages:
 | **Redirect Url/MAS Url (Asynchronous)** | All the Hosted pages responses(error/success) will be responded back to JavaScript main return callback only. Responses should be parsed and handled from JavaScript callback. Additionally same responses will be delivered to your MAS URL by Hosted pages via HTTP POST (Ajax Call) asynchronously. This API should be provided by MAS. MAS has to enable CORS for Fiserv origin “int.api.firstdata.com", "cat.api.firstdata.com", and "prod.api.firstdata.com”. This can be used for auditing purposes when a web browser or an app crash accidentally.|
 | **FDCustomerId**  | This must be obtained using other uCom apis. This is optional when you initiate SDK with guest checkout option. |
 | **PageLink (url and relation)** | This is the unique page which is going to display the use case. Url is the address where page is hosted, and Relation is the name of the use case. PageLink can be retrieved run time via the api (ucom/v1/hosted - pages/pages) and can be cached. We prefer that PageLink should be freshly fetched. The page contents are configured offline. |
-
-
-## Steps to Integrate Hosted Pages
-
-### Architecture Flow 
-
-<center><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/HostedPages%20(2).png" alt="HP Diagram" class="center"></center>
 
 ### Step 1: Start a New Session  
 App calls MAS to get a token ID, encryption Key and page Link. token ID and encryption Key should not be cached or stored on the app and should be fetched from MAS. The token ID and encryption Key expires after 20 minutes and therefore this step should be done every time user starts the flow. 
