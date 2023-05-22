@@ -429,6 +429,11 @@ The javascript method should be called after the web content is loaded. Refer to
 </details>
           
 <!-- type: tab-end -->
+          
+          
+**Sample Hosted Pages Look**
+         
+<center><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/HostedPages_default.png" alt="HP Diagram" class="center"></center>
 
 ---
 
