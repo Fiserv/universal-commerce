@@ -19,13 +19,13 @@ Hosted Pages has 4 main Components, the Mobile Application, the Mobile Applicati
 
 4. **uCom Server (uCom)** - This is the Fiserv solution server which provides all the APIs. This server sits behind Apigee.
 
-### Architecture Flow 
+## Architecture Flow 
 
 <center><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/HostedPages%20(2).png" alt="HP Diagram" class="center"></center>
 
 ## Steps to Integrate Hosted Pages
 
-## Integration Prerequisites
+### Integration Prerequisites
 
 The following parameters are needed to access the Hosted Pages: 
 
@@ -431,7 +431,7 @@ The javascript method should be called after the web content is loaded. Refer to
 <!-- type: tab-end -->
           
           
-**Sample Hosted Pages Look**
+**Sample Hosted Pages Desktop Look**
          
 <center><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/HostedPages_default.png" alt="HP Diagram" class="center"></center>
 
