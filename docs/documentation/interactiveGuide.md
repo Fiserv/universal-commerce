@@ -51,6 +51,17 @@ type: tab
 
 Connected Commerce (uCom) provide Site location service to get information of the Gas stations, Go to the [Get List of Petro Sites](..//api/?type=get&path=/v1/petro-sites) and [Get Site Details](../api/?type=get&path=/v1/petro-sites/{siteLocationId}) APIs to explore these API services.
 
+Once you selected the gas station and found an available pump you will get into the next step
+
+### Step 4: Authorize the payment
+
+This step include selecting the gas status, pump number and funding source and authorize. The petro cycle start with [Create Petro Transaction](../api/?type=post&path=/v1/petro-transactions) API, once approved the customer will see the message [Begin Fueling] on the pump screen. Once the fueling is complete and the nozzle is place back, The authorization completion process takes place in the Connected Commerce (uCom). 
+
+Customer can view the transaction using [Read Petro Transaction](../api/?type=get&path=/v1/petro-transactions/{fdTransactionId}) and view receipt using [Get receipt](../api/?type=get&path=/v1/txhistory/receipts/{fdTransactionId}). 
+
+Customer have the option to [Cancel Transaction](../api/?type=patch&path=/v1/petro-transactions/{fdTransactionId}) before starting the fuelling process. Additional service and information can be found [here](../docs/?path=/docs/documentation/APIServices.md)
+
+
 <!--
 type: tab
 -->
