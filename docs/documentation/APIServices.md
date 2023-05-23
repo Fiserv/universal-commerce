@@ -17,7 +17,9 @@ Click on the preferred link below to explore each service.
 <details>
 <summary><b>Security Services</b></summary>
 
-[Create Security Access Token](../api/?type=post&path=/v1/tokens):  
+| API                                                                                        | Description                                                                                    |
+|--------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
+| [Create Security Access Token](../api/?type=post&path=/v1/tokens)                                
 For service calls directly from a mobile or connected device, the client needs to have an access token which is received by the client's server.  
 [Get Encryption Key](../api/?type=get&path=/v1/encryption-keys/{keyId}):  
 Get Connected Commerce (uCom) Gateway partner-specific key for encryption of data elements.  
