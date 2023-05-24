@@ -55,12 +55,27 @@ Once you selected the gas station and found an available pump you will get into 
 
 ### Step 4: Authorize the payment
 
-This step include selecting the gas status, pump number and funding source and authorize. The petro cycle start with [Create Petro Transaction](../api/?type=post&path=/v1/petro-transactions) API, once approved the customer will see the message [Begin Fueling] on the pump screen. Once the fueling is complete and the nozzle is place back, The authorization completion process takes place in the Connected Commerce (uCom). 
+<details>
+<summary><b>Pay @ Pump</b></summary>
 
-Customer can view the transaction using [Read Petro Transaction](../api/?type=get&path=/v1/petro-transactions/{fdTransactionId}) and view receipt using [Get receipt](../api/?type=get&path=/v1/txhistory/receipts/{fdTransactionId}). 
+This step include selecting the gas status, pump number and funding source and authorize. The petro cycle start with [Create Petro Transaction](../api/?type=post&path=/v1/petro-transactions) API, once approved the customer will see the message [Begin Fueling] on the pump screen. After fueling is complete and the nozzle is placed back, The authorization completion process takes place in the Connected Commerce (uCom).
+
+</details>
+
+<details>
+<summary><b>Pay @ In-Store</b></summary>
+
+Customer walks inside the store to the cashier and shows QR code generated on the phone using [Create QR](../api/?type=post&path=/v1/stac)
+
+Cashier scans the QR code and triggers the [Create Petro Transaction](../api/?type=post&path=/v1/petro-transactions) API from the Point Of Sale, once approved the customer will see the message [Begin Fueling] on the pump screen. After fueling is complete and the nozzle is placed back, The authorization completion process takes place in the Connected Commerce (uCom).
+
+</details>
+
+### Step 5: Fuel Completion & Sale Receipt
+
+Customer can view the transaction using [Read Petro Transaction](../api/?type=get&path=/v1/petro-transactions/{fdTransactionId}) and view receipt using [Get receipt](../api/?type=get&path=/v1/txhistory/receipts/{fdTransactionId}).
 
 Customer have the option to [Cancel Transaction](../api/?type=patch&path=/v1/petro-transactions/{fdTransactionId}) before starting the fuelling process. Additional service and information can be found [here](../docs/?path=/docs/documentation/APIServices.md)
-
 
 <!--
 type: tab
