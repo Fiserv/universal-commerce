@@ -631,7 +631,9 @@ Merchant has the ability to pass the billing address into SDK. If they inject th
 >**Success**  
 
 <p>This is the success response payload from uCom API</p>
+    
 ```json
+    
 {
     "type": "VAULTED_ACCOUNT",
     "token": {
@@ -643,7 +645,8 @@ Merchant has the ability to pass the billing address into SDK. If they inject th
         "cardType": "VISA",
         "alias": "2345"
     }
-}         
+}  
+    
 ```
 >**Success Response with SDK Error** 
 
