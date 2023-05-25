@@ -12,6 +12,7 @@ Click on the preferred link below to explore each service.
 | [Get Customer Profile by externalId](../api/?type=get&path=/v1/customers)                  | Fetch the details of a customer providing the externalId.                                      |
 | [Get Customer Profile by fdCustomerId](../api/?type=get&path=/v1/customers/{fdCustomerId}) | Fetch the details of a customer providing the fdCustomerId.                                    |
 | [Update Customer Profile](../api/?type=patch&path=/v1/customers/{fdCustomerId})            |  Update the details in a Customer Profile providing the fdCustomerId.                          |
+
 </details>
 
 <details>
@@ -22,10 +23,14 @@ Click on the preferred link below to explore each service.
 | [Create Security Access Token](../api/?type=post&path=/v1/tokens)                         | For service calls directly from a mobile or connected device, the client needs to have an access token which is received by the client's server.  |
 | [Get Encryption Key](../api/?type=get&path=/v1/encryption-keys/{keyId})                   | Get Connected Commerce (uCom) Gateway partner-specific key for encryption of data elements. |
 |[Get Public Signature Key](../api/?type=get&path=/v1/signature-keys/{keyId})               | Get Connected Commerce (uCom) Gateway public key for validating message signatures.  |
+
 </details>
 
 <details>
-<summary><b>Account Services</b></summary>
+
+<summary> 
+    <b>Account Services</b>
+</summary>
 
 [Delete a Vaulted Account](../api/?type=post&path=/v1/tokens):  
 Register a customer in the Connected Commerce (uCom) system.  
@@ -48,6 +53,7 @@ Verify an account without an associated Connected Commerce (uCom) customer ident
 </details>
 
 <details>
+
 <summary><b>Payment Services</b></summary>
 
 [Cancel Multirefund](../api/?type=post&path=/v2/payments/multi-refunds/{fdParentTransactionId}/void): Used to cancel the refunds.  
@@ -84,6 +90,7 @@ Verify an account without an associated Connected Commerce (uCom) customer ident
 </details>
 
 <details>
+
 <summary><b>Prepaid Services</b></summary>
 
 [Cancel a Deducted Transaction](../api/?type=post&path=/v1/tokens): A deducted transaction is voided.  
@@ -119,4 +126,5 @@ Verify an account without an associated Connected Commerce (uCom) customer ident
 [Void of a Purchase Transaction](../api/?type=post&path=/v1/tokens): Void of a Purchase Transaction.  
 [Void of a Reloaded Prepaid Card](../api/?type=post&path=/v1/tokens): Void of a reload transaction.  
 [Void of Any Prepaid Card Transaction](../api/?type=post&path=/v1/tokens): Void of any prepaid card transaction.  
+
 </details>

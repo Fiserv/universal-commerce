@@ -6,7 +6,7 @@ To get started, turn to the [API Fundamentals](../docs/?path=/docs/documentation
 
 Determine whether a customer wants to vault an account into Connected Commerce (uCom) or use Guest Checkout (Anonymous Payment).  
 
-### Step 1: Set up customer profile
+### Set up customer profile
 
  A. [Register customer](../api/?type=post&path=/v1/customers)  
  OR  
@@ -15,7 +15,7 @@ Determine whether a customer wants to vault an account into Connected Commerce (
 >**Note:**
 >If customer wants to use Guest Checkout, then it is not necessary to register customer profile. Although once customer profile is created for a specific customer, that customer can still opt to make an Anonymous Payment, where vaulting is not required.
 
-### Step 2: Set up payment account
+### Set up payment account
 Registering an account consists of several steps listed here below. These steps are required for a merchant to send card details to Connected Commerce (uCom).
 
 Step 2a: [Create Security Access Token](../api/?type=post&path=/v1/tokens) This is the first step to transfer PCI data (public key and token Id) from client to Connected Commerce (uCom).  
@@ -31,7 +31,7 @@ Step 2c: [Vault an Account](../api/?type=post&path=/v1/customers/{fdCustomerId}/
 type: tab
 titles: Restaurant, Gas Station, Automobiles, Sports Arena, Health & Wellness 
 -->
-### Step 3: Select payment type
+<b> Select payment type </b>
 
 Once the customer is are ready for checkout, customer has the option to choose either payment using Vaulted Account or One Time Payment without vaulting (Anonymous Payment) or prefer Guest Checkout.
 
@@ -47,16 +47,16 @@ C. Guest Checkout: Guest checkout is same process like One Time Payment processi
 <!--
 type: tab
 -->
-### Step 3: Locate a Gas Station
+<b> Locate a Gas Station </b>
 
 Connected Commerce (uCom) provide Site location service to get information of the Gas stations, Go to the [Get List of Petro Sites](..//api/?type=get&path=/v1/petro-sites) and [Get Site Details](../api/?type=get&path=/v1/petro-sites/{siteLocationId}) APIs to explore these API services.
 
 Once you selected the gas station and found an available pump you will get into the next step
 
-### Step 4: Authorize the payment
+<b> Authorize the payment </b>
 
 <details>
-<summary><b>Pay @ Pump</b></summary>
+<summary><b><i>Pay @ Pump</i></b></summary>
 
 This step include selecting the gas status, pump number and funding source and authorize. The petro cycle start with [Create Petro Transaction](../api/?type=post&path=/v1/petro-transactions) API, once approved the customer will see the message [Begin Fueling] on the pump screen. After fueling is complete and the nozzle is placed back, The authorization completion process takes place in the Connected Commerce (uCom).
 
@@ -71,7 +71,7 @@ Cashier scans the QR code and triggers the [Create Petro Transaction](../api/?ty
 
 </details>
 
-### Step 5: Fuel Completion & Sale Receipt
+<b> Fuel Completion & Sale Receipt </b>
 
 Customer can view the transaction using [Read Petro Transaction](../api/?type=get&path=/v1/petro-transactions/{fdTransactionId}) and view receipt using [Get receipt](../api/?type=get&path=/v1/txhistory/receipts/{fdTransactionId}).
 
