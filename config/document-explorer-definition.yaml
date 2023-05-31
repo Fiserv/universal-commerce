@@ -64,6 +64,9 @@
       link: recipes/refunds.md
     - title: How to Use Fraud Mitigation
       link: recipes/fraud_detect.md
+    - title: How to Integrate Hosted Pages
+      link: recipes/HostedPages.md
+      
 
 
 
