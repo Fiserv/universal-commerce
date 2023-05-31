@@ -50,7 +50,7 @@ Prod: https://prod.api.firstdata.com/ucom/v1/payments/auths
 | dataEventId     | dataCapture        | String    | Value          |*Conditional|
 | captureTime     | dataCapture        | String    | Value          |*Conditional|
 
->* Applicable when fraud Mitigation is enabled. 
+>*Applicable when fraud Mitigation is enabled. 
 
 **<ins> Headers </ins>**
 
