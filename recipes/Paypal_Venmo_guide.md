@@ -40,15 +40,17 @@ Prod: https://prod.api.firstdata.com/ucom/v1/payments/auths
 | paypal          | fundingSource      | Object    | body           | Yes      |
 | payerId         | paypal             | String    | body           | Yes      |
 | nonce           | paypal             | String    | body           | Yes      |
-| deviceInfo      | N/A                | Object    | Value          | Yes      |
-| id              | deviceInfo         | String    | Value          | Yes      |
-| kind            | deviceInfo         | String    | Value          | Yes      |
-| details         | deviceInfo         | Object    | Value          | Yes      |
-| provider        | details            | String    | Value          | Yes      |
-| dataCapture     | details            | Object    | Value          | Yes      |
-| rawData         | dataCapture        | String    | Value          | Yes      |
-| dataEventId     | dataCapture        | String    | Value          | Yes      |
-| captureTime     | dataCapture        | String    | Value          | No       |
+| deviceInfo      | N/A                | Object    | Value          |*Conditional|
+| id              | deviceInfo         | String    | Value          |*Conditional|
+| kind            | deviceInfo         | String    | Value          |*Conditional|
+| details         | deviceInfo         | Object    | Value          |*Conditional|
+| provider        | details            | String    | Value          |*Conditional|
+| dataCapture     | details            | Object    | Value          |*Conditional|
+| rawData         | dataCapture        | String    | Value          |*Conditional|
+| dataEventId     | dataCapture        | String    | Value          |*Conditional|
+| captureTime     | dataCapture        | String    | Value          |*Conditional|
+
+>* Applicable when fraud Mitigation is enabled. 
 
 **<ins> Headers </ins>**
 
