@@ -53,3 +53,20 @@ link: ../recipes/?path=recipes/fraud_detect.md
 
 <!-- type: row-end -->
 
+<!-- type: row -->
+<!-- type: card
+title: <div style="text-align:center;width:100%;height:25%"><img src="https://github.com/Fiserv/universal-commerce/blob/develop/assets/images/Picture25.png?raw=true" alt="Hosted Pages" title="Hosted Pages" style="width:auto; height:60px"></div> <h3 style="text-align:center">How to Implement Hosted Pages</h3>
+description: 
+link: ../recipes/?path=recipes/HostedPages.md
+-->
+
+<!-- type: card
+
+-->
+
+<!-- type: card
+
+-->
+<!-- type: row-end -->
+
+

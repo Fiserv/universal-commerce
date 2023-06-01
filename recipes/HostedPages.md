@@ -1,13 +1,13 @@
-# How to Implement Hosted Pages
-
 # What is Hosted Pages
+<img title="icon" alt="hosted pages icon" src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/Picture25.png" width="40" height="30"> 
+
 Hosted payment pages is a Fiserv offering for secure card collection via webview or iFrame in order to avoid PCI Compliance exposure. We have a native API (client to server), server to server, and Cross Origin Resource (CORS) APIs to provide our clients a variety of integration options.
 
 The goal of this guide is to describe how to implement and use Hosted Pages. It is not intended to describe all the interactions between App, Mobile Application Server, and uCom Server. 
 
 ## Components  
 
-Hosted Pages has 4 main Components, the Mobile Applcation, the Mobile Application Server, Hosted Page and the uCom Sever/API.  
+Hosted Pages has 4 main Components, the Mobile Application, the Mobile Application Server, Hosted Page and the uCom Sever/API.  
 
 <center><img src="https://github.com/Fiserv/universal-commerce/blob/develop/assets/images/HostedPages%20(1).png?raw=true" alt="HP Diagram" class="center"></center>
 
@@ -19,84 +19,42 @@ Hosted Pages has 4 main Components, the Mobile Applcation, the Mobile Applicatio
 
 4. **uCom Server (uCom)** - This is the Fiserv solution server which provides all the APIs. This server sits behind Apigee.
 
-## Integration Prerequisites
-
-The following parameters are needed to access the Hosted Pages: 
-
-1. **Api-Key** - This will be generated for you when you create an Apigee account. This should be saved securely on MAS and shared with App. Api-key is fixed for a merchant. 
-
-2. **Api-Secret** - This will be generated for you when you create an Apigee account. This should be saved securely on the application server. This should NOT be shared with app. Api-key is fixed for a merchant.
-
-3. **Redirect Url/MAS Url (Asynchronous)** - All the Hosted pages responses(error/success) will be responded back to JavaScript main return callback only. Responses should be parsed and handled from JavaScript callback. Additionally same responses will be delivered to your MAS URL by Hosted pages via HTTP POST (Ajax Call) asynchronously. This API should be provided by MAS. MAS has to enable CORS for Fiserv origin “int.api.firstdata.com", "cat.api.firstdata.com", and "prod.api.firstdata.com”. This can be used for auditing purposes when a web browser or an app crash accidently. 
-
-4. **FDCustomerId** - This must be obtained using other uCom apis. This is optional when you initate SDK with guest checkout option.
-
-5. **PageLink (url and relation)** - This is the unique page which is going to display the use case. Url is the address where page is hosted, and Relation is the name of the use case. PageLink can be retrieved run time via the api (ucom/v1/hosted - pages/pages) and can be cached. We prefer that PageLink should be freshly fetched. The page contents are configured offline.
-
 ## Architecture Flow 
 
 <center><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/HostedPages%20(2).png" alt="HP Diagram" class="center"></center>
 
-## Implementation Steps
+## Steps to Integrate Hosted Pages
 
-**Step 1: Start a New Session** - App calls MAS to get tokenId, encryptionKey and pageLink. tokenId and encryptionKey should not be cached or stored on the app and should be fetched from MAS. The tokenId and encryptionKey expires frequently and therefore this step should be done every time user starts the flow. 
+### Integration Prerequisites
+
+The following parameters are needed to access the Hosted Pages: 
+
+| Parameter| Description|
+|---|---|
+| **Api Key**  | This will be generated for you when you create an Apigee account. This should be saved securely on MAS and shared with App. Api-key is fixed for a merchant.|   
+| **Api Secret**  | This will be generated for you when you create an Apigee account. This should be saved securely on the application server. This should NOT be shared with app. Api-key is fixed for a merchant. |
+| **Redirect Url/MAS Url (Asynchronous)** | All the Hosted pages responses(error/success) will be responded back to JavaScript main return callback only. Responses should be parsed and handled from JavaScript callback. Additionally same responses will be delivered to your MAS URL by Hosted pages via HTTP POST (Ajax Call) asynchronously. This API should be provided by MAS. MAS has to enable CORS for Fiserv origin “int.api.firstdata.com", "cat.api.firstdata.com", and "prod.api.firstdata.com”. This can be used for auditing purposes when a web browser or an app crash accidentally.|
+| **FDCustomerId**  | This must be obtained using other uCom apis. This is optional when you initiate SDK with guest checkout option. |
+| **PageLink (url and relation)** | This is the unique page which is going to display the use case. Url is the address where page is hosted, and Relation is the name of the use case. PageLink can be retrieved run time via the api (ucom/v1/hosted - pages/pages) and can be cached. We prefer that PageLink should be freshly fetched. The page contents are configured offline. |
+
+### Step 1: Start a New Session  
+App calls MAS to get a token ID, encryption Key and page Link. token ID and encryption Key should not be cached or stored on the app and should be fetched from MAS. The token ID and encryption Key expires after 20 minutes and therefore this step should be done every time user starts the flow. 
 
 <center><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/HostedPages%20(3).png" alt="HP Diagram" class="center"></center>
 
-**Step 2: App calls MAS** - The api between app and MAS is not part of this document. It’s up to the merchant to decide this part of the transaction.
+### Step 2: App calls MAS
 
-**Step 3: MAS calls uCom to getToken** - MAS has to call uCom to get a tokenId. MAS should not cache the tokenId. getToken call will provide the one time session token and public key which needs to be passed to the SDK to launch Hosted Pages.
+The api between app and MAS is not part of this document. It’s up to the merchant to decide this part of the transaction.
 
-**Endpoint URL**
+### Step 3: MAS calls uCom to Get Token 
 
-HTTP Method: POST
+MAS has to call uCom to get a tokenId. MAS should not cache the tokenId. The get Token call will provide the one time session token and public key which needs to be passed to the SDK to launch Hosted Pages.
 
-CAT: https://int.api.firstdata.com/ucom/v1/tokens
+[Click here for instructions on Creating Security Access Token](../api/?type=post&path=/v1/tokens)
 
-PREPROD: https://cat.api.firstdata.com/ucom/v1/tokens
+### Step 4: MAS calls uCom to get page link 
 
-PROD: https://prod.api.firstdata.com/ucom/v1/tokens
-
-**Headers**
-
-Content-Type = application/json
-
-Api-Key = {api-key}
-
-Authorization = HMAC {signature}
-
-Timestamp = {time UTC in milliseconds}
-
->Please refer to the <a href="../docs/?path=docs/documentation/APISecurity.md">API Security section</a> for more information on how to generate HMAC signature. 
-
-Sample Request: 
-
-```json
-{
-    "token": {
-        "fdCustomerId":"c1d648272d1144b4981711d1200e24bd"
-    },
-    "publicKeyRequired": true
-}
-
-```
-
-Sample Response (201 – Created)
-
-```json
-{
-    "tokenId": "cZq0YBzOZuhS90Udzl8Nlp35uq4w",
-    "fdCustomerId": "c1d648272d1144b4981711d1200e24bd",
-    "issuedOn": 1507684425488,
-    "expiresInSeconds": 599,
-    "publicKey": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwoEfMkE6Ly12XoucbmT1f7HvnBLSXZvOowzMKg57EqpWeB1F4JmeZTsqiC8X2t0xnhaY6SjD1xBEPfsFXN07smIsntWfzENPxyPhbtwqXtDauhfr1yqTxHRCzO393KwotFio6tkwLUsR76zsqJ4tIm49zp4JAzE8gHK4S371k/6YOIFOefuzc9mLcg+L+fakRcVOMhF/HldKyw+tda4TBPE+S/RMdksoF+IYFaD668hzUrwMKoBYg1ZCc6YmnthWTIM1mWr5wGKYoQnMDWPsWAcG6N5r28vk4YHBfA9gnuxC7EehDkDk4CR3TjrIhg+W2yTkew8YJYRbKwUeEhZqQIDAQAB",
-    "algorithm": "RSA/NONE/PKCS1Padding",
-    "status": "ACTIVE"
-}
-
-```
-
-**Step 4: MAS calls uCom to get page link** MAS can cache the page link for future reference though we do not recommend that. Merchant may have configured multiple pages and therefore this api will return all of them. Each page can be identified by the relation.
+MAS can cache the page link for future reference to ensure better performance. Merchant may have configured multiple pages and therefore this api will return all of them. Each page can be identified by the relation.
 
 **Endpoint URL**
 https://int.api.firstdata.com/ucom/v1/hosted-pages/pages
@@ -107,7 +65,7 @@ HTTP Method: GET
 
 Content-Type = application/json
 
-Authorization = HMAC {signature}
+Authorization = Bearer {{tokenId}}
 
 Api-Key = {api-key}
 
@@ -130,29 +88,31 @@ Sample Response:
 
 ```
 
-**Step 5: Load Hosted Page**
+### Step 5: Load Hosted Page
 
-To start the hosted page, the app needs the api-key, pageLink, tokenId, fdCustomerId, encryptionKey and redirectUrl. Mobile apps must make sure that they have disabled webview caching and enabled loading javascript in webview. There are two ways to implment hosted Pages: Webview  or iFrame 
+There are two ways to load hosted Pages: Webview  or iFrame.To start the hosted page, the app needs the api-key, pageLink, tokenId, fdCustomerId, encryptionKey and redirectUrl. Please ensure that the Mobile app has disabled webview caching and enabled loading javascript in webview. 
 
 <!--
 type: tab
 titles: WebView, iFrame 
 -->
-## Mobile Webview Integration Steps
 
-**Step 1:**
+**Mobile Webview Integration Steps**
 
-Load the below URL in WebView
+<details>
+<summary>**A) Load the URL in WebView.**</summary>
 
 CAT: https://int.api.firstdata.com/ucom/v2/static/v2/mobile/int/ucom-sdk.html 
 
 PRE-PROD: https://cat.api.firstdata.com/ucom/v2/static/v2/mobile/cat/ucomsdk.html 
 
 PROD: https://prod.api.firstdata.com/ucom/v2/static/v2/mobile/prod/ucomsdk.html 
+    
+</details>
 
-**Step 2:**
+<details>
+<summary>**B) Call uComClient.init() javascript method after WebView is loaded with configuration objects.**</summary>
 
-Call **uComClient.init()** javascript method with configuration objects after WebView is loaded as demonstrated below: 
 
 ```javascript
 
@@ -166,12 +126,15 @@ ComClient.init({
    "encryptionKey": "<Encryption-Key>",
    "redirectUrl": "<MAS-URL>"
 });
-Note: Please refer additional params section 3.2 .3
 
 ```
-**Step 3:**
+>Note: Please refer to the **SDK Configuration Property Values** section for additional params.
+    
+</details>
+    
+<details>    
+<summary>**C) Set local redirection listener.**</summary>
 
-Set local redirection listener
 
 A redirection listener should be set on the webview to catch the event that Hosted Pages has finished its work. Hosted Pages will call this redirection in case of permanent failures and final success(nonce). A permanent failure is if js fails to load or Ajax call fails or tokenId has expired or encryptionKey invalid.
 
@@ -182,6 +145,7 @@ Once Hosted Pages get response from uCom then it will do URL redirect with encod
 ucom://finish?response=response-payload-object-string
 
 **Note:** Webview redirection listener URL should be decoded before handle it.
+
 **IOS Sample Code Snippets** 
 
 ```code
@@ -341,38 +305,56 @@ protected void onCreate(Bundle savedInstanceState) {
 }
 
 ```
-
+</details>
 <!--
 type: tab
 -->
 
 
-## Website Integration Steps
-1. Include the uCom SDK library on head tag on your html page 
+**Website Integration Steps**
 
-**URL:**  **https://<env>.api.firstdata.com/ucom/v2/static/v2/js/ucom-sdk.js**    
+<details>
     
- **Environment Variable:** <**int/cat/prod>** 
+<summary>**A) Include the uCom SDK library below on head tag of the html page.**</summary>
 
-| Variable     | Environment |
-|----------------|-------------------|
-| INT    | CAT/CERT	       |
-| CAT    | PRE-PROD       |
-| PROD    | PRODUCTION       |
- 
-2. Initialize the SDK with SDK configuration params by calling this **ucomSDK.init()** method </b>
-    a. Pass access toekn </b>
-    b. Pass API Key </b>
-    c. Pass fdCustomerId </b>
-    d: Pass page URL </b>
-    e: Pass Mount Id where SDK needs to be mounted on the screen </b>
-    f. Pass EncryptionKey </b>
-    g. Pass RedirectURL </b>
+CAT: https://int.api.firstdata.com/ucom/v2/static/v2/js/ucom-sdk.js  
+
+PRE-PROD: https://cat.api.firstdata.com/ucom/v2/static/v2/js/ucom-sdk.js 
+
+PROD: https://prod.api.firstdata.com/ucom/v2/static/v2/js/ucom-sdk.js 
+
+</details>    
     
-3. Call **uComSDK.start()** method to render SDK on mounted element on your page
-3. Call **uComSDK.stop()** whenever you want to kill the SDK from the page.
+<details>     
+<summary>**B) Initialize the SDK with SDK configuration params by calling this ucomSDK.init() method.**</summary>
 
-**Note: The javascript method should be called after the web content is loaded. Refer the sample code below**
+    a. Pass access token
+    
+    b. Pass API Key 
+    
+    c. Pass fdCustomerId
+    
+    d: Pass page URL
+    
+    e: Pass Mount Id where SDK needs to be mounted on the screen
+    
+    f. Pass EncryptionKey
+    
+    g. Pass RedirectURL 
+    
+</details>   
+    
+<details>
+    
+<summary>**C) Call uComSDK.start() method to render SDK on mounted element on the page.**</summary>
+
+</details>    
+    
+<details>
+    
+<summary>**D) Call uComSDK.stop() to kill the SDK from the page.**</summary>
+
+The javascript method should be called after the web content is loaded. Refer to the sample code below:
 
 **Web Sample Code** 
 
@@ -443,17 +425,23 @@ type: tab
    </body>
 </html>
 
-```
-
+```          
+</details>
+          
 <!-- type: tab-end -->
+          
+          
+**Sample Hosted Pages Desktop Look**
+         
+<center><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/HostedPages_default.png" alt="HP Diagram" class="center"></center>
 
 ---
 
+**SDK Configuration Property Values**
+
 Please refer to the table below for additional SDK configuration properties: 
 
->Please note that the SDK configurations below are applicable for both Hosted Pages implementation: webview and iFrame.
-
-**SDK Configuration property Value** 
+>Please note that the SDK configurations below are applicable for both Hosted Page implementations: webview and iFrame. 
                    
 | SDK Params     | Required/Optional | Description|
 |----------------|-------------------|----------- |
@@ -493,6 +481,8 @@ Please refer to the table below for additional SDK configuration properties:
 <center><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/HostedPages%20(4).png" alt="HP Diagram" class="center"></center>
 
 ## Hosted Pages Response Payloads
+
+Below are possible responses from Hosted Pages that must be handled accordingly. The responses will differ based on the flow used, whether it's a new card, or vaulted card.
 
 <details>
 <summary>**New Card Sample Responses**</summary>
@@ -552,14 +542,17 @@ Please refer to the table below for additional SDK configuration properties:
 
 >**Success Response with Threatmetrix Details** 
 
-This is the enrollment response with TM(Threatmetrix) payload from uCom API 
+This is the enrollment response with TM(Threatmetrix) payload from uCom API. 
+   
+<!-- theme: danger -->
+>Please note that this only applies if **Threatmetrix** is enabled as part of the hosted pages configurations on the back end.   
           
 ```json
-
+    
 {
     "type": "CREDIT",
     "token": {
-        "tokenType":"CLAIM CHECK NONCE",
+        "tokenType": "CLAIM CHECK NONCE",
         "tokenProvider": "UCOM",
         "tokenId": "4f0dd98e-bf56-499c-b562-7936ca20964c"
     },
@@ -574,7 +567,7 @@ This is the enrollment response with TM(Threatmetrix) payload from uCom API
         "sessionId": "2fb1a98a-7182-497f-bc2a-79c37e556cb2"
     }
 }
-          
+    
 ```
 
 >**Success with Extra Params Details** 
@@ -638,7 +631,9 @@ Merchant has the ability to pass the billing address into SDK. If they inject th
 >**Success**  
 
 <p>This is the success response payload from uCom API</p>
+    
 ```json
+    
 {
     "type": "VAULTED_ACCOUNT",
     "token": {
@@ -650,7 +645,8 @@ Merchant has the ability to pass the billing address into SDK. If they inject th
         "cardType": "VISA",
         "alias": "2345"
     }
-}         
+}  
+    
 ```
 >**Success Response with SDK Error** 
 
@@ -683,12 +679,14 @@ Merchant has the ability to pass the billing address into SDK. If they inject th
 ```
           
 >**Success with Threatmetrix Details** 
-
-This is the enrollment response with TM(Threatmetrix) payload from uCom API 
-          
+    
+This is the enrollment response with TM(Threatmetrix) payload from uCom API.
+    
+<!-- theme: danger -->
+>Please note that this only applies if **Threatmetrix** is enabled as part of the hosted pages configurations on the back end.         
           
 ```json
-
+    
 {
     "type": "VAULTED_ACCOUNT",
     "token": {
@@ -704,7 +702,8 @@ This is the enrollment response with TM(Threatmetrix) payload from uCom API
         "orgId": "8cz43sdv",
         "sessionId": "2fb1a98a-7182-497f-bc2a-79c37e556cb2"
     }
-          
+}
+    
 ```          
           
 >**Success with Extra Params Details** 
@@ -765,6 +764,8 @@ This is the failure response payload from uCom API
     
 </details>
 ## Events
+
+>Please note that this section is applicable for both Hosted Page implementations: webview and iFrame. 
 
 <p>The only way to communicate with Hosted Pages is by listening to an event. Hosted Pages will emit and communicate back if you are subscribed with those events.</p>
           
@@ -880,7 +881,7 @@ Following errors will be thrown after hosted pages screen render
 | Status Code     | Transaction Status Desc | Comments |
 |----------------|-------------------|----------- |
 | 279912    | Decryption failed.	       | When we pass an invalid or an already used public key into SDK then API will throw this error.     |
-| 269901    | Unable to process your request, please try again later, if problem persist, contact sys admin.       | This error occurs when a communications problem occures between the frontend and backend.    |
+| 269901    | Unable to process your request, please try again later, if problem persist, contact sys admin.       | This error occurs when a communications problem occurs between the frontend and backend.    |
 | 401    | Access Token expired or Unauthorized       | This error will occur when user idle and try to submit the rendered form with expired access token.     |
 
 
@@ -925,8 +926,7 @@ Example response payload:
 
 If needed, Hosted Pages has the ability to submit the form through the mobile app native button or website button from outside the iFrame. Following command will trigger the save action: 
 
->Please note: this has to be triggered from outside the iFrame or web view.
-
 ```code
 ucomSDK.triggerSaveAction(); 
 ```
+>Please note: this has to be triggered from outside the iFrame or web view.
