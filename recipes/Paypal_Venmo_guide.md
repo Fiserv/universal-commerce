@@ -100,6 +100,7 @@ Timestamp:{{time}}
    }
 }
 ```
+> Please note that the device info section is optional and only required when Fraud Mitigation is enabled. 
 
 **<ins> Sample Response (201 – Created) </ins>**
 
@@ -389,6 +390,7 @@ Sample Request – Paypal Sale Transaction - Nonce
    }
 }
 ```
+> Please note that the device info section is optional and only required when Fraud Mitigation is enabled. 
 
 **<ins> Sample Response (201 – Created) </ins>**
 
@@ -504,17 +506,17 @@ Prod: https://prod.api.firstdata.com/ucom/v1/payments/auths
 | fdCustomerId    | N/A                | String    | body           | Yes (Only Vaulted) |
 | vaultedAccount  | fundingSource      | Object    | body           | Yes (Only Vaulted) |
 | fdAccountId     | vaultedAccount     | String    | body           | Yes (Only Vaulted) |
-| deviceInfo      | N/A                | Object    | Value          | Yes                |
-| id              | deviceInfo         | String    | Value          | Yes                |
-| kind            | deviceInfo         | String    | Value          | Yes                |
-| details         | deviceInfo         | Object    | Value          | Yes                |
-| provider        | details            | String    | Value          | Yes                |
-| dataCapture     | details            | Object    | Value          | Yes                |
-| rawData         | dataCapture        | String    | Value          | Yes                |
-| dataEventId     | dataCapture        | String    | Value          | Yes                |
-| captureTime     | dataCapture        | String    | Value          | No                 |
+| deviceInfo      | N/A                | Object    | Value          |*Conditional|
+| id              | deviceInfo         | String    | Value          |*Conditional|
+| kind            | deviceInfo         | String    | Value          |*Conditional|
+| details         | deviceInfo         | Object    | Value          |*Conditional|
+| provider        | details            | String    | Value          |*Conditional|
+| dataCapture     | details            | Object    | Value          |*Conditional|
+| rawData         | dataCapture        | String    | Value          |*Conditional|
+| dataEventId     | dataCapture        | String    | Value          |*Conditional|
+| captureTime     | dataCapture        | String    | Value          |*Conditional|
 
-> *Applicable when fraud Mitigation is enabled. 
+>*Applicable when fraud Mitigation is enabled. 
 
 **<ins> Headers </ins>**
 
@@ -567,6 +569,9 @@ Sample Request – Venmo Authorization Transaction - Nonce
    }
 }
 ```
+
+> Please note that the device info section is optional and only required when Fraud Mitigation is enabled. 
+
 **<ins> Sample Response (201 – Created)</ins>**
 
 Sample Response – Venmo Authorization Transaction - Nonce
@@ -805,7 +810,7 @@ Prod: https://prod.api.firstdata.com/ucom/v1/payments/sales
 | dataEventId     | dataCapture        | String    | Value          |*Conditional|
 | captureTime     | dataCapture        | String    | Value          |*Conditional|
 
-> *Applicable when fraud Mitigation is enabled. 
+>*Applicable when fraud Mitigation is enabled. 
 
 **<ins> Headers </ins>**
 
@@ -857,6 +862,9 @@ Sample Request – Venmo Sale Transaction - Nonce
    }
 }
 ```
+
+> Please note that the device info section is optional and only required when Fraud Mitigation is enabled. 
+
 **<ins> Sample Response (201 – Created) </ins>**
 
 Sample Response –Venmo Sale Transaction - Nonce
@@ -1134,6 +1142,8 @@ Prod: https://prod.api.firstdata.com/ucom/v1/customers/{fdCustomerId}/accounts
 | dataEventId  | dataCapture        | String    | Value          |*Conditional|
 | captureTime  | dataCapture        | String    | Value          |*Conditional|
 
+>*Applicable when fraud Mitigation is enabled. 
+
 **<ins> Headers </ins>**
 
 Content-Type:application/json
@@ -1175,6 +1185,7 @@ Timestamp:{{time}}
    }
 }
 ```
+> Please note that the device info section is optional and only required when Fraud Mitigation is enabled. 
 
 **<ins> Sample Response (201 – Created) </ins>**
 
@@ -1240,6 +1251,8 @@ Prod: https://prod.api.firstdata.com/ucom/v1/customers/{fdCustomerId}/accounts
 | dataEventId  | dataCapture        | String    | Value          |*Conditional|
 | captureTime  | dataCapture        | String    | Value          |*Conditional|
 
+>*Applicable when fraud Mitigation is enabled. 
+
 **<ins> Headers </ins>**
 
 Content-Type:application/json
@@ -1281,8 +1294,7 @@ Timestamp:{{time}}
 }
 
 ```
-
-
+> Please note that the device info section is optional and only required when Fraud Mitigation is enabled. 
 
 **<ins> Sample Response (201 – Created) </ins>**
 
@@ -1410,6 +1422,7 @@ Sample Request – Paypal Authorization Transaction - Vaulted
 }
 
 ```
+> Please note that the device info section is optional and only required when Fraud Mitigation is enabled. 
 
 **<ins> Sample Response (201 – Created) </ins>**
 
@@ -1687,7 +1700,7 @@ Prod: https://prod.api.firstdata.com/ucom/v1/payments/sales
 | dataEventId     | dataCapture        | String    | Value          |*Conditional|
 | captureTime     | dataCapture        | String    | Value          |*Conditional|
 
-> *Applicable when fraud Mitigation is enabled. 
+>*Applicable when fraud Mitigation is enabled. 
 
 **<ins> Headers </ins>**
 
@@ -1739,6 +1752,8 @@ Timestamp:{{time}}
    }
 }
 ```
+
+> Please note that the device info section is optional and only required when Fraud Mitigation is enabled. 
 
 **<ins> Sample Response (201 – Created) </ins>**
 
@@ -1924,6 +1939,7 @@ Timestamp:{{time}}
    }
 }
 ```
+> Please note that the device info section is optional and only required when Fraud Mitigation is enabled. 
 
 **<ins> Sample Response (201 – Created) </ins>**
 
@@ -2230,6 +2246,7 @@ Timestamp:{{time}}
 }
 
 ```
+> Please note that the device info section is optional and only required when Fraud Mitigation is enabled. 
 
 **<ins> Sample Response (201 – Created) </ins>**
 
