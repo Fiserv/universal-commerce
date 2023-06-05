@@ -1,7 +1,5 @@
 # Merchant Initiated Transactions (MIT)
 
-**How Merchant Initiated Transactions Work?**
-
 Merchant initiated transactions (MIT) give the merchant the ability to run recurring payments and subscriptions to sell product or services on a scheduled or unscheduled basis. This model allows Merchants to receive payment on time and minimize the efforts for the customer. Merchant initiated transactions are similar to regular customer-initiated sale transactions, with small differences, which this guide will cover. To run a merchant-initiated transaction, few indicators need to be added to the payload sent to uCom.
 
 These indicators will be used by the network to mitigate fraud, transaction id will be provided by uCom, in the initial transaction.
