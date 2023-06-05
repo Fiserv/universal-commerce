@@ -16,7 +16,7 @@ These indicators will be used by the network to mitigate fraud, transaction id w
 
 ## MIT Applicable APIs
 
-MIT indicators are applicable for the APIs below. The MIT indicators must be included in the Request to uCom as demenstrated in the samples below.
+MIT indicators are applicable for the APIs below. The MIT indicators must be included in the Request to uCom as demonstrated in the samples below.
 
 ### Payments
 
@@ -50,9 +50,9 @@ MIT indicators are applicable for the APIs below. The MIT indicators must be inc
 
 ## Sample Sale Payloads
 
-**<ins> Endpoint URL </ins>**
+Below are some sample payloads that make use of Merchant Initiated Transactions on the Connected Commerce (uCom) platform.
 
-Below we will share some sample payloads that make use of Merchant Initiated Transactions on the Connected Commerence (uCom) platform.
+**<ins> Endpoint URL </ins>**
 
 HTTP Method: POST
 
@@ -258,7 +258,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/sales>
     "fdSaleId": "087194318e3c41259e27fd8dfd83c9a1",
     "status": "APPROVED",
     "orderId": "Order4477211",
-    "requestedAmount": 10.12,s
+    "requestedAmount": 10.12,
     "approvedAmount": 10.12,
     "currencyCode": {
         "code": "USD",
@@ -314,6 +314,285 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/sales>
         {
             "name": "NETWORK_TRANSACTION_ID",
             "value": "012000426084606"
+        }
+    ]
+}
+
+```
+
+## Sample Auth Payloads
+
+**<ins> Endpoint URL </ins>**
+
+HTTP Method: POST
+
+Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/auths>
+
+Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
+
+**<ins> Parameters </ins>**
+
+| **Name** | **Data Type** | **Parameter Type** | **Required** | **Max Length** |
+| --- | --- | --- | --- | --- |
+| merchantId | String | body | yes | - |
+| requestedAmount | String | body | yes | - |
+| fdCustomerId | String | body | yes | 32 |
+| fdAccountId | String | body | yes | 32 |
+
+**<ins> Sample Request using a Vaulted Card (Initial)**</ins>
+
+```json
+{
+    "fdCustomerId": "3d000516d6f44d86a3496e731ea2a30d",
+    "authorization": {
+        "orderId": "Order4477211",
+        "merchantId": "MG18315433001",
+        "requestedAmount": "10.12",
+        "currencyCode": {
+            "number": "840"
+        },
+        "fundingSource": {
+            "vaultedAccount": {
+                "fdAccountId": "8a7f737587bcb71e0187bcb91f9c0000"
+            }
+        },
+        "hostExtraInfo": [
+            {
+                "name": "STORED_CREDENTIAL_INDICATOR",
+                "value": "INITIAL"
+            },
+            {
+                "name": "TRANSACTION_INITIATION_INDICATOR",
+                "value": "CUSTOMER"
+            },
+            {
+                "name": "SCHEDULE_INDICATOR",
+                "value": "UNSCHEDULED"
+            },
+            {
+                "name": "NETWORK_ORIGINAL_AMOUNT",
+                "value": "10.12"
+            }
+
+        ],
+        "purchaseInfo": [
+            {
+                "order": {
+                    "orderType": "pay-by-plate"
+                }
+            }
+        ]
+    },
+    "deviceInfo": {
+        "id": "537edec8-d33e-4ee8-93a7-b9f61876950c",
+        "kind": "mobile",
+        "details": [
+            {
+                "provider": "RAVELIN",
+                "dataCapture": {
+                    "dataEventId": "BB8E4E92...Fz1E063113"
+                }
+            }
+        ]
+    }
+}
+
+```
+
+**<ins> Sample Response using a Vaulted Card (Initial)**</ins>
+
+```json
+
+{
+    "fdAuthorizationId": "b2154dd170fc43d592a28bae82cc3955",
+    "authStatus": "APPROVED",
+    "orderId": "Order4477211",
+    "requestedAmount": 10.12,
+    "approvedAmount": 10.12,
+    "currencyCode": {
+        "code": "USD",
+        "number": 840
+    },
+    "transactionDateTime": "2023-06-05T15:51:44-0400",
+    "fundingSource": {
+        "type": "VAULTED_ACCOUNT",
+        "vaultedAccount": {
+            "fdAccountId": "8a7f737587bcb71e0187bcb91f9c0000",
+            "type": "CREDIT"
+        },
+        "credit": {
+            "nameOnCard": "John Smith",
+            "alias": "0026",
+            "cardType": "VISA",
+            "billingAddress": {
+                "streetAddress": "100 Universal City Plaza",
+                "postalCode": "20220"
+            },
+            "expiryDate": {
+                "month": "12",
+                "year": "24"
+            }
+        }
+    },
+    "hostExtraInfo": [
+        {
+            "name": "APPROVAL_NUMBER",
+            "value": "006063"
+        },
+        {
+            "name": "SEQUENCE_NUMBER",
+            "value": "181231"
+        },
+        {
+            "name": "HOST_RESPONSE_CODE",
+            "value": "3"
+        },
+        {
+            "name": "HOST_RESPONSE_MESSAGE",
+            "value": "APPROVED  006063"
+        },
+        {
+            "name": "HOST_AVS_CODE",
+            "value": "AVS+Y"
+        },
+        {
+            "name": "TRANSACTION_DATETIME",
+            "value": "2023-06-05T15:51"
+        },
+        {
+            "name": "NETWORK_TRANSACTION_ID",
+            "value": "012000605195146"
+        }
+    ]
+}
+
+
+```
+
+**<ins> Sample Request using a Vaulted Card (Subsequent)**</ins>
+
+```json
+
+{
+    "fdCustomerId": "3d000516d6f44d86a3496e731ea2a30d",
+    "authorization": {
+        "orderId": "Order4477211",
+        "merchantId": "MG18315433001",
+        "requestedAmount": "10.12",
+        "currencyCode": {
+            "number": "840"
+        },
+        "fundingSource": {
+            "vaultedAccount": {
+                "fdAccountId": "8a7f737587bcb71e0187bcb91f9c0000"
+            }
+        },
+        "hostExtraInfo": [
+            {
+                "name": "STORED_CREDENTIAL_INDICATOR",
+                "value": "SUBSEQUENT"
+            },
+            {
+                "name": "TRANSACTION_INITIATION_INDICATOR",
+                "value": "CUSTOMER"
+            },
+            {
+                "name": "SCHEDULE_INDICATOR",
+                "value": "UNSCHEDULED"
+            },
+            {
+                "name": "NETWORK_ORIGINAL_AMOUNT",
+                "value": "10.12"
+            }
+
+        ],
+        "purchaseInfo": [
+            {
+                "order": {
+                    "orderType": "pay-by-plate"
+                }
+            }
+        ]
+    },
+    "deviceInfo": {
+        "id": "537edec8-d33e-4ee8-93a7-b9f61876950c",
+        "kind": "mobile",
+        "details": [
+            {
+                "provider": "RAVELIN",
+                "dataCapture": {
+                    "dataEventId": "BB8E4E92...Fz1E063113"
+                }
+            }
+        ]
+    }
+}
+
+```
+
+**<ins> Sample Response using a Vaulted Card (Subsequent)**</ins>
+
+```json
+
+{
+    "fdAuthorizationId": "f29cf0ba2d794a0294959d5ece83283d",
+    "authStatus": "APPROVED",
+    "orderId": "Order4477211",
+    "requestedAmount": 10.12,
+    "approvedAmount": 10.12,
+    "currencyCode": {
+        "code": "USD",
+        "number": 840
+    },
+    "transactionDateTime": "2023-06-05T15:55:32-0400",
+    "fundingSource": {
+        "type": "VAULTED_ACCOUNT",
+        "vaultedAccount": {
+            "fdAccountId": "8a7f737587bcb71e0187bcb91f9c0000",
+            "type": "CREDIT"
+        },
+        "credit": {
+            "nameOnCard": "John Smith",
+            "alias": "0026",
+            "cardType": "VISA",
+            "billingAddress": {
+                "streetAddress": "100 Universal City Plaza",
+                "postalCode": "20220"
+            },
+            "expiryDate": {
+                "month": "12",
+                "year": "24"
+            }
+        }
+    },
+    "hostExtraInfo": [
+        {
+            "name": "APPROVAL_NUMBER",
+            "value": "006075"
+        },
+        {
+            "name": "SEQUENCE_NUMBER",
+            "value": "363368"
+        },
+        {
+            "name": "HOST_RESPONSE_CODE",
+            "value": "3"
+        },
+        {
+            "name": "HOST_RESPONSE_MESSAGE",
+            "value": "APPROVED  006075"
+        },
+        {
+            "name": "HOST_AVS_CODE",
+            "value": "AVS+Y"
+        },
+        {
+            "name": "TRANSACTION_DATETIME",
+            "value": "2023-06-05T15:55"
+        },
+        {
+            "name": "NETWORK_TRANSACTION_ID",
+            "value": "012000605195533"
         }
     ]
 }
