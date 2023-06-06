@@ -27,7 +27,6 @@ Click on the preferred link below to explore each service.
 </details>
 
 <details>
-
 <summary><b>Account Services</b></summary>
 
 | API                                                                                        | Description                                                                                    |
@@ -40,11 +39,11 @@ Click on the preferred link below to explore each service.
 |[Update Account by Card Details](../api/?type=patch&path=/v1/customers/{fdCustomerId}/accounts)|Update a vaulted account where the fdCustomerId isn't known. The service will attempt to find vaulted accounts based on parameters in the payload and update them accordingly. |
 |[Update Account by fdAccountId](../api/?type=patch&path=/v1/customers/{fdCustomerId}/accounts/{fdAccountId})|Update a vaulted account.|
 |[Vault an Account](../api/?type=post&path=/v1/customers/{fdCustomerId}/accounts)|Register a customer account in the Connected Commerce (uCom) vault.|
-|[Verify an Account](../api/?type=post&path=/v1/accounts/verification)|Verify an account without an associated Connected Commerce (uCom) customer identifier.|  
+|[Verify an Account](../api/?type=post&path=/v1/accounts/verification)|Verify an account without an associated Connected Commerce (uCom) customer identifier.|
+
 </details>
 
 <details>
-
 <summary><b>Payment Services</b></summary>
 
 | API                                                                                        | Description                                                                                    |
@@ -84,7 +83,6 @@ Click on the preferred link below to explore each service.
 </details>
 
 <details>
-
 <summary><b>Prepaid Services</b></summary>
 
 | API                                                                                        | Description                                                                                    |
