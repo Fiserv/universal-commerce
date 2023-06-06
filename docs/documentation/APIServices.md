@@ -87,38 +87,41 @@ Click on the preferred link below to explore each service.
 
 <summary><b>Prepaid Services</b></summary>
 
-[Cancel a Deducted Transaction](../api/?type=post&path=/v1/tokens): A deducted transaction is voided.  
-[Cancel a Purchase Transaction](api/?type=get&path=/v1/encryption-keys/{keyId}): Purchase transaction is voided.  
-[Cancel Merge Transaction](api/?type=get&path=/v1/signature-keys/{keyId}): Merge transaction is voided.  
-[Cancel Multiple Deducted Transactions](api/?type=get&path=/v1/signature-keys/{keyId}): Multiple deducted transactions are voided.  
-[Cancel Multiple Prepaid Card Transactions](api/?type=get&path=/v1/signature-keys/{keyId}): Multiple prepaid card transactions are voided.  
-[Cancel Multiple Prepaid CardSweep Transactions](api/?type=get&path=/v1/signature-keys/{keyId}): Service to Void Multiple Sweep Transactions.  
-[Cancel Multiple Reload Transactions](api/?type=get&path=/v1/signature-keys/{keyId}): This service is to void multiple reload transactions.  
-[Cancel Purchase Transactions](api/?type=get&path=/v1/signature-keys/{keyId}): Purchase transactions are voided.  
-[Cancel Reloaded Transaction](api/?type=get&path=/v1/signature-keys/{keyId}): Reload prepaid card transaction is voided.  
-[Cancel Sweep Transaction](api/?type=get&path=/v1/signature-keys/{keyId}): Service to void a sweep transaction.  
-[Deduct Amount from a Prepaid Card](api/?type=get&path=/v1/signature-keys/{keyId}): Service to deduct prepaid card account.  
-[Deduct Amount from Multiple Prepaid Cards](api/?type=get&path=/v1/signature-keys/{keyId}): This service is to deduct multiple prepaid cards.  
-[Get Aggregated Balance for Multiple Prepaid Cards](api/?type=get&path=/v1/signature-keys/{keyId}): This service retrieves the aggregated balance of anonymous prepaid cards.  
-[Get Prepaid Card Balance](api/?type=get&path=/v1/signature-keys/{keyId}): This service retrieves the balance of an anonymous prepaid card.  
-[Get Prepaid Card Transaction Details](api/?type=get&path=/v1/signature-keys/{keyId}): This service is to retrieve transactions on a vaulted prepaid card from the host.  
-[Get Status of Merge Transaction by clientRequestId](api/?type=get&path=/v1/signature-keys/{keyId}): This service is used for status check when a previous merge transaction is timed out.  
-[Get Status of Prepaid Card Purchase by clientRequestId](../api/?type=post&path=/v1/tokens): Get Status of prepaid card purchase transaction by clientRequestId.  
-[Get Status of Reload Prepaid Card by clientRequestId](../api/?type=post&path=/v1/tokens): This service is to get status of reload prepaid card transaction by clientRequestId.  
-[Get Status of Void Prepaid Transaction](../api/?type=post&path=/v1/tokens): This service is to get status of void prepaid transaction.  
-[Load Funds into a Vaulted Prepaid Card](../api/?type=post&path=/v1/tokens): Service to load funds into a vaulted Prepaid Card.  
-[Merge Balance from One Vaulted Prepaid Card to Another](../api/?type=post&path=/v1/tokens): This service merges the balance from one vaulted prepaid card to another vaulted prepaid card.  
-[Purchase a New Prepaid Card](../api/?type=post&path=/v1/tokens): Purchase a new prepaid card.  
-[Purchase Multiple Prepaid Cards](../api/?type=post&path=/v1/tokens): Purchase Multiple Prepaid Cards.  
-[Reload a Prepaid Card](../api/?type=post&path=/v1/tokens): This service is to reload funds into a vaulted Prepaid Card.  
-[Reload Funds to Multiple Prepaid Cards](../api/?type=post&path=/v1/tokens): This service is to reload funds to multiple prepaid cards.  
-[Resume a Reload Transaction](../api/?type=post&path=/v1/tokens): This service resumes 3DS pending reload transaction.  
-[Retrieve Transactions on a Prepaid Card](../api/?type=post&path=/v1/tokens): Service to retrieve transactions on a vaulted Prepaid Card from the host.  
-[Sweep a Prepaid Card Balance](../api/?type=post&path=/v1/tokens): Service to sweep a prepaid card balance.  
-[Sweep Multiple Prepaid Card Balances](../api/?type=post&path=/v1/tokens): Service to sweep multiple prepaid card balances.  
-[Void of a Merge Transaction](../api/?type=post&path=/v1/tokens): Void of a merge transaction.  
-[Void of a Purchase Transaction](../api/?type=post&path=/v1/tokens): Void of a Purchase Transaction.  
-[Void of a Reloaded Prepaid Card](../api/?type=post&path=/v1/tokens): Void of a reload transaction.  
-[Void of Any Prepaid Card Transaction](../api/?type=post&path=/v1/tokens): Void of any prepaid card transaction.  
+| API                                                                                        | Description                                                                                    |
+|--------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
+
+|[Cancel a Deducted Transaction](../api/?type=post&path=/v1/tokens)| A deducted transaction is voided. |
+|[Cancel a Purchase Transaction](api/?type=get&path=/v1/encryption-keys/{keyId})| Purchase transaction is voided.|  
+|[Cancel Merge Transaction](api/?type=get&path=/v1/signature-keys/{keyId})| Merge transaction is voided.|  
+|[Cancel Multiple Deducted Transactions](api/?type=get&path=/v1/signature-keys/{keyId})| Multiple deducted transactions are voided.  |
+|[Cancel Multiple Prepaid Card Transactions](api/?type=get&path=/v1/signature-keys/{keyId})| Multiple prepaid card transactions are voided.  |
+|[Cancel Multiple Prepaid CardSweep Transactions](api/?type=get&path=/v1/signature-keys/{keyId})| Service to Void Multiple Sweep Transactions.  |
+|[Cancel Multiple Reload Transactions](api/?type=get&path=/v1/signature-keys/{keyId})| This service is to void multiple reload transactions.  |
+|[Cancel Purchase Transactions](api/?type=get&path=/v1/signature-keys/{keyId})| Purchase transactions are voided.  |
+|[Cancel Reloaded Transaction](api/?type=get&path=/v1/signature-keys/{keyId})| Reload prepaid card transaction is voided.  |
+|[Cancel Sweep Transaction](api/?type=get&path=/v1/signature-keys/{keyId})| Service to void a sweep transaction.  |
+|[Deduct Amount from a Prepaid Card](api/?type=get&path=/v1/signature-keys/{keyId})| Service to deduct prepaid card account.  |
+|[Deduct Amount from Multiple Prepaid Cards](api/?type=get&path=/v1/signature-keys/{keyId})| This service is to deduct multiple prepaid cards.  |
+|[Get Aggregated Balance for Multiple Prepaid Cards](api/?type=get&path=/v1/signature-keys/{keyId})| This service retrieves the aggregated balance of anonymous prepaid cards.  |
+|[Get Prepaid Card Balance](api/?type=get&path=/v1/signature-keys/{keyId})| This service retrieves the balance of an anonymous prepaid card.  |
+|[Get Prepaid Card Transaction Details](api/?type=get&path=/v1/signature-keys/{keyId})| This service is to retrieve transactions on a vaulted prepaid card from the host.  |
+|[Get Status of Merge Transaction by clientRequestId](api/?type=get&path=/v1/signature-keys/{keyId})| This service is used for status check when a previous merge transaction is timed out.  |
+|[Get Status of Prepaid Card Purchase by clientRequestId](../api/?type=post&path=/v1/tokens)| Get Status of prepaid card purchase transaction by clientRequestId.  |
+|[Get Status of Reload Prepaid Card by clientRequestId](../api/?type=post&path=/v1/tokens)| This service is to get status of reload prepaid card transaction by clientRequestId.  |
+|[Get Status of Void Prepaid Transaction](../api/?type=post&path=/v1/tokens)| This service is to get status of void prepaid transaction.  |
+|[Load Funds into a Vaulted Prepaid Card](../api/?type=post&path=/v1/tokens)| Service to load funds into a vaulted Prepaid Card.  |
+|[Merge Balance from One Vaulted Prepaid Card to Another](../api/?type=post&path=/v1/tokens)| This service merges the balance from one vaulted prepaid card to another vaulted prepaid card.  |
+|[Purchase a New Prepaid Card](../api/?type=post&path=/v1/tokens)| Purchase a new prepaid card.  |
+|[Purchase Multiple Prepaid Cards](../api/?type=post&path=/v1/tokens)| Purchase Multiple Prepaid Cards.  |
+|[Reload a Prepaid Card](../api/?type=post&path=/v1/tokens)| This service is to reload funds into a vaulted Prepaid Card.  |
+|[Reload Funds to Multiple Prepaid Cards](../api/?type=post&path=/v1/tokens)| This service is to reload funds to multiple prepaid cards.  |
+|[Resume a Reload Transaction](../api/?type=post&path=/v1/tokens)| This service resumes 3DS pending reload transaction.  |
+|[Retrieve Transactions on a Prepaid Card](../api/?type=post&path=/v1/tokens)| Service to retrieve transactions on a vaulted Prepaid Card from the host.  |
+|[Sweep a Prepaid Card Balance](../api/?type=post&path=/v1/tokens)| Service to sweep a prepaid card balance.  |
+|[Sweep Multiple Prepaid Card Balances](../api/?type=post&path=/v1/tokens)| Service to sweep multiple prepaid card balances.  |
+|[Void of a Merge Transaction](../api/?type=post&path=/v1/tokens)| Void of a merge transaction.  |
+|[Void of a Purchase Transaction](../api/?type=post&path=/v1/tokens)| Void of a Purchase Transaction. |
+|[Void of a Reloaded Prepaid Card](../api/?type=post&path=/v1/tokens)| Void of a reload transaction.  |
+|[Void of Any Prepaid Card Transaction](../api/?type=post&path=/v1/tokens)| Void of any prepaid card transaction.  |
 
 </details>
