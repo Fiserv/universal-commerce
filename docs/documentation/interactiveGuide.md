@@ -29,7 +29,7 @@ Step 2c: [Vault an Account](../api/?type=post&path=/v1/customers/{fdCustomerId}/
 
 <!--
 type: tab
-titles: Restaurant, Gas Station, Automobiles, Sports Arena, Health & Wellness 
+titles: Restaurant, Gas Station, Automobiles
 -->
 <b> Select payment type </b>
 
@@ -43,6 +43,10 @@ Go to the [Get Account Details](..//api/?type=get&path=/v1/customers/{fdCustomer
 B. One Time Payment processing: One Time Payment processing can be done by simply following the vaulting process Step 2a & 2b and use the nonce to do payment
 
 C. Guest Checkout: Guest checkout is same process like One Time Payment processing
+
+<b> Perform a Sale </b>
+
+When you are ready to place an order you perform a [Sale](..//api/?type=post&path=/v1/payments/sales) operation. 
 
 <!--
 type: tab
@@ -80,13 +84,5 @@ Customer have the option to [Cancel Transaction](../api/?type=patch&path=/v1/pet
 <!--
 type: tab
 -->
-TODO
-<!--
-type: tab
--->
-TODO
-<!--
-type: tab
--->
-TODO
+In the Auto or Online Shopping domain the concept of Auth & Capture is a common e-commerce flow, Where merchant needs to perform an Auth when placing and order and perform a Capture when the order is processed or delivered. Connected Commerce [uCom] provides features.
 <!-- type: tab-end -->

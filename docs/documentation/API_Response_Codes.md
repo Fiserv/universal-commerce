@@ -24,6 +24,7 @@ The codes are separated into sections based on what was being done in the softwa
 |Common|279910|Payment instrument revoked.|400|
 |Common|279911|Invalid nonce.|400|
 |Common|279912|Decryption failed.|400|
+|Common|279913|Transaction failed|400|
 |Common|290020|The transaction is in progress through Async channel. Please try some time later|400|
 |Common|290032|Operation not allowed based on current membership status|400|
 |Common|290020|The transaction is in progress through Async channel. Please try some time later|400|
@@ -34,6 +35,7 @@ The codes are separated into sections based on what was being done in the softwa
 |Common|274013|Duplicate enrollment request : Card already enrolled to the customer|400|
 |Common|272707|Store Id not configured|400|
 |Common|272791|Operation not supported|400|
+|Common|272783|Site settlement failed|400|
 |Common|261001|QR code identifier is invalid / expired / used.|400|
 |Common|999901|Downstream system is not responding. Please try later|400|
 |Common|999902|Downstream system is unavailable. Please try later|400|
@@ -98,6 +100,14 @@ The codes are separated into sections based on what was being done in the softwa
 |Prepaid|290030|Transaction Processing Failure. There are no mapping accounts for given customer.|400|
 |Prepaid|290031|Balance Enquiry failed|400|
 |Prepaid|290033|Transaction denied. Duplicate transaction please try after some time|425|
+
+## Stac
+
+|Use Case|Response Code|Response Message|Http Status Code|
+|-------|-------------|----------------|----------------|
+|STAC Transaction|261002|Payment initialization failed|400|
+|STAC Transaction|261003|Cancellation of Payment initialization failed|400|
+|STAC Transaction|261004|StacId identifier is invalid / expired / used|400|
 
 ## Sale
 
