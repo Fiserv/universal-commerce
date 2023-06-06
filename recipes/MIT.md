@@ -19,7 +19,7 @@ Networks like VISA prefer the original NETWORK_TRANSACTION_ID for fraud detectio
 | **Field Name**| **Description**|
 | --- | --- |
 |`STORED_CREDENTIAL_INDICATOR`|Indicates whether the transaction is the initial request or subsequent. Values: `INITIAL` or `SUBSEQUENT`|
-|`TRANSACTION_INITIATION_INDICATOR`|Indicates if the transaction is a recurring payment or installment. Values for scheduled: `MIT-RECURRING` or `MIT-INSTALLMENT` For unscheduled. `MIT` For Customer initiated transactions, only one value is allowed, `CUSTOMER`. In MIT case, only `MIT` should be used.|
+|`TRANSACTION_INITIATION_INDICATOR`|Indicates if the transaction is a recurring payment or installment. Values for scheduled payments: `MIT-RECURRING` or `MIT-INSTALLMENT`. For unscheduled payments: `MIT`. For Customer initiated transactions, only one value is allowed, `CUSTOMER`.|
 |`SCHEDULE_INDICATOR`|Scheduled indicator. Values: `SCHEDULED`, `UNSCHEDULED`.|
 |`NETWORK_TRANSACTION_ID`|The `NETWORK_TRANSACTION_ID` could be passed for `SUBSEQUENT` requests, and could be obtained in the response form the `INITIAL` request. For subsequent request, this field is expected from the client. if not, uCom will persist this at the time of initial transaction and use it for subsequent transactions.|
 |`NETWORK_ORIGINAL_AMOUNT`|The original amount needs to be passed with all subsequent transactions, together with `NETWORK_TRANSACTION_ID`.For subsequent request, this field is expected from the client. if not, uCom will persist this at the time of initial transaction and use it for subsequent transactions.|
