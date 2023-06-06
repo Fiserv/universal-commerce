@@ -1,14 +1,24 @@
 # Merchant Initiated Transactions (MIT)
 
-Merchant initiated transactions (MIT) give the merchant the ability to run recurring payments and subscriptions to sell product or services on a scheduled or unscheduled basis. This model allows Merchants to receive payment on time and minimize the efforts for the customer. Merchant initiated transactions are similar to regular customer-initiated sale transactions, with small differences, which this guide will cover. To run a merchant-initiated transaction, few indicators need to be added to the payload sent to uCom.
+Merchant initiated transactions (MIT) give the merchant the ability to run recurring payments and subscriptions to sell product or services on a scheduled or unscheduled basis. This model allows Merchants to receive payment on time and minimize the efforts for the customer. Merchant initiated transactions are similar to regular customer-initiated transactions, with small differences, which this guide will cover. To run a merchant-initiated transaction, a few indicators must added to the payload sent to uCom.
 
 These indicators will be used by the network to mitigate fraud, transaction id will be provided by uCom, in the initial transaction.
+
+## initial Request 
+
+The Initial request is the very first request when uCom provides `NETWORK_TRANSACTION_ID` in its response. This request is supposed to be used only if merchant doesn't have the `NETWORK_TRANSACTION_ID` stored.
+
+The Initial transaction can be card verification, auth or sale transaction with STORED_CREDENTIAL_INDICATOR = INITIAL, SCHEDULE_INDICATOR = SCHEDULED and TRANSACTION_INITIATION_INDICATOR = MIT-RECURRING
+
+Networks like VISA prefer the original NETWORK_TRANSACTION_ID for fraud detection purposes and may reject transactions if that is not submitted on all subsequent transactions.
+
+>Please note that MIT is supported for all networks, but only VISA and DISCOVER will return the transaction ID, while it will be empty for other networks.
 
 ## MIT Fields and indicators
 
 | **Field Name**| **Description**|
 | --- | --- |
-|`STORED_CREDENTIAL_INDICATOR`|Indicates whether the transaction is the initial request or subsequent. Values: INITIAL or SUBSEQUENT|
+|`STORED_CREDENTIAL_INDICATOR`|Indicates whether the transaction is the initial request or subsequent. Values: `INITIAL` or `SUBSEQUENT`|
 |`TRANSACTION_INITIATION_INDICATOR`|Indicates if the transaction is a recurring payment or installment. Values for scheduled: `MIT-RECURRING` or `MIT-INSTALLMENT` For unscheduled. `MIT` For Customer initiated transactions, only one value is allowed, `CUSTOMER`. In MIT case, only `MIT` should be used.|
 |`SCHEDULE_INDICATOR`|Scheduled indicator. Values: `SCHEDULED`, `UNSCHEDULED`.|
 |`NETWORK_TRANSACTION_ID`|The `NETWORK_TRANSACTION_ID` could be passed for `SUBSEQUENT` requests, and could be obtained in the response form the `INITIAL` request. For subsequent request, this field is expected from the client. if not, uCom will persist this at the time of initial transaction and use it for subsequent transactions.|
@@ -47,6 +57,8 @@ MIT indicators are applicable for the APIs below. The MIT indicators must be inc
 #### Card Verification
 
 /v1/accounts/verification
+
+Please use the card verification flow for new cards that are not stored on the Connected Commerce (uCom) vault. The call will return the `NETWORK_TRANSACTION_ID`, which is needed for follow up payment transactions. In other words, for new cards, use the card verification API call as the initial transaction, then either a sale or authorization call as the subsequent transaction.
 
 ## Sample Sale Payloads
 
@@ -593,6 +605,81 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
         {
             "name": "NETWORK_TRANSACTION_ID",
             "value": "012000605195533"
+        }
+    ]
+}
+
+```
+
+
+## Sample Account Verification Payload
+
+**<ins> Sample Account verification Request**</ins>
+
+```json
+
+{
+    "account": {
+        "type": "CREDIT",
+        "credit": {
+            "nameOnCard": "John SmithU",
+            "cardNumber": "ENC_[encrypted cards..]",
+            "cardType": "VISA",
+            "securityCode": "ENC_[encrypted cvv..]",
+            "expiryDate": {
+                "month": "ENC_[encrypted month..]",
+                "year": "ENC_[encrypted year..]"
+            },
+            "billingAddress": {
+                "streetAddress": "AC01 Glenridge Con #2000U",
+                "locality": "Atlanta",
+                "region": "GA",
+                "postalCode": "00000"
+            }
+        },
+        "hostExtraInfo": [
+            {
+                "name": "STORED_CREDENTIAL_INDICATOR",
+                "value": "INITIAL"
+            },
+            {
+                "name": "TRANSACTION_INITIATION_INDICATOR",
+                "value": "MIT"
+            },
+            {
+                "name": "SCHEDULE_INDICATOR",
+                "value": "UNSCHEDULED"
+            }
+        ]
+    }
+}
+
+```
+
+**<ins> Sample Account verification Response**</ins>
+
+```json
+
+{
+    "type": "CREDIT",
+    "credit": {
+        "cardType": "VISA",
+        "alias": "1111",
+        "expiryDate": {
+            "month": "06",
+            "year": "19"
+        },
+        "billingAddress": {
+            "streetAddress": "AC01 Glenridge Con #2000",
+            "locality": "Atlanta",
+            "region": "GA",
+            "postalCode": "00000"
+        }
+    },
+    "hostExtraInfo": [
+        {
+            "name": "NETWORK_TRANSACTION_ID",
+            "value": "4352523523"
         }
     ]
 }
