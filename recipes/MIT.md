@@ -1,14 +1,12 @@
 # Merchant Initiated Transactions (MIT)
 
-Merchant initiated transactions (MIT) give the merchant the ability to run recurring payments and subscriptions to sell product or services on a scheduled or unscheduled basis. This model allows Merchants to receive payment on time and minimize the efforts for the customer. Merchant initiated transactions are similar to regular customer-initiated transactions, with small differences, which this guide will cover. To run a merchant-initiated transaction, a few indicators must added to the payload sent to uCom.
-
-These indicators will be used by the network to mitigate fraud, transaction id will be provided by uCom, in the initial transaction.
+Merchant initiated transactions (MIT) give merchants the ability to run recurring payments and subscriptions to sell product or services on a scheduled or unscheduled basis. This model allows Merchants to receive payment on time and minimize efforts for the customer. Merchant initiated transactions are similar to regular customer-initiated transactions, with small differences, which this guide will cover. To run a merchant-initiated transaction, a few indicators must added to the payload sent to uCom.
 
 ## initial Request 
 
-The Initial request is the very first request when uCom provides `NETWORK_TRANSACTION_ID` in its response. This request is supposed to be used only if merchant doesn't have the `NETWORK_TRANSACTION_ID` stored.
+The Initial request is the very first request where uCom provides the `NETWORK_TRANSACTION_ID` in its response. This request is supposed to be used only if merchant doesn't have the `NETWORK_TRANSACTION_ID` stored.
 
-The Initial transaction can be card verification, auth or sale transaction with STORED_CREDENTIAL_INDICATOR = INITIAL, SCHEDULE_INDICATOR = SCHEDULED and TRANSACTION_INITIATION_INDICATOR = MIT-RECURRING
+The Initial transaction can be card verification, auth or sale transaction with `STORED_CREDENTIAL_INDICATOR` = `INITIAL`, `SCHEDULE_INDICATOR` = `SCHEDULED` and `TRANSACTION_INITIATION_INDICATOR` = `MIT-RECURRING`. 
 
 Networks like VISA prefer the original NETWORK_TRANSACTION_ID for fraud detection purposes and may reject transactions if that is not submitted on all subsequent transactions.
 
@@ -116,7 +114,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/sales>
         "purchaseInfo": [
             {
                 "order": {
-                    "orderType": "pay-by-plate"
+                    "orderType": "coffee-subscription"
                 }
             }
         ]
@@ -241,7 +239,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/sales>
         "purchaseInfo": [
             {
                 "order": {
-                    "orderType": "pay-by-plate"
+                    "orderType": "coffee-subscription"
                 }
             }
         ]
@@ -390,7 +388,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
         "purchaseInfo": [
             {
                 "order": {
-                    "orderType": "pay-by-plate"
+                    "orderType": "coffee-subscription"
                 }
             }
         ]
@@ -521,7 +519,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
         "purchaseInfo": [
             {
                 "order": {
-                    "orderType": "pay-by-plate"
+                    "orderType": "coffee-subscription"
                 }
             }
         ]
@@ -613,6 +611,26 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
 
 
 ## Sample Account Verification Payload
+
+**<ins> Endpoint URL </ins>**
+
+HTTP Method: POST
+
+Non-prod: <https://int.api.firstdata.com/ucom/v1/accounts/verification>
+
+Prod: <https://prod.api.firstdata.com/ucom/v1/accounts/verification>
+
+**<ins> Parameters </ins>**
+
+| Name | Data Type | Parameter Type | Required | Value |
+| --- | --- | --- | --- | --- |
+| Type | string | path | yes | CREDIT |
+| nameOnCard | string | body | yes | NA |
+| cardNumber | string | body | yes | NA |
+| cardType | string | body | yes | VISA |
+| securityCode | string | body | yes | NA |
+| expiryDate | string | body | yes | NA |
+| billingAddress | string | body | yes | NA |
 
 **<ins> Sample Account verification Request**</ins>
 
