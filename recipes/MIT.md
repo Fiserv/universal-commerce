@@ -640,7 +640,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/accounts/verification>
     "account": {
         "type": "CREDIT",
         "credit": {
-            "nameOnCard": "John SmithU",
+            "nameOnCard": "John Smith",
             "cardNumber": "ENC_[encrypted cards..]",
             "cardType": "VISA",
             "securityCode": "ENC_[encrypted cvv..]",
