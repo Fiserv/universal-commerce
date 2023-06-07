@@ -38,7 +38,7 @@ Once the customer is are ready for checkout, customer has the option to choose e
 A. Vaulted account: User has the ability to select payment type from already saved payment methods.
 <ADD LINK TO VAULTED CARDS USE CASE once that page is created>
 <ADD How to retrieve what is vaulted - How to pull details from vaulted list>
-Go to the [Get Account Details](..//api/?type=get&path=/v1/customers/{fdCustomerId}/accounts/{fdAccountId}) and [Get List of Accounts](../api/?type=get&path=/v1/customers/{fdCustomerId}/accounts) APIs to explore these payment methods.
+Go to the [Get Account Details](../api/?type=get&path=/v1/customers/{fdCustomerId}/accounts/{fdAccountId}) and [Get List of Accounts](../api/?type=get&path=/v1/customers/{fdCustomerId}/accounts) APIs to explore these payment methods.
 
 B. One Time Payment processing: One Time Payment processing can be done by simply following the vaulting process Step 2a & 2b and use the nonce to do payment
 
@@ -46,7 +46,7 @@ C. Guest Checkout: Guest checkout is same process like One Time Payment processi
 
 <b> Perform a Sale </b>
 
-When you are ready to place an order you perform a [Sale](..//api/?type=post&path=/v1/payments/sales) operation. 
+When you are ready to place an order you perform a [Sale](../api/?type=post&path=/v1/payments/sales) operation. 
 
 <!--
 type: tab
