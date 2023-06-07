@@ -8,8 +8,10 @@ The codes are separated into sections based on what was being done in the softwa
 |Use Case|Response Code|Response Message|Http Status Code|
 |-------|-------------|----------------|----------------|
 |Common|269801|Blocked for suspicious activity.|400|
-|Common|269901|Server error occurred. Please try later.|500|
+|Common|269802|Its considered as parallel transaction and blocked.|400|
+|Common|269901|Unable to process your request please try again later if problem persist contact sys admin.|500|
 |Common|269902|Invalid request format/data.|400|
+|Common|269903|Time out while connecting to adapter|400|
 |Common|269904|Invalid Global transaction id. No data found for the given Global Transaction Id.|400|
 |Common|269905|Invalid Location Id. No data found for the given Location Id.|400|
 |Common|269906|This service is down at the moment, please try again later.|500|
@@ -30,6 +32,12 @@ The codes are separated into sections based on what was being done in the softwa
 |Common|274002|The consumer has already enrolled the maximum allowable number of payment instruments|400|
 |Common|274003|The Payment Instrument has already been enrolled by the maximum allowable number of consumers|400|
 |Common|274013|Duplicate enrollment request : Card already enrolled to the customer|400|
+|Common|272707|Store Id not configured|400|
+|Common|272791|Operation not supported|400|
+|Common|261001|QR code identifier is invalid / expired / used.|400|
+|Common|999901|Downstream system is not responding. Please try later|400|
+|Common|999902|Downstream system is unavailable. Please try later|400|
+|Common|999903|QDownstream system processing error. Please try later|400|
 
 ## Customer
 
@@ -71,6 +79,25 @@ The codes are separated into sections based on what was being done in the softwa
 |Gift Card Balance Merge|271201|Gift card balance merge failed.|500|
 |Gift Card Balance Merge|271202|Card validation failed : Incorrect card details provided.|400|
 |Gift Card Transaction History|271501|Card transaction history retrieval failed|500|
+|Gift Card Balance|290000|InsufficientFunds|400|
+|Prepaid|290001|Invalid request: Gift card details not found.|400|
+|Prepaid|290002|Transaction failed: Inactive Gift Card|400|
+|Prepaid|290003|Error: Gift Card Does Not Require Activation|400|
+|Prepaid|290004|Operation not permitted: Maximum allowable balance on the gift card cannot be exceeded. Please try again with a lower amount.|400|
+|Prepaid|290005|Invalid request: Please try again with a valid gift card amount.|400|
+|Prepaid|290006|Operation not permitted: Maximum number of gift card  transactions exceeded  please try again with a lower transaction count.|400|
+|Prepaid|290007|Operation not permitted. There are no more transactions to view|400|
+|Prepaid|290008|Operation not permitted: Transaction history requested is unavailable.|400|
+|Prepaid|290009|Operation not permitted for this gift card|400|
+|Prepaid|290010|Operation not permitted: gift card activation cannot be voided.|400|
+|Prepaid|290011|Operation not successful. Please check the PIN of the gift card provided and try again.|400|
+|Prepaid|290012|Operation not permitted: please review merchant setup for cross border transactions and try again|400|
+|Prepaid|290013|The gift card host is unable to return a PIN with your request|400|
+|Prepaid|290014|Invalid request: The merchant is not configured to return a PIN with your request|400|
+|Prepaid|290015|Invalid request: Transaction already voided|400|
+|Prepaid|290030|Transaction Processing Failure. There are no mapping accounts for given customer.|400|
+|Prepaid|290031|Balance Enquiry failed|400|
+|Prepaid|290033|Transaction denied. Duplicate transaction please try after some time|425|
 
 ## Sale
 
@@ -78,11 +105,12 @@ The codes are separated into sections based on what was being done in the softwa
 |-------|-------------|----------------|----------------|
 |Sale Transaction|272701|Sale transaction failed|400|
 |Sale Transaction|272706|Sale transaction not found|400|
-|Sale Void|272711| Sale transaction cancellation failed|400|
-|Sale Void|272712| Sale transaction cancellation already done|400|
-|Sale refund|272721| Sale refund transaction failed|400|
-|Sale refund|272722| Sale refund transaction already done|400|
-|Sale refund|272723| Refund transaction not found|400|
+|Sale Transaction using Paypal|272724|Sale declined due to insufficient funds|400|
+|Sale Void|272711|Sale transaction cancellation failed|400|
+|Sale Void|272712|Sale transaction cancellation already done|400|
+|Sale refund|272721|Sale refund transaction failed|400|
+|Sale refund|272722|Sale refund transaction already done|400|
+|Sale refund|272723|Refund transaction not found|400|
 
 ## Authorization
 
@@ -90,10 +118,10 @@ The codes are separated into sections based on what was being done in the softwa
 |-------|-------------|----------------|----------------|
 |Auth Transaction|272731|Auth transaction failed|400|
 |Auth Transaction|272736|Auth transaction not found|400|
-|Auth Void|272741| Auth transaction cancellation failed|400|
-|Auth Void|272742| Auth transaction cancellation already done|400|
-|Auth refund|272751| Auth refund transaction failed|400|
-|Auth refund|272752| Auth refund transaction already done|400|
+|Auth Void|272741|Auth transaction cancellation failed|400|
+|Auth Void|272742|Auth transaction cancellation already done|400|
+|Auth refund|272751|Auth refund transaction failed|400|
+|Auth refund|272752|Auth refund transaction already done|400|
 
 ## Capture
 
@@ -101,10 +129,24 @@ The codes are separated into sections based on what was being done in the softwa
 |-------|-------------|----------------|----------------|
 |Capture Transaction|272761|Capture transaction failed|400|
 |Capture Transaction|272766|Capture transaction not found|400|
-|Capture Void|272761| Capture transaction cancellation failed|400|
-|Capture Void|272762| Capture transaction cancellation already done|400|
-|Capture refund|272781| Capture refund transaction failed|400|
-|Capture refund|272782| Capture refund transaction already done|400|
+|Capture Void|272771|Capture transaction cancellation failed|400|
+|Capture Void|272772|Capture transaction cancellation already done|400|
+|Capture refund|272781|Capture refund transaction failed|400|
+|Capture refund|272782|Capture refund transaction already done|400|
+
+## Void
+
+|Use Case|Response Code|Response Message|Http Status Code|
+|-------|-------------|----------------|----------------|
+|Void|272727||Void transaction not found|400|
+
+## Refund
+
+|Use Case|Response Code|Response Message|Http Status Code|
+|-------|-------------|----------------|----------------|
+|Refund|290034|Refund transaction failed|400|
+|Refund Cancellation|272725|Refund transaction cancellation failed|400|
+|Refund Void|272726|Void refund transaction already done|400|
 
 ## Charges
 
@@ -149,12 +191,12 @@ The codes are separated into sections based on what was being done in the softwa
 
 |Use Case|Response Code|Response Message|Http Status Code|
 |-------|-------------|----------------|----------------|
-|provision|279912|Invalid request: Provision not found/valid|400|
-|provision|279914|The issuer could not continue with provision operation. Kindly contact the card issuer operations directly|400|
-|provision|279915|Authorization process could not be completed as there are no phone numbers available on file. Kindly contact the card issuer operations directly|400|
-|provision|279916|Issuer has declined the request to provision the card|400|
-|provision|279917|Provided information does not match records. Kindly enter the details again|400|
-|applybuy|279925|Invalid request: Requested application is invalid|400|
+|Provision|279912|Invalid request: Provision not found/valid|400|
+|Provision|279914|The issuer could not continue with provision operation. Kindly contact the card issuer operations directly|400|
+|Provision|279915|Authorization process could not be completed as there are no phone numbers available on file. Kindly contact the card issuer operations directly|400|
+|Provision|279916|Issuer has declined the request to provision the card|400|
+|Provision|279917|Provided information does not match records. Kindly enter the details again|400|
+|Apply buy|279925|Invalid request: Requested application is invalid|400|
 
 ## Value Add Services
 
@@ -187,3 +229,11 @@ The codes are separated into sections based on what was being done in the softwa
 |Order Services |310003| Missing Field Error|400|
 |Order Services |310004| Expected resource is not available. Resource not found|400|
 |Order Services |310005| Delivery quotes not found|400|
+
+## 3DS Integration
+
+|Use Case|Response Code|Response Message|Http Status Code|
+|-------|-------------|----------------|----------------|
+|3DS |269701|ThreeDSecure authentication declined.|400|
+|3DS |269702|Failed to complete ThreeDSecure authentication.|400|
+|3DS |269703|Merchant Acquired Bin party configuration does not found||400|
