@@ -130,5 +130,6 @@ In the Auto or Online Shopping domain the concept of Auth & Capture is a common 
  <!-- What are the actions the client is trying to do?  What are the steps to take to implement. If the client is adding to an additional implementation where do they need to add?    -->
 
 ## Success and Error Codes
+<a href = "https://developer.fiserv.com/product/ConnectedCommerce/docs/?path=docs/documentation/API_Response_Codes.md&branch=main"> Connected Commerce uCOM Error Code link </a>
 [Connected Commerce uCOM Error Code Link] (https://developer.fiserv.com/product/ConnectedCommerce/docs/?path=docs/documentation/API_Response_Codes.md&branch=main)
  <!-- Develop master list for successes as well depending on payment type. We should already have this and would be easy to partner   -->
