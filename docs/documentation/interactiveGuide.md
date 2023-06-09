@@ -94,8 +94,9 @@ In the Auto or Online Shopping domain the concept of Auth & Capture is a common 
 <!-- Client Name Details -->
 
 ## Change Log Table
-|----!|-----!|---------!|-----!|
+
 |Version|Date|Updated by| Notes| 
+|:------|:-----:|:---------:|-----:|
 |1.0| 8/30/2017| Mohl| Base Implementation Completed. All features that allow client to make payment | 
 <!-- Line item on Base implementation (this includes all that is in the standard implementation guide. It should have a line item when that was completed. Anything else should be additional features/functionality. -->
 
