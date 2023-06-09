@@ -86,3 +86,48 @@ type: tab
 -->
 In the Auto or Online Shopping domain the concept of Auth & Capture is a common e-commerce flow, Where merchant needs to perform an Auth when placing and order and perform a Capture when the order is processed or delivered. Connected Commerce [uCom] provides features.
 <!-- type: tab-end -->
+
+
+
+
+# Headline Section
+<!-- Client Name Details -->
+
+## Change Log Table
+|----!|-----!|---------!|-----!|
+|Version|Date|Updated by| Notes| 
+|1.0| 8/30/2017| Mohl| Base Implementation Completed. All features that allow client to make payment | 
+<!-- Line item on Base implementation (this includes all that is in the standard implementation guide. It should have a line item when that was completed. Anything else should be additional features/functionality. -->
+
+## Features enabled currently 
+<!--Inventory view of everything the client has. This can or cannot be in a table  -->
+
+## Features enabled in this guide
+<!-- What does this guide cover?  -->
+
+## Links
+<!-- This is where you put links for the client. We will want to make sure they all work. -->
+
+## Additional Snippets 
+<!-- What are the actions the client is trying to do?  What are the steps to take to implement. If the client is adding to an additional implementation where do they need to add?    -->
+
+## Steps to implement feature in this guide 
+<!-- Any feature implementation requires steps for the client. What are those steps?  -->
+<!-- This is where we want to inventory this, validate and keep as a master -->
+
+### Endpoints 
+<!-- Endpoints required to implement -->
+
+### Step 1  
+#### Snippets 
+<!-- What are the actions the client is trying to do?  What are the steps to take to implement. If the client is adding to an additional implementation where do they need to add?    -->
+### Step 2  
+#### Snippets 
+<!-- What are the actions the client is trying to do?  What are the steps to take to implement. If the client is adding to an additional implementation where do they need to add?    -->
+### Step 3
+#### Snippets
+ <!-- What are the actions the client is trying to do?  What are the steps to take to implement. If the client is adding to an additional implementation where do they need to add?    -->
+
+## Success and Error Codes
+[Connected Commerce uCOM Error Code Link] (https://developer.fiserv.com/product/ConnectedCommerce/docs/?path=docs/documentation/API_Response_Codes.md&branch=main)
+ <!-- Develop master list for successes as well depending on payment type. We should already have this and would be easy to partner   -->
