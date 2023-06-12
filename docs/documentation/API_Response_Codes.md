@@ -148,7 +148,7 @@ The codes are separated into sections based on what was being done in the softwa
 
 |Use Case|Response Code|Response Message|Http Status Code|
 |-------|-------------|----------------|----------------|
-|Void|272727||Void transaction not found|400|
+|Void|272727|Void transaction not found|400|
 
 ## Refund
 
@@ -246,4 +246,4 @@ The codes are separated into sections based on what was being done in the softwa
 |-------|-------------|----------------|----------------|
 |3DS |269701|ThreeDSecure authentication declined.|400|
 |3DS |269702|Failed to complete ThreeDSecure authentication.|400|
-|3DS |269703|Merchant Acquired Bin party configuration does not found||400|
+|3DS |269703|Merchant Acquired Bin party configuration does not found|400|
