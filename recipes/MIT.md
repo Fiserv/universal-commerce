@@ -2,7 +2,7 @@
 
 Merchant initiated transactions (MIT) give merchants the ability to run recurring payments and subscriptions to sell product or services on a scheduled or unscheduled basis. This model allows Merchants to receive payment on time and minimize efforts for the customer. Merchant initiated transactions are similar to regular customer-initiated transactions, with small differences, which this guide will cover. To run a merchant-initiated transaction, a few indicators must added to the payload sent to uCom.
 
-## initial Request 
+## Initial Request 
 
 The Initial request is the very first request where uCom provides the `NETWORK_TRANSACTION_ID` in its response. This request is supposed to be used only if merchant doesn't have the `NETWORK_TRANSACTION_ID` stored.
 
