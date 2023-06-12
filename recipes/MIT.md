@@ -703,3 +703,5 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/accounts/verification>
 }
 
 ```
+
+> Please note that the `NETWORK_TRANSACTION_ID` obtained from the card verification response could be used for subsequent payment transactions. 
