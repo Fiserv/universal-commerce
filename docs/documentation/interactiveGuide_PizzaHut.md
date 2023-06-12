@@ -98,14 +98,18 @@ This interactive guide is specifically tailored for <b>Pizza Hut</b>
 
 |Version|Date|Updated by| Notes| 
 |:------|:-----:|:-----:|------|
-|1.0| 03/08/2021| Ebram| Base Implementation Completed. All features that allow client to make payment | 
-|1.1| 03/14/2023| Ebram| Enabled Tokenization & Apple Pay payments | 
+|1.0| 03/08/2021| Ebram| Base Implementation Completed. All features that allow client to make payment |
+|1.1| 03/14/2023| Ebram| Enabled Tokenization & Apple Pay payments |
 
 ## Features enabled currently 
 <!--Inventory view of everything the client has. This can or cannot be in a table  -->
 
 ## Features enabled in this guide
-<!-- What does this guide cover?  -->
+
+This version 1.1 covers the following features enabled for the <b>Pizza Hut</b>
+
+    - Account Tokenization
+    - Apple Pay payments
 
 ## Links
 <!-- This is where you put links for the client. We will want to make sure they all work. -->
