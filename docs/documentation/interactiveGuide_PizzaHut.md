@@ -107,6 +107,7 @@ This interactive guide is specifically tailored for <b>Pizza Hut</b>
     - Store Customer & Account with TA Token support
     - Hosted Pages to get TA Token
     - Account Verification 
+    - Payments using nonce & vaulted accounts
 
 ## Features enabled in this guide
 
