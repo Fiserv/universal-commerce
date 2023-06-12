@@ -4,7 +4,7 @@ Merchant initiated transactions (MIT) give merchants the ability to run recurrin
 
 ## Initial Request 
 
-The Initial request is the very first request where uCom provides the `NETWORK_TRANSACTION_ID` in its response. This request is supposed to be used only if merchant doesn't have the `NETWORK_TRANSACTION_ID` stored.
+The initial request is the very first request where uCom provides the `NETWORK_TRANSACTION_ID` in its response. This request is supposed to be used only if merchant doesn't have the `NETWORK_TRANSACTION_ID` stored.
 
 The Initial transaction can be card verification, auth or sale transaction with `STORED_CREDENTIAL_INDICATOR` = `INITIAL`, `SCHEDULE_INDICATOR` = `SCHEDULED` and `TRANSACTION_INITIATION_INDICATOR` = `MIT-RECURRING`. 
 
