@@ -1,4 +1,5 @@
 # Merchant Initiated Transactions (MIT)
+<img title="icon" alt="hosted pages icon" src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/Picture26.png" width="40" height="30"> 
 
 Merchant initiated transactions (MIT) give merchants the ability to run recurring payments and subscriptions to sell product or services on a scheduled or unscheduled basis. This model allows Merchants to receive payment on time and minimize efforts for the customer. Merchant initiated transactions are similar to regular customer-initiated transactions, with small differences, which this guide will cover. To run a merchant-initiated transaction, a few indicators must be added to the Sale or Auth payloads sent to uCom.
 
