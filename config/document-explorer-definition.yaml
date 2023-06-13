@@ -66,6 +66,8 @@
       link: recipes/fraud_detect.md
     - title: How to Integrate Hosted Pages
       link: recipes/HostedPages.md
+    - title: How to Make Merchant Initiated Transactions
+      link: recipes/MIT.md
       
 
 
