@@ -107,6 +107,7 @@ This interactive guide is specifically tailored for <b>Circle K</b>
 
 <b>CircleK</b> is currently enabled with the below features
 
+|Feature Existing|
 |:-----:|
 | - Store Customer & Account - Hosted pages - Payment Processing through Buypass Host|
 | - Added purchaseInfo to auth & capture payloads - Circle K to send the additional param 'use case Indicator' in uCom auth and completion Requests|
@@ -116,6 +117,7 @@ This interactive guide is specifically tailored for <b>Circle K</b>
 
 This version 1.2 covers the following features enabled for the <b>Circle K</b>
 
+|Feature Enabled|
 |:-----:|
 | Enable Merchant Initiated Transactions (MIT) for Circle K
     Normal Flow - New Customer
@@ -156,6 +158,6 @@ This version 1.2 covers the following features enabled for the <b>Circle K</b>
 
 ## Success and Error Codes
 
-<a href = "https://developer.fiserv.com/product/ConnectedCommerce/docs/?path=docs/documentation/API_Response_Codes.md&branch=main"> Connected Commerce Error Code link </a>
+<a href = "https://developer.fiserv.com/product/ConnectedCommerce/docs/?path=docs/documentation/API_Response_Codes.md&branch=main"> Connected Commerce Error Code List </a>
 
  <!-- Develop master list for successes as well depending on payment type. We should already have this and would be easy to partner   -->
