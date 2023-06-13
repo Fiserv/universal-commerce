@@ -100,12 +100,13 @@ This interactive guide is specifically tailored for <b>Circle K</b>
 |:------|:-----:|:-----:|------|
 |1.0| 12/16/2021| Ebram| Base Implementation. |
 |1.1| 09/12/2022| Ebram| Added purchaseInfo to auth payloads |
-|1.3| 04/26/2023| Ebram| Enabled feature: Merchant Initiated Transactions |
+|1.2| 04/26/2023| Ebram| Enabled feature: Merchant Initiated Transactions |
 
 ## Features enabled currently
 <!--Inventory view of everything the client has. This can or cannot be in a table  -->
 
-|Features|
+<b>CircleK</b> is currently enabled with the below features
+
 |:-----:|
 | - Store Customer & Account - Hosted pages - Payment Processing through Buypass Host|
 | - Added purchaseInfo to auth & capture payloads - Circle K to send the additional param 'use case Indicator' in uCom auth and completion Requests|
@@ -113,12 +114,22 @@ This interactive guide is specifically tailored for <b>Circle K</b>
 ## Features enabled in this guide
 <!-- What does this guide cover?  -->
 
-This version 1.1 covers the following features enabled for the <b>Circle K</b>
+This version 1.2 covers the following features enabled for the <b>Circle K</b>
 
-    - Apple Pay payments
+|:-----:|
+| Enable Merchant Initiated Transactions (MIT) for Circle K
+    Normal Flow - New Customer
+        Step #1 (Initial) done by the customer
+        Step #2 (Subsequent) done by the merchant and ensure network transactionId sent to BuyPass, etc.
+    Alternate Flow - Existing Customer
+        Step #2 directly (Subsequent) without step #1 on a newly vaulted account
+        Step #2 again (Subsequent) and ensure the network transactionId sent to BuyPass. |
+
 
 ## Links
 <!-- This is where you put links for the client. We will want to make sure they all work. -->
+
+[What is MIT?](../docs/?path=recipes/MIT.md)
 
 ## Additional Snippets
 <!-- What are the actions the client is trying to do?  What are the steps to take to implement. If the client is adding to an additional implementation where do they need to add?    -->
