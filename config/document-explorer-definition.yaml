@@ -58,7 +58,7 @@
       link: recipes/Paypal_Venmo_guide.md
     - title: How to Make a split Payment
       link: recipes/Split_Tender_Payment.md
-    - title: How to Make a InApp Payments
+    - title: How to Make an InApp Payment
       link: recipes/InApp_Payments.md
     - title: How to Issue a Refund
       link: recipes/refunds.md
@@ -66,6 +66,8 @@
       link: recipes/fraud_detect.md
     - title: How to Integrate Hosted Pages
       link: recipes/HostedPages.md
+    - title: How to Make Merchant Initiated Transactions
+      link: recipes/MIT.md
       
 
 

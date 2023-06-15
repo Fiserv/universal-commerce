@@ -16,6 +16,7 @@ Determine whether a customer wants to vault an account into Connected Commerce (
 >If customer wants to use Guest Checkout, then it is not necessary to register customer profile. Although once customer profile is created for a specific customer, that customer can still opt to make an Anonymous Payment, where vaulting is not required.
 
 ### Set up payment account
+
 Registering an account consists of several steps listed here below. These steps are required for a merchant to send card details to Connected Commerce (uCom).
 
 Step 2a: [Create Security Access Token](../api/?type=post&path=/v1/tokens) This is the first step to transfer PCI data (public key and token Id) from client to Connected Commerce (uCom).  
@@ -46,7 +47,7 @@ C. Guest Checkout: Guest checkout is same process like One Time Payment processi
 
 <b> Perform a Sale </b>
 
-When you are ready to place an order you perform a [Sale](../api/?type=post&path=/v1/payments/sales) operation. 
+When you are ready to place an order you perform a [Sale](../api/?type=post&path=/v1/payments/sales) operation.
 
 <!--
 type: tab
@@ -87,49 +88,76 @@ type: tab
 In the Auto or Online Shopping domain the concept of Auth & Capture is a common e-commerce flow, Where merchant needs to perform an Auth when placing and order and perform a Capture when the order is processed or delivered. Connected Commerce [uCom] provides features.
 <!-- type: tab-end -->
 
-
-
-
-# Headline Section
+## Partner Specific Features Section
 <!-- Client Name Details -->
 
-## Change Log Table
+This interactive guide is specifically tailored for <b>Circle K</b>
 
-|Version|Date|Updated by| Notes| 
-|:------|:-----:|:-----:|------|
-|1.0| 8/30/2017| Mohl| Base Implementation Completed. All features that allow client to make payment | 
+## Change Log Table
 <!-- Line item on Base implementation (this includes all that is in the standard implementation guide. It should have a line item when that was completed. Anything else should be additional features/functionality. -->
 
-## Features enabled currently 
+|Version|Date|Updated by| Notes|
+|:------|:-----:|:-----:|------|
+|1.0| 12/16/2021| Ebram| Base Implementation. |
+|1.1| 09/12/2022| Ebram| Added purchaseInfo to auth payloads |
+|1.2| 04/26/2023| Ebram| Enabled feature: Merchant Initiated Transactions |
+
+## Features enabled currently
 <!--Inventory view of everything the client has. This can or cannot be in a table  -->
+
+<b>CircleK</b> is currently enabled with the below features
+
+|Feature Existing|
+|:-----:|
+| - Store Customer & Account - Hosted pages - Payment Processing through Buypass Host|
+| - Added purchaseInfo to auth & capture payloads - Circle K to send the additional param 'use case Indicator' in uCom auth and completion Requests|
 
 ## Features enabled in this guide
 <!-- What does this guide cover?  -->
 
+This version 1.2 covers the following features enabled for the <b>Circle K</b>
+
+|Feature Enabled|
+|:-----:|
+| Enable Merchant Initiated Transactions (MIT) for Circle K
+    Normal Flow - New Customer
+        Step #1 (Initial) done by the customer
+        Step #2 (Subsequent) done by the merchant and ensure network transactionId sent to BuyPass, etc.
+    Alternate Flow - Existing Customer
+        Step #2 directly (Subsequent) without step #1 on a newly vaulted account
+        Step #2 again (Subsequent) and ensure the network transactionId sent to BuyPass. |
+
+
 ## Links
 <!-- This is where you put links for the client. We will want to make sure they all work. -->
 
-## Additional Snippets 
+[What is MIT?](../docs/?path=recipes/MIT.md)
+
+## Additional Snippets
 <!-- What are the actions the client is trying to do?  What are the steps to take to implement. If the client is adding to an additional implementation where do they need to add?    -->
 
-## Steps to implement feature in this guide 
+## Steps to implement feature in this guide
 <!-- Any feature implementation requires steps for the client. What are those steps?  -->
 <!-- This is where we want to inventory this, validate and keep as a master -->
 
-### Endpoints 
+### Endpoints
 <!-- Endpoints required to implement -->
 
 ### Step 1  
-#### Snippets 
+
+#### Snippets
 <!-- What are the actions the client is trying to do?  What are the steps to take to implement. If the client is adding to an additional implementation where do they need to add?    -->
 ### Step 2  
-#### Snippets 
+
+#### Snippets
 <!-- What are the actions the client is trying to do?  What are the steps to take to implement. If the client is adding to an additional implementation where do they need to add?    -->
 ### Step 3
+
 #### Snippets
  <!-- What are the actions the client is trying to do?  What are the steps to take to implement. If the client is adding to an additional implementation where do they need to add?    -->
 
 ## Success and Error Codes
-<a href = "https://developer.fiserv.com/product/ConnectedCommerce/docs/?path=docs/documentation/API_Response_Codes.md&branch=main"> Connected Commerce uCOM Error Code link </a>
+
+<a href = "https://developer.fiserv.com/product/ConnectedCommerce/docs/?path=docs/documentation/API_Response_Codes.md&branch=main"> Connected Commerce Error Code List </a>
 
  <!-- Develop master list for successes as well depending on payment type. We should already have this and would be easy to partner   -->

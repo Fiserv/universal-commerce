@@ -16,6 +16,7 @@ Determine whether a customer wants to vault an account into Connected Commerce (
 >If customer wants to use Guest Checkout, then it is not necessary to register customer profile. Although once customer profile is created for a specific customer, that customer can still opt to make an Anonymous Payment, where vaulting is not required.
 
 ### Set up payment account
+
 Registering an account consists of several steps listed here below. These steps are required for a merchant to send card details to Connected Commerce (uCom).
 
 Step 2a: [Create Security Access Token](../api/?type=post&path=/v1/tokens) This is the first step to transfer PCI data (public key and token Id) from client to Connected Commerce (uCom).  
@@ -46,7 +47,7 @@ C. Guest Checkout: Guest checkout is same process like One Time Payment processi
 
 <b> Perform a Sale </b>
 
-When you are ready to place an order you perform a [Sale](../api/?type=post&path=/v1/payments/sales) operation. 
+When you are ready to place an order you perform a [Sale](../api/?type=post&path=/v1/payments/sales) operation.
 
 <!--
 type: tab
@@ -87,49 +88,66 @@ type: tab
 In the Auto or Online Shopping domain the concept of Auth & Capture is a common e-commerce flow, Where merchant needs to perform an Auth when placing and order and perform a Capture when the order is processed or delivered. Connected Commerce [uCom] provides features.
 <!-- type: tab-end -->
 
-
-
-
-# Headline Section
+## Partner Specific Features Section
 <!-- Client Name Details -->
 
-## Change Log Table
+This interactive guide is specifically tailored for <b>Dunkin</b>
 
-|Version|Date|Updated by| Notes| 
-|:------|:-----:|:-----:|------|
-|1.0| 8/30/2017| Mohl| Base Implementation Completed. All features that allow client to make payment | 
+## Change Log Table
 <!-- Line item on Base implementation (this includes all that is in the standard implementation guide. It should have a line item when that was completed. Anything else should be additional features/functionality. -->
 
-## Features enabled currently 
+|Version|Date|Updated by| Notes|
+|:------|:-----:|:-----:|------|
+|1.0| 03/08/2021| Ebram| Base Implementation. |
+|1.1| 03/14/2023| Ebram| Enabled Tokenization & Apple Pay payments |
+
+## Features enabled currently
 <!--Inventory view of everything the client has. This can or cannot be in a table  -->
+
+<b>Dunkin</b> is currently enabled with the below features
+
+    - Store Customer & Account with TA Token support
+    - Hosted Pages to get TA Token
+    - Account Verification 
+    - Payments using nonce & vaulted accounts
 
 ## Features enabled in this guide
 <!-- What does this guide cover?  -->
 
+This version 1.1 covers the following features enabled for the <b>Pizza Hut</b>
+
+    - Apple Pay payments
+
 ## Links
 <!-- This is where you put links for the client. We will want to make sure they all work. -->
 
-## Additional Snippets 
+[What is Apple Pay?](../docs/?path=recipes/InApp_Payments.md&branch=develop)
+
+## Additional Snippets
 <!-- What are the actions the client is trying to do?  What are the steps to take to implement. If the client is adding to an additional implementation where do they need to add?    -->
 
-## Steps to implement feature in this guide 
+## Steps to implement feature in this guide
 <!-- Any feature implementation requires steps for the client. What are those steps?  -->
 <!-- This is where we want to inventory this, validate and keep as a master -->
 
-### Endpoints 
+### Endpoints
 <!-- Endpoints required to implement -->
 
 ### Step 1  
-#### Snippets 
+
+#### Snippets
 <!-- What are the actions the client is trying to do?  What are the steps to take to implement. If the client is adding to an additional implementation where do they need to add?    -->
 ### Step 2  
-#### Snippets 
+
+#### Snippets
 <!-- What are the actions the client is trying to do?  What are the steps to take to implement. If the client is adding to an additional implementation where do they need to add?    -->
 ### Step 3
+
 #### Snippets
  <!-- What are the actions the client is trying to do?  What are the steps to take to implement. If the client is adding to an additional implementation where do they need to add?    -->
 
 ## Success and Error Codes
+
 <a href = "https://developer.fiserv.com/product/ConnectedCommerce/docs/?path=docs/documentation/API_Response_Codes.md&branch=main"> Connected Commerce uCOM Error Code link </a>
 
  <!-- Develop master list for successes as well depending on payment type. We should already have this and would be easy to partner   -->

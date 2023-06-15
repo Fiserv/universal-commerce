@@ -40,7 +40,7 @@ description:
 link: ../recipes/?path=recipes/refunds.md
 -->
 <!-- type: card
-title: <div style="text-align:center;width:100%;height:25%"><img src="https://github.com/Fiserv/universal-commerce/blob/develop/assets/images/Picture19.png?raw=true" alt="Inapp Payment" title="Inapp Payment" style="width:auto; height:60px"></div><h3 style="text-align:center">How to Make a InApp Payment</h3>
+title: <div style="text-align:center;width:100%;height:25%"><img src="https://github.com/Fiserv/universal-commerce/blob/develop/assets/images/Picture19.png?raw=true" alt="Inapp Payment" title="Inapp Payment" style="width:auto; height:60px"></div><h3 style="text-align:center">How to Make an InApp Payment</h3>
 description: 
 link: ../recipes/?path=recipes/InApp_Payments.md
 -->
@@ -61,12 +61,12 @@ link: ../recipes/?path=recipes/HostedPages.md
 -->
 
 <!-- type: card
-
+title: <div style="text-align:center;width:100%;height:25%"><img src="https://github.com/Fiserv/universal-commerce/blob/develop/assets/images/Picture26.png?raw=true" alt="MIT" title="MIT" style="width:auto; height:60px"></div> <h3 style="text-align:center">How to Make Merchant Initiated Transactions</h3>
+description: 
+link: ../recipes/?path=recipes/MIT.md
 -->
 
 <!-- type: card
 
 -->
 <!-- type: row-end -->
-
-
