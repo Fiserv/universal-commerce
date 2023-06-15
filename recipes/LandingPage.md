@@ -68,8 +68,6 @@ link: ../recipes/?path=recipes/MIT.md
 
 <!-- type: card
 
-<!-- type: card
-
 -->
 <!-- type: row-end -->
 
