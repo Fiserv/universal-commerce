@@ -70,5 +70,3 @@ link: ../recipes/?path=recipes/MIT.md
 
 -->
 <!-- type: row-end -->
-
-
