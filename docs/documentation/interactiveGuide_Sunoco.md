@@ -132,15 +132,37 @@ This version 1.3 covers the following features enabled for the <b>Pizza Hut</b>
 <!-- Endpoints required to implement -->
 There is NO separate endpoint required to implement as part of Loyalty. the feature is utilized as part of Auth, Capture & Sale transactions
 
-### Step 3
+### Site Response Section
 
 #### Snippets
  <!-- What are the actions the client is trying to do?  What are the steps to take to implement. If the client is adding to an additional implementation where do they need to add?    -->
+```json
+            "loyaltyTransactions": [
+                {
+                    "storeId": "770001",
+                    "transactionDateTime": "2021-10-07T20:53:05Z",
+                    "referenceNumber": "e898841c5585460880eefb218dfe2abb",
+                    "fundingSource": {
+                        "loyalty": {
+                            "loyaltyProgram": {
+                                "programId": "goRewards",
+                                "programName": "goRewards"
+                            },
+                            "metadata": [],
+                            "issuerExtraInfo": []
+                        }
+                    },
+                    "unitsValue": 0,
+                    "status": "AUTHORIZED"
+                }
+            ]
+```
 
 ### Outdoor with Loyalty  
 
 #### Snippets
 <!-- What are the actions the client is trying to do?  What are the steps to take to implement. If the client is adding to an additional implementation where do they need to add?    -->
+```json
 {
   "fdCustomerId": "c7aa255c30f54d12ae2d48d0e68591fe",
   "transaction": {
@@ -178,10 +200,13 @@ There is NO separate endpoint required to implement as part of Loyalty. the feat
     "activateVirtualCard": false
   }
 }
+```
+
 ### Indoor with Loyalty 
 
 #### Snippets
 <!-- What are the actions the client is trying to do?  What are the steps to take to implement. If the client is adding to an additional implementation where do they need to add?    -->
+```json
 {
   "fdCustomerId": "c7aa255c30f54d12ae2d48d0e68591fe",
   "stac": {
@@ -220,7 +245,7 @@ There is NO separate endpoint required to implement as part of Loyalty. the feat
     ]
   }
 }
-
+```
 ## Success and Error Codes
 
 <a href = "https://developer.fiserv.com/product/ConnectedCommerce/docs/?path=docs/documentation/API_Response_Codes.md&branch=main"> Connected Commerce uCOM Error Code link </a>
