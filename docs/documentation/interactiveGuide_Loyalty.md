@@ -90,7 +90,7 @@ In the Auto or Online Shopping domain the concept of Auth & Capture is a common 
 
 # Headline Section
 
-This interactive guide is specifically tailored for <b>Sunoco</b>
+This interactive guide is specifically tailored for <b>Loyalty</b>
 
 ## Change Log Table
 
@@ -103,7 +103,7 @@ This interactive guide is specifically tailored for <b>Sunoco</b>
 ## Features enabled currently
 <!--Inventory view of everything the client has. This can or cannot be in a table  -->
 
-<b>Sunoco</b> is currently enabled with the below features
+<b>Loyalty</b> is currently enabled with the below features
 
     - Store Customer & Account with TA Token support
     - Hosted Pages to get TA Token
@@ -112,7 +112,7 @@ This interactive guide is specifically tailored for <b>Sunoco</b>
 
 ## Features enabled in this guide
 
-This version 1.3 covers the following features enabled for the <b>Pizza Hut</b>
+This version 1.3 covers the following features enabled for the <b>Loyalty</b>
 
     - Loyalty Changes
 
@@ -189,8 +189,8 @@ There is NO separate endpoint required to implement as part of Loyalty. the feat
                     "loyalty": {
                         "cardNumber": "634004024038439320",
                         "loyaltyProgram": {
-                            "programId": "SUNOCO_PROGRAM",
-                            "programName": "SUNOCO_PROGRAM"
+                            "programId": "PROGRAM",
+                            "programName": "PROGRAM"
                         }
                     }
                 }
@@ -223,8 +223,8 @@ There is NO separate endpoint required to implement as part of Loyalty. the feat
                     "loyalty": {
                         "cardNumber": "634004024038439320",
                         "loyaltyProgram": {
-                            "programId": "SUNOCO_PROGRAM",
-                            "programName": "SUNOCO_PROGRAM"
+                            "programId": "PROGRAM",
+                            "programName": "PROGRAM"
                         }
                     }
                 }
