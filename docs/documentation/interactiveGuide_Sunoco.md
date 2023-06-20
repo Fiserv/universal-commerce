@@ -164,41 +164,41 @@ There is NO separate endpoint required to implement as part of Loyalty. the feat
 <!-- What are the actions the client is trying to do?  What are the steps to take to implement. If the client is adding to an additional implementation where do they need to add?    -->
 ```json
 {
-  "fdCustomerId": "c7aa255c30f54d12ae2d48d0e68591fe",
-  "transaction": {
-    "siteInfo": {
-      "siteLocationId": "660006",
-      "fuelPurchaseInfo": {
-        "pumpNumber": 1
-      }
-    },
-    "payments": [
-      {
-        "requestedAuthAmount": "30",
-        "fundingSource": {
-          "account": {
-            "fdAccountId": "8a34147c75ac43f70175b30c657419d9"
-          }
-        }
-      }
-    ],
-    "loyaltyTransactions": [
-      {
-        "fundingSource": {
-          "type":"LOYALTY",
-          "loyalty": {
-            "cardNumber": "634004024038439320",
-            "loyaltyProgram":{
-                "programId":"SUNOCO_PROGRAM",
-                "programName":"SUNOCO_PROGRAM"
-            }
-          }
-        }
-      }
-    ],
-    "printReceipt": true,
-    "activateVirtualCard": false
-  }
+    "fdCustomerId": "c7aa255c30f54d12ae2d48d0e68591fe",
+    "transaction": {
+        "siteInfo": {
+            "siteLocationId": "660006",
+            "fuelPurchaseInfo": {
+                "pumpNumber": 1
+            }
+        },
+        "payments": [
+            {
+                "requestedAuthAmount": "30",
+                "fundingSource": {
+                    "account": {
+                        "fdAccountId": "8a34147c75ac43f70175b30c657419d9"
+                    }
+                }
+            }
+        ],
+        "loyaltyTransactions": [
+            {
+                "fundingSource": {
+                    "type": "LOYALTY",
+                    "loyalty": {
+                        "cardNumber": "634004024038439320",
+                        "loyaltyProgram": {
+                            "programId": "SUNOCO_PROGRAM",
+                            "programName": "SUNOCO_PROGRAM"
+                        }
+                    }
+                }
+            }
+        ],
+        "printReceipt": true,
+        "activateVirtualCard": false
+    }
 }
 ```
 
@@ -208,42 +208,42 @@ There is NO separate endpoint required to implement as part of Loyalty. the feat
 <!-- What are the actions the client is trying to do?  What are the steps to take to implement. If the client is adding to an additional implementation where do they need to add?    -->
 ```json
 {
-  "fdCustomerId": "c7aa255c30f54d12ae2d48d0e68591fe",
-  "stac": {
-    "fundingSource": {
-      "type": "VAULTED_ACCOUNT",
-      "vaultedAccount": {
-        "fdAccountId": "8a34147c75ac43f70175b30c657419d9"
-      }
-    },
-    "loyaltyTransactions": [
-      {
-        "fundingSource": {
-          "type":"LOYALTY",
-          "loyalty": {
-            "cardNumber": "634004024038439320",
-            "loyaltyProgram":{
-                "programId":"SUNOCO_PROGRAM",
-                "programName":"SUNOCO_PROGRAM"
-               }
-          }
-        }
-      }
-    ],
-    "printReceipt": true
-  },
-  "deviceInfo": {
-    "id": "537edec8-d33e-4ee8-93a7-b9f61876950c",
-    "kind": "mobile",
-    "details": [
-      {
-        "provider": "RAVELIN",
-        "dataCapture": {
-          "dataEventId": "537edec8-d33e-4ee8-93a7-b9f61876950c"
-        }
-      }
-    ]
-  }
+    "fdCustomerId": "c7aa255c30f54d12ae2d48d0e68591fe",
+    "stac": {
+        "fundingSource": {
+            "type": "VAULTED_ACCOUNT",
+            "vaultedAccount": {
+                "fdAccountId": "8a34147c75ac43f70175b30c657419d9"
+            }
+        },
+        "loyaltyTransactions": [
+            {
+                "fundingSource": {
+                    "type": "LOYALTY",
+                    "loyalty": {
+                        "cardNumber": "634004024038439320",
+                        "loyaltyProgram": {
+                            "programId": "SUNOCO_PROGRAM",
+                            "programName": "SUNOCO_PROGRAM"
+                        }
+                    }
+                }
+            }
+        ],
+        "printReceipt": true
+    },
+    "deviceInfo": {
+        "id": "537edec8-d33e-4ee8-93a7-b9f61876950c",
+        "kind": "mobile",
+        "details": [
+            {
+                "provider": "RAVELIN",
+                "dataCapture": {
+                    "dataEventId": "537edec8-d33e-4ee8-93a7-b9f61876950c"
+                }
+            }
+        ]
+    }
 }
 ```
 ## Success and Error Codes
