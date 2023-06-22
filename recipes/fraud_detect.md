@@ -47,7 +47,7 @@ Transaction Information </br>
 -->
 <!-- type: row-end -->
 
-## How to Integrate Fraud Mitigation in uCom?
+## How to Integrate Fraud Mitigation in uCom
 
 <details>
 <summary> Customer Registration </summary>
