@@ -3,21 +3,21 @@
 
 Hosted payment pages is a Fiserv offering for secure card collection via webview or iFrame in order to avoid PCI Compliance exposure. We have a native API (client to server), server to server, and Cross Origin Resource (CORS) APIs to provide our clients a variety of integration options.
 
-The goal of this guide is to describe how to implement and use Hosted Pages. It is not intended to describe all the interactions between App, Mobile Application Server, and uCom Server. 
+The goal of this guide is to describe how to implement and use Hosted Pages. It is not intended to describe all the interactions between App, Mobile Application Server, and Connected Commerce (uCom) Server.
 
 ## Components  
 
-Hosted Pages has 4 main Components, the Mobile Application, the Mobile Application Server, Hosted Page and the uCom Sever/API.  
+Hosted Pages has 4 main Components, the Mobile Application, the Mobile Application Server, Hosted Page and the Connected Commerce (uCom) Sever/API.  
 
 <center><img src="https://github.com/Fiserv/universal-commerce/blob/develop/assets/images/HostedPages%20(1).png?raw=true" alt="HP Diagram" class="center"></center>
 
 1. **Mobile Application (App)** - This could be a native mobile application running on IOS or Android devices. This could also be a web application running on a browser. 
 
-2. **Mobile Application Server (MAS)** - This is a server which is a communication bridge between the App and uCom. It also stores uCom developer account information like app id, app secret, and encryption key securely.
+2. **Mobile Application Server (MAS)** - This is a server which is a communication bridge between the App and Connected Commerce (uCom). It also stores the Connected Commerce (uCom) developer account information like app id, app secret, and encryption key securely.
 
-3. **Hosted Page (HP)** - This is a web page rendered on native webview or browser which will display the UI to let user enter their account information like Credit card, debit card, gift card etc. This page securely captures the account information from user and passes it to uCom server. When finished, the page sends the result to redirectUrl.
+3. **Hosted Page (HP)** - This is a web page rendered on native webview or browser which will display the UI to let user enter their account information like Credit card, debit card, gift card etc. This page securely captures the account information from user and passes it to the Connected Commerce (uCom) server. When finished, the page sends the result to redirectUrl.
 
-4. **uCom Server (uCom)** - This is the Fiserv solution server which provides all the APIs. This server sits behind Apigee.
+4. **Connected Commerce (uCom) Server** - This is the Fiserv solution server which provides all the APIs. This server sits behind Apigee.
 
 ## Architecture Flow 
 
@@ -34,7 +34,7 @@ The following parameters are needed to access the Hosted Pages:
 | **Api Key**  | This will be generated for you when you create an Apigee account. This should be saved securely on MAS and shared with App. Api-key is fixed for a merchant.|   
 | **Api Secret**  | This will be generated for you when you create an Apigee account. This should be saved securely on the application server. This should NOT be shared with app. Api-key is fixed for a merchant. |
 | **Redirect Url/MAS Url (Asynchronous)** | All the Hosted pages responses(error/success) will be responded back to JavaScript main return callback only. Responses should be parsed and handled from JavaScript callback. Additionally same responses will be delivered to your MAS URL by Hosted pages via HTTP POST (Ajax Call) asynchronously. This API should be provided by MAS. MAS has to enable CORS for Fiserv origin “int.api.firstdata.com", "cat.api.firstdata.com", and "prod.api.firstdata.com”. This can be used for auditing purposes when a web browser or an app crash accidentally.|
-| **FDCustomerId**  | This must be obtained using other uCom apis. This is optional when you initiate SDK with guest checkout option. |
+| **FDCustomerId**  | This must be obtained using other Connected Commerce (uCom) apis. This is optional when you initiate SDK with guest checkout option. |
 | **PageLink (url and relation)** | This is the unique page which is going to display the use case. Url is the address where page is hosted, and Relation is the name of the use case. PageLink can be retrieved run time via the api (ucom/v1/hosted - pages/pages) and can be cached. We prefer that PageLink should be freshly fetched. The page contents are configured offline. |
 
 ### Step 1: Start a New Session  
@@ -46,13 +46,13 @@ App calls MAS to get a token ID, encryption Key and page Link. token ID and encr
 
 The api between app and MAS is not part of this document. It’s up to the merchant to decide this part of the transaction.
 
-### Step 3: MAS calls uCom to Get Token 
+### Step 3: MAS calls Connected Commerce (uCom) to Get Token 
 
-MAS has to call uCom to get a tokenId. MAS should not cache the tokenId. The get Token call will provide the one time session token and public key which needs to be passed to the SDK to launch Hosted Pages.
+MAS has to call Connected Commerce (uCom) to get a tokenId. MAS should not cache the tokenId. The get Token call will provide the one time session token and public key which needs to be passed to the SDK to launch Hosted Pages.
 
 [Click here for instructions on Creating Security Access Token](../api/?type=post&path=/v1/tokens)
 
-### Step 4: MAS calls uCom to get page link 
+### Step 4: MAS calls Connected Commerce (uCom) to get page link 
 
 MAS can cache the page link for future reference to ensure better performance. Merchant may have configured multiple pages and therefore this api will return all of them. Each page can be identified by the relation.
 
@@ -138,7 +138,7 @@ ComClient.init({
 
 A redirection listener should be set on the webview to catch the event that Hosted Pages has finished its work. Hosted Pages will call this redirection in case of permanent failures and final success(nonce). A permanent failure is if js fails to load or Ajax call fails or tokenId has expired or encryptionKey invalid.
 
-Once Hosted Pages get response from uCom then it will do URL redirect with encoded URI.
+Once Hosted Pages get response from Connected Commerce (uCom) then it will do URL redirect with encoded URI.
 
 **Redirection Listener URL:**
 
@@ -315,7 +315,7 @@ type: tab
 
 <details>
     
-<summary>**A) Include the uCom SDK library below on head tag of the html page.**</summary>
+<summary>**A) Include the Connected Commerce (uCom) SDK library below on head tag of the html page.**</summary>
 
 CAT: https://int.api.firstdata.com/ucom/v2/static/v2/js/ucom-sdk.js  
 
@@ -542,7 +542,7 @@ Below are possible responses from Hosted Pages that must be handled accordingly.
 
 >**Success Response with Threatmetrix Details** 
 
-This is the enrollment response with TM(Threatmetrix) payload from uCom API. 
+This is the enrollment response with TM(Threatmetrix) payload from the Connected Commerce (uCom) API. 
    
 <!-- theme: danger -->
 >Please note that this only applies if **Threatmetrix** is enabled as part of the hosted pages configurations on the back end.   
@@ -604,7 +604,7 @@ Merchant has the ability to pass the billing address into SDK. If they inject th
 ```
 
 <!-- theme: danger -->
->**Failure response payload from uCom API** 
+>**Failure response payload from Connected Commerce (uCom) API** 
 
 ```json
 {
@@ -630,7 +630,7 @@ Merchant has the ability to pass the billing address into SDK. If they inject th
 
 >**Success**  
 
-<p>This is the success response payload from uCom API</p>
+<p>This is the success response payload from Connected Commerce (uCom) API</p>
     
 ```json
     
@@ -680,7 +680,7 @@ Merchant has the ability to pass the billing address into SDK. If they inject th
           
 >**Success with Threatmetrix Details** 
     
-This is the enrollment response with TM(Threatmetrix) payload from uCom API.
+This is the enrollment response with TM(Threatmetrix) payload from Connected Commerce (uCom) API.
     
 <!-- theme: danger -->
 >Please note that this only applies if **Threatmetrix** is enabled as part of the hosted pages configurations on the back end.         
@@ -739,7 +739,7 @@ Merchant has the ability to pass the billing address into SDK. If they inject th
 <!-- theme: danger -->
 >**Failure**  
 
-This is the failure response payload from uCom API 
+This is the failure response payload from Connected Commerce (uCom) API 
           
 ```json
 
