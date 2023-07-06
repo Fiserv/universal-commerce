@@ -35,4 +35,36 @@ Mobile app and uCom shall integrate with EMV 3-D Secure 2.2 specification to sup
     1.  Response can be one of:
         1.  Success
         2.  Decline
-    2.  If success, uCom proceeds onto payment authorization - this FEP authorization message will include additional data elements from the 3DS Authentication step
+    2.  If success, uCom proceeds onto payment authorization - this FEP authorization message will include additional data elements from the 3DS Authentication step.
+
+     **Types of 3DS flows:**
+
+1.  Frictionless flow
+    
+2.  Challenge Flow
+    
+    
+## Scope
+
+1.  Apis
+    1.  Add Account (Card verification)
+    2.  Petro Transaction (Payment transaction is Authorization)
+
+
+    ## Dependencies
+
+1.  Availability of IPG (3DS) Set-up
+2.  Modirum Simulator and SDK set-up by the front end
+
+
+    
+## Error Message
+
+The following error codes are introduced as part of 3DS integration
+
+| Code |Message  |
+|--|--|
+| 269702 | Failed to complete ThreeDSecure authentication. |
+|269701| ThreeDSecure authentication declined.
+
+
