@@ -532,8 +532,6 @@ Network tokenization refers to the use of tokens provided by payment schemes suc
 
 ## Payment using Network Token
 
-### Payment Sample Payload using Network Tokens
-
 **<ins> Endpoint URL </ins>**
 
 HTTP Method: POST
