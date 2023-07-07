@@ -21,14 +21,15 @@ Prod: https://prod.api.firstdata.com/ucom/v1/accounts-tokens
 
 **<ins> Headers </ins>**
 
-| Name                | Value                 |
-|---------------------|-----------------------|
-| Content-Type        | application/json      |
-| Authorization       | Bearer \<accessToken>  |
-| Api-Key             | \<apiKey>             |
-| Timestamp           | \<timestamp>          |
-| Client-Request-Id   | \<$guid>              |
-| Content-Signature   | HMAC \<signature>      |
+Content-Type: application/json
+
+Client-Request-Id:{{$guid}}
+
+Api-Key:{{clientKey}}
+
+Authorization: Bearer {{tokenId}}
+
+Timestamp:{{time}}
 
 **<ins> Parameters </ins>**
 
@@ -190,11 +191,11 @@ Prod: https://prod.api.firstdata.com/ucom/v1/payments/sales
 
 **<ins> Headers </ins>**
 
-Content\-Type:application/json
+Content-Type: application/json
 
-Client\-Request\-Id:{{$guid}}
+Client-Request-Id:{{$guid}}
 
-Api\-Key:{{clientKey}}
+Api-Key:{{clientKey}}
 
 Authorization: Bearer {{tokenId}}
 
