@@ -4,7 +4,7 @@ Connected Commerce (uCom) offers a wide range of payment tokens that could be us
 
 This guide will explore the various payment tokens available in the Connected Commerce (uCom) platform, emphasizing their respective types and providing insights on their acquisition and utilization processes.
 
-## Payment Nonce
+### Payment Nonce
 
 A payment nonce, also known as a cryptographic nonce or a one-time token, is a temporary and unique piece of data generated for a specific payment transaction. It serves as a secure placeholder for sensitive payment information, such as credit card details, during the authorization process. Payment nonces are typically used in situations where the actual payment data needs to be transmitted securely over the internet or stored temporarily. Once the payment nonce is created, it is associated with the specific transaction and can only be used for a limited time or a single transaction. This approach helps prevent the exposure of sensitive payment data, as the nonce itself is of no value to potential attackers. Payment nonces are commonly utilized in various payment systems, including online transactions, mobile payments, and other forms of digital commerce, to ensure the protection of sensitive financial information.
 
