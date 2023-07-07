@@ -77,7 +77,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/sales>
 | fdAccountId | String | body | yes | 32 |
 
 | **Name** | **Description** | **Required** |
-| --- | --- |
+| --- | --- | --- |
 | saveToVault | Flag to indicate if the account should be stored in the uCom vault.| yes |
 | promotionCode | Promotion code for prepaid account activation. | yes |
 | fundValue | Requested fund amount for the gift card. Even if it is zero doller gift card, the fundValue field is required and the value should be 0.| yes |
