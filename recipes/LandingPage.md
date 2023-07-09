@@ -67,9 +67,9 @@ link: ../recipes/?path=recipes/MIT.md
 -->
 
 <!-- type: card
-title: <div style="text-align:center;width:100%;height:25%"><img src="https://github.com/Fiserv/universal-commerce/blob/develop/assets/images/Picture26.png?raw=true" alt="MIT" title="MIT" style="width:auto; height:60px"></div> <h3 style="text-align:center">How to Make Merchant Initiated Transactions</h3>
+title: <div style="text-align:center;width:100%;height:25%"><img src="https://github.com/Fiserv/universal-commerce/blob/develop/assets/images/Picture26.png?raw=true" alt="Multi Purse" title="Multi Purse" style="width:auto; height:60px"></div> <h3 style="text-align:center">How to Make Merchant Initiated Transactions</h3>
 description: 
-link: ../recipes/?path=recipes/MIT.md
+link: ../recipes/?path=recipes/multiPurse.md
 -->
 
 <!-- type: card
