@@ -43,7 +43,7 @@ Multi Purse capabilities are applicable for the APIs below. The MIT indicators m
 
 #### Refunds
 
-//v2/prepaids/multi-refunds
+/v2/prepaids/multi-refunds
 
 /v2/prepaids/multi-refunds/{fdParentTransactionId}/void
 
@@ -55,7 +55,7 @@ Multi Purse capabilities are applicable for the APIs below. The MIT indicators m
 
 Please use the card verification flow for new cards that are not stored on the Connected Commerce (uCom) vault. The call will return the `NETWORK_TRANSACTION_ID`, which is needed for follow up payment transactions. In other words, for new cards, use the card verification API call as the initial transaction, then either a sale or authorization call as the subsequent transaction.
 
-## Sample Sale Payloads
+## Sample Multi Purchase Payloads
 
 Below are some sample payloads that make use of Multi Purse.
 
@@ -63,9 +63,9 @@ Below are some sample payloads that make use of Multi Purse.
 
 HTTP Method: POST
 
-Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/sales>
+Non-prod: <https://int.api.firstdata.com/ucom//v2/prepaids/multi-purchases>
 
-Prod: <https://prod.api.firstdata.com/ucom/v1/payments/sales>
+Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-purchases>
 
 **<ins> Parameters </ins>**
 
@@ -828,15 +828,317 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/sales>
 }
 ```
 
+**<ins> Multi Purchase Void Sample Request**</ins>
+
+```json
+
+{
+    "merchantTransactionId": "38943939903ed0a8090d10dert33",
+    "purchaseInfo": {
+        "order": {
+            "orderId": "xorderIdTestt001"
+        }
+    },
+    "postDate": "05252022",
+    "replayCount": 1,
+    "hostExtraInfo": [
+        {
+            "name": "LOCAL_TXN_DATE",
+            "value": "05102022"
+        },
+        {
+            "name": "LOCAL_TXN_TIME",
+            "value": "202059"
+        }
+    ],
+    "transactions": [
+        {
+            "externalId": "7777883838389999",
+            "merchantTransactionId": "38943939903ed0a8090d10dert31"
+        },
+        {
+            "externalId": "6666883838388888",
+            "merchantTransactionId": "38943939903ed0a8090d10dert32"
+        },
+        {
+            "externalId": "555583838387777",
+            "merchantTransactionId": "38943939903ed0a8090d10dert34"
+        }
+    ]
+}
+```
+
+**<ins> Sample Response - Transaction Successfully Voided</ins>
+
+```json
+
+{
+    "parentTransactionId": "485-27834-285903824-095",
+    "createdTime": "2017-03-21T08:15:30-05:00",
+    "merchantTransactionId": "38943939903ed0a8090d10dert33",
+    "purchaseInfo": {
+        "order": {
+            "orderId": "xorderIdTestt001"
+        }
+    },
+    "transactions": [
+        {
+            "transactionId": "8as8a8a99a9876543232sdgf345",
+            "externalId": "7777883838388999",
+            "merchantTransactionId": "38943939903ed0a8090d10dert31",
+            "status": "CANCELLED",
+            "account": {
+                "cardNumber": "6759649826438453",
+                "cardSubType": "Health12",
+                "alias": "8453",
+                "vaultedAccount": {
+                    "fdAccountId": "8a7fb5717e8fcee9017e9756a30401cb"
+                },
+                "balance": {
+                    "currentBalance": "5",
+                    "beginBalance": "20",
+                    "currencyCode": {
+                        "code": "USD",
+                        "number": 840
+                    },
+                    "currencyType": "BASE"
+                }
+            },
+            "hostExtraInfo": [
+                {
+                    "name": "APPROVAL_NUMBER",
+                    "value": "530976"
+                },
+                {
+                    "name": "SEQUENCE_NUMBER",
+                    "value": "005931"
+                }
+            ]
+        },
+        {
+            "transactionId": "9876543232xdvxv34398s89afa9",
+            "externalId": "88388383838839",
+            "merchantTransactionId": "38943939903ed0a8090d10dert32",
+            "status": "CANCELLED",
+            "account": {
+                "cardNumber": "7759649826438111",
+                "cardSubType": "Health34",
+                "alias": "8111",
+                "vaultedAccount": {
+                    "fdAccountId": "8a7fb5717e8fcee9017e9756a30401cb"
+                },
+                "balance": {
+                    "currentBalance": "5",
+                    "beginBalance": "20",
+                    "currencyCode": {
+                        "code": "USD",
+                        "number": 840
+                    },
+                    "currencyType": "BASE"
+                }
+            },
+            "hostExtraInfo": [
+                {
+                    "name": "APPROVAL_NUMBER",
+                    "value": "530911"
+                },
+                {
+                    "name": "SEQUENCE_NUMBER",
+                    "value": "005922"
+                }
+            ]
+        },
+        {
+            "transactionId": "9876543232xdvxv34398s89afa9",
+            "externalId": "88388383838839",
+            "merchantTransactionId": "38943939903ed0a8090d10dert34",
+            "status": "CANCELLED",
+            "account": {
+                "cardNumber": "7759649826438111",
+                "cardSubType": "Health34",
+                "alias": "8111",
+                "vaultedAccount": {
+                    "fdAccountId": "8a7fb5717e8fcee9017e9756a30401cb"
+                },
+                "balance": {
+                    "currentBalance": "5",
+                    "beginBalance": "20",
+                    "currencyCode": {
+                        "code": "USD",
+                        "number": 840
+                    },
+                    "currencyType": "BASE"
+                }
+            },
+            "hostExtraInfo": [
+                {
+                    "name": "APPROVAL_NUMBER",
+                    "value": "530911"
+                },
+                {
+                    "name": "SEQUENCE_NUMBER",
+                    "value": "005922"
+                }
+            ]
+        }
+    ]
+}
+```
+
+**<ins> Sample Response - Transactions Partially Voided- 207 - Multi - Status**</ins>
+
+```json
+
+{
+    "parentTransactionId": "485-27834-285903824-095",
+    "createdTime": "2017-03-21T08:15:30-05:00",
+    "merchantTransactionId": "38943939903ed0a8090d10dert33",
+    "purchaseInfo": {
+        "order": {
+            "orderId": "xorderIdTestt001"
+        }
+    },
+    "transactions": [
+        {
+            "transactionId": "8as8a8a99a9876543232sdgf345",
+            "externalId": "7777883838388991",
+            "merchantTransactionId": "38943939903ed0a8090d10dert31",
+            "status": "CANCELLED",
+            "account": {
+                "cardNumber": "6759649826438453",
+                "cardSubType": "Health12",
+                "alias": "8453",
+                "vaultedAccount": {
+                    "fdAccountId": "8a7fb5717e8fcee9017e9756a30401cb"
+                },
+                "balance": {
+                    "currentBalance": "20",
+                    "beginBalance": "5",
+                    "currencyCode": {
+                        "code": "USD",
+                        "number": 840
+                    },
+                    "currencyType": "BASE"
+                }
+            },
+            "hostExtraInfo": [
+                {
+                    "name": "APPROVAL_NUMBER",
+                    "value": "530976"
+                },
+                {
+                    "name": "SEQUENCE_NUMBER",
+                    "value": "005931"
+                }
+            ]
+        },
+        {
+            "transactionId": "8as8a8a99a9876543232sdgf346",
+            "externalId": "7777883838388992",
+            "merchantTransactionId": "38943939903ed0a8090d10dert32",
+            "status": "FAILED",
+            "account": {
+                "cardNumber": "7759649826438111",
+                "cardSubType": "Health34",
+                "alias": "8111",
+                "vaultedAccount": {
+                    "fdAccountId": "8a7fb5717e8fcee9017e9756a30401cb"
+                }
+            },
+            "errorInfo": {
+                "code": "269902",
+                "message": " Invalid request format/data.",
+                "category": "common",
+                "developerInfo": {
+                    "developerMessage": " Invalid request format/data."
+                },
+                "hostExtraInfo": [
+                    {
+                        "name": "HOST_RESPONSE_MESSAGE",
+                        "value": "Declined 995224"
+                    },
+                    {
+                        "name": "HOST_RESPONSE_CODE",
+                        "value": "995224"
+                    }
+                ]
+            }
+        },
+        {
+            "transactionId": "8as8a8a99a9876543232sdgf346",
+            "externalId": "7777883838388992",
+            "merchantTransactionId": "38943939903ed0a8090d10dert34",
+            "status": "NOTPROCESSED",
+            "account": {
+                "vaultedAccount": {
+                    "fdAccountId": "8a7fb5717e8fcee9017e9756a30401cb"
+                }
+            },
+            "errorInfo": {
+                "code": "269902",
+                "message": " Invalid request format/data.",
+                "category": "common",
+                "developerInfo": {
+                    "developerMessage": " Invalid request format/data."
+                },
+                "hostExtraInfo": [
+                    {
+                        "name": "HOST_RESPONSE_MESSAGE",
+                        "value": "Declined 995224"
+                    },
+                    {
+                        "name": "HOST_RESPONSE_CODE",
+                        "value": "995224"
+                    }
+                ]
+            }
+        },
+        {
+            "transactionId": "8as8a8a99a9876543232sdgf345",
+            "externalId": "7777883838388991",
+            "merchantTransactionId": "38943939903ed0a8090d10dert33",
+            "status": "CANCELLED",
+            "account": {
+                "cardNumber": "6759649826438453",
+                "cardSubType": "Health12",
+                "alias": "8453",
+                "balance": {
+                    "currentBalance": "20",
+                    "beginBalance": "5",
+                    "currencyCode": {
+                        "code": "USD",
+                        "number": 840,
+                        "vaultedAccount": {
+                            "fdAccountId": "8a7fb5717e8fcee9017e9756a30401cb"
+                        }
+                    },
+                    "currencyType": "BASE"
+                }
+            },
+            "hostExtraInfo": [
+                {
+                    "name": "APPROVAL_NUMBER",
+                    "value": "530976"
+                },
+                {
+                    "name": "SEQUENCE_NUMBER",
+                    "value": "005931"
+                }
+            ]
+        }
+    ]
+}
+```
+
 ## Sample Multi Reload Payloads
 
 **<ins> Endpoint URL </ins>**
 
 HTTP Method: POST
 
-Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/auths>
+Non-prod: <https://int.api.firstdata.com/ucom//v2/prepaids/multi-reloads>
 
-Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
+Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-reloads>
 
 **<ins> Parameters </ins>**
 
@@ -1624,7 +1926,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
     ]
 }
 
-## Sample Multi Sweep Payloads
+## Sample Payloads - Cancel a Reload Transaction
 
 **<ins> Endpoint URL </ins>**
 
@@ -1633,6 +1935,304 @@ HTTP Method: POST
 Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/auths>
 
 Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
+
+**<ins> Parameters </ins>**
+
+| **Name** | **Data Type** | **Parameter Type** | **Required** | **Max Length** |
+| --- | --- | --- | --- | --- |
+| merchantId | String | body | yes | - |
+| requestedAmount | String | body | yes | - |
+| fdCustomerId | String | body | yes | 32 |
+| fdAccountId | String | body | yes | 32 |
+
+**<ins> Sample Request - Void All Transactions**</ins>
+
+```json
+{
+    "merchantTransactionId": "38943939903ed0a8090d10dert33",
+    "purchaseInfo": {
+        "order": {
+            "orderId": "xorderIdTestt001"
+        }
+    },
+    "postDate": "05252022",
+    "replayCount": 1,
+    "hostExtraInfo": [
+        {
+            "name": "LOCAL_TXN_DATE",
+            "value": "05102022"
+        },
+        {
+            "name": "LOCAL_TXN_TIME",
+            "value": "202059"
+        }
+    ],
+    "transactions": [
+        {
+            "externalId": "7777883838389999",
+            "merchantTransactionId": "38943939903ed0a8090d10dert31"
+        },
+        {
+            "externalId": "6666883838388888",
+            "merchantTransactionId": "38943939903ed0a8090d10dert32"
+        },
+        {
+            "externalId": "555583838387777",
+            "merchantTransactionId": "38943939903ed0a8090d10dert34"
+        }
+    ]
+}
+```
+
+**<ins> Sample Response - Transactions Successfully Voided**</ins>
+
+```json
+
+{
+    "parentTransactionId": "485-27834-285903824-095",
+    "createdTime": "2017-03-21T08:15:30-05:00",
+    "merchantTransactionId": "38943939903ed0a8090d10dert33",
+    "purchaseInfo": {
+        "order": {
+            "orderId": "xorderIdTestt001"
+        }
+    },
+    "transactions": [
+        {
+            "transactionId": "8as8a8a99a9876543232sdgf345",
+            "externalId": "7777883838388999",
+            "status": "CANCELLED",
+            "account": {
+                "cardNumber": "6759649826438453",
+                "cardSubType": "Health12",
+                "merchantId": "99022879997",
+                "altMerchantId": "0001",
+                "alias": "8111",
+                "vaultedAccount": {
+                    "fdAccountId": "8a7fb5717e8fcee9017e9756a30401d4"
+                },
+                "balance": {
+                    "currentBalance": "5",
+                    "beginBalance": "20",
+                    "currencyCode": {
+                        "code": "USD",
+                        "number": 840
+                    },
+                    "currencyType": "BASE"
+                }
+            },
+            "hostExtraInfo": [
+                {
+                    "name": "APPROVAL_NUMBER",
+                    "value": "530976"
+                },
+                {
+                    "name": "SEQUENCE_NUMBER",
+                    "value": "005931"
+                }
+            ]
+        },
+        {
+            "transactionId": "9876543232xdvxv34398s89afa9",
+            "externalId": "88388383838839",
+            "status": "CANCELLED",
+            "account": {
+                "cardNumber": "7759649826438111",
+                "cardSubType": "Health34",
+                "merchantId": "99022879997",
+                "altMerchantId": "0001",
+                "alias": "8111",
+                "vaultedAccount": {
+                    "fdAccountId": "8a7fb5717e8fcee9017e9756a30401d4"
+                },
+                "balance": {
+                    "currentBalance": "5",
+                    "beginBalance": "20",
+                    "currencyCode": {
+                        "code": "USD",
+                        "number": 840
+                    },
+                    "currencyType": "BASE"
+                }
+            },
+            "hostExtraInfo": [
+                {
+                    "name": "APPROVAL_NUMBER",
+                    "value": "530911"
+                },
+                {
+                    "name": "SEQUENCE_NUMBER",
+                    "value": "005922"
+                }
+            ]
+        },
+        {
+            "transactionId": "9876543232xdvxv34398s89afa9",
+            "externalId": "88388383838839",
+            "status": "CANCELLED",
+            "account": {
+                "cardNumber": "7759649826438111",
+                "cardSubType": "Health34",
+                "merchantId": "99022879997",
+                "altMerchantId": "0001",
+                "alias": "8111",
+                "vaultedAccount": {
+                    "fdAccountId": "8a7fb5717e8fcee9017e9756a30401d4"
+                },
+                "balance": {
+                    "currentBalance": "5",
+                    "beginBalance": "20",
+                    "currencyCode": {
+                        "code": "USD",
+                        "number": 840
+                    },
+                    "currencyType": "BASE"
+                }
+            },
+            "hostExtraInfo": [
+                {
+                    "name": "APPROVAL_NUMBER",
+                    "value": "530911"
+                },
+                {
+                    "name": "SEQUENCE_NUMBER",
+                    "value": "005922"
+                }
+            ]
+        }
+    ]
+}
+```
+
+**<ins> Sample Response - Transactions Partially Voided - 207 - Multi STatus**</ins>
+
+```json
+
+{
+    "parentTransactionId": "485-27834-285903824-095",
+    "createdTime": "2017-03-21T08:15:30-05:00",
+    "purchaseInfo": {
+        "order": {
+            "orderId": "xorderIdTestt001"
+        }
+    },
+    "transactions": [
+        {
+            "transactionId": "8as8a8a99a9876543232sdgf345",
+            "externalId": "7777883838388991",
+            "status": "CANCELLED",
+            "account": {
+                "cardNumber": "6759649826438453",
+                "cardSubType": "Health12",
+                "merchantId": "99022879997",
+                "altMerchantId": "0001",
+                "alias": "8111",
+                "vaultedAccount": {
+                    "fdAccountId": "8a7fb5717e8fcee9017e9756a30401d4"
+                },
+                "balance": {
+                    "currentBalance": "20",
+                    "beginBalance": "5",
+                    "currencyCode": {
+                        "code": "USD",
+                        "number": 840
+                    },
+                    "currencyType": "BASE"
+                }
+            },
+            "hostExtraInfo": [
+                {
+                    "name": "APPROVAL_NUMBER",
+                    "value": "530976"
+                },
+                {
+                    "name": "SEQUENCE_NUMBER",
+                    "value": "005931"
+                }
+            ]
+        },
+        {
+            "externalId": "7777883838388992",
+            "status": "FAILED",
+            "account": {
+                "alias": "8111",
+                "vaultedAccount": {
+                    "fdAccountId": "8a7fb5717e8fcee9017e9756a30401d4"
+                }
+            },
+            "errorInfo": {
+                "code": "269902",
+                "message": " Invalid request format/data.",
+                "category": "common",
+                "developerInfo": {
+                    "developerMessage": " Invalid request format/data."
+                }
+            }
+        },
+        {
+            "externalId": "7777883838388992",
+            "status": "NOTPROCESSED",
+            "account": {
+                "vaultedAccount": {
+                    "fdAccountId": "8a7fb5717e8fcee9017e9756a30401d4"
+                }
+            },
+            "errorInfo": {
+                "code": "269902",
+                "message": " Invalid request format/data.",
+                "category": "common",
+                "developerInfo": {
+                    "developerMessage": " Invalid request format/data."
+                }
+            }
+        },
+        {
+            "transactionId": "8as8a8a99a9876543232sdgf345",
+            "externalId": "7777883838388991",
+            "status": "CANCELLED",
+            "account": {
+                "cardNumber": "6759649826438453",
+                "cardSubType": "Health12",
+                "merchantId": "99022879997",
+                "altMerchantId": "0001",
+                "alias": "8111",
+                "vaultedAccount": {
+                    "fdAccountId": "8a7fb5717e8fcee9017e9756a30401d4"
+                },
+                "balance": {
+                    "currentBalance": "20",
+                    "beginBalance": "5",
+                    "currencyCode": {
+                        "code": "USD",
+                        "number": 840
+                    },
+                    "currencyType": "BASE"
+                }
+            },
+            "hostExtraInfo": [
+                {
+                    "name": "APPROVAL_NUMBER",
+                    "value": "530976"
+                },
+                {
+                    "name": "SEQUENCE_NUMBER",
+                    "value": "005931"
+                }
+            ]
+        }
+    ]
+}
+```
+
+## Sample Multi Sweep Payloads
+
+**<ins> Endpoint URL </ins>**
+
+HTTP Method: POST
+
+Non-prod: <https://int.api.firstdata.com/ucom//v2/prepaids/multi-sweeps>
+
+Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-sweeps>
 
 **<ins> Parameters </ins>**
 
@@ -1891,15 +2491,303 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
 
 ```
 
+## Sample Voiding the Sweep transaction Payloads
+
+**<ins> Endpoint URL </ins>**
+
+HTTP Method: POST
+
+Non-prod: <https://int.api.firstdata.com/ucom//v2/prepaids/sweeps/{fdParentTransactionId}/multi-void>
+
+Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/sweeps/{fdParentTransactionId}/multi-void>
+
+**<ins> Parameters </ins>**
+
+| **Name** | **Data Type** | **Parameter Type** | **Required** | **Max Length** |
+| --- | --- | --- | --- | --- |
+| merchantId | String | body | yes | - |
+| requestedAmount | String | body | yes | - |
+| fdCustomerId | String | body | yes | 32 |
+| fdAccountId | String | body | yes | 32 |
+
+**<ins> Sample Request - Void Sweep Transaction**</ins>
+
+```json
+{
+    "merchantTransactionId": "38943939903ed0a8090d10dert33",
+    "purchaseInfo": {
+        "order": {
+            "orderId": "xorderIdTestt001"
+        }
+    },
+    "postDate": "05252022",
+    "replayCount": 1,
+    "hostExtraInfo": [
+        {
+            "name": "LOCAL_TXN_DATE",
+            "value": "05102022"
+        },
+        {
+            "name": "LOCAL_TXN_TIME",
+            "value": "202059"
+        }
+    ],
+    "transactions": [
+        {
+            "externalId": "7777883838389999",
+            "merchantTransactionId": "38943939903ed0a8090d10dert31"
+        },
+        {
+            "externalId": "6666883838388888",
+            "merchantTransactionId": "38943939903ed0a8090d10dert32"
+        },
+        {
+            "externalId": "555583838387777",
+            "merchantTransactionId": "38943939903ed0a8090d10dert34"
+        }
+    ]
+}
+```
+
+**<ins> Sample Response - Transaction Successfully Voided - 200 - OK**</ins>
+
+```json
+
+{
+    "parentTransactionId": "485-27834-285903824-095",
+    "createdTime": "2017-03-21T08:15:30-05:00",
+    "merchantTransactionId": "38943939903ed0a8090d10dert33",
+    "purchaseInfo": {
+        "order": {
+            "orderId": "xorderIdTestt001"
+        }
+    },
+    "transactions": [
+        {
+            "transactionId": "8as8a8a99a9876543232sdgf345",
+            "externalId": "7777883838389999",
+            "merchantTransactionId": "38943939903ed0a8090d10dert31",
+            "status": "APPROVED",
+            "account": {
+                "cardNumber": "6759649826438453",
+                "cardSubType": "Health12",
+                "alias": "8453",
+                "merchantId": "99022879997",
+                "altMerchantId": "0001",
+                "vaultedAccount": {
+                    "fdAccountId": "8a7fb5717e8fcee9017e9756a30401cb"
+                },
+                "balance": {
+                    "currentBalance": "5",
+                    "beginBalance": "20",
+                    "currencyCode": {
+                        "code": "USD",
+                        "number": 840
+                    },
+                    "currencyType": "BASE"
+                }
+            },
+            "hostExtraInfo": [
+                {
+                    "name": "APPROVAL_NUMBER",
+                    "value": "530976"
+                },
+                {
+                    "name": "SEQUENCE_NUMBER",
+                    "value": "005931"
+                }
+            ]
+        },
+        {
+            "transactionId": "9876543232xdvxv34398s89afa9",
+            "externalId": "6666883838388888",
+            "merchantTransactionId": "38943939903ed0a8090d10dert32",
+            "status": "APPROVED",
+            "account": {
+                "cardNumber": "7759649826438111",
+                "cardSubType": "Health34",
+                "alias": "8111",
+                "merchantId": "99022879997",
+                "altMerchantId": "0001",
+                "vaultedAccount": {
+                    "fdAccountId": "8a7fb5717e8fcee9017e9756a30401cb"
+                },
+                "balance": {
+                    "currentBalance": "5",
+                    "beginBalance": "20",
+                    "currencyCode": {
+                        "code": "USD",
+                        "number": 840
+                    },
+                    "currencyType": "BASE"
+                }
+            },
+            "hostExtraInfo": [
+                {
+                    "name": "APPROVAL_NUMBER",
+                    "value": "530911"
+                },
+                {
+                    "name": "SEQUENCE_NUMBER",
+                    "value": "005922"
+                }
+            ]
+        },
+        {
+            "transactionId": "9876543232xdvxv34398s89afa9",
+            "externalId": "555583838387777",
+            "merchantTransactionId": "38943939903ed0a8090d10dert34",
+            "status": "APPROVED",
+            "account": {
+                "cardNumber": "7759649826438111",
+                "cardSubType": "Health34",
+                "alias": "8111",
+                "merchantId": "99022879997",
+                "altMerchantId": "0001",
+                "vaultedAccount": {
+                    "fdAccountId": "8a7fb5717e8fcee9017e9756a30401cb"
+                },
+                "balance": {
+                    "currentBalance": "5",
+                    "beginBalance": "20",
+                    "currencyCode": {
+                        "code": "USD",
+                        "number": 840
+                    },
+                    "currencyType": "BASE"
+                }
+            },
+            "hostExtraInfo": [
+                {
+                    "name": "APPROVAL_NUMBER",
+                    "value": "530911"
+                },
+                {
+                    "name": "SEQUENCE_NUMBER",
+                    "value": "005922"
+                }
+            ]
+        }
+    ]
+}
+```
+
+**<ins> Sample Response - Transactions Partially Voided**</ins>
+
+```json
+
+{
+  "parentTransactionId": "485-27834-285903824-095",
+  "createdTime": "2017-03-21T08:15:30-05:00",
+  "merchantTransactionId": "38943939903ed0a8090d10dert33",
+  "purchaseInfo": {
+    "order": {
+      "orderId": "xorderIdTestt001"
+    }
+  },
+  "transactions": [
+    {
+      "transactionId": "8as8a8a99a9876543232sdgf345",
+      "externalId": "7777883838388991",
+      "merchantTransactionId": "38943939903ed0a8090d10dert30",
+      "status": "APPROVED",
+      "account": {
+        "cardNumber": "6759649826438453",
+        "cardSubType": "Health12",
+        "alias": "8453",
+        "merchantId": "99022879997",
+        "altMerchantId": "0001",
+        "vaultedAccount": {
+          "fdAccountId": "8a7fb5717e8fcee9017e9756a30401cb"
+        },
+        "balance": {
+          "currentBalance": "20",
+          "beginBalance": "5",
+          "currencyCode": {
+            "code": "USD",
+            "number": 840
+          },
+          "currencyType": "BASE"
+        }
+      },
+      "hostExtraInfo": [
+        {
+          "name": "APPROVAL_NUMBER",
+          "value": "530976"
+        },
+        {
+          "name": "SEQUENCE_NUMBER",
+          "value": "005931"
+        }
+      ]
+    },
+    {
+      "externalId": "7777883838388992",
+      "merchantTransactionId": "38943939903ed0a8090d10dert31",
+      "status": "FAILED",
+      "account": {
+        "vaultedAccount": {
+          "fdAccountId": "8a7fb5717e8fcee9017e9756a30401cb"
+        }
+      },
+      "errorInfo": {
+        "code": "269902",
+        "message": " Invalid request format/data.",
+        "category": "common",
+        "developerInfo": {
+          "developerMessage": " Invalid request format/data."
+        }
+      }
+    },
+    {
+      "transactionId": "8as8a8a99a9876543232sdgf345",
+      "externalId": "7777883838388991",
+      "merchantTransactionId": "38943939903ed0a8090d10dert32",
+      "status": "APPROVED",
+      "account": {
+        "cardNumber": "6759649826438453",
+        "cardSubType": "Health12",
+        "alias": "8453",
+        "merchantId": "99022879997",
+        "altMerchantId": "0001",
+        "vaultedAccount": {
+          "fdAccountId": "8a7fb5717e8fcee9017e9756a30401cb"
+        },
+        "balance": {
+          "currentBalance": "20",
+          "beginBalance": "5",
+          "currencyCode": {
+            "code": "USD",
+            "number": 840
+          },
+          "currencyType": "BASE"
+        }
+      },
+      "hostExtraInfo": [
+        {
+          "name": "APPROVAL_NUMBER",
+          "value": "530976"
+        },
+        {
+          "name": "SEQUENCE_NUMBER",
+          "value": "005931"
+        }
+      ]
+    }
+  ]
+}
+
+```
+
 ## Sample Multi Sales Payloads
 
 **<ins> Endpoint URL </ins>**
 
 HTTP Method: POST
 
-Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/auths>
+Non-prod: <https://int.api.firstdata.com/ucom//v2/prepaids/multi-sales>
 
-Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
+Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-sales>
 
 **<ins> Parameters </ins>**
 
@@ -2270,13 +3158,14 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
         ]
     }
 ```
+
 **<ins> Sample Request - Partial amount and partial transaction success would not allowed**</ins>
 
 ```json
 {
     "fdCustomerId": "ed0a809bc6164ed7b2dae602ae90d10d",
     "merchantTransactionId": "d8s8s8s8s990s8w456e464643e3tryd",
-  “isPartialSuccessAllowed”: false,
+   “isPartialSuccessAllowed”: false,
     "purchaseInfo": {
         "order": {
             "orderId": "xorderIdTestt001"
@@ -2630,6 +3519,188 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
     }
 ```
 
+## Voiding Multi Sale Transactions - Sample Payloads
+
+**<ins> Endpoint URL </ins>**
+
+HTTP Method: POST
+
+Non-prod: <https://int.api.firstdata.com/ucom//v2/prepaids/multi-sales/{fdParentTransactionId}/void>
+
+Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-sales/{fdParentTransactionId}/void>
+
+**<ins> Parameters </ins>**
+
+| **Name** | **Data Type** | **Parameter Type** | **Required** | **Max Length** |
+| --- | --- | --- | --- | --- |
+| merchantId | String | body | yes | - |
+| requestedAmount | String | body | yes | - |
+| fdCustomerId | String | body | yes | 32 |
+| fdAccountId | String | body | yes | 32 |
+
+**<ins> Sample Request - Void All Successful Child Transactions**</ins>
+
+```json
+{
+    "merchantTransactionId": "d8s8s8s8s990s8w456e464643e3tryd",
+    "purchaseInfo": {
+        "order": {
+            "orderId": "xorderIdTestt001"
+        }
+    },
+    "postDate": "05232022",
+    "replayCount": 1,
+    "hostExtraInfo": [
+        {
+            "name": "LOCAL_TXN_DATE",
+            "value": "05102022"
+        },
+        {
+            "name": "LOCAL_TXN_TIME",
+            "value": "202059"
+        }
+    ],
+    "voids": [
+        {
+            "externalId": "7777883838389999",
+            "merchantTransactionId": "38943939903ed0a8090d10dert31"
+        },
+        {
+            "externalId": "6666883838388888",
+            "merchantTransactionId": "38943939903ed0a8090d10dert32"
+        },
+        {
+            "externalId": "555583838387777",
+            "merchantTransactionId": "38943939903ed0a8090d10dert34"
+        }
+    ]
+}
+```
+
+**<ins> Sample Response - All Sale Transactions cancelled 201**</ins>
+
+```json
+
+{
+    "parentTransactionId": "485-27834-285903824-095",
+    "createdTime": "2017-03-21T08:15:30-05:00",
+    "merchantTransactionId": "d8s8s8s8s990s8w456e464643e3tryd",
+    "purchaseInfo": {
+        "order": {
+            "orderId": "xorderIdTestt001"
+        }
+    },
+    "voids": [
+        {
+            "fdTransactionId": "5b4cf9da15e0475eb9ef3bcea5734442",
+            "status": "CANCELLED",
+            "externalId": "8738743788738",
+            "merchantId": "99022879997",
+            "altMerchantId": "0001",
+            "merchantTransactionId": "d8s8s8s8s990s8w456e464643e3tryd1",
+            "approvedAmount": 20,
+            "currencyCode": {
+                "code": "USD",
+                "number": 840
+            },
+            "transactionDateTime": "2017-10-04T21:49:21.94",
+            "fundingSource": {
+                "type": "PREPAID",
+                "prepaid": {
+                    "cardSubType": "Health12",
+                    "alias": "8453",
+                    "balance": {
+                        "currentBalance": "5",
+                        "beginBalance": "20",
+                        "currencyCode": {
+                            "code": "USD",
+                            "number": 840
+                        },
+                        "currencyType": "BASE"
+                    }
+                }
+            },
+            "hostExtraInfo": [
+                {
+                    "name": "APPROVAL_NUMBER",
+                    "value": "530976"
+                },
+                {
+                    "name": "SEQUENCE_NUMBER",
+                    "value": "005931"
+                }
+            ]
+        },
+        {
+            "status": "NOTPROCESSED",
+            "externalId": "8738743788738",
+            "merchantTransactionId": "d8s8s8s8s990s8w456e464643e3tryd2",
+            "requestedAmount": 20,
+            "currencyCode": {
+                "code": "USD",
+                "number": 840
+            },
+            "transactionDateTime": "2017-10-04T21:49:21.94",
+            "fundingSource": {
+                "vaultedAccount": {
+                    "fdAccountId": "8a7fb5717e8fcee9017e9756a30401cb"
+                }
+            },
+            "hostExtraInfo": [
+                {
+                    "name": "APPROVAL_NUMBER",
+                    "value": "530976"
+                },
+                {
+                    "name": "SEQUENCE_NUMBER",
+                    "value": "005931"
+                }
+            ]
+        },
+        {
+            "fdTransactionId": "5b4cf9da15e0475eb9ef3bcea5734442",
+            "status": "CANCELLED",
+            "externalId": "8738743788739",
+            "merchantId": "99022879997",
+            "altMerchantId": "0001",
+            "merchantTransactionId": "d8s8s8s8s990s8w456e464643e3tryd3",
+            "approvedAmount": 20,
+            "currencyCode": {
+                "code": "USD",
+                "number": 840
+            },
+            "transactionDateTime": "2017-10-04T21:49:21.94",
+            "fundingSource": {
+                "type": "PREPAID",
+                "prepaid": {
+                    "cardSubType": "Health45",
+                    "alias": "8453",
+                    "balance": {
+                        "currentBalance": "5",
+                        "beginBalance": "20",
+                        "currencyCode": {
+                            "code": "USD",
+                            "number": 840
+                        },
+                        "currencyType": "BASE"
+                    }
+                }
+            },
+            "hostExtraInfo": [
+                {
+                    "name": "APPROVAL_NUMBER",
+                    "value": "530976"
+                },
+                {
+                    "name": "SEQUENCE_NUMBER",
+                    "value": "005931"
+                }
+            ]
+        }
+    ]
+}
+```
+
 ## Sample Multi Deducts Payloads
 
 **<ins> Endpoint URL </ins>**
@@ -2915,98 +3986,324 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
 }
 ```
 
-## Sample Account Verification Payload
+## Sample Payloads - Voiding the Deduct Transaction
 
 **<ins> Endpoint URL </ins>**
 
 HTTP Method: POST
 
-Non-prod: <https://int.api.firstdata.com/ucom/v1/accounts/verification>
+Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/auths>
 
-Prod: <https://prod.api.firstdata.com/ucom/v1/accounts/verification>
+Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
 
 **<ins> Parameters </ins>**
 
-| Name | Data Type | Parameter Type | Required | Value |
+| **Name** | **Data Type** | **Parameter Type** | **Required** | **Max Length** |
 | --- | --- | --- | --- | --- |
-| Type | string | path | yes | CREDIT |
-| nameOnCard | string | body | yes | NA |
-| cardNumber | string | body | yes | NA |
-| cardType | string | body | yes | VISA |
-| securityCode | string | body | yes | NA |
-| expiryDate | string | body | yes | NA |
-| billingAddress | string | body | yes | NA |
+| merchantId | String | body | yes | - |
+| requestedAmount | String | body | yes | - |
+| fdCustomerId | String | body | yes | 32 |
+| fdAccountId | String | body | yes | 32 |
 
-**<ins> Sample Account verification Request**</ins>
+**<ins> Sample Request - Voiding the Deduct Transaction**</ins>
 
 ```json
-
 {
-    "account": {
-        "type": "CREDIT",
-        "credit": {
-            "nameOnCard": "John Smith",
-            "cardNumber": "ENC_[encrypted cards..]",
-            "cardType": "VISA",
-            "securityCode": "ENC_[encrypted cvv..]",
-            "expiryDate": {
-                "month": "ENC_[encrypted month..]",
-                "year": "ENC_[encrypted year..]"
-            },
-            "billingAddress": {
-                "streetAddress": "AC01 Glenridge Con #2000U",
-                "locality": "Atlanta",
-                "region": "GA",
-                "postalCode": "00000"
-            }
-        },
-        "hostExtraInfo": [
-            {
-                "name": "STORED_CREDENTIAL_INDICATOR",
-                "value": "INITIAL"
-            },
-            {
-                "name": "TRANSACTION_INITIATION_INDICATOR",
-                "value": "MIT"
-            },
-            {
-                "name": "SCHEDULE_INDICATOR",
-                "value": "UNSCHEDULED"
-            }
-        ]
-    }
-}
-
-```
-
-**<ins> Sample Account verification Response**</ins>
-
-```json
-
-{
-    "type": "CREDIT",
-    "credit": {
-        "cardType": "VISA",
-        "alias": "1111",
-        "expiryDate": {
-            "month": "06",
-            "year": "19"
-        },
-        "billingAddress": {
-            "streetAddress": "AC01 Glenridge Con #2000",
-            "locality": "Atlanta",
-            "region": "GA",
-            "postalCode": "00000"
+    "merchantTransactionId": "38943939903ed0a8090d10dert33",
+    "purchaseInfo": {
+        "order": {
+            "orderId": "xorderIdTestt001"
         }
     },
+    "postDate": "05252022",
+    "replayCount": 1,
     "hostExtraInfo": [
         {
-            "name": "NETWORK_TRANSACTION_ID",
-            "value": "4352523523"
+            "name": "LOCAL_TXN_DATE",
+            "value": "05102022"
+        },
+        {
+            "name": "LOCAL_TXN_TIME",
+            "value": "202059"
+        }
+    ],
+    "transactions": [
+        {
+            "externalId": "7777883838389999",
+            "merchantTransactionId": "38943939903ed0a8090d10dert31"
+        },
+        {
+            "externalId": "6666883838388888",
+            "merchantTransactionId": "38943939903ed0a8090d10dert32"
+        },
+        {
+            "externalId": "555583838387777",
+            "merchantTransactionId": "38943939903ed0a8090d10dert34"
         }
     ]
 }
-
 ```
 
-> Please note that the `NETWORK_TRANSACTION_ID` obtained from the card verification response could be used for subsequent payment transactions. 
+**<ins> Sample Response - Transaction Successfully Voided**</ins>
+
+```json
+
+{
+    "merchantTransactionId": "38943939903ed0a8090d10dert33",
+    "purchaseInfo": {
+        "order": {
+            "orderId": "xorderIdTestt001"
+        }
+    },
+    "postDate": "05252022",
+    "replayCount": 1,
+    "hostExtraInfo": [
+        {
+            "name": "LOCAL_TXN_DATE",
+            "value": "05102022"
+        },
+        {
+            "name": "LOCAL_TXN_TIME",
+            "value": "202059"
+        }
+    ],
+    "transactions": [
+        {
+            "externalId": "7777883838389999",
+            {
+                "parentTransactionId": "485-27834-285903824-095",
+                "createdTime": "2017-03-21T08:15:30-05:00",
+                "merchantTransactionId": "38943939903ed0a8090d10dert33",
+                "purchaseInfo": {
+                    "order": {
+                        "orderId": "xorderIdTestt001"
+                    }
+                },
+                "transactions": [
+                    {
+                        "transactionId": "8as8a8a99a9876543232sdgf345",
+                        "externalId": "7777883838389999",
+                        "merchantTransactionId": "38943939903ed0a8090d10dert31",
+                        "status": "APPROVED",
+                        "account": {
+                            "cardNumber": "6759649826438453",
+                            "cardSubType": "Health12",
+                            "alias": "8453",
+                            "merchantId": "99022879997",
+                            "altMerchantId": "0001",
+                            "vaultedAccount": {
+                                "fdAccountId": "8a7fb5717e8fcee9017e9756a30401cb"
+                            },
+                            "balance": {
+                                "currentBalance": "5",
+                                "beginBalance": "20",
+                                "currencyCode": {
+                                    "code": "USD",
+                                    "number": 840
+                                },
+                                "currencyType": "BASE"
+                            }
+                        },
+                        "hostExtraInfo": [
+                            {
+                                "name": "APPROVAL_NUMBER",
+                                "value": "530976"
+                            },
+                            {
+                                "name": "SEQUENCE_NUMBER",
+                                "value": "005931"
+                            }
+                        ]
+                    },
+                    {
+                        "transactionId": "9876543232xdvxv34398s89afa9",
+                        "externalId": "6666883838388888",
+                        "merchantTransactionId": "38943939903ed0a8090d10dert32",
+                        "status": "APPROVED",
+                        "account": {
+                            "cardNumber": "7759649826438111",
+                            "cardSubType": "Health34",
+                            "alias": "8111",
+                            "merchantId": "99022879997",
+                            "altMerchantId": "0001",
+                            "vaultedAccount": {
+                                "fdAccountId": "8a7fb5717e8fcee9017e9756a30401cb"
+                            },
+                            "balance": {
+                                "currentBalance": "5",
+                                "beginBalance": "20",
+                                "currencyCode": {
+                                    "code": "USD",
+                                    "number": 840
+                                },
+                                "currencyType": "BASE"
+                            }
+                        },
+                        "hostExtraInfo": [
+                            {
+                                "name": "APPROVAL_NUMBER",
+                                "value": "530911"
+                            },
+                            {
+                                "name": "SEQUENCE_NUMBER",
+                                "value": "005922"
+                            }
+                        ]
+                    },
+                    {
+                        "transactionId": "9876543232xdvxv34398s89afa9",
+                        "externalId": "555583838387777",
+                        "merchantTransactionId": "38943939903ed0a8090d10dert34",
+                        "status": "APPROVED",
+                        "account": {
+                            "cardNumber": "7759649826438111",
+                            "cardSubType": "Health34",
+                            "alias": "8111",
+                            "merchantId": "99022879997",
+                            "altMerchantId": "0001",
+                            "vaultedAccount": {
+                                "fdAccountId": "8a7fb5717e8fcee9017e9756a30401cb"
+                            },
+                            "balance": {
+                                "currentBalance": "5",
+                                "beginBalance": "20",
+                                "currencyCode": {
+                                    "code": "USD",
+                                    "number": 840
+                                },
+                                "currencyType": "BASE"
+                            }
+                        },
+                        "hostExtraInfo": [
+                            {
+                                "name": "APPROVAL_NUMBER",
+                                "value": "530911"
+                            },
+                            {
+                                "name": "SEQUENCE_NUMBER",
+                                "value": "005922"
+                            }
+                        ]
+                    }
+                ]
+            },
+
+            "merchantTransactionId": "38943939903ed0a8090d10dert31"
+        },
+        {
+            "externalId": "6666883838388888",
+            "merchantTransactionId": "38943939903ed0a8090d10dert32"
+        },
+        {
+            "externalId": "555583838387777",
+            "merchantTransactionId": "38943939903ed0a8090d10dert34"
+        }
+    ]
+}
+```
+
+**<ins> Sample Response - Transactions partially Voided**</ins>
+
+```json
+
+{
+    "parentTransactionId": "485-27834-285903824-095",
+    "createdTime": "2017-03-21T08:15:30-05:00",
+    "merchantTransactionId": "38943939903ed0a8090d10dert33",
+    "purchaseInfo": {
+        "order": {
+            "orderId": "xorderIdTestt001"
+        }
+    },
+    "transactions": [
+        {
+            "transactionId": "8as8a8a99a9876543232sdgf345",
+            "externalId": "7777883838388991",
+            "merchantTransactionId": "38943939903ed0a8090d10dert30",
+            "status": "APPROVED",
+            "account": {
+                "cardNumber": "6759649826438453",
+                "cardSubType": "Health12",
+                "alias": "8453",
+                "merchantId": "99022879997",
+                "altMerchantId": "0001",
+                "vaultedAccount": {
+                    "fdAccountId": "8a7fb5717e8fcee9017e9756a30401cb"
+                },
+                "balance": {
+                    "currentBalance": "20",
+                    "beginBalance": "5",
+                    "currencyCode": {
+                        "code": "USD",
+                        "number": 840
+                    },
+                    "currencyType": "BASE"
+                }
+            },
+            "hostExtraInfo": [
+                {
+                    "name": "APPROVAL_NUMBER",
+                    "value": "530976"
+                },
+                {
+                    "name": "SEQUENCE_NUMBER",
+                    "value": "005931"
+                }
+            ]
+        },
+        {
+            "externalId": "7777883838388992",
+            "merchantTransactionId": "38943939903ed0a8090d10dert31",
+            "status": "FAILED",
+            "account": {
+                "vaultedAccount": {
+                    "fdAccountId": "8a7fb5717e8fcee9017e9756a30401cb"
+                }
+            },
+            "errorInfo": {
+                "code": "269902",
+                "message": " Invalid request format/data.",
+                "category": "common",
+                "developerInfo": {
+                    "developerMessage": " Invalid request format/data."
+                }
+            }
+        },
+        {
+            "transactionId": "8as8a8a99a9876543232sdgf345",
+            "externalId": "7777883838388991",
+            "merchantTransactionId": "38943939903ed0a8090d10dert32",
+            "status": "APPROVED",
+            "account": {
+                "cardNumber": "6759649826438453",
+                "cardSubType": "Health12",
+                "alias": "8453",
+                "merchantId": "99022879997",
+                "altMerchantId": "0001",
+                "vaultedAccount": {
+                    "fdAccountId": "8a7fb5717e8fcee9017e9756a30401cb"
+                },
+                "balance": {
+                    "currentBalance": "20",
+                    "beginBalance": "5",
+                    "currencyCode": {
+                        "code": "USD",
+                        "number": 840
+                    },
+                    "currencyType": "BASE"
+                }
+            },
+            "hostExtraInfo": [
+                {
+                    "name": "APPROVAL_NUMBER",
+                    "value": "530976"
+                },
+                {
+                    "name": "SEQUENCE_NUMBER",
+                    "value": "005931"
+                }
+            ]
+        }
+    ]
+}
+```
