@@ -17,7 +17,7 @@ Multi Purse capabilities are applicable for the APIs below.
 
 #### Purchase
 
-Use the below apis to activate multiple gift cards in a single transaction and void the activation of the multiple gift cards.
+Use the below apis to activate multiple gift cards in a single transaction and to cancel the activation of the multiple gift cards.
 
 /v2/prepaids/multi-purchases
 
@@ -25,7 +25,7 @@ Use the below apis to activate multiple gift cards in a single transaction and v
 
 #### Reload
 
-Use the below apis to reload multiple gift cards in a single transaction and void the reload of the multiple gift cards.
+Use the below apis to add funds to the multiple gift cards in a single transaction and to cancel the reload.
 
 /v2/prepaids/multi-reloads
 
@@ -1152,8 +1152,6 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-reloads>
 
 | **Name** | **Data Type** | **Parameter Type** | **Required** | **Max Length** |
 | --- | --- | --- | --- | --- |
-| merchantId | String | body | yes | - |
-| requestedAmount | String | body | yes | - |
 | fdCustomerId | String | body | yes | 32 |
 | fdAccountId | String | body | yes | 32 |
 
@@ -1940,18 +1938,15 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-reloads>
 
 HTTP Method: POST
 
-Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/auths>
+Non-prod: <https://int.api.firstdata.com/ucom/v2/prepaids/reloads/{fdParentTransactionId}multi-void>
 
-Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
+Prod: <https://prod.api.firstdata.com/ucom/v2/prepaids/reloads/{fdParentTransactionId}multi-void>
 
 **<ins> Parameters </ins>**
 
 | **Name** | **Data Type** | **Parameter Type** | **Required** | **Max Length** |
 | --- | --- | --- | --- | --- |
-| merchantId | String | body | yes | - |
-| requestedAmount | String | body | yes | - |
-| fdCustomerId | String | body | yes | 32 |
-| fdAccountId | String | body | yes | 32 |
+| fdParentTransactionId | String | path | yes | - |
 
 **<ins> Sample Request - Void All Transactions**</ins>
 
@@ -2246,8 +2241,6 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-sweeps>
 
 | **Name** | **Data Type** | **Parameter Type** | **Required** | **Max Length** |
 | --- | --- | --- | --- | --- |
-| merchantId | String | body | yes | - |
-| requestedAmount | String | body | yes | - |
 | fdCustomerId | String | body | yes | 32 |
 | fdAccountId | String | body | yes | 32 |
 
@@ -2511,12 +2504,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/sweeps/{fdParentTransact
 
 **<ins> Parameters </ins>**
 
-| **Name** | **Data Type** | **Parameter Type** | **Required** | **Max Length** |
-| --- | --- | --- | --- | --- |
-| merchantId | String | body | yes | - |
-| requestedAmount | String | body | yes | - |
-| fdCustomerId | String | body | yes | 32 |
-| fdAccountId | String | body | yes | 32 |
+No Parameters
 
 **<ins> Sample Request - Void Sweep Transaction**</ins>
 
@@ -2801,10 +2789,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-sales>
 
 | **Name** | **Data Type** | **Parameter Type** | **Required** | **Max Length** |
 | --- | --- | --- | --- | --- |
-| merchantId | String | body | yes | - |
-| requestedAmount | String | body | yes | - |
 | fdCustomerId | String | body | yes | 32 |
-| fdAccountId | String | body | yes | 32 |
 
 **<ins> Sample Request - Vaulted Card Sale Transaction**</ins>
 
@@ -3527,7 +3512,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-sales>
     }
 ```
 
-## Voiding Multi Sale Transactions - Sample Payloads
+## cancelling Multi Sale Transactions - Sample Payloads
 
 **<ins> Endpoint URL </ins>**
 
@@ -3541,10 +3526,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-sales/{fdParentTra
 
 | **Name** | **Data Type** | **Parameter Type** | **Required** | **Max Length** |
 | --- | --- | --- | --- | --- |
-| merchantId | String | body | yes | - |
-| requestedAmount | String | body | yes | - |
-| fdCustomerId | String | body | yes | 32 |
-| fdAccountId | String | body | yes | 32 |
+| fdParentTransactionId | String | path | yes | - |
 
 **<ins> Sample Request - Void All Successful Child Transactions**</ins>
 
@@ -3715,9 +3697,9 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-sales/{fdParentTra
 
 HTTP Method: POST
 
-Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/auths>
+Non-prod: <https://int.api.firstdata.com/ucom/v2/prepaids/multi-deducts>
 
-Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
+Prod: <https://prod.api.firstdata.com/ucom/v2/prepaids/multi-deducts>
 
 **<ins> Parameters </ins>**
 
@@ -4000,9 +3982,9 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
 
 HTTP Method: POST
 
-Non-prod: <https://int.api.firstdata.com/ucom/v1/payments/auths>
+Non-prod: <https://int.api.firstdata.com/ucom/v2/prepaids/deducts/{fdParentTransactionId}/multi-void>
 
-Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
+Prod: <https://prod.api.firstdata.com/ucom/v2/prepaids/deducts/{fdParentTransactionId}/multi-void>
 
 **<ins> Parameters </ins>**
 
