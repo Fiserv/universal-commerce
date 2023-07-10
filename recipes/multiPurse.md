@@ -1,15 +1,23 @@
 # Multi Purse
 <img title="icon" alt="hosted pages icon" src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/Picture26.png" width="40" height="30"> 
 
-Multi Sale Description
+Multi Purse Capabilities give the merchants ability to process below activities for multiple gift cards within one call.
+Purchase - Activate multiple gift cards
+Sweep - Remove entire balance from multiple gift cards
+Deduct - Deduct specific amount from multiple cards
+Sale - Complete sale by using multiple gift cards
+Reload - Reload multiple gift cards
+Void -  Void multiple gift cards
 
 ## Multi Purse Impacted APIs
 
-Multi Purse capabilities are applicable for the APIs below. The MIT indicators must be included in the Request to uCom as demonstrated in the samples below.
+Multi Purse capabilities are applicable for the APIs below.
 
 ### Payments
 
 #### Purchase
+
+Use the below apis to activate multiple gift cards in a single transaction and void the activation of the multiple gift cards.
 
 /v2/prepaids/multi-purchases
 
@@ -17,11 +25,15 @@ Multi Purse capabilities are applicable for the APIs below. The MIT indicators m
 
 #### Reload
 
+Use the below apis to reload multiple gift cards in a single transaction and void the reload of the multiple gift cards.
+
 /v2/prepaids/multi-reloads
 
 /v2/prepaids/multi-reloads/{fdParentTransactionId}/multi-void
 
 #### Sweeps
+
+Use the below apis to remove entire balance from multiple gift cards in a single transaction and void the sweep transaction for the multiple gift cards.
 
 /v2/prepaids/multi-sweeps
 
@@ -29,11 +41,15 @@ Multi Purse capabilities are applicable for the APIs below. The MIT indicators m
 
 #### Deducts
 
+Use the below apis to deduct balance from multiple gift cards in a single transaction and void the deduct transaction for the multiple gift cards.
+
 /v2/prepaids/multi-deducts
 
 /v2/prepaids/deducts/{fdParentTransactionId}/multi-void
 
 #### Sale
+
+Use the below apis to use multiple gift cards for their purchases.
 
 /v2/prepaids/multi-sales
 
@@ -46,14 +62,6 @@ Multi Purse capabilities are applicable for the APIs below. The MIT indicators m
 /v2/prepaids/multi-refunds
 
 /v2/prepaids/multi-refunds/{fdParentTransactionId}/void
-
-### Accounts
-
-#### Card Verification
-
-/v1/accounts/verification
-
-Please use the card verification flow for new cards that are not stored on the Connected Commerce (uCom) vault. The call will return the `NETWORK_TRANSACTION_ID`, which is needed for follow up payment transactions. In other words, for new cards, use the card verification API call as the initial transaction, then either a sale or authorization call as the subsequent transaction.
 
 ## Sample Multi Purchase Payloads
 
@@ -93,7 +101,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-purchases>
 | hostExtraInfo.LOCAL_TXN_TIME | uCom sends this field as-is to Value Link for reporting purposes.| no |
 | Postdate | uCom sends this field as-is to Value Link for reporting purposes. | no |
 
-**<ins> Multi Purchase Sample Request (Initial)**</ins>
+**<ins> Multi Purchase Sample Request**</ins>
 
 ```json
 
@@ -128,7 +136,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-purchases>
                 "merchantId": "99022879997",
                 "altMerchantId": "0001",
                 "merchantTerminalId": "0002",
-                "cardSubType": "Health12",
+                "cardSubType": "test12",
                 "promotionCode": "57051",
                 "isEANRequired": false
             },
@@ -149,7 +157,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-purchases>
                 "merchantId": "99022879997",
                 "altMerchantId": "0001",
                 "merchantTerminalId": "0002",
-                "cardSubType": "Health45",
+                "cardSubType": "test45",
                 "promotionCode": "57052",
                 "isEANRequired": true
             },
@@ -169,7 +177,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-purchases>
             "account": {
                 "merchantId": "99022879997",
                 "altMerchantId": "0001",
-                "cardSubType": "Health67",
+                "cardSubType": "test67",
                 "promotionCode": "57053",
                 "isEANRequired": true
             },
@@ -206,7 +214,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-purchases>
             "status": "APPROVED",
             "account": {
                 "cardNumber": "6759649826438453",
-                "cardSubType": "Health12",
+                "cardSubType": "test12",
                 "merchantId": "99022879997",
                 "altMerchantId": "0001",
                 "promotionCode": "57051",
@@ -250,7 +258,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-purchases>
             "status": "APPROVED",
             "account": {
                 "cardNumber": "7759649826438111",
-                "cardSubType": "Health45",
+                "cardSubType": "test45",
                 "merchantId": "99022879997",
                 "altMerchantId": "0001",
                 "promotionCode": "57052",
@@ -294,7 +302,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-purchases>
             "status": "APPROVED",
             "account": {
                 "cardNumber": "7759649826438111",
-                "cardSubType": "Health45",
+                "cardSubType": "test45",
                 "merchantId": "99022879997",
                 "altMerchantId": "0001",
                 "promotionCode": "57052",
@@ -357,7 +365,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-purchases>
             "status": "APPROVED",
             "account": {
                 "cardNumber": "6759649826438453",
-                "cardSubType": "Health12",
+                "cardSubType": "test12",
                 "merchantId": "99022879997",
                 "altMerchantId": "0001",
                 "promotionCode": "57051",
@@ -400,7 +408,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-purchases>
             "merchantTransactionId": "38943939903ed0a8090d10dert32",
             "status": "FAILED",
             "account": {
-                "cardSubType": "Health45",
+                "cardSubType": "test45",
                 "merchantId": "99022879997",
                 "altMerchantId": "0001",
                 "promotionCode": "57052"
@@ -429,7 +437,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-purchases>
             "status": "APPROVED",
             "account": {
                 "cardNumber": "6759649826438453",
-                "cardSubType": "Health12",
+                "cardSubType": "test12",
                 "merchantId": "99022879997",
                 "altMerchantId": "0001",
                 "promotionCode": "57051",
@@ -491,7 +499,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-purchases>
             "status": "APPROVED",
             "account": {
                 "cardNumber": "6759649826438453",
-                "cardSubType": "Health12",
+                "cardSubType": "test12",
                 "merchantId": "99022879997",
                 "altMerchantId": "0001",
                 "promotionCode": "57051",
@@ -534,7 +542,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-purchases>
             "merchantTransactionId": "38943939903ed0a8090d10dert32",
             "status": "FAILED",
             "account": {
-                "cardSubType": "Health45",
+                "cardSubType": "test45",
                 "merchantId": "99022879997",
                 "altMerchantId": "0001",
                 "promotionCode": "57052"
@@ -563,7 +571,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-purchases>
             "status": "DECLINED",
             "account": {
                 "cardNumber": "6759649826438453",
-                "cardSubType": "Health12",
+                "cardSubType": "test12",
                 "merchantId": "99022879997",
                 "altMerchantId": "0001",
                 "promotionCode": "57051",
@@ -625,7 +633,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-purchases>
             "merchantTransactionId": "38943939903ed0a8090d10dert31",
             "status": "FAILED",
             "account": {
-                "cardSubType": "Health45",
+                "cardSubType": "test45",
                 "merchantId": "99022879997",
                 "altMerchantId": "0001",
                 "promotionCode": "57052"
@@ -653,7 +661,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-purchases>
             "merchantTransactionId": "38943939903ed0a8090d10dert32",
             "status": "FAILED",
             "account": {
-                "cardSubType": "Health45",
+                "cardSubType": "test45",
                 "merchantId": "99022879997",
                 "altMerchantId": "0001",
                 "promotionCode": "57052"
@@ -681,7 +689,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-purchases>
             "merchantTransactionId": "38943939903ed0a8090d10dert33",
             "status": "FAILED",
             "account": {
-                "cardSubType": "Health45",
+                "cardSubType": "test45",
                 "merchantId": "99022879997",
                 "altMerchantId": "0001",
                 "promotionCode": "57052"
@@ -728,7 +736,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-purchases>
             "status": "DECLINED",
             "account": {
                 "cardNumber": "6759649826438453",
-                "cardSubType": "Health12",
+                "cardSubType": "test12",
                 "merchantId": "99022879997",
                 "altMerchantId": "0001",
                 "promotionCode": "57051",
@@ -759,7 +767,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-purchases>
             "merchantTransactionId": "38943939903ed0a8090d10dert32",
             "status": "DECLINED",
             "account": {
-                "cardSubType": "Health45",
+                "cardSubType": "test45",
                 "merchantId": "99022879997",
                 "altMerchantId": "0001",
                 "promotionCode": "57052"
@@ -798,7 +806,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-purchases>
             "status": "DECLINED",
             "account": {
                 "cardNumber": "6759649826438453",
-                "cardSubType": "Health12",
+                "cardSubType": "test12",
                 "merchantId": "99022879997",
                 "altMerchantId": "0001",
                 "promotionCode": "57051",
@@ -889,7 +897,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-purchases>
             "status": "CANCELLED",
             "account": {
                 "cardNumber": "6759649826438453",
-                "cardSubType": "Health12",
+                "cardSubType": "test12",
                 "alias": "8453",
                 "vaultedAccount": {
                     "fdAccountId": "8a7fb5717e8fcee9017e9756a30401cb"
@@ -922,7 +930,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-purchases>
             "status": "CANCELLED",
             "account": {
                 "cardNumber": "7759649826438111",
-                "cardSubType": "Health34",
+                "cardSubType": "test34",
                 "alias": "8111",
                 "vaultedAccount": {
                     "fdAccountId": "8a7fb5717e8fcee9017e9756a30401cb"
@@ -955,7 +963,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-purchases>
             "status": "CANCELLED",
             "account": {
                 "cardNumber": "7759649826438111",
-                "cardSubType": "Health34",
+                "cardSubType": "test34",
                 "alias": "8111",
                 "vaultedAccount": {
                     "fdAccountId": "8a7fb5717e8fcee9017e9756a30401cb"
@@ -1006,7 +1014,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-purchases>
             "status": "CANCELLED",
             "account": {
                 "cardNumber": "6759649826438453",
-                "cardSubType": "Health12",
+                "cardSubType": "test12",
                 "alias": "8453",
                 "vaultedAccount": {
                     "fdAccountId": "8a7fb5717e8fcee9017e9756a30401cb"
@@ -1039,7 +1047,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-purchases>
             "status": "FAILED",
             "account": {
                 "cardNumber": "7759649826438111",
-                "cardSubType": "Health34",
+                "cardSubType": "test34",
                 "alias": "8111",
                 "vaultedAccount": {
                     "fdAccountId": "8a7fb5717e8fcee9017e9756a30401cb"
@@ -1100,7 +1108,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-purchases>
             "status": "CANCELLED",
             "account": {
                 "cardNumber": "6759649826438453",
-                "cardSubType": "Health12",
+                "cardSubType": "test12",
                 "alias": "8453",
                 "balance": {
                     "currentBalance": "20",
@@ -1237,7 +1245,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-reloads>
             "destinationCard": {
                 "account": {
                     "cardNumber": "6759649826438453",
-                    "cardSubType": "Health12",
+                    "cardSubType": "test12",
                     "merchantId": "99022879997",
                     "altMerchantId": "0001",
                     "alias": "8453",
@@ -1282,7 +1290,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-reloads>
             "destinationCard": {
                 "account": {
                     "cardNumber": "6759649826438111",
-                    "cardSubType": "Health34",
+                    "cardSubType": "test34",
                     "merchantId": "99022879997",
                     "altMerchantId": "0001",
                     "alias": "8111",
@@ -1327,7 +1335,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-reloads>
             "destinationCard": {
                 "account": {
                     "cardNumber": "6759649826438111",
-                    "cardSubType": "Health34",
+                    "cardSubType": "test34",
                     "merchantId": "99022879997",
                     "altMerchantId": "0001",
                     "alias": "8111",
@@ -1390,7 +1398,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-reloads>
             "destinationCard": {
                 "account": {
                     "cardNumber": "6759649826438453",
-                    "cardSubType": "Health12",
+                    "cardSubType": "test12",
                     "merchantId": "99022879997",
                     "altMerchantId": "0001",
                     "alias": "8453",
@@ -1435,7 +1443,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-reloads>
             "destinationCard": {
                 "account": {
                     "cardNumber": "6759649826438111",
-                    "cardSubType": "Health34",
+                    "cardSubType": "test34",
                     "merchantId": "99022879997",
                     "altMerchantId": "0001",
                     "alias": "8111",
@@ -1541,7 +1549,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-reloads>
             "destinationCard": {
                 "account": {
                     "cardNumber": "6759649826438453",
-                    "cardSubType": "Health12",
+                    "cardSubType": "test12",
                     "merchantId": "99022879997",
                     "altMerchantId": "0001",
                     "alias": "8453",
@@ -1586,7 +1594,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-reloads>
             "destinationCard": {
                 "account": {
                     "cardNumber": "6759649826438111",
-                    "cardSubType": "Health34",
+                    "cardSubType": "test34",
                     "merchantId": "99022879997",
                     "altMerchantId": "0001",
                     "alias": "8111",
@@ -1631,7 +1639,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-reloads>
             "destinationCard": {
                 "account": {
                     "cardNumber": "6759649826438111",
-                    "cardSubType": "Health34",
+                    "cardSubType": "test34",
                     "merchantId": "99022879997",
                     "altMerchantId": "0001",
                     "alias": "8111",
@@ -1694,7 +1702,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-reloads>
             "destinationCard": {
                 "account": {
                     "cardNumber": "6759649826438111",
-                    "cardSubType": "Health34",
+                    "cardSubType": "test34",
                     "merchantId": "99022879997",
                     "altMerchantId": "0001",
                     "alias": "8111",
@@ -1728,7 +1736,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-reloads>
             "destinationCard": {
                 "account": {
                     "cardNumber": "6759649826438111",
-                    "cardSubType": "Health34",
+                    "cardSubType": "test34",
                     "merchantId": "99022879997",
                     "altMerchantId": "0001",
                     "alias": "8111",
@@ -1772,7 +1780,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-reloads>
             "destinationCard": {
                 "account": {
                     "cardNumber": "6759649826438111",
-                    "cardSubType": "Health34",
+                    "cardSubType": "test34",
                     "merchantId": "99022879997",
                     "altMerchantId": "0001",
                     "alias": "8111",
@@ -2004,7 +2012,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
             "status": "CANCELLED",
             "account": {
                 "cardNumber": "6759649826438453",
-                "cardSubType": "Health12",
+                "cardSubType": "test12",
                 "merchantId": "99022879997",
                 "altMerchantId": "0001",
                 "alias": "8111",
@@ -2038,7 +2046,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
             "status": "CANCELLED",
             "account": {
                 "cardNumber": "7759649826438111",
-                "cardSubType": "Health34",
+                "cardSubType": "test34",
                 "merchantId": "99022879997",
                 "altMerchantId": "0001",
                 "alias": "8111",
@@ -2072,7 +2080,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
             "status": "CANCELLED",
             "account": {
                 "cardNumber": "7759649826438111",
-                "cardSubType": "Health34",
+                "cardSubType": "test34",
                 "merchantId": "99022879997",
                 "altMerchantId": "0001",
                 "alias": "8111",
@@ -2123,7 +2131,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
             "status": "CANCELLED",
             "account": {
                 "cardNumber": "6759649826438453",
-                "cardSubType": "Health12",
+                "cardSubType": "test12",
                 "merchantId": "99022879997",
                 "altMerchantId": "0001",
                 "alias": "8111",
@@ -2192,7 +2200,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
             "status": "CANCELLED",
             "account": {
                 "cardNumber": "6759649826438453",
-                "cardSubType": "Health12",
+                "cardSubType": "test12",
                 "merchantId": "99022879997",
                 "altMerchantId": "0001",
                 "alias": "8111",
@@ -2320,7 +2328,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-sweeps>
             "status": "APPROVED",
             "account": {
                 "cardNumber": "7759649826438111",
-                "cardSubType": "Health34",
+                "cardSubType": "test34",
                 "alias": "8111",
                 "merchantId": "99022879997",
                 "altMerchantId": "0001",
@@ -2355,7 +2363,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-sweeps>
             "status": "APPROVED",
             "account": {
                 "cardNumber": "7759649826438111",
-                "cardSubType": "Health34",
+                "cardSubType": "test34",
                 "alias": "8111",
                 "merchantId": "99022879997",
                 "altMerchantId": "0001",
@@ -2408,7 +2416,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-sweeps>
             "status": "APPROVED",
             "account": {
                 "cardNumber": "6759649826438453",
-                "cardSubType": "Health12",
+                "cardSubType": "test12",
                 "alias": "8453",
                 "merchantId": "99022879997",
                 "altMerchantId": "0001",
@@ -2461,7 +2469,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-sweeps>
             "status": "APPROVED",
             "account": {
                 "cardNumber": "6759649826438453",
-                "cardSubType": "Health12",
+                "cardSubType": "test12",
                 "alias": "8453",
                 "merchantId": "99022879997",
                 "altMerchantId": "0001",
@@ -2570,7 +2578,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/sweeps/{fdParentTransact
             "status": "APPROVED",
             "account": {
                 "cardNumber": "6759649826438453",
-                "cardSubType": "Health12",
+                "cardSubType": "test12",
                 "alias": "8453",
                 "merchantId": "99022879997",
                 "altMerchantId": "0001",
@@ -2605,7 +2613,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/sweeps/{fdParentTransact
             "status": "APPROVED",
             "account": {
                 "cardNumber": "7759649826438111",
-                "cardSubType": "Health34",
+                "cardSubType": "test34",
                 "alias": "8111",
                 "merchantId": "99022879997",
                 "altMerchantId": "0001",
@@ -2640,7 +2648,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/sweeps/{fdParentTransact
             "status": "APPROVED",
             "account": {
                 "cardNumber": "7759649826438111",
-                "cardSubType": "Health34",
+                "cardSubType": "test34",
                 "alias": "8111",
                 "merchantId": "99022879997",
                 "altMerchantId": "0001",
@@ -2693,7 +2701,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/sweeps/{fdParentTransact
       "status": "APPROVED",
       "account": {
         "cardNumber": "6759649826438453",
-        "cardSubType": "Health12",
+        "cardSubType": "test12",
         "alias": "8453",
         "merchantId": "99022879997",
         "altMerchantId": "0001",
@@ -2746,7 +2754,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/sweeps/{fdParentTransact
       "status": "APPROVED",
       "account": {
         "cardNumber": "6759649826438453",
-        "cardSubType": "Health12",
+        "cardSubType": "test12",
         "alias": "8453",
         "merchantId": "99022879997",
         "altMerchantId": "0001",
@@ -2892,7 +2900,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-sales>
             "fundingSource": {
                 "type": "PREPAID",
                 "prepaid": {
-                    "cardSubType": "Health12",
+                    "cardSubType": "test12",
                     "alias": "8453",
                     "balance": {
                         "currentBalance": "5",
@@ -2934,7 +2942,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-sales>
             "fundingSource": {
                 "type": "PREPAID",
                 "prepaid": {
-                    "cardSubType": "Health45",
+                    "cardSubType": "test45",
                     "alias": "8453",
                     "balance": {
                         "currentBalance": "5",
@@ -2994,7 +3002,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-sales>
             "fundingSource": {
                 "type": "PREPAID",
                 "prepaid": {
-                    "cardSubType": "Health12",
+                    "cardSubType": "test12",
                     "alias": "8453",
                     "balance": {
                         "currentBalance": "5",
@@ -3035,7 +3043,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-sales>
             "fundingSource": {
                 "type": "PREPAID",
                 "prepaid": {
-                    "cardSubType": "Health45",
+                    "cardSubType": "test45",
                     "alias": "8453"
                 }
             },
@@ -3094,7 +3102,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-sales>
             "fundingSource": {
                 "type": "PREPAID",
                 "prepaid": {
-                    "cardSubType": "Health12",
+                    "cardSubType": "test12",
                     "alias": "8453",
                     "balance": {
                         "currentBalance": "5",
@@ -3252,7 +3260,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-sales>
             "fundingSource": {
                 "type": "PREPAID",
                 "prepaid": {
-                    "cardSubType": "Health12",
+                    "cardSubType": "test12",
                     "alias": "8453",
                     "balance": {
                         "currentBalance": "5",
@@ -3294,7 +3302,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-sales>
             "fundingSource": {
                 "type": "PREPAID",
                 "prepaid": {
-                    "cardSubType": "Health45",
+                    "cardSubType": "test45",
                     "alias": "8453",
                     "balance": {
                         "currentBalance": "5",
@@ -3354,7 +3362,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-sales>
             "fundingSource": {
                 "type": "PREPAID",
                 "prepaid": {
-                    "cardSubType": "Health12",
+                    "cardSubType": "test12",
                     "alias": "8453",
                     "balance": {
                         "currentBalance": "5",
@@ -3454,7 +3462,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-sales>
             "fundingSource": {
                 "type": "PREPAID",
                 "prepaid": {
-                    "cardSubType": "Health12",
+                    "cardSubType": "test12",
                     "alias": "8453",
                     "balance": {
                         "currentBalance": "5",
@@ -3607,7 +3615,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-sales/{fdParentTra
             "fundingSource": {
                 "type": "PREPAID",
                 "prepaid": {
-                    "cardSubType": "Health12",
+                    "cardSubType": "test12",
                     "alias": "8453",
                     "balance": {
                         "currentBalance": "5",
@@ -3673,7 +3681,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-sales/{fdParentTra
             "fundingSource": {
                 "type": "PREPAID",
                 "prepaid": {
-                    "cardSubType": "Health45",
+                    "cardSubType": "test45",
                     "alias": "8453",
                     "balance": {
                         "currentBalance": "5",
@@ -3813,7 +3821,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
             "status": "APPROVED",
             "account": {
                 "cardNumber": "7759649826438111",
-                "cardSubType": "Health34",
+                "cardSubType": "test34",
                 "alias": "8111",
                 "merchantId": "99022879997",
                 "altMerchantId": "0001",
@@ -3848,7 +3856,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
             "status": "APPROVED",
             "account": {
                 "cardNumber": "7759649826438111",
-                "cardSubType": "Health34",
+                "cardSubType": "test34",
                 "alias": "8111",
                 "merchantId": "99022879997",
                 "altMerchantId": "0001",
@@ -3901,7 +3909,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
             "status": "APPROVED",
             "account": {
                 "cardNumber": "6759649826438453",
-                "cardSubType": "Health12",
+                "cardSubType": "test12",
                 "alias": "8453",
                 "merchantId": "99022879997",
                 "altMerchantId": "0001",
@@ -3954,7 +3962,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
             "status": "APPROVED",
             "account": {
                 "cardNumber": "6759649826438453",
-                "cardSubType": "Health12",
+                "cardSubType": "test12",
                 "alias": "8453",
                 "merchantId": "99022879997",
                 "altMerchantId": "0001",
@@ -4087,7 +4095,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
                         "status": "APPROVED",
                         "account": {
                             "cardNumber": "6759649826438453",
-                            "cardSubType": "Health12",
+                            "cardSubType": "test12",
                             "alias": "8453",
                             "merchantId": "99022879997",
                             "altMerchantId": "0001",
@@ -4122,7 +4130,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
                         "status": "APPROVED",
                         "account": {
                             "cardNumber": "7759649826438111",
-                            "cardSubType": "Health34",
+                            "cardSubType": "test34",
                             "alias": "8111",
                             "merchantId": "99022879997",
                             "altMerchantId": "0001",
@@ -4157,7 +4165,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
                         "status": "APPROVED",
                         "account": {
                             "cardNumber": "7759649826438111",
-                            "cardSubType": "Health34",
+                            "cardSubType": "test34",
                             "alias": "8111",
                             "merchantId": "99022879997",
                             "altMerchantId": "0001",
@@ -4223,7 +4231,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
             "status": "APPROVED",
             "account": {
                 "cardNumber": "6759649826438453",
-                "cardSubType": "Health12",
+                "cardSubType": "test12",
                 "alias": "8453",
                 "merchantId": "99022879997",
                 "altMerchantId": "0001",
@@ -4276,7 +4284,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v1/payments/auths>
             "status": "APPROVED",
             "account": {
                 "cardNumber": "6759649826438453",
-                "cardSubType": "Health12",
+                "cardSubType": "test12",
                 "alias": "8453",
                 "merchantId": "99022879997",
                 "altMerchantId": "0001",
