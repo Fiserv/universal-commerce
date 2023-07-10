@@ -1,7 +1,7 @@
 # Multi Purse
 <img title="icon" alt="hosted pages icon" src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/Picture26.png" width="40" height="30"> 
 
-Multi Purse Capabilities give the merchants ability to process below activities for multiple gift cards within one call.
+Multi Purse Capabilities give the merchants ability to process below activities for multiple gift cards in one go.
 Purchase - Activate multiple gift cards
 Sweep - Remove entire balance from multiple gift cards
 Deduct - Deduct specific amount from multiple cards
@@ -4297,3 +4297,9 @@ Prod: <https://prod.api.firstdata.com/ucom/v2/prepaids/deducts/{fdParentTransact
     ]
 }
 ```
+
+Note:
+
+merchantId & altMerchantId Should be sent in the request either in parent level or purse level.
+
+In case of Multi status response (http status code 207) or client timeout use cases, please retry an original transaction by keeping a new client request Id value in header and build a replay count in payload.
