@@ -581,32 +581,56 @@ Timestamp:{{time}}
 ```json
 
 {
+    "fdCustomerId": "d0d89a8700884726b6751060a442ae20",
     "sale": {
-        "orderId": "1234567891234",
-        "merchantId": "MO45009483002",
-        "requestedAmount": "2.75",
+        "orderId": "Order5d339427",
+        "merchantId": "MO06313553001",
+        "requestedAmount": "2.25",
         "currencyCode": {
             "number": "840"
         },
         "fundingSource": {
             "credit": {
                 "cardType": "VISA",
-                "alias": "0875",
-                "tokens": [
-                    {
-                        "tokenId": "4895370015492058",
-                        "tokenProvider": "THIRD_PARTY_NETWORK_TOKEN",
-                        "expiryDate": {
-                            "month": "12",
-                            "year": "22"
-
-                        }
+                "alias": "1111",
+                "billingAddress": {
+                    "type": "work",
+                    "streetAddress": "100 Universal City Plaza",
+                    "locality": "Hollywood",
+                    "region": "CA",
+                    "postalCode": "20220",
+                    "country": "US",
+                    "formatted": "100 Universal City Plaza\nHollywood",
+                    "primary": true
+                },
+                "token": {
+                    "tokenId": "4895370015999979",
+                    "cryptogram": "AgAAAAAJYRdaTtkAmJbMg0wAAAA=",
+                    "tokenProvider": "THIRD_PARTY_NETWORK_TOKEN",
+                    "expiryDate": {
+                        "month": "12",
+                        "year": "25"
                     }
-                ]
+                }
             }
-        }
+        },
+        "hostExtraInfo": [
+            {
+                "name": "STORED_CREDENTIAL_INDICATOR",
+                "value": "INITIAL"
+            },
+            {
+                "name": "TRANSACTION_INITIATION_INDICATOR",
+                "value": "CUSTOMER"
+            },
+            {
+                "name": "SCHEDULE_INDICATOR",
+                "value": "UNSCHEDULED"
+            }
+        ]
     }
 }
+
 ```
 
 **<ins> Sample Response </ins>**
@@ -614,42 +638,34 @@ Timestamp:{{time}}
 ```json
 
 {
-    "fdSaleId": "92c03974baab4fc4a23d2d85f523ba24",
+    "fdSaleId": "6b20680ca63349c7aa15e30c1214217a",
     "status": "APPROVED",
-    "orderId": "Order0150072",
-    "requestedAmount": 2.75,
-    "approvedAmount": 2.75,
+    "orderId": "Order5d339427",
+    "requestedAmount": 2.25,
+    "approvedAmount": 2.25,
     "currencyCode": {
         "code": "USD",
         "number": 840
     },
     "partialPaymentAllowed": true,
-    "transactionDateTime": "2022-08-29T02:13:40-0400",
+    "transactionDateTime": "2022-12-01T08:46:42-0500",
     "fundingSource": {
         "type": "CREDIT",
         "credit": {
-            "alias": "0875",
+            "alias": "1111",
             "cardType": "VISA",
             "expiryDate": {
-                "month": "12",
-                "year": "22"
-            },
-            "token": {
-                "tokenId": "1435931701790875",
-                "tokenProvider": "TRANS_ARMOR"
+                "month": "09",
+                "year": "25"
             },
             "tokens": [
                 {
-                    "tokenId": "4895370015716589",
-                    "tokenProvider": "NETWORK_TOKEN",
+                    "tokenId": "4895370015999979",
+                    "tokenProvider": "THIRD_PARTY_NETWORK_TOKEN",
                     "expiryDate": {
-                        "month": "12",
-                        "year": "22"
+                        "month": "09",
+                        "year": "25"
                     }
-                },
-                {
-                    "tokenId": "1435931701790875",
-                    "tokenProvider": "TRANS_ARMOR"
                 }
             ]
         }
@@ -657,11 +673,11 @@ Timestamp:{{time}}
     "hostExtraInfo": [
         {
             "name": "APPROVAL_NUMBER",
-            "value": "05195 "
+            "value": "16624 "
         },
         {
             "name": "SEQUENCE_NUMBER",
-            "value": "364641"
+            "value": "247182"
         },
         {
             "name": "HOST_RESPONSE_CODE",
@@ -669,23 +685,15 @@ Timestamp:{{time}}
         },
         {
             "name": "HOST_RESPONSE_MESSAGE",
-            "value": "APPROVED 05195"
+            "value": "APPROVED  16624"
         },
         {
             "name": "TRANSACTION_DATETIME",
-            "value": "2022-08-29T02:13"
+            "value": "2022-12-01T07:46"
         },
         {
             "name": "NETWORK_TRANSACTION_ID",
-            "value": "895370829061340"
-        },
-        {
-            "name": "PAN_NT_AUTH_INDICATOR",
-            "value": "T"
-        },
-        {
-            "name": "PAN_NT_AUTH_INDICATOR_1ST_TRY",
-            "value": "T"
+            "value": "895371201134642"
         },
         {
             "name": "PAR_ID",
