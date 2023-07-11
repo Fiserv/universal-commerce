@@ -56,12 +56,6 @@ Use the below apis to use multiple gift cards for the purchases, to cancel the s
 
 /v2/prepaids/multi-sales/{fdParentTransactionId}/refunds
 
-#### Refunds
-
-/v2/prepaids/multi-refunds
-
-/v2/prepaids/multi-refunds/{fdParentTransactionId}/void
-
 ## Sample Multi Purchase Payloads
 
 Below are some sample payloads that make use of Multi Purse.
