@@ -9,13 +9,13 @@ The codes are separated into sections based on what was being done in the softwa
 |-------|-------------|----------------|----------------|
 |Common|269801|Blocked for suspicious activity.|400|
 |Common|269802|Its considered as parallel transaction and blocked.|400|
+|Common|269900|Pls check all your given parameter to lookup the site.|400|
 |Common|269901|Unable to process your request please try again later if problem persist contact sys admin.|500|
 |Common|269902|Invalid request format/data.|400|
 |Common|269903|Time out while connecting to adapter|400|
 |Common|269904|Invalid Global transaction id. No data found for the given Global Transaction Id.|400|
 |Common|269905|Invalid Location Id. No data found for the given Location Id.|400|
 |Common|269906|This service is down at the moment, please try again later.|500|
-|Common|279903|Your secure session has expired due to longer period of inactivity. Please try again.|400|
 |Common|279904|Customer profile not found.|400|
 |Common|279905|Account detail not found.|400|
 |Common|279907|The account has already been enrolled by the maximum allowable number of customers.|400|
@@ -23,7 +23,6 @@ The codes are separated into sections based on what was being done in the softwa
 |Common|279909|Operation not permitted. Account is DELETED/INACTIVE.|400|
 |Common|279910|Payment instrument revoked.|400|
 |Common|279911|Invalid nonce.|400|
-|Common|279912|Decryption failed.|400|
 |Common|279913|Transaction failed|400|
 |Common|290020|The transaction is in progress through Async channel. Please try some time later|400|
 |Common|290032|Operation not allowed based on current membership status|400|
@@ -108,6 +107,7 @@ The codes are separated into sections based on what was being done in the softwa
 |STAC Transaction|261002|Payment initialization failed|400|
 |STAC Transaction|261003|Cancellation of Payment initialization failed|400|
 |STAC Transaction|261004|StacId identifier is invalid / expired / used|400|
+|STAC Transaction|269900|Invalid storeId|400|
 
 ## Sale
 
@@ -201,6 +201,7 @@ The codes are separated into sections based on what was being done in the softwa
 
 |Use Case|Response Code|Response Message|Http Status Code|
 |-------|-------------|----------------|----------------|
+|Provision|279903|The Payment Instrument has already been enrolled by the maximum allowable number of consumers|400|
 |Provision|279912|Invalid request: Provision not found/valid|400|
 |Provision|279914|The issuer could not continue with provision operation. Kindly contact the card issuer operations directly|400|
 |Provision|279915|Authorization process could not be completed as there are no phone numbers available on file. Kindly contact the card issuer operations directly|400|
