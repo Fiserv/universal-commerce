@@ -698,4 +698,4 @@ Timestamp:{{time}}
 
 ## Error Codes 
 
-For comprehensive troubleshooting of potential errors, kindly refer to the designated error codes section. This resource will aid in addressing and resolving any errors that may arise during the course of testing.
+For comprehensive troubleshooting of potential errors, kindly refer to the designated <a href="../docs/?path=docs/documentation/API_Response_Codes.md"> Error Codes Section</a>. This resource will aid in addressing and resolving any errors that may arise during the course of testing.
