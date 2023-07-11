@@ -2,20 +2,19 @@
 <img title="icon" alt="hosted pages icon" src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/Picture26.png" width="40" height="30"> 
 
 Multi Purse Capabilities give the merchants ability to process below activities for multiple gift cards in one go.
-Purchase - Activate multiple gift cards
-Sweep - Remove entire balance from multiple gift cards
-Deduct - Deduct specific amount from multiple cards
-Sale - Complete sale by using multiple gift cards
-Reload - Reload multiple gift cards
-Void -  Void multiple gift cards
+
+Purchase - Activate multiple purses / gift cards
+Reload - Reload multiple purses / gift cards
+Sweep - Remove entire balance from multiple purses / gift cards
+Deduct - Deduct specific balances from multiple purses / gift cards
+Sale - Complete sale by using multiple purses / gift cards
+Void -  Void multiple purses / gift cards
 
 ## Multi Purse Impacted APIs
 
 Multi Purse capabilities are applicable for the APIs below.
 
-### Payments
-
-#### Purchase
+### Purchase
 
 Use the below apis to activate multiple gift cards in a single transaction and to cancel the activation of the multiple gift cards.
 
@@ -33,7 +32,7 @@ Use the below apis to add funds to the multiple gift cards in a single transacti
 
 #### Sweeps
 
-Use the below apis to remove entire balance from multiple gift cards in a single transaction and void the sweep transaction for the multiple gift cards.
+Use the below apis to remove entire balance from multiple gift cards in a single transaction and cancel the sweep transaction for the multiple gift cards.
 
 /v2/prepaids/multi-sweeps
 
@@ -41,7 +40,7 @@ Use the below apis to remove entire balance from multiple gift cards in a single
 
 #### Deducts
 
-Use the below apis to deduct balance from multiple gift cards in a single transaction and void the deduct transaction for the multiple gift cards.
+Use the below apis to deduct balance from multiple gift cards in a single transaction and cancel the deduct transaction for the multiple gift cards.
 
 /v2/prepaids/multi-deducts
 
@@ -49,7 +48,7 @@ Use the below apis to deduct balance from multiple gift cards in a single transa
 
 #### Sale
 
-Use the below apis to use multiple gift cards for their purchases.
+Use the below apis to use multiple gift cards for the purchases, to cancel the sale transaction and to refund.
 
 /v2/prepaids/multi-sales
 
@@ -75,14 +74,7 @@ Non-prod: <https://int.api.firstdata.com/ucom//v2/prepaids/multi-purchases>
 
 Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-purchases>
 
-**<ins> Parameters </ins>**
-
-| **Name** | **Data Type** | **Parameter Type** | **Required** | **Max Length** |
-| --- | --- | --- | --- | --- |
-| merchantId | String | body | yes | - |
-| requestedAmount | String | body | yes | - |
-| fdCustomerId | String | body | yes | 32 |
-| fdAccountId | String | body | yes | 32 |
+**<ins> Field Description </ins>**
 
 | **Name** | **Description** | **Required** |
 | --- | --- | --- |
@@ -101,7 +93,9 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-purchases>
 | hostExtraInfo.LOCAL_TXN_TIME | uCom sends this field as-is to Value Link for reporting purposes.| no |
 | Postdate | uCom sends this field as-is to Value Link for reporting purposes. | no |
 
-**<ins> Multi Purchase Sample Request**</ins>
+**<ins> Sample Request - Create/Activate a List of Merchant Funded Purses**</ins>
+
+When verifyAccount flag is true, verification API will be internally initiated for account validation before proceeding sale transaction.  merchantId & altMerchantId should be sent in the request only in parent level when this verifyAccount is true.
 
 ```json
 
@@ -194,7 +188,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-purchases>
 }
 ```
 
-**<ins> Sample Response - Success for Merchant Funded Purchase</ins>
+**<ins> Sample Response - Success for Merchant Funded Purchase - 201</ins>
 
 ```json
 
@@ -838,6 +832,20 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-purchases>
 
 **<ins> Multi Purchase Void Sample Request**</ins>
 
+**<ins> Endpoint URL </ins>**
+
+HTTP Method: POST
+
+Non-prod: <https://int.api.firstdata.com/ucom/v2/prepaids/purchases/{fdParentTransactionId}/multi-void>
+
+Prod: <https://prod.api.firstdata.com/ucom/v2/prepaids/purchases/{fdParentTransactionId}/multi-void>
+
+**<ins> Parameters </ins>**
+
+| **Name** | **Data Type** | **Parameter Type** | **Required** | **Max Length** |
+| --- | --- | --- | --- | --- |
+| fdCustomerId | String | path | yes | - |
+
 ```json
 
 {
@@ -1155,7 +1163,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-reloads>
 | fdCustomerId | String | body | yes | 32 |
 | fdAccountId | String | body | yes | 32 |
 
-**<ins> Sample Request - Merchant Funded Reload on vaulted Gift cards**</ins>
+**<ins> Sample Request - Merchant Funded Reload on Vaulted Gift Cards**</ins>
 
 ```json
 {
@@ -1375,7 +1383,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-reloads>
 }
 ```
 
-**<ins> Sample Response - Two transactions success and one failed**</ins>
+**<ins> Sample Response - Two Transactions Success and One Failed 207 - Multi Status**</ins>
 
 ```json
 
@@ -1526,7 +1534,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-reloads>
 
 ```
 
-**<ins> Sample Response - Two transactions success and one declined**</ins>
+**<ins> Sample Response - Two Transactions Success and one Declined - 207 - Multi Status**</ins>
 
 ```json
 
@@ -1679,7 +1687,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-reloads>
 
 ```
 
-**<ins> Sample Response - All declined**</ins>
+**<ins> Sample Response - All declined - 207 - Multi Status**</ins>
 
 ```json
 
@@ -1819,7 +1827,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-reloads>
 }
 ```
 
-**<ins> Sample Response - All failed**</ins>
+**<ins> Sample Response - All failed - 207 - Multi Status**</ins>
 
 ```json
 
@@ -1938,9 +1946,9 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-reloads>
 
 HTTP Method: POST
 
-Non-prod: <https://int.api.firstdata.com/ucom/v2/prepaids/reloads/{fdParentTransactionId}multi-void>
+Non-prod: <https://int.api.firstdata.com/ucom/v2/prepaids/reloads/{fdParentTransactionId}/multi-void>
 
-Prod: <https://prod.api.firstdata.com/ucom/v2/prepaids/reloads/{fdParentTransactionId}multi-void>
+Prod: <https://prod.api.firstdata.com/ucom/v2/prepaids/reloads/{fdParentTransactionId}/multi-void>
 
 **<ins> Parameters </ins>**
 
@@ -1948,7 +1956,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v2/prepaids/reloads/{fdParentTransact
 | --- | --- | --- | --- | --- |
 | fdParentTransactionId | String | path | yes | - |
 
-**<ins> Sample Request - Void All Transactions**</ins>
+**<ins> Sample Request - Cancel All Transactions**</ins>
 
 ```json
 {
@@ -1987,7 +1995,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v2/prepaids/reloads/{fdParentTransact
 }
 ```
 
-**<ins> Sample Response - Transactions Successfully Voided**</ins>
+**<ins> Sample Response - Transactions Successfully Voided - 200 - OK**</ins>
 
 ```json
 
@@ -2107,7 +2115,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v2/prepaids/reloads/{fdParentTransact
 }
 ```
 
-**<ins> Sample Response - Transactions Partially Voided - 207 - Multi STatus**</ins>
+**<ins> Sample Response - Transactions Partially Voided - 207 - Multi Status**</ins>
 
 ```json
 
@@ -2300,7 +2308,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-sweeps>
 }
 ```
 
-**<ins> Sample Response - Transaction Successfully Voided**</ins>
+**<ins> Sample Response - Transaction Successfully Completed - 200 - OK**</ins>
 
 ```json
 
@@ -2388,7 +2396,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-sweeps>
 }
 ```
 
-**<ins> Sample Response - Two transactions voided and one failed**</ins>
+**<ins> Sample Response - Two transactions Approved and One Got Failed - 207 - Multi Status**</ins>
 
 ```json
 
@@ -2668,7 +2676,7 @@ No Parameters
 }
 ```
 
-**<ins> Sample Response - Transactions Partially Voided**</ins>
+**<ins> Sample Response - Transactions Partially Voided - 207 - Multi Status**</ins>
 
 ```json
 
@@ -2955,7 +2963,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-sales>
 }
 ```
 
-**<ins> Sample Response - One transaction approved and one transaction declined (207 - Multi status)**</ins>
+**<ins> Sample Response - One Transaction Approved and One Transaction declined (207 - Multi Status)**</ins>
 
 ```json
 
@@ -3055,7 +3063,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-sales>
 }
 ```
 
-**<ins> Sample Response - Two transactions approved and one failed**</ins>
+**<ins> Sample Response - One Transactions Approved and One  Transaction Failed - 207 - Multi Status**</ins>
 
 ```json
 
@@ -3512,7 +3520,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-sales>
     }
 ```
 
-## cancelling Multi Sale Transactions - Sample Payloads
+## cancelling a Sale Transaction - Sample Payloads
 
 **<ins> Endpoint URL </ins>**
 
@@ -3701,14 +3709,7 @@ Non-prod: <https://int.api.firstdata.com/ucom/v2/prepaids/multi-deducts>
 
 Prod: <https://prod.api.firstdata.com/ucom/v2/prepaids/multi-deducts>
 
-**<ins> Parameters </ins>**
-
-| **Name** | **Data Type** | **Parameter Type** | **Required** | **Max Length** |
-| --- | --- | --- | --- | --- |
-| merchantId | String | body | yes | - |
-| requestedAmount | String | body | yes | - |
-| fdCustomerId | String | body | yes | 32 |
-| fdAccountId | String | body | yes | 32 |
+**<ins> No Parameters </ins>**
 
 **<ins> Sample Request - Deduct Balances from List of Gift cards/Purses**</ins>
 
@@ -3782,7 +3783,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v2/prepaids/multi-deducts>
 }
 ```
 
-**<ins> Sample Response - Transaction Successfully Voided**</ins>
+**<ins> Sample Response - Transaction Successfully Completed - 200 - OK**</ins>
 
 ```json
 
@@ -3870,7 +3871,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v2/prepaids/multi-deducts>
 }
 ```
 
-**<ins> Sample Response - Two transactions voided and one failed**</ins>
+**<ins> Sample Response - Two transactions APproved and One Failed**</ins>
 
 ```json
 
@@ -3986,16 +3987,9 @@ Non-prod: <https://int.api.firstdata.com/ucom/v2/prepaids/deducts/{fdParentTrans
 
 Prod: <https://prod.api.firstdata.com/ucom/v2/prepaids/deducts/{fdParentTransactionId}/multi-void>
 
-**<ins> Parameters </ins>**
+**<ins> No Parameters </ins>**
 
-| **Name** | **Data Type** | **Parameter Type** | **Required** | **Max Length** |
-| --- | --- | --- | --- | --- |
-| merchantId | String | body | yes | - |
-| requestedAmount | String | body | yes | - |
-| fdCustomerId | String | body | yes | 32 |
-| fdAccountId | String | body | yes | 32 |
-
-**<ins> Sample Request - Voiding the Deduct Transaction**</ins>
+**<ins> Sample Request - Cancelling the Deduct Transaction**</ins>
 
 ```json
 {
@@ -4034,7 +4028,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v2/prepaids/deducts/{fdParentTransact
 }
 ```
 
-**<ins> Sample Response - Transaction Successfully Voided**</ins>
+**<ins> Sample Response - Transaction Successfully Voided - 200 - OK**</ins>
 
 ```json
 
@@ -4192,7 +4186,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v2/prepaids/deducts/{fdParentTransact
 }
 ```
 
-**<ins> Sample Response - Transactions partially Voided**</ins>
+**<ins> Sample Response - Transactions Partially Voided - 207 - Multi Status**</ins>
 
 ```json
 
@@ -4300,6 +4294,10 @@ Prod: <https://prod.api.firstdata.com/ucom/v2/prepaids/deducts/{fdParentTransact
 
 Note:
 
-merchantId & altMerchantId Should be sent in the request either in parent level or purse level.
+merchantId & altMerchantId Should be sent in the request either in parent level or purse level for all the apis other than Void.
 
 In case of Multi status response (http status code 207) or client timeout use cases, please retry an original transaction by keeping a new client request Id value in header and build a replay count in payload.
+
+## Error Codes
+
+For comprehensive troubleshooting of potential errors, kindly refer to the designated error codes section. This resource will aid in addressing and resolving any errors that may arise during the course of testing.
