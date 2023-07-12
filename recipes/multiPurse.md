@@ -4093,10 +4093,9 @@ Prod: <https://prod.api.firstdata.com/ucom/v2/prepaids/deducts/{fdParentTransact
 }
 ```
 
-Note:
-
-> merchantId & altMerchantId Should be sent in the request either in parent level or purse level for all the apis other than Void.
-> In case of multi status response (http status code 207) or client timeout use cases, please retry an original transaction by keeping a new client request Id value in header and build a replay count in payload.
+>Note:
+ merchantId & altMerchantId Should be sent in the request either in parent level or purse level for all the apis other than Void.
+ In case of multi status response (http status code 207) or client timeout use cases, please retry an original transaction by keeping a new client request Id value in header and build a replay count in payload.
 
 ## Error Codes
 
