@@ -1935,6 +1935,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-reloads>
         }
     ]
 }
+```
 
 ## Sample Payloads - Cancel a Reload Transaction
 
@@ -2493,7 +2494,6 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-sweeps>
         }
     ]
 }
-
 ```
 
 ## Sample Voiding the Sweep transaction Payloads
@@ -2776,7 +2776,6 @@ No Parameters
     }
   ]
 }
-
 ```
 
 ## Sample Multi Sales Payloads
@@ -3059,103 +3058,6 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-sales>
 }
 ```
 
-**<ins> Sample Response - One Transactions Approved and One  Transaction Failed - 207 - Multi Status**</ins>
-
-```json
-
-{
-    "parentTransactionId": "485-27834-285903824-095",
-    "createdTime": "2017-03-21T08:15:30-05:00",
-    "merchantTransactionId": "d8s8s8s8s990s8w456e464643e3tryd",
-    "purchaseInfo": {
-        "order": {
-            "orderId": "xorderIdTestt001"
-        }
-    },
-    "sales": [
-        {
-            "fdSaleId": "2651f121f7e64f90871fa25ee5921027",
-            "status": "APPROVED",
-            "orderId": "xorderIdTestt001",
-            "requestedAmount": 20,
-            "approvedAmount": 20,
-            "externalId": "8738743788739",
-            "merchantId": "99022879997",
-            "altMerchantId": "0001",
-            "merchantTransactionId": "38943939903ed0a8090d10dert30",
-            "currencyCode": {
-                "code": "USD",
-                "number": 840
-            },
-            "transactionDateTime": "2020-05-07T18:15:52-0400",
-            "fundingSource": {
-                "type": "PREPAID",
-                "prepaid": {
-                    "cardSubType": "test12",
-                    "alias": "8453",
-                    "balance": {
-                        "currentBalance": "5",
-                        "beginBalance": "20",
-                        "currencyCode": {
-                            "code": "USD",
-                            "number": 840
-                        },
-                        "currencyType": "BASE"
-                    }
-                },
-                "hostExtraInfo": [
-                    {
-                        "name": "APPROVAL_NUMBER",
-                        "value": "530976"
-                    },
-                    {
-                        "name": "SEQUENCE_NUMBER",
-                        "value": "005931"
-                    }
-                ]
-            },
-            {
-                "fdSaleId": "2651f121f7e64f90871fa25ee5921027",
-                "status": "FAILED",
-                "orderId": "xorderIdTestt001",
-                "requestedAmount": 20,
-                "externalId": "8738743788738",
-                "merchantId": "99022879997",
-                "altMerchantId": "0001",
-                "merchantTransactionId": "38943939903ed0a8090d10dert31",
-                "currencyCode": {
-                    "code": "USD",
-                    "number": 840
-                },
-                "transactionDateTime": "2020-05-07T18:15:52-0400",
-                "fundingSource": {
-                    "vaultedAccount": {
-                        "fdAccountId": "8a7fb5717e8fcee9017e9756a30401df"
-                    }
-                },
-                "errorInfo": {
-                    "code": "269902",
-                    "message": " Invalid request format/data.",
-                    "category": "common",
-                    "developerInfo": {
-                        "developerMessage": " Invalid request format/data."
-                    },
-                    "hostExtraInfo": [
-                        {
-                            "name": "HOST_RESPONSE_MESSAGE",
-                            "value": "Declined 995224"
-                        },
-                        {
-                            "name": "HOST_RESPONSE_CODE",
-                            "value": "995224"
-                        }
-                    ]
-                }
-            }
-        ]
-    }
-```
-
 **<ins> Sample Request - Partial amount and partial transaction success would not allowed**</ins>
 
 ```json
@@ -3417,103 +3319,6 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-sales>
         }
     ]
 }
-```
-
-**<ins> Sample Response - Two transactions approved and one failed**</ins>
-
-```json
-
-{
-    "parentTransactionId": "485-27834-285903824-095",
-    "createdTime": "2017-03-21T08:15:30-05:00",
-    "merchantTransactionId": "d8s8s8s8s990s8w456e464643e3tryd",
-    "purchaseInfo": {
-        "order": {
-            "orderId": "xorderIdTestt001"
-        }
-    },
-    "sales": [
-        {
-            "fdSaleId": "2651f121f7e64f90871fa25ee5921027",
-            "status": "APPROVED",
-            "orderId": "xorderIdTestt001",
-            "requestedAmount": 20,
-            "approvedAmount": 20,
-            "externalId": "8738743788739",
-            "merchantId": "99022879997",
-            "altMerchantId": "0001",
-            "merchantTransactionId": "38943939903ed0a8090d10dert30",
-            "currencyCode": {
-                "code": "USD",
-                "number": 840
-            },
-            "transactionDateTime": "2020-05-07T18:15:52-0400",
-            "fundingSource": {
-                "type": "PREPAID",
-                "prepaid": {
-                    "cardSubType": "test12",
-                    "alias": "8453",
-                    "balance": {
-                        "currentBalance": "5",
-                        "beginBalance": "20",
-                        "currencyCode": {
-                            "code": "USD",
-                            "number": 840
-                        },
-                        "currencyType": "BASE"
-                    }
-                },
-                "hostExtraInfo": [
-                    {
-                        "name": "APPROVAL_NUMBER",
-                        "value": "530976"
-                    },
-                    {
-                        "name": "SEQUENCE_NUMBER",
-                        "value": "005931"
-                    }
-                ]
-            },
-            {
-                "fdSaleId": "2651f121f7e64f90871fa25ee5921027",
-                "status": "FAILED",
-                "orderId": "xorderIdTestt001",
-                "requestedAmount": 20,
-                "externalId": "8738743788738",
-                "merchantId": "99022879997",
-                "altMerchantId": "0001",
-                "merchantTransactionId": "38943939903ed0a8090d10dert31",
-                "currencyCode": {
-                    "code": "USD",
-                    "number": 840
-                },
-                "transactionDateTime": "2020-05-07T18:15:52-0400",
-                "fundingSource": {
-                    "vaultedAccount": {
-                        "fdAccountId": "8a7fb5717e8fcee9017e9756a30401df"
-                    }
-                },
-                "errorInfo": {
-                    "code": "269902",
-                    "message": " Invalid request format/data.",
-                    "category": "common",
-                    "developerInfo": {
-                        "developerMessage": " Invalid request format/data."
-                    },
-                    "hostExtraInfo": [
-                        {
-                            "name": "HOST_RESPONSE_MESSAGE",
-                            "value": "Declined 995224"
-                        },
-                        {
-                            "name": "HOST_RESPONSE_CODE",
-                            "value": "995224"
-                        }
-                    ]
-                }
-            }
-        ]
-    }
 ```
 
 ## cancelling a Sale Transaction - Sample Payloads
@@ -4291,7 +4096,7 @@ Prod: <https://prod.api.firstdata.com/ucom/v2/prepaids/deducts/{fdParentTransact
 Note:
 
 > merchantId & altMerchantId Should be sent in the request either in parent level or purse level for all the apis other than Void.
-> In case of Multi status response (http status code 207) or client timeout use cases, please retry an original transaction by keeping a new client request Id value in header and build a replay count in payload.
+> In case of multi status response (http status code 207) or client timeout use cases, please retry an original transaction by keeping a new client request Id value in header and build a replay count in payload.
 
 ## Error Codes
 
