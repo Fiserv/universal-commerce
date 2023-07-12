@@ -24,7 +24,7 @@ Use the below apis to activate multiple gift cards in a single transaction and t
 
 /v2/prepaids/multi-purchases/{fdParentTransactionId}/multi-void
 
-#### Reload
+### Reload
 
 Use the below apis to add funds to the multiple gift cards in a single transaction and to cancel the reload.
 
@@ -32,7 +32,7 @@ Use the below apis to add funds to the multiple gift cards in a single transacti
 
 /v2/prepaids/multi-reloads/{fdParentTransactionId}/multi-void
 
-#### Sweeps
+### Sweeps
 
 Use the below apis to remove entire balance from multiple gift cards in a single transaction and cancel the sweep transaction for the multiple gift cards.
 
@@ -40,7 +40,7 @@ Use the below apis to remove entire balance from multiple gift cards in a single
 
 /v2/prepaids/sweeps/{fdParentTransactionId}/multi-void
 
-#### Deducts
+### Deducts
 
 Use the below apis to deduct balance from multiple gift cards in a single transaction and cancel the deduct transaction for the multiple gift cards.
 
@@ -48,7 +48,7 @@ Use the below apis to deduct balance from multiple gift cards in a single transa
 
 /v2/prepaids/deducts/{fdParentTransactionId}/multi-void
 
-#### Sale
+### Sale
 
 Use the below apis to use multiple gift cards for the purchases, to cancel the sale transaction and to refund.
 
@@ -4290,9 +4290,8 @@ Prod: <https://prod.api.firstdata.com/ucom/v2/prepaids/deducts/{fdParentTransact
 
 Note:
 
-merchantId & altMerchantId Should be sent in the request either in parent level or purse level for all the apis other than Void.
-
-In case of Multi status response (http status code 207) or client timeout use cases, please retry an original transaction by keeping a new client request Id value in header and build a replay count in payload.
+> merchantId & altMerchantId Should be sent in the request either in parent level or purse level for all the apis other than Void.
+> In case of Multi status response (http status code 207) or client timeout use cases, please retry an original transaction by keeping a new client request Id value in header and build a replay count in payload.
 
 ## Error Codes
 
