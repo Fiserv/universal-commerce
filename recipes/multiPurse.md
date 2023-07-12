@@ -1,5 +1,4 @@
 # Multi Purse
-<img title="icon" alt="hosted pages icon" src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/Picture26.png" width="40" height="30"> 
 
 Multi Purse Capabilities give the merchants ability to process below activities for multiple gift cards in one go.
 
@@ -62,6 +61,10 @@ Use the below apis to use multiple gift cards for the purchases, to cancel the s
 
 Below are some sample payloads that make use of Multi Purse.
 
+Please refer this to go through multi purchase schema and all possible payload parameters.
+
+[Prepaid Services API](../api/?type=post&path=/v2/prepaids/multi-purchases)
+
 **<ins> Endpoint URL </ins>**
 
 HTTP Method: POST
@@ -83,7 +86,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-purchases>
 | replayCount | Indicates request retry attempt count in case of retrying same transaction again.| no |
 | externalId | External transaction id reference | no |
 | merchantId | Flag to indicate if the account should be stored in the uCom vault.| yes |
-| altMerchantId | •	Alternate Merchant identifier where the transaction is being performed. | yes |
+| altMerchantId | Alternate Merchant identifier where the transaction is being performed. | yes |
 | merchantTerminalId | Merchant terminal identifier.| yes |
 | hostExtraInfo.LOCAL_TXN_DATE | uCom sends this field as-is to Value Link for reporting purposes | no |
 | hostExtraInfo.LOCAL_TXN_TIME | uCom sends this field as-is to Value Link for reporting purposes.| no |
