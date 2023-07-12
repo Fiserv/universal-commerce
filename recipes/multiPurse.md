@@ -184,7 +184,7 @@ When verifyAccount flag is true, verification API will be internally initiated f
 }
 ```
 
-**<ins> Sample Response - Success for Merchant Funded Purchase - 201</ins>
+**<ins> Sample Success Response for Merchant Funded Purchase - 201 </ins>
 
 ```json
 
