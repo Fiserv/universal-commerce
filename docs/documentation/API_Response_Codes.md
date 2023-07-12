@@ -21,15 +21,12 @@ The codes are separated into sections based on what was being done in the softwa
 |Common|279907|The account has already been enrolled by the maximum allowable number of customers.|400|
 |Common|279908|Operation not permitted. Customer Profile is DELETED/INACTIVE.|400|
 |Common|279909|Operation not permitted. Account is DELETED/INACTIVE.|400|
-|Common|279910|Payment instrument revoked.|400|
-|Common|279911|Invalid nonce.|400|
 |Common|279913|Transaction failed|400|
 |Common|290020|The transaction is in progress through Async channel. Please try some time later|400|
 |Common|290032|Operation not allowed based on current membership status|400|
 |Common|290020|The transaction is in progress through Async channel. Please try some time later|400|
 |Common|274007|The consumer has exceeded the maximum account velocity constraints for associated payment instruments.|400|
 |Common|290032|Operation not allowed based on current membership status|400|
-|Common|274002|The consumer has already enrolled the maximum allowable number of payment instruments|400|
 |Common|274003|The Payment Instrument has already been enrolled by the maximum allowable number of consumers|400|
 |Common|274013|Duplicate enrollment request : Card already enrolled to the customer|400|
 |Common|272707|Store Id not configured|400|
@@ -61,7 +58,6 @@ The codes are separated into sections based on what was being done in the softwa
 |Use Case|Response Code|Response Message|Http Status Code|
 |-------|-------------|----------------|----------------|
 |Add Account|274001|Account registration was unsuccessful. Please check the account details|400|
-|Add Account|274002|Account already registered.|409|
 |Add Account|274004|The consumer has already enrolled the maximum allowable number of accounts.|400|
 |Tokenization|274005|Tokenization is unsuccessful. Please check the account details.|400|
 |Verify Account|274006|Verification is unsuccessful. Please check the account details.|400|
@@ -93,8 +89,6 @@ The codes are separated into sections based on what was being done in the softwa
 |Prepaid|290010|Operation not permitted: gift card activation cannot be voided.|400|
 |Prepaid|290011|Operation not successful. Please check the PIN of the gift card provided and try again.|400|
 |Prepaid|290012|Operation not permitted: please review merchant setup for cross border transactions and try again|400|
-|Prepaid|290013|The gift card host is unable to return a PIN with your request|400|
-|Prepaid|290014|Invalid request: The merchant is not configured to return a PIN with your request|400|
 |Prepaid|290015|Invalid request: Transaction already voided|400|
 |Prepaid|290030|Transaction Processing Failure. There are no mapping accounts for given customer.|400|
 |Prepaid|290031|Balance Enquiry failed|400|
@@ -203,8 +197,6 @@ The codes are separated into sections based on what was being done in the softwa
 |-------|-------------|----------------|----------------|
 |Provision|279903|The Payment Instrument has already been enrolled by the maximum allowable number of consumers|400|
 |Provision|279912|Invalid request: Provision not found/valid|400|
-|Provision|279914|The issuer could not continue with provision operation. Kindly contact the card issuer operations directly|400|
-|Provision|279915|Authorization process could not be completed as there are no phone numbers available on file. Kindly contact the card issuer operations directly|400|
 |Provision|279916|Issuer has declined the request to provision the card|400|
 |Provision|279917|Provided information does not match records. Kindly enter the details again|400|
 |Apply buy|279925|Invalid request: Requested application is invalid|400|
