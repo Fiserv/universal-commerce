@@ -3,12 +3,14 @@
 
 Multi Purse Capabilities give the merchants ability to process below activities for multiple gift cards in one go.
 
-Purchase - Activate multiple purses / gift cards
-Reload - Reload multiple purses / gift cards
-Sweep - Remove entire balance from multiple purses / gift cards
-Deduct - Deduct specific balances from multiple purses / gift cards
-Sale - Complete sale by using multiple purses / gift cards
-Void -  Void multiple purses / gift cards
+ **Capability** | **Description** |
+| --- | --- |
+| Purchase | Activate multiple purses / gift cards|
+| Reload | Reload multiple purses / gift cards|
+| Sweep | Remove entire balance from multiple purses / gift cards|
+| Deduct | Deduct specific balances from multiple purses / gift cards|
+| Sale | Complete sale by using multiple purses / gift cards|
+| Void | Void multiple purses / gift cards|
 
 ## Multi Purse Impacted APIs
 
