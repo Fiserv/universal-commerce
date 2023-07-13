@@ -52,7 +52,7 @@ Timestamp:{{time}}
 | tokenType          | YES     | YES       |           | string    | body           | CLAIM_CHECK_NONCE                                    |
 | fdCustomerId       | YES     |           |           | string    | body           |                                                       |
 
-**<ins> Sample Nonce Generation Payload - Credit Card - Anonymous **</ins>
+**<ins>Sample Nonce Generation Payload - Credit Card - Anonymous**</ins>
 
 ``` json
 
@@ -86,7 +86,7 @@ Timestamp:{{time}}
 
 ```
 
-**<ins> Sample Nonce Generation Payload - Credit Card - Vaulted Card **</ins>
+**<ins>Sample Nonce Generation Payload - Credit Card - Vaulted Card**</ins>
 
 ```json
 
@@ -121,7 +121,7 @@ Timestamp:{{time}}
 
 ```
 
-**<ins> Sample Nonce Generation Response (204 - The request succeeded) **</ins>
+**<ins>Sample Nonce Generation Response (204 - The request succeeded)**</ins>
 
 ```
 {
@@ -201,7 +201,7 @@ Authorization: Bearer {{tokenId}}
 
 Timestamp:{{time}}
 
-**<ins> Sample Request (with merchantid) </ins>**
+**<ins>Sample Request (with merchantid)</ins>**
 
 Sample Request - anonymous CC transaction using Nonce with merchantId 
 
@@ -226,7 +226,7 @@ Sample Request - anonymous CC transaction using Nonce with merchantId
 
 ```
 
-**<ins> Sample Response (201 - Created) </ins>**
+**<ins>Sample Response (201 - Created)</ins>**
 
 Sample Response - anonymous card sale transaction
 ```json
@@ -325,7 +325,7 @@ Prod: https://prod.api.firstdata.com/ucom/v1/accounts-tokens
 | tokenType          | YES     | YES       |           | string    | body           | TRANS_ARMOR                                    |
 | fdCustomerId       | YES     |           |           | string    | body           |                                                       |
 
-**<ins> TA Token Generation Sample Request **</ins>
+**<ins>TA Token Generation Sample Request**</ins>
 
 ```json
 
@@ -356,7 +356,7 @@ Prod: https://prod.api.firstdata.com/ucom/v1/accounts-tokens
 
 ```
 
-**<ins> TA Token Generation Sample Response **</ins>
+**<ins>TA Token Generation Sample Response**</ins>
 
 ```josn
 
@@ -386,7 +386,7 @@ Non-prod: https://int.api.firstdata.com/ucom/v1/payments/sales
 
 Prod: https://prod.api.firstdata.com/ucom/v1/payments/sales
 
-**<ins> Parameters </ins>**
+**<ins>Parameters</ins>**
 
 | Attributes| Data Type| Required| Max Length
 |:----------|:----------|:----------|:----------
@@ -410,7 +410,7 @@ Prod: https://prod.api.firstdata.com/ucom/v1/payments/sales
 | Month| String| Required| Month format ‘MM’
 | Year| String| Required| Year format ‘YY’
 
-**<ins> Headers </ins>**
+**<ins>Headers</ins>**
 
 Content\-Type:application/json
 
@@ -461,7 +461,7 @@ Timestamp:{{time}}
 
 ```
 
-**<ins> Sample Response </ins>**
+**<ins>Sample Response</ins>**
 
 ```json
 
@@ -532,7 +532,7 @@ Network tokenization refers to the use of tokens provided by payment schemes suc
 
 ### Make a Payment using Network Tokens
 
-**<ins> Endpoint URL </ins>**
+**<ins>Endpoint URL</ins>**
 
 HTTP Method: POST
 
@@ -576,7 +576,7 @@ Authorization: Bearer {{tokenId}}
 
 Timestamp:{{time}}
 
-**<ins> Sample Request (with merchantid) </ins>**
+**<ins>Sample Request (with merchantid)</ins>**
 
 ```json
 
@@ -633,7 +633,7 @@ Timestamp:{{time}}
 
 ```
 
-**<ins> Sample Response </ins>**
+**<ins>Sample Response</ins>**
 
 ```json
 
