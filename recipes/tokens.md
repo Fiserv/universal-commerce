@@ -134,7 +134,7 @@ Timestamp:{{time}}
 }
 ```
 
-**<ins> Sample Nonce Generation Response (404 – Bad Request) **</ins>
+**<ins>Sample Nonce Generation Response (404 – Bad Request)**</ins>
 
 ```json
 {
