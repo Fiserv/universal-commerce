@@ -29,7 +29,7 @@ Refer below to know more details regarding request , response pay loads and sche
 
 Refer below to know more details regarding request , response pay loads and schema.
 
-[Prepaid Services API](../api/?type=post&path=//v2/prepaids/multi-purchases/{fdParentTransactionId}/multi-void)
+[Prepaid Services API](../api/?type=post&path=/v2/prepaids/multi-purchases/{fdParentTransactionId}/multi-void)
 
 ### Reload
 
@@ -37,7 +37,15 @@ Use the below apis to add funds to the multiple gift cards in a single transacti
 
 /v2/prepaids/multi-reloads
 
+Refer below to know more details regarding request , response pay loads and schema.
+
+[Prepaid Services API](../api/?type=post&path=/v2/prepaids/multi-reloads)
+
 /v2/prepaids/multi-reloads/{fdParentTransactionId}/multi-void
+
+Refer below to know more details regarding request , response pay loads and schema.
+
+[Prepaid Services API](../api/?type=post&path=/v2/prepaids/reloads/{fdParentTransactionId}/multi-void)
 
 ### Sweeps
 
@@ -45,7 +53,15 @@ Use the below apis to remove entire balance from multiple gift cards in a single
 
 /v2/prepaids/multi-sweeps
 
+Refer below to know more details regarding request , response pay loads and schema.
+
+[Prepaid Services API](../api/?type=post&path=/v2/prepaids/multi-sweeps)
+
 /v2/prepaids/sweeps/{fdParentTransactionId}/multi-void
+
+Refer below to know more details regarding request , response pay loads and schema.
+
+[Prepaid Services API](../api/?type=post&path=/v2/prepaids/sweeps/{fdParentTransactionId}/multi-void)
 
 ### Deducts
 
@@ -53,7 +69,15 @@ Use the below apis to deduct balance from multiple gift cards in a single transa
 
 /v2/prepaids/multi-deducts
 
+Refer below to know more details regarding request , response pay loads and schema.
+
+[Prepaid Services API](../api/?type=post&path=/v2/prepaids/multi-deducts)
+
 /v2/prepaids/deducts/{fdParentTransactionId}/multi-void
+
+Refer below to know more details regarding request , response pay loads and schema.
+
+[Prepaid Services API](../api/?type=post&path=/v2/prepaids/deducts/{fdParentTransactionId}/multi-void)
 
 ### Sale
 
@@ -61,9 +85,21 @@ Use the below apis to use multiple gift cards for the purchases, to cancel the s
 
 /v2/prepaids/multi-sales
 
+Refer below to know more details regarding request , response pay loads and schema.
+
+[Payment Services API](../api/?type=post&path=/v2/payments/multi-sales)
+
 /v2/prepaids/multi-sales/{fdParentTransactionId}/void
 
+Refer below to know more details regarding request , response pay loads and schema.
+
+[Payment Services API](../api/?type=post&path=/v2/payments/multi-sales/{fdParentTransactionId}/void)
+
 /v2/prepaids/multi-sales/{fdParentTransactionId}/refunds
+
+Refer below to know more details regarding request , response pay loads and schema.
+
+[Payment Services API](../api/?type=post&path=/v2/payments/multi-sales/{fdParentTransactionId}/refunds)
 
 ## Sample Multi Purchase Payloads
 
