@@ -1,5 +1,7 @@
 # Payment Tokens - Definition, Types, and Usage
 
+<img title="icon" alt="hosted pages icon" src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/Picture27.png" width="40" height="30"> 
+
 Connected Commerce (uCom) offers a wide range of payment tokens that could be used to process payments. Payment tokens are simply used to mask credit card details for added security and protection to the customers' sensitive data (like credit card number, address, account number, etc.). Payment tokens are unique pieces of data used to represent sensitive payment information securely. When a customer initiates a transaction, their sensitive information, such as credit card details or bank account numbers, is exchanged for a token. This token, which is a randomly generated alphanumeric sequence, acts as a stand-in for the actual payment information. By using tokens, the original sensitive data is protected and kept separate from the merchant's or payment processor's systems, reducing the risk of data breaches or unauthorized access. Payment tokens are instrumental in enabling secure digital transactions and are widely employed in various payment methods, such as contactless payments, mobile wallets, and online purchases.
 
 This guide will explore the various payment tokens available in the Connected Commerce (uCom) platform, emphasizing their respective types and providing insights on their acquisition and utilization processes.
