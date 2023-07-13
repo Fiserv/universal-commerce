@@ -155,7 +155,7 @@ Timestamp:{{time}}
 ```
 A payment nonce could be used to make payments using either auth/capture or sale flows. Below are some sample payloads to process payments through the Connected Commerence (uCom) platform using a payment nonce.
 
-## Make a Payment using a Nonce
+### Make a Payment using a Nonce
 
 **<ins> Endpoint URL </ins>**
 
@@ -376,7 +376,7 @@ Prod: https://prod.api.firstdata.com/ucom/v1/accounts-tokens
 
 Utilizing a TA Token, payments can be seamlessly conducted through either the auth/capture or sale flows. Below are sample payloads that exemplify the procedure for processing payments via the Connected Commerce (uCom) platform using TA Tokens.
 
-## Make a Payment using a TA Token
+### Make a Payment using a TA Token
 
 **<ins> Endpoint URL </ins>**
 
