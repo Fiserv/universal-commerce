@@ -21,7 +21,15 @@ Use the below apis to activate multiple gift cards in a single transaction and t
 
 /v2/prepaids/multi-purchases
 
+Refer below to know more details regarding request , response pay loads and schema.
+
+[Prepaid Services API](../api/?type=post&path=/v2/prepaids/multi-purchases)
+
 /v2/prepaids/multi-purchases/{fdParentTransactionId}/multi-void
+
+Refer below to know more details regarding request , response pay loads and schema.
+
+[Prepaid Services API](../api/?type=post&path=//v2/prepaids/multi-purchases/{fdParentTransactionId}/multi-void)
 
 ### Reload
 
