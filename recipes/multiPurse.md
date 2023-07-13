@@ -3332,7 +3332,7 @@ Prod: <https://prod.api.firstdata.com/ucom//v2/prepaids/multi-sales>
 }
 ```
 
-## cancelling a Sale Transaction - Sample Payloads
+## Sample Payloads - Cancel a Sale Transaction
 
 **<ins> Endpoint URL </ins>**
 
