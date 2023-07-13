@@ -105,10 +105,6 @@ Refer below to know more details regarding request , response pay loads and sche
 
 Below are some sample payloads that make use of Multi Purse.
 
-Please refer this to go through multi purchase schema and all possible payload parameters.
-
-[Prepaid Services API](../api/?type=post&path=/v2/prepaids/multi-purchases)
-
 **<ins> Endpoint URL </ins>**
 
 HTTP Method: POST
