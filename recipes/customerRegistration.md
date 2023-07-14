@@ -208,6 +208,7 @@ This  request can update any entity that requires updating. Any of the objects o
 The request succeeded but there's really nothing to show.
 
 **<ins> Sample Response (400 – Bad Request) </ins>**
+
 ```json
 {
     "code": "279904",
