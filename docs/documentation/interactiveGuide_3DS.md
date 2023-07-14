@@ -37,7 +37,7 @@ Mobile app and uCom shall integrate with EMV 3-D Secure 2.2 specification to sup
         2.  Decline
     2.  If success, uCom proceeds onto payment authorization - this FEP authorization message will include additional data elements from the 3DS Authentication step.
 
-     **Types of 3DS flows:**
+**Types of 3DS flows:**
 
 1.  Frictionless flow
     
