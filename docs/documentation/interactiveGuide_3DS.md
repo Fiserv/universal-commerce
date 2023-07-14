@@ -133,8 +133,10 @@ POST /v1/customers/{fdCustomerId}/accounts
    } 
  } 
 ```
- ##### Sample Response (Frictionless Flow - Https Status Code – 201) 
-```json    
+
+## Sample Response (Frictionless Flow - Https Status Code – 201)
+ 
+```json  
 { 
     "fdAccountId": "8a7f678d6a20a519016a55c7142b02bc", 
     "type": "CREDIT", 
@@ -167,11 +169,11 @@ POST /v1/customers/{fdCustomerId}/accounts
         "cardType":"VISA" 
     } 
 } 
- ```
+```
  
- ##### Sample Response (Challenge Encountered - Https Status Code – 202)
+## Sample Response (Challenge Encountered - Https Status Code – 202)
  
- ```json 
+```json
  { 
     "type": "THREEDSECURE", 
     "status": "PENDING", 
@@ -187,9 +189,11 @@ POST /v1/customers/{fdCustomerId}/accounts
         "acsSignedContent":"eyJ4NWMiOlsiTUlJQ2x6Q0NBWCtnQXdJQkFnSUJBVEFO" 
     } 
 } 
-  ```
- #### Sample Response (Error Response - Https Status Code – 400) 
-  ```json 
+```
+
+## Sample Response (Error Response - Https Status Code – 400) 
+
+```json 
 { 
     "code": "269701", 
     "message": "ThreeDSecure authentication declined.", 
@@ -206,11 +210,11 @@ POST /v1/customers/{fdCustomerId}/accounts
          "cardType":"VISA" 
     } 
 } 
-  ```
+```
   
-  #### Sample Response (Error Response - Https Status Code -400 - 3DS not able to perform) 
+## Sample Response (Error Response - Https Status Code -400 - 3DS not able to perform) 
 
-  ```json 
+```json
     { 
     "code": "269702", 
     "message": "Failed to complete ThreeDSecure authentication.", 
@@ -223,12 +227,13 @@ POST /v1/customers/{fdCustomerId}/accounts
         "transactionStatusReason": "NOT_PROCESSED" 
     } 
 } 
-  ```
+```
 
 ## Enrollment after Challenge Encountered 
 
 ### Sample Request
- ```json 
+
+```json
 { 
   "account": { 
     "type": "THREEDSECURE", 
@@ -238,7 +243,7 @@ POST /v1/customers/{fdCustomerId}/accounts
     } 
   } 
 } 
- ```  
+``` 
  
 ## Error Message
 
