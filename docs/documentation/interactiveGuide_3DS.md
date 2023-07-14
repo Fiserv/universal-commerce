@@ -15,7 +15,7 @@ Mobile app and uCom shall integrate with EMV 3-D Secure 2.2 specification to sup
 1.  uCom receives a request to initiate payment on an open loop credit card.
     1.  This request could be any one of:
         1.  Payments
-        2.  Account Onboarding
+        2.  Account/Card Onboarding
         3.  Petro Transaction
     2.  Initial request will contain additional data in the device info section of the request
 2.  uCom initiates a 3DS Authentication call to 3DS Server
@@ -30,7 +30,7 @@ Mobile app and uCom shall integrate with EMV 3-D Secure 2.2 specification to sup
     1.  App Server / App then conducts challenge interactions with the issuer out of band from uCom.
 4.  Once App Server / App completes the challenge flow, App Server reinitiates the payment request in the form of a PATCH operation
     1.  Again, this request can be any one of those listed in 1.a.
-    2.  This PATCH request will likely contain nothing but a nonce id (in the case of Account Onboarding request) OR a transaction id (in the case of the other requests)
+    2.  This PATCH request will likely contain a transaction id and cres (Challenge Response)
 5.  uCom initiates a Status Check call to 3DS Server
     1.  Response can be one of:
         1.  Success
@@ -51,20 +51,202 @@ Mobile app and uCom shall integrate with EMV 3-D Secure 2.2 specification to sup
     2.  Petro Transaction (Payment transaction is Authorization)
 
 
-    ## Dependencies
+## Dependencies
 
 1.  Availability of IPG (3DS) Set-up
 2.  Modirum Simulator and SDK set-up by the front end
 
+## Card on-boarding
 
-    
+```json
+POST /v1/customers/{fdCustomerId}/accounts
+{ 
+  "account": { 
+    "token": { 
+        "tokenId":"a16cd463-88e8-4a9e-b2a6-d0985e3af45e", 
+        "tokenProvider" : "UCOM", 
+        "tokenType" : "CLAIM_CHECK_NONCE" 
+    } 
+  }, 
+ "deviceInfo":{ 
+      "id":"537edec8-d33e-4ee8-93a7-b9f61876950c", 
+      "kind":"mobile", 
+      "details":[    
+         {    
+            "provider":"MODIRUM", 
+            "dataCapture":{    
+               "rawData":"$.sdkEncData", 
+               "dataEventId":"$.sdkTransID", 
+               "captureTime":"2016-04-16T16:06:05Z" 
+            }, 
+            "dataStatic":{    
+               "os":"Android 5.1.1 Lollipop", 
+               "osVersion":"5.1.1 Lollipop", 
+               "model":"XYX-1", 
+               "Type":"Moto G" 
+            }, 
+            "dataDynamic":{    
+               "latitude":"13.0827 N", 
+               "longitude":"80.2707 E", 
+               "ipAddress":"172.27.37.221", 
+               "captureTime":"2016-04-16T16:06:05Z" 
+            } 
+         } 
+      ], 
+     "additionalInfo": [      { 
+        "name": "3ds.sdk.timeout", 
+        "value": "$.sdkMaxTimeout" 
+      }, 
+      { 
+        "name": "3ds.sdk.ephemPubKey.kty", 
+        "value": "$.sdkEphemPubKey.kty" 
+      }, 
+      { 
+        "name": "3ds.sdk.ephemPubKey.crv", 
+        "value": "$.sdkEphemPubKey.crv" 
+      }, 
+      { 
+        "name": "3ds.sdk.ephemPubKey.x", 
+        "value": "$.sdkEphemPubKey.x" 
+      }, 
+      { 
+        "name": "3ds.sdk.ephemPubKey.y", 
+        "value": "$.sdkEphemPubKey.y" 
+      }, 
+      { 
+        "name": "3ds.sdk.deviceRenderOptionsIF", 
+        "value": "$.deviceRenderOptionsIF" 
+      }, 
+      { 
+        "name": "3ds.sdk.deviceRenderOptionsUI", 
+        "value": "$.deviceRenderOptionsUI" 
+      }, 
+      { 
+        "name": "3ds.sdk.referenceNumber", 
+        "value": "$.sdkReferenceNumber" 
+      }, 
+      { 
+        "name": "3ds.sdk.appId", 
+        "value": "$.sdkAppId" 
+      } 
+    ] 
+   } 
+ } 
+```
+ ##### Sample Response (Frictionless Flow - Https Status Code – 201) 
+```json    
+{ 
+    "fdAccountId": "8a7f678d6a20a519016a55c7142b02bc", 
+    "type": "CREDIT", 
+    "status": "ACTIVE", 
+    "credit": { 
+        "nameOnCard": "Sam G", 
+        "alias": "1111", 
+        "cardType": "VISA", 
+        "billingAddress": { 
+            "streetAddress": "100 Universal City Plaza", 
+            "locality": "LONDON", 
+            "region": "CA", 
+            "postalCode": "00000", 
+            "country": "UK" 
+        }, 
+        "expiryDate": { 
+            "month": "06", 
+            "year": "20", 
+            "singleValue": "0620" 
+        }, 
+        "sequenceNumber": "01" 
+    }, 
+    "threeDSecureInfo" : { 
+        "transactionStatus": "A", 
+        "transactionStatusReason": "10", 
+        "dsTransactionId":"886fc4446894f878b7e32bd5e", 
+        "acsTransactionId":"4446894f878b7e32bd5b", 
+        "serverTransactionId":"894f878b7e32bd5c", 
+        "acsReferenceNumber":"292bb6b886fc4446894f878b7e32bd5d", 
+        "cardType":"VISA" 
+    } 
+} 
+ ```
+ 
+ ##### Sample Response (Challenge Encountered - Https Status Code – 202)
+ 
+ ```json 
+ { 
+    "type": "THREEDSECURE", 
+    "status": "PENDING", 
+    "threeDSecureInfo" : { 
+        "transactionId": "292bb6b886fc4446894f878b7e32bdww", 
+        "transactionStatus": "C", 
+        "transactionStatusReason": "16", 
+        "dsTransactionId":"886fc4446894f878b7e32bd5e", 
+        "acsTransactionId":"4446894f878b7e32bd5b", 
+        "serverTransactionId":"894f878b7e32bd5c", 
+        "acsReferenceNumber":"292bb6b886fc4446894f878b7e32bd5d", 
+        "cardType":"VISA", 
+        "acsSignedContent":"eyJ4NWMiOlsiTUlJQ2x6Q0NBWCtnQXdJQkFnSUJBVEFO" 
+    } 
+} 
+  ```
+ #### Sample Response (Error Response - Https Status Code – 400) 
+  ```json 
+{ 
+    "code": "269701", 
+    "message": "ThreeDSecure authentication declined.", 
+    "category": "3ds", 
+    "developerInfo": { 
+        "developerMessage": "ThreeDSecure authentication declined." 
+    }, 
+    "threeDSecureInfo" : { 
+        "transactionStatus": "R", 
+        "transactionStatusReason": "11", 
+         "dsTransactionId":"886fc4446894f878b7e32bd5e", 
+         "acsTransactionId":"4446894f878b7e32bd5b", 
+         "serverTransactionId":"894f878b7e32bd5c", 
+         "cardType":"VISA" 
+    } 
+} 
+  ```
+  
+  #### Sample Response (Error Response - Https Status Code -400 - 3DS not able to perform) 
+
+  ```json 
+    { 
+    "code": "269702", 
+    "message": "Failed to complete ThreeDSecure authentication.", 
+    "category": "3ds", 
+    "developerInfo": { 
+        "developerMessage": "Failed to complete ThreeDSecure authentication." 
+    }, 
+    "threeDSecureInfo" : { 
+        "transactionStatus": "NOT_PROCESSED", 
+        "transactionStatusReason": "NOT_PROCESSED" 
+    } 
+} 
+  ```
+
+## Enrollment after Challenge Encountered 
+
+### Sample Request
+ ```json 
+{ 
+  "account": { 
+    "type": "THREEDSECURE", 
+    "threeDSecureInfo": { 
+      "transactionId": "292bb6b886fc4446894f878b7e32bdww", 
+      "challengeResponse":"$.encrypted.cres" 
+    } 
+  } 
+} 
+ ```  
+ 
 ## Error Message
 
 The following error codes are introduced as part of 3DS integration
 
 | Code |Message  |
 |--|--|
-| 269702 | Failed to complete ThreeDSecure authentication. |
+|269702 | Failed to complete ThreeDSecure authentication. |
 |269701| ThreeDSecure authentication declined.
 
 
