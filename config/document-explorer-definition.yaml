@@ -31,8 +31,6 @@
 #   - title: Getting Started
 #     link: docs/documentation/introduction.md
 - sections:
-  - title: Getting Started
-    link: docs/documentation/introduction.md
     #    - title: Create Customer
     #      link: docs/documentation/customerServicesCreateCustomer_v1.md
   - title: Implementation Guide
