@@ -25,7 +25,7 @@ link: ../docs/?path=recipes/duplicate_transactions.md
 <!-- type: card
 title: <div style="text-align:center;width:100%;height:25%"><img src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/paypal-svgrepo-com.svg" alt="Paypal or Venmo" title="Paypal or Venmo" style="width:auto; height:60px"></div>  <h3 style="text-align:center">  How to Make a Payment with Paypal or Venmo </h3>
 description: 
-link: ../recipes/?path=recipes/Paypal_Venmo_guide.md
+link: ../docs/?path=recipes/Paypal_Venmo_guide.md
 -->
 <!-- type: card
 title: <div style="text-align:center;width:100%;height:25%"><img src="https://github.com/Fiserv/universal-commerce/blob/develop/assets/images/Picture17.png?raw=true" alt="Split Payment" title="Split Payment" style="width:auto; height:60px"></div> <h3 style="text-align:center">  How to Make a Split Payment  </h3>

@@ -27,10 +27,10 @@
 # are granted or extended by this work or
 # the delivery of this work
 ################################################################################
-
+# - sections:
+#   - title: Getting Started
+#     link: docs/documentation/introduction.md
 - sections:
-  - title: Introduction
-    link: docs/documentation/introduction.md
     #    - title: Create Customer
     #      link: docs/documentation/customerServicesCreateCustomer_v1.md
   - title: Implementation Guide

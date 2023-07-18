@@ -35,6 +35,7 @@ header:
   image: 
     link: "/assets/images/Fiserv_Logo.jpg"
     altText: uCom
+getStarted: /docs/documentation/introduction.md
 featuredFeatures:
  - title: Complex Orchestration
    description:  Ability to execute complex flows such as multi-tender payments, loyalty earning and redemptions, enterprise level balance management, etc.
