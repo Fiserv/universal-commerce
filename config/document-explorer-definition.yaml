@@ -27,9 +27,11 @@
 # are granted or extended by this work or
 # the delivery of this work
 ################################################################################
-
+# - sections:
+#   - title: Getting Started
+#     link: docs/documentation/introduction.md
 - sections:
-  - title: Introduction
+  - title: Getting Started
     link: docs/documentation/introduction.md
     #    - title: Create Customer
     #      link: docs/documentation/customerServicesCreateCustomer_v1.md
@@ -68,6 +70,8 @@
       link: recipes/HostedPages.md
     - title: How to Make Merchant Initiated Transactions
       link: recipes/MIT.md
+    - title: Payment  Tokens - Definition, Types, and Usage
+      link: recipes/tokens.md
       
 
 
