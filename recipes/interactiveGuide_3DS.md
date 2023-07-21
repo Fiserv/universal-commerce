@@ -64,13 +64,18 @@ Mobile app and uCom shall integrate with EMV 3-D Secure 2.2 specification to sup
 
 ## Dependencies
 
-  
-
 1. Availability of IPG (3DS) Set-up
 
 2. Modirum Simulator and SDK set-up by the front end
 
-  
+
+## Data Needed from the Merchant to enable 3DS flow
+
+1. Merchant Category Code 
+2. Merchant Name - Need a corporate one for account/card onboarding and multiple ones for site/store level payments.
+3. Acquirer BIN - Need a corporate one for account/card onboarding and multiple ones for site/store level payments. Acquirer BIN has to be supplied at card schemes level (VISA, MASTERCARD, AMEX etc.,) 
+4. Acquirer MID - Need a corporate one for account/card onboarding and multiple ones for site/store level payments. Acquirer MID has to be supplied at card schemes level (VISA, MASTERCARD, AMEX etc.,) 
+
 
 ## Card on-boarding
 
