@@ -10,6 +10,9 @@ EMV Co enable COF transactions for uCom clients that provide 100% liability shif
 Mobile app and uCom shall integrate with EMV 3-D Secure 2.2 specification to support digital payment channels and the delivery of industry leading security, performance and user experience.
 
 
+<a><img src="https://github.com/Fiserv/universal-commerce/blob/develop/assets/images/3DS_CORE_FLOW.png?raw=true"></a> 
+
+
 # Core Sequence
 
 1.  uCom receives a request to initiate payment on an open loop credit card.
@@ -38,8 +41,6 @@ Mobile app and uCom shall integrate with EMV 3-D Secure 2.2 specification to sup
     2.  If success, uCom proceeds onto payment authorization - this FEP authorization message will include additional data elements from the 3DS Authentication step.
 
 **Types of 3DS flows:**
-
-  
 
 1. Frictionless flow
 
@@ -505,15 +506,9 @@ U = Unable to authenticate
 
 ## Error Message
 
+Please refer the <a href="../docs/?path=docs/API_Response_Codes.md">Response Codes section</a>
   
 
-The following error codes are introduced as part of 3DS integration
 
-  
-  
-|Code|Message  |
-|--|--|
-| 269702 |Failed to complete ThreeDSecure authentication.|
-|269701|ThreeDSecure authentication declined.|
 
 
