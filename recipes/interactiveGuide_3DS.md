@@ -51,9 +51,7 @@ Mobile app and uCom shall integrate with EMV 3-D Secure 2.2 specification to sup
 
 ## Scope
 
-  
-
-1. Apis
+Apis
 
 1. Add Account (Card verification)
 
@@ -514,7 +512,7 @@ U = Unable to authenticate
 
 ## Error Message
 
-Please refer the <a href="../docs/?path=docs/API_Response_Codes.md">Response Codes section</a>
+Please refer the <a href="../docs/?path=docs/documentation/API_Response_Codes.md">Response Codes section</a>
   
 
 
