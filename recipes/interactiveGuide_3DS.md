@@ -77,7 +77,19 @@ Mobile app and uCom shall integrate with EMV 3-D Secure 2.2 specification to sup
 
 ## Card on-boarding
 
+**Card Onboarding (Supports only VISA & MC as of now):**
+
+## Frictionless Flow
+
+**STEP 1:** Card/3DS2 Authentication
+
+App SDK/MAS <-> uCom <-> 3DS2 Server (Hosted by IPG) <-> DS (Directory Server) <-> ACS (Access Control Server) <-> Card schemes (VISA/MASTERCARD/AMEX etc.,)
+
+**STEP 2:** Card Verification (This will happen once the 3DS is authenticated) 
+
+uCom <-> Payment Gateway <-> Card schemes (VISA/MASTERCARD/AMEX etc.,)
   
+#### Snippet for Card Onboarding Request from MAS
 
 ```json
 
@@ -229,7 +241,6 @@ POST /v1/customers/{fdCustomerId}/accounts
 
 ```
 
- 
 
 ## Sample Response (Frictionless Flow - Https Status Code – 201)
 
@@ -415,11 +426,25 @@ POST /v1/customers/{fdCustomerId}/accounts
 
 ## Enrollment after Challenge Encountered
 
-  
+**Challenge Flow Steps**
 
-### Sample Request
+**Card Onboarding**
 
-  
+**STEP 1:** Card/3DS2 Authentication (Challenged)
+
+a.  App SDK/MAS  <-> uCom<-> 3DS2 Server (Hosted by IPG) <-> DS (Directory Server) <-> ACS (Access Control Server)  <-> Card schemes (VISA/MASTERCARD/AMEX etc.,) 
+b.  App (Challenge Request) <-> ACS<-> Issuer (Challenge Response)
+c.  App (Challenge Response) <-> uCom <-> 3DS2 Server (Hosted by IPG)<-> DS <-> ACS <-> Card schemes (VISA/MASTERCARD/AMEX etc.,) 
+
+
+**STEP 2:** Card Verification (This will happen once the 3DS is authenticated)
+
+uCom <-> Payment Gateway <-> Card schemes (VISA/MASTERCARD/AMEX etc.,)
+
+
+
+#### Snippet for Inquiring Challenge Result
+
 
 ```json
 
@@ -443,12 +468,11 @@ POST /v1/customers/{fdCustomerId}/accounts
 
 ```
 
-  
+ The result of challenge flow will be either 3DS Approved or Declined or Not Processed where the samples were already provided under the frictionless flow section
 
 ## 3DS Transaction Statuses
 
   
-
 Y = fully authenticated
 
 N = Not authenticated
@@ -507,7 +531,6 @@ U = Unable to authenticate
 
 • 21 = 3RI transaction not supported
 
-  
   
 
 ## Error Codes 
