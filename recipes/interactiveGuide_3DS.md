@@ -422,7 +422,6 @@ POST /v1/customers/{fdCustomerId}/accounts
 
 ```
 
-  
 
 ## Enrollment after Challenge Encountered
 
@@ -451,6 +450,8 @@ uCom <-> Payment Gateway <-> Card schemes (VISA/MASTERCARD/AMEX etc.,)
 
 ```json
 
+PATCH /v1/customers/{fdCustomerId}
+
 {
 
 "account": {
@@ -472,6 +473,214 @@ uCom <-> Payment Gateway <-> Card schemes (VISA/MASTERCARD/AMEX etc.,)
 ```
 
  The result of challenge flow will be either 3DS Approved or Declined or Not Processed where the samples were already provided under the frictionless flow section
+
+
+## Petro Payment Samples
+
+3DS flow will be same as mentioned under the card onboarding section. 
+
+### Snippet for Petro Transaction API Request
+
+
+```json
+
+POST /v1/petro-transactions
+
+{
+    "transaction": {
+        "siteInfo": {
+            "siteLocationId": "123456790",
+            "fuelPurchaseInfo": {
+                "pumpNumber": 1,
+                "items": [
+                    {
+                        "posCode": "432",
+                        "itemDescription": "Unleaded",
+                        "itemPrice": "2.03",
+                        "unitOfMeasurement": "liter",
+                        "posCodeFormat": "plu",
+                        "posCodeModifier": "1",
+                        "productCode": "102"
+                    }
+                ]
+            }
+        },
+        "payments": [
+            {
+                "currencyNumericCode": {
+                    "number": 826
+                },
+                "requestedAuthAmount": 41.96,
+                "fundingSource": {
+                    "token": {
+                        "tokenId": "c7c9f292-ab59-4cc6-9a66-aadea29e8d5c",
+                        "tokenProvider": "UCOM",
+                        "tokenType": "CLAIM_CHECK_NONCE"
+                    }
+                }
+            }
+        ],
+        "printReceipt": true,
+        "threeDSecureInfo": {
+            "challengeIndicator": "01"
+        }
+    },
+    "deviceInfo": {
+        "id": "537edec8-d33e-4ee8-93a7-b9f61876950c",
+        "kind": "mobile",
+        "details": [
+            {
+                "provider": "MODIRUM",
+                "dataCapture": {
+                    "rawData": "$.sdkEncData",
+                    "dataEventId": "$.sdkTransID",
+                    "captureTime": "2016-04-16T16:06:05Z"
+                },
+                "dataStatic": {
+                    "os": "Android 5.1.1 Lollipop",
+                    "osVersion": "5.1.1 Lollipop",
+                    "model": "XYX-1",
+                    "Type": "Moto G"
+                },
+                "dataDynamic": {
+                    "latitude": "13.0827 N",
+                    "longitude": "80.2707 E",
+                    "ipAddress": "172.27.37.221",
+                    "captureTime": "2016-04-16T16:06:05Z"
+                }
+            }
+        ],
+        "additionalInfo": [
+            {
+                "name": "3ds.sdk.timeout",
+                "value": "$.sdkMaxTimeout"
+            },
+            {
+                "name": "3ds.sdk.ephemPubKey.kty",
+                "value": "$.sdkEphemPubKey.kty"
+            },
+            {
+                "name": "3ds.sdk.ephemPubKey.crv",
+                "value": "$.sdkEphemPubKey.crv"
+            },
+            {
+                "name": "3ds.sdk.ephemPubKey.x",
+                "value": "$.sdkEphemPubKey.x"
+            },
+            {
+                "name": "3ds.sdk.ephemPubKey.y",
+                "value": "$.sdkEphemPubKey.y"
+            },
+            {
+                "name": "3ds.deviceRenderOptionsIF",
+                "value": "$.deviceRenderOptionsIF"
+            },
+            {
+                "name": "3ds.deviceRenderOptionsUI",
+                "value": "$.deviceRenderOptionsUI"
+            },
+            {
+                "name": "3ds.sdkReferenceNumber",
+                "value": "3DSSDK74332823FF"
+            },
+            {
+                "name": "3ds.sdkAppId",
+                "value": "dbd64fcb-c19a-4728-8849-e3d50bfdde39"
+            }
+        ]
+    }
+}
+
+```
+
+## Sample Response (Frictionless Flow - Https Status Code – 201)
+
+```json
+{
+    "transaction": {
+        "transactionId": "d06b6dac76314c509b8e4c7068715461",
+        "payments": [
+            {
+                "currencyCode": {
+                    "code": "GBP",
+                    "number": 826,
+                    "currency": "Pound Sterling"
+                },
+                "requestedAuthAmount": 13.0,
+                "approvedAuthAmount": 13.0,
+                "fundingSource": {
+                    "type": "VAULTED_ACCOUNT",
+                    "vaultedAccount": {
+                        "fdAccountId": "8a7f48836a20e4a8016a349ba0e30040",
+                        "type": "CREDIT"
+                    },
+                    "credit": {
+                        "alias": "9623",
+                        "cardType": "VISA",
+                        "expiryDate": {
+                            "month": "12",
+                            "year": "21"
+                        }
+                    }
+                }
+            }
+        ],
+        "status": "AUTHORIZED",
+        "threeDSecureInfo": {
+            "transactionStatus": "A",
+            "transactionStatusReason": "",
+            "dsTransactionId": "886fc4446894f878b7e32bd5e",
+            "acsTransactionId": "4446894f878b7e32bd5b",
+            "serverTransactionId": "894f878b7e32bd5c",
+            "acsReferenceNumber": "292bb6b886fc4446894f878b7e32bd5d",
+            "cardType": "VISA"
+        }
+    }
+}
+
+```
+
+## Sample Response (Challenge Encountered - Https Status Code – 202)
+
+```json
+
+{
+    "transaction": {
+        "transactionId": "6c49cd3472a111e78cf7a6006ad3dba0",
+        "status": "CHALLENGED",
+        "threeDSecureInfo": {
+            "transactionStatus": "C",
+            "transactionStatusReason": "16",
+            "dsTransactionId": "886fc4446894f878b7e32bd5e",
+            "acsTransactionId": "4446894f878b7e32bd5b",
+            "serverTransactionId": "894f878b7e32bd5c",
+            "acsReferenceNumber": "292bb6b886fc4446894f878b7e32bd5d",
+            "cardType": "VISA",
+            "acsSignedContent": "eyJ4NWMiOlsiTUlJQ2x6Q0NBWCtnQXdJQkFnSUJBVEFO"
+        }
+    }
+}
+
+```
+
+#### Snippet for Inquiring Challenge Result (PATCH CALL)
+
+
+```json
+
+PATCH /v1/petro-transactions/{fdTransactionId}
+
+{
+  "action": "RESUME_TRANSACTION",
+  "threeDSecureInfo": {
+    "challengeResponse": "$.encrypted.cres"
+  }
+}
+
+
+```
+
+The result of challenge flow will be either 3DS Approved or Declined or Not Processed where the samples were already provided under the frictionless flow section
 
 ## 3DS Transaction Statuses
 
