@@ -3,7 +3,7 @@
 Making a payment using a vaulted card through the Connected Commerce (uCom) API involves programmatically interacting with the platform to first, securely onboard credit card details and then utilize the stored card information. Below is a step-by-step guide on how to achieve this:
 
 ## Step 1: Vaulted Card Setup
-Ensure you have already set up and securely stored the credit card or Gift card information in the Connected Commerce (uCom) digital vault. If not, then feel free to follow <a href="../docs/?path=docs/documentation/vault_credit_card_gift_card.md"> this API guide</a> for card vaulting instructions.
+Ensure you have already set up and securely stored the credit card or Gift card information in the Connected Commerce (uCom) digital vault. If not, then feel free to follow <a href="../docs/?path=recipes/vault_credit_card_gift_card.md"> this API guide</a> for card vaulting instructions.
 
 ## Step 2: Create a Payment Request
 To initiate a payment using the vaulted card, construct a payment request using either the sale or auth/capture APIs. The specifics of the request may vary depending on the configuration, but it typically includes the following information:
