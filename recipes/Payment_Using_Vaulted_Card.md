@@ -1,3 +1,5 @@
+<img title="icon" alt="hosted pages icon" src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/Picture27.png" width="40" height="40"> 
+
 # How to Make a Payment Using Vaulted Cards
 
 Making a payment using a vaulted card through the Connected Commerce (uCom) API involves programmatically interacting with the platform to first, securely onboard credit card details and then utilize the stored card information. Below is a step-by-step guide on how to achieve this:
@@ -6,17 +8,18 @@ Making a payment using a vaulted card through the Connected Commerce (uCom) API 
 Ensure you have already set up and securely stored the credit card or Gift card information in the Connected Commerce (uCom) digital vault. If not, then feel free to follow <a href="../docs/?path=recipes/vault_credit_card_gift_card.md"> this API guide</a> for card vaulting instructions.
 
 ## Step 2: Create a Payment Request
-To initiate a payment using the vaulted card, construct a payment request using either the sale or auth/capture APIs. The specifics of the request may vary depending on the configuration, but it typically includes the following information:
+To initiate a payment using a vaulted card, construct a payment request using either the sale or auth/capture flows. The specifics of the request may vary depending on the configuration, but it typically includes the following information:
+
 - **Amount:** The total amount to be charged for the transaction.
 - **Currency:** The currency in which the payment is to be processed (e.g., USD, EUR, GBP).
 - **Vaulted Card Account ID:** The unique identifier or token associated with the vaulted card you want to use for the payment.
 - **Order ID:** A unique identifier for this specific transaction or order.
 - **Billing and Shipping Information:** If applicable, provide the billing and shipping details for the order.
 
-## Step 3: Call the API  - Process Payment
+## Step 3: Call the API to Process the Payment
 Make an API call to the Connected Commerce (uCom) platform's payment endpoint (either sale or auth), providing the payment request data you constructed in the previous step. Ensure that you pass your API access credentials (API key/token) for authentication.
 
-Below are sample payloads that demonstrate how to invoke either the sales API endpoint or the authorization endpoint.
+Below are sample payloads that demonstrate how to invoke either the sale or the authorization endpoints.
 
 ### Sample Auth transaction
 
@@ -120,6 +123,8 @@ Timestamp:{{time}}
   }
 }
 ```
+
+> Please note that the device info section is optional and only required when Fraud Mitigation is enabled.
 
 **Response (201) - Auth - Credit card - Vaulted**
 
@@ -264,6 +269,7 @@ Timestamp:{{time}}
   }
 }
 ```
+> Please note that the device info section is optional and only required when Fraud Mitigation is enabled.
 
 **Response (201) - Credit Card - Vaulted**
 
