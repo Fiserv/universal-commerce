@@ -432,9 +432,12 @@ POST /v1/customers/{fdCustomerId}/accounts
 
 **STEP 1:** Card/3DS2 Authentication (Challenged)
 
-a.  App SDK/MAS  <-> uCom<-> 3DS2 Server (Hosted by IPG) <-> DS (Directory Server) <-> ACS (Access Control Server)  <-> Card schemes (VISA/MASTERCARD/AMEX etc.,) 
-b.  App (Challenge Request) <-> ACS<-> Issuer (Challenge Response)
-c.  App (Challenge Response) <-> uCom <-> 3DS2 Server (Hosted by IPG)<-> DS <-> ACS <-> Card schemes (VISA/MASTERCARD/AMEX etc.,) 
+ 1. App SDK/MAS <-> uCom<-> 3DS2 Server (Hosted by IPG) <-> DS
+    (Directory Server) <-> ACS (Access Control Server) <-> Card schemes
+    (VISA/MASTERCARD/AMEX etc.,)
+ 2. App (Challenge Request) <-> ACS<-> Issuer (Challenge Response)
+ 3. App (Challenge Response) <-> uCom <-> 3DS2 Server (Hosted by IPG)<->
+    DS <-> ACS <-> Card schemes (VISA/MASTERCARD/AMEX etc.,)
 
 
 **STEP 2:** Card Verification (This will happen once the 3DS is authenticated)
