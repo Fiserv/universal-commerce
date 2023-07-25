@@ -1,6 +1,6 @@
 <img title="icon" alt="hosted pages icon" src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/Picture28.png" width="40" height="40"> 
 
-# How to Make a Payment Using Vaulted Cards
+# How to Make a Payment Using a Vaulted Card
 
 Making a payment using a vaulted card through the Connected Commerce (uCom) API involves programmatically interacting with the platform to first, securely onboard credit card details and then utilize the stored card information. Below is a step-by-step guide on how to achieve this:
 
