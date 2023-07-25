@@ -1,4 +1,4 @@
-<img title="icon" alt="hosted pages icon" src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/Picture27.png" width="40" height="40"> 
+<img title="icon" alt="hosted pages icon" src="https://raw.githubusercontent.com/Fiserv/universal-commerce/develop/assets/images/Picture28.png" width="40" height="40"> 
 
 # How to Make a Payment Using Vaulted Cards
 
