@@ -72,9 +72,8 @@
       link: recipes/MIT.md
     - title: Payment  Tokens - Definition, Types, and Usage
       link: recipes/tokens.md
-      
-
-
+    - title: How to Make a Payment Using a Vaulted Card
+      link: recipes/Payment_Using_Vaulted_Card.md   
 
     open: false
     #- recipes:
