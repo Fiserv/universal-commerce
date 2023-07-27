@@ -1,4 +1,4 @@
-# Interactive Guide
+# How to Utilize 3DS in Connected Commerce
 
 ## Getting Started
 
@@ -45,9 +45,9 @@ Mobile app and uCom shall integrate with EMV 3-D Secure 2.2 specification to sup
 
 **Types of 3DS flows:**
 
-1. Frictionless flow
+1. Frictionless flow - An authentication flow not involving the cardholder, is called a frictionless flow. Frictionless flow allows issuers to approve a transaction without the need to interact with the cardholder.
 
-2. Challenge Flow
+2. Challenge Flow - An authentication flow involving the cardholder is called a challenge flow. The challenge flow is used to present a way of authenticating the cardholder using e.g. OTP or a passphrase.
 
 ## Scope
 
@@ -89,335 +89,194 @@ App SDK/MAS <-> uCom <-> 3DS2 Server (Hosted by IPG) <-> DS (Directory Server) <
 
 uCom <-> Payment Gateway <-> Card schemes (VISA/MASTERCARD/AMEX etc.,)
   
-#### Snippet for Card Onboarding Request from MAS
+**Snippet for Card Onboarding Request from MAS**
 
 ```json
 
 POST /v1/customers/{fdCustomerId}/accounts
 
 {
-
-"account": {
-
-"token": {
-
-"tokenId":"a16cd463-88e8-4a9e-b2a6-d0985e3af45e",
-
-"tokenProvider" : "UCOM",
-
-"tokenType" : "CLAIM_CHECK_NONCE"
-
-}
-
-},
-
-"deviceInfo":{
-
-"id":"537edec8-d33e-4ee8-93a7-b9f61876950c",
-
-"kind":"mobile",
-
-"details":[
-
-{
-
-"provider":"MODIRUM",
-
-"dataCapture":{
-
-"rawData":"$.sdkEncData",
-
-"dataEventId":"$.sdkTransID",
-
-"captureTime":"2016-04-16T16:06:05Z"
-
-},
-
-"dataStatic":{
-
-"os":"Android 5.1.1 Lollipop",
-
-"osVersion":"5.1.1 Lollipop",
-
-"model":"XYX-1",
-
-"Type":"Moto G"
-
-},
-
-"dataDynamic":{
-
-"latitude":"13.0827 N",
-
-"longitude":"80.2707 E",
-
-"ipAddress":"172.27.37.221",
-
-"captureTime":"2016-04-16T16:06:05Z"
-
-}
-
-}
-
-],
-
-"additionalInfo": [ {
-
-"name": "3ds.sdk.timeout",
-
-"value": "$.sdkMaxTimeout"
-
-},
-
-{
-
-"name": "3ds.sdk.ephemPubKey.kty",
-
-"value": "$.sdkEphemPubKey.kty"
-
-},
-
-{
-
-"name": "3ds.sdk.ephemPubKey.crv",
-
-"value": "$.sdkEphemPubKey.crv"
-
-},
-
-{
-
-"name": "3ds.sdk.ephemPubKey.x",
-
-"value": "$.sdkEphemPubKey.x"
-
-},
-
-{
-
-"name": "3ds.sdk.ephemPubKey.y",
-
-"value": "$.sdkEphemPubKey.y"
-
-},
-
-{
-
-"name": "3ds.sdk.deviceRenderOptionsIF",
-
-"value": "$.deviceRenderOptionsIF"
-
-},
-
-{
-
-"name": "3ds.sdk.deviceRenderOptionsUI",
-
-"value": "$.deviceRenderOptionsUI"
-
-},
-
-{
-
-"name": "3ds.sdk.referenceNumber",
-
-"value": "$.sdkReferenceNumber"
-
-},
-
-{
-
-"name": "3ds.sdk.appId",
-
-"value": "$.sdkAppId"
-
-}
-
-]
-
-}
-
+    "account": {
+        "token": {
+            "tokenId": "a16cd463-88e8-4a9e-b2a6-d0985e3af45e",
+            "tokenProvider": "UCOM",
+            "tokenType": "CLAIM_CHECK_NONCE"
+        }
+    },
+    "deviceInfo": {
+        "id": "537edec8-d33e-4ee8-93a7-b9f61876950c",
+        "kind": "mobile",
+        "details": [
+            {
+                "provider": "MODIRUM",
+                "dataCapture": {
+                    "rawData": "$.sdkEncData",
+                    "dataEventId": "$.sdkTransID",
+                    "captureTime": "2016-04-16T16:06:05Z"
+                },
+                "dataStatic": {
+                    "os": "Android 5.1.1 Lollipop",
+                    "osVersion": "5.1.1 Lollipop",
+                    "model": "XYX-1",
+                    "Type": "Moto G"
+                },
+                "dataDynamic": {
+                    "latitude": "13.0827 N",
+                    "longitude": "80.2707 E",
+                    "ipAddress": "172.27.37.221",
+                    "captureTime": "2016-04-16T16:06:05Z"
+                }
+            }
+        ],
+        "additionalInfo": [
+            {
+                "name": "3ds.sdk.timeout",
+                "value": "$.sdkMaxTimeout"
+            },
+            {
+                "name": "3ds.sdk.ephemPubKey.kty",
+                "value": "$.sdkEphemPubKey.kty"
+            },
+            {
+                "name": "3ds.sdk.ephemPubKey.crv",
+                "value": "$.sdkEphemPubKey.crv"
+            },
+            {
+                "name": "3ds.sdk.ephemPubKey.x",
+                "value": "$.sdkEphemPubKey.x"
+            },
+            {
+                "name": "3ds.sdk.ephemPubKey.y",
+                "value": "$.sdkEphemPubKey.y"
+            },
+            {
+                "name": "3ds.sdk.deviceRenderOptionsIF",
+                "value": "$.deviceRenderOptionsIF"
+            },
+            {
+                "name": "3ds.sdk.deviceRenderOptionsUI",
+                "value": "$.deviceRenderOptionsUI"
+            },
+            {
+                "name": "3ds.sdk.referenceNumber",
+                "value": "$.sdkReferenceNumber"
+            },
+            {
+                "name": "3ds.sdk.appId",
+                "value": "$.sdkAppId"
+            }
+        ]
+    }
 }
 
 ```
 
 
-## Sample Response (Frictionless Flow - Https Status Code – 201)
+**Sample Response (Frictionless Flow - Https Status Code – 201)**
 
 ```json
 
 {
-
-"fdAccountId": "8a7f678d6a20a519016a55c7142b02bc",
-
-"type": "CREDIT",
-
-"status": "ACTIVE",
-
-"credit": {
-
-"nameOnCard": "Sam G",
-
-"alias": "1111",
-
-"cardType": "VISA",
-
-"billingAddress": {
-
-"streetAddress": "100 Universal City Plaza",
-
-"locality": "LONDON",
-
-"region": "CA",
-
-"postalCode": "00000",
-
-"country": "UK"
-
-},
-
-"expiryDate": {
-
-"month": "06",
-
-"year": "20",
-
-"singleValue": "0620"
-
-},
-
-"sequenceNumber": "01"
-
-},
-
-"threeDSecureInfo" : {
-
-"transactionStatus": "A",
-
-"transactionStatusReason": "10",
-
-"dsTransactionId":"886fc4446894f878b7e32bd5e",
-
-"acsTransactionId":"4446894f878b7e32bd5b",
-
-"serverTransactionId":"894f878b7e32bd5c",
-
-"acsReferenceNumber":"292bb6b886fc4446894f878b7e32bd5d",
-
-"cardType":"VISA"
-
-}
-
+    "fdAccountId": "8a7f678d6a20a519016a55c7142b02bc",
+    "type": "CREDIT",
+    "status": "ACTIVE",
+    "credit": {
+        "nameOnCard": "Sam G",
+        "alias": "1111",
+        "cardType": "VISA",
+        "billingAddress": {
+            "streetAddress": "100 Universal City Plaza",
+            "locality": "LONDON",
+            "region": "CA",
+            "postalCode": "00000",
+            "country": "UK"
+        },
+        "expiryDate": {
+            "month": "06",
+            "year": "20",
+            "singleValue": "0620"
+        },
+        "sequenceNumber": "01"
+    },
+    "threeDSecureInfo": {
+        "transactionStatus": "A",
+        "transactionStatusReason": "10",
+        "dsTransactionId": "886fc4446894f878b7e32bd5e",
+        "acsTransactionId": "4446894f878b7e32bd5b",
+        "serverTransactionId": "894f878b7e32bd5c",
+        "acsReferenceNumber": "292bb6b886fc4446894f878b7e32bd5d",
+        "cardType": "VISA"
+    }
 }
 
 ```
 
-## Sample Response (Challenge Encountered - Https Status Code – 202)
+**Sample Response (Challenge Encountered - Https Status Code – 202)**
 
 ```json
 
 {
-
-"type": "THREEDSECURE",
-
-"status": "PENDING",
-
-"threeDSecureInfo" : {
-
-"transactionId": "292bb6b886fc4446894f878b7e32bdww",
-
-"transactionStatus": "C",
-
-"transactionStatusReason": "16",
-
-"dsTransactionId":"886fc4446894f878b7e32bd5e",
-
-"acsTransactionId":"4446894f878b7e32bd5b",
-
-"serverTransactionId":"894f878b7e32bd5c",
-
-"acsReferenceNumber":"292bb6b886fc4446894f878b7e32bd5d",
-
-"cardType":"VISA",
-
-"acsSignedContent":"eyJ4NWMiOlsiTUlJQ2x6Q0NBWCtnQXdJQkFnSUJBVEFO"
-
-}
-
+    "type": "THREEDSECURE",
+    "status": "PENDING",
+    "threeDSecureInfo": {
+        "transactionId": "292bb6b886fc4446894f878b7e32bdww",
+        "transactionStatus": "C",
+        "transactionStatusReason": "16",
+        "dsTransactionId": "886fc4446894f878b7e32bd5e",
+        "acsTransactionId": "4446894f878b7e32bd5b",
+        "serverTransactionId": "894f878b7e32bd5c",
+        "acsReferenceNumber": "292bb6b886fc4446894f878b7e32bd5d",
+        "cardType": "VISA",
+        "acsSignedContent": "eyJ4NWMiOlsiTUlJQ2x6Q0NBWCtnQXdJQkFnSUJBVEFO"
+    }
 }
 
 ```
 
   
 
-## Sample Response (Error Response - Https Status Code – 400)
+**Sample Response (Error Response - Https Status Code – 400)**
 
   
 
 ```json
 
 {
-
-"code": "269701",
-
-"message": "ThreeDSecure authentication declined.",
-
-"category": "3ds",
-
-"developerInfo": {
-
-"developerMessage": "ThreeDSecure authentication declined."
-
-},
-
-"threeDSecureInfo" : {
-
-"transactionStatus": "R",
-
-"transactionStatusReason": "11",
-
-"dsTransactionId":"886fc4446894f878b7e32bd5e",
-
-"acsTransactionId":"4446894f878b7e32bd5b",
-
-"serverTransactionId":"894f878b7e32bd5c",
-
-"cardType":"VISA"
-
-}
-
+    "code": "269701",
+    "message": "ThreeDSecure authentication declined.",
+    "category": "3ds",
+    "developerInfo": {
+        "developerMessage": "ThreeDSecure authentication declined."
+    },
+    "threeDSecureInfo": {
+        "transactionStatus": "R",
+        "transactionStatusReason": "11",
+        "dsTransactionId": "886fc4446894f878b7e32bd5e",
+        "acsTransactionId": "4446894f878b7e32bd5b",
+        "serverTransactionId": "894f878b7e32bd5c",
+        "cardType": "VISA"
+    }
 }
 
 ```
 
-## Sample Response (Error Response - Https Status Code -400 - 3DS not able to perform)
+**Sample Response (Error Response - Https Status Code -400 - 3DS not able to perform)**
 
   
 
 ```json
 
 {
-
-"code": "269702",
-
-"message": "Failed to complete ThreeDSecure authentication.",
-
-"category": "3ds",
-
-"developerInfo": {
-
-"developerMessage": "Failed to complete ThreeDSecure authentication."
-
-},
-
-"threeDSecureInfo" : {
-
-"transactionStatus": "NOT_PROCESSED",
-
-"transactionStatusReason": "NOT_PROCESSED"
-
-}
-
+    "code": "269702",
+    "message": "Failed to complete ThreeDSecure authentication.",
+    "category": "3ds",
+    "developerInfo": {
+        "developerMessage": "Failed to complete ThreeDSecure authentication."
+    },
+    "threeDSecureInfo": {
+        "transactionStatus": "NOT_PROCESSED",
+        "transactionStatusReason": "NOT_PROCESSED"
+    }
 }
 
 ```
@@ -445,7 +304,7 @@ uCom <-> Payment Gateway <-> Card schemes (VISA/MASTERCARD/AMEX etc.,)
 
 
 
-#### Snippet for Inquiring Challenge Result
+**Snippet for Inquiring Challenge Result**
 
 
 ```json
@@ -453,21 +312,13 @@ uCom <-> Payment Gateway <-> Card schemes (VISA/MASTERCARD/AMEX etc.,)
 PATCH /v1/customers/{fdCustomerId}
 
 {
-
-"account": {
-
-"type": "THREEDSECURE",
-
-"threeDSecureInfo": {
-
-"transactionId": "292bb6b886fc4446894f878b7e32bdww",
-
-"challengeResponse":"$.encrypted.cres"
-
-}
-
-}
-
+    "account": {
+        "type": "THREEDSECURE",
+        "threeDSecureInfo": {
+            "transactionId": "292bb6b886fc4446894f878b7e32bdww",
+            "challengeResponse": "$.encrypted.cres"
+        }
+    }
 }
 
 ```
@@ -475,11 +326,11 @@ PATCH /v1/customers/{fdCustomerId}
  The result of challenge flow will be either 3DS Approved or Declined or Not Processed where the samples were already provided under the frictionless flow section
 
 
-## Petro Payment Samples
+**Petro Payment Samples**
 
 3DS flow will be same as mentioned under the card onboarding section. 
 
-### Snippet for Petro Transaction API Request
+**Snippet for Petro Transaction API Request**
 
 
 ```json
@@ -593,7 +444,7 @@ POST /v1/petro-transactions
 
 ```
 
-## Sample Response (Frictionless Flow - Https Status Code – 201)
+**Sample Response (Frictionless Flow - Https Status Code – 201)**
 
 ```json
 {
@@ -640,7 +491,7 @@ POST /v1/petro-transactions
 
 ```
 
-## Sample Response (Challenge Encountered - Https Status Code – 202)
+**Sample Response (Challenge Encountered - Https Status Code – 202)**
 
 ```json
 
@@ -663,7 +514,7 @@ POST /v1/petro-transactions
 
 ```
 
-#### Snippet for Inquiring Challenge Result (PATCH CALL)
+**Snippet for Inquiring Challenge Result (PATCH CALL)**
 
 
 ```json
