@@ -73,3 +73,13 @@ link: ../docs/?path=recipes/tokens.md
 -->
 
 <!-- type: row-end -->
+
+
+<!-- type: row -->
+<!-- type: card
+title: <div style="text-align:center;width:100%;height:25%"><img src="https://github.com/Fiserv/universal-commerce/blob/develop/assets/images/Picture28.png?raw=true" alt="Vaulted Cards" title="Vaulted Cards" style="width:auto; height:60px"></div> <h3 style="text-align:center">How to Make a Payment Using a Vaulted Card</h3>
+description: 
+link: ../docs/?path=recipes/Payment_Using_Vaulted_Card.md
+-->
+
+<!-- type: row-end -->

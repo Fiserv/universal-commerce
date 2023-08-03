@@ -259,4 +259,4 @@ Client-Token: <accessToken> </br>
 }
 
 ``` 
-Now that the we have an Account ID, we could preform a sale or auth/capture transaction, depending on the use case. 
+Now that the we have an Account ID, we could preform a sale or auth/capture transaction, depending on the use case. Please refer to <a href="../docs/?path=recipes/Payment_Using_Vaulted_Card.md"> this API guide</a> for more details on how to make a payment using a vaulted credit card.
