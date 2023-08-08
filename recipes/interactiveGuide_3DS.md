@@ -59,7 +59,6 @@ Mobile app and uCom shall integrate with EMV 3-D Secure 2.2 specification to sup
 
   
   
-
 ## Dependencies
 
 1. Availability of IPG (3DS) Set-up
@@ -88,6 +87,34 @@ App SDK/MAS <-> uCom <-> 3DS2 Server (Hosted by IPG) <-> DS (Directory Server) <
 **STEP 2:** Card Verification (This will happen once the 3DS is authenticated) 
 
 uCom <-> Payment Gateway <-> Card schemes (VISA/MASTERCARD/AMEX etc.,)
+
+
+**<ins> Data Requirements </ins>**
+
+|Field Name| Field Description| Requirement|
+| --- | --- | --- |
+|deviceInfo.id| Unique Id for the device. Value should not contain line feeds, carriage returns, tabs, leading or trailing spaces, or multiple spaces | Required |
+| deviceInfo.kind | Set to "mobile" | Required |
+| deviceInfo.details.provider | Device Intelligence provider name. Set to "MODIRUM" | Required |
+| deviceInfo.details.dataCapture.dataEventId | Device Intelligence generated Device ID | Required |
+| dataCapture | Device data captured as a bundle and transmitted as an encrypted and/or specifically formated string | Required|
+|dataCapture.rawData|Device capture - raw data blob|Required|
+|dataCapture.dataEventId|Event identifier used map state on the server|Required|
+|dataCapture.captureTime|Device data capture time in Internet Date/Time format - yyyy-MM-dd'T'HH:mm:ss'Z'|Required|
+|dataStatic|Device static details|Required|
+|dataStatic.os|Device OS name|Required|
+|dataStatic.osVersion|Device OS version|Required|
+|dataStatic.model|Device model|Required|
+|dataStatic.type|Device type|Required|
+|dataDynamic|Device location details|Required|
+|dataDynamic.latitude|Device position - latitude at the time of the data event|Required|
+|dataDynamic.longitude|Device position - longitude at the time of the data event|Required|
+|dataDynamic.ipAddress|IP address|Required|
+|dataDynamic.captureTime|Device data capture time in Internet Date/Time format - yyyy-MM-dd'T'HH:mm:ss'Z'|Required|
+|additionalInfo|Name and Value pair. All the mentioned name and value pair in the code snippet should be passed in the request|Required|
+
+
+
   
 **Snippet for Card Onboarding Request from MAS**
 
