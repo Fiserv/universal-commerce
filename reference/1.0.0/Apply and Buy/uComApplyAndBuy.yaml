@@ -106,7 +106,7 @@ paths:
   /v1/customers/{fdCustomerId}/applybuy/{auid}:
     get:
       x-group-name: Apply and Buy
-      x-proxy-name: Applications Status
+      x-proxy-name: Application Status
       tags:
       - applybuy
       description: API to get the application status.
@@ -1725,7 +1725,7 @@ components:
             $ref: '#/components/schemas/Applybuy'
 
     ServerError:
-      description: An unexpected server error occurred.
+      description: An unexpected server error occured.
       content:
         application/json:
           schema:

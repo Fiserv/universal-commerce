@@ -1,4 +1,3 @@
-#-------------------------------------
 # Document Change Log
 # 0.2.3
 #     - No Changes
@@ -7,85 +6,90 @@
 # 0.2.1
 #     - Added Merchant id as header field
 # 0.2.0
-#     - Added 'OTHER' CreditCardType
 #     - Added fields in ThreeDSecure object
+#     - Added Price tier in POSItem
 # 0.1.9
 #     - No change.
 # 0.1.8
-#     - Added 3ds web support
-# 0.1.7
-#     - New API for creating third party tokens
-#     - Added 3ds challenge transaction expiry date time in ThreeDSecure
+#     - Added new API's for venue
+# 0.1.7sites
+#     - Added SiteLoyalty in the site checkin response.
 # 0.1.6
+#     - Changed litter to litre in VolumeEOM
 #     - Added Accept-Language header field
 # 0.1.5
 #     - Added Link in the Error object.
-#     - acsSignedContent and CardType in threeDSecureInfo object
+#     - Added retailer partner in the site checkin request
+#     - Added serviceArea, servicePartner query params for retrieving geo sites
 # 0.1.4
-#     - No change.
+#     - Added product details for Geolocation services. It has list of unique product code and product price.
 # 0.1.3
 #     - Adding NVP with valueAsList
 #     - update in DeviceInfo.
+#     - added brandedWholesaler for a site
 # 0.1.2
-#     - No change.
+#     - Added VAT Number as part of site specification at top level.
 # 0.1.1
-#     - No change.
+#     - Added support for free form Json data for Geo-location services.
+#     - Added 'id' attribute to Link
 # 0.1.0
-#     - No change.
+#     - Added client-token in the header field
 # 0.0.9
 #     - No change.
 # 0.0.8
-#   - Added required keyId parameter to GET /signature-keys
-#   - Added required keyId parameter to GET /encryption-keys
+#     - No change.
 # 0.0.7
-#   - Updated ReferenceToken to have more accurate attribute names, removed use value
-#   - Cleaned up examples in the models
+#     - No change.
 # 0.0.6
-#     - No change.
+#     - Introduced new object PublicSiteInfo
+#     - Modified geo location API to return PublicSiteInfo instead of GeoLocation
 # 0.0.5
-#     - No change.
+#     - Updated the response structure for the get operation to include pagination details
+#     - Changed name of attribute for Site in SiteRequest object
+#     - Added api to search sites based on geo location
+#     - Set results for search results and get all petrol sites to use same structures
+#     - Organized the parameters to be alphabetical
 # 0.0.4
-#     - Added endpoints for signature and encryption keys
-#     - Added encryption and validation models
+#     - Added get operation to retrieve all sites with pagination support
 # 0.0.3
-#     - Added publicKeyRequired flag in request and publicKey attribute in response.
-#     - Removed GET, PATCH, DELETE operations.
-#     - Added Grant Type in header.
+#     - Corrected name of attribute geoFencingSiteRecord
+#     - Corrected attribute names in ItemCode object
 # 0.0.2
 #     - Added 'osVersion' attribute to 'DeviceInfo' object.
+#     - updated method type PUT from PATCH
 # 0.0.1
 #     - Initial Version
 #-------------------------------------
 
 openapi: 3.0.1
 info:
-  title: uCom Security Services
-  description: Services related to managing security like access tokens and validation.
+  title: uCom Site Services
+  description: Services for site management and configuration.
   version: 0.2.3
 servers:
 - url: https://int.api.firstdata.com/ucom
 tags:
-- name: security
-  description: Operations and details for API security services.
+- name: petro-sites
+  description: Operations and details for petro site services.
+- name: geolocation
+  description: Operations for sites based on geo location.
 paths:
-  /v1/signature-keys/{keyId}:
+  /v1/petro-sites:
     get:
-      x-group-name: Security Services
-      x-proxy-name: Get Public Signature Key
+      x-group-name: Site Services
+      x-proxy-name: Get List of Active Sites
       tags:
-      - security
-      summary: Get uCom Gateway public signature key
-      description: Get uCom Gateway public key for validating message signatures.
+      - petro-sites
+      description: This API is to get the list of all active sites. Site summary details will be returned. All details for given site will be returned only when the IncludeAllParam is set to true.
       parameters:
-      - name: keyId
-        in: path
-        description: identifier of the public key used for signature verification.
-        required: true
-        schema:
-          type: string
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
       - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/IncludeAllParam'
+      - $ref: '#/components/parameters/PageNumberParam'
+      - $ref: '#/components/parameters/PageSizeParam'
+      - $ref: '#/components/parameters/TypeParam'
       - $ref: '#/components/parameters/AcceptLanguageParam'
       - $ref: '#/components/parameters/SubMerchantIdParam'
       responses:
@@ -94,72 +98,39 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SignatureKey'
+                $ref: '#/components/schemas/SitesSearchResult'
         400:
           $ref: '#/components/responses/BadRequest'
-        404:
-          $ref: '#/components/responses/NotFound'
+        401:
+          $ref: '#/components/responses/Unauthorized'
         500:
           $ref: '#/components/responses/ServerError'
 
-  /v1/encryption-keys/{keyId}:
-    get:
-      x-group-name: Security Services
-      x-proxy-name: Get Encryption Key
-      tags:
-      - security
-      summary: Get uCom Gateway encryption key
-      description: Get uCom Gateway partner-specific key for encryption of data elements.
-      parameters:
-      - name: keyId
-        in: path
-        description: identifier of the public key used for field-level encryption.
-        required: true
-        schema:
-          type: string
-      - $ref: '#/components/parameters/ApiKeyParam'
-      - $ref: '#/components/parameters/TimestampParam'
-      - $ref: '#/components/parameters/AuthorizationParam'
-      - $ref: '#/components/parameters/AcceptLanguageParam'
-      - $ref: '#/components/parameters/SubMerchantIdParam'
-      responses:
-        200:
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EncryptionKey'
-        400:
-          $ref: '#/components/responses/BadRequest'
-        404:
-          $ref: '#/components/responses/NotFound'
-        500:
-          $ref: '#/components/responses/ServerError'
-
-  /v1/tokens:
     post:
-      x-group-name: Security Services
-      x-proxy-name: Create Security Access Token
+      x-group-name: Site Services
+      x-proxy-name: Onboard Petroleum Sites
       tags:
-      - security
-      summary: Create a security access token
-      description: For service calls directly from a mobile or connected device, the client needs to have an access token which is received by the client's server.
+      - petro-sites
+      description: This API will onboard petroleum sites to uCom system.
       parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
       - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/ClientRequestIdParam'
+      - $ref: '#/components/parameters/TypeParam'
       - $ref: '#/components/parameters/AcceptLanguageParam'
       - $ref: '#/components/parameters/SubMerchantIdParam'
       requestBody:
+        description: Site information.
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TokenRequest'
-            examples:
-              Registered User: {summary: Request with fdcustomerId, $ref: '#/components/examples/TokenCreationWithfdcustomerId'}
-              Guest User: {summary: Request with anonymous, $ref: '#/components/examples/TokenCreationWithoutfdcustomerId'}
+              $ref: '#/components/schemas/SiteRequest'
         required: true
       responses:
         201:
-          $ref: '#/components/responses/TokenCreated'
+          $ref: '#/components/responses/Created'
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -169,80 +140,493 @@ paths:
         500:
           $ref: '#/components/responses/ServerError'
 
+  /v1/petro-sites/{siteLocationId}:
+    get:
+      x-group-name: Site Services
+      x-proxy-name: Get Site Information
+      tags:
+      - petro-sites
+      description: This API is to get the site information from uCom system.
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/SiteLocationIdParam'
+      - $ref: '#/components/parameters/TypeParam'
+      - $ref: '#/components/parameters/RetailerPartnerIdParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Site'
+              examples:
+                Minimal:
+                  summary: Sample response of site information
+                  $ref: '#/components/examples/GetSiteInformationBySiteLocationID'
+
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        409:
+          $ref: '#/components/responses/Conflict'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+    put:
+      x-group-name: Site Services
+      x-proxy-name: Update Full Site Replacement
+      tags:
+      - petro-sites
+      description: This API will updates the sites configurations in uCom system with a full replacement of the existing record.
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/SiteLocationIdParam'
+      - $ref: '#/components/parameters/TypeParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      requestBody:
+        description: site information.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Site'
+        required: true
+      responses:
+        204:
+          $ref: '#/components/responses/NoContent'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        409:
+          $ref: '#/components/responses/Conflict'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+    delete:
+      x-group-name: Site Services
+      x-proxy-name: Disable Sites
+      tags:
+      - petro-sites
+      description: This API is to make the site disable from uCom system.
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/SiteLocationIdParam'
+      - $ref: '#/components/parameters/TypeParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      responses:
+        204:
+          $ref: '#/components/responses/NoContent'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /v1/geolocation/sites:
+    get:
+      x-group-name: Site Services
+      x-proxy-name: Get Site Coordinates
+      tags:
+      - geolocation
+      description: Query for a list of sites based on geo-location coordinates and a given radius.
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/LatLongParam'
+      - $ref: '#/components/parameters/RadiusParam'
+      - $ref: '#/components/parameters/UnitOfMeasurementParam'
+      - $ref: '#/components/parameters/PageNumberParam'
+      - $ref: '#/components/parameters/PageSizeParam'
+      - $ref: '#/components/parameters/ServiceAreaParam'
+      - $ref: '#/components/parameters/ServicePartnerParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SitesSearchResult'
+              examples:
+                Minimal:
+                  summary: Sample response for list of sites
+                  $ref: '#/components/examples/GetSitesByGeoCoordinates'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /v1/venues:
+    get:
+      x-group-name: Site Services
+      x-proxy-name: Retrieve Venue Information
+      tags:
+      - venue
+      description: Retrieves venue information
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      - $ref: '#/components/parameters/RegionParam'
+      - $ref: '#/components/parameters/VenueCategoryParam'
+      - $ref: '#/components/parameters/SearchKeywordsParam'
+      - $ref: '#/components/parameters/PageNumberParam'
+      - $ref: '#/components/parameters/PageSizeParam'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VenuesSearchResult'
+              examples:
+                Minimal:
+                  summary: Sample response of venue information
+                  $ref: '#/components/examples/GetVenueInformation'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /v1/venues/{venueId}/sections:
+    get:
+      x-group-name: Site Services
+      x-proxy-name: Retrieve Venue Sections
+      tags:
+      - venue
+      description: Retrieves venue sections
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      - $ref: '#/components/parameters/VenueIdParam'
+      - $ref: '#/components/parameters/PageNumberParam'
+      - $ref: '#/components/parameters/PageSizeParam'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VenuesSectionSearchResult'
+              examples:
+                Minimal:
+                  summary: Sample response of venue section information
+                  $ref: '#/components/examples/GetVenueSectionInformation'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /v1/venues/{venueId}/suites:
+    get:
+      x-group-name: Site Services
+      x-proxy-name: Retrieve Venue Suites
+      tags:
+      - venue
+      description: Retrieves venue suites
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      - $ref: '#/components/parameters/VenueIdParam'
+      - $ref: '#/components/parameters/PageNumberParam'
+      - $ref: '#/components/parameters/PageSizeParam'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VenuesSuiteSearchResult'
+              examples:
+                Minimal:
+                  summary: Sample response of venue suites information
+                  $ref: '#/components/examples/GetVenueSuites'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /v1/venues/{venueId}/tables:
+    get:
+      x-group-name: Site Services
+      x-proxy-name: Retrieve Venue Tables
+      tags:
+      - venue
+      description: Retrieves venue tables
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyParam'
+      - $ref: '#/components/parameters/TimestampParam'
+      - $ref: '#/components/parameters/AuthorizationParam'
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdParam'
+      - $ref: '#/components/parameters/VenueIdParam'
+      - $ref: '#/components/parameters/PageNumberParam'
+      - $ref: '#/components/parameters/PageSizeParam'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VenuesTableSearchResult'
+              examples:
+                Minimal:
+                  summary: Sample response of venue tables information
+                  $ref: '#/components/examples/GetVenueTables'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/ServerError'
+
 components:
   schemas:
-
-#-------------------------------------
-# Operational Models
-#-------------------------------------
-
-    TokenRequest:
-      title: TokenRequest
+    #-------------------------------------
+    # Operational Models
+    #-------------------------------------
+    SiteRequest:
+      title: Site Request
       type: object
       properties:
-        token:
-          $ref: '#/components/schemas/Token'
+        site:
+          $ref: '#/components/schemas/Site'
         deviceInfo:
           $ref: '#/components/schemas/DeviceInfo'
-        anonymous:
-          type: boolean
-          description: Flag to indicate that the requested user does not have a uCom customer profile.
-          default: false
-        publicKeyRequired:
-          type: boolean
-          description: Flag to indicate if a public key is required for payload data encryption.
-          default: false
+
     #-------------------------------------
     # Resource Models
     #-------------------------------------
-    EncryptionKey:
+    Additive:
       type: object
       properties:
-        id:
+        additiveid:
           type: string
-          description: Uniquely identifies a Key.
-          example: c2RnYXJ0aHR3ZXN3eXNk
-        publicKey:
+        type:
           type: string
-          description: Generated Public Key for encrypting the request.
-          example: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCqGKukO1De7zhZj6+H0qtjTkVxwTCpvKe4eCZ0FPqri0cb2JZfXJ/DgYSF6vUpwmJG8wVQZKjeGcjDOL5UlsuusFncCzWBQ7RKNUSesmQRMSGkVb1/3j+skZ6UtW+5u09lHNsj6tQ51s1SPrCBkedbNf0Tp0GbMJDyR4e9T04ZZwIDAQAB
-        algorithm:
+        description:
           type: string
-          description: Cipher algorithm to use for encryption.
-          example: RSA/ECB/PKCS1Padding
-        created:
+        available:
+          type: boolean
+        price:
           type: number
-          description: Epoch timestamp representing the Key creation date-time.
-          example: 1501715477
-        expires:
-          type: string
-          description: Epoch timestamp representing the date-time by which the Key expires.
-          example: "1501795478"
-      description: Model for attributes of Key pair required for field encryption.
+      description: A type of fuel additive available for purchase at a pump.
 
-    ExpiryDate:
+    Address:
       type: object
       properties:
-        month:
-          maxLength: 2
-          minLength: 2
-          pattern: '[0-9]{2,2}'
+        type:
           type: string
-          description: Month format 'MM'
-          example: "09"
-        year:
-          maxLength: 2
-          minLength: 2
-          pattern: '[0-9]{2,2}'
+          description: Canonical type values of "work", "home", and "other".
+        streetAddress:
           type: string
-          description: Year format 'YY'
-          example: "20"
-        singleValue:
-          maxLength: 6
-          minLength: 4
+          description: The full street address component, which may include house number, street name, P.O. box, and multi-line extended street address information.
+        locality:
           type: string
-          description: Month and year together, 'MMYY' or 'MMYYYY'.  If the latter format, the string will be parsed and validated per the given format.  Any other format will be rejected.
-      description: Contains account expiration data and needs to either send the values in individual fields OR as a singleValue.
+          description: The city or locality component.
+        region:
+          type: string
+          description: The state or region component.
+        postalCode:
+          type: string
+          description: The zip code or postal code component.
+        country:
+          type: string
+          description: The country name component.  When specified, the value MUST be in ISO 3166-1 "alpha-2" code format; e.g., the United States and Sweden are "US" and "SE", respectively.
+        formatted:
+          type: string
+          description: The full mailing address, formatted for display or use with a mailing label.
+        primary:
+          type: boolean
+          description: Indicates if this is the default address for the associated resource. It only has meaning when used in a set or array of addresses.
+      description: A physical mailing address for this user.
+      example:
+        type: work
+        streetAddress: 100 Universal City Plaza
+        locality: Hollywood
+        region: CA
+        postalCode: "91608"
+        country: US
+        formatted: |-
+          100 Universal City Plaza
+          Hollywood, CA 91608 US
+        primary: true
+
+    ProductDetails:
+      type: object
+      properties:
+        type:
+          type: string
+          description: type of product like carwash or fuel.
+          example: fuel
+        code:
+          type: string
+          description: This is product code provided by POS.
+          example: 2
+        unitOfMeasure:
+          type: string
+          description: Unit of measure for a POS sale.
+          example: litre
+        unitPrice:
+          type: string
+          description: Product price information.
+          example: 2.679
+        additionalProductInfo:
+          type: string
+          description: Additional Product price information.
+          example: Super
+      description: This contains list of product price and other product information.
+      
+    Email:
+      type: object
+      properties:
+        type:
+          type: string
+          description: The "type" sub-attribute is used to provide a classification meaningful to the (human) user.  The user interface should encourage the use of basic values of "work", "home", and "other" and MAY allow additional type values to be used at the discretion of the service client.
+        value:
+          type: string
+          description: The value SHOULD be specified according to RFC5321.
+        primary:
+          type: boolean
+          description: Defines if this entry is to be used as the primary or default for the user.
+          default: false
+      description: Email address for the user.
+      example:
+        value: bjensen@example.com
+        type: work
+        primary: true
+
+    FuelGrade:
+      type: object
+      properties:
+        gradeId:
+          type: string
+          readOnly: true
+        description:
+          type: string
+        available:
+          type: string
+        price:
+          type: number
+        productCode:
+          type: string
+        unitOfMeasurement:
+          $ref: '#/components/schemas/QuantityUOM'
+        priceTier:
+          type: string
+        posCodeFormat:
+          type: string
+          example: plu
+        posCode:
+          type: string
+          example: "102"
+        posCodeModifier:
+          type: string
+          example: "1"
+        amount:
+          type: number
+          format: double
+          example: 7.5
+      description: Defines a grade of fuel purchasable at a pump.
+
+    Geolocation:
+      type: object
+      properties:
+        siteId:
+          type: string
+          description: The location id or number used to identify the unique site and merchant.
+          example: CA123456
+        longitude:
+          type: number
+          description: The GPS latitude value of the site. To be captured at time of onboarding. Not necessary for daily update at startup.
+        latitude:
+          type: number
+          description: The GPS longitude value of the site. To be captured at time of onboarding. Not necessary for daily update at startup.
+        siteAddress:
+          $ref: '#/components/schemas/SiteAddress'
+        PBL:
+          type: string
+          description: Identifier for the physical business location.  The value should be geologically distinct.
+        status:
+          type: string
+          description: Identifies if site is active
+        siteName:
+          type: string
+          description: Name of the site as defined as part of the onboarding process.
+        siteVendorId:
+          type: string
+          description: Name of the partner who owns the site.
+        retailerPartnerId:
+          type: string
+          description: Name of the configured retailer.
+      description: Geo-spatial data for a given location
+
+    Image:
+      type: object
+      properties:
+        imageId:
+          type: string
+        imageType:
+          type: string
+        width:
+          type: integer
+        height:
+          type: integer
+        srcUrl:
+          type: string
+      description: Graphical representation of an object
 
     ISO-4217:
       type: object
@@ -252,17 +636,109 @@ components:
           example: USD
           default: USD
         number:
-          type: number
-          example: 840.0
+          type: integer
+          example: 840
         digits:
-          type: number
-          example: 2.0
+          type: integer
+          example: 2
         currency:
           type: string
           example: US Dollar
           default: US Dollar
       description: ISO 4217 currency format in which the balance is represented.
 
+    ItemCode:
+      type: object
+      properties:
+        posCodeFormat:
+          type: string
+          description: Refer to PCATS documentation.
+          example: plu
+        posCode:
+          type: string
+          description: Refer to PCATS documentation.
+          example: "9999"
+        posCodeModifier:
+          type: string
+          description: Refer to PCATS documentation.
+          example: "1"
+        itemName:
+          type: string
+          description: Item name as defined by the POS system for display on the customer device.
+          example: Basic Wash
+        itemDescription:
+          type: string
+          description: Item description as defined by the POS system for display on the customer device.
+          example: Basic Wash
+        itemPrice:
+          type: string
+          description: Item price as defined by the POS system for display on the customer device.
+          example: "10"
+        currencyNumericCode:
+          $ref: '#/components/schemas/ISO-4217'
+          example: 123
+        displayOrder:
+          type: integer
+          description: Discounted item price as defined by the POS system. This would be a promotional discount, not based on a specific customer.
+          example: 123
+        discountedPrice:
+          type: number
+          description: Indicator to track if discounted price is tied to a known promotion, offer, etc.
+        discountId:
+          type: string
+        loyaltyRewardSequenceNumber:
+          type: string
+          description: References position in list of offered rewards. Used by items to link to an appropriate reward.
+        productCode:
+          type: string
+          example: "102"
+        amount:
+          type: number
+          example: 100
+        quantity:
+          type: number
+          example: 5
+        priceTier:
+          type: string
+        unitOfMeasurement:
+          $ref: '#/components/schemas/QuantityUOM'
+      description: Value object to hold site resource Item codes.
+      
+    LanguageCode:
+      type: string
+      description: The language code parameter is based on two ISO specs (ISO 639-1,ISO-3166-1).  The first segment is the lower case, 2-character language code (based on ISO 639-1) followed by a hyphen "-" separator.  The second segment is the upper case, 2-character region code (based on ISO-3166-1). Examples are en-US, en-CA, fr-CA.
+
+    LoyaltyProgram:
+      type: object
+      properties:
+        programId:
+          type: string
+          description: Unique identifier used to provide link between applications across disparate systems.
+          example: TEST_PROGRAM
+        hostProgramId:
+          type: string
+          description: Loyalty program Id used by the host (cloud) solution. Not in used in uCom system. For future use.
+          example: TEST_HOST_PROGRAM
+        programName:
+          type: string
+          description: Loyalty program name. Common name for the given loyalty program
+          example: TEST_LOYALTY_PROGRAM
+        programDesc:
+          type: string
+          description: Used to describe the loyalty program and perhaps used to display to the client.
+          example: Test loyalty program
+        programProvider:
+          type: string
+          description: Sponsor of the loyalty program.
+          example: Test Provider
+        loyaltyType:
+          $ref: '#/components/schemas/LoyaltyType'
+          example: LOCAL
+        programStatus:
+          $ref: '#/components/schemas/ProgramStatus'
+          example: ENABLED
+      description: Value object to hold a list of loyalty items.
+      
     Link:
       required:
       - href
@@ -307,188 +783,533 @@ components:
           items:
             type: string
 
-    ReferenceToken:
+    PageLink:
       type: object
       properties:
-        tokenId:
+        firstPage:
+          type: boolean
+          description: Indicates if the list contains first page data
+        lastPage:
+          type: boolean
+          description: Indicates if the list contains last page data
+          example: false
+        currentPage:
+          type: integer
+          description: Current page number
+          example: 1
+        currentPageRecords:
+          type: integer
+          description: Number of records in current page
+          example: 25
+        totalPages:
+          type: integer
+          example: 2
+        totalRecords:
+          type: integer
+          example: 27
+        sortOrder:
           type: string
-          description: Actual token value
-          example: 292bb6b886fc4446894f878b7e32bd5e
-        tokenProvider:
-          type: string
-          description: Indicates what system is the originator of the token
-          example: TRANS_ARMOR
-        expiryDate:
-          $ref: '#/components/schemas/ExpiryDate'
-        tokenType:
-          $ref: '#/components/schemas/ReferenceTokenType'
-      description: Surrogate value used to represent a handle to an account without sharing PCI/PII data to look it up.
-
-    SignatureKey:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Uniquely identifies a Key.
-          example: c2RnYXJ0aHR3ZXN3eXNk
-        publicKey:
-          type: string
-          description: Generated Public Key for Signature validation.
-          example: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCqGKukO1De7zhZj6+H0qtjTkVxwTCpvKe4eCZ0FPqri0cb2JZfXJ/DgYSF6vUpwmJG8wVQZKjeGcjDOL5UlsuusFncCzWBQ7RKNUSesmQRMSGkVb1/3j+skZ6UtW+5u09lHNsj6tQ51s1SPrCBkedbNf0Tp0GbMJDyR4e9T04ZZwIDAQAB
-        created:
-          type: number
-          description: Epoch timestamp representing the Key creation date-time.
-          example: 1501715477
-        expires:
-          type: string
-          description: Epoch timestamp representing the date-time by which the Key expires.
-          example: "1501795478"
-      description: Model for attributes of Key pair required for Signature validation.
-
-    Token:
-      type: object
-      properties:
-        tokenId:
-          type: string
-          description: Unique identifier provided for the Token.
-          readOnly: true
-        fdCustomerId:
-          type: string
-          description: Unique identifier for a customer profile registered with uCom
-        status:
-          $ref: '#/components/schemas/TokenStatus'
-        issuedOn:
-          type: number
-          description: Token issuance date time in epoch time format.
-          readOnly: true
-        expiresInSeconds:
-          type: number
-          description: Time remaining for token expiry in seconds.
-          readOnly: true
-        publicKey:
-          type: string
-          description: Public key required to encrypt the payload data.
-          readOnly: true
-        algorithm:
-          type: string
-          description: Indicates algorithm used to generate key pair.
-          example: PKCS1/NONE/RSA
-      description: Access Token object
-      example:
-        tokenId: 0OcWjNTKu8rjfVb0AJnAUGTM9dWx
-        fdCustomerId: bc5b70d996cb4bfebced3973880f8543
-        status: ACTIVE
-        issuedOn: 1501502067595
-        expiresInSeconds: 1199
-        publicKey: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCqGKukO1De7zhZj6+H0qtjTkVxwTCpvKe4eCZ0FPqri0cb2JZfXJ/DgYSF6vUpwmJG8wVQZKjeGcjDOL5UlsuusFncCzWBQ7RKNUSesmQRMSGkVb1/3j+skZ6UtW+5u09lHNsj6tQ51s1SPrCBkedbNf0Tp0GbMJDyR4e9T04ZZwIDAQAB
-        algorithm: PKCS1/NONE/RSA
-
-    ThirdPartyToken:
-      type: object
-      properties:
-        tokenId:
-          type: string
-          description: Unique identifier provided for the Token.
-          readOnly: true
-        tokenType:
-          type: string
-          description: Token type.
-        status:
-          $ref: '#/components/schemas/TokenStatus'
-        issuedOn:
-          type: number
-          description: Token issuance date time in epoch time format.
-          readOnly: true
-        expiresInSeconds:
-          type: number
-          description: Time remaining for token expiry in seconds.
-          readOnly: true
-        publicKey:
-          type: string
-          description: Public key required to encrypt the payload data.
-          readOnly: true
-        algorithm:
-          type: string
-          description: Indicates algorithm used to generate key pair.
-          example: PKCS1/NONE/RSA
-        additionalInfo:
-          minItems: 0
-          uniqueItems: true
+          example: asc
+          default: asc
+          enum:
+          - asc
+          - desc
+        _links:
           type: array
           items:
-            $ref: '#/components/schemas/NVP'
-      description: Third party token request details
+            $ref: '#/components/schemas/Link'
+      description: Page link information.
 
-    ThreeDSecure:
+    Payments:
       type: object
       properties:
-        transactionId:
+        currencyNumericCode:
+          $ref: '#/components/schemas/ISO-4217'
+        settlementHostID:
           type: string
-          description: Transaction id generated on the server
-          example: 292bb6b886fc4446894f878b7e32bd5e
-        transactionStatus:
-          type: string
-          description: Transactions status of 3DS server
-          example: C
-        transactionStatusReason:
-          type: string
-          description: Reason for the transaction status
-        challengeResponse:
-          type: string
-          example: ewogIC
-        challengeIndicator:
-          type: string
-          example: '01 = No preference 02 = No challenge requested 03 = Challenge requested: 3DS Requestor Preference 04 = Challenge requested: Mandate'
-        dsTransactionId:
-          type: string
-          example: 292bb6b886fc4446894f878b7e32bd5e
-        acsTransactionId:
-          type: string
-          example: 292bb6b886fc4446894f878b7e32bd5e
-        serverTransactionId:
-          type: string
-          example: 292bb6b886fc4446894f878b7e32bd5e
-        acsReferenceNumber:
-          type: string
-          example: 292bb6b886fc4446894f878b7e32bd5e
-        acsSignedContent:
-          type: string
-          example: 292bb6b88....6fc4446894f878b7e32bd5e
-        cardType:
-          $ref: '#/components/schemas/CreditCardType'
-        challengeRequest:
-          type: string
-          example: ewogICAiYW.......MjJjMGVjIgp9
-        acsUrl:
-          type: string
-          example: https://test.modirum.com/dstests/ACSEmu2
-        iframeContent:
-          type: string
-          example: <iframe></iframe>
-        termUrl:
-          type: string
-          example: https://mydomain/3dstest?transactionId=292bb6b886fc4446894f878b7e32bd5e
-        isThreeDSMethodCompleted:
-          type: boolean
-          example: true
-        isAuthenticationCompleted:
-          type: boolean
-          example: true
-        cavv:
-          type: string
-          description: Card authentication verification value
-        threeDSVersion:
-          type: string
-        expiryDateTime:
-          type: string
-          description: 3DS challenge transaction expiry date time.
-          format: date-time
           readOnly: true
-          example: 2020-01-01T16:06:05Z
-        eci:
+        settlementEmployee:
           type: string
-          description: Electronic Commerce Indicator value
-      description: Details of ThreeDSecure transaction used to process the challenge flow
+          readOnly: true
+        FEP:
+          type: string
+        MobilePaymentAcceptorID:
+          type: string
+      description: Payments host information of a location.
+
+    Petro:
+      type: object
+      properties:
+        pumpList:
+          type: array
+          items:
+            $ref: '#/components/schemas/SitePump'
+      description: It is to represent specific information about petro site.
+
+    Phone:
+      type: object
+      properties:
+        value:
+          type: string
+          description: The value SHOULD be specified according to the format defined in RFC3966, e.g., 'tel:+1-201-555-0123'.
+        type:
+          type: string
+          description: Often has typical values of "work", "home", "mobile", "fax", "pager", and "other" and MAY allow more types to be defined by the service client.
+        primary:
+          type: boolean
+          description: Defines if this entry is to be used as the primary or default for the user.
+          default: false
+      description: Phone number for the user.
+      example:
+        value: 555-555-5555
+        type: work
+
+    PublicSiteInfo:
+      type: object
+      properties:
+        petroBrand:
+          $ref: '#/components/schemas/PetroBrand'
+        siteAvailable:
+          type: boolean
+          description: Indicator if the site is active.
+        welcomeMessage:
+          type: string
+          description: Message displayed on the mobile device upon site check-in. The average length of this field should be around 100 characters to maintain visibility on various mobile profiles.
+        hoursOfOperation:
+          type: string
+          description: Hrs of operation of site.
+        languageCode:
+          $ref: '#/components/schemas/LanguageCode'
+        siteAuthTimeOut:
+          type: integer
+          description: Time out configuration for a site/pump
+        geolocation:
+          $ref: '#/components/schemas/Geolocation'
+        additionalInfoJson:
+          type: string
+          description: This contains free form site data in Json format.
+        product:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductDetails'
+      description: Compact representation of site data returned for UI/UX needs in devices.
+
+    Site:
+      type: object
+      properties:
+        siteSpecifications:
+          $ref: '#/components/schemas/SiteSpecifications'
+        location:
+          $ref: '#/components/schemas/Geolocation'
+        payments:
+          $ref: '#/components/schemas/Payments'
+        siteservices:
+          $ref: '#/components/schemas/SiteServices'
+        resources:
+          type: array
+          items:
+            $ref: '#/components/schemas/SiteResource'
+        registers:
+          type: array
+          items:
+            $ref: '#/components/schemas/SiteRegister'
+        siteLoyalty:
+          type: array
+          items:
+            $ref: '#/components/schemas/SiteLoyalty'
+        petro:
+          $ref: '#/components/schemas/Petro'
+        additionalInfoJson:
+          type: string
+          description: This contains free form site data in Json format.
+      description: It represents site entity for onboarding a site to uCom - Only one type of entity should be return like Petro or others. All properties defined bellow are kept generic.
+
+    SiteAddress:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Canonical type values of "work", "home", and "other".
+        streetAddress:
+          type: string
+          description: The full street address component, which may include house number, street name, P.O. box, and multi-line extended street address information.
+        locality:
+          type: string
+          description: The city or locality component.
+        region:
+          type: string
+          description: The state or region component.
+        postalCode:
+          type: string
+          description: The zip code or postal code component.
+        country:
+          type: string
+          description: The country name component.  When specified, the value MUST be in ISO 3166-1 "alpha-2" code format; e.g., the United States and Sweden are "US" and "SE", respectively.
+        formatted:
+          type: string
+          description: The full mailing address, formatted for display or use with a mailing label.
+        primary:
+          type: boolean
+          description: Indicates if this is the default address for the associated resource. It only has meaning when used in a set or array of addresses.
+        phone:
+          $ref: '#/components/schemas/Phone'
+        email:
+          $ref: '#/components/schemas/Email'
+      description: Value object to hold site address.
+
+    SiteLink:
+      type: object
+      properties:
+        siteInfo:
+          $ref: '#/components/schemas/PublicSiteInfo'
+        _link:
+          $ref: '#/components/schemas/Link'
+      description: Site Link information
+
+    SiteLoyalty:
+      type: object
+      properties:
+        canEarn:
+          type: boolean
+        canRedeem:
+          type: boolean
+        loyaltyProgram:
+          $ref: '#/components/schemas/LoyaltyProgram'
+      description: It is to represent loyalty programs and status at the site.
+
+    SitePump:
+      type: object
+      properties:
+        available:
+          type: boolean
+          description: Flag to indicate if the pump is available for use. If the pump goes offline FD will expect this to change in an update message.
+        pumpNumber:
+          type: integer
+          description: Numeric value associated with the fuel dispenser.
+        type:
+          type: string
+          description: Display value for fuel type.
+        serviceLevelCode:
+          type: string
+          description: Display value for service level at the pump. For example - full, self, etc.
+        fuelAmount:
+          type: number
+          description: Fuel amount
+        gradeList:
+          type: array
+          items:
+            $ref: '#/components/schemas/FuelGrade'
+        additiveList:
+          type: array
+          items:
+            $ref: '#/components/schemas/Additive'
+      description: Value object to hold a list of site pumps.
+
+    SiteRegister:
+      type: object
+      properties:
+        terminalID:
+          type: string
+        terminalName:
+          type: string
+        peripheralType:
+          type: string
+        available:
+          type: boolean
+      description: Value object to hold a list of site registers.
+
+    SiteResource:
+      type: object
+      properties:
+        available:
+          type: boolean
+          description: If the resource is available for use. If the resource goes offline FD will expect this to change in an PATCH request message.
+          example: true
+        id:
+          type: string
+          description: Unique identifier for the resource.
+          readOnly: true
+        name:
+          type: string
+          description: Name for the resource.
+          example: Car Wash
+        type:
+          type: string
+          description: Type identifier for the resource.
+          example: Basic Wash
+        description:
+          type: string
+          description: Description for the resource.
+          example: Carwash Premium
+        startAvailableTime:
+          type: string
+          description: Used to identify the start time that a resource (e.g. carwash) is available.
+          format: date
+          example: 12:00PM
+        endAvailableTime:
+          type: string
+          description: Used to identify the end time that a resource (e.g. carwash) is available.
+          format: date
+          example: 12:00PM
+        itemList:
+          type: array
+          items:
+            $ref: '#/components/schemas/ItemCode'
+        resourceId:
+          type: string
+          description: resource id.
+          example: "831"
+      description: Value object to hold site available resource.
+      
+    SitesSearchResult:
+      type: object
+      properties:
+        pages:
+          $ref: '#/components/schemas/PageLink'
+        sites:
+          type: array
+          items:
+            $ref: '#/components/schemas/SiteLink'
+      description: This object contains site records for lat lag based request.
+
+    SiteServices:
+      type: object
+      properties:
+        mobilePayment:
+          type: boolean
+          description: Status of mobile payments at site - Available/Not-available
+        customerToilets:
+          type: boolean
+          description: Status of toilets at site - Available/Not-available
+        motorwaySite:
+          type: boolean
+          description: Status of motor way at site - Available/Not-available
+        open24Hours:
+          type: boolean
+          description: Status of hrs of operation at site - Available/Not-available
+        atm:
+          type: boolean
+          description: Status of atm feature at site - Available/Not-available
+        hgv_pumps:
+          type: boolean
+          description: Status of hvg at site - Available/Not-available
+        lpg:
+          type: boolean
+          description: Status of lpg feature at site - Available/Not-available
+        supremeDiesel:
+          type: boolean
+          description: Status of supreme diesel at site - Available/Not-available
+        supremeUnleaded:
+          type: boolean
+          description: Status of supreme unleaded-diesel at site - Available/Not-available
+        adblue:
+          type: boolean
+        airTower:
+          type: boolean
+          description: Status of air tower feature at site - Available/Not-available
+        foodService:
+          type: boolean
+          description: Status of food service at site - Available/Not-available
+        carwash:
+          type: boolean
+          description: Status of car wash at site - Available/Not-available
+        premiumCoffee:
+          type: boolean
+          description: Status of premium coffee at site - Available/Not-available
+        jetWash:
+          type: boolean
+          description: Status of jet wash feature at site - Available/Not-available
+        mobil1:
+          type: boolean
+        pointsOnFuel:
+          type: boolean
+          description: Status of points on fuel purchase feature at site - Available/Not-available
+        pointsOnFuelAndShop:
+          type: boolean
+          description: Status of points on fuel and shop purchase feature at site -Available/Not-available
+        tescoExpress:
+          type: boolean
+          description: Status of air tesco express  at site - Available/Not-available
+        partialAuthAllowed:
+          type: boolean
+          description: Status of partial auth at site - Available/Not-available
+      description: Value object to hold feature available at site.
+
+    SiteSpecifications:
+      type: object
+      properties:
+        siteTerminalId:
+          type: string
+          description: BuyPass ATL105 Terminal Id used in the settlement file.
+        siteAvailable:
+          type: boolean
+          description: Indicator if the site is active.
+        siteName:
+          type: string
+          description: Name of the site as defined as part of the onboarding process.
+        welcomeMessage:
+          type: string
+          description: Message displayed on the mobile device upon site check in. The average length of this field should be around 100 characters to maintain visibility on various mobile profiles.
+        hoursOfOperation:
+          type: string
+          description: Hrs of operation of site.
+        languageCode:
+          $ref: '#/components/schemas/LanguageCode'
+        poiType:
+          type: string
+        siteAuthTimeOut:
+          type: integer
+          description: Time out configuration for a site/pump
+        protocol:
+          $ref: '#/components/schemas/Protocol'
+        VATNumber:
+          type: string
+          description: VAT tax number for Merchant.
+        brandedWholesaler:
+          type: string
+          description: Merchant bradded Wholesaler Id for promotion.
+        loyaltyAvailable:
+          type: boolean
+          description: Indicates if site has loyalty available
+      description: This contains site information.
+      example:
+        siteTerminalId: "45690"
+        siteAvailable: true
+        siteName: FD Test Site Dummy
+        welcomeMessage: Welcome to petrol site
+        hoursOfOperation: NA
+        languageCode: en-US
+        poiType: NA
+        siteVendorId: SITE_DUMMY
+        siteAuthTimeOut: 30
+        protocol: CONNEXUS
+
+    Venue:
+      type: object
+      properties:
+        venueId:
+          type: string
+        venueName:
+          type: string
+        description:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+        phone:
+          $ref: '#/components/schemas/Phone'
+        email:
+          $ref: '#/components/schemas/Email'
+        image:
+          $ref: '#/components/schemas/Image'
+      description: Venue overview
+
+    VenueSection:
+      type: object
+      properties:
+        venueSectionId:
+          type: string
+        venueSectionName:
+          type: string
+        description:
+          type: string
+        pickupLocationId:
+          type: string
+        inseatConcessionId:
+          type: string
+        venueSectionType:
+          type: string
+        rows:
+          type: array
+          items:
+            $ref: '#/components/schemas/VenueRow'
+      description: Venue section details
+
+    VenueRow:
+      type: object
+      properties:
+        venueRowid:
+          type: string
+        venueRowName:
+          type: string
+        seats:
+          type: array
+          items:
+            type: string
+      description: Venue row details
+
+    VenueSuite:
+      type: object
+      properties:
+        venueSuiteId:
+          type: string
+        venueSuiteName:
+          type: string
+        description:
+          type: string
+        merchantIds:
+          type: array
+          items:
+            type: string
+      description: Venue suite details
+
+    VenueTable:
+      type: object
+      properties:
+        venueTableId:
+          type: string
+        venueTableName:
+          type: string
+        description:
+          type: string
+        merchantIds:
+          type: array
+          items:
+            type: string
+      description: Venue table details
+
+    VenuesSearchResult:
+      type: object
+      properties:
+        pages:
+          $ref: '#/components/schemas/PageLink'
+        venues:
+          type: array
+          items:
+            $ref: '#/components/schemas/Venue'
+      description: This object contains venue records.
+
+    VenuesSectionSearchResult:
+      type: object
+      properties:
+        pages:
+          $ref: '#/components/schemas/PageLink'
+        venueSections:
+          type: array
+          items:
+            $ref: '#/components/schemas/VenueSection'
+      description: This object contains venue section records.
+
+    VenuesSuiteSearchResult:
+      type: object
+      properties:
+        pages:
+          $ref: '#/components/schemas/PageLink'
+        venueSuites:
+          type: array
+          items:
+            $ref: '#/components/schemas/VenueSuite'
+      description: This object contains venue suite records.
+
+    VenuesTableSearchResult:
+      type: object
+      properties:
+        pages:
+          $ref: '#/components/schemas/PageLink'
+        venueTables:
+          type: array
+          items:
+            $ref: '#/components/schemas/VenueTable'
+      description: This object contains venue table records.
 
     #-------------------------------------
     # Common Models
@@ -668,8 +1489,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/NVP'
-        threeDSecureInfo:
-          $ref: '#/components/schemas/ThreeDSecure'
         _links:
           type: array
           items:
@@ -689,32 +1508,59 @@ components:
     #-------------------------------------
     # ENUM Models
     #-------------------------------------
-    CreditCardType:
+    LoyaltyType:
       type: string
-      description: Indicates the type of credit account association
+      description: Identifier to indicate type of Loyalty program being registered.
       enum:
-      - AMEX
-      - DISCOVER
-      - MASTERCARD
-      - PLCC
-      - VISA
-      - OTHER
+      - LOCAL
+      - NATIONAL
 
-    ReferenceTokenType:
+    PetroBrand:
       type: string
-      description: Indicates the purpose of token.
+      description: Indicator of fuel brand sold at the given site.
       enum:
-      - FORMAT_PRESERVING_MULTI_USE
-      - FORMAT_PRESERVING_SINGLE_USE
-      - CLAIM_CHECK_NONCE
-      - RANDOM_MULTI_USE
-      - RANDOM_SINGLE_USE
-      - CLAIM_CHECK_NONCE_WITH_PINCAPTURE
-    TokenStatus:
+      - ESSO
+      - EXXONMOBIL
+      - IOL
+      - SUNOCO
+
+    ProgramStatus:
       type: string
+      description: Indicates if the given loyalty program is still active or not.
       enum:
-      - ACTIVE
-      - EXPIRED
+      - ENABLED
+      - DISABLED
+      - CONTRACTED_ONLY
+
+    Protocol:
+      type: string
+      description: supported specification for site.
+      enum:
+      - CONNECTORSWITCH
+      - CONNEXUS
+      - IFSF
+      - NCR
+      - CONNECTORSWITCH_ASYNC
+      - CONNECTORSWITCH_UCOM
+      - CONNECTORSWITCH_NOTIFY
+
+    QuantityUOM:
+      type: string
+      description: Combined unit of measure for a POS sale.
+      enum:
+      - ml
+      - cc
+      - litre
+      - fluidOunce
+      - pint
+      - quart
+      - gallonUS
+      - gallonUK
+      - gram
+      - kg
+      - oz
+      - lb
+      - ea
 
   #-------------------------------------
   # Responses
@@ -734,6 +1580,18 @@ components:
           schema:
             $ref: '#/components/schemas/Error'
 
+    Created:
+      description: Resource created
+      headers:
+        Location:
+          description: Location of newly created resource.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Site'
+
     NoContent:
       description: The request succeeded but there’s really nothing to show.
       content: {}
@@ -750,7 +1608,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Token'
+            $ref: '#/components/schemas/Site'
 
     ServerError:
       description: An unexpected server error occurred.
@@ -758,25 +1616,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-
-    ThirdPartyTokenCreated:
-      description: Resource created
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ThirdPartyToken'
-
-    TokenCreated:
-      description: Resource created
-      headers:
-        Location:
-          description: Location of newly created resource.
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Token'
 
     Unauthorized:
       description: Unauthorized
@@ -816,17 +1655,100 @@ components:
       schema:
         type: string
 
-    SubMerchantIdParam:
-      name: Sub-Merchant-Id
+    ClientRequestIdParam:
+      name: Client-Request-Id
       in: header
-      description: Merchant Id contains information about the merchant identifier
+      description: Contains a unique ID generated by the client that can be used for enforcing idempotency on POST actions. POSTs are inherently non-idempotent and submitting the exact same request multiple times would create duplicate resources. Note:- Omitting this header increases the risk of duplicate transactions, which for payments could cost the client issues like double-billing.
+      required: true
       schema:
         type: string
 
-    GrantTypeParam:
-      name: GrantType
+    SubMerchantIdParam:
+      name: Sub-Merchant-Id
       in: header
-      description: Only supported value `client_credentials`.
+      description: Sub Merchant Id contains information about the merchant identifier
+      schema:
+        type: string
+
+    IncludeAllParam:
+      name: includeAll
+      in: query
+      description: Flag to determine whether all details are to be included in the Site response.
+      schema:
+        type: boolean
+
+    LatLongParam:
+      name: latlng
+      in: query
+      description: Latitude and longitude of the location.
+      allowEmptyValue: false
+      schema:
+        type: string
+
+    PageNumberParam:
+      name: pageNo
+      in: query
+      description: Page number
+      schema:
+        type: integer
+
+    PageSizeParam:
+      name: pageSize
+      in: query
+      description: Max number of records per page. Supported values - 5, 10, 15, 20, 25 ..50
+      allowEmptyValue: false
+      schema:
+        type: integer
+
+    RadiusParam:
+      name: radius
+      in: query
+      description: Radius to define geo-fencing.
+      allowEmptyValue: false
+      schema:
+        type: string
+
+    RegionParam:
+      name: region
+      in: query
+      description: Geographic area of given location, i.e a specific city, town, county
+      schema:
+        type: string
+
+    RetailerPartnerIdParam:
+      name: Retailer-Partner-Id
+      in: header
+      description: Retailer partner identification for marketplace
+      schema:
+        type: string
+
+    SearchKeywordsParam:
+      name: searchKeywords
+      in: query
+      description: Space delimited list of words for secondary filtering
+      schema:
+        type: string
+
+    ServiceAreaParam:
+      name: serviceArea
+      in: query
+      description: Service area for filtering search
+      allowEmptyValue: false
+      schema:
+        type: string
+
+    ServicePartnerParam:
+      name: servicePartner
+      in: query
+      description: Service partner for filtering search
+      allowEmptyValue: false
+      schema:
+        type: string
+
+    SiteLocationIdParam:
+      name: siteLocationId
+      in: path
+      description: Unique identifier to locate site.
       required: true
       schema:
         type: string
@@ -838,16 +1760,389 @@ components:
       required: true
       schema:
         type: string
+
+    UnitOfMeasurementParam:
+      name: uom
+      in: query
+      description: Unit to measure geo-fencing - km, miles.
+      allowEmptyValue: false
+      schema:
+        type: string
+
+    TypeParam:
+      name: type
+      in: query
+      description: This is to identify different types for site check-in/siteUpdate request. Example - type=qrcode for site check-in in EMEA type=site for site check-in in US. For GeoLocationSiteUpdate, type=geoSite
+      allowEmptyValue: false
+      schema:
+        type: string
+
+    VenueCategoryParam:
+      name: venueCategory
+      in: query
+      description: Type of venue, i.e sports, hotels, conference
+      schema:
+        type: string
+
+    VenueIdParam:
+      name: venueId
+      in: path
+      description: Venue identifier
+      required: true
+      schema:
+        type: string
+
   examples:
-    TokenCreationWithfdcustomerId:
+    GetVenueInformation:
       value:
-        token:
-          fdCustomerId: 6feb514fa255433881ecfe7f7d9b508e
-        publicKeyRequired: true
-    TokenCreationWithoutfdcustomerId:
+        “pages”:
+          “firstPage”: true
+          “lastPage”: true
+          “currentPage”: 1
+          “currentPageRecords”: 1
+          “totalPages”: 1
+          “sortOrder”: “ASC”
+        “venues”:
+        - “venueId”: “1421”
+          “venueName”: “Partner Test Venue”
+          “address”:
+            “locality”: “Austin”
+            “region”: “TX”
+          “image”:
+            “srcUrl”: “http://bypass-logos-integration.s3.amazonaws.com/logos/65a0f6dd1a717fabf2ad3df4d4b842cbf8b706c9/original.PNG”
+
+    GetVenueSectionInformation:
       value:
-        anonymous: true
-        publicKeyRequired: true
-        
-        
-    
+        “venueSections”:
+        - “venueSectionId”: “12883.0”
+          “venueSectionName”: “Section 101”
+          “pickupLocationId”: “32898”
+          “venueSectionType”: “Section”
+          “rows”:
+          - “venueRowid”: “55971”
+            “venueRowName”: “A”
+            “seats”:
+            - “1”
+            - “2”
+            - “3”
+            - “4”
+            - “5”
+            - “6”
+            - “7”
+            - “8”
+            - “9”
+            - “10”
+          - “venueRowid”: “55972”
+            “venueRowName”: “B”
+            “seats”:
+            - “1”
+            - “2”
+            - “3”
+            - “4”
+            - “5”
+            - “6”
+            - “7”
+            - “8”
+            - “9”
+            - “10”
+            - “11”
+            - “12”
+            - “13”
+            - “14”
+            - “15”
+            - “16”
+            - “17”
+            - “18”
+            - “19”
+            - “20”
+            - “21”
+            - “22”
+            - “23”
+            - “24”
+            - “25”
+          - “venueRowid”: “55973”
+            “venueRowName”: “C”
+            “seats”:
+            - “1”
+            - “2”
+            - “3”
+            - “4”
+            - “5”
+            - “6”
+            - “7”
+            - “8”
+            - “9”
+            - “10”
+            - “11”
+            - “12”
+            - “13”
+            - “14”
+            - “15”
+            - “16”
+            - “17”
+            - “18”
+
+
+    GetVenueSuites:
+      value:
+        “venueSuites”:
+        - “venueSuiteId”: “12887”
+          “venueSuiteName”: “Suite 10”
+          “description”: “This is a description.”
+          “merchantIds”:
+          - “32902”
+        - “venueSuiteId”: “12888”
+          “venueSuiteName”: “Suite 20”
+          “merchantIds”:
+          - “32902”
+        - “venueSuiteId”: “12889”
+          “venueSuiteName”: “Suite 30”
+          “description”: “Test Description”
+          “merchantIds”:
+          - “32902”
+
+    GetVenueTables:
+      value:
+        “venueTables”:
+        - “venueTableId”: “12890”
+          “venueTableName”: “Table 1”
+          “merchantIds”:
+          - “32901”
+        - “venueTableId”: “12891”
+          “venueTableName”: “Table 2”
+          “merchantIds”:
+          - “32901”
+        - “venueTableId”: “12892”
+          “venueTableName”: “Table 3”
+          “merchantIds”:
+          - “32901”
+        - “venueTableId”: “12893”
+          “venueTableName”: “Table 4”
+          “merchantIds”:
+          - “32901”
+        - “venueTableId”: “12894”
+          “venueTableName”: “Table 5”
+          “description”: “Test Description”
+          “merchantIds”:
+          - “32901”
+
+    GetSitesByGeoCoordinates:
+      value:
+        sites:
+        - siteInfo:
+            geolocation:
+              siteId: '8002284101'
+              latitude: '33.02159'
+              longitude: '-85.08112'
+              siteAddress:
+                streetAddress: Test
+                locality: LAGRANGE
+                region: GA
+                postalCode: 30240-1400
+              siteName: D&D - 2255 WEST POINT ROAD
+              status: ACTIVE
+              retailerPartnerId: Test
+            additionalInfoJson: '{"hoursOfOperation":{"open24Hours":false},"fuelTypes":{"diesel":"false","keroseneFuel":"false"},"amenities":{"atm":"false","carWash":"false","restRooms":"false","open24Hours":true,"operatingBay":"false"},"paymentMethods":{"mobilePayments":"false"},"loyaltyAndDiscounts":{"goRewards":"false","superValu":"false","priceChopper":"false","fuelPerks":"false","redners":"false","weis":"false"}}'
+        - siteInfo:
+            geolocation:
+              siteId: '8002288301'
+              latitude: '33.53721'
+              longitude: '-85.26458'
+              siteAddress:
+                streetAddress: Test
+                locality: BOWDON
+                region: GA
+                postalCode: 30108-1317
+              siteName: Test
+              status: ACTIVE
+              retailerPartnerId: Test
+            additionalInfoJson: '{"hoursOfOperation":{"open24Hours":false},"fuelTypes":{"diesel":"false","keroseneFuel":"false"},"amenities":{"atm":"false","carWash":"false","restRooms":"false","open24Hours":true,"operatingBay":"false"},"paymentMethods":{"mobilePayments":"false"},"loyaltyAndDiscounts":{"goRewards":"false","superValu":"false","priceChopper":"false","fuelPerks":"false","redners":"false","weis":"false"}}'
+        pages:
+          firstPage: true
+          lastPage: false
+          currentPage: 0
+          currentPageRecords: 2
+          totalPages: 39
+          totalRecords: 77
+          links:
+          - href: https://api-qa.payeezy.com/ucom/v1/geolocation/sites?latlng=33.449985%2C-84.324904&radius=100&uom=km&pageNo=0&pageSize=2
+            method: GET
+            rel: current.page
+          - href: https://api-qa.payeezy.com/ucom/v1/geolocation/sites?latlng=33.449985%2C-84.324904&radius=100&uom=km&pageSize=2&pageNo=1
+            method: GET
+            rel: next.page
+
+    GetSiteInformationBySiteLocationID:
+      value:
+        siteId: 8a34843c529acd1a0152b2310eb50a27
+        siteSpecifications:
+          siteAvailable: true
+          siteName: Test
+          welcomeMessage: WELCOME TO Test
+          languageCode: en-US
+          siteVendorId: Test
+          siteAuthTimeOut: 30
+          protocol: CS
+          protocolVersion: '2.20'
+        location:
+          locationId: '9682511'
+          longitude: 0
+          latitude: 0
+          siteAddress:
+            address:
+              type: work
+              streetAddress: Test
+              locality: Milwaukee
+              region: WI
+              postalCode: '53204'
+              country: USA
+              primary: true
+            phone:
+              value: 414-220-4380
+              type: work
+              primary: true
+            email:
+              type: work
+              value: usgilbarcosite@fd.com
+              primary: true
+        resources:
+        - available: true
+          id: 8a341457708a869801709a8ce88e3b8b
+          name: Carwash
+          type: Carwash
+          description: Carwash
+          resourceId: Carwash
+          itemList:
+          - posCodeFormat: plu
+            posCode: '00000000026017'
+            posCodeModifier: '000'
+            itemName: EXPRESS/$7.00
+            itemDescription: EXPRESS/$7.00
+            itemPrice: '6.63'
+            displayOrder: 0
+            discountedPrice: 0
+            amount: 0
+            quantity: 0
+          - posCodeFormat: plu
+            posCode: '00000000026024'
+            posCodeModifier: '000'
+            itemName: DELUXE/$9.00
+            itemDescription: DELUXE/$9.00
+            itemPrice: '8.52'
+            displayOrder: 0
+            discountedPrice: 0
+            amount: 0
+            quantity: 0
+          - posCodeFormat: plu
+            posCode: '00000000026031'
+            posCodeModifier: '000'
+            itemName: ULTIMATE/$11.00
+            itemDescription: ULTIMATE/$11.00
+            itemPrice: '10.42'
+            displayOrder: 0
+            discountedPrice: 0
+            amount: 0
+            quantity: 0
+          - posCodeFormat: plu
+            posCode: '00000000026048'
+            posCodeModifier: '000'
+            itemName: WORKS/$15.00
+            itemDescription: WORKS/$15.00
+            itemPrice: '14.2'
+            displayOrder: 0
+            discountedPrice: 0
+            amount: 0
+            quantity: 0
+        registers:
+        - terminalID: '456'
+          terminalName: Site 1
+          peripheralType: Ptype
+          available: true
+        siteLoyalty:
+        - loyaltyProgram:
+            hostProgramId: TEST_HOST_PROGRAM
+            programName: EM Rewards
+            programProvider: Test
+            loyaltyType: LOCAL
+            status: ENABLED
+            programId: '844'
+        - loyaltyProgram:
+            hostProgramId: TEST_HOST_PROGRAM
+            programName: Plenti
+            programProvider: Test
+            loyaltyType: LOCAL
+            status: ENABLED
+            programId: '946'
+        petro:
+          pumpList:
+          - pumpNumber: 19
+            serviceLevelCode: S
+            fuelAmount: 0
+            type: fuel
+            gradeList:
+            - description: Regular
+              available: true
+              price: 2.199
+              gradeId: '1'
+            - description: Special
+              available: true
+              price: 2.599
+              gradeId: '2'
+            - description: Super+
+              available: true
+              price: 3.099
+              gradeId: '3'
+            available: true
+          - pumpNumber: 2
+            serviceLevelCode: S
+            fuelAmount: 0
+            type: fuel
+            gradeList:
+            - description: Regular
+              available: true
+              price: 2.199
+              gradeId: '1'
+            - description: Special
+              available: true
+              price: 2.599
+              gradeId: '2'
+            - description: Super+
+              available: true
+              price: 3.099
+              gradeId: '3'
+            - description: DIESEL
+              available: true
+              price: 2.899
+              gradeId: '7'
+            available: true
+          - pumpNumber: 3
+            serviceLevelCode: S
+            fuelAmount: 0
+            type: fuel
+            gradeList:
+            - description: Regular
+              available: true
+              price: 2.199
+              gradeId: '1'
+            - description: Special
+              available: true
+              price: 2.599
+              gradeId: '2'
+            - description: Super+
+              available: true
+              price: 3.099
+              gradeId: '3'
+            - description: DIESEL
+              available: true
+              price: 2.899
+              gradeId: '7'
+            available: true
+        siteConfiguration:
+        - attributeName: TERMINAL_NAME
+          attributeValue: MO55103744002
+        - attributeName: VERSION_SUPPORTED
+          attributeValue: '2.20'
+        - attributeName: PAYMENT_TRANSACTION_TYPE
+          attributeValue: ABOVE_SITE
+        - attributeName: PRE_AUTH_AMOUNT
+          attributeValue: '100'

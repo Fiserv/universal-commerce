@@ -118,10 +118,10 @@ paths:
   /v1/prepaids/balances:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Get Prepaid Card Balance
+      x-proxy-name: Retrieve Prepaid Balance
       tags:
       - balance
-      description: This service retrieves the balance of an anonymous prepaid card.
+      description: Service to retrieve the balance of an anonymous Prepaid Card
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -162,10 +162,10 @@ paths:
   /v1/prepaids/aggregate-balances:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Get Aggregated Balance for Multiple Prepaid Cards
+      x-proxy-name: Retrieve Balance of Different Types of Cards
       tags:
       - balance
-      description: This service retrieves the aggregated balance of anonymous prepaid cards.
+      description: Service to retrieve the balance of an anonymous Prepaid Card
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -207,10 +207,10 @@ paths:
   /v1/prepaids/purchases:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Purchase a New Prepaid Card
+      x-proxy-name: Create a Prepaid Card
       tags:
       - purchase
-      description: Purchase a new prepaid card
+      description: Service to create a new Prepaid Card
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -277,10 +277,10 @@ paths:
   /v2/prepaids/purchases:
     get:
       x-group-name: Prepaid Services
-      x-proxy-name: Get Status of Prepaid Card Purchase by clientRequestId
+      x-proxy-name: Create Prepaid Card
       tags:
       - purchase
-      description: Get Status of prepaid card purchase transaction by clientRequestId
+      description: Service to create a new Prepaid card
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -308,10 +308,10 @@ paths:
   /v2/prepaids/multi-purchases:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Purchase Multiple Prepaid Cards
+      x-proxy-name: Create New Prepaid Cards
       tags:
       - purchase
-      description: Purchase Multiple Prepaid Cards
+      description: Service to create new Prepaid cards
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -353,7 +353,7 @@ paths:
   /v1/prepaids/void:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Cancel Any Prepaid Card Transaction
+      x-proxy-name: Void of Any Prepaid Card Transaction
       tags:
       - void
       description: Void of any prepaid card transaction
@@ -390,10 +390,10 @@ paths:
   /v2/prepaids/void:
     get:
       x-group-name: Prepaid Services
-      x-proxy-name: Get Status of Void Prepaid Transaction
+      x-proxy-name: Service to Deduct/Cashout Prepaid Account
       tags:
       - void
-      description: This service is to get status of void prepaid transaction.
+      description: Service to deduct/cashout prepaid account
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -421,10 +421,10 @@ paths:
   /v2/prepaids/multi-void:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name:  Cancel Multiple Prepaid Card Transactions
+      x-proxy-name: Service to Deduct/Cashout Prepaid Account
       tags:
       - void
-      description: Multiple prepaid card transactions are voided.
+      description: Service to deduct/cashout prepaid accounts
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -467,10 +467,10 @@ paths:
   /v2/prepaids/sweeps:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Sweep a Prepaid Card Balance
+      x-proxy-name: Service to Deduct/Cashout Prepaid Account
       tags:
       - sweep
-      description: Service to sweep a prepaid card balance
+      description: Service to deduct/cashout prepaid account
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -504,10 +504,10 @@ paths:
   /v2/prepaids/multi-sweeps:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Sweep Multiple Prepaid Card Balances
+      x-proxy-name: Service to Deduct/Cashout Prepaid Account
       tags:
       - sweep
-      description: Service to sweep multiple prepaid card balances
+      description: Service to deduct/cashout prepaid accounts
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -550,11 +550,11 @@ paths:
   /v2/prepaids/sweeps/{fdTransactionId}/void:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Cancel Sweep Transaction
+      x-proxy-name: Service to Void Sweep Transaction
       tags:
       - sweep
-      summary: Service to void a sweep transaction
-      description: Service to void a sweep transaction
+      summary: Void of a sweep transaction
+      description: Void of a sweep transaction
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -588,11 +588,11 @@ paths:
   /v2/prepaids/sweeps/{fdParentTransactionId}/multi-void:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Cancel Multiple Prepaid CardSweep Transactions
+      x-proxy-name: Service to Void Multiple Sweep Transactions
       tags:
       - sweep
       summary: Void of sweep transactions
-      description: Service to Void Multiple Sweep Transactions
+      description: Void of sweep transactions
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -632,10 +632,10 @@ paths:
   /v2/prepaids/deducts:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Deduct Amount from a Prepaid Card
+      x-proxy-name: Service to Deduct Prepaid Account
       tags:
       - deduct
-      description: Service to deduct prepaid card account
+      description: Service to deduct prepaid account
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -669,10 +669,10 @@ paths:
   /v2/prepaids/multi-deducts:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Deduct Amount from Multiple Prepaid Cards
+      x-proxy-name: Service to Deduct Multiple Prepaid Accounts
       tags:
       - deduct
-      description: This service is to deduct multiple prepaid cards.
+      description: Service to deduct prepaid accounts
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -715,11 +715,11 @@ paths:
   /v2/prepaids/deducts/{fdTransactionId}/void:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Cancel a Deducted Transaction
+      x-proxy-name: Service to Void Deduct Transaction
       tags:
       - deduct
-      summary: Void of a deducted transaction
-      description: A deducted transaction is voided.
+      summary: Void of a deduct transaction
+      description: Void of a deduct transaction
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -753,11 +753,11 @@ paths:
   /v2/prepaids/deducts/{fdParentTransactionId}/multi-void:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Cancel Multiple Deducted Transactions 
+      x-proxy-name: Service to Void Multiple Deduct Prepaid Accounts
       tags:
       - deduct
-      summary: Multiple deducted transactions are voided.
-      description: Multiple deducted transactions are voided.
+      summary: Void of deduct transactions
+      description: Void of deduct transactions
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -797,10 +797,10 @@ paths:
   /v1/prepaids/purchases/{fdTransactionId}:
     patch:
       x-group-name: Prepaid Services
-      x-proxy-name: Resume a Reload Transaction
+      x-proxy-name: Patch Prepaid Account
       tags:
       - purchase
-      description: This service resumes 3DS pending reload transaction.
+      description: Service to patch a Prepaid Card
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -839,7 +839,7 @@ paths:
   /v1/prepaids/purchases/{fdTransactionId}/void:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Cancel a Purchase Transaction
+      x-proxy-name: Void of a Purchase Transaction
       tags:
       - purchase
       summary: Void of a purchase transaction
@@ -881,11 +881,11 @@ paths:
   /v2/prepaids/purchases/{fdTransactionId}/void:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Cancel a Purchase Transaction
+      x-proxy-name: Void of a Purchase Transaction
       tags:
       - purchase
-      summary: Purchase transaction is voided.
-      description: Purchase transaction is voided.
+      summary: Void of a purchase transaction
+      description: Void of a purchase transaction
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -919,11 +919,11 @@ paths:
   /v2/prepaids/purchases/{fdParentTransactionId}/multi-void:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Cancel Purchase Transactions
+      x-proxy-name: Void of Purchase Transactions
       tags:
       - purchase
-      summary: Purchase transactions are voided.
-      description: Purchase transactions are voided.
+      summary: Void of purchase transactions
+      description: Void of purchase transactions
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -963,10 +963,10 @@ paths:
   /v1/prepaids/reloads:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Reload a Prepaid Card
+      x-proxy-name: Reload A Prepaid Card
       tags:
       - reload
-      description: This service is to reload funds into a vaulted Prepaid Card.
+      description: Service to load fund into a vaulted Prepaid Card
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -1031,10 +1031,10 @@ paths:
   /v2/prepaids/reloads:
     get:
       x-group-name: Prepaid Services
-      x-proxy-name: Get Status of Reload Prepaid Card by clientRequestId
+      x-proxy-name: Reload Prepaid Card
       tags:
       - reload
-      description: This service is to get status of reload prepaid card transaction by clientRequestId.
+      description: Service to load fund into a vaulted Prepaid Card
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -1062,10 +1062,10 @@ paths:
   /v2/prepaids/multi-reloads:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Reload Funds to Multiple Prepaid Cards
+      x-proxy-name: Load Funds into a Vaulted Prepaid Card
       tags:
       - reload
-      description: This service is to reload funds to multiple prepaid cards.
+      description: Service to load funds into a vaulted Prepaid Card
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -1149,7 +1149,7 @@ paths:
   /v1/prepaids/reloads/{fdTransactionId}/void:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Cancel a Reloaded Prepaid Card
+      x-proxy-name: Void of a Reloaded Prepaid Card
       tags:
       - reload
       summary: Void of a reload transaction
@@ -1191,11 +1191,11 @@ paths:
   /v2/prepaids/reloads/{fdTransactionId}/void:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Cancel Reloaded Transaction
+      x-proxy-name: Void of a Reloaded Prepaid Card
       tags:
       - reload
       summary: Void of a reload transaction
-      description: Reload prepaid card transaction is voided.
+      description: Void of a reload transaction
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -1229,11 +1229,11 @@ paths:
   /v2/prepaids/reloads/{fdParentTransactionId}/multi-void:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Cancel Multiple Reload Transactions
+      x-proxy-name: Void of Reload Transactions
       tags:
       - reload
       summary: Void of reload transactions
-      description: This service is to void multiple reload transactions.
+      description: Void of reload transactions
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -1278,7 +1278,7 @@ paths:
       x-proxy-name: Merge Balance from One Vaulted Prepaid Card to Another
       tags:
       - merge
-      description: This service merges the balance from one vaulted prepaid card to another vaulted prepaid card.
+      description: Service to merge balance from one vaulted prepaid card to another vaulted prepaid card
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -1318,10 +1318,10 @@ paths:
   /v2/prepaids/merges:
     get:
       x-group-name: Prepaid Services
-      x-proxy-name: Get Status of Merge Transaction by clientRequestId
+      x-proxy-name: Merge balance from One Vaulted Prepaid Card to Another
       tags:
       - merge
-      description: This service is used for status check when a previous merge transaction is timed out.
+      description: Service to merge balance from one vaulted prepaid card to another vaulted prepaid card.
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -1349,7 +1349,7 @@ paths:
   /v1/prepaids/merges/{fdTransactionId}/void:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Cancel a Merge Transaction
+      x-proxy-name: Void of a Merge Transaction
       tags:
       - merge
       summary: Void of a merge transaction
@@ -1383,11 +1383,11 @@ paths:
   /v2/prepaids/merges/{fdTransactionId}/void:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Cancel Merge Transaction
+      x-proxy-name: Void of a Merge Transaction
       tags:
       - merge
       summary: Void of a merge transaction
-      description: Merge transaction is voided.
+      description: Void of a merge transaction
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -1465,10 +1465,10 @@ paths:
   /v1/prepaids/txn-history:
     post:
       x-group-name: Prepaid Services
-      x-proxy-name: Get Prepaid Card Transaction Details
+      x-proxy-name: Retrieve Transactions on a Vaulted Prepaid Card
       tags:
       - transaction
-      description: This service is to retrieve transactions on a vaulted prepaid card from the host.
+      description: Service to retrieve transactions on a vaulted Prepaid Card from the host
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -4264,6 +4264,7 @@ components:
           account:
             vaultedAccount:
               fdAccountId: 8a7f8d908631951201863c5ccce201bc
+              
     VaultedCardBalanceResponse:
       value:
         cardNumber: '7777323952676090'
@@ -4288,6 +4289,7 @@ components:
           account:
             merchantId: '97483900003'
             altMerchantId: '0001'
+
     AggregateBalanceMerchantFundedResponse:
       value:
         totalBalance: 500.01
@@ -4346,9 +4348,6 @@ components:
               vaultedAccount:
                 fdAccountId: 8a7f8d908631951201863c5ccce201bc
 
-
-
-
     PlainCardBalanceRequest:
       value:
         transaction:
@@ -4389,6 +4388,7 @@ components:
             currencyCode:
               code: USD
               number: 840
+
     MerchantFundedPurchaseResponse:
       value:
         orderId: order002
@@ -4441,6 +4441,7 @@ components:
                   month: ENC_[QA5mD9fpy4/eKqo3guHIurhX75A06kDkL8cTdgrnO4R3pcq+kqS+FYunIgkVYGKsmxicuSA7GceIr6vBcQB3CzxkJeiqluZkVIQwr5kZLzwo4V0wHWMMfrsc+qGBei6XQhYynAmayzstHqc5KPfU81EhWJGfHiux0FIV1nc0KtyAXufV5p2R0PLUMMplcz6R1924xgtKy4/ZmoBEewtz0eGDxQFRo//foo6XQchREqdeIbwBDqUs/t9KbbGXUddSnfSHvBSpVE73AbhfcXaF/mky+1nllKDB6CsmRFmdXE0iB5r5AZnT/kza7Q/bS3wk8Oe3zCGR5s2E+q90+zYzZg==]
                   year: ENC_[HJ16/3IlPxYN4k/xy/W+9p+1LjgEEDdwVPlpgc+tGFVrg3PF7sxS1o5AoRRkUAdvL8MjC3zYdQ9UBmNNGUT7HbSVXZ71GqeNGku5EEanyxvHpHo+BH7/qGH2McFvnmWB+igxMw92PuvLD3V1w4nnDzQ1UbP9rLiu5Ss7fnGEslokDOGnU3RMPYGEZHkKD25KUHhDEaylkVBQspkaewVwmdOsMwib95yQrcuM6E5gu+dkHlWtkOtnuCSPqAY59C5vVW9+SoPr4iOHeUiCVkqaxLg+vACrEYcIzmxLdABSDRiP7V7NGFH4VzCaNnJPw2gp1np8qyxUV1OBUJvmBgT7Xg==]
                 securityCode: ENC_[bX9m3XXfdhJkH69VsJViAz4HBZu3y8lr9f4/bbvo4zNJvltERfyCG2uGz/xfEqUFMYYhaT8LGCvDf2ytoIJdD4JQsCCYimNCfGZg7HvgZ0Ty/i/rCvI5bqHANcLVFfcaH60z4ALu4xo9JaqA1ZfiKd5RrXwMfMuslUIPB4WRP2bKV/Sg31gGrAo1Ckecwhp2TujYo3ZtJupj+tZfBiIinrwuK4erGx+PoQjHjAvPYSm2e3wyQBoLuJUlBrQVSsLTTV3fyGOwdKtqa8fgtnKuxXdK7FeDkvQ0RkHVc3cQM2fQVbYoBC9Di+9zJbCrIJPgvgeGVGvVGeybzpgDhMvUiA==]
+
     CreditCardPurchaseResponse:
       value:
         orderId: Order9641141
@@ -4525,6 +4526,7 @@ components:
               dataEventId: 243c6c28672b051eb81f950f184a2adb
               captureTime: '2016-04-16T16:06:05Z'
         publicKeyRequired: true
+
     VaultedCardPurchaseResponse:
       value:
         orderId: Order2467828
@@ -4657,6 +4659,7 @@ components:
         hostExtraInfo:
         - name: APPROVAL_NUMBER
           value: ET106464
+
     GooglePayPurchaseRequest:
       value:
         fdCustomerId: 'null'
@@ -4738,6 +4741,7 @@ components:
           value: '328701'
         - name: TRANSACTION_DATETIME
           value: 2023-01-11T04:03
+
     SamsungPayPurchaseRequest:
       value:
         fdCustomerId: 5e82308296bb41e3adc583e223f6a0fb
@@ -4774,6 +4778,7 @@ components:
                     100 Universal City Plaza
                     Hollywood, CA 91608 USA
                   primary: true
+
     SamsungPayPurchaseResponse:
       value:
         orderId: Order4763851
@@ -4937,6 +4942,7 @@ components:
                   year: sGJzceG1b7hOrz4dT/9Kyaw0mt2LJ7O+Wia9ZvMBPrsv7fijhLlM1OthrbZtRO05YAwJ6pojnqdozW5wAaNZ+QxIGeyvHCCYstQV+Ld+taD+0v2U1rIovXW1qc3cx+YGPyyla7GO4WrXXxZRG9jneJCrWmcW8XgTgKVL/T7zDOYTgTUVg6hCiBpbZXsuYmPe3dQovOXGzPFNS80N1DInWyReHp9WWbAqdDoIALl0RH0f4boRfSvk5bIvrcbg8ILA3RXxkclqWGjdQgRjHhtTyFrYL4gHj/r5OR8RCYeUhyucgPTuny8EPbRmjHJ76Xw6MAfrMumFDU4OTyD4LlgdRQ==
                 securityCode: wt0qakmwW9jAoQJTFqu0MFmoOoYhGza/6HVRWcf77cxe6VUu0q2ysNVlXSGNgEK0ktLwjY7MlwuLruNDjt3fPAtYMryDu+DKPEE+8poIsmss7wFu5+CTJmA+loHwnM1ZDlrqoBD6Ywg1WUA1MORYT2sVEU2Hm39ERByz7JJ+x8SHSSFkLmND1z2VZa1KL5Iwdo4o9zec60/iMxv7tiwOpUdLutya+nW7ClcT4SqCCtJByako+WG5Sb8wAN98lvkpxXkSrOAH8TOTLbiS3I6o12Xk04470AAQgohR10Vb/8FbDv55JUBfO2EiLn+Yy87ZBpG9HRXN7b1sQv21hsly9A==
                 sequenceNumber: '01'
+
     CreditCardReloadResponse:
       value:
         orderId: Order5718423
@@ -5009,6 +5015,7 @@ components:
             currencyCode:
               code: USD
               number: 840
+
     MerchantFundedReloadResponse:
       value:
         orderId: order005
@@ -5078,6 +5085,7 @@ components:
                     100 Universal City Plaza
                     Hollywood, CA 91608 USA
                   primary: true
+
     ApplePayReloadResponse:
       value:
         orderId: Order1996975
@@ -5118,6 +5126,7 @@ components:
         hostExtraInfo:
         - name: APPROVAL_NUMBER
           value: ET197801
+
     GooglePayReloadRequest:
       value:
         fdCustomerId: 'null'
@@ -5154,6 +5163,7 @@ components:
                     100 Universal City Plaza
                     Hollywood, CA 91608 USA
                   primary: true
+
     GooglePayReloadResponse:
       value:
         orderId: Order6357194
@@ -5198,6 +5208,7 @@ components:
           value: '278840'
         - name: TRANSACTION_DATETIME
           value: 2023-01-11T04:03
+
     SamsungPayReloadRequest:
       value:
         fdCustomerId: 5e82308296bb41e3adc583e223f6a0fb
@@ -5238,6 +5249,7 @@ components:
                     100 Universal City Plaza
                     Hollywood, CA 91608 USA
                   primary: true
+
     SamsungPayReloadResponse:
       value:
         orderId: Order1078948
@@ -5405,6 +5417,7 @@ components:
             number: 840
             currency: US Dollar
           currencyType: BASE
+
     PurchaseVoidResponse:
       value:
         cardNumber: '7777347468914102'
