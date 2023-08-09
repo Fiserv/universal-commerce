@@ -1,0 +1,1071 @@
+#-------------------------------------
+# Document Change Log
+# 0.2.3
+#     - No Changes
+# 0.2.2
+#     - Added new API for delivery quote
+# 0.2.1
+#     - Added Merchant id as header field
+# 0.2.0
+#     - Include Tax Details on ProductVariant
+#     - Added 'OTHER' CreditCardType
+#     - Added fields in ThreeDSecure object
+# 0.1.9
+#     - No change.
+# 0.1.8
+#     - Added 3ds web support
+#     - Added new API's for merchant and product group
+# 0.1.7
+#     - Added 3ds challenge transaction expiry date time in ThreeDSecure
+# 0.1.6
+#     - Added Accept-Language header field
+# 0.1.5
+#     - Added Link in the Error object.
+#     - acsSignedContent and CardType in threeDSecureInfo object
+# 0.1.4
+#     - No change.
+# 0.1.3
+#     - No change.
+# 0.1.2
+#     - No change.
+# 0.1.1
+#     - No change.
+# 0.1.0
+#     - Added client-token in the header field.
+# 0.0.9
+#     - No change.
+# 0.0.8
+#     - No change.
+# 0.0.7
+#     - No change.
+# 0.0.6
+#     - No change.
+# 0.0.5
+#     - No change.
+# 0.0.4
+#     - No change.
+# 0.0.3
+#     - No change.
+# 0.0.2
+#     - No change.
+# 0.0.1
+#     - Initial Version.
+#-------------------------------------
+
+openapi: 3.0.1
+info:
+  title: uCom Merchant Services
+  description: Services related to Merchant or Terminal operations
+  version: 0.2.3
+servers:
+- url: https://int.api.firstdata.com/ucom
+tags:
+- name: POS
+  description: Operations that interact with a POS
+- name: Merchant
+  description: Interacts with Merchant information providers
+paths:
+  /v1/merchants/{merchantId}/closures:
+    post:
+      x-group-name: Merchant Services
+      x-proxy-name: Create Close Event
+      tags:
+      - POS
+      description: Create a close event at a POS system.  The close event triggers subsequent activity on the payment host.
+      parameters:
+      - $ref: "#/components/parameters/ApiKeyParam"
+      - $ref: "#/components/parameters/TimestampParam"
+      - $ref: "#/components/parameters/AuthorizationParam"
+      - $ref: '#/components/parameters/ClientTokenParam'
+      - $ref: "#/components/parameters/MerchantIdParam"
+      - $ref: '#/components/parameters/AcceptLanguageParam'
+      - $ref: '#/components/parameters/SubMerchantIdHeaderParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClosureRequest'
+        required: false
+      responses:
+        201:
+          $ref: '#/components/responses/Created'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        409:
+          $ref: '#/components/responses/Conflict'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /v1/merchants:
+    get:
+      x-group-name: Merchant Services
+      x-proxy-name: Search for Merchant
+      tags:
+      - Merchant
+      description: Search for a merchant by location, venue, type and etc.
+      parameters:
+      - $ref: "#/components/parameters/ApiKeyParam"
+      - $ref: "#/components/parameters/TimestampParam"
+      - $ref: "#/components/parameters/AuthorizationParam"
+      - $ref: "#/components/parameters/ClientTokenParam"
+      - $ref: "#/components/parameters/AcceptLanguageParam"
+      - $ref: "#/components/parameters/VenueIdParam"
+      - $ref: "#/components/parameters/MerchantCategoryParam"
+      - $ref: '#/components/parameters/MerchantSubCategoryParam'
+      - $ref: '#/components/parameters/SearchKeywordsParam'
+      - $ref: '#/components/parameters/PageNumberParam'
+      - $ref: '#/components/parameters/PageSizeParam'
+      - $ref: '#/components/parameters/SubMerchantIdHeaderParam'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MerchantSearchResult'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        409:
+          $ref: '#/components/responses/Conflict'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /v1/merchants/{merchantId}:
+    get:
+      x-group-name: Merchant Services
+      x-proxy-name: Get Merchant by merchantId
+      tags:
+      - Merchant
+      description: Get Merchant by merchantId
+      parameters:
+      - $ref: "#/components/parameters/ApiKeyParam"
+      - $ref: "#/components/parameters/TimestampParam"
+      - $ref: "#/components/parameters/AuthorizationParam"
+      - $ref: "#/components/parameters/ClientTokenParam"
+      - $ref: "#/components/parameters/AcceptLanguageParam"
+      - $ref: "#/components/parameters/MerchantIdParam"
+      - $ref: '#/components/parameters/SubMerchantIdHeaderParam'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Merchant'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        409:
+          $ref: '#/components/responses/Conflict'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /v1/merchants/{merchantId}/ordering-windows:
+    get:
+      x-group-name: Merchant Services
+      x-proxy-name: Get Merchant Ordering Window
+      tags:
+      - Merchant
+      description: Get merchant ordering window details by id
+      parameters:
+      - $ref: "#/components/parameters/ApiKeyParam"
+      - $ref: "#/components/parameters/TimestampParam"
+      - $ref: "#/components/parameters/AuthorizationParam"
+      - $ref: "#/components/parameters/ClientTokenParam"
+      - $ref: "#/components/parameters/AcceptLanguageParam"
+      - $ref: "#/components/parameters/MerchantIdParam"
+      - $ref: '#/components/parameters/SubMerchantIdHeaderParam'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MerchantOrderWindow'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        409:
+          $ref: '#/components/responses/Conflict'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+  /v1/merchants/{merchantId}/product-groups:
+    get:
+      x-group-name: Merchant Services
+      x-proxy-name: Get Merchant Product Group
+      tags:
+      - Merchant
+      description: Get merchant products organized by product groups
+      parameters:
+      - $ref: "#/components/parameters/ApiKeyParam"
+      - $ref: "#/components/parameters/TimestampParam"
+      - $ref: "#/components/parameters/AuthorizationParam"
+      - $ref: "#/components/parameters/ClientTokenParam"
+      - $ref: "#/components/parameters/AcceptLanguageParam"
+      - $ref: "#/components/parameters/MerchantIdParam"
+      - $ref: '#/components/parameters/PageNumberParam'
+      - $ref: '#/components/parameters/PageSizeParam'
+      - $ref: '#/components/parameters/SubMerchantIdHeaderParam'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductGroupSearchResult'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        409:
+          $ref: '#/components/responses/Conflict'
+        500:
+          $ref: '#/components/responses/ServerError'
+
+components:
+  schemas:
+    #-------------------------------------
+    # Operational Models
+    #-------------------------------------
+    ClosureRequest:
+      type: object
+      properties:
+        terminalId:
+          type: string
+          description: POS Terminal Identifier
+        terminalPasscode:
+          type: string
+          description: POS Terminal Passcode
+        batchSequenceNumber:
+          type: string
+          description: ""
+        terminalTotal:
+          type: string
+          description: Net transaction amount for the given terminal
+        siteId:
+          type: string
+          description: Merchant Store Identifier
+        currencyCode:
+          $ref: '#/components/schemas/ISO-4217'
+      description: Transaction information sent to indicate a close event happened at a location.  The close event triggers subsequent events on the payment host.
+
+    ClosureResponse:
+      type: object
+      properties:
+        terminalTotal:
+          type: string
+          description: Net transaction amount for the given terminal
+        details:
+          type: array
+          items:
+            title: hostTotal
+            type: object
+            properties:
+              type:
+                type: string
+                description: Card Type
+              transactionTotal:
+                type: string
+                description: Net transaction amount for the given card type
+              transactionCount:
+                type: string
+                description: Transaction Count
+      description: Transaction information sent to indicate the host results of a close event happened at a location.
+
+    #-------------------------------------
+    # Resource Models
+    #-------------------------------------
+    CreditType:
+      type: object
+      properties:
+        cardType:
+          type: string
+        cardSubType:
+          type: array
+          items:
+            type: string
+
+    Image:
+      type: object
+      properties:
+        imageId:
+          type: string
+        imageType:
+          type: string
+        width:
+          type: integer
+        height:
+          type: integer
+        srcUrl:
+          type: string
+      description: Graphical representation of an object
+
+    ISO-4217:
+      type: object
+      properties:
+        code:
+          type: string
+          example: USD
+          default: USD
+        number:
+          type: integer
+          example: 840
+        digits:
+          type: integer
+          example: 2
+        currency:
+          type: string
+          example: US Dollar
+          default: US Dollar
+      description: ISO 4217 currency format in which the balance is represented.
+
+    Link:
+      required:
+      - href
+      - rel
+      type: object
+      properties:
+        href:
+          type: string
+          description: URL to linked resource.
+          format: uri
+        rel:
+          type: string
+          description: Defines the type of link relationship to current resource.
+          example: self
+          enum:
+          - current.page
+          - previous.page
+          - next.page
+          - self
+        method:
+          type: string
+          description: Defines the HTTP method for the given href.
+          example: GET
+          default: GET
+        id:
+          type: string
+          description: Identifier to the resource.
+          example: 415e5cf6bfdb11e8a355529269fb1459
+      description: Model to communicate linked resources.
+
+    Merchant:
+      type: object
+      properties:
+        merchantId:
+          type: string
+        merchantName:
+          type: string
+        briefDescription:
+          type: string
+        fullDescription:
+          type: string
+        operatingStatus:
+          $ref: '#/components/schemas/OperatingStatus'
+        merchantCategory:
+          $ref: '#/components/schemas/MerchantCategory'
+        merchantSubCategory:
+          type: string
+        supportedFundingSource:
+          $ref: '#/components/schemas/SupportedFundingSource'
+        searchKeywords:
+          type: array
+          items:
+            type: string
+        amenities:
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/NVP'
+      description: Merchant details
+
+    MerchantOrderWindow:
+      type: object
+      properties:
+        isOrderdingEnabled:
+          type: boolean
+          description: Indicates if orders are allowed
+        capacityPerWindow:
+          type: integer
+        startTime:
+          type: string
+          description: The hour and minute in format HH:mm
+        endTime:
+          type: string
+          description: The hour and minute in format HH:mm
+        interval:
+          type: integer
+          description: Interval between order windows, ex. 15 minutes
+        windowCloseOffset:
+          type: integer
+          description: The time in minutes to stop allowing orders before the window closes. ex. -5 = orders not allowed 5 minutes before window ends. ex. 0 = orders allowed until the end_time
+        windows:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderWindow'
+      description: Merchant ordering window details
+
+    MerchantSearchResult:
+      type: object
+      properties:
+        pages:
+          $ref: '#/components/schemas/PageLink'
+        merchants:
+          type: array
+          items:
+            $ref: '#/components/schemas/Merchant'
+      description: This object contains merchant records.
+
+    NVP:
+      title: Name and Value pair.
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+        valueAsList:
+          minItems: 0
+          type: array
+          items:
+            type: string
+
+    OrderWindow:
+      type: object
+      properties:
+        startTime:
+          type: string
+        endTime:
+          type: string
+        orderCount:
+          type: integer
+        isAlcoholAllowed:
+          type: boolean
+      description: Order window details
+
+    PageLink:
+      type: object
+      properties:
+        firstPage:
+          type: boolean
+          description: Indicates if the list contains first page data
+        lastPage:
+          type: boolean
+          description: Indicates if the list contains last page data
+          example: false
+        currentPage:
+          type: integer
+          description: Current page number
+          example: 1
+        currentPageRecords:
+          type: integer
+          description: Number of records in current page
+          example: 25
+        totalPages:
+          type: integer
+          example: 2
+        totalRecords:
+          type: integer
+          example: 27
+        sortOrder:
+          type: string
+          example: asc
+          default: asc
+          enum:
+          - asc
+          - desc
+        _links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
+      description: Page link information.
+
+    Price:
+      type: object
+      properties:
+        amount:
+          minimum: 0
+          type: number
+          format: double
+          example: 15.35
+        currencyCode:
+          $ref: '#/components/schemas/ISO-4217'
+      description: A monetary value with currency
+
+    ProductAddition:
+      type: object
+      properties:
+        productAdditionId:
+          type: string
+          example: avx-b4zd
+        productAdditionName:
+          type: string
+          example: corn
+        price:
+          $ref: '#/components/schemas/Price'
+      description: Product addition, like corn pizza topping, or extended warranty
+
+    ProductAdditionGroup:
+      type: object
+      properties:
+        productAdditionGroupId:
+          type: string
+          example: a-123-b4zd
+        productAdditionGroupName:
+          type: string
+          example: toppings
+        minSelections:
+          type: integer
+          description: minimum allowed selections. 0 or null means optional. 1 means user has to make at least 1 choice
+        maxSelections:
+          type: integer
+          description: maximum allowed selections. 0 or null means no limitation
+        productAdditions:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductAddition'
+      description: Product additions group contains similar additions, like pizza toppings
+
+    ProductGroup:
+      type: object
+      properties:
+        productGroupId:
+          type: string
+        productGroupName:
+          type: string
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+      description: A collection represents a grouping of products (items) that a merchant can create to organize them or make them easier to browse. Collection may contain other collections or items
+
+    Product:
+      type: object
+      properties:
+        productId:
+          type: string
+          description: product id or code
+        productName:
+          type: string
+          description: name of the product
+        description:
+          type: string
+          description: short description of the product
+        productType:
+          type: string
+          description: type of the product
+        mainImage:
+          $ref: '#/components/schemas/Image'
+        additionalImages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Image'
+        productOptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductOptions'
+        productVariants:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductVariant'
+        productAdditionGroups:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductAdditionGroup'
+      description: Product details
+
+    ProductOptions:
+      type: object
+      properties:
+        productOptionsId:
+          type: string
+          description: Indicates product options id
+        productOptionsName:
+          type: string
+          description: Indicates product options name
+      description: List of options for the product. Option describes how variations of the product are different from each other. For example it can be size, color, style, finish, material and etc. Product may have multiple options. If there is no options, this will be null or empty, and product will have just one variant
+
+    ProductVariant:
+      type: object
+      properties:
+        productVariantId:
+          type: string
+        productVariantName:
+          type: string
+        productOptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductOptions'
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/Image'
+        weight:
+          $ref: '#/components/schemas/Weight'
+        price:
+          type: object
+        unitOfMeasurement:
+          $ref: '#/components/schemas/UnitOfMeasurement'
+        tax:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaxDetails'
+      description: Product variant information
+
+    ProductGroupSearchResult:
+      type: object
+      properties:
+        pages:
+          $ref: '#/components/schemas/PageLink'
+        productGroups:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductGroup'
+      description: This object contains product group records.
+
+    SupportedFundingSource:
+      type: object
+      properties:
+        creditTypes:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/CreditType'
+        prepaidTypes:
+          type: array
+          readOnly: true
+          items:
+            type: string
+        loyaltyTypes:
+          type: array
+          readOnly: true
+          items:
+            type: string
+        googlePayEnabled:
+          type: boolean
+          readOnly: true
+        applePayEnabled:
+          type: boolean
+          readOnly: true
+        samsungPayEnabled:
+          type: boolean
+          readOnly: true
+        payPalEnabled:
+          type: boolean
+          readOnly: true
+        venmoEnabled:
+          type: boolean
+          readOnly: true
+        visaCheckoutEnabled:
+          type: boolean
+          readOnly: true
+        masterPassEnabled:
+          type: boolean
+          readOnly: true
+        achEnabled:
+          type: boolean
+          readOnly: true
+        amazonPayEnabled:
+          type: boolean
+          readOnly: true
+        cashPaymentEnabled:
+          type: boolean
+          readOnly: true
+      description: Funding sources supported by the partner
+
+    UnitOfMeasurement:
+      type: object
+      properties:
+        amount:
+          minimum: 0
+          type: number
+          format: double
+          example: 15.35
+        measurementType:
+          $ref: '#/components/schemas/MeasurementType'
+      description: The measurement used to calculate a unit price for a product variant (e.g. $9.99 / 100ml).
+
+    TaxDetails:
+      type: object
+      properties:
+        code:
+          type: string
+          example: TX01
+        description:
+          type: string
+          example: Sales Tax
+        amount:
+          type: string
+          example: "7.50"
+        rate:
+          type: string
+          example: "13.5"
+      description: Tax details.
+
+    ThreeDSecure:
+      type: object
+      properties:
+        transactionId:
+          type: string
+          description: Transaction id generated on the server
+          example: 292bb6b886fc4446894f878b7e32bd5e
+        transactionStatus:
+          type: string
+          description: Transactions status of 3DS server
+          example: C
+        transactionStatusReason:
+          type: string
+          description: Reason for the transaction status
+        challengeResponse:
+          type: string
+          example: ewogIC
+        challengeIndicator:
+          type: string
+          example: '01 = No preference 02 = No challenge requested 03 = Challenge requested: 3DS Requestor Preference 04 = Challenge requested: Mandate'
+        dsTransactionId:
+          type: string
+          example: 292bb6b886fc4446894f878b7e32bd5e
+        acsTransactionId:
+          type: string
+          example: 292bb6b886fc4446894f878b7e32bd5e
+        serverTransactionId:
+          type: string
+          example: 292bb6b886fc4446894f878b7e32bd5e
+        acsReferenceNumber:
+          type: string
+          example: 292bb6b886fc4446894f878b7e32bd5e
+        acsSignedContent:
+          type: string
+          example: 292bb6b88....6fc4446894f878b7e32bd5e
+        cardType:
+          $ref: '#/components/schemas/CreditCardType'
+        challengeRequest:
+          type: string
+          example: ewogICAiYW.......MjJjMGVjIgp9
+        acsUrl:
+          type: string
+          example: https://test.modirum.com/dstests/ACSEmu2
+        iframeContent:
+          type: string
+          example: <iframe></iframe>
+        termUrl:
+          type: string
+          example: https://mydomain/3dstest?transactionId=292bb6b886fc4446894f878b7e32bd5e
+        isThreeDSMethodCompleted:
+          type: boolean
+          example: true
+        isAuthenticationCompleted:
+          type: boolean
+          example: true
+        cavv:
+          type: string
+          description: Card authentication verification value
+        threeDSVersion:
+          type: string
+        expiryDateTime:
+          type: string
+          description: 3DS challenge transaction expiry date time.
+          format: date-time
+          readOnly: true
+          example: 2020-01-01T16:06:05Z
+        eci:
+          type: string
+          description: Electronic Commerce Indicator value
+      description: Details of ThreeDSecure transaction used to process the challenge flow
+
+    Weight:
+      type: object
+      properties:
+        value:
+          type: number
+          format: double
+        unitOfMeasurement:
+          $ref: '#/components/schemas/QuantityUOM'
+      description: Model of holding weight information
+
+    #-------------------------------------
+    # Common Models
+    #-------------------------------------
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Unique code representing the error.
+        message:
+          type: string
+          description: A generic description of the error condition.
+        category:
+          type: string
+          description: The resource associated with the error condition.
+        developerInfo:
+          type: object
+          properties:
+            developerMessage:
+              type: string
+              description: An elaborative description of the error description.
+            moreInfo:
+              type: string
+              description: Link to the error in Developer page.
+            fieldError:
+              type: array
+              description: Detailed information about message format errors.
+              items:
+                type: object
+                properties:
+                  field:
+                    type: string
+                    description: The property or attribute associated with the error
+                  message:
+                    type: string
+                    description: Information specific to a property or attribute.
+          description: Information that needs to be understood by the client developers and should not be interpreted for application processing.
+        hostExtraInfo:
+          minItems: 0
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/NVP'
+        threeDSecureInfo:
+          $ref: '#/components/schemas/ThreeDSecure'
+        _links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
+      description: Model for error messaging
+      example:
+        code: "40000"
+        message: Example Error
+        category: example
+        developerInfo:
+          developerMessage: Invalid Message format in request payload
+          moreInfo: https://www.example.com/errors/40000
+          fieldError:
+          - field: example id
+            message: exampleId is mandatory
+
+    #-------------------------------------
+    # ENUM Models
+    #-------------------------------------
+    CreditCardType:
+      title: Credit Card Type
+      type: string
+      description: Indicates the type of credit account association
+      enum:
+      - AMEX
+      - DISCOVER
+      - MASTERCARD
+      - PLCC
+      - VISA
+      - OTHER
+
+    DeliveryOption:
+      title: Delivery option
+      type: string
+      description: Indicates the delivery option
+      enum:
+      - IMMEDIATE
+      - SCHEDULED
+      - OTHER
+
+    MeasurementType:
+      title: Type of measurement
+      type: string
+      description: Indicates measurement type
+      enum:
+      - WEIGHT
+      - LENGTH
+      - AREA
+      - VOLUME
+
+    MerchantCategory:
+      title: Merchant category
+      type: string
+      description: Indicates the merchant category information
+      enum:
+      - RESTAURANT
+      - BAR
+      - CONCESSIONS
+      - COMMISSARY
+      - VENDING_ROOM
+      - OTHER
+
+    OperatingStatus:
+      title: Operating status
+      type: string
+      description: Indicates merchant store operating status
+      enum:
+      - OPEN
+      - CLOSED
+
+    QuantityUOM:
+      type: string
+      description: Combined unit of measure for a POS sale.
+      enum:
+      - ml
+      - cc
+      - litre
+      - fluidOunce
+      - pint
+      - quart
+      - gallonUS
+      - gallonUK
+      - gram
+      - kg
+      - oz
+      - lb
+      - ea
+      -
+      #-------------------------------------
+      # Responses
+      #-------------------------------------
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    Conflict:
+      description: Conflict - The requested operation conflicts with the current state of the identified resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    Created:
+      description: Resource created
+      headers:
+        Location:
+          description: Location of newly created resource.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ClosureResponse'
+
+    NoContent:
+      description: The request succeeded but there's really nothing to show.
+      content: {}
+
+    NotFound:
+      description: Not Found - The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    OK:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ClosureResponse'
+
+    ServerError:
+      description: An unexpected server error occurred.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    Unauthorized:
+      description: Unauthorized
+      content: {}
+
+  #-------------------------------------
+  # Parameter Models
+  #-------------------------------------
+  parameters:
+    AcceptLanguageParam:
+      name: Accept-Language
+      in: header
+      description: The Accept-Language header contains information about the language preference of a user. This HTTP header is useful to multilingual sites for deciding the best language to serve to the client. i.e en-US,fr-CA
+      schema:
+        type: string
+    ApiKeyParam:
+      name: Api-Key
+      in: header
+      description: An API key is a string value passed by a client app to the API proxies. The key uniquely identifies the client app.
+      required: true
+      schema:
+        type: string
+    AuthorizationParam:
+      name: Authorization
+      in: header
+      description: Authorization information for the request. Format- `HMAC {hmacToken}`
+      required: true
+      schema:
+        type: string
+    ClientTokenParam:
+      name: Client-Token
+      in: header
+      description: Used to pass the original client OAuth token information given in a client-credentials flow.  This field is only used when the server is making the request and needs to link the transaction to a specific client.  Format- `Bearer {access_token}`
+      schema:
+        type: string
+    PageNumberParam:
+      name: pageNo
+      in: query
+      description: Page number
+      schema:
+        type: integer
+    PageSizeParam:
+      name: pageSize
+      in: query
+      description: Max number of records per page. Supported values - 5, 10, 15, 20, 25 ..50
+      allowEmptyValue: false
+      schema:
+        type: integer
+    MerchantIdParam:
+      name: merchantId
+      in: path
+      description: Unique identifier provided for the merchant profile.
+      required: true
+      schema:
+        type: string
+    SubMerchantIdHeaderParam:
+      name: Sub-Merchant-Id
+      in: header
+      description: Sub Merchant Id contains information about the merchant identifier
+      schema:
+        type: string
+    MerchantCategoryParam:
+      name: merchantCategory
+      in: query
+      description: Merchant category, like restaurant, bar, general store.
+      schema:
+        type: string
+    MerchantSubCategoryParam:
+      name: merchantSubCategory
+      in: query
+      description: Merchant sub category, like food, beverages.
+      schema:
+        type: string
+    SearchKeywordsParam:
+      name: searchKeywords
+      in: query
+      description: Space delimited list of words for secondary filtering
+      schema:
+        type: string
+    TimestampParam:
+      name: Timestamp
+      in: header
+      description: Epoch timestamp in the request initiating system
+      required: true
+      schema:
+        type: string
+    VenueIdParam:
+      name: venueId
+      in: query
+      description: Unique identifier provided for the venue.
+      schema:
+        type: string
