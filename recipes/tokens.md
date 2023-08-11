@@ -159,6 +159,8 @@ A payment nonce could be used to make payments using either auth/capture or sale
 
 ### Make a Payment using a Nonce
 
+## Sample Sale Transcation
+
 **<ins> Endpoint URL </ins>**
 
 HTTP Method: POST
@@ -278,6 +280,110 @@ Sample Response - anonymous card sale transaction
 }
 
 ```
+
+## Sample Authorization Transaction
+
+**<ins> Endpoint URL </ins>**
+
+HTTP Method: POST
+
+Non-prod: https://int.api.firstdata.com/ucom/v1/payments/auths
+
+Prod: https://prod.api.firstdata.com/ucom/v1/payments/auths
+
+**<ins>Sample Request (with merchantid)</ins>**
+
+Sample Request - anonymous CC transaction using Nonce with merchantId
+
+```json
+
+{
+  "authorization": {
+    "orderId": "12143243545467",
+    "storeId": "999999",
+    "requestedAmount": 1,
+    "currencyCode": {
+      "number": 840
+    },
+    "fundingSource": {
+      "saveToVault": false,
+      "token": {
+        "tokenId": "6c67fc73-b2dc-4e0b-a971-5aef623d69b2",
+        "tokenType": "CLAIM_CHECK_NONCE",
+        "tokenProvider": "UCOM"
+      }
+    }
+  }
+} 
+
+```
+**<ins>Sample Response (201 - Created)</ins>** 
+
+~~~ json
+
+{
+  "fdAuthorizationId": "24ea35f2d7ad40e0a95b80d723bf7529",
+  "authStatus": "APPROVED",
+  "orderId": "Test12341122222007772132",
+  "requestedAmount": 20,
+  "approvedAmount": 20,
+  "currencyCode": {
+    "code": "USD",
+    "number": 840
+  },
+  "transactionDateTime": "2021-04-21T07:13:38-0400",
+  "fundingSource": {
+    "type": "CREDIT",
+    "credit": {
+      "nameOnCard": "John Smith",
+      "alias": "0026",
+      "cardType": "VISA",
+      "billingAddress": {
+        "postalCode": "91608"
+      },
+      "expiryDate": {
+        "month": "12",
+        "year": "21"
+      }
+    }
+  },
+  "hostExtraInfo": [
+    {
+      "name": "APPROVAL_NUMBER",
+      "value": "100945"
+    },
+    {
+      "name": "SEQUENCE_NUMBER",
+      "value": "612042"
+    },
+    {
+      "name": "HOST_RESPONSE_CODE",
+      "value": "3"
+    },
+    {
+      "name": "HOST_RESPONSE_MESSAGE",
+      "value": "APPROVED  100945"
+    },
+    {
+      "name": "HOST_AVS_CODE",
+      "value": "AVS+Y"
+    },
+    {
+      "name": "HOST_CVV_CODE",
+      "value": "M"
+    },
+    {
+      "name": "TRANSACTION_DATETIME",
+      "value": "2021-04-21T06:13"
+    },
+    {
+      "name": "NETWORK_TRANSACTION_ID",
+      "value": "012000421111338"
+    }
+  ]
+}
+
+~~~
 
 ## Trans Armor (TA) Tokens
 
