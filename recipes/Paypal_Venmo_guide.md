@@ -5,12 +5,10 @@
 This flow is used if the partner does not have vaulting support through Connected Commerce (uCom). The client generates the nonce from Paypal/Venmo and processes the transaction using the nonce through Connected Commerce (uCom).
 </span>
 
-
-
 **<ins> Prerequisites: </ins>** </br>
 PayPal Account </br>
 PayPal account details configured in Connected Commerce (uCom). </br>
-PayPal SDK Setup/configured to generate the nonce. </br>
+PayPal SDK Setup to generate the nonce. Please refer to <a href="https://developer.paypal.com/braintree/docs/guides/paypal/checkout-with-vault/javascript/v3/">this guide</a>. for more information on how to configure the PayPal SDK.</br>
 
 ## Option 1a: Auth with PayPal
 
