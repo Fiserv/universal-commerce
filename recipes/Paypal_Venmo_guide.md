@@ -6,9 +6,10 @@ This flow is used if the partner does not have vaulting support through Connecte
 </span>
 
 **<ins> Prerequisites: </ins>** </br>
-PayPal Account </br>
-PayPal account details configured in Connected Commerce (uCom). </br>
-PayPal SDK Setup to generate the nonce. Please refer to <a href="https://developer.paypal.com/braintree/docs/guides/paypal/checkout-with-vault/javascript/v3/">this guide</a> for more information on how to configure the PayPal SDK.</br>
+* PayPal Account </br>
+* PayPal account details configured in Connected Commerce (uCom). </br>
+* PayPal SDK Setup to generate the nonce.
+> Please refer to <a href="https://developer.paypal.com/braintree/docs/guides/paypal/checkout-with-vault/javascript/v3/">this guide</a> for more information on how to configure the PayPal SDK.</br>
 
 ## Option 1a: Auth with PayPal
 
