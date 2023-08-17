@@ -1,9 +1,10 @@
-# How to do Guest Payment via PayPal/Venmo
-<span>
+# How to Make a Guest Payment via PayPal/Venmo
+
 <img title="Paypal" alt="Alt text" src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/paypal-svgrepo-com.svg" width="30" height="30">
 <img title="Venmo" alt="Alt text" src="https://raw.githubusercontent.com/Fiserv/universal-commerce/94a71289848258b488fbd8b79e4ea9605ba656e5/assets/images/venmo-svgrepo-com.svg" width="30" height="30">
+
 This flow is used if the partner does not have vaulting support through Connected Commerce (uCom). The client generates the nonce from Paypal/Venmo and processes the transaction using the nonce through Connected Commerce (uCom).
-</span>
+
 
 **<ins> Prerequisites: </ins>** </br>
 * PayPal Account </br>
