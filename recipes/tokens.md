@@ -159,7 +159,7 @@ A payment nonce could be used to make payments using either auth/capture or sale
 
 ### Make a Payment using a Nonce
 
-## Sample Sale Transaction
+#### Sample Sale Transaction
 
 **<ins> Endpoint URL </ins>**
 
@@ -281,7 +281,7 @@ Sample Response - anonymous card sale transaction
 
 ```
 
-## Sample Authorization Transaction
+#### Sample Authorization Transaction
 
 **<ins> Endpoint URL </ins>**
 
@@ -485,7 +485,7 @@ Utilizing a TA Token, payments can be seamlessly conducted through either the au
 
 ### Make a Payment using a TA Token
 
-## Sample Sale Transaction
+#### Sample Sale Transaction
 
 **<ins> Endpoint URL </ins>**
 
@@ -635,7 +635,7 @@ Timestamp:{{time}}
 
 ```
 
-## Sample Authorization Transaction
+#### Sample Authorization Transaction
 
 **<ins> Endpoint URL </ins>**
 
@@ -756,7 +756,7 @@ Network tokenization refers to the use of tokens provided by payment schemes suc
 
 ### Make a Payment using Network Tokens
 
-## Sample Sale Transaction
+#### Sample Sale Transaction
 
 **<ins>Endpoint URL</ins>**
 
@@ -930,7 +930,7 @@ Timestamp:{{time}}
 
 ```
 
-## Sample Authorization Transaction
+#### Sample Authorization Transaction
 
 **<ins> Endpoint URL </ins>**
 
