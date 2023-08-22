@@ -325,6 +325,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PrepaidMultiAccountRequest'
+            examples:
+              Merchant Funded Purses: {summary: Request with Merchant Funded, $ref: '#/components/examples/MerchantFundedMultiPurchaseRequest'}
         required: true
       responses:
         201:
@@ -333,12 +335,29 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PrepaidMultiPurchase'
+              examples:
+                Merchant Funded All Transactions Approved - 201:
+                  summary: Activate multiple merchant funded purses
+                  $ref: '#/components/examples/MerchantFundedMultiPurchaseSuccessResponse'
         207:
           description: Multiple status
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/PrepaidMultiPurchase'
+              examples:
+                Merchant Funded Two Transactions Approved and One Failed - 207:
+                  summary: Multi status response
+                  $ref: '#/components/examples/MerchantFundedMultiPurchaseTwoSuccessOneFailedResponse'
+                Merchant Funded One Transaction Approved One Declined and One Failed - 207:
+                  summary: Multi status response
+                  $ref: '#/components/examples/MerchantFundedMultiPurchaseOneApprovedOneDeclinedandOneFailedResponse'
+                Merchant Funded One Transaction Approved All Failed - 207:
+                  summary: Multi status response
+                  $ref: '#/components/examples/MerchantFundedMultiPurchaseAllTransactionsFailedResponse'
+                Merchant Funded One Transaction Approved All Declined - 207:
+                  summary: Multi status response
+                  $ref: '#/components/examples/MerchantFundedMultiPurchaseAllTransactionsDeclinedResponse'
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -522,6 +541,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PrepaidMultiSweepRequest'
+            examples:
+              Vaulted Accounts: {summary: Request with merchant funded vaulted accounts, $ref: '#/components/examples/MultiSweepRequest'}
         required: true
       responses:
         200:
@@ -530,12 +551,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PrepaidMultiSweep'
+              examples:
+                Vaulted Accounts:
+                  summary: Sweep balance from multiple purses
+                  $ref: '#/components/examples/MultiSweepAllApprovedResponse'
         207:
           description: Multiple status
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/PrepaidMultiSweep'
+              examples:
+                Merchant Funded:
+                  summary: Void multiple sweep transactions
+                  $ref: '#/components/examples/MultiSweepTwoApprovedOneFailedResponse'
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -606,6 +635,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PrepaidMultiVoidRequest'
+            examples:
+              Vaulted Accounts: {summary: Request with Merchant Funded, $ref: '#/components/examples/SweepMultiVoidRequest'}
         required: true
       responses:
         200:
@@ -614,12 +645,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PrepaidMultiVoid'
+              examples:
+                Credit Card:
+                  summary: Void Sweep Transaction
+                  $ref: '#/components/examples/SweepMultiVoidAllApprovedResponse'
         207:
           description: Multiple status
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/PrepaidMultiVoid'
+              examples:
+                Merchant Funded:
+                  summary: Void multiple sweep transactions
+                  $ref: '#/components/examples/SweepMultiVoidTwoApprovedOneFailedResponse'
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -687,6 +726,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PrepaidMultiDeductRequest'
+            examples:
+              Vaulted Accounts: {summary: Request with Merchant Funded, $ref: '#/components/examples/MerchantFundedMultiDeductRequest'}
         required: true
       responses:
         200:
@@ -695,12 +736,21 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PrepaidMultiDeduct'
+              examples:
+                Credit Card:
+                  summary: Purchase Prepaid card with credit Card Response
+                  $ref: '#/components/examples/MerchantFundedMultiDeductAllApprovedResponse'
         207:
           description: Multiple status
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/PrepaidMultiDeduct'
+              examples:
+                Merchant Funded:
+                  summary: Void multiple deduct transactions
+                  $ref: '#/components/examples/MerchantFundedMultiDeductTwoApprovedOneFailedResponse'
+                
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -771,6 +821,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PrepaidMultiVoidRequest'
+            examples:
+              Merchant Funded: {summary: Request with Merchant Funded, $ref: '#/components/examples/MerchantFundedDeductMultiVoidRequest'}
         required: true
       responses:
         200:
@@ -785,6 +837,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PrepaidMultiVoid'
+              examples:
+                Merchant Funded:
+                  summary: Void multiple deduct transactions
+                  $ref: '#/components/examples/MerchantFundedDeductMultiVoidTwoApprovedOneFailedResponse'
+               
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -937,6 +994,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PrepaidMultiVoidRequest'
+            examples:
+                Merchant Funded: {summary: Request with Merchant Funded, $ref: '#/components/examples/MerchantFundedMultiVoidRequest'}
         required: true
       responses:
         200:
@@ -945,12 +1004,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PrepaidMultiVoid'
+              examples:
+                Merchant Funded All Voided: {summary: Request with Merchant Funded, $ref: '#/components/examples/MerchantFundedMultiVoidAllSuccessResponse'}
         207:
           description: Multiple status
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/PrepaidMultiVoid'
+              examples:
+                Credit Card: {summary: Request with credit card, $ref: '#/components/examples/MerchantFundedMultiTwoVoidedOneFailedResponse'}
+                Vaulted Card: {summary: Request with vaulted card, $ref: '#/components/examples/MerchantFundedMultiOneVoidedOneFailedOneDeclinedResponse'}
+                
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -1079,6 +1144,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/LoadMultiFundsRequest'
+            examples:
+              Vaulted Accounts: {summary: Request with vaulted card, $ref: '#/components/examples/MultiReloadVaultedRequest'}
         required: true
       responses:
         200:
@@ -1087,12 +1154,19 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/LoadMultiFundsPurchase'
+              examples:
+                Vaulted Accounts - All Approved: {summary: Balance response for vaulted card, $ref: '#/components/examples/MultiReloadVaultedAllAPprovedResponse'}
         207:
           description: Multiple Status
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/LoadMultiFundsPurchase'
+              examples:
+                Vaulted Card - Two Approved One Failed: {summary: Balance response for vaulted card, $ref: '#/components/examples/MultiReloadVaultedTwoApprovedOneFailedResponse'}
+                Vaulted Card - Two Approved One Declined: {summary: Balance response for vaulted card, $ref: '#/components/examples/MultiReloadVaultedTwoApprovedOneDeclinedResponse'}
+                Vaulted Card - All Declined: {summary: Balance response for vaulted card, $ref: '#/components/examples/MultiReloadVaultedAllDeclinedResponse'}
+
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -5440,3 +5514,1965 @@ components:
           value: '170674'
         - name: NETWORK_TRANSACTION_ID
           value: '012000111094717'
+          
+    MerchantFundedMultiPurchaseRequest:
+      value:
+        fdCustomerId: ed0a809bc6164ed7b2dae602ae90d10d
+        merchantTransactionId: 38943939903ed0a8090d10dert33
+        merchantId: '99022879996'
+        altMerchantId: '0001'
+        purchaseInfo:
+          order:
+            orderId: xorderIdTestt001
+        replayCount: 1
+        postDate: '05252022'
+        hostExtraInfo:
+          - name: LOCAL_TXN_DATE
+            value: '05102022'
+          - name: LOCAL_TXN_TIME
+            value: '202059'
+        transactions:
+          - saveToVault: true
+            externalId: '7777883838388999'
+            merchantTransactionId: 38943939903ed0a8090d10dert31
+            account:
+              merchantId: '99022879996'
+              altMerchantId: '0001'
+              merchantTerminalId: '0002'
+              cardSubType: Test
+              promotionCode: '57051'
+              isEANRequired: false
+            fundingInfo:
+              fundValue: 0
+              isMerchantFunded: true
+              currencyCode:
+                code: USD
+                number: 840
+          - merchantTransactionId: 38943939903ed0a8090d10dert32
+            saveToVault: true
+            externalId: '7777883838388999'
+            account:
+              merchantId: '99022879996'
+              altMerchantId: '0001'
+              merchantTerminalId: '0002'
+              cardSubType: Test
+              promotionCode: '57052'
+              isEANRequired: true
+            fundingInfo:
+              fundValue: 5
+              isMerchantFunded: true
+              currencyCode:
+                code: USD
+                number: 840
+          - merchantTransactionId: 38943939903ed0a8090d10dert34
+            saveToVault: true
+            externalId: '7777883838388999'
+            account:
+              merchantId: '99022879996'
+              altMerchantId: '0001'
+              cardSubType: Test
+              promotionCode: '57053'
+              isEANRequired: true
+            fundingInfo:
+              fundValue: 5
+              isMerchantFunded: true
+              currencyCode:
+                code: USD
+                number: 840
+                
+    MerchantFundedMultiPurchaseSuccessResponse:
+      value:
+        parentTransactionId: 485-27834-285903824-095
+        merchantTransactionId: 38943939903ed0a8090d10dert33
+        createdTime: '2017-03-21T08:15:30-05:00'
+        purchaseInfo:
+          order:
+            orderId: xorderIdTestt001
+        transactions:
+          - transactionId: 67179516b00d4d9aad00bcff5d019b6e
+            merchantTransactionId: 38943939903ed0a8090d10dert31
+            status: APPROVED
+            account:
+              cardNumber: '6759649826438453'
+              cardSubType: Test
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              promotionCode: '57051'
+              alias: '8453'
+              balance:
+                currentBalance: 5
+                beginBalance: 5
+                currencyCode:
+                  code: USD
+                  number: 840
+                currencyType: BASE
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+            createdTime: '2022-01-26T17:02:23.952Z'
+            externalId: '7777883838388999'
+            purchaseInfo:
+              - order:
+                  orderId: xorderIdTestt001
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530976'
+              - name: SEQUENCE_NUMBER
+                value: '005931'
+          - transactionId: 67179516b00d4d9aad00bcff5d019b34
+            merchantTransactionId: 38943939903ed0a8090d10dert32
+            status: APPROVED
+            account:
+              cardNumber: '7759649826438111'
+              cardSubType: Test
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              promotionCode: '57052'
+              alias: '8111'
+              balance:
+                currentBalance: 5
+                beginBalance: 5
+                currencyCode:
+                  code: USD
+                  number: 840
+                currencyType: BASE
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401df
+            createdTime: '2022-01-26T17:02:23.952Z'
+            externalId: '7777883838388999'
+            purchaseInfo:
+              - order:
+                  orderId: xorderIdTestt001
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '430978'
+              - name: SEQUENCE_NUMBER
+                value: '125922'
+          - transactionId: 67179516b00d4d9aad00bcff5d019b34
+            merchantTransactionId: 38943939903ed0a8090d10dert33
+            status: APPROVED
+            account:
+              cardNumber: '7759649826438111'
+              cardSubType: Test
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              promotionCode: '57052'
+              alias: '8111'
+              balance:
+                currentBalance: 5
+                beginBalance: 5
+                currencyCode:
+                  code: USD
+                  number: 840
+                currencyType: BASE
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401df
+            createdTime: '2022-01-26T17:02:23.952Z'
+            externalId: '7777883838388999'
+            purchaseInfo:
+              - order:
+                  orderId: xorderIdTestt001
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '430978'
+              - name: SEQUENCE_NUMBER
+                value: '125922'
+                
+    MerchantFundedMultiPurchaseTwoSuccessOneFailedResponse:
+      value:
+        parentTransactionId: 485-27834-285903824-095
+        createdTime: '2017-03-21T08:15:30-05:00'
+        merchantTransactionId: 38943939903ed0a8090d10dert33
+        purchaseInfo:
+          order:
+            orderId: xorderIdTestt001
+        transactions:
+          - transactionId: 67179516b00d4d9aad00bcff5d019b6e
+            merchantTransactionId: 38943939903ed0a8090d10dert31
+            status: APPROVED
+            account:
+              cardNumber: '6759649826438453'
+              cardSubType: Health12
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              promotionCode: '57051'
+              alias: '8453'
+              balance:
+                currentBalance: 5
+                beginBalance: 5
+                currencyCode:
+                  code: USD
+                  number: 840
+                currencyType: BASE
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+            createdTime: '2022-01-26T17:02:23.952Z'
+            externalId: '7777883838388999'
+            purchaseInfo:
+              - order:
+                  orderId: xorderIdTestt001
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530976'
+              - name: SEQUENCE_NUMBER
+                value: '005931'
+          - transactionId: 67179516b00d4d9aad00bcff5d019b6e
+            merchantTransactionId: 38943939903ed0a8090d10dert32
+            status: FAILED
+            account:
+              cardSubType: Health45
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              promotionCode: '57052'
+            createdTime: '2022-01-26T17:02:23.952Z'
+            externalId: '8738743788739'
+            purchaseInfo:
+              - order:
+                  orderId: xorderIdTestt001
+            errorInfo:
+              code: '269902'
+              message: Invalid request format/data.
+              category: common
+              developerInfo:
+                developerMessage: ' Invalid request format/data.'
+          - transactionId: 67179516b00d4d9aad00bcff5d019b6e
+            merchantTransactionId: 38943939903ed0a8090d10dert33
+            status: APPROVED
+            account:
+              cardNumber: '6759649826438453'
+              cardSubType: Health12
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              promotionCode: '57051'
+              alias: '8453'
+              balance:
+                currentBalance: 5
+                beginBalance: 5
+                currencyCode:
+                  code: USD
+                  number: 840
+                currencyType: BASE
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+            createdTime: '2022-01-26T17:02:23.952Z'
+            externalId: '7777883838388999'
+            purchaseInfo:
+              - order:
+                  orderId: xorderIdTestt001
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530976'
+              - name: SEQUENCE_NUMBER
+                value: '005931'
+        
+                
+    MerchantFundedMultiPurchaseOneApprovedOneDeclinedandOneFailedResponse:
+      value:
+        parentTransactionId: 485-27834-285903824-095
+        createdTime: '2017-03-21T08:15:30-05:00'
+        merchantTransactionId: 38943939903ed0a8090d10dert33
+        purchaseInfo:
+          order:
+            orderId: xorderIdTestt001
+        transactions:
+          - transactionId: 67179516b00d4d9aad00bcff5d019b6e
+            merchantTransactionId: 38943939903ed0a8090d10dert31
+            status: APPROVED
+            account:
+              cardNumber: '6759649826438453'
+              cardSubType: Health12
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              promotionCode: '57051'
+              alias: '8453'
+              balance:
+                currentBalance: 5
+                beginBalance: 5
+                currencyCode:
+                  code: USD
+                  number: 840
+                currencyType: BASE
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+            createdTime: '2022-01-26T17:02:23.952Z'
+            externalId: '7777883838388999'
+            purchaseInfo:
+              - order:
+                  orderId: xorderIdTestt001
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530976'
+              - name: SEQUENCE_NUMBER
+                value: '005931'
+          - transactionId: 67179516b00d4d9aad00bcff5d019b6e
+            merchantTransactionId: 38943939903ed0a8090d10dert32
+            status: FAILED
+            account:
+              cardSubType: Health45
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              promotionCode: '57052'
+            createdTime: '2022-01-26T17:02:23.952Z'
+            externalId: '8738743788739'
+            purchaseInfo:
+              - order:
+                  orderId: xorderIdTestt001
+            errorInfo:
+              code: '269902'
+              message: Invalid request format/data.
+              category: common
+              developerInfo:
+                developerMessage: ' Invalid request format/data.'
+          - transactionId: 67179516b00d4d9aad00bcff5d019b6e
+            merchantTransactionId: 38943939903ed0a8090d10dert33
+            status: DECLINED
+            account:
+              cardNumber: '6759649826438453'
+              cardSubType: Health12
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              promotionCode: '57051'
+              alias: '8453'
+              balance:
+                currentBalance: 5
+                beginBalance: 5
+                currencyCode:
+                  code: USD
+                  number: 840
+                currencyType: BASE
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+            createdTime: '2022-01-26T17:02:23.952Z'
+            externalId: '7777883838388999'
+            purchaseInfo:
+              - order:
+                  orderId: xorderIdTestt001
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530976'
+              - name: SEQUENCE_NUMBER
+                value: '005931'
+                
+    MerchantFundedMultiPurchaseAllTransactionsFailedResponse:
+      value:
+        parentTransactionId: 485-27834-285903824-095
+        createdTime: '2017-03-21T08:15:30-05:00'
+        merchantTransactionId: 38943939903ed0a8090d10dert33
+        purchaseInfo:
+          order:
+            orderId: xorderIdTestt001
+        transactions:
+          - transactionId: 67179516b00d4d9aad00bcff5d019b6e
+            merchantTransactionId: 38943939903ed0a8090d10dert31
+            status: FAILED
+            account:
+              cardSubType: Health45
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              promotionCode: '57052'
+            createdTime: '2022-01-26T17:02:23.952Z'
+            externalId: '8738743788739'
+            purchaseInfo:
+              - order:
+                  orderId: xorderIdTestt001
+            errorInfo:
+              code: '269902'
+              message: Invalid request format/data.
+              category: common
+              developerInfo:
+                developerMessage: ' Invalid request format/data.'
+          - transactionId: 67179516b00d4d9aad00bcff5d019b6e
+            merchantTransactionId: 38943939903ed0a8090d10dert32
+            status: FAILED
+            account:
+              cardSubType: Health45
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              promotionCode: '57052'
+            createdTime: '2022-01-26T17:02:23.952Z'
+            externalId: '8738743788739'
+            purchaseInfo:
+              - order:
+                  orderId: xorderIdTestt001
+            errorInfo:
+              code: '269902'
+              message: Invalid request format/data.
+              category: common
+              developerInfo:
+                developerMessage: ' Invalid request format/data.'
+          - transactionId: 67179516b00d4d9aad00bcff5d019b6e
+            merchantTransactionId: 38943939903ed0a8090d10dert33
+            status: FAILED
+            account:
+              cardSubType: Health45
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              promotionCode: '57052'
+            createdTime: '2022-01-26T17:02:23.952Z'
+            externalId: '8738743788739'
+            purchaseInfo:
+              - order:
+                  orderId: xorderIdTestt001
+            errorInfo:
+              code: '269902'
+              message: Invalid request format/data.
+              category: common
+              developerInfo:
+                developerMessage: ' Invalid request format/data.'
+                
+    MerchantFundedMultiPurchaseAllTransactionsDeclinedResponse:
+      value:
+        parentTransactionId: 485-27834-285903824-095
+        createdTime: '2017-03-21T08:15:30-05:00'
+        merchantTransactionId: 38943939903ed0a8090d10dert33
+        purchaseInfo:
+          order:
+            orderId: ' xorderIdTestt001'
+        transactions:
+          - transactionId: 67179516b00d4d9aad00bcff5d019b6e
+            merchantTransactionId: 38943939903ed0a8090d10dert31
+            status: DECLINED
+            account:
+              cardNumber: '6759649826438453'
+              cardSubType: Health12
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              promotionCode: '57051'
+              alias: '8453'
+            createdTime: '2022-01-26T17:02:23.952Z'
+            externalId: '7777883838388999'
+            purchaseInfo:
+              - order:
+                  orderId: xorderIdTestt001
+            hostExtraInfo:
+              - name: HOST_RESPONSE_MESSAGE
+                value: Declined 995224
+              - name: HOST_RESPONSE_CODE
+                value: '995224'
+          - transactionId: 67179516b00d4d9aad00bcff5d019b34
+            merchantTransactionId: 38943939903ed0a8090d10dert32
+            status: DECLINED
+            account:
+              cardSubType: Health45
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              promotionCode: '57052'
+            createdTime: '2022-01-26T17:02:23.952Z'
+            externalId: '8738743788739'
+            purchaseInfo:
+              - order:
+                  orderId: xorderIdTestt001
+            errorInfo:
+              code: '269902'
+              message: Invalid request format/data.
+              category: common
+              developerInfo:
+                developerMessage: ' Invalid request format/data.'
+              hostExtraInfo:
+                - name: HOST_RESPONSE_MESSAGE
+                  value: Declined 995224
+                - name: HOST_RESPONSE_CODE
+                  value: '995224'
+          - transactionId: 67179516b00d4d9aad00bcff5d019b6e
+            merchantTransactionId: 38943939903ed0a8090d10dert33
+            status: DECLINED
+            account:
+              cardNumber: '6759649826438453'
+              cardSubType: Health12
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              promotionCode: '57051'
+              alias: '8453'
+            createdTime: '2022-01-26T17:02:23.952Z'
+            externalId: '7777883838388999'
+            purchaseInfo:
+              - order:
+                  orderId: xorderIdTestt001
+            hostExtraInfo:
+              - name: HOST_RESPONSE_MESSAGE
+                value: Declined 995224
+              - name: HOST_RESPONSE_CODE
+                value: '995224'
+                
+    MerchantFundedMultiVoidRequest:
+      value:
+        merchantTransactionId: 38943939903ed0a8090d10dert33
+        purchaseInfo:
+          order:
+            orderId: xorderIdTestt001
+        postDate: '05252022'
+        replayCount: 1
+        hostExtraInfo:
+          - name: LOCAL_TXN_DATE
+            value: '05102022'
+          - name: LOCAL_TXN_TIME
+            value: '202059'
+        transactions:
+          - externalId: '7777883838389999'
+            merchantTransactionId: 38943939903ed0a8090d10dert31
+          - externalId: '6666883838388888'
+            merchantTransactionId: 38943939903ed0a8090d10dert32
+          - externalId: '555583838387777'
+            merchantTransactionId: 38943939903ed0a8090d10dert34
+            
+    MerchantFundedMultiVoidAllSuccessResponse:
+      value:
+        parentTransactionId: 485-27834-285903824-095
+        createdTime: '2017-03-21T08:15:30-05:00'
+        merchantTransactionId: 38943939903ed0a8090d10dert33
+        purseInfo:
+          order:
+            orderId: xorderIdTestt001
+        transactions:
+          - transactionId: 8as8a8a99a9876543232sdgf345
+            externalId: '7777883838388999'
+            merchantTransactionId: 38943939903ed0a8090d10dert31
+            status: CANCELLED
+            account:
+              cardNumber: '6759649826438453'
+              cardSubType: Health12
+              alias: '8453'
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+              balance:
+                currentBalance: '5'
+                beginBalance: '20'
+                currencyCode:
+                  code: USD
+                  number: 840
+                currencyType: BASE
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530976'
+              - name: SEQUENCE_NUMBER
+                value: '005931'
+          - transactionId: 9876543232xdvxv34398s89afa9
+            externalId: '88388383838839'
+            merchantTransactionId: 38943939903ed0a8090d10dert32
+            status: CANCELLED
+            account:
+              cardNumber: '7759649826438111'
+              cardSubType: Health34
+              alias: '8111'
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+              balance:
+                currentBalance: '5'
+                beginBalance: '20'
+                currencyCode:
+                  code: USD
+                  number: 840
+                currencyType: BASE
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530911'
+              - name: SEQUENCE_NUMBER
+                value: '005922'
+          - transactionId: 9876543232xdvxv34398s89afa9
+            externalId: '88388383838839'
+            merchantTransactionId: 38943939903ed0a8090d10dert34
+            status: CANCELLED
+            account:
+              cardNumber: '7759649826438111'
+              cardSubType: Health34
+              alias: '8111'
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+              balance:
+                currentBalance: '5'
+                beginBalance: '20'
+                currencyCode:
+                  code: USD
+                  number: 840
+                currencyType: BASE
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530911'
+              - name: SEQUENCE_NUMBER
+                value: '005922'
+                
+    MerchantFundedMultiTwoVoidedOneFailedResponse:
+      value:
+        parentTransactionId: 485-27834-285903824-095
+        createdTime: '2017-03-21T08:15:30-05:00'
+        merchantTransactionId: 38943939903ed0a8090d10dert33
+        purchaseInfo:
+          order:
+            orderId: xorderIdTestt001
+        transactions:
+          - transactionId: 8as8a8a99a9876543232sdgf345
+            externalId: '7777883838388991'
+            merchantTransactionId: 38943939903ed0a8090d10dert31
+            status: CANCELLED
+            account:
+              cardNumber: '6759649826438453'
+              cardSubType: Health12
+              alias: '8453'
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+              balance:
+                currentBalance: '20'
+                beginBalance: '5'
+                currencyCode:
+                  code: USD
+                  number: 840
+                currencyType: BASE
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530976'
+              - name: SEQUENCE_NUMBER
+                value: '005931'
+          - transactionId: 8as8a8a99a9876543232sdgf346
+            externalId: '7777883838388992'
+            merchantTransactionId: 38943939903ed0a8090d10dert32
+            status: FAILED
+            account:
+              cardNumber: '7759649826438111'
+              cardSubType: Health34
+              alias: '8111'
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+            errorInfo:
+              code: '269902'
+              message: ' Invalid request format/data.'
+              category: common
+              developerInfo:
+                developerMessage: ' Invalid request format/data.'
+              hostExtraInfo:
+                - name: HOST_RESPONSE_MESSAGE
+                  value: Declined 995224
+                - name: HOST_RESPONSE_CODE
+                  value: '995224'
+          - transactionId: 8as8a8a99a9876543232sdgf346
+            externalId: '7777883838388992'
+            merchantTransactionId: 38943939903ed0a8090d10dert34
+            status: NOTPROCESSED
+            account:
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+            errorInfo:
+              code: '269902'
+              message: ' Invalid request format/data.'
+              category: common
+              developerInfo:
+                developerMessage: ' Invalid request format/data.'
+              hostExtraInfo:
+                - name: HOST_RESPONSE_MESSAGE
+                  value: Declined 995224
+                - name: HOST_RESPONSE_CODE
+                  value: '995224'
+          - transactionId: 8as8a8a99a9876543232sdgf345
+            externalId: '7777883838388991'
+            merchantTransactionId: 38943939903ed0a8090d10dert33
+            status: CANCELLED
+            account:
+              cardNumber: '6759649826438453'
+              cardSubType: Health12
+              alias: '8453'
+              balance:
+                currentBalance: '20'
+                beginBalance: '5'
+                currencyCode:
+                  code: USD
+                  number: 840
+                  vaultedAccount:
+                    fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+                currencyType: BASE
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530976'
+              - name: SEQUENCE_NUMBER
+                value: '005931'
+                
+    MerchantFundedMultiOneVoidedOneFailedOneDeclinedResponse:
+      value:
+        parentTransactionId: 485-27834-285903824-095
+        createdTime: '2017-03-21T08:15:30-05:00'
+        merchantTransactionId: 38943939903ed0a8090d10dert33
+        purchaseInfo:
+          order:
+            orderId: xorderIdTestt001
+        transactions:
+          - transactionId: 8as8a8a99a9876543232sdgf345
+            externalId: '7777883838388991'
+            merchantTransactionId: 38943939903ed0a8090d10dert31
+            status: CANCELLED
+            account:
+              cardNumber: '6759649826438453'
+              cardSubType: Health12
+              alias: '8453'
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+              balance:
+                currentBalance: '20'
+                beginBalance: '5'
+                currencyCode:
+                  code: USD
+                  number: 840
+                currencyType: BASE
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530976'
+              - name: SEQUENCE_NUMBER
+                value: '005931'
+          - transactionId: 8as8a8a99a9876543232sdgf346
+            externalId: '7777883838388992'
+            merchantTransactionId: 38943939903ed0a8090d10dert32
+            status: FAILED
+            account:
+              cardNumber: '7759649826438111'
+              cardSubType: Health34
+              alias: '8111'
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+            errorInfo:
+              code: '269902'
+              message: ' Invalid request format/data.'
+              category: common
+              developerInfo:
+                developerMessage: ' Invalid request format/data.'
+              hostExtraInfo:
+                - name: HOST_RESPONSE_MESSAGE
+                  value: Declined 995224
+                - name: HOST_RESPONSE_CODE
+                  value: '995224'
+          - transactionId: 8as8a8a99a9876543232sdgf346
+            externalId: '7777883838388992'
+            merchantTransactionId: 38943939903ed0a8090d10dert33
+            status: NOTPROCESSED
+            account:
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+            errorInfo:
+              code: '269902'
+              message: ' Invalid request format/data.'
+              category: common
+              developerInfo:
+                developerMessage: ' Invalid request format/data.'
+              hostExtraInfo:
+                - name: HOST_RESPONSE_MESSAGE
+                  value: Declined 995224
+                - name: HOST_RESPONSE_CODE
+                  value: '995224'
+          - transactionId: 8as8a8a99a9876543232sdgf346
+            externalId: '7777883838388992'
+            merchantTransactionId: 38943939903ed0a8090d10dert34
+            status: FAILED
+            account:
+              cardNumber: '7759649826438111'
+              cardSubType: Health34
+              alias: '8111'
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+            errorInfo:
+              code: '269902'
+              message: ' Invalid request format/data.'
+              category: common
+              developerInfo:
+                developerMessage: ' Invalid request format/data.'
+              hostExtraInfo:
+                - name: HOST_RESPONSE_MESSAGE
+                  value: Declined 995224
+                - name: HOST_RESPONSE_CODE
+                  value: '995224'
+          - transactionId: 9876543232xdvxv34398s89afa9
+            externalId: '7777883838388992'
+            merchantTransactionId: 38943939903ed0a8090d10dert33
+            status: DECLINED
+            account:
+              cardNumber: '7759649826438111'
+              cardSubType: Health34
+              alias: '8111'
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+            errorInfo:
+              code: '269902'
+              message: ' Invalid request format/data.'
+              category: common
+              developerInfo:
+                developerMessage: ' Invalid request format/data.'
+              hostExtraInfo:
+                - name: HOST_RESPONSE_MESSAGE
+                  value: Declined 995224
+                - name: HOST_RESPONSE_CODE
+                  value: '995224'
+                  
+    MerchantFundedVaultedAccountsMultiDeductRequest:
+      value:
+        fdCustomerId: ed0a809bc6164ed7b2dae602ae90d10d
+        memership:
+          accountNumber: '4654636354636363'
+        merchantTransactionId: 38943939903ed0a8090d10dert33
+        merchantId: '99022879997'
+        altMerchantId: '0001'
+        purchaseInfo:
+          order:
+            orderId: xorderIdTestt001
+        postDate: '05252022'
+        replayCount: 1
+        hostExtraInfo:
+          - name: LOCAL_TXN_DATE
+            value: '05102022'
+          - name: LOCAL_TXN_TIME
+            value: '202059'
+        transactions:
+          - externalId: '7777883838388991'
+            merchantTransactionId: 38943939903ed0a8090d10dert30
+            account:
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              merchantTerminalId: '0002'
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+            fundingInfo:
+              fundValue: 15
+              isMerchantFunded: true
+              currencyCode:
+                code: USD
+                number: 840
+          - externalId: '7777883838388991'
+            merchantTransactionId: 38943939903ed0a8090d10dert31
+            account:
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401df
+            fundingInfo:
+              fundValue: 15
+              isMerchantFunded: true
+              currencyCode:
+                code: USD
+                number: 840
+                
+    MerchantFundedMultiDeductAllApprovedResponse:
+      value:
+        parentTransactionId: 485-27834-285903824-095
+        createdTime: '2017-03-21T08:15:30-05:00'
+        merchantTransactionId: 38943939903ed0a8090d10dert33
+        purchaseInfo:
+          order:
+            orderId: xorderIdTestt001
+        transactions:
+          - transactionId: 9876543232xdvxv34398s89afa9
+            externalId: '88388383838839'
+            merchantTransactionId: 38943939903ed0a8090d10dert31
+            status: APPROVED
+            account:
+              cardNumber: '7759649826438111'
+              cardSubType: Health34
+              alias: '8111'
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+              balance:
+                currentBalance: '5'
+                beginBalance: '20'
+                currencyCode:
+                  code: USD
+                  number: 840
+                currencyType: BASE
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530911'
+              - name: SEQUENCE_NUMBER
+                value: '005922'
+          - transactionId: 9876543232xdvxv34398s89afa9
+            externalId: '88388383838839'
+            merchantTransactionId: 38943939903ed0a8090d10dert32
+            status: APPROVED
+            account:
+              cardNumber: '7759649826438111'
+              cardSubType: Health34
+              alias: '8111'
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+              balance:
+                currentBalance: '5'
+                beginBalance: '20'
+                currencyCode:
+                  code: USD
+                  number: 840
+                currencyType: BASE
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530911'
+              - name: SEQUENCE_NUMBER
+                value: '005922'
+                
+    MerchantFundedMultiDeductTwoApprovedOneFailedResponse:
+      value:
+        parentTransactionId: 485-27834-285903824-095
+        createdTime: '2017-03-21T08:15:30-05:00'
+        merchantTransactionId: 38943939903ed0a8090d10dert33
+        purchaseInfo:
+          order:
+            orderId: xorderIdTestt001
+        transactions:
+          - transactionId: 8as8a8a99a9876543232sdgf345
+            externalId: '7777883838388991'
+            merchantTransactionId: 38943939903ed0a8090d10dert30
+            status: APPROVED
+            account:
+              cardNumber: '6759649826438453'
+              cardSubType: Health12
+              alias: '8453'
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+              balance:
+                currentBalance: '20'
+                beginBalance: '5'
+                currencyCode:
+                  code: USD
+                  number: 840
+                currencyType: BASE
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530976'
+              - name: SEQUENCE_NUMBER
+                value: '005931'
+          - externalId: '7777883838388992'
+            merchantTransactionId: 38943939903ed0a8090d10dert31
+            status: FAILED
+            account:
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+            errorInfo:
+              code: '269902'
+              message: ' Invalid request format/data.'
+              category: common
+              developerInfo:
+                developerMessage: ' Invalid request format/data.'
+          - transactionId: 8as8a8a99a9876543232sdgf345
+            externalId: '7777883838388991'
+            merchantTransactionId: 38943939903ed0a8090d10dert32
+            status: APPROVED
+            account:
+              cardNumber: '6759649826438453'
+              cardSubType: Health12
+              alias: '8453'
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+              balance:
+                currentBalance: '20'
+                beginBalance: '5'
+                currencyCode:
+                  code: USD
+                  number: 840
+                currencyType: BASE
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530976'
+              - name: SEQUENCE_NUMBER
+                value: '005931'
+                
+    MerchantFundedDeductMultiVoidRequest:
+      value:
+        merchantTransactionId: 38943939903ed0a8090d10dert33
+        purchaseInfo:
+          order:
+            orderId: xorderIdTestt001
+        postDate: '05252022'
+        replayCount: 1
+        hostExtraInfo:
+          - name: LOCAL_TXN_DATE
+            value: '05102022'
+          - name: LOCAL_TXN_TIME
+            value: '202059'
+        transactions:
+          - externalId: '7777883838389999'
+            merchantTransactionId: 38943939903ed0a8090d10dert31
+          - externalId: '6666883838388888'
+            merchantTransactionId: 38943939903ed0a8090d10dert32
+          - externalId: '555583838387777'
+            merchantTransactionId: 38943939903ed0a8090d10dert34
+        
+                
+    MerchantFundedDeductMultiVoidAllApprovedResponse:
+      value:
+        parentTransactionId: 485-27834-285903824-095
+        createdTime: '2017-03-21T08:15:30-05:00'
+        merchantTransactionId: 38943939903ed0a8090d10dert33
+        purchaseInfo:
+          order:
+            orderId: xorderIdTestt001
+        transactions:
+          - transactionId: 8as8a8a99a9876543232sdgf345
+            externalId: '7777883838389999'
+            merchantTransactionId: 38943939903ed0a8090d10dert31
+            status: APPROVED
+            account:
+              cardNumber: '6759649826438453'
+              cardSubType: Health12
+              alias: '8453'
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+              balance:
+                currentBalance: '5'
+                beginBalance: '20'
+                currencyCode:
+                  code: USD
+                  number: 840
+                currencyType: BASE
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530976'
+              - name: SEQUENCE_NUMBER
+                value: '005931'
+          - transactionId: 9876543232xdvxv34398s89afa9
+            externalId: '6666883838388888'
+            merchantTransactionId: 38943939903ed0a8090d10dert32
+            status: APPROVED
+            account:
+              cardNumber: '7759649826438111'
+              cardSubType: Health34
+              alias: '8111'
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+              balance:
+                currentBalance: '5'
+                beginBalance: '20'
+                currencyCode:
+                  code: USD
+                  number: 840
+                currencyType: BASE
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530911'
+              - name: SEQUENCE_NUMBER
+                value: '005922'
+          - transactionId: 9876543232xdvxv34398s89afa9
+            externalId: '555583838387777'
+            merchantTransactionId: 38943939903ed0a8090d10dert34
+            status: APPROVED
+            account:
+              cardNumber: '7759649826438111'
+              cardSubType: Health34
+              alias: '8111'
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+              balance:
+                currentBalance: '5'
+                beginBalance: '20'
+                currencyCode:
+                  code: USD
+                  number: 840
+                currencyType: BASE
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530911'
+              - name: SEQUENCE_NUMBER
+                value: '005922'
+        
+    MerchantFundedDeductMultiVoidTwoApprovedOneFailedResponse:
+      value:
+        parentTransactionId: 485-27834-285903824-095
+        createdTime: '2017-03-21T08:15:30-05:00'
+        merchantTransactionId: 38943939903ed0a8090d10dert33
+        purchaseInfo:
+          order:
+            orderId: xorderIdTestt001
+        transactions:
+          - transactionId: 8as8a8a99a9876543232sdgf345
+            externalId: '7777883838388991'
+            merchantTransactionId: 38943939903ed0a8090d10dert30
+            status: APPROVED
+            account:
+              cardNumber: '6759649826438453'
+              cardSubType: Health12
+              alias: '8453'
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+              balance:
+                currentBalance: '20'
+                beginBalance: '5'
+                currencyCode:
+                  code: USD
+                  number: 840
+                currencyType: BASE
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530976'
+              - name: SEQUENCE_NUMBER
+                value: '005931'
+          - externalId: '7777883838388992'
+            merchantTransactionId: 38943939903ed0a8090d10dert31
+            status: FAILED
+            account:
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+            errorInfo:
+              code: '269902'
+              message: ' Invalid request format/data.'
+              category: common
+              developerInfo:
+                developerMessage: ' Invalid request format/data.'
+          - transactionId: 8as8a8a99a9876543232sdgf345
+            externalId: '7777883838388991'
+            merchantTransactionId: 38943939903ed0a8090d10dert32
+            status: APPROVED
+            account:
+              cardNumber: '6759649826438453'
+              cardSubType: Health12
+              alias: '8453'
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+              balance:
+                currentBalance: '20'
+                beginBalance: '5'
+                currencyCode:
+                  code: USD
+                  number: 840
+                currencyType: BASE
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530976'
+              - name: SEQUENCE_NUMBER
+                value: '005931'
+                
+    MerchantFundedMultiDeductRequest:
+      value:
+        parentTransactionId: 485-27834-285903824-095
+        createdTime: '2017-03-21T08:15:30-05:00'
+        merchantTransactionId: 38943939903ed0a8090d10dert33
+        purchaseInfo:
+          order:
+            orderId: xorderIdTestt001
+        transactions:
+          - transactionId: 8as8a8a99a9876543232sdgf345
+            externalId: '7777883838388991'
+            merchantTransactionId: 38943939903ed0a8090d10dert30
+            status: APPROVED
+            account:
+              cardNumber: '6759649826438453'
+              cardSubType: Health12
+              alias: '8453'
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+              balance:
+                currentBalance: '20'
+                beginBalance: '5'
+                currencyCode:
+                  code: USD
+                  number: 840
+                currencyType: BASE
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530976'
+              - name: SEQUENCE_NUMBER
+                value: '005931'
+          - externalId: '7777883838388992'
+            merchantTransactionId: 38943939903ed0a8090d10dert31
+            status: FAILED
+            account:
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+            errorInfo:
+              code: '269902'
+              message: ' Invalid request format/data.'
+              category: common
+              developerInfo:
+                developerMessage: ' Invalid request format/data.'
+          - transactionId: 8as8a8a99a9876543232sdgf345
+            externalId: '7777883838388991'
+            merchantTransactionId: 38943939903ed0a8090d10dert32
+            status: APPROVED
+            account:
+              cardNumber: '6759649826438453'
+              cardSubType: Health12
+              alias: '8453'
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+              balance:
+                currentBalance: '20'
+                beginBalance: '5'
+                currencyCode:
+                  code: USD
+                  number: 840
+                currencyType: BASE
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530976'
+              - name: SEQUENCE_NUMBER
+                value: '005931'
+                
+    
+    MultiSweepRequest:
+      value:
+        fdCustomerId: ed0a809bc6164ed7b2dae602ae90d10d
+        memership:
+          accountNumber: '4654636354636363'
+        merchantTransactionId: 38943939903ed0a8090d10dert33
+        merchantId: '99022879997'
+        altMerchantId: '0001'
+        purchaseInfo:
+          order:
+            orderId: ' xorderIdTestt001'
+        postDate: '05252022'
+        replayCount: 1
+        hostExtraInfo:
+          - name: LOCAL_TXN_DATE
+            value: '05102022'
+          - name: LOCAL_TXN_TIME
+            value: '202059'
+        transactions:
+          - merchantTransactionId: 38943939903ed0a8090d10dert31
+            externalId: '7777883838388991'
+            account:
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              merchantTerminalId: '0002'
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+          - merchantTransactionId: 38943939903ed0a8090d10dert32
+            externalId: '7777883838388991'
+            account:
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401df
+                
+    MultiSweepAllApprovedResponse:
+      value:
+        parentTransactionId: 485-27834-285903824-095
+        createdTime: '2017-03-21T08:15:30-05:00'
+        merchantTransactionId: 38943939903ed0a8090d10dert33
+        purchaseInfo:
+          order:
+            orderId: xorderIdTestt001
+        transactions:
+          - transactionId: 9876543232xdvxv34398s89afa9
+            externalId: '88388383838839'
+            merchantTransactionId: 38943939903ed0a8090d10dert32
+            status: APPROVED
+            account:
+              cardNumber: '7759649826438111'
+              cardSubType: Health34
+              alias: '8111'
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401d4
+              balance:
+                currentBalance: '5'
+                beginBalance: '20'
+                currencyCode:
+                  code: USD
+                  number: 840
+                currencyType: BASE
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530911'
+              - name: SEQUENCE_NUMBER
+                value: '005922'
+          - transactionId: 9876543232xdvxv34398s89afa9
+            externalId: '88388383838839'
+            merchantTransactionId: 38943939903ed0a8090d10dert34
+            status: APPROVED
+            account:
+              cardNumber: '7759649826438111'
+              cardSubType: Health34
+              alias: '8111'
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401d4
+              balance:
+                currentBalance: '5'
+                beginBalance: '20'
+                currencyCode:
+                  code: USD
+                  number: 840
+                currencyType: BASE
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530911'
+              - name: SEQUENCE_NUMBER
+                value: '005922'
+                
+                
+    MultiSweepTwoApprovedOneFailedResponse:
+      value:
+        parentTransactionId: 485-27834-285903824-095
+        createdTime: '2017-03-21T08:15:30-05:00'
+        merchantTransactionId: 38943939903ed0a8090d10dert33
+        purchaseInfo:
+          order:
+            orderId: xorderIdTestt001
+        transactions:
+          - transactionId: 8as8a8a99a9876543232sdgf345
+            externalId: '7777883838388991'
+            merchantTransactionId: 38943939903ed0a8090d10dert31
+            status: APPROVED
+            account:
+              cardNumber: '6759649826438453'
+              cardSubType: Health12
+              alias: '8453'
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401d4
+              balance:
+                currentBalance: '20'
+                beginBalance: '5'
+                currencyCode:
+                  code: USD
+                  number: 840
+                currencyType: BASE
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530976'
+              - name: SEQUENCE_NUMBER
+                value: '005931'
+          - externalId: '7777883838388992'
+            merchantTransactionId: 38943939903ed0a8090d10dert32
+            status: FAILED
+            account:
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401df
+            errorInfo:
+              code: '269902'
+              message: ' Invalid request format/data.'
+              category: common
+              developerInfo:
+                developerMessage: ' Invalid request format/data.'
+          - transactionId: 8as8a8a99a9876543232sdgf345
+            externalId: '7777883838388991'
+            merchantTransactionId: 38943939903ed0a8090d10dert34
+            status: APPROVED
+            account:
+              cardNumber: '6759649826438453'
+              cardSubType: Health12
+              alias: '8453'
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              balance:
+                currentBalance: '20'
+                beginBalance: '5'
+                currencyCode:
+                  code: USD
+                  number: 840
+                currencyType: BASE
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530976'
+              - name: SEQUENCE_NUMBER
+                value: '005931'
+                
+    SweepMultiVoidRequest:
+      value:
+        merchantTransactionId: 38943939903ed0a8090d10dert33
+        purchaseInfo:
+          order:
+            orderId: xorderIdTestt001
+        postDate: '05252022'
+        replayCount: 1
+        hostExtraInfo:
+          - name: LOCAL_TXN_DATE
+            value: '05102022'
+          - name: LOCAL_TXN_TIME
+            value: '202059'
+        transactions:
+          - externalId: '7777883838389999'
+            merchantTransactionId: 38943939903ed0a8090d10dert31
+          - externalId: '6666883838388888'
+            merchantTransactionId: 38943939903ed0a8090d10dert32
+          - externalId: '555583838387777'
+            merchantTransactionId: 38943939903ed0a8090d10dert34
+        
+    SweepMultiVoidAllApprovedResponse:
+      value:
+        parentTransactionId: 485-27834-285903824-095
+        createdTime: '2017-03-21T08:15:30-05:00'
+        merchantTransactionId: 38943939903ed0a8090d10dert33
+        purchaseInfo:
+          order:
+            orderId: xorderIdTestt001
+        transactions:
+          - transactionId: 8as8a8a99a9876543232sdgf345
+            externalId: '7777883838389999'
+            merchantTransactionId: 38943939903ed0a8090d10dert31
+            status: APPROVED
+            account:
+              cardNumber: '6759649826438453'
+              cardSubType: Health12
+              alias: '8453'
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+              balance:
+                currentBalance: '5'
+                beginBalance: '20'
+                currencyCode:
+                  code: USD
+                  number: 840
+                currencyType: BASE
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530976'
+              - name: SEQUENCE_NUMBER
+                value: '005931'
+          - transactionId: 9876543232xdvxv34398s89afa9
+            externalId: '6666883838388888'
+            merchantTransactionId: 38943939903ed0a8090d10dert32
+            status: APPROVED
+            account:
+              cardNumber: '7759649826438111'
+              cardSubType: Health34
+              alias: '8111'
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+              balance:
+                currentBalance: '5'
+                beginBalance: '20'
+                currencyCode:
+                  code: USD
+                  number: 840
+                currencyType: BASE
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530911'
+              - name: SEQUENCE_NUMBER
+                value: '005922'
+          - transactionId: 9876543232xdvxv34398s89afa9
+            externalId: '555583838387777'
+            merchantTransactionId: 38943939903ed0a8090d10dert34
+            status: APPROVED
+            account:
+              cardNumber: '7759649826438111'
+              cardSubType: Health34
+              alias: '8111'
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+              balance:
+                currentBalance: '5'
+                beginBalance: '20'
+                currencyCode:
+                  code: USD
+                  number: 840
+                currencyType: BASE
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530911'
+              - name: SEQUENCE_NUMBER
+                value: '005922'
+                
+                
+    SweepMultiVoidTwoApprovedOneFailedResponse:
+      value:
+        parentTransactionId: 485-27834-285903824-095
+        createdTime: '2017-03-21T08:15:30-05:00'
+        merchantTransactionId: 38943939903ed0a8090d10dert33
+        purchaseInfo:
+          order:
+            orderId: xorderIdTestt001
+        transactions:
+          - transactionId: 8as8a8a99a9876543232sdgf345
+            externalId: '7777883838388991'
+            merchantTransactionId: 38943939903ed0a8090d10dert30
+            status: APPROVED
+            account:
+              cardNumber: '6759649826438453'
+              cardSubType: Health12
+              alias: '8453'
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+              balance:
+                currentBalance: '20'
+                beginBalance: '5'
+                currencyCode:
+                  code: USD
+                  number: 840
+                currencyType: BASE
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530976'
+              - name: SEQUENCE_NUMBER
+                value: '005931'
+          - externalId: '7777883838388992'
+            merchantTransactionId: 38943939903ed0a8090d10dert31
+            status: FAILED
+            account:
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+            errorInfo:
+              code: '269902'
+              message: ' Invalid request format/data.'
+              category: common
+              developerInfo:
+                developerMessage: ' Invalid request format/data.'
+          - transactionId: 8as8a8a99a9876543232sdgf345
+            externalId: '7777883838388991'
+            merchantTransactionId: 38943939903ed0a8090d10dert32
+            status: APPROVED
+            account:
+              cardNumber: '6759649826438453'
+              cardSubType: Health12
+              alias: '8453'
+              merchantId: '99022879997'
+              altMerchantId: '0001'
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+              balance:
+                currentBalance: '20'
+                beginBalance: '5'
+                currencyCode:
+                  code: USD
+                  number: 840
+                currencyType: BASE
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530976'
+              - name: SEQUENCE_NUMBER
+                value: '005931'
+        
+    MultiReloadVaultedRequest:
+      value:
+        fdCustomerId: ed0a809bc6164ed7b2dae602ae90d10d
+        membership:
+          accountNumber: '4654636354636363'
+          securityCode: '1234'
+          verifyAccount: true
+        merchantTransactionId: d8s8s8s8s990s8w456e464643e3tryd
+        merchantId: '99022879997'
+        altMerchantId: '0001'
+        purchaseInfo:
+          order:
+            orderId: xorderIdTestt001
+        isPartialPaymentAllowed: true
+        postDate: '05252022'
+        replayCount: 1
+        hostExtraInfo:
+          - name: LOCAL_TXN_DATE
+            value: '05102022'
+          - name: LOCAL_TXN_TIME
+            value: '202059'
+        sales:
+          - externalId: '88388383838839'
+            merchantTransactionId: 38943939903ed0a8090d10dert32
+            merchantId: '99022879997'
+            altMerchantId: '0001'
+            merchantTerminalId: '0002'
+            requestedAmount: 20
+            currencyCode:
+              code: USD
+              number: 840
+            fundingSource:
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+          - externalId: '88388383838839'
+            merchantTransactionId: 38943939903ed0a8090d10dert32
+            merchantId: '99022879997'
+            altMerchantId: '0001'
+            merchantTerminalId: '0002'
+            requestedAmount: 20
+            currencyCode:
+              code: USD
+              number: 840
+            fundingSource:
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401df
+                
+    MultiReloadVaultedAllAPprovedResponse:
+      value:
+        parentTransactionId: 485-27834-285903824-095
+        createdTime: '2017-03-21T08:15:30-05:00'
+        merchantTransactionId: 38943939903ed0a8090d10dert33
+        purchaseInfo:
+          order:
+            orderId: xorderIdTestt001
+        transactions:
+          - transactionId: 8s9s98s989s98a899876543232
+            merchantTransactionId: 38943939903ed0a8090d10dert31
+            status: APPROVED
+            destinationCard:
+              account:
+                cardNumber: '6759649826438453'
+                cardSubType: Health12
+                merchantId: '99022879997'
+                altMerchantId: '0001'
+                alias: '8453'
+                vaultedAccount:
+                  fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+                balance:
+                  currentBalance: 20
+                  beginBalance: 5
+                  currencyCode:
+                    code: USD
+                    number: 840
+                  currencyType: BASE
+            createdTime: '2022-01-26T17:37:59.911Z'
+            externalId: '8738743788738234'
+            purchaseInfo:
+              - order:
+                  orderId: xorderIdTestt001
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530976'
+              - name: SEQUENCE_NUMBER
+                value: '005931'
+          - transactionId: 987654323ert3d5dt5e44564642
+            status: APPROVED
+            merchantTransactionId: 38943939903ed0a8090d10dert32
+            destinationCard:
+              account:
+                cardNumber: '6759649826438111'
+                cardSubType: Health34
+                merchantId: '99022879997'
+                altMerchantId: '0001'
+                alias: '8111'
+                vaultedAccount:
+                  fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+                balance:
+                  currentBalance: 20
+                  beginBalance: 5
+                  currencyCode:
+                    code: USD
+                    number: 840
+                  currencyType: BASE
+            createdTime: '2022-01-26T17:37:59.911Z'
+            externalId: '8738743788738235'
+            purchaseInfo:
+              - order:
+                  orderId: xorderIdTestt001
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530960'
+              - name: SEQUENCE_NUMBER
+                value: '005970'
+          - transactionId: 987654323ert3d5dt5e44564643
+            status: APPROVED
+            merchantTransactionId: 38943939903ed0a8090d10dert34
+            destinationCard:
+              account:
+                cardNumber: '6759649826438111'
+                cardSubType: Health34
+                merchantId: '99022879997'
+                altMerchantId: '0001'
+                alias: '8111'
+                vaultedAccount:
+                  fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+                balance:
+                  currentBalance: 20
+                  beginBalance: 5
+                  currencyCode:
+                    code: USD
+                    number: 840
+                  currencyType: BASE
+            createdTime: '2022-01-26T17:37:59.911Z'
+            externalId: '8738743788738235'
+            purchaseInfo:
+              - order:
+                  orderId: xorderIdTestt001
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530960'
+              - name: SEQUENCE_NUMBER
+                value: '005970'
+        
+                
+    MultiReloadVaultedTwoApprovedOneFailedResponse:
+      value:
+        parentTransactionId: 485-27834-285903824-095
+        createdTime: '2017-03-21T08:15:30-05:00'
+        merchantTransactionId: 38943939903ed0a8090d10dert33
+        purchaseInfo:
+          order:
+            orderId: xorderIdTestt001
+        transactions:
+          - transactionId: 8s9s98s989s98a899876543232
+            status: APPROVED
+            merchantTransactionId: 38943939903ed0a8090d10dert30
+            destinationCard:
+              account:
+                cardNumber: '6759649826438453'
+                cardSubType: Health12
+                merchantId: '99022879997'
+                altMerchantId: '0001'
+                alias: '8453'
+                vaultedAccount:
+                  fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+                balance:
+                  currentBalance: 20
+                  beginBalance: 5
+                  currencyCode:
+                    code: USD
+                    number: 840
+                  currencyType: BASE
+            createdTime: '2022-01-26T17:37:59.911Z'
+            externalId: '8738743788738234'
+            purchaseInfo:
+              - order:
+                  orderId: xorderIdTestt001
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530976'
+              - name: SEQUENCE_NUMBER
+                value: '005931'
+          - transactionId: 987654323ert3d5dt5e44564642
+            status: APPROVED
+            merchantTransactionId: 38943939903ed0a8090d10dert31
+            destinationCard:
+              account:
+                cardNumber: '6759649826438111'
+                cardSubType: Health34
+                merchantId: '99022879997'
+                altMerchantId: '0001'
+                alias: '8111'
+                vaultedAccount:
+                  fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+                balance:
+                  currentBalance: 20
+                  beginBalance: 5
+                  currencyCode:
+                    code: USD
+                    number: 840
+                  currencyType: BASE
+            createdTime: '2022-01-26T17:37:59.911Z'
+            externalId: '8738743788738235'
+            purchaseInfo:
+              - order:
+                  orderId: xorderIdTestt001
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530960'
+              - name: SEQUENCE_NUMBER
+                value: '005970'
+          - transactionId: 987654323ert3d5dt5e44564642
+            status: FAILED
+            merchantTransactionId: 38943939903ed0a8090d10dert32
+            destinationCard:
+              account:
+                merchantId: '99022879997'
+                altMerchantId: '0001'
+                alias: '8111'
+                vaultedAccount:
+                  fdAccountId: 8a7fb5717e8fcee9017e9756a30401d4
+            createdTime: '2022-01-26T17:37:59.911Z'
+            externalId: '8738743788738235'
+            purchaseInfo:
+              - order:
+                  orderId: xorderIdTestt001
+            errorInfo:
+              code: '269902'
+              message: ' Invalid request format/data.'
+              category: common
+              developerInfo:
+                developerMessage: ' Invalid request format/data.'
+              hostExtraInfo:
+                - name: HOST_RESPONSE_MESSAGE
+                  value: Declined 995224
+                - name: HOST_RESPONSE_CODE
+                  value: '995224'
+                  
+    MultiReloadVaultedTwoApprovedOneDeclinedResponse:
+      value:
+        parentTransactionId: 485-27834-285903824-095
+        createdTime: '2017-03-21T08:15:30-05:00'
+        merchantTransactionId: 38943939903ed0a8090d10dert33
+        purchaseInfo:
+          order:
+            orderId: xorderIdTestt001
+        transactions:
+          - transactionId: 8s9s98s989s98a899876543232
+            status: APPROVED
+            merchantTransactionId: 38943939903ed0a8090d10dert30
+            destinationCard:
+              account:
+                cardNumber: '6759649826438453'
+                cardSubType: Health12
+                merchantId: '99022879997'
+                altMerchantId: '0001'
+                alias: '8453'
+                vaultedAccount:
+                  fdAccountId: 8a7fb5717e8fcee9017e9756a30401d4
+                balance:
+                  currentBalance: 20
+                  beginBalance: 5
+                  currencyCode:
+                    code: USD
+                    number: 840
+                  currencyType: BASE
+            createdTime: '2022-01-26T17:37:59.911Z'
+            externalId: '8738743788738234'
+            purchaseInfo:
+              - order:
+                  orderId: xorderIdTestt001
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530976'
+              - name: SEQUENCE_NUMBER
+                value: '005931'
+          - transactionId: 987654323ert3d5dt5e44564642
+            status: APPROVED
+            merchantTransactionId: 38943939903ed0a8090d10dert31
+            destinationCard:
+              account:
+                cardNumber: '6759649826438111'
+                cardSubType: Health34
+                merchantId: '99022879997'
+                altMerchantId: '0001'
+                alias: '8111'
+                vaultedAccount:
+                  fdAccountId: 8a7fb5717e8fcee9017e9756a30401d4
+                balance:
+                  currentBalance: 20
+                  beginBalance: 5
+                  currencyCode:
+                    code: USD
+                    number: 840
+                  currencyType: BASE
+            createdTime: '2022-01-26T17:37:59.911Z'
+            externalId: '8738743788738235'
+            purchaseInfo:
+              - order:
+                  orderId: xorderIdTestt001
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530960'
+              - name: SEQUENCE_NUMBER
+                value: '005970'
+          - transactionId: 987654323ert3d5dt5e44564642
+            status: DECLINED
+            merchantTransactionId: 38943939903ed0a8090d10dert32
+            destinationCard:
+              account:
+                cardNumber: '6759649826438111'
+                cardSubType: Health34
+                merchantId: '99022879997'
+                altMerchantId: '0001'
+                alias: '8111'
+                vaultedAccount:
+                  fdAccountId: 8a7fb5717e8fcee9017e9756a30401d4
+            createdTime: '2022-01-26T17:37:59.911Z'
+            externalId: '8738743788738235'
+            purchaseInfo:
+              - order:
+                  orderId: xorderIdTestt001
+            errorInfo:
+              code: '269902'
+              message: ' Invalid request format/data.'
+              category: common
+              developerInfo:
+                developerMessage: ' Invalid request format/data.'
+              hostExtraInfo:
+                - name: HOST_RESPONSE_MESSAGE
+                  value: Declined 995224
+                - name: HOST_RESPONSE_CODE
+                  value: '995224'
+                  
+  
+    MultiReloadVaultedAllDeclinedResponse:
+      value:
+        parentTransactionId: 485-27834-285903824-095
+        createdTime: '2017-03-21T08:15:30-05:00'
+        merchantTransactionId: 38943939903ed0a8090d10dert33
+        purchaseInfo:
+          order:
+            orderId: xorderIdTestt001
+        transactions:
+          - transactionId: 987654323ert3d5dt5e44564641
+            status: DECLINED
+            merchantTransactionId: 38943939903ed0a8090d10dert30
+            destinationCard:
+              account:
+                cardNumber: '6759649826438111'
+                cardSubType: Health34
+                merchantId: '99022879997'
+                altMerchantId: '0001'
+                alias: '8111'
+                vaultedAccount:
+                  fdAccountId: 8a7fb5717e8fcee9017e9756a30401d4
+            createdTime: '2022-01-26T17:37:59.911Z'
+            externalId: '8738743788738235'
+            purchaseInfo:
+              - order:
+                  orderId: xorderIdTestt001
+            errorInfo:
+              code: '269902'
+              message: ' Invalid request format/data.'
+              category: common
+              developerInfo:
+                developerMessage: ' Invalid request format/data.'
+          - transactionId: 987654323ert3d5dt5e44564642
+            status: DECLINED
+            merchantTransactionId: 38943939903ed0a8090d10dert31
+            destinationCard:
+              account:
+                cardNumber: '6759649826438111'
+                cardSubType: Health34
+                merchantId: '99022879997'
+                altMerchantId: '0001'
+                alias: '8111'
+                vaultedAccount:
+                  fdAccountId: 8a7fb5717e8fcee9017e9756a30401d4
+            createdTime: '2022-01-26T17:37:59.911Z'
+            externalId: '8738743788738235'
+            purchaseInfo:
+              - order:
+                  orderId: xorderIdTestt001
+            errorInfo:
+              code: '269902'
+              message: ' Invalid request format/data.'
+              category: common
+              developerInfo:
+                developerMessage: ' Invalid request format/data.'
+              hostExtraInfo:
+                - name: HOST_RESPONSE_MESSAGE
+                  value: Declined 995224
+                - name: HOST_RESPONSE_CODE
+                  value: '995224'
+          - transactionId: 987654323ert3d5dt5e44564643
+            status: DECLINED
+            merchantTransactionId: 38943939903ed0a8090d10dert32
+            destinationCard:
+              account:
+                cardNumber: '6759649826438111'
+                cardSubType: Health34
+                merchantId: '99022879997'
+                altMerchantId: '0001'
+                alias: '8111'
+                vaultedAccount:
+                  fdAccountId: 8a7fb5717e8fcee9017e9756a30401d4
+            createdTime: '2022-01-26T17:37:59.911Z'
+            externalId: '8738743788738235'
+            purchaseInfo:
+              - order:
+                  orderId: xorderIdTestt001
+            errorInfo:
+              code: '269902'
+              message: ' Invalid request format/data.'
+              category: common
+              developerInfo:
+                developerMessage: ' Invalid request format/data.'
+              hostExtraInfo:
+                - name: HOST_RESPONSE_MESSAGE
+                  value: Declined 995224
+                - name: HOST_RESPONSE_CODE
+                  value: '995224'
