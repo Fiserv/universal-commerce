@@ -756,6 +756,8 @@ Network tokenization refers to the use of tokens provided by payment schemes suc
 
 ### Make a Payment using Network Tokens
 
+## Sample Sale Transaction
+
 **<ins>Endpoint URL</ins>**
 
 HTTP Method: POST
@@ -800,7 +802,7 @@ Authorization: Bearer {{tokenId}}
 
 Timestamp:{{time}}
 
-**<ins>Sample Request (with merchantid)</ins>**
+**<ins>Sample Request </ins>**
 
 ```json
 
@@ -918,6 +920,149 @@ Timestamp:{{time}}
         {
             "name": "NETWORK_TRANSACTION_ID",
             "value": "895371201134642"
+        },
+        {
+            "name": "PAR_ID",
+            "value": "01234567890123456789012345678"
+        }
+    ]
+}
+
+```
+
+## Sample Authorization Transaction
+
+**<ins> Endpoint URL </ins>**
+
+HTTP Method: POST
+
+Non-prod: https://int.api.firstdata.com/ucom/v1/payments/auths
+
+Prod: https://prod.api.firstdata.com/ucom/v1/payments/auths
+
+**<ins> Sample Request </ins>**
+
+```json
+
+{
+    "authorization": {
+        "orderId": "Order8690804",
+        "merchantId": "MO06313553001",
+        "requestedAmount": "11.25",
+        "currencyCode": {
+            "number": "840"
+        },
+        "fundingSource": {
+            "credit": {
+                "cardType": "VISA",
+                "alias": "1111",
+                "billingAddress": {
+                    "type": "work",
+                    "streetAddress": "100 Universal City Plaza",
+                    "locality": "Hollywood",
+                    "region": "CA",
+                    "postalCode": "20220",
+                    "country": "US",
+                    "formatted": "100 Universal City Plaza\nHollywood",
+                    "primary": true
+                },
+                "token": {
+                    "tokenId": "4895370015999979",
+                    "tokenProvider": "THIRD_PARTY_NETWORK_TOKEN",
+                    "expiryDate": {
+                        "month": "12",
+                        "year": "25"
+                    }
+                }
+            }
+        },
+        "hostExtraInfo": [
+            {
+                "name": "STORED_CREDENTIAL_INDICATOR",
+                "value": "INITIAL"
+            },
+            {
+                "name": "TRANSACTION_INITIATION_INDICATOR",
+                "value": "CUSTOMER"
+            },
+            {
+                "name": "SCHEDULE_INDICATOR",
+                "value": "UNSCHEDULED"
+            }
+        ]
+    }
+}
+
+```
+
+**<ins> Sample Response </ins>**
+
+```json
+
+{
+    "fdAuthorizationId": "417cf9696f9a49a4ba1e384ea4900744",
+    "authStatus": "APPROVED",
+    "orderId": "Order8690804",
+    "requestedAmount": 11.25,
+    "approvedAmount": 11.25,
+    "currencyCode": {
+        "code": "USD",
+        "number": 840
+    },
+    "transactionDateTime": "2023-08-18T11:25:44-0400",
+    "fundingSource": {
+        "type": "CREDIT",
+        "credit": {
+            "alias": "1111",
+            "cardType": "VISA",
+            "billingAddress": {
+                "streetAddress": "100 Universal City Plaza",
+                "postalCode": "20220"
+            },
+            "expiryDate": {
+                "month": "12",
+                "year": "25"
+            },
+            "tokens": [
+                {
+                    "tokenId": "4895370015999979",
+                    "tokenProvider": "THIRD_PARTY_NETWORK_TOKEN",
+                    "expiryDate": {
+                        "month": "12",
+                        "year": "25"
+                    }
+                }
+            ]
+        }
+    },
+    "hostExtraInfo": [
+        {
+            "name": "APPROVAL_NUMBER",
+            "value": "99915 "
+        },
+        {
+            "name": "SEQUENCE_NUMBER",
+            "value": "240418"
+        },
+        {
+            "name": "HOST_RESPONSE_CODE",
+            "value": "3"
+        },
+        {
+            "name": "HOST_RESPONSE_MESSAGE",
+            "value": "APPROVED  99915"
+        },
+        {
+            "name": "HOST_AVS_CODE",
+            "value": "AVS+Y"
+        },
+        {
+            "name": "TRANSACTION_DATETIME",
+            "value": "2023-08-18T10:25"
+        },
+        {
+            "name": "NETWORK_TRANSACTION_ID",
+            "value": "895370818152544"
         },
         {
             "name": "PAR_ID",
