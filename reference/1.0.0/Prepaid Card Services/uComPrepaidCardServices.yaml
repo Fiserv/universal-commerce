@@ -737,7 +737,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/PrepaidMultiDeduct'
               examples:
-                Credit Card:
+                Merchant Funded Vaulted ACcounts:
                   summary: Purchase Prepaid card with credit Card Response
                   $ref: '#/components/examples/MerchantFundedMultiDeductAllApprovedResponse'
         207:
@@ -747,7 +747,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/PrepaidMultiDeduct'
               examples:
-                Merchant Funded:
+                Merchant Funded - 207:
                   summary: Void multiple deduct transactions
                   $ref: '#/components/examples/MerchantFundedMultiDeductTwoApprovedOneFailedResponse'
                 
@@ -831,6 +831,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PrepaidMultiVoid'
+              examples:
+                Merchant Funded All Transactions Approved - 200:
+                  summary: Activate multiple merchant funded purses
+                  $ref: '#/components/examples/MerchantFundedMultiPurchaseSuccessResponse'
         207:
           description: Multiple status
           content:
@@ -838,7 +842,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/PrepaidMultiVoid'
               examples:
-                Merchant Funded:
+                Merchant Funded Two Transactions Approved and One Failed - 207:
                   summary: Void multiple deduct transactions
                   $ref: '#/components/examples/MerchantFundedDeductMultiVoidTwoApprovedOneFailedResponse'
                
@@ -1155,7 +1159,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/LoadMultiFundsPurchase'
               examples:
-                Vaulted Accounts - All Approved: {summary: Balance response for vaulted card, $ref: '#/components/examples/MultiReloadVaultedAllAPprovedResponse'}
+                Vaulted Accounts - All Approved - 200: {summary: Balance response for vaulted card, $ref: '#/components/examples/MultiReloadVaultedAllAPprovedResponse'}
         207:
           description: Multiple Status
           content:
@@ -1163,9 +1167,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/LoadMultiFundsPurchase'
               examples:
-                Vaulted Card - Two Approved One Failed: {summary: Balance response for vaulted card, $ref: '#/components/examples/MultiReloadVaultedTwoApprovedOneFailedResponse'}
-                Vaulted Card - Two Approved One Declined: {summary: Balance response for vaulted card, $ref: '#/components/examples/MultiReloadVaultedTwoApprovedOneDeclinedResponse'}
-                Vaulted Card - All Declined: {summary: Balance response for vaulted card, $ref: '#/components/examples/MultiReloadVaultedAllDeclinedResponse'}
+                Vaulted Card - Two Approved One Failed - 207: {summary: Balance response for vaulted card, $ref: '#/components/examples/MultiReloadVaultedTwoApprovedOneFailedResponse'}
+                Vaulted Card - Two Approved One Declined - 207: {summary: Balance response for vaulted card, $ref: '#/components/examples/MultiReloadVaultedTwoApprovedOneDeclinedResponse'}
+                Vaulted Card - All Declined - 207: {summary: Balance response for vaulted card, $ref: '#/components/examples/MultiReloadVaultedAllDeclinedResponse'}
 
         400:
           $ref: '#/components/responses/BadRequest'
