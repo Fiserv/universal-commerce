@@ -1433,6 +1433,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/MultiVoidRequest'
+            examples:
+              Merchant Funded Purses: {summary: Request with Merchant Funded, $ref: '#/components/examples/MerchantFundedMultiVoidSaleTransactionRequest'}
         required: true
       responses:
         200:
@@ -1441,6 +1443,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MultiVoid'
+              examples:
+                Merchant Funded All Sale Transactions Cancelled - 200:
+                  summary: Activate multiple merchant funded purses
+                  $ref: '#/components/examples/MerchantFundedMultiVoidSaleTransactionAllVoided'
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -6403,4 +6409,107 @@ components:
                  value: Declined 995224
                - name: HOST_RESPONSE_CODE
                  value: '995224'
-    
+                 
+                 
+    MerchantFundedMultiVoidSaleTransactionRequest:
+      value:
+        merchantTransactionId: 38943939903ed0a8090d10dert33
+        “replayCount”: 1
+        purchaseInfo:
+          order:
+            orderId: xorderIdTestt001
+        “operationType”:”SALEVOID”: null
+        postDate: '05232022'
+        replayCount: 1
+        hostExtraInfo:
+          - name: LOCAL_TXN_DATE
+            value: '05102022'
+          - name: LOCAL_TXN_TIME
+            value: '202059'
+        voids:
+          - externalId: '7777883838389999'
+            merchantTransactionId: 38943939903ed0a8090d10dert31
+          - externalId: '6666883838388888'
+            merchantTransactionId: 38943939903ed0a8090d10dert32
+          - externalId: '555583838387777'
+            merchantTransactionId: 38943939903ed0a8090d10dert34
+            
+    MerchantFundedMultiVoidSaleTransactionAllVoided:
+      value:
+        parentTransactionId: 485-27834-285903824-095
+        createdTime: '2017-03-21T08:15:30-05:00'
+        merchantTransactionId: 38943939903ed0a8090d10dert33
+        purchaseInfo:
+          order:
+            orderId: xorderIdTestt001
+        voids:
+          - fdTransactionId: 5b4cf9da15e0475eb9ef3bcea5734442
+            status: CANCELLED
+            externalId: '8738743788738'
+            merchantId: '99022879997'
+            altMerchantId: '0001'
+            merchantTransactionId: 38943939903ed0a8090d10dert30
+            approvedAmount: 20
+            currencyCode:
+              code: USD
+              number: 840
+            transactionDateTime: '2017-10-04T21:49:21.94'
+            fundingSource:
+              type: PREPAID
+              prepaid:
+                cardSubType: Health12
+                alias: '8453'
+                balance:
+                  currentBalance: '5'
+                  beginBalance: '20'
+                  currencyCode:
+                    code: USD
+                    number: 840
+                  currencyType: BASE
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530976'
+              - name: SEQUENCE_NUMBER
+                value: '005931'
+          - fdTransactionId: 5b4cf9da15e0475eb9ef3bcea5734442
+            status: NOTPROCESSED
+            externalId: '8738743788738'
+            merchantId: '99022879997'
+            altMerchantId: '0001'
+            merchantTransactionId: 38943939903ed0a8090d10dert31
+            requestedAmount: 20
+            currencyCode:
+              code: USD
+              number: 840
+            transactionDateTime: '2017-10-04T21:49:21.94'
+            fundingSource:
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+          - fdTransactionId: 5b4cf9da15e0475eb9ef3bcea5734442
+            status: CANCELLED
+            externalId: '8738743788739'
+            merchantId: '99022879997'
+            altMerchantId: '0001'
+            merchantTransactionId: 38943939903ed0a8090d10dert32
+            approvedAmount: 20
+            currencyCode:
+              code: USD
+              number: 840
+            transactionDateTime: '2017-10-04T21:49:21.94'
+            fundingSource:
+              type: PREPAID
+              prepaid:
+                cardSubType: Health45
+                alias: '8453'
+                balance:
+                  currentBalance: '5'
+                  beginBalance: '20'
+                  currencyCode:
+                    code: USD
+                    number: 840
+                  currencyType: BASE
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530976'
+              - name: SEQUENCE_NUMBER
+                value: '005931'
