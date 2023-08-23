@@ -20,7 +20,7 @@
       ]
     }
   ],
-  "getStartedFilePath": "/docs/documentation/introduction.md",
+  "getStartedFilePath": "/docs/getting-started.md",
   "apiVersions": [
     {
       "version": "1.0.0",
