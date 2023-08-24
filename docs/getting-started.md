@@ -1,39 +1,28 @@
-# Getting Started
-
-## Welcome to the Developer Studio!
-
-To onboard into the `Fiserv Developer Studio` as a new Tenant each product must support following APIs standard. So that `Fiserv` will able to retrieve product API specifications and documentation.
- 
-## Setting up Tenant
-
-Products within the Fiserv portfolio that are showcase through the Studio are known as `tenants`.  Tenants standup a `tenant server` that will serve all the content through the studio to developers visiting the Fiserv Developer Studio.
-For more information please refer to [Setup tenant](?path=docs/getting-started/setup-tenant/setup-tenant.md)
-
-
-## Deploying Tenant
-
-New registered Tenant must provide public tenant server.
-For more information please refer to [How to deploy tenant Server](?path=docs/getting-started/setup-tenant/deploy-tenant.md)
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">   
+</head>
+<body bgcolor="#ffffff">
+##What is Connected Commerce (uCom)?
+		 
+Connected Commerce (uCom) brings in frictionless commerce that increases brand reach, delivers relevant & timely information to users and brings in great usability experiences in a safe & secure environment.
+We bring in Commerce Solutions to the new digital & connected world to meet all sorts of "Customer Expectations," "Consumer Experience," "Speed to Market" and "Set Industry Trend."
+Connected Commerce (uCom) acts as a mobile gateway in accepting the request from its front end (MAS, App, POS, web browser etc.) system and route them to vaulting, payment, loyalty, prepaid/gift processing etc., based on client needs.
 
 
-## Tenant Registration
+##Connected Commerce (uCom) Features
 
-To get started with as a new Studio Tenant, developer needs to setup new account by [Tenant Registration](?path=docs/getting-started/setup-tenant/register-tenant.md)
+Bring in a seamless customer experience and offer services across Channels—Online, Mobile & In-Store shopping. Know your customer—Get a 360 degree view of customer activity across channels and serve their needs from Anywhere & Everywhere.
 
-
-## Code Tenant
-New Tenant can start with [Sample tenant repo](https://github.com/fiserv/sample-tenant) to setup Tenant server. Tenant can also build new codebase with choice of their own programming language. To learn more about this, please refer to [Code Tenant](?path=docs/getting-started/code-a-tenant/code-tenant.md)
-test
-___
-
-##  Next steps [Setup Tenant](?path=docs/getting-started/setup-tenant/setup-tenant.md)
+	
+##Regions we operate
+Connected Commerce (uCom) services are deployed across geography covering North America, EMEA and LATAM regions.
 
 
-Need Help ?
-[FAQ](?path=docs/faq/faq.md)
+##What are the verticals in Connected Commerce (uCom)?
+We have Petro (Petroleum Industry), Quick Service Restaurants (QSR), Automobiles, Grocery, Sports Arena and Health and Wellness (H&W).
 
 
-___
-
-
- 
+To start integrating with Connected Commerce (uCom), please refer to our <a href="../docs/?path=/docs/documentation/Standard_Implementation_Guide.md">Implementation Guide</a> section.
+</body>
+</html>

@@ -27,10 +27,10 @@ paths:
   /v1/threedsecure/authentication:
     post:
       x-group-name: Authentication Services
-      x-proxy-name: Execute 3DS Authentication
+      x-proxy-name: Execute 3ds Authentication
       tags:
       - threedsecure
-      summary: Execute a 3DS authentication for a given payment card
+      summary: Execute a 3ds authentication for a given payment card
       parameters:
         - $ref: '#/components/parameters/ApiKeyParam'
         - $ref: '#/components/parameters/TimestampParam'
@@ -59,10 +59,10 @@ paths:
   /v1/threedsecure/authentication/{authenticationId}:
     patch:
       x-group-name: Authentication Services
-      x-proxy-name: Update 3DS Authentication
+      x-proxy-name: Update 3ds Authentication
       tags:
       - threedsecure
-      summary: Update 3DS authentication for a given payment card
+      summary: Update 3ds authentication for a given payment card
       parameters:
         - $ref: '#/components/parameters/AuthenticationIdParam'
         - $ref: '#/components/parameters/ApiKeyParam'

@@ -2203,6 +2203,7 @@ components:
           - provider: RAVELIN
             dataCapture:
               dataEventId: BB8E4E92...Fz1E063113
+              
     VaultedAccountStacCreatedSuccessResponse:
       value:
         stacId: 8a7f2d848626c9370186306e9a99000e

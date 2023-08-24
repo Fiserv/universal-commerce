@@ -156,10 +156,10 @@ paths:
   /v1/accounts/verification:
     post:
       x-group-name: Account Services
-      x-proxy-name: Verify an Account
+      x-proxy-name: Tokenize an Account by Nonce
       tags:
       - accounts
-      summary: Verify an account
+      summary: Tokenize an Account by Nonce
       description: Verify an account without an associated uCom customer identifier
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
@@ -284,7 +284,7 @@ paths:
           $ref: '#/components/responses/ServerError'
     patch:
       x-group-name: Account Services
-      x-proxy-name: Update Account by Card Details
+      x-proxy-name: Update Account
       tags:
       - accounts
       summary: Update one or more account(s)
@@ -383,10 +383,10 @@ paths:
 
     patch:
       x-group-name: Account Services
-      x-proxy-name: Update Account by fdAccountId
+      x-proxy-name: Update a Vaulted Account
       tags:
       - accounts
-      summary: Update account by fdAccountId
+      summary: Update a vaulted account
       description: Update a vaulted account
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'

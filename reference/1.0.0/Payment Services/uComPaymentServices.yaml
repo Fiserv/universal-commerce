@@ -143,11 +143,11 @@ paths:
   /v1/payments/auths:
     get:
       x-group-name: Payment Services
-      x-proxy-name: Get Payment Authorization Details by clientRequestId
+      x-proxy-name: Get Payment Authorization
       tags:
       - authorization
       summary: Get a specific payment authorization
-      description: Fetch details of a payment authorization by clientRequestId
+      description: Fetch details of a payment authorization
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -254,11 +254,11 @@ paths:
   /v1/payments/auths/{fdAuthorizationId}:
     get:
       x-group-name: Payment Services
-      x-proxy-name: Get Payment Authorization Details by authorizationId
+      x-proxy-name: Get Payment Authorization Details
       tags:
       - authorization
       summary: Get a specific payment authorization
-      description: Fetch details of a payment authorization by authorizationId
+      description: Fetch details of a payment authorization
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -332,7 +332,7 @@ paths:
   /v1/payments/auths/{fdAuthorizationId}/void:
     post:
       x-group-name: Payment Services
-      x-proxy-name: Cancel Payment Authorization
+      x-proxy-name: Void Payment Authorization
       tags:
       - authorization
       summary: Execute an action on a payment authorization.
@@ -464,11 +464,11 @@ paths:
   /v1/payments/captures:
     get:
       x-group-name: Payment Services
-      x-proxy-name: Get Captured Payment Details by clientRequestId
+      x-proxy-name: Get Captured Payment Details
       tags:
       - capture
       summary: Get payment capture details.
-      description: Fetch captured payment details with a clientRequestId
+      description: Fetch captured payment details with a capture id.
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -529,7 +529,7 @@ paths:
   /v1/payments/captures/{fdCaptureId}/void:
     post:
       x-group-name: Payment Services
-      x-proxy-name: Cancel Payment Capture
+      x-proxy-name: Void Payment Capture
       tags:
       - capture
       summary: Execute an action on a payment capture
@@ -621,7 +621,7 @@ paths:
   /v1/payments/sales:
     get:
       x-group-name: Payment Services
-      x-proxy-name: Get Sale Transaction 
+      x-proxy-name: Get Sale Transaction
       tags:
       - sale
       summary: Get a specific sale transaction.
@@ -731,11 +731,11 @@ paths:
   /v1/payments/sales/{fdSaleId}:
     get:
       x-group-name: Payment Services
-      x-proxy-name: Get Sale Transaction Details by saleId
+      x-proxy-name: Get Sale Details
       tags:
       - sale
       summary: Get a specific sale transaction.
-      description: Fetch a Sale detail object by saleId
+      description: Fetch a Sale detail object
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -914,6 +914,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/MultiSaleRequest'
+            examples:
+                Merchant Funded Purses: {summary: Request with Merchant Funded, $ref: '#/components/examples/MerchantFundedVaultedCardMultiSaleRequest'}
         required: true
       responses:
         201:
@@ -922,12 +924,23 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MultiSale'
+              examples:
+                Merchant Funded All Transactions Approved - 201:
+                  summary: Merchant Funded Vaulted Card Sale 
+                  $ref: '#/components/examples/MerchantFundedVaultedCardMultiSaleAllApprovedResponse'
         207:
           description: Multiple status
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/MultiSale'
+              examples:
+                Merchant Funded One Transaction Approved and One Declined - 207:
+                  summary: Multi status response
+                  $ref: '#/components/examples/MerchantFundedVaultedCardMultiSaleOneApprovedOneDeclinedResponse'
+                Merchant Funded One Transaction Approved One Approved and One Failed - 207:
+                  summary: Multi status response
+                  $ref: '#/components/examples/MerchantFundedVaultedCardMultiSaleOneApprovedOneFailedResponse'
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -942,11 +955,11 @@ paths:
   /v2/payments/multi-sales/{fdParentTransactionId}/refunds:
     post:
       x-group-name: Payment Services
-      x-proxy-name: Refund a Multisale Transaction
+      x-proxy-name: Refund Multi-sale Transactions
       tags:
       - sale
-      summary: Execute a refund for multisale transaction.
-      description: Refund a 'multisale' transaction.
+      summary: Execute a refund for multi-sale transactions.
+      description: Refund a 'multi-sale' transaction.
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -962,6 +975,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/MultiRefundRequest'
+            examples:
+              Merchant Funded Purses: {summary: Request with Merchant Funded, $ref: '#/components/examples/MerchantFundedVaultedCardMultiSaleRefundRequest'}
         required: false
       responses:
         201:
@@ -970,12 +985,23 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MultiRefund'
+              examples:
+                Merchant Funded All Transactions Approved - 201:
+                  summary: Multi sale refund
+                  $ref: '#/components/examples/MerchantFundedVaultedCardMultiSaleRefundAllApprovedResponse'
         207:
           description: Partial Refund transaction response
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/MultiRefund'
+              examples:
+                Merchant Funded One Approved and One Declined - 201:
+                  summary: Multi sale refund
+                  $ref: '#/components/examples/MerchantFundedVaultedCardMultiSaleRefundOneApprovedOneDeclinedResponse'
+                Merchant Funded One Approved and One Failed - 201:
+                  summary: Multi sale refund
+                  $ref: '#/components/examples/MerchantFundedVaultedCardMultiSaleRefundOneApprovedOneFailedResponse'
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -988,11 +1014,11 @@ paths:
   /v2/payments/multi-sales/{fdParentTransactionId}/void:
     post:
       x-group-name: Payment Services
-      x-proxy-name: Cancel a Multisale Transaction
+      x-proxy-name: Void Multi-sale Transaction
       tags:
       - sale
-      summary: Execute void for multisale transactions.
-      description: Void a 'multisale' transaction.
+      summary: Execute void for multi-sale transactions.
+      description: Void a 'multi-sale' transaction.
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -1008,6 +1034,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/MultiVoidRequest'
+            examples:
+              Merchant Funded Purses: {summary: Request with Merchant Funded, $ref: '#/components/examples/MerchantFundedVaultedCardMultiSaleVoidRequest'}
         required: true
       responses:
         200:
@@ -1016,6 +1044,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MultiVoid'
+              examples:
+                Merchant Funded All Transactions Cancelled - 200:
+                  summary: Activate multiple merchant funded purses
+                  $ref: '#/components/examples/MerchantFundedVaultedCardMultiSaleVoidAllCancelledRequest'
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -1028,11 +1060,11 @@ paths:
   /v1/payments/refunds:
     get:
       x-group-name: Payment Services
-      x-proxy-name: Get Refund Transaction Details by clientRequestId
+      x-proxy-name: Get Refund Details
       tags:
       - refund
       summary: Get Refund Transaction Details
-      description: Fetch the refund transaction details with the clientRequestId.
+      description: Fetch the refund transaction details with the refund id.
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -1058,11 +1090,11 @@ paths:
   /v1/payments/refunds/{fdRefundId}:
     get:
       x-group-name: Payment Services
-      x-proxy-name: Get Refund Transaction Details by refundId
+      x-proxy-name: Get Refund Transaction Details
       tags:
       - refund
       summary: Get refund transaction details
-      description: Fetch the refund transaction details with the refundId.
+      description: Fetch the refund transaction details with the refund id.
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -1172,11 +1204,11 @@ paths:
   /v2/payments/multi-refunds:
     post:
       x-group-name: Payment Services
-      x-proxy-name:  Execute Multiple Refunds 
+      x-proxy-name: Refund Multi-transaction
       tags:
       - refund
-      summary: Execute multiple refunds
-      description: Refund multitransactions.
+      summary: Execute a refund for multi-transactions.
+      description: Refund a multi-transaction.
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -1191,6 +1223,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/MultiRefundRequest'
+            examples:
+                Merchant Funded Purses: {summary: Request with Merchant Funded, $ref: '#/components/examples/MerchantFundedVaultedCardMultiRefundRequest'}
         required: false
       responses:
         201:
@@ -1199,12 +1233,23 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MultiRefund'
+              examples:
+                Merchant Funded All Transactions Approved - 201:
+                  summary: Multi Refund
+                  $ref: '#/components/examples/MerchantFundedVaultedCardMultiRefundAllApprovedResponse'
         207:
           description: Partial Refund transaction response
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/MultiRefund'
+              examples:
+                Merchant Funded One Transactions Approved and One Decilned - 207:
+                  summary: Multi status response
+                  $ref: '#/components/examples/MerchantFundedVaultedCardMultiRefundOneApprovedOneDeclinedResponse'
+                Merchant Funded One Approved and One Failed - 207:
+                  summary: Multi status response
+                  $ref: '#/components/examples/MerchantFundedVaultedCardMultiRefundOneApprovedOneFailedResponse'
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -1217,7 +1262,7 @@ paths:
   /v2/payments/multi-refunds/{fdParentTransactionId}/void:
     post:
       x-group-name: Payment Services
-      x-proxy-name: Cancel Multirefund
+      x-proxy-name: Cancel Multi-refund
       tags:
       - refund
       summary: Execute an action on multi payment refund.
@@ -1237,6 +1282,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/MultiVoidRequest'
+            examples:
+              Merchant Funded Purses: {summary: Request with Merchant Funded, $ref: '#/components/examples/MerchantFundedVaultedCardMultiRefundVoidRequest'}
         required: false
       responses:
         200:
@@ -1245,6 +1292,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MultiVoid'
+              examples:
+                Merchant Funded All Transactions Approved - 201:
+                  summary: Cancell multi refund 
+                  $ref: '#/components/examples/MerchantFundedVaultedCardMultiRefundVoidAllCancelledResponse'
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -1292,11 +1343,11 @@ paths:
   /v2/payments/void:
     get:
       x-group-name: Payment Services
-      x-proxy-name: Get Void Transaction Details by clientRequestId
+      x-proxy-name: Void Sale Transaction
       tags:
       - void
-      summary: Execute void for sale transaction by clientRequestId
-      description: void transaction details by clientRequestId
+      summary: Execute void for sale transaction.
+      description: Void a transaction.
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -1324,7 +1375,7 @@ paths:
 
     post:
       x-group-name: Payment Services
-      x-proxy-name: Cancel a Sale Transaction
+      x-proxy-name: Void a Sale Transaction
       tags:
       - void
       summary: Execute void for sale transaction.
@@ -1363,11 +1414,11 @@ paths:
   /v2/payments/multi-void:
     post:
       x-group-name: Payment Services
-      x-proxy-name: Cancel a Single Transaction from Multisale Transactions
+      x-proxy-name: Void Multi-sale Transactions
       tags:
       - void
-      summary: Execute void for multisale transactions.
-      description: Void multisale transactions.
+      summary: Execute void for multi-sale transactions.
+      description: Void multi-sale transactions.
       parameters:
       - $ref: '#/components/parameters/ApiKeyParam'
       - $ref: '#/components/parameters/TimestampParam'
@@ -1382,6 +1433,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/MultiVoidRequest'
+            examples:
+              Merchant Funded Purses: {summary: Request with Merchant Funded, $ref: '#/components/examples/MerchantFundedMultiVoidSaleTransactionRequest'}
         required: true
       responses:
         200:
@@ -1390,6 +1443,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MultiVoid'
+              examples:
+                Merchant Funded All Sale Transactions Cancelled - 200:
+                  summary: Activate multiple merchant funded purses
+                  $ref: '#/components/examples/MerchantFundedMultiVoidSaleTransactionAllVoided'
         400:
           $ref: '#/components/responses/BadRequest'
         401:
@@ -1497,11 +1554,6 @@ components:
         replayCount:
           type: number
           description: Indicates request retry attempt count.
-        totalRequestedAmount:
-          $ref: '#/components/schemas/RequestedAmount'   
-        splitByRankId:
-          type: boolean
-          description: Flag that indicates if split by rankId should be handled          
         sales:
           type: array
           items:
@@ -2669,7 +2721,7 @@ components:
           description: Merchant transaction id
         createdTime:
           type: string
-          description: Multisale creation date time value.
+          description: Multi sale creation date time value.
           format: date-time
           readOnly: true
           example: 2017-03-21T08:15:30-05:00
@@ -3306,9 +3358,6 @@ components:
           description: Unique Identifier provided by payment platform for a payment sale transaction.
           readOnly: true
           example: 8a34144657d0aa6e0157d3808ed000f2
-        rankId:
-          type: string
-          description: rankId is a required field when splitByRankId is true
         externalId:
           type: string
           description: External transaction id reference
@@ -3943,6 +3992,7 @@ components:
       - CREDIT
       - PREPAID
       - APPLE_PAY
+      - ANDRIOD_PAY
       - PAYPAL
       - TOKEN
       - NONCE
@@ -5402,3 +5452,1064 @@ components:
             status: ACTIVE
         createdDateTime: 2019-03-29T05:15:38-0400
         fdSaleId: 867449ab492246de835a186329b51576
+        
+    MerchantFundedVaultedCardMultiSaleRequest:
+      value:
+        fdCustomerId: ed0a809bc6164ed7b2dae602ae90d10d
+        membership:
+          accountNumber: '4654636354636363'
+          securityCode: '1234'
+          verifyAccount: true
+        merchantTransactionId: d8s8s8s8s990s8w456e464643e3tryd
+        merchantId: '99022879997'
+        altMerchantId: '0001'
+        purchaseInfo:
+          order:
+            orderId: xorderIdTestt001
+        isPartialPaymentAllowed: true
+        postDate: '05252022'
+        replayCount: 1
+        hostExtraInfo:
+          - name: LOCAL_TXN_DATE
+            value: '05102022'
+          - name: LOCAL_TXN_TIME
+            value: '202059'
+        sales:
+          - externalId: '88388383838839'
+            merchantTransactionId: 38943939903ed0a8090d10dert32
+            merchantId: '99022879997'
+            altMerchantId: '0001'
+            merchantTerminalId: '0002'
+            requestedAmount: 20
+            currencyCode:
+              code: USD
+              number: 840
+            fundingSource:
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+          - externalId: '88388383838839'
+            merchantTransactionId: 38943939903ed0a8090d10dert32
+            merchantId: '99022879997'
+            altMerchantId: '0001'
+            merchantTerminalId: '0002'
+            requestedAmount: 20
+            currencyCode:
+              code: USD
+              number: 840
+            fundingSource:
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401df
+                
+    MerchantFundedVaultedCardMultiSaleAllApprovedResponse:
+      value:
+        parentTransactionId: 485-27834-285903824-095
+        createdTime: '2017-03-21T08:15:30-05:00'
+        merchantTransactionId: d8s8s8s8s990s8w456e464643e3tryd
+        purchaseInfo:
+          order:
+            orderId: xorderIdTestt001
+        sales:
+          - fdSaleId: 2651f121f7e64f90871fa25ee5921027
+            status: APPROVED
+            orderId: xorderIdTestt001
+            requestedAmount: 20
+            approvedAmount: 20
+            merchantId: '99022879997'
+            altMerchantId: '0001'
+            externalId: '8738743788738'
+            merchantTransactionId: 38943939903ed0a8090d10dert30
+            currencyCode:
+              code: USD
+              number: 840
+            transactionDateTime: 2020-05-07T18:15:52-0400
+            fundingSource:
+              type: PREPAID
+              prepaid:
+                cardSubType: Test12
+                alias: '8453'
+                balance:
+                  currentBalance: '5'
+                  beginBalance: '20'
+                  currencyCode:
+                    code: USD
+                    number: 840
+                  currencyType: BASE
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530976'
+              - name: SEQUENCE_NUMBER
+                value: '005931'
+          - fdSaleId: 2651f121f7e64f90871fa25ee5921456
+            status: APPROVED
+            orderId: xorderIdTestt001
+            requestedAmount: 20
+            approvedAmount: 10
+            merchantId: '99022879997'
+            altMerchantId: '0001'
+            externalId: '8738743788738'
+            merchantTransactionId: 38943939903ed0a8090d10dert31
+            currencyCode:
+              code: USD
+              number: 840
+            transactionDateTime: 2020-05-07T18:15:52-0400
+            fundingSource:
+              type: PREPAID
+              prepaid:
+                cardSubType: Test45
+                alias: '8453'
+                balance:
+                  currentBalance: '5'
+                  beginBalance: '20'
+                  currencyCode:
+                    code: USD
+                    number: 840
+                  currencyType: BASE
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530976'
+              - name: SEQUENCE_NUMBER
+                value: '005931'
+                
+    MerchantFundedVaultedCardMultiSaleOneApprovedOneDeclinedResponse:
+      value:
+        parentTransactionId: 485-27834-285903824-095
+        createdTime: '2017-03-21T08:15:30-05:00'
+        merchantTransactionId: d8s8s8s8s990s8w456e464643e3tryd
+        purchaseInfo:
+          order:
+            orderId: xorderIdTestt001
+        sales:
+          - fdSaleId: 2651f121f7e64f90871fa25ee5921027
+            status: APPROVED
+            orderId: xorderIdTestt001
+            requestedAmount: 20
+            approvedAmount: 20
+            externalId: '8738743788739'
+            merchantId: '99022879997'
+            altMerchantId: '0001'
+            merchantTransactionId: 38943939903ed0a8090d10dert30
+            currencyCode:
+              code: USD
+              number: 840
+            transactionDateTime: 2020-05-07T18:15:52-0400
+            fundingSource:
+              type: PREPAID
+              prepaid:
+                cardSubType: Test12
+                alias: '8453'
+                balance:
+                  currentBalance: '5'
+                  beginBalance: '20'
+                  currencyCode:
+                    code: USD
+                    number: 840
+                  currencyType: BASE
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530976'
+              - name: SEQUENCE_NUMBER
+                value: '005931'
+          - fdSaleId: 2651f121f7e64f90871fa25ee5921456
+            status: DECLINED
+            orderId: xorderIdTestt001
+            requestedAmount: 20
+            externalId: '8738743788738'
+            merchantId: '99022879997'
+            altMerchantId: '0001'
+            merchantTransactionId: 38943939903ed0a8090d10dert31
+            currencyCode:
+              code: USD
+              number: 840
+            transactionDateTime: 2020-05-07T18:15:52-0400
+            fundingSource:
+              type: PREPAID
+              prepaid:
+                cardSubType: Test45
+                alias: '8453'
+            errorInfo:
+              code: '269902'
+              message: ' Invalid request format/data.'
+              category: common
+              developerInfo:
+                developerMessage: ' Invalid request format/data.'
+              hostExtraInfo:
+                - name: HOST_RESPONSE_MESSAGE
+                  value: Declined 995224
+                - name: HOST_RESPONSE_CODE
+                  value: '995224'
+                  
+    MerchantFundedVaultedCardMultiSaleOneApprovedOneFailedResponse:
+      value:
+       parentTransactionId: 485-27834-285903824-095
+       createdTime: '2017-03-21T08:15:30-05:00'
+       merchantTransactionId: d8s8s8s8s990s8w456e464643e3tryd
+       purchaseInfo:
+         order:
+           orderId: xorderIdTestt001
+       sales:
+         - fdSaleId: 2651f121f7e64f90871fa25ee5921027
+           status: APPROVED
+           orderId: xorderIdTestt001
+           requestedAmount: 20
+           approvedAmount: 20
+           externalId: '8738743788739'
+           merchantId: '99022879997'
+           altMerchantId: '0001'
+           merchantTransactionId: 38943939903ed0a8090d10dert30
+           currencyCode:
+             code: USD
+             number: 840
+           transactionDateTime: 2020-05-07T18:15:52-0400
+           fundingSource:
+             type: PREPAID
+             prepaid:
+               cardSubType: Test12
+               alias: '8453'
+               balance:
+                 currentBalance: '5'
+                 beginBalance: '20'
+                 currencyCode:
+                   code: USD
+                   number: 840
+                 currencyType: BASE
+             hostExtraInfo:
+               - name: APPROVAL_NUMBER
+                 value: '530976'
+               - name: SEQUENCE_NUMBER
+                 value: '005931'
+         - fdSaleId: 2651f121f7e64f90871fa25ee5921027
+           status: FAILED
+           orderId: xorderIdTestt001
+           requestedAmount: 20
+           externalId: '8738743788738'
+           merchantId: '99022879997'
+           altMerchantId: '0001'
+           merchantTransactionId: 38943939903ed0a8090d10dert31
+           currencyCode:
+             code: USD
+             number: 840
+           transactionDateTime: 2020-05-07T18:15:52-0400
+           fundingSource:
+             vaultedAccount:
+               fdAccountId: 8a7fb5717e8fcee9017e9756a30401df
+           errorInfo:
+             code: '269902'
+             message: ' Invalid request format/data.'
+             category: common
+             developerInfo:
+               developerMessage: ' Invalid request format/data.'
+             hostExtraInfo:
+               - name: HOST_RESPONSE_MESSAGE
+                 value: Declined 995224
+               - name: HOST_RESPONSE_CODE
+                 value: '995224'
+                 
+    MerchantFundedVaultedCardMultiSaleVoidRequest:
+      value:
+       merchantTransactionId: d8s8s8s8s990s8w456e464643e3tryd
+       purchaseInfo:
+         order:
+           orderId: xorderIdTestt001
+       postDate: '05232022'
+       “replayCount”: 1
+       hostExtraInfo:
+         - name: LOCAL_TXN_DATE
+           value: '05102022'
+         - name: LOCAL_TXN_TIME
+           value: '202059'
+       voids:
+         - externalId: '7777883838389999'
+           merchantTransactionId: 38943939903ed0a8090d10dert31
+         - externalId: '6666883838388888'
+           merchantTransactionId: 38943939903ed0a8090d10dert32
+         - externalId: '555583838387777'
+           merchantTransactionId: 38943939903ed0a8090d10dert34
+           
+    MerchantFundedVaultedCardMultiSaleVoidAllCancelledRequest:
+      value:
+       parentTransactionId: 485-27834-285903824-095
+       createdTime: '2017-03-21T08:15:30-05:00'
+       merchantTransactionId: d8s8s8s8s990s8w456e464643e3tryd
+       purchaseInfo:
+         order:
+           orderId: xorderIdTestt001
+       voids:
+         - fdTransactionId: 5b4cf9da15e0475eb9ef3bcea5734442
+           status: CANCELLED
+           externalId: '8738743788738'
+           merchantId: '99022879997'
+           altMerchantId: '0001'
+           merchantTransactionId: d8s8s8s8s990s8w456e464643e3tryd1
+           approvedAmount: 20
+           currencyCode:
+             code: USD
+             number: 840
+           transactionDateTime: '2017-10-04T21:49:21.94'
+           fundingSource:
+             type: PREPAID
+             prepaid:
+               cardSubType: Test12
+               alias: '8453'
+               balance:
+                 currentBalance: '5'
+                 beginBalance: '20'
+                 currencyCode:
+                   code: USD
+                   number: 840
+                 currencyType: BASE
+           hostExtraInfo:
+             - name: APPROVAL_NUMBER
+               value: '530976'
+             - name: SEQUENCE_NUMBER
+               value: '005931'
+         - status: NOTPROCESSED
+           externalId: '8738743788738'
+           merchantTransactionId: d8s8s8s8s990s8w456e464643e3tryd2
+           requestedAmount: 20
+           currencyCode:
+             code: USD
+             number: 840
+           transactionDateTime: '2017-10-04T21:49:21.94'
+           fundingSource:
+             vaultedAccount:
+               fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+           hostExtraInfo:
+             - name: APPROVAL_NUMBER
+               value: '530976'
+             - name: SEQUENCE_NUMBER
+               value: '005931'
+         - fdTransactionId: 5b4cf9da15e0475eb9ef3bcea5734442
+           status: CANCELLED
+           externalId: '8738743788739'
+           merchantId: '99022879997'
+           altMerchantId: '0001'
+           merchantTransactionId: d8s8s8s8s990s8w456e464643e3tryd3
+           approvedAmount: 20
+           currencyCode:
+             code: USD
+             number: 840
+           transactionDateTime: '2017-10-04T21:49:21.94'
+           fundingSource:
+             type: PREPAID
+             prepaid:
+               cardSubType: Test45
+               alias: '8453'
+               balance:
+                 currentBalance: '5'
+                 beginBalance: '20'
+                 currencyCode:
+                   code: USD
+                   number: 840
+                 currencyType: BASE
+           hostExtraInfo:
+             - name: APPROVAL_NUMBER
+               value: '530976'
+             - name: SEQUENCE_NUMBER
+               value: '005931'
+               
+    MerchantFundedVaultedCardMultiRefundRequest:
+      value:
+       fdCustomerId: ed0a809bc6164ed7b2dae602ae90d10d
+       merchantTransactionId: d8s8s8s8s990s8w456e464643e3tryd
+       merchantId: '99022879997'
+       altMerchantId: '0001'
+       “isPartialSuccessAllowed”: true
+       purchaseInfo:
+         order:
+           orderId: xorderIdTestt001
+       postDate: '05252022'
+       replayCount: 1
+       hostExtraInfo:
+         - name: LOCAL_TXN_DATE
+           value: '05102022'
+         - name: LOCAL_TXN_TIME
+           value: '202059'
+       refunds:
+         - externalId: '8738743788738'
+           merchantTransactionId: d8s8s8s8s990s8w456e464643e3tryd1
+           merchantId: '99022879997'
+           altMerchantId: '0001'
+           merchantTerminalId: '0002'
+           requestedAmount: 20
+           currencyCode:
+             code: USD
+             number: 840
+           fundingSource:
+             vaultedAccount:
+               fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+         - externalId: '8738743788738'
+           merchantTransactionId: d8s8s8s8s990s8w456e464643e3tryd2
+           merchantId: '99022879997'
+           altMerchantId: '0001'
+           merchantTerminalId: '0002'
+           requestedAmount: 20
+           currencyCode:
+             code: USD
+             number: 840
+           fundingSource:
+             vaultedAccount:
+               fdAccountId: 8a7fb5717e8fcee9017e9756a30401df
+       
+    MerchantFundedVaultedCardMultiRefundAllApprovedResponse:
+      value:
+       parentTransactionId: 485-27834-285903824-095
+       createdTime: '2017-03-21T08:15:30-05:00'
+       merchantTransactionId: d8s8s8s8s990s8w456e464643e3tryd
+       purchaseInfo:
+         order:
+           orderId: xorderIdTestt001
+       refunds:
+         - fdRefundId: 2651f121f7e64f90871fa25ee5921027
+           status: APPROVED
+           orderId: xorderIdTestt001
+           requestedAmount: 20
+           approvedAmount: 20
+           merchantId: '99022879997'
+           altMerchantId: '0001'
+           externalId: '8738743788738'
+           merchantTransactionId: d8s8s8s8s990s8w456e464643e3tryd1
+           currencyCode:
+             code: USD
+             number: 840
+           transactionDateTime: 2020-05-07T18:15:52-0400
+           fundingSource:
+             type: PREPAID
+             prepaid:
+               cardSubType: Test12
+               alias: '8453'
+               balance:
+                 currentBalance: '5'
+                 beginBalance: '20'
+                 currencyCode:
+                   code: USD
+                   number: 840
+                 currencyType: BASE
+           hostExtraInfo:
+             - name: APPROVAL_NUMBER
+               value: '530976'
+             - name: SEQUENCE_NUMBER
+               value: '005931'
+         - fdRefundId: 2651f121f7e64f90871fa25ee5921456
+           status: APPROVED
+           orderId: xorderIdTestt001
+           requestedAmount: 20
+           approvedAmount: 10
+           externalId: '8738743788738'
+           merchantId: '99022879997'
+           altMerchantId: '0001'
+           merchantTransactionId: d8s8s8s8s990s8w456e464643e3tryd2
+           currencyCode:
+             code: USD
+             number: 840
+           transactionDateTime: 2020-05-07T18:15:52-0400
+           fundingSource:
+             type: PREPAID
+             prepaid:
+               cardSubType: Test45
+               alias: '8453'
+               balance:
+                 currentBalance: '5'
+                 beginBalance: '20'
+                 currencyCode:
+                   code: USD
+                   number: 840
+                 currencyType: BASE
+           hostExtraInfo:
+             - name: APPROVAL_NUMBER
+               value: '530976'
+             - name: SEQUENCE_NUMBER
+               value: '005931'
+               
+    MerchantFundedVaultedCardMultiRefundOneApprovedOneDeclinedResponse:
+      value:
+       parentTransactionId: 485-27834-285903824-095
+       createdTime: '2017-03-21T08:15:30-05:00'
+       merchantTransactionId: d8s8s8s8s990s8w456e464643e3tryd
+       purchaseInfo:
+         order:
+           orderId: xorderIdTestt001
+       refunds:
+         - fdRefundId: 2651f121f7e64f90871fa25ee5921027
+           status: APPROVED
+           orderId: xorderIdTestt001
+           requestedAmount: 20
+           approvedAmount: 20
+           externalId: '8738743788739'
+           merchantId: '99022879997'
+           altMerchantId: '0001'
+           merchantTransactionId: d8s8s8s8s990s8w456e464643e3tryd1
+           currencyCode:
+             code: USD
+             number: 840
+           transactionDateTime: 2020-05-07T18:15:52-0400
+           fundingSource:
+             type: PREPAID
+             prepaid:
+               cardSubType: Test12
+               alias: '8453'
+               balance:
+                 currentBalance: '5'
+                 beginBalance: '20'
+                 currencyCode:
+                   code: USD
+                   number: 840
+                 currencyType: BASE
+           hostExtraInfo:
+             - name: APPROVAL_NUMBER
+               value: '530976'
+             - name: SEQUENCE_NUMBER
+               value: '005931'
+         - fdRefundId: 2651f121f7e64f90871fa25ee5921456
+           status: DECLINED
+           orderId: xorderIdTestt001
+           requestedAmount: 20
+           merchantId: '99022879997'
+           altMerchantId: '0001'
+           externalId: '8738743788738'
+           merchantTransactionId: d8s8s8s8s990s8w456e464643e3tryd2
+           currencyCode:
+             code: USD
+             number: 840
+           transactionDateTime: 2020-05-07T18:15:52-0400
+           fundingSource:
+             type: PREPAID
+             prepaid:
+               cardSubType: Test45
+               alias: '8453'
+           errorInfo:
+             code: '269902'
+             message: ' Invalid request format/data.'
+             category: common
+             developerInfo:
+               developerMessage: ' Invalid request format/data.'
+             hostExtraInfo:
+               - name: HOST_RESPONSE_MESSAGE
+                 value: Declined 995224
+               - name: HOST_RESPONSE_CODE
+                 value: '995224'
+                 
+    MerchantFundedVaultedCardMultiRefundOneApprovedOneFailedResponse:
+      value:
+       parentTransactionId: 485-27834-285903824-095
+       createdTime: '2017-03-21T08:15:30-05:00'
+       merchantTransactionId: d8s8s8s8s990s8w456e464643e3tryd
+       purchaseInfo:
+         order:
+           orderId: xorderIdTestt001
+       refunds:
+         - fdRefundId: 2651f121f7e64f90871fa25ee5921027
+           status: APPROVED
+           orderId: xorderIdTestt001
+           requestedAmount: 20
+           approvedAmount: 20
+           merchantId: '99022879997'
+           altMerchantId: '0001'
+           externalId: '8738743788739'
+           merchantTransactionId: d8s8s8s8s990s8w456e464643e3tryd1
+           currencyCode:
+             code: USD
+             number: 840
+           transactionDateTime: 2020-05-07T18:15:52-0400
+           fundingSource:
+             type: PREPAID
+             prepaid:
+               cardSubType: Test12
+               alias: '8453'
+               balance:
+                 currentBalance: '5'
+                 beginBalance: '20'
+                 currencyCode:
+                   code: USD
+                   number: 840
+                 currencyType: BASE
+             hostExtraInfo:
+               - name: APPROVAL_NUMBER
+                 value: '530976'
+               - name: SEQUENCE_NUMBER
+                 value: '005931'
+         - status: FAILED
+           orderId: xorderIdTestt001
+           requestedAmount: 20
+           externalId: '8738743788738'
+           merchantId: '99022879997'
+           altMerchantId: '0001'
+           merchantTransactionId: d8s8s8s8s990s8w456e464643e3tryd2
+           currencyCode:
+             code: USD
+             number: 840
+           transactionDateTime: 2020-05-07T18:15:52-0400
+           fundingSource:
+             type: PREPAID
+             prepaid:
+               cardSubType: Test45
+               alias: '8453'
+           errorInfo:
+             code: '269902'
+             message: ' Invalid request format/data.'
+             category: common
+             developerInfo:
+               developerMessage: ' Invalid request format/data.'
+             hostExtraInfo:
+               - name: HOST_RESPONSE_MESSAGE
+                 value: Declined 995224
+               - name: HOST_RESPONSE_CODE
+                 value: '995224'
+                 
+    MerchantFundedVaultedCardMultiRefundVoidRequest:
+      value:
+       purchaseInfo:
+         order:
+           orderId: xorderIdTestt001
+       postDate: '05232022'
+       merchantTransactionId: 38943939903ed0a8090d10dert33
+       “replayCount”: 1
+       hostExtraInfo:
+         - name: LOCAL_TXN_DATE
+           value: '05102022'
+         - name: LOCAL_TXN_TIME
+           value: '202059'
+       voids:
+         - externalId: '7777883838389999'
+           merchantTransactionId: 38943939903ed0a8090d10dert31
+         - externalId: '6666883838388888'
+           merchantTransactionId: 38943939903ed0a8090d10dert32
+         - externalId: '555583838387777'
+           merchantTransactionId: 38943939903ed0a8090d10dert34
+           
+    MerchantFundedVaultedCardMultiRefundVoidAllCancelledResponse:
+      value:
+       parentTransactionId: 485-27834-285903824-095
+       createdTime: '2017-03-21T08:15:30-05:00'
+       merchantTransactionId: 38943939903ed0a8090d10dert33
+       purchaseInfo:
+         order:
+           orderId: xorderIdTestt001
+       voids:
+         - fdTransactionId: 5b4cf9da15e0475eb9ef3bcea5734442
+           status: CANCELLED
+           externalId: '8738743788738'
+           merchantId: '99022879997'
+           altMerchantId: '0001'
+           merchantTransactionId: d8s8s8s8s990s8w456e464643e3tryd1
+           approvedAmount: 20
+           currencyCode:
+             code: USD
+             number: 840
+           transactionDateTime: '2017-10-04T21:49:21.94'
+           fundingSource:
+             type: PREPAID
+             prepaid:
+               cardSubType: Test12
+               alias: '8453'
+               balance:
+                 currentBalance: '5'
+                 beginBalance: '20'
+                 currencyCode:
+                   code: USD
+                   number: 840
+                 currencyType: BASE
+           hostExtraInfo:
+             - name: APPROVAL_NUMBER
+               value: '530976'
+             - name: SEQUENCE_NUMBER
+               value: '005931'
+         - status: NOTPROCESSED
+           externalId: '8738743788738'
+           merchantId: '99022879997'
+           altMerchantId: '0001'
+           merchantTransactionId: d8s8s8s8s990s8w456e464643e3tryd2
+           approvedAmount: 20
+           currencyCode:
+             code: USD
+             number: 840
+           transactionDateTime: '2017-10-04T21:49:21.94'
+           fundingSource:
+             vaultedAccount:
+               fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+           hostExtraInfo:
+             - name: APPROVAL_NUMBER
+               value: '530976'
+             - name: SEQUENCE_NUMBER
+               value: '005931'
+         - fdTransactionId: 5b4cf9da15e0475eb9ef3bcea5734442
+           status: CANCELLED
+           externalId: '8738743788739'
+           merchantId: '99022879997'
+           altMerchantId: '0001'
+           merchantTransactionId: d8s8s8s8s990s8w456e464643e3tryd3
+           approvedAmount: 20
+           currencyCode:
+             code: USD
+             number: 840
+           transactionDateTime: '2017-10-04T21:49:21.94'
+           fundingSource:
+             type: PREPAID
+             prepaid:
+               cardSubType: Test45
+               alias: '8453'
+               balance:
+                 currentBalance: '5'
+                 beginBalance: '20'
+                 currencyCode:
+                   code: USD
+                   number: 840
+                 currencyType: BASE
+           hostExtraInfo:
+             - name: APPROVAL_NUMBER
+               value: '530976'
+             - name: SEQUENCE_NUMBER
+               value: '005931'
+       
+    MerchantFundedVaultedCardMultiSaleRefundRequest:
+      value:
+       merchantTransactionId: d8s8s8s8s990s8w456e464643e3tryd
+       “isPartialSuccessAllowed”: true
+       purchaseInfo:
+         order:
+           orderId: xorderIdTestt001
+       isPartialPaymentAllowed: true
+       postDate: '05232022'
+       “replayCount”: 1
+       hostExtraInfo:
+         - name: LOCAL_TXN_DATE
+           value: '05102022'
+         - name: LOCAL_TXN_TIME
+           value: '202059'
+       refunds:
+         - externalId: '7777883838389999'
+           merchantTransactionId: 38943939903ed0a8090d10dert31
+           merchantTerminalId: '0002'
+           fdSaleId: 2651f121f7e64f90871fa25ee59210271
+           requestedAmount: 20
+           currencyCode:
+             code: USD
+             number: 840
+             digits: 2
+             currency: US Dollar
+         - externalId: '6666883838388888'
+           merchantTransactionId: 38943939903ed0a8090d10dert32
+           merchantTerminalId: '0002'
+           fdSaleId: 2651f121f7e64f90871fa25ee59210272
+           requestedAmount: 20
+           currencyCode:
+             code: USD
+             number: 840
+             digits: 2
+             currency: US Dollar
+         - externalId: '555583838387777'
+           merchantTransactionId: 38943939903ed0a8090d10dert34
+           merchantTerminalId: '0002'
+           fdSaleId: 2651f121f7e64f90871fa25ee59210273
+           requestedAmount: 20
+           currencyCode:
+             code: USD
+             number: 840
+             digits: 2
+             currency: US Dollar
+       
+    MerchantFundedVaultedCardMultiSaleRefundAllApprovedResponse:
+      value:
+       parentTransactionId: 485-27834-285903824-095
+       createdTime: '2017-03-21T08:15:30-05:00'
+       merchantTransactionId: d8s8s8s8s990s8w456e464643e3tryd
+       purchaseInfo:
+         order:
+           orderId: xorderIdTestt001
+       refunds:
+         - fdRefundId: 2651f121f7e64f90871fa25ee5921027
+           status: APPROVED
+           orderId: xorderIdTestt001
+           approvedAmount: 20
+           merchantId: '99022879997'
+           altMerchantId: '0001'
+           externalId: '8738743788738'
+           merchantTransactionId: 38943939903ed0a8090d10dert30
+           currencyCode:
+             code: USD
+             number: 840
+           transactionDateTime: 2020-05-07T18:15:52-0400
+           fundingSource:
+             type: PREPAID
+             prepaid:
+               cardSubType: Test12
+               alias: '8453'
+               balance:
+                 currentBalance: '5'
+                 beginBalance: '20'
+                 currencyCode:
+                   code: USD
+                   number: 840
+                 currencyType: BASE
+           hostExtraInfo:
+             - name: APPROVAL_NUMBER
+               value: '530976'
+             - name: SEQUENCE_NUMBER
+               value: '005931'
+         - fdRefundId: 2651f121f7e64f90871fa25ee5921456
+           status: APPROVED
+           orderId: xorderIdTestt001
+           approvedAmount: 20
+           externalId: '8738743788738'
+           merchantId: '99022879997'
+           altMerchantId: '0001'
+           merchantTransactionId: 38943939903ed0a8090d10dert31
+           currencyCode:
+             code: USD
+             number: 840
+           transactionDateTime: 2020-05-07T18:15:52-0400
+           fundingSource:
+             type: PREPAID
+             prepaid:
+               cardSubType: Test45
+               alias: '8453'
+               balance:
+                 currentBalance: '5'
+                 beginBalance: '20'
+                 currencyCode:
+                   code: USD
+                   number: 840
+                 currencyType: BASE
+           hostExtraInfo:
+             - name: APPROVAL_NUMBER
+               value: '530976'
+             - name: SEQUENCE_NUMBER
+               value: '005931'
+               
+    MerchantFundedVaultedCardMultiSaleRefundOneApprovedOneDeclinedResponse:
+      value:
+       parentTransactionId: 485-27834-285903824-095
+       createdTime: '2017-03-21T08:15:30-05:00'
+       merchantTransactionId: d8s8s8s8s990s8w456e464643e3tryd
+       purchaseInfo:
+         order:
+           orderId: xorderIdTestt001
+       refunds:
+         - fdRefundId: 2651f121f7e64f90871fa25ee5921027
+           status: APPROVED
+           orderId: xorderIdTestt001
+           requestedAmount: 20
+           approvedAmount: 20
+           merchantId: '99022879997'
+           altMerchantId: '0001'
+           externalId: '8738743788739'
+           merchantTransactionId: 38943939903ed0a8090d10dert30
+           currencyCode:
+             code: USD
+             number: 840
+           transactionDateTime: 2020-05-07T18:15:52-0400
+           fundingSource:
+             type: PREPAID
+             prepaid:
+               cardSubType: Test12
+               alias: '8453'
+               balance:
+                 currentBalance: '5'
+                 beginBalance: '20'
+                 currencyCode:
+                   code: USD
+                   number: 840
+                 currencyType: BASE
+           hostExtraInfo:
+             - name: APPROVAL_NUMBER
+               value: '530976'
+             - name: SEQUENCE_NUMBER
+               value: '005931'
+         - fdRefundId: 2651f121f7e64f90871fa25ee5921456
+           status: DECLINED
+           orderId: xorderIdTestt001
+           requestedAmount: 20
+           merchantId: '99022879997'
+           altMerchantId: '0001'
+           externalId: '8738743788738'
+           merchantTransactionId: 38943939903ed0a8090d10dert31
+           currencyCode:
+             code: USD
+             number: 840
+           transactionDateTime: 2020-05-07T18:15:52-0400
+           fundingSource:
+             type: PREPAID
+             prepaid:
+               cardSubType: Test45
+               alias: '8453'
+           errorInfo:
+             code: '269902'
+             message: ' Invalid request format/data.'
+             category: common
+             developerInfo:
+               developerMessage: ' Invalid request format/data.'
+             hostExtraInfo:
+               - name: HOST_RESPONSE_MESSAGE
+                 value: Declined 995224
+               - name: HOST_RESPONSE_CODE
+                 value: '995224'
+                 
+    MerchantFundedVaultedCardMultiSaleRefundOneApprovedOneFailedResponse:
+      value:
+       parentTransactionId: 485-27834-285903824-095
+       createdTime: '2017-03-21T08:15:30-05:00'
+       merchantTransactionId: d8s8s8s8s990s8w456e464643e3tryd
+       purchaseInfo:
+         order:
+           orderId: xorderIdTestt001
+       refunds:
+         - fdRefundId: 2651f121f7e64f90871fa25ee5921027
+           status: APPROVED
+           orderId: xorderIdTestt001
+           requestedAmount: 20
+           approvedAmount: 20
+           merchantId: '99022879997'
+           altMerchantId: '0001'
+           externalId: '8738743788739'
+           merchantTransactionId: 38943939903ed0a8090d10dert30
+           currencyCode:
+             code: USD
+             number: 840
+           transactionDateTime: 2020-05-07T18:15:52-0400
+           fundingSource:
+             type: PREPAID
+             prepaid:
+               cardSubType: Test12
+               alias: '8453'
+               balance:
+                 currentBalance: '5'
+                 beginBalance: '20'
+                 currencyCode:
+                   code: USD
+                   number: 840
+                 currencyType: BASE
+             hostExtraInfo:
+               - name: APPROVAL_NUMBER
+                 value: '530976'
+               - name: SEQUENCE_NUMBER
+                 value: '005931'
+         - status: FAILED
+           orderId: xorderIdTestt001
+           requestedAmount: 20
+           merchantId: '99022879997'
+           altMerchantId: '0001'
+           externalId: '8738743788738'
+           merchantTransactionId: 38943939903ed0a8090d10dert31
+           currencyCode:
+             code: USD
+             number: 840
+           transactionDateTime: 2020-05-07T18:15:52-0400
+           fundingSource:
+             type: PREPAID
+             prepaid:
+               cardSubType: Test45
+               alias: '8453'
+           errorInfo:
+             code: '269902'
+             message: ' Invalid request format/data.'
+             category: common
+             developerInfo:
+               developerMessage: ' Invalid request format/data.'
+             hostExtraInfo:
+               - name: HOST_RESPONSE_MESSAGE
+                 value: Declined 995224
+               - name: HOST_RESPONSE_CODE
+                 value: '995224'
+                 
+                 
+    MerchantFundedMultiVoidSaleTransactionRequest:
+      value:
+        merchantTransactionId: 38943939903ed0a8090d10dert33
+        “replayCount”: 1
+        purchaseInfo:
+          order:
+            orderId: xorderIdTestt001
+        “operationType”:”SALEVOID”: null
+        postDate: '05232022'
+        replayCount: 1
+        hostExtraInfo:
+          - name: LOCAL_TXN_DATE
+            value: '05102022'
+          - name: LOCAL_TXN_TIME
+            value: '202059'
+        voids:
+          - externalId: '7777883838389999'
+            merchantTransactionId: 38943939903ed0a8090d10dert31
+          - externalId: '6666883838388888'
+            merchantTransactionId: 38943939903ed0a8090d10dert32
+          - externalId: '555583838387777'
+            merchantTransactionId: 38943939903ed0a8090d10dert34
+            
+    MerchantFundedMultiVoidSaleTransactionAllVoided:
+      value:
+        parentTransactionId: 485-27834-285903824-095
+        createdTime: '2017-03-21T08:15:30-05:00'
+        merchantTransactionId: 38943939903ed0a8090d10dert33
+        purchaseInfo:
+          order:
+            orderId: xorderIdTestt001
+        voids:
+          - fdTransactionId: 5b4cf9da15e0475eb9ef3bcea5734442
+            status: CANCELLED
+            externalId: '8738743788738'
+            merchantId: '99022879997'
+            altMerchantId: '0001'
+            merchantTransactionId: 38943939903ed0a8090d10dert30
+            approvedAmount: 20
+            currencyCode:
+              code: USD
+              number: 840
+            transactionDateTime: '2017-10-04T21:49:21.94'
+            fundingSource:
+              type: PREPAID
+              prepaid:
+                cardSubType: Test12
+                alias: '8453'
+                balance:
+                  currentBalance: '5'
+                  beginBalance: '20'
+                  currencyCode:
+                    code: USD
+                    number: 840
+                  currencyType: BASE
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530976'
+              - name: SEQUENCE_NUMBER
+                value: '005931'
+          - fdTransactionId: 5b4cf9da15e0475eb9ef3bcea5734442
+            status: NOTPROCESSED
+            externalId: '8738743788738'
+            merchantId: '99022879997'
+            altMerchantId: '0001'
+            merchantTransactionId: 38943939903ed0a8090d10dert31
+            requestedAmount: 20
+            currencyCode:
+              code: USD
+              number: 840
+            transactionDateTime: '2017-10-04T21:49:21.94'
+            fundingSource:
+              vaultedAccount:
+                fdAccountId: 8a7fb5717e8fcee9017e9756a30401cb
+          - fdTransactionId: 5b4cf9da15e0475eb9ef3bcea5734442
+            status: CANCELLED
+            externalId: '8738743788739'
+            merchantId: '99022879997'
+            altMerchantId: '0001'
+            merchantTransactionId: 38943939903ed0a8090d10dert32
+            approvedAmount: 20
+            currencyCode:
+              code: USD
+              number: 840
+            transactionDateTime: '2017-10-04T21:49:21.94'
+            fundingSource:
+              type: PREPAID
+              prepaid:
+                cardSubType: Test45
+                alias: '8453'
+                balance:
+                  currentBalance: '5'
+                  beginBalance: '20'
+                  currencyCode:
+                    code: USD
+                    number: 840
+                  currencyType: BASE
+            hostExtraInfo:
+              - name: APPROVAL_NUMBER
+                value: '530976'
+              - name: SEQUENCE_NUMBER
+                value: '005931'
