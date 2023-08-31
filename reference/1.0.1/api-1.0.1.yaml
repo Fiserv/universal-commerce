@@ -38,7 +38,7 @@ info:
 servers:
   - url: https://tenants.fiserv.com/
 paths:
-  /v2/products:
+  /v1/products:
     get:
       tags:
         - Tenant
@@ -59,7 +59,7 @@ paths:
             text/plain:
               schema:
                 $ref: '#/components/schemas/TenantProviderResponse'
-  /v2/apis:
+  /v1/apis:
     post:
       tags:
         - Specs
@@ -79,7 +79,7 @@ paths:
           description: ""
           content: {}
       x-codegen-request-body-name: Body
-  /v2/docs:
+  /v1/docs:
     get:
       tags:
         - Documents
@@ -99,7 +99,7 @@ paths:
           description: ""
           content: {}
       x-codegen-request-body-name: Body
-  /v2/layouts:
+  /v1/layouts:
     get:
       tags:
         - Layout
@@ -120,8 +120,43 @@ paths:
             text/plain:
               schema:
                 $ref: '#/components/schemas/PageLayoutResponse'
+  /live:
+    get:
+      tags:
+        - HealthCheck
+      x-group-name: HealthCheck
+      x-proxy-name: live
+      summary: Health check probes.
+      operationId: healthCheckId
+      x-links: 
+        link1: 
+          description: Developer Studio
+          flag: external
+          url:  'https://dev-developerstudio.fiserv.com/'
+        link2: 
+          description: Setup tenant
+          flag: internal
+          url:  '../docs?path=docs/getting-started/setup-tenant/setup-tenant.md'
+        link3: 
+          description: Fiserv Portal
+          flag: external
+          url:  'https://fiserv.com'
+      responses:
+        200:
+          description: Health check.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LiveProbeResponse'
+  
 components:
   schemas:
+    LiveProbeResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Message
     PageLayoutResponse:
       type: array
       items:
@@ -294,6 +329,18 @@ components:
     docsResponseWrapper:
       description: Markdown files.
       content: {}
+    liveResponse:
+      description: Health check.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/LiveProbeResponse'
+        text/yaml:
+          schema:
+            $ref: '#/components/schemas/LiveProbeResponse'
+        text/plain:
+          schema:
+            $ref: '#/components/schemas/LiveProbeResponse'
     productPage:
       description: This text will appear as description of your response body. 
       content:
