@@ -30,7 +30,7 @@ This guide will address compliance modifications applicable to all recurring tra
 
 ## Utilization
 
-If your existing payload to Connected Commerce (uCom) includes the values below, you must update them to the new values.
+If your existing implementation of Connected Commerce (uCom) includes the values below, you must update them with the new values.
 
 - **Existing Values**
   - MIT-RECURRING
