@@ -14,17 +14,19 @@ Mastercard is introducing two new global acquirer Data Integrity edits to monito
 
 ## Usage
 
-For regular, unscheduled CIT transactions, there are no changes needed as uCom will default these values to downstream systems. The changes that will be discussed in this guide will be applicable to all CIT and MIT recurring transactions for the APIs below:
+For regular, unscheduled CIT transactions, there are no changes needed as uCom will default these values to downstream systems. 
 
-- POST /v1/payments/auths
-- POST /v1/payments/auths/{fdAuthorizationId}/captures
-- POST /v1/payments/auths/{fdAuthorizationId}/refunds
-- POST /v1/payments/sales/{fdSaleId}/refunds
-- POST /v1/payments/sale
-- POST /v1/payments/auths/{fdAuthorizationId}/void
-- POST /v1/payments/captures/{fdCaptureId}/void
-- POST /v1/payments/refunds/{fdRefundId}/void
-- POST /v1/payments/sales/{fdSaleId}/void
+This guide will address compliance modifications applicable to all recurring transactions for the CIT and MIT APIs listed below.
+
+- **POST /v1/payments/auths**
+- **POST /v1/payments/auths/{fdAuthorizationId}/captures**
+- **POST /v1/payments/auths/{fdAuthorizationId}/refunds**
+- **POST /v1/payments/sales/{fdSaleId}/refunds**
+- **POST /v1/payments/sale**
+- **POST /v1/payments/auths/{fdAuthorizationId}/void**
+- **POST /v1/payments/captures/{fdCaptureId}/void**
+- **POST /v1/payments/refunds/{fdRefundId}/void**
+- **POST /v1/payments/sales/{fdSaleId}/void**
 
 ## Utilization
 
