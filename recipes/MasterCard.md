@@ -1,4 +1,4 @@
-# Mastercard AN 5524 Cardholder-Initiated Transaction (CIT) and Merchant-Initiated Transaction (MIT) Indicators
+# Mastercard AN 5524 - CIT and MIT Compliance Indicators 
 
 ## Introduction
 
