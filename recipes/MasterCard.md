@@ -42,17 +42,13 @@ If your existing implementation of Connected Commerce (uCom) includes the values
 
 Furthermore, you will need to include the additional fields below as per the MasterCard compliance requirement:
 
-- **New BILL_PAYMENT_TYPE**
-  - RECURRING
-  - INSTALLMENT
-  - PARTIAL_SHIPMENT
-  - DELAYED_CHARGE
-  - NO_SHOW_CHARGE
-  - RESUBMISSION
-
-- **New PAYMENT_AMOUNT_TYPE**
-  - VARIABLE
-  - FIXED
+| Data Element                   | New / Existing | Definition                                                    | Possible Values                                                                                                                                              |
+|--------------------------------|----------------|--------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| STORED_CREDENTIAL_INDICATOR    | Existing       | Is the Customer's Payment Method Vaulted at uCom?            | - INITIAL: Denotes that the Transaction is using a Payment Method that is not Vaulted at uCom - SUBSEQUENT: Denotes that the Transaction is using a Payment Method that is Vaulted at uCom |
+| TRANSACTION_INITIATION_INDICATOR | Existing      | Who is Initiating the Transaction?                           | - CUSTOMER: Denotes that the Transaction was initiated by the Cardholder - MERCHANT: Denotes that the Transaction was initiated by the Merchant - Backwards Compatible - MIT-RECURRING: Denotes that the Transaction was initiated by the Merchant and is a Recurring Transaction - MIT-INSTALLMENT: Denotes that the Transaction was initiated by the Merchant and is a Recurring Payment - Denotes that the Transaction was initiated by the Merchant and is an Installment Payment |
+| SCHEDULE_INDICATOR              | Existing       | Are we processing a transaction that has been scheduled for a specific date? | - UNSCHEDULED: Denotes that the Transaction was initiated as an Ad Hoc transaction - SCHEDULED: Denotes that the Transaction was initiated at an agreed upon time between the Cardholder and the Merchant |
+| BILL_PAYMENT_TYPE               | New            | Which type of subsequent transactions are being scheduled?     | - RECURRING: Denotes that the Cardholder and the Merchant have agreed to initiate a series of transactions using a Vaulted Payment Method - INSTALLMENT: Denotes that the Cardholder and the Merchant have agreed to initiate a series of transactions using a Vaulted Payment Method that should reflect the single purchase of goods and/or services. |
+| PAYMENT_AMOUNT_TYPE            | New            | Will the Payment Amount in Subsequent Transactions stay the same as the Original Transaction or will the Payment Amount vary in Subsequent Transactions? | - VARIABLE: Denotes that the Payment Amounts in a series of transactions using a Vaulted Payment Method can be of varying values. - FIXED: Denotes that the Payment Amounts in a series of transactions using a Vaulted Payment Method will all be of the same value. |
 
 ## Examples and Samples
 
