@@ -14,8 +14,6 @@ The CIT and MIT indicators, that will be discussed in this guide, aim to enhance
 
 ## Usage
 
-> For regular, unscheduled CIT transactions, there are no changes needed as uCom will default these values to downstream systems. 
-
 This guide will address compliance modifications applicable to all recurring transactions for the CIT and MIT APIs listed below.
 
 - **POST /v1/payments/auths**
@@ -28,14 +26,19 @@ This guide will address compliance modifications applicable to all recurring tra
 - **POST /v1/payments/refunds/{fdRefundId}/void** 
 - **POST /v1/payments/sales/{fdSaleId}/void**
 
+> For regular, unscheduled CIT transactions, there are no changes needed as uCom will default these values to downstream systems. 
+
 ## Utilization
 
 As part of the MasterCard compliance requirement, you need to make some changes to your current implementation of Connected Commerce (uCom) API. Specifically, you need to replace the existing values in the `TRANSACTION_INITIATION_INDICATOR` field with the new values as shown below:
 
-| Existing Values | New Values |
-| --------------- | ---------- |
-| `MIT-RECURRING`   | `CUSTOMER`   |
-| `MIT-INSTALLMENT` | `MERCHANT`   |
+- **Existing Values**
+  - `MIT-RECURRING`
+  - `MIT-INSTALLMENT`
+
+- **New Values**
+  - `CUSTOMER`
+  - `MERCHANT`
 
 Furthermore, you will need to include the additional fields below as per the MasterCard compliance requirement:
 
