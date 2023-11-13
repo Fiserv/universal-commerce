@@ -14,7 +14,7 @@ The CIT and MIT indicators, that will be discussed in this guide, aim to enhance
 
 ## Usage
 
-For regular, unscheduled CIT transactions, there are no changes needed as uCom will default these values to downstream systems. 
+> For regular, unscheduled CIT transactions, there are no changes needed as uCom will default these values to downstream systems. 
 
 This guide will address compliance modifications applicable to all recurring transactions for the CIT and MIT APIs listed below.
 
