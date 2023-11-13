@@ -37,8 +37,6 @@ As part of the MasterCard compliance requirement, you need to make some changes 
 | `MIT-RECURRING`   | `CUSTOMER`   |
 | `MIT-INSTALLMENT` | `MERCHANT`   |
 
-In addition, you need to include the following fields in your API request:
-
 Furthermore, you will need to include the additional fields below as per the MasterCard compliance requirement:
 
 | Field Name                  | New / Existing | Definition                                                    | Possible Values                                                                                                                                              |
