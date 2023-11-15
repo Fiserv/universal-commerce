@@ -30,17 +30,7 @@ This guide will address compliance modifications applicable to all recurring tra
 
 ## Utilization
 
-As part of the MasterCard compliance requirement, you need to make some changes to your current implementation of Connected Commerce (uCom) API. Specifically, you need to replace the existing values in the `TRANSACTION_INITIATION_INDICATOR` field with the new values as shown below:
-
-- **Existing Values**
-  - `MIT-RECURRING`
-  - `MIT-INSTALLMENT`
-
-- **New Values**
-  - `CUSTOMER`
-  - `MERCHANT`
-
-Furthermore, you will need to include the additional fields below as per the MasterCard compliance requirement:
+As part of the MasterCard compliance requirement, you will need to make some changes to your current implementation of the Connected Commerce (uCom) API for all recurring CIT & MIT transactions. Please include the additional fields listed below as per the MasterCard compliance requirement:
 
 | Field Name                  | New / Existing | Definition                                                    | Possible Values                                                                                                                                              |
 |--------------------------------|----------------|--------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -49,6 +39,9 @@ Furthermore, you will need to include the additional fields below as per the Mas
 | `SCHEDULE_INDICATOR`              | Existing       | Are we processing a transaction that has been scheduled for a specific date? | `UNSCHEDULED`: Denotes that the Transaction was initiated as an Ad Hoc transaction. <BR> `SCHEDULED`: Denotes that the Transaction was initiated at an agreed upon time between the Cardholder and the Merchant. |
 | `BILL_PAYMENT_TYPE`               | New            | Which type of subsequent transactions are being scheduled?     | `RECURRING`: Denotes that the Cardholder and the Merchant have agreed to initiate a series of transactions using a Vaulted Payment Method. <BR> `INSTALLMENT`: Denotes that the Cardholder and the Merchant have agreed to initiate a series of transactions using a Vaulted Payment Method that should reflect the single purchase of goods and/or services. |
 | `PAYMENT_AMOUNT_TYPE`            | New            | Will the Payment Amount in Subsequent Transactions stay the same as the Original Transaction or will the Payment Amount vary in Subsequent Transactions? | `VARIABLE`: Denotes that the Payment Amounts in a series of transactions using a Vaulted Payment Method can be of varying values. <BR>`FIXED`: Denotes that the Payment Amounts in a series of transactions using a Vaulted Payment Method will all be of the same value. |
+
+<!-- theme: warning -->
+> Please be aware the `TRANSACTION_INITIATION_INDICATOR` field will only accept the following values: `CUSTOMER` & `MERCHANT`. The previous values will be assigned to a new field called `BILL_PAYMENT_TYPE`.
 
 ## Examples and Samples
 
