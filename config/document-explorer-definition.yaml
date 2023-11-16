@@ -48,6 +48,8 @@
   - title: Common Use Cases
     link: recipes/LandingPage.md
     sections:
+    - title: Mastercard AN 5524 - CIT and MIT Compliance Indicators
+      link: recipes/MasterCard.md   
     - title: How to Create, Read, Update, and Delete a Customer Profile
       link: recipes/customerRegistration.md
     - title: How to Make a Guest Checkout
