@@ -41,7 +41,7 @@ As part of the MasterCard compliance requirement, you will need to make some cha
 | `PAYMENT_AMOUNT_TYPE`            | New            | Will the Payment Amount in Subsequent Transactions stay the same as the Original Transaction or will the Payment Amount vary in Subsequent Transactions? | `VARIABLE`: Denotes that the Payment Amounts in a series of transactions using a Vaulted Payment Method can be of varying values. <BR>`FIXED`: Denotes that the Payment Amounts in a series of transactions using a Vaulted Payment Method will all be of the same value. |
 
 <!-- theme: warning -->
-> Please be aware the `TRANSACTION_INITIATION_INDICATOR` field will only accept the following values: `CUSTOMER` & `MERCHANT`. The previous values will be assigned to a new field called `BILL_PAYMENT_TYPE`.
+> Please be aware the `TRANSACTION_INITIATION_INDICATOR` field will only accept the following values: `CUSTOMER` & `MERCHANT`. The previous values (`MIT-RECURRING` & `MIT-INSTALLMENT`) will be assigned to a new field called `BILL_PAYMENT_TYPE`.
 
 ## Examples and Samples
 
