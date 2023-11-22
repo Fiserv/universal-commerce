@@ -1,8 +1,8 @@
-# Mastercard AN 5524 - CIT and MIT Compliance Indicators 
+# MasterCard AN 5524 - CIT and MIT Compliance Indicators 
 
 ## Introduction
 
-Mastercard is introducing two new global acquirer Data Integrity edits to monitor Cardholder-Initiated Transaction (CIT) and Merchant-Initiated Transaction (MIT) indicators in each electronic commerce (e-commerce) and credential-on-file (COF) transaction to help enforce the Mastercard mandate requiring acquirers and their processors to provide CIT and MIT indicators.
+MasterCard is introducing two new global acquirer Data Integrity edits to monitor Cardholder-Initiated Transaction (CIT) and Merchant-Initiated Transaction (MIT) indicators in each electronic commerce (e-commerce) and credential-on-file (COF) transaction to help enforce the MasterCard mandate requiring acquirers and their processors to provide CIT and MIT indicators.
 
 - **Cardholder-Initiated Transaction (CIT):** A Cardholder-Initiated Transaction (CIT) is a type of financial transaction where the cardholder takes the active role in initiating the payment. This commonly occurs during in-store purchases, online shopping, or when the cardholder voluntarily decides to make a payment using their payment card. CIT transactions are driven by the cardholder's choice and consent.
 
@@ -10,7 +10,7 @@ Mastercard is introducing two new global acquirer Data Integrity edits to monito
 
 The CIT and MIT indicators, that will be discussed in this guide, aim to enhance transparency regarding transaction types. This will simplify the process for issuers in discerning valid transactions and enable them to make more well-informed authorization choices. Furthermore, issuers can utilize these newly introduced CIT and MIT indicators to bolster their risk management, fraud detection, and dispute resolution systems.
 
-> Please be advised that while these new indicators are currently only mandated by Mastercard, the API, however, is designed to receive these indicators for all card types, and as such, we encourage you to implement this modification for all brands, extending beyond Mastercard.  This will prevent future recoding by the merchant should other networks follow suit.
+> Please be advised that while these new indicators are currently only mandated by MasterCard, the API, however, is designed to receive these indicators for all card types, and as such, we encourage you to implement this modification for all brands, extending beyond MasterCard.  This will prevent future recoding by the merchant should other networks follow suit.
 
 ## Usage
 
@@ -41,7 +41,7 @@ As part of the MasterCard compliance requirement, you will need to make some cha
 | `PAYMENT_AMOUNT_TYPE`            | New            | Will the Payment Amount in Subsequent Transactions stay the same as the Original Transaction or will the Payment Amount vary in Subsequent Transactions? | `VARIABLE`: Denotes that the Payment Amounts in a series of transactions using a Vaulted Payment Method can be of varying values. <BR>`FIXED`: Denotes that the Payment Amounts in a series of transactions using a Vaulted Payment Method will all be of the same value. |
 
 <!-- theme: warning -->
-> Please be aware the `TRANSACTION_INITIATION_INDICATOR` field will only accept the following values: `CUSTOMER` & `MERCHANT`. The previous values will be assigned to a new field called `BILL_PAYMENT_TYPE`.
+> Please be aware the `TRANSACTION_INITIATION_INDICATOR` field will only accept the following values: `CUSTOMER` & `MERCHANT`. The previous values (`MIT-RECURRING` & `MIT-INSTALLMENT`) will be assigned to a new field called `BILL_PAYMENT_TYPE`.
 
 ## Examples and Samples
 
@@ -153,4 +153,4 @@ Below is a sample MIT payload that must be updated due to the MasterCard complia
 
 ## Error Codes 
 
-For comprehensive troubleshooting of potential errors, kindly refer to the designated <a href="../docs/?path=docs/documentation/API_Response_Codes.md"> Error Codes Section</a>. This resource will aid in addressing and resolving any errors that may arise during the course of testing.
+Although this new MasterCard mandate does not introduce any new error codes, please refer to the designated <a href="../docs/?path=docs/documentation/API_Response_Codes.md"> Error Codes Section</a> for comprehensive troubleshooting of potential errors. This resource will aid in addressing and resolving any errors that may arise during the course of testing.
