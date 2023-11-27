@@ -93,6 +93,10 @@ Below is a sample MIT payload that must be updated due to the MasterCard complia
 
 **Future State**
 
+***Sample Sale API Request**
+
+/payments/sales
+
 ```json
 
 {
@@ -149,6 +153,166 @@ Below is a sample MIT payload that must be updated due to the MasterCard complia
     }
 }
 
+```
+
+***Sample Auth API Request**
+
+/payments/auths
+
+```json
+
+{
+    "fdCustomerId":"{{fdCustomerId}}",
+    "authorization":{
+         "orderId":"Order0916dsd3vsdsdf1dsds2s336",
+        "hostExtraInfo": [
+            {
+                "name": "STORED_CREDENTIAL_INDICATOR",
+                "value": "SUBSEQUENT"
+            },
+            {
+                "name": "TRANSACTION_INITIATION_INDICATOR",
+                "value": "MERCHANT"
+            },
+            {
+                "name": "SCHEDULE_INDICATOR",
+                "value": "UNSCHEDULED"
+            },
+            {
+                "name": "BILL_PAYMENT_TYPE",
+                "value": "RECURRING"
+            }
+        ],
+       
+       "merchantId": "MO35312599001",
+        "requestedAmount":"2.75",
+        "currencyCode":{
+            "number":"484"
+        },
+        "fundingSource":{
+            "vaultedAccount":{
+                "fdAccountId":"{{fdAccountId}}"
+            }
+        }
+    }
+}
+```
+
+**Sample Auth Refund API Request**
+
+/payments/auths/ead46fb27d97466f87cadff6d7746f41/refunds
+
+```json
+
+{
+    "fdCustomerId":"{{fdCustomerId}}",
+   "refund":{ 
+        "hostExtraInfo": [
+            {
+                "name": "STORED_CREDENTIAL_INDICATOR",
+                "value": "INITIAL"
+            },
+            {
+                "name": "TRANSACTION_INITIATION_INDICATOR",
+                "value": "CUSTOMER"
+            },
+            {
+                 "name": "SCHEDULE_INDICATOR",
+                 "value": "UNSCHEDULED"
+            },
+             {
+                 "name": "BILL_PAYMENT_TYPE",
+                 "value": "INSTALLMENT"
+            }
+        ],  
+      "currencyCode":{   
+         "number":484
+      },
+      "requestedAmount":2.25
+   }
+}
+
+```
+
+***Sample Capture API Request**
+
+/payments/auths/0aea8ccad7794736a3cd71eade2c749d/captures
+
+```json
+
+{
+    "fdCustomerId": "{{fdCustomerId}}",
+    "capture": {
+             "hostExtraInfo": [
+            {
+                "name": "STORED_CREDENTIAL_INDICATOR",
+                "value": "SUBSEQUENT"
+            },
+            {
+                "name": "TRANSACTION_INITIATION_INDICATOR",
+                "value": "MERCHANT"
+            },
+            {
+                "name": "SCHEDULE_INDICATOR",
+                "value": "UNSCHEDULED"
+            },
+            {
+                "name": "BILL_PAYMENT_TYPE",
+                "value": "RECURRING"
+            }
+        ],
+          "orderId":"Order2dsdsd908dsfnmsdsghdsddsd679",
+        "currencyCode": {
+            "number": 484
+        },
+        "requestedAmount": "2.25"
+    }
+}
+
+```
+
+**Sample Verification API Request**
+
+/accounts/verification
+
+```json
+
+{
+    "account": {
+    	
+        "type": "CREDIT",
+        "credit": {
+            "nameOnCard": "John Smith",
+            "cardNumber": "I2CnCZIgYA0IZBXIj2nl5FPPygasYtboZwnEKOmSd9klcOjGsR+/liZHMiZKqCeqfIfhi79cKFxUp3Ncp34cXbnTj9dVRxrvJ8t2vhuniKrZ38ZFPr+bgdxNTg2fbIHt3q9ost8PKKle42nl5xhKCt/hfJwXKKo2HESUzAoRKodha1XySE+jN1xizafZj8UIHaubIrW9Aj2DYxhqMJeV6/+JlaveG1cdhqdu19xQwkt8xK1EjIekUBa+TrzPborPx8Fauo/zqlJ5BCKByBqex54bbfMqNUzRf70uge3VvPDzJbeuWRuTmFHLYIjVAdJJfVmqW9ofpjZUtKBlY6TrKA==",
+            "cardType": "MASTERCARD",
+            "securityCode": null,
+            "expiryDate": {
+                "month": "AJKKIBVGp3s62OV6jE6veq0JYzeXzYQrNLPDDBGl04lL2S7aP9M9K34leeUFRKB4maJ9aCpw5LZEIw0N8E31CwMqP9FaXxeAhGhRpSQnsmHmq2pbFhNjPNSOtWvR+xJSLcKxcSVAbfaeFHCoUV0Oao4ZFtLZLLsbdkCe5qHx9XOdNzl7RCA6KEwpbtWTWoGR+7xeXDAwcurO9wziCdvTO5qRrK+tBXXl/gJDWRprIKZy9nA+j9tpIuK1a7DP1IE7RMiWfBWWhaoQxG5Bf3kTyUS0gT4QHrtzUR80umxcBHv40Q6Lsmlb9YnO2A6uP26BmyF74s6tHKZZIUWW0VhI3w==",
+                "year": "NYerqziR0oc0gDnw49OEetHBrfv/+3ZsSS4afK0uS6mhfVWcC1JsGJHwYU0SOV/hQdV32+8Fxy/xdegpXVQGmD14wyRgXOnvs4f8gFO7rOGsdlgjs+9cKNT7ipP4xuEIcam/fViJrmmblJgKlHmbTy7fApac29+gV8LzRrFLNoJrLo7bp6p+x/m6vk/o7nZCsj1p5TTQaICvw/T2LfmlPX9rnQzwL++8OHjMoRV9wE+dmE5hJKGRYgsoCWJmibdbBLhsNDkwhba7hi95m/ex4rXCVNu24fdAob5JABDmV7EiXViw7Ra18jB/dQBFVkjEhV3itko5hiGAxKl5yIJWJA=="
+            },
+            "billingAddress": {
+        "streetAddress": "AC01 Glenridge Con #2000U",
+        "locality": "Atlanta",
+        "region": "GA",
+        "postalCode": "20220"
+      }
+        },
+        "hostExtraInfo": [
+            {
+                "name": "STORED_CREDENTIAL_INDICATOR",
+                "value": "INITIAL"
+            },
+            {
+                "name": "TRANSACTION_INITIATION_INDICATOR",
+                "value": "CUSTOMER"
+            },
+            {
+                "name": "SCHEDULE_INDICATOR",
+                "value": "UNSCHEDULED"
+            }
+        ]
+    }
+}
 ```
 
 ## Error Codes 
