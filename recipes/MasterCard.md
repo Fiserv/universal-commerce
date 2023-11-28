@@ -93,7 +93,7 @@ Below is a sample MIT payload that must be updated due to the MasterCard complia
 
 **Future State**
 
-***Sample Sale API Request**
+**Sample Sale API Request**
 
 /payments/sales
 
@@ -155,7 +155,7 @@ Below is a sample MIT payload that must be updated due to the MasterCard complia
 
 ```
 
-***Sample Auth API Request**
+**Sample Auth API Request**
 
 /payments/auths
 
@@ -234,7 +234,7 @@ Below is a sample MIT payload that must be updated due to the MasterCard complia
 
 ```
 
-***Sample Capture API Request**
+**Sample Capture API Request**
 
 /payments/auths/0aea8ccad7794736a3cd71eade2c749d/captures
 
