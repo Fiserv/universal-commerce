@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Compliance is introducing two new global acquirer Data Integrity edits to monitor Cardholder-Initiated Transaction (CIT) and Merchant-Initiated Transaction (MIT) indicators in each electronic commerce (e-commerce) and credential-on-file (COF) transaction to help enforce the Compliance mandate requiring acquirers and their processors to provide CIT and MIT indicators.
+Network compliance is introducing two new global acquirer Data Integrity edits to monitor Cardholder-Initiated Transaction (CIT) and Merchant-Initiated Transaction (MIT) indicators in each electronic commerce (e-commerce) and credential-on-file (COF) transaction to help enforce the Compliance mandate requiring acquirers and their processors to provide CIT and MIT indicators.
 
 - **Cardholder-Initiated Transaction (CIT):** A Cardholder-Initiated Transaction (CIT) is a type of financial transaction where the cardholder takes the active role in initiating the payment. This commonly occurs during in-store purchases, online shopping, or when the cardholder voluntarily decides to make a payment using their payment card. CIT transactions are driven by the cardholder's choice and consent.
 
